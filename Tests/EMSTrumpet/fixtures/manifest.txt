@@ -1,11 +1,13 @@
 schema=EMSTRUMPET/1
 generator=scripts/emstrumpet_fixtures.jl
-source_revision=5e894187fac985166986e4c671dfe1fcc14eaab0
+source_revision=f477b22d1578b316dfaf43b451b086cf0c1d270c
 source_worktree=uncommitted-accepted-native-convention
-consumer_revision=6172098b53a88670bbdc2be97200e5db8c17b961
+consumer_revision=0490c694d0a0b9482c3f180b7ec067639071d6a4
 julia_version=1.12.6
-fixture.binary_ccz4.tsv.bytes=5384
-fixture.binary_ccz4.tsv.sha256=ead5a4f297e90a33f51b9cabbbf9a87f9613d717c3f2b44a6bc77c6ac77db3df
+fixture.binary_ccz4.tsv.bytes=5382
+fixture.binary_ccz4.tsv.sha256=73f0c9dbe82e3222d15da6d6123bbcf1c9c63f6de6ca66f0cc0199937fdb1b83
+fixture.binary_ccz4_fieldsum.tsv.bytes=5384
+fixture.binary_ccz4_fieldsum.tsv.sha256=ead5a4f297e90a33f51b9cabbbf9a87f9613d717c3f2b44a6bc77c6ac77db3df
 fixture.duplicate-key.trumpet.bytes=5487
 fixture.duplicate-key.trumpet.sha256=67376dcb6fce98a91e14ad6cc1a3a1b1d08cb524ca94b1506ab6f7d25c91ce3f
 fixture.jets.tsv.bytes=2131

@@ -42,6 +42,7 @@ class EMSTrumpetSolution_read
     bool read_from_file(std::string &a_reason);
     double get_chebyshev_value(int a_field, double a_s, int a_order = 0) const;
     double get_phi_inf() const { return get_metadata_value("phi_inf"); }
+    double get_native_charge() const { return get_metadata_value("q_native"); }
     double get_nu() const { return get_metadata_value("nu"); }
     std::array<double, 4> get_coupling_parameters() const;
     double get_compactified_coordinate(double a_R) const;

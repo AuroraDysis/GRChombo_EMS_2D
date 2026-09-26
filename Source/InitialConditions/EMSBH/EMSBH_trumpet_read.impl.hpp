@@ -199,11 +199,31 @@ EMSBH_trumpet_read::compute_binary_ems_adm_vars(data_t a_x, data_t a_y,
     const auto right_bh = compute_ems_adm_vars(a_x, a_y, data_t(0), a_mass,
                                                a_separation / 2, -a_rapidity);
     ems_adm_vars_t<data_t> superposed_vars{};
+    Tensor<1, data_t, 3> electric_density = {0.}, magnetic_density = {0.};
+    const double c = std::cosh(a_rapidity);
+    const double charge = a_mass * m_1d_sol.get_native_charge();
+    const ems_adm_vars_t<data_t> *holes[2] = {&left_bh, &right_bh};
+    const double centers[2] = {-a_separation / 2, a_separation / 2};
+    for (int hole = 0; hole < 2; ++hole)
+    {
+        const data_t X = a_x - centers[hole];
+        const data_t R = std::sqrt(c * c * X * X + a_y * a_y);
+        const Tensor<1, data_t, 3> position = {X, a_y, data_t(0)};
+        const auto inverse =
+            TensorAlgebra::compute_inverse_sym(holes[hole]->gamma);
+        const data_t root_det = std::sqrt(
+            TensorAlgebra::compute_determinant_sym(holes[hole]->gamma));
+        for (int i = 0; i < 3; ++i)
+        {
+            electric_density[i] += charge * c * position[i] / (R * R * R);
+            for (int j = 0; j < 3; ++j)
+                magnetic_density[i] +=
+                    root_det * inverse[i][j] * holes[hole]->B[j];
+        }
+    }
     for (int i = 0; i < 3; ++i)
     {
         superposed_vars.shift[i] = left_bh.shift[i] + right_bh.shift[i];
-        superposed_vars.E[i] = left_bh.E[i] + right_bh.E[i];
-        superposed_vars.B[i] = left_bh.B[i] + right_bh.B[i];
         for (int j = 0; j < 3; ++j)
         {
             superposed_vars.gamma[i][j] =
@@ -215,6 +235,26 @@ EMSBH_trumpet_read::compute_binary_ems_adm_vars(data_t a_x, data_t a_y,
                           (left_bh.phi - m_1d_sol.get_phi_inf()) +
                           (right_bh.phi - m_1d_sol.get_phi_inf());
     superposed_vars.Pi = left_bh.Pi + right_bh.Pi;
+    auto physical_gamma = superposed_vars.gamma;
+    for (int i = 0; i < 3; ++i)
+        physical_gamma[i][i] -= 1;
+    const data_t det = TensorAlgebra::compute_determinant_sym(physical_gamma);
+    if (!(det > 0))
+        MayDay::Error("EMSTRUMPET nonpositive physical metric determinant");
+    const data_t root_det = std::sqrt(det);
+    const data_t phi = superposed_vars.phi;
+    const data_t coupling = std::exp(
+        -2 * m_params_coupling_function.alpha *
+        (m_params_coupling_function.f0 + m_params_coupling_function.f1 * phi +
+         m_params_coupling_function.f2 * phi * phi));
+    for (int i = 0; i < 3; ++i)
+        for (int j = 0; j < 3; ++j)
+        {
+            superposed_vars.E[i] += physical_gamma[i][j] * electric_density[j] /
+                                    (root_det * coupling);
+            superposed_vars.B[i] +=
+                physical_gamma[i][j] * magnetic_density[j] / root_det;
+        }
     return superposed_vars;
 }
 

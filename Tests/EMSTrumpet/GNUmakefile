@@ -5,7 +5,7 @@
 # -*- Mode: Makefile -*-
 # GRChombo EMSTRUMPET 1 fixture and single-box tests.
 
-ebase := EMSTrumpetFixtureTest EMSTrumpetGridConvergence
+ebase := EMSTrumpetFixtureTest EMSTrumpetGridConvergence EMSTrumpetBinaryGridConvergence
 LibNames := BoxTools
 
 include $(CHOMBO_HOME)/mk/Make.test

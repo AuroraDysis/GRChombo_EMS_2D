@@ -4,6 +4,8 @@
  */
 
 #include "EMSBH_trumpet_read.hpp"
+#include <cstdint>
+#include <cstring>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
@@ -16,6 +18,7 @@ struct fixture_table_t
     double max = 0;
     std::string worst;
     int rows = 0, columns = 0;
+    std::uint64_t fingerprint = 14695981039346656037ULL;
 };
 static std::vector<std::string> split_tsv_row(const std::string &a_row)
 {
@@ -52,6 +55,8 @@ static const std::vector<std::string> ccz4_component_names = {
 static double fixture_tolerance(const std::string &a_table,
                                 const std::string &a_column)
 {
+    if (a_table == "binary_ccz4.tsv")
+        return 5e-13;
     if (a_table == "jets.tsv")
     {
         if (a_column.find("_d1") != std::string::npos)
@@ -172,6 +177,9 @@ static fixture_table_t check_fixture_table(const std::string &a_fixture_dir,
             throw std::runtime_error("table width mismatch: " + a_fixture_name);
         for (size_t i = 0; i < expected.size(); ++i)
         {
+            std::uint64_t bits;
+            std::memcpy(&bits, &actual[i], sizeof(bits));
+            t.fingerprint = (t.fingerprint ^ bits) * 1099511628211ULL;
             const double error =
                 std::abs(actual[i] - expected[i]) / (1 + std::abs(expected[i]));
             if (!std::isfinite(error))
@@ -220,6 +228,18 @@ int main(int argc, char **argv)
                       << (fixture_result.worst.empty() ? "all exact"
                                                        : fixture_result.worst)
                       << "\n";
+            if (std::string(name) == "objects.tsv" ||
+                std::string(name) == "single_ccz4.tsv")
+            {
+                const std::uint64_t baseline =
+                    std::string(name) == "objects.tsv" ? 0xe1107d452abc4e4bULL
+                                                       : 0xc30cf22126f14d61ULL;
+                if (fixture_result.fingerprint != baseline)
+                    throw std::runtime_error(std::string(name) +
+                                             " changed single-object bits");
+                std::cout << name << " bit fingerprint=" << std::hex
+                          << fixture_result.fingerprint << std::dec << '\n';
+            }
         }
         const std::vector<std::pair<std::string, std::string>> malformed_files =
             {{"wrong-magic.trumpet", "unknown trumpet schema"},
