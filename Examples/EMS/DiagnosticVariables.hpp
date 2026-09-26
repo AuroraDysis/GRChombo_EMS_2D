@@ -33,6 +33,9 @@ enum
     c_Sx,
     c_Sy,
 
+    c_GaussE,
+    c_GaussB,
+
     // c_Sxx,
     // c_Sxy,
     // c_Syy,
@@ -73,7 +76,9 @@ static const std::array<std::string, NUM_DIAGNOSTIC_VARS> variable_names = {
     "rho_ADM",
 
     "Sx",
-    "Sy"
+    "Sy",
+    "GaussE",
+    "GaussB"
 
   };
 }

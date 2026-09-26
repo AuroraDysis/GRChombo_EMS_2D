@@ -74,7 +74,6 @@ class FixSuperposition_metric
 
         Coordinates<data_t> coords(current_cell, m_dx, m_center);
         const auto vars = current_cell.template load_vars<Vars>();
-        const auto d1 = m_deriv.template diff1<Vars>(current_cell);
 
         using namespace TensorAlgebra;
 

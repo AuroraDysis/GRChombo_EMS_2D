@@ -57,6 +57,7 @@ template <class data_t> class Coordinates
         out = (position + 0.5) * dx - center_distance;
     }
 
+#if defined(__x86_64__)
     static typename std::enable_if_t<(simd_traits<double>::simd_len > 1), void>
     compute_coord(simd<double> &out, int position, double dx,
                   double center_distance = 0)
@@ -68,6 +69,7 @@ template <class data_t> class Coordinates
         }
         out = simd<double>::load(out_arr);
     }
+#endif
 
     /// This function returns the radius subject to a floor for a given
     /// Coordinates object.

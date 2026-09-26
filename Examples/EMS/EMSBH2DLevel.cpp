@@ -31,7 +31,9 @@
 
 // EMS includes
 #include "EMSBH_read.hpp"
+#include "EMSBH_trumpet_read.hpp"
 #include "EMSCouplingFunction.hpp"
+#include "EMSCartoonGaussConstraints.hpp"
 // #include "FixSuperposition_K.hpp"
 #include "FixSuperposition_metric.hpp"
 // RNBH test include initial data
@@ -67,7 +69,7 @@ void EMSBH2DLevel::specificAdvance()
 {
     // Enforce the trace free A_ij condition and positive chi and alpha
     BoxLoops::loop(
-        make_compute_pack(TraceARemovalCartoon(), PositiveChiAndAlpha()),
+        make_compute_pack(TraceARemovalCartoon(), PositiveChiAndAlpha(m_p.min_chi, m_p.min_lapse)),
         m_state_new, m_state_new, INCLUDE_GHOST_CELLS);
 
     // Check for nan's
@@ -86,7 +88,26 @@ void EMSBH2DLevel::initialData()
         pout() << "EMSBH2DLevel::initialData " << m_level << endl;
 
     // Read initial data for RN or EMS
-    if (m_p.EMS_not_RN) {
+    if (m_p.ems_data_format == "emstrumpet1")
+    {
+        EMSBH_trumpet_read emdbh(m_p.emsbh_params, m_p.coupling_function_params,
+                                 m_p.m_G_Newton, m_dx, m_verbosity);
+        emdbh.compute_1d_solution();
+        if (m_verbosity)
+            pout() << "EMSBH2DLevel::initialData - Interpolate to 3D grid "
+                   << m_level << endl;
+        BoxLoops::loop(make_compute_pack(SetValue(0.0), emdbh), m_state_new,
+                       m_state_new, INCLUDE_GHOST_CELLS, disable_simd());
+        BoxLoops::loop(FixSuperposition_metric(
+                           m_dx, m_p.emsbh_params.star_centre,
+                           m_p.emsbh_params.rapidity, m_p.emsbh_params.binary),
+                       m_state_new, m_state_new, INCLUDE_GHOST_CELLS,
+                       disable_simd());
+        fillAllGhosts();
+        BoxLoops::loop(GammaCartoonCalculator(m_dx), m_state_new, m_state_new,
+                       EXCLUDE_GHOST_CELLS, disable_simd());
+    }
+    else if (m_p.EMS_not_RN) {
         // EMS data
         EMSBH_read emdbh(m_p.emsbh_params, m_p.coupling_function_params,
                             m_p.m_G_Newton, m_dx, m_verbosity);
@@ -162,6 +183,7 @@ void EMSBH2DLevel::prePlotLevel()
             WeylOmScalar(m_p.extraction_params.center, m_dx),
 
             Constraints<CouplingFunction>(m_dx, my_coupling, m_p.m_G_Newton),
+            EMSCartoonGaussConstraints(m_dx, m_p.coupling_function_params),
 
             EMSCartoonLorentzScalars<CouplingFunction>(m_dx,
                                         m_p.mq_extraction_params.center,
@@ -185,7 +207,7 @@ void EMSBH2DLevel::specificEvalRHS(GRLevelData &a_soln,
     ////////////////////////////////////////
     // Enforce positive chi and alpha and trace free A
     BoxLoops::loop(
-        make_compute_pack(TraceARemovalCartoon(), PositiveChiAndAlpha()),
+        make_compute_pack(TraceARemovalCartoon(), PositiveChiAndAlpha(m_p.min_chi, m_p.min_lapse)),
         a_soln, a_soln, INCLUDE_GHOST_CELLS);
 
 
@@ -266,6 +288,8 @@ void EMSBH2DLevel::specificPostTimeStep()
     BoxLoops::loop(
             Constraints<CouplingFunction>(m_dx, my_coupling, m_p.m_G_Newton),
                        m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS);
+    BoxLoops::loop(EMSCartoonGaussConstraints(m_dx, m_p.coupling_function_params),
+                   m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS);
     BoxLoops::loop(
             EMSCartoonLorentzScalars<CouplingFunction>(m_dx,
                                        m_p.mq_extraction_params.center,

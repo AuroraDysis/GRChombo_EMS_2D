@@ -98,7 +98,7 @@ vars_parity_diagnostic = 0 0 0 0 0 1 2 0  # mod F to Mom total
                          0 3 # weyl4 # THIS MIGHT BE 0,4 ? SEE PRE_EXISTING EXAMPLES
                          0 3 # pheyl2
                          0 0 # rho and rho ADM
-                         0 0 # Sx Sy
+                         0 0 0 0 # Sx Sy GaussE GaussB
 
 # if sommerfeld boundaries selected, must select
 # non zero asymptotic values

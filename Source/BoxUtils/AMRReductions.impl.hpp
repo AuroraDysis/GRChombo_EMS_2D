@@ -237,8 +237,10 @@ IntVect AMRReductions<var_t>::computeMaxIndex(
   Real thisMax;
 
   levelMaxStruct.levelMax = -99999999999.9;
-  int my_rank;
+  int my_rank = 0;
+#ifdef CH_MPI
   MPI_Comm_rank(Chombo_MPI::comm, &my_rank);
+#endif
   levelMaxStruct.rank = my_rank;
 
   IntVect LevelmaxIndex = -1 * IntVect::Unit;

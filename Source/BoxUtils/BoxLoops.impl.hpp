@@ -21,6 +21,10 @@ void BoxLoops::innermost_loop(const ComputePack<compute_ts...> &compute_pack,
                               const int iz, const int loop_lo_x,
                               const int loop_hi_x)
 {
+#if !defined(__x86_64__)
+    innermost_loop(compute_pack, box_pointers, iy, iz, loop_lo_x, loop_hi_x,
+                   disable_simd());
+#else
     int simd_width = simd<double>::simd_len;
     int x_simd_max =
         loop_lo_x +
@@ -43,6 +47,7 @@ void BoxLoops::innermost_loop(const ComputePack<compute_ts...> &compute_pack,
         compute_pack.call_compute(
             Cell<double>(IntVect(D_DECL(ix, iy, iz)), box_pointers));
     }
+#endif
 }
 
 template <typename... compute_ts>
