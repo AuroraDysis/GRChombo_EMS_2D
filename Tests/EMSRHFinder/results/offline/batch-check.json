@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checkpoint_times": [
+    0.25,
+    0.375
+  ],
+  "source_histories_include_future_for_first": true,
+  "repeated_checkpoint_final_observables_bit_identical": true
+}

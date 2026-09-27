@@ -33,7 +33,11 @@ int run(int argc, char **argv)
 {
     GRParmParse pp(argc-2, argv+2, nullptr, argv[1]);
     SimulationParameters p(pp);
-    struct PlotAMR : GRAMR { using AMR::writePlotFile; };
+    struct PlotAMR : GRAMR
+    {
+        using AMR::writePlotFile;
+        using AMR::writeCheckpointFile;
+    };
     PlotAMR amr;
     DefaultLevelFactory<EMSIsolatedRHLevel> factory(amr, p);
     setupAMRObject(amr, factory);
@@ -98,6 +102,9 @@ int run(int argc, char **argv)
     int max_updates;
     pp.load("ems_test_max_updates", max_updates, 60);
     amr.writePlotFile();
+    bool checkpoint;
+    pp.load("ems_test_checkpoint", checkpoint, false);
+    if (checkpoint) amr.writeCheckpointFile();
     bool done = false;
     const auto start = std::chrono::steady_clock::now();
     for (int i = 0; i < max_updates; ++i)

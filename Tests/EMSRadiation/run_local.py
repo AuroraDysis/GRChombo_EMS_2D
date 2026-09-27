@@ -145,7 +145,7 @@ def main():
                 'RH_start_times':'0 0 70','RH_initial_centre':'752 784 768',
                 'RH_initial_radii':'0.63593977642346233 0.63593977642346233 4',
                 'RH_num_points':'96 96 96','RH_chase_speeds':'0.125 0.125 0.125',
-                'RH_time_step_freq':'400 400 400','ems_rh_expansion_threshold':'1e-12',
+                'RH_time_step_freq':'2000 2000 2000','ems_rh_expansion_threshold':'1e-10',
                 'max_box_size':'16','block_factor':'16',
                 'activate_mq_extraction':'1'}.items():
             assert p[key]==value,(key,p[key])

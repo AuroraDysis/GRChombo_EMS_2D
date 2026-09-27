@@ -1,0 +1,24 @@
+{
+  "info": {
+    "time": 0.375,
+    "levels": 4,
+    "dx": 0.5,
+    "field_bytes": 54424832
+  },
+  "skipped": {
+    "2": "DORMANT"
+  },
+  "sha256": {
+    "/private/tmp/ems-offline-f/local/binary/chk/EMS_000003.2d.hdf5": "998d4772fe0c55d0536ac1247cce314de9953eed021344b8f8ef8cc893c19d70",
+    "/private/tmp/ems-offline-f/local/binary/params.txt": "9b926a8f1e4eee5b22847b28869d98edaad1996f7c6b3e306c4e4d96ab466fc7",
+    "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-offline/Tests/EMSRHFinder/EMSRHCheckpoint2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex": "9c55145347289dc0eb066c5405fb88c5029b38684c1082cc23b727e21ec98be3",
+    "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-offline/Tests/EMSRHFinder/offline.py": "4221dcc40fd50267ce20fedf3b6622681de27af1bb44542d9c8f1cfa7222cbe6",
+    "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-offline/Tests/EMSRHFinder/postprocess.jl": "85e89ff9a8244305b87491a1fc3de4cb9d5cec306580b8185a586483fe74a61c",
+    "/Users/auroradysis/Workspace/EMS/artifacts/horizon-family/production/alpha20-positive.hfamily": "0a9858ec62b824504e723e00817334e76c521436dfa2a4ddb7d5080e77a7ae72",
+    "/private/tmp/ems-offline-f/local/binary/rh_surf_0.dat": "ab56f66770915123476cbb239cf0cee52c7291417841d7ca0d9cbb079182d3ed",
+    "/private/tmp/ems-offline-f/local/binary/rh_f0.dat": "033ec77ca709b565fca39ad20f3919cdb73d8895b697ef7b2afd24851f949984",
+    "/private/tmp/ems-offline-f/local/binary/rh_surf_1.dat": "9df03bc4b5993fcef8c086bf09a9d5a537370d0014f762aec53d630572218b67",
+    "/private/tmp/ems-offline-f/local/binary/rh_f1.dat": "9fb0ddb38bfcb39052d6eb7bfc7874ede027090aafffc7138fbdab63c12edd48"
+  },
+  "threads": 8
+}

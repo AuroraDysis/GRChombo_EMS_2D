@@ -1,5 +1,8 @@
 # Isolated RHFinder and Julia mass post-processing
 
+For strict re-finding on saved production checkpoints without a time step or
+plot file, use the [offline checkpoint driver](OFFLINE.md).
+
 **The 24 native finds recover unit rest mass within the requested absolute mass and charge tolerances. The quadrature-plus-table error allowance alone fails to cover their mass errors.** The cause is the unchanged finder's stopping tolerance, with a smaller grid interpolation contribution. A separately measured engineering allowance covers all 24 discrepancies. This is not an unconditional pass of the original error-budget requirement.
 
 This records the operator's original offline validation. No mass calculation is wired into C++. During that study, the author's finder, geometry, initial-data setter, production example and parameters were unchanged. The subsequent interpolation performance, restart and pilot-parameter changes are documented in [PERFORMANCE.md](PERFORMANCE.md). All masses below use the unchanged Julia `horizon_mass` from the read-only EMS worktree. That original study made no commits, SSH/HPC calls, evolution runs, radiation extraction, table adjustments or EMS.jl edits.

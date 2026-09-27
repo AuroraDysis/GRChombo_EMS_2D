@@ -18,17 +18,29 @@ function postprocess(input::String, output::String)::Nothing
             A=val("A"); Q=val("Q"); n=parse(Int,row["N_theta"])
             b=(pi/(2n))/sin(pi/(2n))-1
             dA=abs(A)*b; dQ=abs(Q)*b
+            # Checkpoint driver supplies measured angular/stopping allowances.
+            if haskey(row,"measurement_delta_A")
+                dA=val("measurement_delta_A"); dQ=val("measurement_delta_Q")
+            end
             m=horizon_mass(f,A,Q;delta_A=dA,delta_Q=dQ); s=horizon_sample(f,m.e)
             expected_Q=0.700784945779
             expected_A=branch=="rn" ? 4pi*(1+sqrt(1-expected_Q^2))^2 : 38.510457444941309
-            error=abs(m.M_eq-1); qerror=abs(Q/expected_Q-1); aerror=abs(A/expected_A-1)
+            expected_M=1.0
+            if haskey(row,"expected_M")
+                expected_M=val("expected_M"); expected_Q=val("expected_Q"); expected_A=val("expected_A")
+            end
+            error=abs(m.M_eq-expected_M); qerror=abs(Q/expected_Q-1); aerror=abs(A/expected_A-1)
             rn=m.R_A*(1+m.e^2)/2
             duplicate_masses=[horizon_mass(f,parse.(Float64,split(pair,':'))...).M_eq
                               for pair in split(row["duplicate_A_Q"],';')]
             values=(m.R_A,m.R_A/2,m.e,m.M_eq,m.delta_M,m.delta_M_measurement,m.delta_M_table,
                     dA,dQ,s.phi_H,s.Q_s_over_R_A,m.R_A*sqrt(val("expansion_squared")),error,qerror,
-                    aerror,val("phi_mean")-s.phi_H,error <= (n==48 ? 1e-3 : 3e-4),qerror<=5e-4,
-                    error<=m.delta_M,aerror<=b,branch=="rn" ? abs(m.M_eq-rn) : NaN,f.sha256,
+                    aerror,val("phi_mean")-s.phi_H,
+                    isfinite(expected_M) ? error <= (n==48 ? 1e-3 : 3e-4) : "unset",
+                    isfinite(expected_Q) ? qerror<=5e-4 : "unset",
+                    isfinite(expected_M) ? error<=m.delta_M : "unset",
+                    isfinite(expected_A) ? aerror<=b : "unset",
+                    branch=="rn" ? abs(m.M_eq-rn) : NaN,f.sha256,
                     "BRANCH_UNVERIFIED_STATIC_PROJECTION","unset",maximum(duplicate_masses)-minimum(duplicate_masses))
             println(io,line,',',join(values,','))
         end

@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "N_theta": 192,
+      "surfaces": 1
+    },
+    {
+      "N_theta": 48,
+      "surfaces": 1
+    },
+    {
+      "N_theta": 96,
+      "surfaces": 1
+    }
+  ],
+  "absolute_tolerance": 1e-12,
+  "residual_absolute_tolerance": 1e-20
+}

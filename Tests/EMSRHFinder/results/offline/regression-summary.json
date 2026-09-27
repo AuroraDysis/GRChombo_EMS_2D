@@ -1,0 +1,57 @@
+[
+  {
+    "name": "fixtures",
+    "seconds": 79.59244174999185,
+    "exit": 0
+  },
+  {
+    "name": "parameters",
+    "seconds": 0.24208895798074082,
+    "exit": 0
+  },
+  {
+    "name": "pulse-grid",
+    "seconds": 3.2930546660209075,
+    "exit": 0
+  },
+  {
+    "name": "amr",
+    "seconds": 0.46518512500915676,
+    "exit": 0
+  },
+  {
+    "name": "threshold",
+    "seconds": 48.999248999985866,
+    "exit": 0
+  },
+  {
+    "name": "stationary",
+    "seconds": 149.93888800003333,
+    "exit": 0
+  },
+  {
+    "name": "evolve",
+    "seconds": 126.34373054199386,
+    "exit": 0
+  },
+  {
+    "name": "analytic",
+    "seconds": 3.38412366702687,
+    "exit": 0
+  },
+  {
+    "name": "native-rh",
+    "seconds": 105.80189233296551,
+    "exit": 0
+  },
+  {
+    "name": "off",
+    "seconds": 27.05759316595504,
+    "exit": 0
+  },
+  {
+    "name": "collector",
+    "seconds": 1.0381524999975227,
+    "exit": 0
+  }
+]
