@@ -84,30 +84,48 @@ struct region_t
 };
 int main(int argc, char **argv)
 {
-    if (argc != 4)
+    if (argc != 4 && argc != 5)
     {
-        std::cerr << "usage: EMSTrumpetGridConvergence N eta profile.trumpet\n";
+        std::cerr << "usage: EMSTrumpetGridConvergence N eta profile.trumpet "
+                     "[echo]\n";
         return 2;
     }
+    const bool echo = argc == 5 && std::string(argv[4]) == "echo";
+    if (argc == 5 && !echo)
+        return 2;
     const int N = std::stoi(argv[1]);
     const double eta = std::stod(argv[2]), dx = 1.0 / N;
-    if (N != 32 && N != 64 && N != 128)
+    if (echo ? (N != 128 && N != 256 && N != 512)
+             : (N != 32 && N != 64 && N != 128))
     {
-        std::cerr << "N must be 32, 64, or 128\n";
+        std::cerr << "unsupported N\n";
         return 2;
     }
     const auto start = std::chrono::steady_clock::now();
     CouplingFunction::params_t coupling{12.566370614359172, 0, 0, -20};
+    if (echo)
+    {
+        EMSTrumpetSolution_read profile;
+        std::string reason;
+        if (!profile.check_file(argv[3], reason))
+        {
+            std::cerr << "invalid trumpet: " << reason << '\n';
+            return 2;
+        }
+        const auto c = profile.get_coupling_parameters();
+        coupling = {c[0], c[1], c[2], c[3]};
+    }
 
     EMSBH_params_t params{};
     params.bh_mass = 1;
-    params.star_centre = {2, 0};
+    params.star_centre = {echo ? 0.5 : 2.0, 0};
     params.data_path = argv[3];
     params.boosted = eta != 0;
     params.rapidity = eta;
     EMSBH_trumpet_read reader(params, coupling, 1.0, dx, 0);
     reader.compute_1d_solution();
-    const Box interior(IntVect(0, 0), IntVect(4 * N - 1, 2 * N - 1));
+    const Box interior(IntVect(0, 0), IntVect((echo ? N : 4 * N) - 1,
+                                              (echo ? N / 2 : 2 * N) - 1));
     Box ghost = interior;
     ghost.grow(5);
     FArrayBox state(ghost, NUM_VARS), diagnostic(interior, NUM_DIAGNOSTIC_VARS);
@@ -133,12 +151,13 @@ int main(int argc, char **argv)
                    interior, disable_simd());
     region_t full, axis;
     const double c = std::cosh(eta);
-    for (int j = 0; j < 2 * N; ++j)
-        for (int i = 0; i < 4 * N; ++i)
+    for (int j = 0; j < (echo ? N / 2 : 2 * N); ++j)
+        for (int i = 0; i < (echo ? N : 4 * N); ++i)
         {
-            const double x = (i + 0.5) * dx - 2, y = (j + 0.5) * dx;
+            const double x = (i + 0.5) * dx - (echo ? 0.5 : 2.0),
+                         y = (j + 0.5) * dx;
             const double rest = std::hypot(c * x, y);
-            if (rest < 0.25 || rest > 1.5)
+            if (rest < (echo ? 0.01 : 0.25) || rest > (echo ? 0.5 : 1.5))
                 continue;
             const IntVect iv(i, j);
             const auto reference =

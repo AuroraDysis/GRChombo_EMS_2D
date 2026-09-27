@@ -1,5 +1,119 @@
 # EMSTRUMPET 1 initial data checks
 
+## Echo B and E with nonunit compactification scale
+
+The supplied B and E files were authenticated with `EMS.read_trumpet` and
+copied byte for byte into `fixtures-echo/{B,E}/reference.trumpet`. Their SHA-256
+hashes are `d54cc1141dc90536dbb6fda07d408b8b143294791269f65dd5b270b9dac91251`
+and `7408f854a8d9e390c9db4e0e77400bdfa98a6d622fd20233c8be3f0ba4ace809`.
+Each manifest records the source and table hashes, the Julia reader and original
+fixture generator hashes, the radii, and the rapidities. The fixture script uses
+the same `trumpet_jet`, `trumpet_sample`, `trumpet_object`, and `trumpet_ccz4`
+calls and table columns as `scripts/emstrumpet_fixtures.jl`. It samples the
+cylinder approach, half and twice the isotropic horizon radius, and `R=0.16M`,
+where B has areal radius `r=0.99396M`. Objects and single CCZ4 fields cover
+masses 1 and 2 and rapidities `0, ±0.20273255`.
+
+```sh
+julia --project=/Users/auroradysis/Workspace/EMS Tests/EMSTrumpet/echo_fixtures.jl
+export CHOMBO_HOME=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib
+make -C Tests/EMSTrumpet all DIM=2 -j 12
+OMP_NUM_THREADS=1 Tests/EMSTrumpet/EMSTrumpetFixtureTest2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex \
+  Tests/EMSTrumpet/fixtures Tests/EMSTrumpet/fixtures-echo/B Tests/EMSTrumpet/fixtures-echo/E
+```
+
+The C++ test first validates each header and takes the coupling parameters from
+that file. It runs the original reference binary table, bit fingerprints, and
+nine malformed-file rejections. For the echo rows, every value is checked with
+`|C++ - Julia|/(1 + |Julia|)`. The maximum in each tolerance class is:
+
+| Member | Table | Values, limit `1e-12` | First, limit `1e-10` | Second/higher jets, limit `1e-8` |
+| --- | --- | ---: | ---: | ---: |
+| B | jets | 6.83e-17 | 4.72e-15 | 6.38e-14 |
+| B | radial | 4.10e-15 | 4.55e-15 | — |
+| B | objects | 1.50e-14 | 2.63e-14 | — |
+| B | single CCZ4 | 4.48e-15 | 2.84e-15 | — |
+| E | jets | 2.71e-16 | 2.36e-15 | 8.22e-15 |
+| E | radial | 1.25e-15 | 1.26e-15 | — |
+| E | objects | 1.78e-15 | 2.69e-15 | — |
+| E | single CCZ4 | 2.78e-15 | 2.34e-15 | — |
+
+The reference still passes: maximum normalized errors are `2.51e-16` (jets),
+`7.84e-16` (radial), `8.89e-16` (objects), `1.15e-15` (single CCZ4), and
+`1.12e-16` (binary CCZ4). The object and single CCZ4 fingerprints remain
+`e1107d452abc4e4b` and `c30cf22126f14d61`; all nine malformed files are
+rejected for their expected reasons. The echo reader accepts `ell=0.02149952219`
+for B and `ell=0.05709817337` for E with the unchanged endpoint contract.
+
+### B single-object grid at t=0
+
+The existing C2 test gains an `echo` mode. At `N=128,256,512`, `dx=M/N`, its
+cell-centred box is `x ∈ [-0.5,0.5]M`, cartoon `y ∈ [0,0.5]M`, with
+`N × (N/2)` cells. It uses the same finalizer, Gamma, constraint, and Gauss
+operators as the reference mode. The fixed physical mask is
+`0.01 ≤ R=√(x²+y²) ≤ 0.5M`, outside B's `R_h=0.001418901919M`. The table gives
+unweighted L2 residuals on that mask and `log2(E_coarse/E_fine)`; full L∞ values
+and orders are in [`echo-convergence-results.csv`](echo-convergence-results.csv).
+
+| dx/M | Mask cells | H L2 (order) | Mx/My L2 (order) | GaussE L2 (order) | GaussB L2 |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 1/128 | 6,444 | 1.253e-1 | 6.671e-1 / 6.671e-1 | 4.389e-2 | 0 |
+| 1/256 | 25,722 | 2.821e-3 (5.47) | 3.935e-2 / 3.935e-2 (4.08) | 6.803e-4 (6.01) | 0 |
+| 1/512 | 102,906 | 3.049e-4 (3.21) | 1.579e-3 / 1.579e-3 (4.64) | 6.782e-5 (3.33) | 0 |
+
+```sh
+for n in 128 256 512; do
+  OMP_NUM_THREADS=1 Tests/EMSTrumpet/EMSTrumpetGridConvergence2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex \
+    "$n" 0 Tests/EMSTrumpet/fixtures-echo/B/reference.trumpet echo > "b-$n.log"
+done
+python3 Tests/EMSTrumpet/echo_grid_results.py b-{128,256,512}.log > Tests/EMSTrumpet/echo-convergence-results.csv
+```
+
+The three boxes have 8,192, 32,768, and 131,072 interior cells. C++ reported
+0.076, 0.285, and 1.109 seconds respectively with one OpenMP thread. All mask
+points stayed above the `1e-12` chi and lapse floors, and the largest normalized
+field comparison error was `2.78e-16`. All four nonzero L2 constraints decrease,
+but their fine-pair orders range from 3.21 to 4.64; this is not a uniform
+fourth-order regime. At `M/512`, the inner mask radius is 5.12 grid steps from
+the center and the `r≈M` feature at `R≈0.16M` is about 82 steps out. Thus the
+finest box samples the stated mask, but it does not resolve the horizon:
+`2R_h/dx=1.45` cells across its diameter.
+
+### Head-on refinement estimate
+
+B's areal horizon radius is `r_h/M=0.1272544`, while its isotropic coordinate
+radius is `R_h/M=0.001418901919`: the areal-to-isotropic ratio is 89.69.
+The exp-0001 layout has base `dx_0=2M` and doubles resolution on each level,
+so the diameter cell count on level `L` is
+`2R_h/dx_L = (R_h/M) 2^L`. The calculation is reproducible with
+`python3 -c 'import math; h=0.0014189019194714417; print([(l,h*2**l) for l in range(16)]); print(math.ceil(math.log2(25/h)))'`.
+
+| Level | dx/M | Cells across horizon diameter |
+| ---: | ---: | ---: |
+| 0 | 2 | 0.00142 |
+| 1 | 1 | 0.00284 |
+| 2 | 1/2 | 0.00568 |
+| 3 | 1/4 | 0.01135 |
+| 4 | 1/8 | 0.02270 |
+| 5 | 1/16 | 0.04540 |
+| 6 (exp-0001 finest) | 1/32 | 0.09081 |
+| 7 | 1/64 | 0.18162 |
+| 8 | 1/128 | 0.36324 |
+| 9 | 1/256 | 0.72648 |
+| 10 | 1/512 | 1.45296 |
+| 11 | 1/1024 | 2.90591 |
+| 12 | 1/2048 | 5.81182 |
+| 13 | 1/4096 | 11.62364 |
+| 14 | 1/8192 | 23.24729 |
+| 15 | 1/16384 | 46.49458 |
+
+With diameter as the meaning of "across," level 15 is the first level with
+at least 25 cells: nine more levels than exp-0001. Its spacing and CFL timestep
+are `1/512` of level 6 (`dx_15/M=6.1035e-5`). This ratio is a minimum local
+step-count cost for a fixed physical duration; the total work also depends on
+the refined box volume and subcycling. These grid results are t=0 diagnostics,
+not a head-on evolution.
+
 Fixtures come from the supplied EMS.jl worktree
 `/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-binsup-QSsl2l`.
 Its density-seed source is uncommitted on `f477b22`; the fixture generator is

@@ -4,6 +4,8 @@
  */
 
 #include "EMSBH_trumpet_read.hpp"
+#include <algorithm>
+#include <array>
 #include <cstdint>
 #include <cstring>
 #include <iomanip>
@@ -16,6 +18,7 @@ struct fixture_table_t
 {
     std::string name;
     double max = 0;
+    std::array<double, 3> class_max{};
     std::string worst;
     int rows = 0, columns = 0;
     std::uint64_t fingerprint = 14695981039346656037ULL;
@@ -165,7 +168,8 @@ static fixture_table_t check_fixture_table(const std::string &a_fixture_dir,
         names.insert(names.end(), ccz4_component_names.begin(),
                      ccz4_component_names.end());
     }
-    fixture_table_t t{a_fixture_name, 0.0, "", 0, 0};
+    fixture_table_t t{};
+    t.name = a_fixture_name;
     while (std::getline(in, line))
     {
         if (line.empty())
@@ -182,6 +186,7 @@ static fixture_table_t check_fixture_table(const std::string &a_fixture_dir,
             t.fingerprint = (t.fingerprint ^ bits) * 1099511628211ULL;
             const double error =
                 std::abs(actual[i] - expected[i]) / (1 + std::abs(expected[i]));
+            const double tolerance = fixture_tolerance(a_fixture_name, names[i]);
             if (!std::isfinite(error))
                 throw std::runtime_error("nonfinite result: " + a_fixture_name +
                                          "/" + names[i]);
@@ -190,7 +195,12 @@ static fixture_table_t check_fixture_table(const std::string &a_fixture_dir,
                 t.max = error;
                 t.worst = names[i];
             }
-            if (error > fixture_tolerance(a_fixture_name, names[i]))
+            if (a_fixture_name != "binary_ccz4.tsv")
+            {
+                const int cls = tolerance == 1e-12 ? 0 : tolerance == 1e-10 ? 1 : 2;
+                t.class_max[cls] = std::max(t.class_max[cls], error);
+            }
+            if (error > tolerance)
             {
                 std::ostringstream msg;
                 msg << std::setprecision(17) << a_fixture_name << " row "
@@ -209,61 +219,81 @@ int main(int argc, char **argv)
 {
     try
     {
-        const std::string dir = argc > 1 ? argv[1] : "fixtures";
-        EMSBH_params_t params{};
-        params.star_centre = {0, 0};
-        params.data_path = dir + "/reference.trumpet";
-        CouplingFunction::params_t coupling{12.566370614359172, 0, 0, -20};
-        EMSBH_trumpet_read reader(params, coupling, 1.0, 1.0, 0);
-        reader.compute_1d_solution();
         std::cout << std::scientific << std::setprecision(4);
-        for (const char *name : {"jets.tsv", "radial.tsv", "objects.tsv",
-                                 "single_ccz4.tsv", "binary_ccz4.tsv"})
+        for (int arg = 1; arg < std::max(argc, 2); ++arg)
         {
-            const fixture_table_t fixture_result =
-                check_fixture_table(dir, name, reader);
-            std::cout << name << ": rows=" << fixture_result.rows
-                      << " columns=" << fixture_result.columns
-                      << " max=" << fixture_result.max << " at "
-                      << (fixture_result.worst.empty() ? "all exact"
-                                                       : fixture_result.worst)
-                      << "\n";
-            if (std::string(name) == "objects.tsv" ||
-                std::string(name) == "single_ccz4.tsv")
-            {
-                const std::uint64_t baseline =
-                    std::string(name) == "objects.tsv" ? 0xe1107d452abc4e4bULL
-                                                       : 0xc30cf22126f14d61ULL;
-                if (fixture_result.fingerprint != baseline)
-                    throw std::runtime_error(std::string(name) +
-                                             " changed single-object bits");
-                std::cout << name << " bit fingerprint=" << std::hex
-                          << fixture_result.fingerprint << std::dec << '\n';
-            }
-        }
-        const std::vector<std::pair<std::string, std::string>> malformed_files =
-            {{"wrong-magic.trumpet", "unknown trumpet schema"},
-             {"unknown-convention.trumpet", "unsupported convention"},
-             {"missing-key.trumpet", "missing required metadata"},
-             {"duplicate-key.trumpet", "duplicate key nu"},
-             {"nan.trumpet", "nonfinite coefficient"},
-             {"truncated-block.trumpet", "malformed S block"},
-             {"wrong-charge.trumpet", "inconsistent native charge"},
-             {"wrong-endpoint.trumpet", "failed trumpet endpoint identity"},
-             {"wrong-nu.trumpet", "failed trumpet endpoint identity"}};
-        for (const auto &malformed_file : malformed_files)
-        {
+            const std::string dir = argc > 1 ? argv[arg] : "fixtures";
+            const bool reference = arg == 1;
+            EMSBH_params_t params{};
+            params.star_centre = {0, 0};
+            params.data_path = dir + "/reference.trumpet";
+            EMSTrumpetSolution_read profile;
             std::string reason;
-            if (reader.m_1d_sol.check_file(dir + "/" + malformed_file.first,
-                                           reason))
-                throw std::runtime_error(malformed_file.first +
-                                         " was accepted");
-            if (reason.find(malformed_file.second) == std::string::npos)
-                throw std::runtime_error(malformed_file.first + " expected '" +
-                                         malformed_file.second + "', got '" +
-                                         reason + "'");
-            std::cout << malformed_file.first << ": rejected (" << reason
-                      << ")\n";
+            if (!profile.check_file(params.data_path, reason))
+                throw std::runtime_error(params.data_path + ": " + reason);
+            const auto c = profile.get_coupling_parameters();
+            CouplingFunction::params_t coupling{c[0], c[1], c[2], c[3]};
+            EMSBH_trumpet_read reader(params, coupling, 1.0, 1.0, 0);
+            reader.compute_1d_solution();
+            std::cout << dir << '\n';
+            for (const char *name : {"jets.tsv", "radial.tsv", "objects.tsv",
+                                     "single_ccz4.tsv", "binary_ccz4.tsv"})
+            {
+                if (!reference && std::string(name) == "binary_ccz4.tsv")
+                    continue;
+                const fixture_table_t fixture_result =
+                    check_fixture_table(dir, name, reader);
+                std::cout << name << ": rows=" << fixture_result.rows
+                          << " columns=" << fixture_result.columns
+                          << " max=" << fixture_result.max << " at "
+                          << (fixture_result.worst.empty()
+                                  ? "all exact"
+                                  : fixture_result.worst)
+                          << " values=" << fixture_result.class_max[0]
+                          << " first=" << fixture_result.class_max[1]
+                          << " second=" << fixture_result.class_max[2] << "\n";
+                if (reference && (std::string(name) == "objects.tsv" ||
+                                  std::string(name) == "single_ccz4.tsv"))
+                {
+                    const std::uint64_t baseline =
+                        std::string(name) == "objects.tsv"
+                            ? 0xe1107d452abc4e4bULL
+                            : 0xc30cf22126f14d61ULL;
+                    if (fixture_result.fingerprint != baseline)
+                        throw std::runtime_error(std::string(name) +
+                                                 " changed single-object bits");
+                    std::cout << name << " bit fingerprint=" << std::hex
+                              << fixture_result.fingerprint << std::dec << '\n';
+                }
+            }
+            if (!reference)
+                continue;
+            const std::vector<std::pair<std::string, std::string>>
+                malformed_files = {
+                    {"wrong-magic.trumpet", "unknown trumpet schema"},
+                    {"unknown-convention.trumpet", "unsupported convention"},
+                    {"missing-key.trumpet", "missing required metadata"},
+                    {"duplicate-key.trumpet", "duplicate key nu"},
+                    {"nan.trumpet", "nonfinite coefficient"},
+                    {"truncated-block.trumpet", "malformed S block"},
+                    {"wrong-charge.trumpet", "inconsistent native charge"},
+                    {"wrong-endpoint.trumpet",
+                     "failed trumpet endpoint identity"},
+                    {"wrong-nu.trumpet", "failed trumpet endpoint identity"}};
+            for (const auto &malformed_file : malformed_files)
+            {
+                std::string reason;
+                if (reader.m_1d_sol.check_file(dir + "/" + malformed_file.first,
+                                               reason))
+                    throw std::runtime_error(malformed_file.first +
+                                             " was accepted");
+                if (reason.find(malformed_file.second) == std::string::npos)
+                    throw std::runtime_error(
+                        malformed_file.first + " expected '" +
+                        malformed_file.second + "', got '" + reason + "'");
+                std::cout << malformed_file.first << ": rejected (" << reason
+                          << ")\n";
+            }
         }
     }
     catch (const std::exception &e)
