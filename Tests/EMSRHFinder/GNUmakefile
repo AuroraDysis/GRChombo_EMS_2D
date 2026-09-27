@@ -1,6 +1,6 @@
 # Serial t=0 hierarchy, using the production setter and AMR interpolator.
 GRCHOMBO_SOURCE = ../../Source
-ebase := EMSRHSurfaceTest
+ebase := EMSRHSurfaceTest EMSRHRestartTest
 base_dir := harness
 LibNames := AMRTimeDependent AMRTools BoxTools
 src_dirs := $(GRCHOMBO_SOURCE)/utils $(GRCHOMBO_SOURCE)/simd \

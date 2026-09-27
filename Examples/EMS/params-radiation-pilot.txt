@@ -7,8 +7,9 @@ N2 = 384
 L = 1536
 max_level = 6
 regrid_interval = 2 2 2 2 2 2
-max_box_size = 64
-min_box_size = 16
+# Initial L0/L6: 1152/324 boxes. Prefer ~256 ranks; 512 underfills L6.
+max_box_size = 16
+block_factor = 16
 center = 768 0
 star_centre = 768 0
 lo_boundary = 1 2
@@ -80,8 +81,12 @@ RH_initial_centre = 752 784 768
 RH_num_points = 96 96 96
 # Finder call cadence = one update per level-3 step (0.0625 M). exp-0004 updated every finest step: 62-72 % of wall time.
 RH_level = 3 3 3
-RH_time_step_freq = 4000 4000 4000
+# Chase quota per call, not the call cadence; surfaces persist between calls. From a round seed at chase 0.125 the finder
+# needs ~98 (1e-7) / ~178 (1e-10) calls of 400 steps (Tests/EMSRadiation); 2000 keeps first convergence to ~2 M of evolution
+# while bounding a non-converging call.
+RH_time_step_freq = 2000 2000 2000
 RH_newton_crit = 0 0 0
 RH_chase_speeds = 0.125 0.125 0.125
 RH_start_times = 0 0 70
-ems_rh_expansion_threshold = 1e-12
+# 1e-10: area differs from 1e-12 by 1e-5 relative (mass ~5e-6), far below the 1e-4 balance target.
+ems_rh_expansion_threshold = 1e-10

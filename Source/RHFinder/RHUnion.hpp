@@ -9,6 +9,8 @@
 #include <cmath>
 #include <fstream>
 #include <iomanip>
+#include <iterator>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -55,6 +57,8 @@ class RHUnion
             m_surfaces.back().m_start_time     = a_start_times[i];
             std::fill(m_surfaces.back().m_f.begin(),
                       m_surfaces.back().m_f.end(), a_radii[i]);
+            if (a_restart_time > 0.)
+                restore_surface(m_surfaces.back(), a_restart_time);
             if (procID() == 0)
             {
                 const bool is_restart = (a_restart_time > 0.);
@@ -146,79 +150,56 @@ class RHUnion
             offset += surf.m_n;
         }
 
-        // output buffers — values
-        std::vector<double> chi(total_pts), K(total_pts);
-        std::vector<double> A11(total_pts), A12(total_pts), A22(total_pts), Aww(total_pts);
-        std::vector<double> h11(total_pts), h12(total_pts), h22(total_pts), hww(total_pts);
-        // output buffers — derivatives of chi and conformal metric
-        std::vector<double> dx_chi(total_pts), dy_chi(total_pts);
-        std::vector<double> dx_h11(total_pts), dy_h11(total_pts);
-        std::vector<double> dx_h12(total_pts), dy_h12(total_pts);
-        std::vector<double> dx_h22(total_pts), dy_h22(total_pts);
-        std::vector<double> dx_hww(total_pts), dy_hww(total_pts);
-        // EM and scalar field buffers
-        std::vector<double> Ex(total_pts), Ey(total_pts), phi(total_pts);
-
-        InterpolationQuery query(total_pts);
+        // One list defines the query, packed broadcast and surface destinations.
+        const struct
+        {
+            int component;
+            Derivative derivative;
+            std::vector<double> RHSurf::*destination;
+        } fields[] = {
+            {c_chi, Derivative::LOCAL, &RHSurf::m_chi},
+            {c_K, Derivative::LOCAL, &RHSurf::m_K},
+            {c_A11, Derivative::LOCAL, &RHSurf::m_A11},
+            {c_A12, Derivative::LOCAL, &RHSurf::m_A12},
+            {c_A22, Derivative::LOCAL, &RHSurf::m_A22},
+            {c_Aww, Derivative::LOCAL, &RHSurf::m_Aww},
+            {c_h11, Derivative::LOCAL, &RHSurf::m_h11},
+            {c_h12, Derivative::LOCAL, &RHSurf::m_h12},
+            {c_h22, Derivative::LOCAL, &RHSurf::m_h22},
+            {c_hww, Derivative::LOCAL, &RHSurf::m_hww},
+            {c_chi, Derivative::dx, &RHSurf::m_dx_chi},
+            {c_chi, Derivative::dy, &RHSurf::m_dy_chi},
+            {c_h11, Derivative::dx, &RHSurf::m_dx_h11},
+            {c_h11, Derivative::dy, &RHSurf::m_dy_h11},
+            {c_h12, Derivative::dx, &RHSurf::m_dx_h12},
+            {c_h12, Derivative::dy, &RHSurf::m_dy_h12},
+            {c_h22, Derivative::dx, &RHSurf::m_dx_h22},
+            {c_h22, Derivative::dy, &RHSurf::m_dy_h22},
+            {c_hww, Derivative::dx, &RHSurf::m_dx_hww},
+            {c_hww, Derivative::dy, &RHSurf::m_dy_hww},
+            {c_Ex, Derivative::LOCAL, &RHSurf::m_Ex},
+            {c_Ey, Derivative::LOCAL, &RHSurf::m_Ey},
+            {c_phi, Derivative::LOCAL, &RHSurf::m_phi},
+        };
+        std::vector<double> values(std::size(fields) * total_pts);
+        InterpolationQuery query(procID() == 0 ? total_pts : 0);
         query.setCoords(0, qx.data()).setCoords(1, qy.data());
+        for (size_t c = 0; c < std::size(fields); ++c)
+            query.addComp(fields[c].component, values.data() + c * total_pts,
+                          fields[c].derivative, VariableType::evolution);
 
-        query.addComp(c_chi, chi.data(), Derivative::LOCAL, VariableType::evolution);
-        query.addComp(c_K,   K.data(),   Derivative::LOCAL, VariableType::evolution);
-        query.addComp(c_A11, A11.data(), Derivative::LOCAL, VariableType::evolution);
-        query.addComp(c_A12, A12.data(), Derivative::LOCAL, VariableType::evolution);
-        query.addComp(c_A22, A22.data(), Derivative::LOCAL, VariableType::evolution);
-        query.addComp(c_Aww, Aww.data(), Derivative::LOCAL, VariableType::evolution);
-        query.addComp(c_h11, h11.data(), Derivative::LOCAL, VariableType::evolution);
-        query.addComp(c_h12, h12.data(), Derivative::LOCAL, VariableType::evolution);
-        query.addComp(c_h22, h22.data(), Derivative::LOCAL, VariableType::evolution);
-        query.addComp(c_hww, hww.data(), Derivative::LOCAL, VariableType::evolution);
-
-        query.addComp(c_chi, dx_chi.data(), Derivative::dx, VariableType::evolution);
-        query.addComp(c_chi, dy_chi.data(), Derivative::dy, VariableType::evolution);
-        query.addComp(c_h11, dx_h11.data(), Derivative::dx, VariableType::evolution);
-        query.addComp(c_h11, dy_h11.data(), Derivative::dy, VariableType::evolution);
-        query.addComp(c_h12, dx_h12.data(), Derivative::dx, VariableType::evolution);
-        query.addComp(c_h12, dy_h12.data(), Derivative::dy, VariableType::evolution);
-        query.addComp(c_h22, dx_h22.data(), Derivative::dx, VariableType::evolution);
-        query.addComp(c_h22, dy_h22.data(), Derivative::dy, VariableType::evolution);
-        query.addComp(c_hww, dx_hww.data(), Derivative::dx, VariableType::evolution);
-        query.addComp(c_hww, dy_hww.data(), Derivative::dy, VariableType::evolution);
-        query.addComp(c_Ex,  Ex.data(),     Derivative::LOCAL, VariableType::evolution);
-        query.addComp(c_Ey,  Ey.data(),     Derivative::LOCAL, VariableType::evolution);
-        query.addComp(c_phi, phi.data(),    Derivative::LOCAL, VariableType::evolution);
-
+        // Every rank participates: non-root ranks answer queries for their boxes.
         m_interpolator->interp(query);
+#ifdef CH_MPI
+        MPI_Bcast(values.data(), values.size(), MPI_DOUBLE, 0, Chombo_MPI::comm);
+#endif
 
         offset = 0;
         for (auto &surf : m_surfaces)
         {
-            for (int i = 0; i < surf.m_n; ++i)
-            {
-                int ii = surf.m_NG + i; // non-ghost array index
-                surf.m_chi[ii]    = chi[offset + i];
-                surf.m_K[ii]      = K[offset + i];
-                surf.m_A11[ii]    = A11[offset + i];
-                surf.m_A12[ii]    = A12[offset + i];
-                surf.m_A22[ii]    = A22[offset + i];
-                surf.m_Aww[ii]    = Aww[offset + i];
-                surf.m_h11[ii]    = h11[offset + i];
-                surf.m_h12[ii]    = h12[offset + i];
-                surf.m_h22[ii]    = h22[offset + i];
-                surf.m_hww[ii]    = hww[offset + i];
-                surf.m_dx_chi[ii] = dx_chi[offset + i];
-                surf.m_dy_chi[ii] = dy_chi[offset + i];
-                surf.m_dx_h11[ii] = dx_h11[offset + i];
-                surf.m_dy_h11[ii] = dy_h11[offset + i];
-                surf.m_dx_h12[ii] = dx_h12[offset + i];
-                surf.m_dy_h12[ii] = dy_h12[offset + i];
-                surf.m_dx_h22[ii] = dx_h22[offset + i];
-                surf.m_dy_h22[ii] = dy_h22[offset + i];
-                surf.m_dx_hww[ii] = dx_hww[offset + i];
-                surf.m_dy_hww[ii] = dy_hww[offset + i];
-                surf.m_Ex[ii]     = Ex[offset + i];
-                surf.m_Ey[ii]     = Ey[offset + i];
-                surf.m_phi[ii]    = phi[offset + i];
-            }
+            for (size_t c = 0; c < std::size(fields); ++c)
+                std::copy_n(values.data() + c * total_pts + offset, surf.m_n,
+                            (surf.*fields[c].destination).begin() + surf.m_NG);
             surf.fill_all_ghosts();
             offset += surf.m_n;
         }
@@ -447,6 +428,67 @@ class RHUnion
     }
 
   private:
+    // Read before pruning. Only root touches history; all ranks receive exactly
+    // the same centre/shape, including the saved dead flag.
+    static void restore_surface(RHSurf &surf, double restart_time)
+    {
+        std::vector<double> saved(surf.m_n + 2);
+        saved[0] = surf.m_centre[0];
+        std::copy_n(surf.m_f.begin() + surf.m_NG, surf.m_n, saved.begin() + 2);
+        if (procID() == 0)
+        {
+            auto last_row = [restart_time](const std::string &filename)
+            {
+                std::ifstream input(filename);
+                std::string line, last;
+                while (std::getline(input, line))
+                {
+                    std::istringstream row(line);
+                    double time;
+                    if (row >> time && time <= restart_time) last = line;
+                }
+                return last;
+            };
+            const auto index = std::to_string(surf.m_index);
+            const auto diagnostics = last_row("rh_surf_" + index + ".dat");
+            const auto shape = last_row("rh_f" + index + ".dat");
+            if (diagnostics.empty() && shape.empty() && restart_time <= surf.m_start_time)
+            {
+                // A surface that has not started has no output history yet.
+            }
+            else
+            {
+                std::istringstream d(diagnostics), f(shape);
+                double td, tf;
+                int id;
+                if (!(d >> td >> id >> saved[0]) || id != surf.m_index ||
+                    !std::isfinite(saved[0]) || !(f >> tf) || td != tf)
+                    MayDay::Error("RHFinder restart requires matching rh_surf/rh_f history");
+                for (int j = 0; j < surf.m_n; ++j)
+                    if (!(f >> saved[j + 2]) || !std::isfinite(saved[j + 2]) ||
+                        saved[j + 2] <= 0.)
+                        MayDay::Error("RHFinder restart has an invalid or short shape");
+                std::string token, mode;
+                if (f >> token)
+                    MayDay::Error("RHFinder restart shape point count changed");
+                while (d >> token) mode = token;
+                saved[1] = (mode == "dead");
+                pout() << "RHFinder: surface " << surf.m_index
+                       << " restored centre and " << surf.m_n
+                       << " radii from t = " << td << "\n";
+            }
+        }
+#ifdef CH_MPI
+        MPI_Bcast(saved.data(), saved.size(), MPI_DOUBLE, 0, Chombo_MPI::comm);
+#endif
+        surf.m_centre[0] = saved[0];
+        surf.m_dead = saved[1] != 0.;
+        std::copy_n(saved.begin() + 2, surf.m_n, surf.m_f.begin() + surf.m_NG);
+        surf.fill_all_ghosts();
+        surf.m_state = restart_time < surf.m_start_time
+                           ? RHSurf::SolverState::DORMANT : RHSurf::SolverState::FAR;
+    }
+
     AMRInterpolator<Lagrange<4>> *m_interpolator = nullptr;
 };
 

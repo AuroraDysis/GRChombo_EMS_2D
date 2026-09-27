@@ -141,11 +141,12 @@ def main():
         p=dict(line.split('=',1) for line in pilot.read_text().splitlines()
                if '=' in line and not line.startswith('#'))
         p={k.strip():v.strip() for k,v in p.items()}
-        for key,value in {'RH_num_horizons':'3','RH_level':'6 6 4',
+        for key,value in {'RH_num_horizons':'3','RH_level':'3 3 3',
                 'RH_start_times':'0 0 70','RH_initial_centre':'752 784 768',
                 'RH_initial_radii':'0.63593977642346233 0.63593977642346233 4',
                 'RH_num_points':'96 96 96','RH_chase_speeds':'0.125 0.125 0.125',
-                'RH_time_step_freq':'4000 4000 4000','ems_rh_expansion_threshold':'1e-12',
+                'RH_time_step_freq':'400 400 400','ems_rh_expansion_threshold':'1e-12',
+                'max_box_size':'16','block_factor':'16',
                 'activate_mq_extraction':'1'}.items():
             assert p[key]==value,(key,p[key])
         assert 'mod_F' in p['plot_vars'].split()

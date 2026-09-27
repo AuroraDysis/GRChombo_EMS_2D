@@ -186,6 +186,9 @@ nonmonotone retarded time.
 
 ## Proposed pilot and limits
 
+Subsequent finder performance, restart validation and the measured box-size choice
+are recorded in [the performance report](../EMSRHFinder/PERFORMANCE.md).
+
 The complete [pilot parameter file](../../Examples/EMS/params-radiation-pilot.txt)
 passed the executable's parameter-only dry run. Its essential block is:
 
@@ -210,16 +213,16 @@ RH_num_horizons = 3
 RH_initial_radii = 0.63593977642346233 0.63593977642346233 4
 RH_initial_centre = 752 784 768
 RH_num_points = 96 96 96
-RH_level = 6 6 4
+RH_level = 3 3 3
 RH_start_times = 0 0 70
-RH_time_step_freq = 4000 4000 4000  # chase iterations/callback, not output stride
+RH_time_step_freq = 400 400 400  # chase iterations/callback, not output stride
 RH_chase_speeds = 0.125 0.125 0.125
 ems_rh_expansion_threshold = 1e-12
 ```
 
 This proposes the certified separation-32, opposite-rapidity CTT binary and
-the exp-0004 finder layout: two individual surfaces on the finest level from
-t=0 and a radius-4 common surface at the centre on level 4 from t=70. All three
+the exp-0004 surface guesses: two individual surfaces from t=0 and a radius-4
+common surface at the centre from t=70, all called at level 3. All three
 use 96 points, chase speed .125 and expansion threshold 1e-12. MQ extraction
 remains on for its charge; its mass column is not used. `mod_F` is included in
 `plot_vars`. Both initial-data paths are `/HPC_STAGING/` placeholders for staging.

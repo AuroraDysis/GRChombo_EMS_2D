@@ -611,11 +611,11 @@ void AMRInterpolator<InterpAlgo>::exchangeMPIQuery()
               // MPIContext ... the only issue is the MPI datatype
     m_mpi.asyncBegin();
 
-    m_mpi.asyncExchangeQuery(&m_query_level[0], &m_answer_level[0], MPI_INT);
-    m_mpi.asyncExchangeQuery(&m_query_box[0], &m_answer_box[0], MPI_INT);
+    m_mpi.asyncExchangeQuery(m_query_level.data(), m_answer_level.data(), MPI_INT);
+    m_mpi.asyncExchangeQuery(m_query_box.data(), m_answer_box.data(), MPI_INT);
     for (int i = 0; i < CH_SPACEDIM; ++i)
     {
-        m_mpi.asyncExchangeQuery(&m_query_coords[i][0], &m_answer_coords[i][0],
+        m_mpi.asyncExchangeQuery(m_query_coords[i].data(), m_answer_coords[i].data(),
                                  MPI_DOUBLE);
     }
 
@@ -651,10 +651,24 @@ void AMRInterpolator<InterpAlgo>::calculateAnswers(InterpolationQuery &query)
     // const int num_comps = query.numComps();
     const int num_answers = m_mpi.totalAnswerCount();
 
-    std::array<double, CH_SPACEDIM> grid_coord;
+    // LayoutIterator owns refcounted layout data. Construct once per level,
+    // outside the point loop, to avoid contended reference counts on every point.
+    std::vector<LayoutIterator> evolution_layouts, diagnostic_layouts;
+    for (int level = 0; level < levels.size(); ++level)
+    {
+        const auto &source = dynamic_cast<const InterpSource<> &>(*levels[level]);
+        evolution_layouts.push_back(source.getLevelData(VariableType::evolution)
+                                       .disjointBoxLayout().layoutIterator());
+        if (NUM_DIAGNOSTIC_VARS > 0)
+            diagnostic_layouts.push_back(source.getLevelData(VariableType::diagnostic)
+                                             .disjointBoxLayout().layoutIterator());
+    }
 
+    // Each point reads the same grid snapshot and writes its own output slot.
+#pragma omp parallel for schedule(static) if(num_answers > 1 && m_verbosity < 2)
     for (int answer_idx = 0; answer_idx < num_answers; ++answer_idx)
     {
+        std::array<double, CH_SPACEDIM> grid_coord;
         const int box_idx = m_answer_box[answer_idx];
         const int level_idx = m_answer_level[answer_idx];
 
@@ -671,21 +685,14 @@ void AMRInterpolator<InterpAlgo>::calculateAnswers(InterpolationQuery &query)
         }
         const DisjointBoxLayout *const evolution_box_layout_ptr =
             &evolution_level_data_ptr->disjointBoxLayout();
-        const DisjointBoxLayout *diagnostics_box_layout_ptr;
-        if (NUM_DIAGNOSTIC_VARS > 0)
-        {
-            diagnostics_box_layout_ptr =
-                &diagnostics_level_data_ptr->disjointBoxLayout();
-        }
-
         // Convert the LayoutIndex to DataIndex
         const DataIndex evolution_data_idx(
-            evolution_box_layout_ptr->layoutIterator()[box_idx]);
+            evolution_layouts[level_idx][box_idx]);
         DataIndex diagnostics_data_idx;
         if (NUM_DIAGNOSTIC_VARS > 0)
         {
             diagnostics_data_idx = DataIndex(
-                diagnostics_box_layout_ptr->layoutIterator()[box_idx]);
+                diagnostic_layouts[level_idx][box_idx]);
         }
 
         const Box &box = (*evolution_box_layout_ptr)[evolution_data_idx];
@@ -777,12 +784,12 @@ void AMRInterpolator<InterpAlgo>::exchangeMPIAnswer()
               // MPIContext ... the only issue is the MPI datatype
     m_mpi.asyncBegin();
 
-    m_mpi.asyncExchangeAnswer(&m_answer_level[0], &m_query_level[0], MPI_INT);
-    m_mpi.asyncExchangeAnswer(&m_answer_box[0], &m_query_box[0], MPI_INT);
+    m_mpi.asyncExchangeAnswer(m_answer_level.data(), m_query_level.data(), MPI_INT);
+    m_mpi.asyncExchangeAnswer(m_answer_box.data(), m_query_box.data(), MPI_INT);
     for (int comp = 0; comp < m_answer_data.size(); ++comp)
     {
-        m_mpi.asyncExchangeAnswer(&m_answer_data[comp][0],
-                                  &m_query_data[comp][0], MPI_DOUBLE);
+        m_mpi.asyncExchangeAnswer(m_answer_data[comp].data(),
+                                  m_query_data[comp].data(), MPI_DOUBLE);
     }
 
     m_mpi.asyncEnd();

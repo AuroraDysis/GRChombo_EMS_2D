@@ -2,7 +2,7 @@
 
 **The 24 native finds recover unit rest mass within the requested absolute mass and charge tolerances. The quadrature-plus-table error allowance alone fails to cover their mass errors.** The cause is the unchanged finder's stopping tolerance, with a smaller grid interpolation contribution. A separately measured engineering allowance covers all 24 discrepancies. This is not an unconditional pass of the original error-budget requirement.
 
-This implements the operator's revised, offline scope. No mass calculation is wired into C++. The author's finder, geometry, initial-data setter, production example and parameters are unchanged. All masses below use the unchanged Julia `horizon_mass` from the read-only EMS worktree. No commits, SSH, HPC jobs, evolution, radiation extraction, table adjustment or EMS.jl edits were made.
+This records the operator's original offline validation. No mass calculation is wired into C++. During that study, the author's finder, geometry, initial-data setter, production example and parameters were unchanged. The subsequent interpolation performance, restart and pilot-parameter changes are documented in [PERFORMANCE.md](PERFORMANCE.md). All masses below use the unchanged Julia `horizon_mass` from the read-only EMS worktree. That original study made no commits, SSH/HPC calls, evolution runs, radiation extraction, table adjustments or EMS.jl edits.
 
 The complete requested case × angular resolution × spacing table is in [results/gates.md](results/gates.md), with full precision and all diagnostic columns in [results/gates.csv](results/gates.csv). [results/gates.json](results/gates.json) records the gate counts. Known-geometry controls are kept separate in [results/killing/gates.csv](results/killing/gates.csv).
 
@@ -122,7 +122,7 @@ Cleanup validation rebuilt the harness and reran a native static case and an RN 
 
 An in-run C++ front end was dropped because post-processing of the unchanged finder's output suffices (operator, 2026-09-27).
 
-The new active files are this README, `GNUmakefile`, `harness/EMSRHSurfaceTest.cpp`, `run_cases.py`, `postprocess.py`, `postprocess.jl`, `report.py`, `regressions.py`, `fixtures.jl`, their fixture/result artifacts, and `ems_rh_seed.py`. Existing tracked files have no diff. Normal untracked build products remain under the three test directories.
+The files added by the original study were this README, `GNUmakefile`, `harness/EMSRHSurfaceTest.cpp`, `run_cases.py`, `postprocess.py`, `postprocess.jl`, `report.py`, `regressions.py`, `fixtures.jl`, their fixture/result artifacts, and `ems_rh_seed.py`. That study did not modify the then-existing tracked files.
 
 ## Reproduction, provenance and runtime
 
