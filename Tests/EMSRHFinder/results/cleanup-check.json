@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "exe_sha256": "960efd1316855b3d3a64a922c084c75deea71aed94a12754c9b864f5923e898f",
+  "seconds": 10.577012833964545,
+  "cases": [
+    {
+      "case": "static",
+      "kind": "native",
+      "compared_columns": [
+        "A",
+        "Q",
+        "M_eq",
+        "delta_M",
+        "phi_mean",
+        "phi_rms",
+        "model_phi_H"
+      ],
+      "matches_previous": true,
+      "A": "38.5313894",
+      "Q": "0.700910379",
+      "M_eq": "1.000254271684035",
+      "expansion_status": "FRESH_REPLAY"
+    },
+    {
+      "case": "rn",
+      "kind": "control",
+      "compared_columns": [
+        "A",
+        "Q",
+        "M_eq",
+        "delta_M",
+        "phi_mean",
+        "phi_rms",
+        "model_phi_H"
+      ],
+      "matches_previous": true,
+      "A": "36.8970041",
+      "Q": "0.700909627",
+      "M_eq": "1.0001147391649603",
+      "expansion_status": "FRESH_REPLAY"
+    }
+  ]
+}

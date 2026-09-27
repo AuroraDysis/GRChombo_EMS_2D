@@ -1,0 +1,15 @@
+{
+  "runs": 26,
+  "all_exits_zero": true,
+  "norm_rows": 116,
+  "floor_hits": 0,
+  "max_field_error_excluding_intentional_old_superposition": 1.6849649379765816e-16,
+  "old_superposition_difference": 0.00475935442113997,
+  "seconds": 57.064181457972154,
+  "max_seconds": 23.856950916990172,
+  "ctt_fine_left_orders": {
+    "H_L2": 3.995776886787524,
+    "M_L2": 3.993402953113094,
+    "GaussE_L2": 3.9962133404977234
+  }
+}

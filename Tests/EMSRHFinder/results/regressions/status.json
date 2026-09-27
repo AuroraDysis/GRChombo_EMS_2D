@@ -1,0 +1,132 @@
+[
+  {
+    "name": "single-0-32",
+    "exit": 0,
+    "seconds": 0.29902824998134747
+  },
+  {
+    "name": "single-0-64",
+    "exit": 0,
+    "seconds": 0.07324962498387322
+  },
+  {
+    "name": "single-0-128",
+    "exit": 0,
+    "seconds": 0.2390759169938974
+  },
+  {
+    "name": "single-0.20273255-32",
+    "exit": 0,
+    "seconds": 0.04454912501387298
+  },
+  {
+    "name": "single-0.20273255-64",
+    "exit": 0,
+    "seconds": 0.08285033400170505
+  },
+  {
+    "name": "single-0.20273255-128",
+    "exit": 0,
+    "seconds": 0.24780408304650337
+  },
+  {
+    "name": "single--0.20273255-32",
+    "exit": 0,
+    "seconds": 0.04636112501611933
+  },
+  {
+    "name": "single--0.20273255-64",
+    "exit": 0,
+    "seconds": 0.07329225004650652
+  },
+  {
+    "name": "single--0.20273255-128",
+    "exit": 0,
+    "seconds": 0.23860716697527096
+  },
+  {
+    "name": "echo-B-128",
+    "exit": 0,
+    "seconds": 0.08028033300070092
+  },
+  {
+    "name": "echo-B-256",
+    "exit": 0,
+    "seconds": 0.23739462497178465
+  },
+  {
+    "name": "echo-B-512",
+    "exit": 0,
+    "seconds": 1.0936066660215147
+  },
+  {
+    "name": "binary-density-32",
+    "exit": 0,
+    "seconds": 0.5979282920015976
+  },
+  {
+    "name": "binary-density-64",
+    "exit": 0,
+    "seconds": 1.2329272080096416
+  },
+  {
+    "name": "binary-density-128",
+    "exit": 0,
+    "seconds": 4.382112457999028
+  },
+  {
+    "name": "binary-old-32",
+    "exit": 0,
+    "seconds": 0.45618625002680346
+  },
+  {
+    "name": "binary-old-64",
+    "exit": 0,
+    "seconds": 1.7291302499943413
+  },
+  {
+    "name": "binary-old-128",
+    "exit": 0,
+    "seconds": 6.518584834004287
+  },
+  {
+    "name": "density-0.5",
+    "exit": 0,
+    "seconds": 0.4777720829588361
+  },
+  {
+    "name": "density-1",
+    "exit": 0,
+    "seconds": 0.34357933298451826
+  },
+  {
+    "name": "density-2",
+    "exit": 0,
+    "seconds": 1.2359498330042697
+  },
+  {
+    "name": "density-4",
+    "exit": 0,
+    "seconds": 4.450124625000171
+  },
+  {
+    "name": "ctt-0.5",
+    "exit": 0,
+    "seconds": 0.8460840829648077
+  },
+  {
+    "name": "ctt-1",
+    "exit": 0,
+    "seconds": 1.9269102920079604
+  },
+  {
+    "name": "ctt-2",
+    "exit": 0,
+    "seconds": 6.253841499972623
+  },
+  {
+    "name": "ctt-4",
+    "exit": 0,
+    "seconds": 23.856950916990172
+  }
+]

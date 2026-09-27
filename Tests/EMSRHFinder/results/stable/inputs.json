@@ -1,0 +1,18 @@
+[
+  {
+    "path": "/private/tmp/emsrh-t2/stable-pilot/static-n48-dx32/rh_surf_0.dat",
+    "sha256": "e85d5a8e3d6f7100702bfd1bc2bf546c7b6e1667801f1836c8a382b793c4a4a2"
+  },
+  {
+    "path": "/private/tmp/emsrh-t2/stable-pilot/static-n48-dx32/rh_f0.dat",
+    "sha256": "75f8cd3136055a05f541508235715714b8ad09b0c43054563cf782dfb5025d19"
+  },
+  {
+    "path": "/private/tmp/emsrh-t2/stable-pilot/static-n48-dx32/plt/EMS_000000.2d.hdf5",
+    "sha256": "6c206262ed849da31da98ef2a915f0f2c781f3e607fb445d8e09474bb9c2afb6"
+  },
+  {
+    "path": "/private/tmp/emsrh-t2/stable-pilot/static-n48-dx32/params.txt",
+    "sha256": "bab2ee90b37e94e450dcbc14c0d91a2e84a2abd37383a48faeded74064aec6c2"
+  }
+]

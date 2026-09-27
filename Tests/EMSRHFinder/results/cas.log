@@ -1,0 +1,6 @@
+Domain: R>0, h!=0; arbitrary differentiable fixed-branch mu; exact endpoint polynomials
+Witness: zero polynomial coefficients / cancelled rational residuals; no general simplifier
+Numerical cross-check: RN, 2 declared A,Q points, 40 decimal digits, no RNG; passes 1e-30
+N=48 midpoint round-sphere area: direct sine sum agrees with x/sin(x), 40 decimal digits
+PROVED: Hermite endpoints and first-law chain rule
+CAS scope: algebraic identity — production physics not certified

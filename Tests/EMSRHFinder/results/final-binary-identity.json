@@ -1,0 +1,12 @@
+[
+  {
+    "file": "rh_surf_0.dat",
+    "byte_identical": true,
+    "sha256": "693b275c4ffc53359092820db946ee4faad6534809e6cb43dea25c548f9242d8"
+  },
+  {
+    "file": "rh_f0.dat",
+    "byte_identical": true,
+    "sha256": "0eb5c7d4e32d1f9f0cc29fcf2b4006a6f443a213427c3d9f36d98754596376d3"
+  }
+]

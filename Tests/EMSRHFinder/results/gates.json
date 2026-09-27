@@ -1,0 +1,14 @@
+{
+  "records": 24,
+  "mass_gates": true,
+  "charge_gates": true,
+  "quad_budget_covers": 0,
+  "fresh_expansion_passes": 16,
+  "empirical_covers": 24,
+  "boosted_agreement": true,
+  "max_mass_error": 0.0002542716840350234,
+  "max_charge_error": 0.00017898960552087395,
+  "control_max_mass_error": 0.00011486359446255534,
+  "minimum_grid_order": 2.123339327258409,
+  "max_area_readback_relative": 1.1717664616384127e-09
+}

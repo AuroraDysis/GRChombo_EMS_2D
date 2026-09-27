@@ -1,0 +1,34 @@
+[
+  {
+    "path": "/private/tmp/emsrh-t2/duplicates/static-n48-dx32/rh_surf_0.dat",
+    "sha256": "98cd39946583f5420a0c08e49a5a89bb14bde4ce857e86ecd9d121a28b00d48d"
+  },
+  {
+    "path": "/private/tmp/emsrh-t2/duplicates/static-n48-dx32/rh_f0.dat",
+    "sha256": "8da68eeb925dbfb9bf3718ba7f8346c9de65033070047f0b5c51cabc899a43b7"
+  },
+  {
+    "path": "/private/tmp/emsrh-t2/duplicates/static-n48-dx32/plt/EMS_000000.2d.hdf5",
+    "sha256": "887607f92d6309b135d823b20104903dbfaff3cc9cb78832cfb0d0b09308942a"
+  },
+  {
+    "path": "/private/tmp/emsrh-t2/duplicates/static-n48-dx32/params.txt",
+    "sha256": "e301bddf4c7fff8a4f7d3760e14b52cccd533ef8b818c80654a6fe260775062c"
+  },
+  {
+    "path": "/private/tmp/emsrh-t2/duplicates/static-n48-dx32/rh_surf_1.dat",
+    "sha256": "11199bb3ea5c63be319985622e0689f8f9779bd42cfbc654395b575644b476d5"
+  },
+  {
+    "path": "/private/tmp/emsrh-t2/duplicates/static-n48-dx32/rh_f1.dat",
+    "sha256": "5b766b5813a3fb06211cf650cadbb9e43a4a96ddb9d5cf3a45b9630af21c974a"
+  },
+  {
+    "path": "/private/tmp/emsrh-t2/duplicates/static-n48-dx32/plt/EMS_000000.2d.hdf5",
+    "sha256": "887607f92d6309b135d823b20104903dbfaff3cc9cb78832cfb0d0b09308942a"
+  },
+  {
+    "path": "/private/tmp/emsrh-t2/duplicates/static-n48-dx32/params.txt",
+    "sha256": "e301bddf4c7fff8a4f7d3760e14b52cccd533ef8b818c80654a6fe260775062c"
+  }
+]

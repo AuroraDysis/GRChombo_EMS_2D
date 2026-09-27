@@ -1,0 +1,25 @@
+Last chance .ex rule for target EMSIsolatedRHTest.cpp
+pwd is /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-ehm2-cpp
+ebase var is EMSIsolatedRHTest
+config var is 2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC
+depends var is d/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/SmallDataIO.d d/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/BoundaryConditions.d d/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRAMR.d d/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRAMRLevel.d d/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRLevelData.d d/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/EMSIsolatedRHTest.d
+makefiles var is Make.defs Make.defs.defaults_in Make.defs.defaults_out compiler/Make.defs.GNU Make.defs.config Make.rules Make.defs.config
+objects var is o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/SmallDataIO.o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/BoundaryConditions.o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRAMR.o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRAMRLevel.o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRLevelData.o 
+src_wildcard var is *.cpp *.F90 *.f90 *.ChF *.F *.f *.BL_F 
+_app_configs var is EMSIsolatedRHTest2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex
+_other_app_objects var is o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/SmallDataIO.o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/BoundaryConditions.o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRAMR.o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRAMRLevel.o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRLevelData.o 
+_libs var is /Users/auroradysis/Workspace/EMS-deps/Chombo/lib/libamrtimedependent2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.a /Users/auroradysis/Workspace/EMS-deps/Chombo/lib/libamrtools2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.a /Users/auroradysis/Workspace/EMS-deps/Chombo/lib/libboxtools2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.a /Users/auroradysis/Workspace/EMS-deps/Chombo/lib/libbasetools2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.a
+_lib_names var is amrtimedependent amrtools boxtools basetools 
+_srcs var is SmallDataIO.cpp BoundaryConditions.cpp GRAMR.cpp GRAMRLevel.cpp GRLevelData.cpp
+Depending EMSIsolatedRHTest.cpp ...
+cannot read EMSIsolatedRHTest.cpp
+/Library/Developer/CommandLineTools/usr/bin/make --no-print-directory --directory=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/AMRTimeDependent  lib
+/Library/Developer/CommandLineTools/usr/bin/make --no-print-directory --directory=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BoxTools  lib
+/Library/Developer/CommandLineTools/usr/bin/make --no-print-directory --directory=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/AMRTools  lib
+/Library/Developer/CommandLineTools/usr/bin/make --no-print-directory --directory=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BaseTools  lib
+make[2]: Nothing to be done for `lib'.
+make[2]: Nothing to be done for `lib'.
+make[2]: Nothing to be done for `lib'.
+make[2]: Nothing to be done for `lib'.
+/bin/csh -f -c "/opt/homebrew/bin/g++-16  -O3 -std=c++17 -fopenmp        o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/EMSIsolatedRHTest.o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/SmallDataIO.o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/BoundaryConditions.o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRAMR.o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRAMRLevel.o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRLevelData.o   -L/Users/auroradysis/Workspace/EMS-deps/Chombo/lib -lamrtimedependent2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC -lamrtools2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC -lboxtools2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC -lbasetools2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC  -L/Users/auroradysis/Workspace/EMS-deps/hdf5-1.14/lib -Wl,-rpath,/Users/auroradysis/Workspace/EMS-deps/hdf5-1.14/lib -lhdf5 -lz     -lgfortran -lm -lgomp -framework Accelerate -o EMSIsolatedRHTest2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex |&  awk -f /Users/auroradysis/Workspace/EMS-deps/Chombo/lib/mk/tempnam.awk"
+ld: warning: ignoring duplicate libraries: '-lgomp'

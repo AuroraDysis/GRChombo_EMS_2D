@@ -1,0 +1,2 @@
+case,N_theta,resolution,time,horizon_id,search_index,duplicate_count,A,Q,phi_mean,phi_rms,area_from_plot,area_readback_relative,expansion_squared,theta_minus,M_RN_legacy,spread_A,spread_Q,ems_alpha,f0,f1,f2,phi_inf,branch,threshold,seconds,expansion_squared_native,expansion_status,duplicate_A_Q
+rn,48,32,0.0,0,0,1,36.8970041,0.700909627,0.0,0.0,36.89700408955,-2.83220669139439e-10,5.82407e-12,-0.669351514314573,1.00011474,0.0,0.0,12.566370614359172,0.0,0.0,-20.0,0.0,rn,1e-7,0.03935291699599475,5.82415797e-12,FRESH_REPLAY,36.897004099999997:0.70090962700000004

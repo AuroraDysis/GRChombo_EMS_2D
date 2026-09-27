@@ -1,0 +1,35 @@
+{"case": "static", "N_theta": 48, "resolution": 32, "threshold": "1e-7", "seconds": 0.9071128749637865, "exit": 0}
+{"case": "static", "N_theta": 48, "resolution": 64, "threshold": "1e-7", "seconds": 0.9038061250466853, "exit": 0}
+{"case": "static", "N_theta": 48, "resolution": 128, "threshold": "1e-7", "seconds": 1.136578667035792, "exit": 0}
+{"case": "static", "N_theta": 96, "resolution": 32, "threshold": "1e-7", "seconds": 6.37189487501746, "exit": 0}
+{"case": "static", "N_theta": 96, "resolution": 64, "threshold": "1e-7", "seconds": 6.45297279098304, "exit": 0}
+{"case": "static", "N_theta": 96, "resolution": 128, "threshold": "1e-7", "seconds": 7.367419166024774, "exit": 0}
+{"case": "static", "N_theta": 192, "resolution": 32, "threshold": "1e-7", "seconds": 51.00295150000602, "exit": 0}
+{"case": "static", "N_theta": 192, "resolution": 64, "threshold": "1e-7", "seconds": 50.9930320000276, "exit": 0}
+Traceback (most recent call last):
+  File "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-ehm2-cpp/Tests/EMSRHFinder/run_cases.py", line 96, in <module>
+    status |= killing_seed(root,case,n,dx)
+              ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-ehm2-cpp/Tests/EMSRHFinder/run_cases.py", line 81, in killing_seed
+    return run(root,case,n,resolution,ems_test_initial_shape=str(path.resolve()))
+  File "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-ehm2-cpp/Tests/EMSRHFinder/run_cases.py", line 57, in run
+    status = subprocess.run([str(EXE), 'params.txt'], cwd=path, stdout=log, stderr=subprocess.STDOUT,
+             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                            env=dict(os.environ, OMP_NUM_THREADS='1'), timeout=240).returncode
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 555, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1990, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-ehm2-cpp/Tests/EMSRHFinder/EMSIsolatedRHTest2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex'

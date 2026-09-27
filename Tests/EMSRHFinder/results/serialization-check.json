@@ -1,0 +1,24 @@
+{
+  "case": "static N192 M/64",
+  "exe_sha256": "960efd1316855b3d3a64a922c084c75deea71aed94a12754c9b864f5923e898f",
+  "identity": {
+    "params.txt": {
+      "byte_identical": true,
+      "final_row_identical": true
+    },
+    "rh_surf_0.dat": {
+      "byte_identical": false,
+      "final_row_identical": true
+    },
+    "rh_f0.dat": {
+      "byte_identical": true,
+      "final_row_identical": true
+    }
+  },
+  "in_memory_fresh": "EMSRH_FINAL_FRESH 0 0.00000009999278880",
+  "full_precision_replay": "EMSRH_FRESH 38.52490217397014760 0.70079277990053712 0.00031621636390930 -0.72015244733014994 0.00000009999278880",
+  "native_squared": 9.99927888e-08,
+  "serialized_squared": 1.0000390015e-07,
+  "cause": "Native 9-significant-digit shape serialization perturbs the angular derivatives; full-precision replay reproduces the in-memory residual.",
+  "intermediate_output_note": "Four intermediate rows differ only in a near-zero quadratic diagnostic after the test executable was recompiled. Final native rows and every shape row are byte-identical. No sub-Float64 physical accuracy is inferred."
+}

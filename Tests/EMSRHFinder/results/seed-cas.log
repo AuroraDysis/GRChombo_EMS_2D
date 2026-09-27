@@ -1,0 +1,5 @@
+Domain R>0, gamma>=1, theta real; D>=1; positive radial branch
+Witness: cancelled rational residual and zero positivity-identity polynomial
+Float64 transfer cross-check: 2016 declared midpoint samples, no RNG, worst relative=4.440892098500626e-16
+PROVED: boosted stationary surface seed solves the Lorentz-transformed sphere equation
+CAS scope: algebraic identity — production physics not certified

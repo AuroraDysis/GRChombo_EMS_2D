@@ -1,0 +1,4 @@
+{"case": "plus", "N_theta": 48, "resolution": 32, "threshold": "1e-7", "seconds": 1.1981680830358528, "exit": 0}
+{"case": "minus", "N_theta": 48, "resolution": 32, "threshold": "1e-7", "seconds": 0.8093709999811836, "exit": 0}
+{"case": "rn", "N_theta": 48, "resolution": 32, "threshold": "1e-7", "seconds": 1.1804651249549352, "exit": 0}
+{"case": "plus", "N_theta": 192, "resolution": 64, "threshold": "1e-7", "seconds": 66.59765870904084, "exit": 0}
