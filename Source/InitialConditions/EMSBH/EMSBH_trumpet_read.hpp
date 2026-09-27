@@ -34,7 +34,7 @@ class EMSBH_trumpet_read
                        double a_G_Newton, double a_dx, int a_verbosity);
     //! Read the radial solution and verify the run coupling.
     void compute_1d_solution();
-    //! Store physical gamma and K for FixSuperposition_metric.
+    //! Store final CCZ4 fields, including the precollapsed lapse sqrt(chi).
     template <class data_t> void compute(Cell<data_t> a_current_cell) const;
     //! Physical fields for fixture comparisons.
     template <class data_t>
@@ -46,7 +46,7 @@ class EMSBH_trumpet_read
     compute_binary_ems_adm_vars(data_t a_x, data_t a_y, double a_mass,
                                 double a_separation, double a_rapidity,
                                 data_t a_z = data_t(0), int a_panel = 0) const;
-    //! Conformal fields after the same physical metric finalization.
+    //! CCZ4 fields using the same ADM conversion as the grid setter.
     template <class data_t>
     CCZ4CartoonVars::VarsWithGauge<data_t>
     compute_single_bh_vars(data_t a_x, data_t a_y, double a_mass,
@@ -73,8 +73,7 @@ class EMSBH_trumpet_read
                       const Tensor<2, double, 4> &a_lorentz_matrix);
     template <class data_t>
     static CCZ4CartoonVars::VarsWithGauge<data_t>
-    conformal_decomposition(const ems_adm_vars_t<data_t> &a_adm_vars,
-                            bool a_is_binary);
+    conformal_decomposition(const ems_adm_vars_t<data_t> &a_adm_vars);
 };
 
 #include "EMSBH_trumpet_read.impl.hpp"

@@ -250,14 +250,13 @@ EMSBH_trumpet_read::compute_binary_ems_adm_vars(data_t a_x, data_t a_y,
                 left_bh.gamma[i][j] + right_bh.gamma[i][j];
             superposed_vars.K[i][j] = left_bh.K[i][j] + right_bh.K[i][j];
         }
+        superposed_vars.gamma[i][i] -= 1;
     }
     superposed_vars.phi = m_1d_sol.get_phi_inf() +
                           (left_bh.phi - m_1d_sol.get_phi_inf()) +
                           (right_bh.phi - m_1d_sol.get_phi_inf());
     superposed_vars.Pi = left_bh.Pi + right_bh.Pi;
-    auto physical_gamma = superposed_vars.gamma;
-    for (int i = 0; i < 3; ++i)
-        physical_gamma[i][i] -= 1;
+    const auto physical_gamma = superposed_vars.gamma;
     const data_t det = TensorAlgebra::compute_determinant_sym(physical_gamma);
     if (!(det > 0))
         MayDay::Error("EMSTRUMPET nonpositive physical metric determinant");
@@ -300,8 +299,7 @@ EMSBH_trumpet_read::compute_binary_ems_adm_vars(data_t a_x, data_t a_y,
                 superposed_vars.K[i][j] = psi_m2 *
                     (superposed_vars.K[i][j] - physical_gamma[i][j] * (tau / 3) +
                      q.C[i][j] * std::cbrt(det)) + gamma * (tau / 3);
-                // FixSuperposition_metric subtracts one flat metric.
-                superposed_vars.gamma[i][j] = gamma + (i == j ? 1 : 0);
+                superposed_vars.gamma[i][j] = gamma;
             }
             superposed_vars.E[i] *= psi_m2;
             superposed_vars.B[i] *= psi_m2;
@@ -314,16 +312,14 @@ EMSBH_trumpet_read::compute_binary_ems_adm_vars(data_t a_x, data_t a_y,
 template <class data_t>
 inline CCZ4CartoonVars::VarsWithGauge<data_t>
 EMSBH_trumpet_read::conformal_decomposition(
-    const ems_adm_vars_t<data_t> &a_adm_vars, bool a_is_binary)
+    const ems_adm_vars_t<data_t> &a_adm_vars)
 {
-    Tensor<2, data_t, 3> gamma = a_adm_vars.gamma;
-    if (a_is_binary)
-        for (int i = 0; i < 3; ++i)
-            gamma[i][i] -= 1;
+    const auto &gamma = a_adm_vars.gamma;
     const data_t det = TensorAlgebra::compute_determinant_sym(gamma);
     if (!(det > 0))
         MayDay::Error("EMSTRUMPET nonpositive physical metric determinant");
-    const data_t chi = 1 / std::cbrt(det);
+    // Retain the production initialization's floating-point evaluation of chi.
+    const data_t chi = std::pow(det, -1. / 3.);
     const auto inverse = TensorAlgebra::compute_inverse_sym(gamma);
     data_t K = 0;
     for (int i = 0; i < 3; ++i)
@@ -361,8 +357,7 @@ EMSBH_trumpet_read::compute_single_bh_vars(data_t a_x, data_t a_y,
                                            double a_rapidity) const
 {
     return conformal_decomposition(
-        compute_ems_adm_vars(a_x, a_y, data_t(0), a_mass, a_center, a_rapidity),
-        false);
+        compute_ems_adm_vars(a_x, a_y, data_t(0), a_mass, a_center, a_rapidity));
 }
 
 template <class data_t>
@@ -373,15 +368,12 @@ EMSBH_trumpet_read::compute_binary_bh_vars(data_t a_x, data_t a_y,
 {
     return conformal_decomposition(
         compute_binary_ems_adm_vars(a_x, a_y, a_mass, a_separation, a_rapidity,
-                                    data_t(0), a_panel),
-        true);
+                                    data_t(0), a_panel));
 }
 
 template <class data_t>
 inline void EMSBH_trumpet_read::compute(Cell<data_t> a_current_cell) const
 {
-    CCZ4CartoonVars::VarsWithGauge<data_t> vars{};
-    a_current_cell.load_vars(vars);
     const Coordinates<data_t> coords(a_current_cell, m_dx,
                                      m_params_EMSBH.star_centre);
     const double eta = m_params_EMSBH.boosted ? m_params_EMSBH.rapidity : 0.0;
@@ -392,27 +384,7 @@ inline void EMSBH_trumpet_read::compute(Cell<data_t> a_current_cell) const
                                           m_params_EMSBH.separation, eta)
             : compute_ems_adm_vars(coords.x, coords.y, data_t(0),
                                    m_params_EMSBH.bh_mass, 0.0, eta);
-    FOR(i, j)
-    {
-        vars.h[i][j] = adm_vars.gamma[i][j];
-        vars.A[i][j] = adm_vars.K[i][j];
-    }
-    vars.hww = adm_vars.gamma[2][2];
-    vars.Aww = adm_vars.K[2][2];
-    vars.shift[0] = adm_vars.shift[0];
-    vars.shift[1] = adm_vars.shift[1];
-    vars.phi = adm_vars.phi;
-    vars.Pi = adm_vars.Pi;
-    vars.Ex = adm_vars.E[0];
-    vars.Ey = adm_vars.E[1];
-    vars.Ez = adm_vars.E[2];
-    vars.Bx = adm_vars.B[0];
-    vars.By = adm_vars.B[1];
-    vars.Bz = adm_vars.B[2];
-    vars.lapse = adm_vars.lapse;
-    vars.Theta = 0;
-    vars.Xi = 0;
-    vars.Lambda = 0;
+    auto vars = conformal_decomposition(adm_vars);
     a_current_cell.store_vars(vars);
 }
 

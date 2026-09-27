@@ -13,7 +13,6 @@
 #include "EMSBH_trumpet_read.hpp"
 #include "EMSCartoonGaussConstraints.hpp"
 #include "ExperimentalGauge.hpp"
-#include "FixSuperposition_metric.hpp"
 #include "GammaCartoonCalculator.hpp"
 #include "PositiveChiAndAlpha.hpp"
 #include "SetValue.hpp"
@@ -131,8 +130,6 @@ int main(int argc, char **argv)
     FArrayBox state(ghost, NUM_VARS), diagnostic(interior, NUM_DIAGNOSTIC_VARS);
     BoxLoops::loop(make_compute_pack(SetValue(0.0), reader), state, state,
                    disable_simd());
-    BoxLoops::loop(FixSuperposition_metric(dx, params.star_centre, eta, false),
-                   state, state, disable_simd());
     // Analytic ghost cells give the reflected Gamma values needed by d1.Gamma
     // at the first two axis rows, as the level's second ghost fill does.
     Box gamma_box = interior;

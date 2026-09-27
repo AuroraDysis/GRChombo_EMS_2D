@@ -1,8 +1,9 @@
 # EMSCTT 1 C++ handoff
 
 **Decision: yes on the requested fixture and t=0 checks, with the declared numerical-floor qualification.**
-All 42 physical and 42 CCZ4 points pass; all 13 no-companion bit fingerprints
-remain unchanged. On the exterior collars the fine-pair H/M/GaussE orders are
+All 42 physical and 42 CCZ4 points pass. The original T7 handoff preserved all
+13 no-companion bit fingerprints; the subsequent direct CCZ4 conversion is
+documented below. On the exterior collars the fine-pair H/M/GaussE orders are
 3.996/3.993/3.996; the density control tends to H≈3.626e-3 and M≈1.575e-3.
 Inter-hole H shows fourth order over three levels before Float64 evaluation
 noise dominates the finest spacing. All raw orders and the noise diagnostic
@@ -22,7 +23,7 @@ Reader design (eight lines):
 4. Both masses, relative centres, rapidities and all four couplings must equal the run and profile parameters.
 5. Log/end, bridge (plane/sphere) and inverse maps follow the Julia reader, including panel order and 8-epsilon admission.
 6. Hole-relative coordinates precede maps/Clenshaw; five radial-fast tensor series produce log ψ and Cartesian C using `(y,z)/R`.
-7. The existing density seed receives the documented ψ/C reconstruction; γ_final + δ goes to the unchanged metric finalizer.
+7. The density seed receives the documented ψ/C reconstruction; its physical γ_final goes directly through the setter's shared ADM-to-CCZ4 conversion, with initial lapse √χ.
 8. Below the minimum represented radius, evaluation fails: no clipping, extrapolated end or constant padding. The trumpet reader likewise rejects its limiting cylinder.
 
 ## Inputs and activation
@@ -55,7 +56,47 @@ fixture is copied here. The represented minimum radius is
 smaller than an ulp of a hole's global centre. Forced 1-based panels are for
 one-sided fixture checks; production uses automatic selection.
 
-## Build and reproduce
+## Direct CCZ4 conversion validation
+
+The physical metric now reaches the shared conversion directly, removing
+the CTT diagonal `(gamma + 1) - 1` round trip. The converter uses production's
+`pow(det, -1./3.)`; the old fixture-only path used `1/cbrt(det)`. Against
+b397e42, the CTT CCZ4 numeric fingerprint changes from `4caed5832f720e5a` to
+`b3b32ee0d0a729dc` (42 rows, 28 returned fields per row). This fingerprint
+now has an explicit assertion; the old CTT test had only numerical parity
+and input-file SHA assertions. All four authenticated input hashes and the
+`5e-13` Julia parity tolerance are unchanged. The physical-table fingerprint
+is printed for diagnosis, not used to replace any input hash.
+
+The [trumpet README](../EMSTrumpet/README.md#direct-ccz4-initialization)
+records the controller's corrected primitive/FD gate, why the initial STOP
+was accepted, the unchanged production single/echo snapshots, and the
+no-companion fixture fingerprint changes. For CTT and the T7 checkpoint,
+the maximum primitive error is `4.4409e-16` absolute and `4.8805e-15`
+relative to its field scale. Gamma/gauge-B maxima are `1.7090e-15` /
+`1.2820e-15`, below the `7.5082e-14` FD allowance. Every evolved variable in
+every cell, including ghosts, passes. The worktree build's t=0 checkpoint
+also matches the instrumented candidate checkpoint byte for byte.
+
+The final fixture run passes all 42 physical and 42 CCZ4 points, nine SHA
+vectors, 30 parser/binding rejections and the domain/translated-coordinate
+controls. The largest Julia scaled error is `5.9062e-15` in physical Kij
+and `2.2700e-15` across CCZ4 fields. All eight CTT/density grid runs pass.
+The exterior collar's fine H/M orders are `3.995778/3.993403` before and
+`3.995777/3.993403` after; at dx=1/128, H/M L2 are `3.99101e-9/1.35497e-8`.
+The inter-hole H floor changes from `5.67227e-11` to `5.54869e-11`
+(finest order `1.801698` to `1.833311`); M remains fourth order.
+Raw baseline/candidate norms and orders for every mask are retained in
+`/private/tmp/ems-fixsup-92881/convergence-comparison.csv`, alongside the
+resumed report, corrected gate and smoke evidence.
+
+## Original T7 build and reproduction record
+
+The commands, timings and result links below record the original T7 handoff.
+Its byte-identical stdout comparison and `report.py` apply to the archived
+pre-cleanup logs, not the updated CCZ4 fingerprints above. The C++ fixture
+and grid executables remain the current regression tests; write new logs
+to a separate directory when rerunning them.
 
 From this fork worktree root, using the serial toolchain in `EMS-deps/BUILD.md`:
 
@@ -128,18 +169,18 @@ vectors come from NIST's [SHA-256 examples](https://csrc.nist.gov/CSRC/media/Pro
 and [additional SHA-2 data](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA2_Additional.pdf).
 The implementation also reproduces the manifest's 11 MB file digest.
 
-Before the reader changes, the e1ee1b8 fixture executable was rebuilt with only
-all-table fingerprint printing added. Afterward, all stdout compares byte-for-byte
+Before the original T7 reader changes, the e1ee1b8 fixture executable was rebuilt with only
+all-table fingerprint printing added. At that stage, all stdout compared byte-for-byte
 identical: 13 numeric bit fingerprints, all fixture tolerances, and the nine old
 parser rejections. This covers the single-object, density-binary, radial/jet and
 B/E echo paths. The legacy `.dat` initializer is untouched. The baseline and
-current logs are retained; the existing single-object fingerprint assertions
-remain in the fixture test.
+current logs are retained. The later CCZ4 fingerprint refresh is described
+in the direct-conversion validation section above.
 
 ## Fixed-mask t=0 constraints
 
-`EMSCTTGridConvergence` extends the existing binary harness: SetValue/setter,
-`FixSuperposition_metric`, analytic ghost fill, `GammaCartoonCalculator`,
+`EMSCTTGridConvergence` extends the existing binary harness: SetValue/CCZ4 setter,
+analytic ghost fill, `GammaCartoonCalculator`,
 `ExperimentalGauge`, `Constraints<CouplingFunction>` from `ConstraintsCartoon`,
 and `EMSCartoonGaussConstraints`. The underlying operators are unchanged.
 No chi/lapse clipping is applied. The masks have zero cells below the actual
@@ -158,7 +199,7 @@ run. Only spacing changes. The masks are:
 The reported L2 is the unweighted RMS over each mask, as in the original harness;
 L∞ is the maximum absolute value. Momentum components are the code's covariant
 coordinate diagnostics, with `M = hypot(Mx,My)` as a convenient additional norm.
-The maximum difference between the staged/finalized grid and direct CCZ4 packing
+The maximum difference between the initialized grid and direct CCZ4 packing
 is also recorded. Both Gauss constraints are reported; magnetic Gauss is exactly
 zero for this axisymmetric data.
 

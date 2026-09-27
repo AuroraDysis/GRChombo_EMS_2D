@@ -7,7 +7,6 @@
 #include "EMSBH_trumpet_read.hpp"
 #include "EMSCartoonGaussConstraints.hpp"
 #include "ExperimentalGauge.hpp"
-#include "FixSuperposition_metric.hpp"
 #include "GammaCartoonCalculator.hpp"
 #include "SetValue.hpp"
 #include <chrono>
@@ -93,9 +92,6 @@ static void box_run(double level, bool outer, const std::string &profile,
     FArrayBox state(ghost, NUM_VARS), diagnostic(interior, NUM_DIAGNOSTIC_VARS);
     BoxLoops::loop(make_compute_pack(SetValue(0.), reader), state, state,
                    disable_simd());
-    BoxLoops::loop(
-        FixSuperposition_metric(dx, params.star_centre, params.rapidity, true),
-        state, state, disable_simd());
     Box gamma = interior;
     gamma.grow(2);
     BoxLoops::loop(GammaCartoonCalculator(dx), state, state, gamma,

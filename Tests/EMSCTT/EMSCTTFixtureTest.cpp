@@ -1,5 +1,7 @@
 #include "EMSBH_trumpet_read.hpp"
 #include <chrono>
+#include <cstdint>
+#include <cstring>
 #include <filesystem>
 #include <iomanip>
 #include <iostream>
@@ -208,6 +210,7 @@ static void parity(const std::string &dir, const EMSBH_trumpet_read &reader)
         const auto names = split(line);
         std::map<std::string, maximum_t> maxima;
         int count = 0;
+        std::uint64_t fingerprint = 14695981039346656037ULL;
         while (std::getline(in, line))
         {
             auto row = split(line);
@@ -218,10 +221,8 @@ static void parity(const std::string &dir, const EMSBH_trumpet_read &reader)
             std::vector<double> actual;
             if (table == "physical")
             {
-                auto a = reader.compute_binary_ems_adm_vars(
+                const auto a = reader.compute_binary_ems_adm_vars(
                     x, y, 1., 32., .20273255, z, panel);
-                for (int i = 0; i < 3; ++i)
-                    a.gamma[i][i] -= 1;
                 for (const auto &tensor : {a.gamma, a.K})
                     for (int i = 0; i < 3; ++i)
                         for (int j = i; j < 3; ++j)
@@ -243,6 +244,9 @@ static void parity(const std::string &dir, const EMSBH_trumpet_read &reader)
             require(actual.size() + 8 == row.size(), "fixture result shape");
             for (std::size_t k = 0; k < actual.size(); ++k)
             {
+                std::uint64_t bits;
+                std::memcpy(&bits, &actual[k], sizeof(bits));
+                fingerprint = (fingerprint ^ bits) * 1099511628211ULL;
                 const auto &name = names[k + 8];
                 const double expected = std::stod(row[k + 8]);
                 const double e =
@@ -277,6 +281,12 @@ static void parity(const std::string &dir, const EMSBH_trumpet_read &reader)
             ++count;
         }
         require(count == 42, "fixture must contain 42 points");
+        std::cout << table << " all-output fingerprint=" << std::hex
+                  << fingerprint << std::dec << '\n';
+        // Direct physical metric and the shared production CCZ4 conversion.
+        if (table == "ccz4")
+            require(fingerprint == 0xb3b32ee0d0a729dcULL,
+                    "changed CTT CCZ4 bits");
         for (const auto &kv : maxima)
             std::cout << table << ',' << kv.first << ',' << kv.second.error
                       << ',' << kv.second.point << ',' << kv.second.field

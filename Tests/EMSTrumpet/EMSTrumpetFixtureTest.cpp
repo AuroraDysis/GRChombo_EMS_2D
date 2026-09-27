@@ -255,15 +255,20 @@ int main(int argc, char **argv)
                           << " first=" << fixture_result.class_max[1]
                           << " second=" << fixture_result.class_max[2] << "\n";
                 if (reference && (std::string(name) == "objects.tsv" ||
-                                  std::string(name) == "single_ccz4.tsv"))
+                                  std::string(name) == "single_ccz4.tsv" ||
+                                  std::string(name) == "binary_ccz4.tsv"))
                 {
+                    // CCZ4 uses the production pow(det,-1/3) conversion.
+                    // See README.md for the accepted round-off comparison.
                     const std::uint64_t baseline =
                         std::string(name) == "objects.tsv"
                             ? 0xe1107d452abc4e4bULL
-                            : 0xc30cf22126f14d61ULL;
+                        : std::string(name) == "single_ccz4.tsv"
+                            ? 0xe68444ed5f33ba7bULL
+                            : 0x024d0092dba552bcULL;
                     if (fixture_result.fingerprint != baseline)
                         throw std::runtime_error(std::string(name) +
-                                                 " changed single-object bits");
+                                                 " changed fixture bits");
                     std::cout << name << " bit fingerprint=" << std::hex
                               << fixture_result.fingerprint << std::dec << '\n';
                 }

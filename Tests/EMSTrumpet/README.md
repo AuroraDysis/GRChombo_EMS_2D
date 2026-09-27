@@ -1,5 +1,62 @@
 # EMSTRUMPET 1 initial data checks
 
+## Direct CCZ4 initialization
+
+The setter and fixture API now share one ADM-to-CCZ4 conversion. Density
+assembly returns `gamma_left + gamma_right - I`; CTT assembly returns
+`psi^4 * gamma_bar`. The latter no longer rounds the diagonal through
+`(gamma + 1) - 1`. The shared converter retains production's
+`pow(det, -1./3.)` and initial lapse `sqrt(chi)`; the former fixture-only
+converter used `1/cbrt(det)`.
+
+The reference CCZ4 assertion covers one table containing all three rapidities,
+not separate boosted/unboosted assertions. Its fingerprint changes from
+`c30cf22126f14d61` to `e68444ed5f33ba7b`. The density CCZ4 table changes from
+`3d5a69d4cda91686` to `024d0092dba552bc` and now has an explicit assertion.
+The 3D-object assertion remains `e1107d452abc4e4b`. All nine radial/jet/object
+table fingerprints, every Julia fixture, and all input SHA hashes are unchanged.
+Echo B/E CCZ4 helper fingerprints were printed, never asserted: they change
+from `8cfc83d44aa754d9` / `59fb7d5a88e073fd` to
+`0d83df086db272d1` / `bffc958d04850e8f` solely with the shared converter's
+floating-point evaluation. These helper tables must not be confused with
+the production-grid comparison: the unboosted reference and unboosted echo-B
+grids remain bit-identical in every evolved variable and every ghost cell.
+
+The old/new production comparison uses b397e42 as its baseline. Maximum
+absolute primitive differences are `1.1102e-16` for the boosted single,
+`4.3368e-19` for density, and `4.4409e-16` for CTT. Their largest differences
+relative to each field's maximum magnitude are `3.1685e-15`, `2.5419e-17`,
+and `4.8805e-15`, respectively. Shift, scalar, electromagnetic, Theta, Lambda
+and Xi fields are bit-identical in all cases.
+
+The controller accepted the initial STOP: applying a field-relative gate to
+finite-difference-derived Gamma omitted amplification of metric round-off
+by `1/dx`. Gauge B inherits Gamma through `B = 0.75 Gamma - eta shift`.
+The corrected gate is `1e-14` relative to the field scale for primitive fields,
+and `100 * epsilon * max(abs(h)) / dx` absolute for Gamma and gauge B, with
+`epsilon = 2.220446049250313e-16`. All cells, including ghosts, pass:
+
+| Case | dx | Max primitive scaled difference | FD allowance | Max Gamma difference | Max gauge B difference |
+|---|---:|---:|---:|---:|---:|
+| Reference, unboosted | 1/32 | 0 | 7.1054e-13 | 0 | 0 |
+| Reference, boosted | 1/32 | 3.1685e-15 | 7.5153e-13 | 0 | 0 |
+| Density binary | 0.3125 | 2.5419e-17 | 7.5082e-14 | 0 | 0 |
+| CTT binary / T7 checkpoint | 0.3125 | 4.8805e-15 | 7.5082e-14 | 1.7090e-15 | 1.2820e-15 |
+| Echo-B, unboosted | 1/128 | 0 | 2.8422e-12 | 0 | 0 |
+
+All 28 fixture/grid executions pass, including both echo fixture sets, all
+parser/SHA controls and all 26 grid runs. Fine-pair H/M L2 orders are
+`3.992251/3.979856` for the unboosted reference,
+`3.982369/3.977222` for either boost sign,
+`3.209941/4.638946` for echo-B, and `3.995777/3.993403` on the CTT exterior
+collar. Reference and echo orders match the baseline to the shown precision;
+CTT collar H/M orders change by `8.4e-7` / `3.3e-10`. At the
+inter-hole Hamiltonian floor the finest order changes from `1.801698` to
+`1.833311`; its L2 changes from `5.67227e-11` to `5.54869e-11`. Density H/M
+retain their continuum residuals. No numerical fixture tolerance is changed.
+The resumed report, all 116 mask comparisons, raw logs and full-state dumps
+are retained under `/private/tmp/ems-fixsup-92881/`.
+
 ## Echo B and E with nonunit compactification scale
 
 The supplied B and E files were authenticated with `EMS.read_trumpet` and
@@ -40,8 +97,8 @@ nine malformed-file rejections. For the echo rows, every value is checked with
 
 The reference still passes: maximum normalized errors are `2.51e-16` (jets),
 `7.84e-16` (radial), `8.89e-16` (objects), `1.15e-15` (single CCZ4), and
-`1.12e-16` (binary CCZ4). The object and single CCZ4 fingerprints remain
-`e1107d452abc4e4b` and `c30cf22126f14d61`; all nine malformed files are
+`1.11e-16` (binary CCZ4). The object and single CCZ4 fingerprints are
+`e1107d452abc4e4b` and `e68444ed5f33ba7b`; all nine malformed files are
 rejected for their expected reasons. The echo reader accepts `ell=0.02149952219`
 for B and `ell=0.05709817337` for E with the unchanged endpoint contract.
 
@@ -49,7 +106,7 @@ for B and `ell=0.05709817337` for E with the unchanged endpoint contract.
 
 The existing C2 test gains an `echo` mode. At `N=128,256,512`, `dx=M/N`, its
 cell-centred box is `x ∈ [-0.5,0.5]M`, cartoon `y ∈ [0,0.5]M`, with
-`N × (N/2)` cells. It uses the same finalizer, Gamma, constraint, and Gauss
+`N × (N/2)` cells. It uses the same CCZ4 setter, Gamma, constraint, and Gauss
 operators as the reference mode. The fixed physical mask is
 `0.01 ≤ R=√(x²+y²) ≤ 0.5M`, outside B's `R_h=0.001418901919M`. The table gives
 unweighted L2 residuals on that mask and `log2(E_coarse/E_fine)`; full L∞ values
@@ -150,16 +207,19 @@ scalar Pi, and curvature K/A), and `1e-8` for higher jets d2/d3.
 The setter sums the closed electric densities and the magnetic densities
 obtained from each unchanged single-object tensor. It lowers both with the
 physical metric `gamma_left + gamma_right - I`, then divides by its volume
-factor and, for E, the coupling at the superposed scalar. The metric returned
-to `FixSuperposition_metric` remains `gamma_left + gamma_right`.
+factor and, for E, the coupling at the superposed scalar. The ADM assembly
+returns that physical metric. One conversion helper supplies the final CCZ4
+fields to both the grid setter and the fixture API, with initial lapse
+`sqrt(chi)` and zero constraint/gauge auxiliaries. The level then fills ghosts
+and calculates Gamma; the shared second ghost fill and gauge setup follow.
 
 At separation 32 and rapidities ±0.20273255, the binary fixture's largest
-normalized error is `1.119e-16`, below `5e-13`. The 90 single-object CCZ4
+normalized error is `1.107e-16`, below `5e-13`. The 90 single-object CCZ4
 rows have largest error `1.149e-15`; their table hash remains
 `18f1187e6cafc1f9b4504603210dbb649f96503ad705efac56acdb665ebada44`.
-The fixture runner also checks bit fingerprints frozen from the pre-change C++
-setter: `e1107d452abc4e4b` for full 3D object rows and `c30cf22126f14d61`
-for single CCZ4 rows.
+The fixture runner also checks `e1107d452abc4e4b` for full 3D object rows,
+`e68444ed5f33ba7b` for single CCZ4 rows, and `024d0092dba552bc` for density
+binary CCZ4 rows. The accepted fingerprint changes are documented above.
 All nine malformed files are rejected. The Julia density binary test passes
 110/110 checks.
 
@@ -225,7 +285,7 @@ done
 
 This single-box test has no AMR or file output. It initializes the mass-one
 object on cell centres in `x ∈ [-2,2]`, cartoon `y ∈ [0,2]` with spacing
-`1/N`, then runs the same finalizer, Gamma calculator, Hamiltonian and momentum
+`1/N`, then runs the same CCZ4 setter, Gamma calculator, Hamiltonian and momentum
 constraint operators used by EMS. It also checks the signed electric and
 magnetic Gauss diagnostics and compares the final CCZ4 fields directly with
 the accepted kernel. The fixed mask is `0.25 ≤ R_rest ≤ 1.5`, with
