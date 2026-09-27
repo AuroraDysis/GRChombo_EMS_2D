@@ -243,6 +243,8 @@ int main(int argc, char **argv)
                     continue;
                 const fixture_table_t fixture_result =
                     check_fixture_table(dir, name, reader);
+                std::cout << name << " all-output fingerprint=" << std::hex
+                          << fixture_result.fingerprint << std::dec << '\n';
                 std::cout << name << ": rows=" << fixture_result.rows
                           << " columns=" << fixture_result.columns
                           << " max=" << fixture_result.max << " at "

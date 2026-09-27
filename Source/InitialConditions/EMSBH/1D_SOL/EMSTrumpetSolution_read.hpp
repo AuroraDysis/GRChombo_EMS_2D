@@ -45,6 +45,7 @@ class EMSTrumpetSolution_read
     double get_native_charge() const { return get_metadata_value("q_native"); }
     double get_nu() const { return get_metadata_value("nu"); }
     std::array<double, 4> get_coupling_parameters() const;
+    const std::string &get_source_sha256() const { return m_source_sha256; }
     double get_compactified_coordinate(double a_R) const;
     ems_radial_vars_t compute_radial_vars(double a_R) const;
 
@@ -53,6 +54,7 @@ class EMSTrumpetSolution_read
     std::array<coefficients_t, 3> m_coefficients;
     std::map<std::string, double> m_metadata_values;
     std::string m_data_path;
+    std::string m_source_sha256;
 
     static bool parse_finite_double(const std::string &a_text, double &a_value);
     static bool parse_degree(const std::string &a_text, int &a_value);

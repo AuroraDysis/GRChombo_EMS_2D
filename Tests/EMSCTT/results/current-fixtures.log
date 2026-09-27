@@ -1,0 +1,43 @@
+Read EMSTRUMPET 1 profile Tests/EMSTrumpet/fixtures/reference.trumpet
+Tests/EMSTrumpet/fixtures
+jets.tsv all-output fingerprint=cd36dfcad48b7b46
+jets.tsv: rows=8 columns=104 max=2.5062e-16 at D_d3 values=6.6174e-18 first=4.3222e-17 second=2.5062e-16
+radial.tsv all-output fingerprint=96d7d2dbbc8d287e
+radial.tsv: rows=9 columns=126 max=7.8410e-16 at ER values=7.8410e-16 first=4.3693e-17 second=0.0000e+00
+objects.tsv all-output fingerprint=e1107d452abc4e4b
+objects.tsv: rows=90 columns=3510 max=8.8867e-16 at K_21 values=3.9367e-16 first=8.8867e-16 second=0.0000e+00
+objects.tsv bit fingerprint=e1107d452abc4e4b
+single_ccz4.tsv all-output fingerprint=c30cf22126f14d61
+single_ccz4.tsv: rows=90 columns=2970 max=1.1487e-15 at Ey values=1.1487e-15 first=4.8912e-16 second=0.0000e+00
+single_ccz4.tsv bit fingerprint=c30cf22126f14d61
+binary_ccz4.tsv all-output fingerprint=3d5a69d4cda91686
+binary_ccz4.tsv: rows=12 columns=384 max=1.1189e-16 at chi values=0.0000e+00 first=0.0000e+00 second=0.0000e+00
+wrong-magic.trumpet: rejected (unknown trumpet schema)
+unknown-convention.trumpet: rejected (unsupported convention)
+missing-key.trumpet: rejected (missing required metadata)
+duplicate-key.trumpet: rejected (duplicate key nu)
+nan.trumpet: rejected (nonfinite coefficient)
+truncated-block.trumpet: rejected (malformed S block)
+wrong-charge.trumpet: rejected (inconsistent native charge)
+wrong-endpoint.trumpet: rejected (failed trumpet endpoint identity)
+wrong-nu.trumpet: rejected (failed trumpet endpoint identity)
+Read EMSTRUMPET 1 profile Tests/EMSTrumpet/fixtures-echo/B/reference.trumpet
+Tests/EMSTrumpet/fixtures-echo/B
+jets.tsv all-output fingerprint=82c55012bcb072e0
+jets.tsv: rows=8 columns=104 max=6.3810e-14 at S_d3 values=6.8286e-17 first=4.7210e-15 second=6.3810e-14
+radial.tsv all-output fingerprint=cd3f68ffa3648881
+radial.tsv: rows=12 columns=168 max=4.5458e-15 at alphaR values=4.1018e-15 first=4.5458e-15 second=0.0000e+00
+objects.tsv all-output fingerprint=db6b48eb1c1fc5ad
+objects.tsv: rows=72 columns=2808 max=2.6293e-14 at K_11 values=1.4983e-14 first=2.6293e-14 second=0.0000e+00
+single_ccz4.tsv all-output fingerprint=8cfc83d44aa754d9
+single_ccz4.tsv: rows=72 columns=2376 max=4.4798e-15 at Ex values=4.4798e-15 first=2.8418e-15 second=0.0000e+00
+Read EMSTRUMPET 1 profile Tests/EMSTrumpet/fixtures-echo/E/reference.trumpet
+Tests/EMSTrumpet/fixtures-echo/E
+jets.tsv all-output fingerprint=71ee7188472435d3
+jets.tsv: rows=8 columns=104 max=8.2201e-15 at S_d3 values=2.7097e-16 first=2.3550e-15 second=8.2201e-15
+radial.tsv all-output fingerprint=f9cd4bcbef959a70
+radial.tsv: rows=12 columns=168 max=1.2604e-15 at alphaR values=1.2532e-15 first=1.2604e-15 second=0.0000e+00
+objects.tsv all-output fingerprint=c5512734504c6e77
+objects.tsv: rows=72 columns=2808 max=2.6910e-15 at K_31 values=1.7814e-15 first=2.6910e-15 second=0.0000e+00
+single_ccz4.tsv all-output fingerprint=59fb7d5a88e073fd
+single_ccz4.tsv: rows=72 columns=2376 max=2.7759e-15 at Ex values=2.7759e-15 first=2.3395e-15 second=0.0000e+00

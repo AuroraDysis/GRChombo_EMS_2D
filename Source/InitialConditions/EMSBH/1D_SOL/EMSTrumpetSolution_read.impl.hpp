@@ -11,10 +11,12 @@
 
 #include "MayDay.H"
 #include "parstream.H"
+#include "SHA256.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>
 #include <fstream>
+#include <iterator>
 #include <limits>
 #include <sstream>
 
@@ -115,9 +117,15 @@ inline bool EMSTrumpetSolution_read::read_from_file(std::string &a_reason)
         a_reason = a_message;
         return false;
     };
-    std::ifstream in(m_data_path);
-    if (!in)
+    m_source_sha256.clear();
+    std::ifstream file(m_data_path, std::ios::binary);
+    if (!file)
         return fail("cannot open trumpet file");
+    // Hash exactly the bytes parsed, not a second read of a mutable path.
+    const std::string bytes((std::istreambuf_iterator<char>(file)), {});
+    if (file.bad())
+        return fail("cannot read trumpet file");
+    std::istringstream in(bytes);
     std::string line;
     if (!std::getline(in, line))
         return fail("empty trumpet file");
@@ -243,6 +251,7 @@ inline bool EMSTrumpetSolution_read::read_from_file(std::string &a_reason)
     if (!(std::abs(compute_radial_vars(get_metadata_value("R_h")).r -
                    get_metadata_value("r_h")) < 1e-10))
         return fail("inconsistent horizon radius");
+    m_source_sha256 = SHA256::digest(bytes);
     return true;
 }
 

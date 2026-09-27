@@ -41,6 +41,7 @@ public:
         // EMSBH initial data params
         pp.load("ems_data_path", emsbh_params.data_path); // the default should fail
         pp.load("ems_data_format", ems_data_format, std::string("legacy_dat"));
+        pp.load("ems_ctt_data_path", emsbh_params.ctt_data_path, std::string());
         pp.load("gridpoints", emsbh_params.gridpoints, 40000);
         pp.load("star_centre", emsbh_params.star_centre,
                 {0.5 * L, 0.5 * L});
@@ -160,6 +161,9 @@ public:
             MayDay::Error("unknown ems_data_format; use legacy_dat or emstrumpet1");
         if (ems_data_format == "emstrumpet1" && !EMS_not_RN)
             MayDay::Error("emstrumpet1 requires ems_not_rn = true");
+        if (!emsbh_params.ctt_data_path.empty() &&
+            (ems_data_format != "emstrumpet1" || !emsbh_params.binary))
+            MayDay::Error("ems_ctt_data_path requires an emstrumpet1 binary");
     }
 
     // tagging

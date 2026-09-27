@@ -34,6 +34,24 @@ inline void EMSBH_trumpet_read::compute_1d_solution()
             m_params_coupling_function.alpha, m_params_coupling_function.f0,
             m_params_coupling_function.f1, m_params_coupling_function.f2})
         MayDay::Error("EMSTRUMPET coupling differs from run parameters");
+    m_ctt_sol.reset();
+    if (!m_params_EMSBH.ctt_data_path.empty())
+    {
+        if (!m_params_EMSBH.binary)
+            MayDay::Error("EMSCTT requires a binary");
+        const double mass = m_params_EMSBH.bh_mass;
+        const double center = m_params_EMSBH.separation / 2;
+        const double eta = m_params_EMSBH.boosted ? m_params_EMSBH.rapidity : 0;
+        const EMSCTTSolution_read::binding_t binding{
+            {mass, mass}, {-center, center}, {eta, -eta},
+            m_1d_sol.get_coupling_parameters()};
+        auto companion = std::make_shared<EMSCTTSolution_read>();
+        std::string reason;
+        if (!companion->check_file(m_params_EMSBH.ctt_data_path, m_1d_sol,
+                                   binding, reason))
+            MayDay::Error(("EMSCTT 1: " + reason).c_str());
+        m_ctt_sol = companion;
+    }
     if (m_verbosity)
         pout() << "EMSTRUMPET radial solution ready" << std::endl;
 }
@@ -190,13 +208,14 @@ inline typename EMSBH_trumpet_read::template ems_adm_vars_t<data_t>
 EMSBH_trumpet_read::compute_binary_ems_adm_vars(data_t a_x, data_t a_y,
                                                 double a_mass,
                                                 double a_separation,
-                                                double a_rapidity) const
+                                                double a_rapidity,
+                                                data_t a_z, int a_panel) const
 {
     if (!(a_separation > 0))
         MayDay::Error("EMSTRUMPET separation must be positive");
-    const auto left_bh = compute_ems_adm_vars(a_x, a_y, data_t(0), a_mass,
+    const auto left_bh = compute_ems_adm_vars(a_x, a_y, a_z, a_mass,
                                               -a_separation / 2, a_rapidity);
-    const auto right_bh = compute_ems_adm_vars(a_x, a_y, data_t(0), a_mass,
+    const auto right_bh = compute_ems_adm_vars(a_x, a_y, a_z, a_mass,
                                                a_separation / 2, -a_rapidity);
     ems_adm_vars_t<data_t> superposed_vars{};
     Tensor<1, data_t, 3> electric_density = {0.}, magnetic_density = {0.};
@@ -207,8 +226,9 @@ EMSBH_trumpet_read::compute_binary_ems_adm_vars(data_t a_x, data_t a_y,
     for (int hole = 0; hole < 2; ++hole)
     {
         const data_t X = a_x - centers[hole];
-        const data_t R = std::sqrt(c * c * X * X + a_y * a_y);
-        const Tensor<1, data_t, 3> position = {X, a_y, data_t(0)};
+        const data_t R = a_z == 0 ? std::sqrt(c * c * X * X + a_y * a_y)
+                                 : std::sqrt(c * c * X * X + a_y * a_y + a_z * a_z);
+        const Tensor<1, data_t, 3> position = {X, a_y, a_z};
         const auto inverse =
             TensorAlgebra::compute_inverse_sym(holes[hole]->gamma);
         const data_t root_det = std::sqrt(
@@ -255,6 +275,39 @@ EMSBH_trumpet_read::compute_binary_ems_adm_vars(data_t a_x, data_t a_y,
             superposed_vars.B[i] +=
                 physical_gamma[i][j] * magnetic_density[j] / root_det;
         }
+    if (m_ctt_sol)
+    {
+        if (!m_ctt_sol->matches(a_mass, a_separation, a_rapidity))
+            MayDay::Error("EMSCTT binary parameter mismatch");
+        const auto q = m_ctt_sol->evaluate(a_x, a_y, a_z, a_panel);
+        const double psi = std::exp(q.logpsi);
+        if (!(psi > 0) || !std::isfinite(psi) || !(coupling > 0) ||
+            !std::isfinite(coupling) || !(physical_gamma[0][0] > 0) ||
+            !(physical_gamma[0][0] * physical_gamma[1][1] -
+              physical_gamma[0][1] * physical_gamma[0][1] > 0))
+            MayDay::Error("EMSCTT nonpositive metric or correction");
+        const auto inverse = TensorAlgebra::compute_inverse_sym(physical_gamma);
+        data_t tau = 0;
+        for (int i = 0; i < 3; ++i)
+            for (int j = 0; j < 3; ++j)
+                tau += inverse[i][j] * superposed_vars.K[i][j];
+        const double psi4 = std::pow(psi, 4), psi_m2 = std::pow(psi, -2);
+        for (int i = 0; i < 3; ++i)
+        {
+            for (int j = 0; j < 3; ++j)
+            {
+                const data_t gamma = psi4 * physical_gamma[i][j];
+                superposed_vars.K[i][j] = psi_m2 *
+                    (superposed_vars.K[i][j] - physical_gamma[i][j] * (tau / 3) +
+                     q.C[i][j] * std::cbrt(det)) + gamma * (tau / 3);
+                // FixSuperposition_metric subtracts one flat metric.
+                superposed_vars.gamma[i][j] = gamma + (i == j ? 1 : 0);
+            }
+            superposed_vars.E[i] *= psi_m2;
+            superposed_vars.B[i] *= psi_m2;
+        }
+        superposed_vars.Pi *= std::pow(psi, -6);
+    }
     return superposed_vars;
 }
 
@@ -316,10 +369,11 @@ template <class data_t>
 inline CCZ4CartoonVars::VarsWithGauge<data_t>
 EMSBH_trumpet_read::compute_binary_bh_vars(data_t a_x, data_t a_y,
                                            double a_mass, double a_separation,
-                                           double a_rapidity) const
+                                           double a_rapidity, int a_panel) const
 {
     return conformal_decomposition(
-        compute_binary_ems_adm_vars(a_x, a_y, a_mass, a_separation, a_rapidity),
+        compute_binary_ems_adm_vars(a_x, a_y, a_mass, a_separation, a_rapidity,
+                                    data_t(0), a_panel),
         true);
 }
 
