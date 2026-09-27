@@ -11,6 +11,7 @@
 #include "GRAMRLevel.hpp"
 // Problem specific includes
 #include "EMSCouplingFunction.hpp"
+#include "EMSRadiationParameters.hpp"
 // #include "EinsteinMaxwellDilatonField.hpp" //shouldnt need
 
 class EMSBH2DLevel : public GRAMRLevel
@@ -20,6 +21,10 @@ class EMSBH2DLevel : public GRAMRLevel
     using GRAMRLevel::GRAMRLevel;
 
     BHAMR &m_bh_amr = dynamic_cast<BHAMR &>(m_gr_amr);
+    EMSRadiationParameters m_radiation = [this] {
+        GRParmParse pp;
+        return EMSRadiationParameters(pp, m_p);
+    }();
 
     /// Things to do at every full timestep
     ///(might include several substeps, e.g. in RK4)
@@ -47,6 +52,11 @@ class EMSBH2DLevel : public GRAMRLevel
 
     // to do post each time step on every level
     virtual void specificPostTimeStep() override;
+
+  public:
+    // Prepare every level before the initial extraction after interpolator setup.
+    void ems_prepare_radiation();
+    void ems_extract_radiation();
 };
 
 #endif /* EMSBHLEVEL_HPP_ */

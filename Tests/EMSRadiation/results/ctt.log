@@ -1,0 +1,40 @@
+SHA256: 9 known-answer vectors passed
+Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/artifacts/reference-alpha20-qfile.trumpet
+parser magic: rejected (unknown companion magic)
+parser convention: rejected (unsupported convention)
+parser schema: rejected (unsupported schema)
+parser missing key: rejected (missing required metadata)
+parser duplicate key: rejected (duplicate key degree)
+parser unknown key: rejected (unknown key x.unknown)
+parser block shape: rejected (malformed field block)
+parser dimensions: rejected (invalid block dimensions)
+parser nonfinite coefficient: rejected (nonfinite coefficient)
+parser nonfinite metadata: rejected (nonfinite degree)
+parser integer control: rejected (invalid integer controls)
+parser map topology: rejected (finite maps do not match binary binding)
+parser END: rejected (invalid companion ending)
+parser trailing data: rejected (invalid companion ending)
+parser profile hash: rejected (profile hash mismatch)
+parser parameter mismatch: rejected (binary parameter mismatch)
+parser coupling mismatch: rejected (coupling parameter mismatch)
+parser truncated payload: rejected (malformed field block)
+parser: 30 rejection controls passed; inner-domain controls passed
+table,group,max_scaled_error,point,field
+physical all-output fingerprint=84578a390866fd82
+physical,B,6.4987637940106711e-19,10,B_z
+physical,C,6.4956768801478882e-19,10,C_yy
+physical,E,2.2700414464679264e-15,3,E_y
+physical,Kij,5.9061707354962268e-15,13,K_xx
+physical,gamma,4.1998490331803069e-15,13,gamma_xx
+physical,logpsi,1.219647249036216e-19,30,logpsi
+physical,scalar,2.0419074131501976e-17,15,Pi
+physical,shift,9.1137668312356672e-17,31,shift_x
+ccz4 all-output fingerprint=b3b32ee0d0a729dc
+ccz4,B,6.4987637940106711e-19,10,Bz
+ccz4,E,2.2700414464679264e-15,3,Ey
+ccz4,auxiliary,0,all exact,all exact
+ccz4,curvature,7.4418294130491947e-16,17,K
+ccz4,gauge,9.1137668312356672e-17,31,shift1
+ccz4,metric,1.1177765151917085e-16,5,h22
+ccz4,scalar,2.0419074131501976e-17,15,Pi
+PASS seconds=0.323488

@@ -1,0 +1,37 @@
+[
+  {
+    "case": "valid",
+    "exit": 0,
+    "passed": true
+  },
+  {
+    "case": "threshold-zero",
+    "exit": -6,
+    "passed": true
+  },
+  {
+    "case": "threshold-loose",
+    "exit": -6,
+    "passed": true
+  },
+  {
+    "case": "no-spheres",
+    "exit": -6,
+    "passed": true
+  },
+  {
+    "case": "wrong-axis",
+    "exit": -6,
+    "passed": true
+  },
+  {
+    "case": "bad-wave-level",
+    "exit": -6,
+    "passed": true
+  },
+  {
+    "case": "too-few-angles",
+    "exit": -6,
+    "passed": true
+  }
+]

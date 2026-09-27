@@ -6,6 +6,7 @@
 #include "EMSBH_trumpet_read.hpp"
 #include "SetValue.hpp"
 #include "RHUnion.hpp"
+#include "../../../Source/Extraction/EMSRadiationParameters.hpp"
 
 
 // Like AMRInterpolatorTest: a real hierarchy and production interpolation,
@@ -75,6 +76,8 @@ int run(int argc, char **argv)
     }
     double threshold;
     pp.load("ems_test_expansion_squared", threshold, 1e-7);
+    if (pp.contains("ems_rh_expansion_threshold"))
+        threshold = ems_rh_expansion_threshold(pp);
     if (!std::isfinite(threshold) || threshold <= 0 || threshold > 1e-7)
         throw std::runtime_error("invalid test expansion threshold");
     geometry.m_thresh_super_low = threshold;

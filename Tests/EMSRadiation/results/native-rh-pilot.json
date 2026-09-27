@@ -1,0 +1,38 @@
+[
+  {
+    "case": "minus",
+    "N_theta": 48,
+    "resolution": 32,
+    "threshold": "1e-7",
+    "seconds": 0.8523864159942605,
+    "exit": 0,
+    "exe_sha256": "55c461db2fea30329ba7e0c0b50f005c5d2697eb64cd3d04c79c4e358eb55eb7"
+  },
+  {
+    "case": "plus",
+    "N_theta": 192,
+    "resolution": 64,
+    "threshold": "1e-7",
+    "seconds": 74.32370654196711,
+    "exit": 0,
+    "exe_sha256": "55c461db2fea30329ba7e0c0b50f005c5d2697eb64cd3d04c79c4e358eb55eb7"
+  },
+  {
+    "case": "plus",
+    "N_theta": 48,
+    "resolution": 32,
+    "threshold": "1e-7",
+    "seconds": 0.8754182500415482,
+    "exit": 0,
+    "exe_sha256": "55c461db2fea30329ba7e0c0b50f005c5d2697eb64cd3d04c79c4e358eb55eb7"
+  },
+  {
+    "case": "rn",
+    "N_theta": 48,
+    "resolution": 32,
+    "threshold": "1e-7",
+    "seconds": 1.193943666992709,
+    "exit": 0,
+    "exe_sha256": "55c461db2fea30329ba7e0c0b50f005c5d2697eb64cd3d04c79c4e358eb55eb7"
+  }
+]

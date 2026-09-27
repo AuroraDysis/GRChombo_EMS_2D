@@ -15,6 +15,7 @@ ebase := Main_EMSBH2DBH
 LibNames := AMRTimeDependent AMRTools BoxTools
 
 src_dirs := $(GRCHOMBO_SOURCE)/utils \
+            $(GRCHOMBO_SOURCE)/Extraction \
             $(GRCHOMBO_SOURCE)/simd  \
             $(GRCHOMBO_SOURCE)/CCZ4  \
             $(GRCHOMBO_SOURCE)/Matter  \

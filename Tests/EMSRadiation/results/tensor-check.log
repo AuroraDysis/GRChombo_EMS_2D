@@ -1,0 +1,6 @@
+ number_procs = 1
+ threads = 1
+ simd width (doubles) = 1
+EMS stress four-tensor check: 24 curved metric/shift samples, max error 8.88178e-16
+EMS GW tetrad check: Psi4=-0.13 expected=-0.13
+EMS analytic extraction complete

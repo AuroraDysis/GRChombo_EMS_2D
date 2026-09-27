@@ -24,6 +24,8 @@ int runGRChombo(int argc, char *argv[])
     char *in_file = argv[1];
     GRParmParse pp(argc - 2, argv + 2, NULL, in_file);
     SimulationParameters sim_params(pp);
+    const EMSRadiationParameters radiation(pp, sim_params);
+    const double rh_threshold = ems_rh_expansion_threshold(pp);
 
     if (sim_params.just_check_params)
         return 0;
@@ -32,6 +34,7 @@ int runGRChombo(int argc, char *argv[])
     // (To simulate a different problem, define a new child of AMRLevel
     // and an associated LevelFactory)
     BHAMR bh_amr;
+    bh_amr.m_rh_union.m_thresh_super_low = rh_threshold;
     DefaultLevelFactory<EMSBH2DLevel> emdbh_level_fact(bh_amr, sim_params);
     setupAMRObject(bh_amr, emdbh_level_fact);
 
@@ -41,6 +44,14 @@ int runGRChombo(int argc, char *argv[])
         bh_amr, sim_params.origin, sim_params.dx, sim_params.boundary_params,
         sim_params.verbosity);
     bh_amr.set_interpolator(&interpolator);
+    if (radiation.active)
+    {
+        const auto levels = bh_amr.getAMRLevels();
+        for (int i = 0; i < levels.size(); ++i)
+            dynamic_cast<EMSBH2DLevel *>(levels[i])->ems_prepare_radiation();
+        dynamic_cast<EMSBH2DLevel *>(levels[
+            sim_params.extraction_params.min_extraction_level()])->ems_extract_radiation();
+    }
 
     #ifdef USE_AHFINDER
         // one horizon

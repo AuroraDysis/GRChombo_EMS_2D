@@ -7,6 +7,8 @@
 #include <memory>
 
 #include "EMSBH2DLevel.hpp"
+#include "EMSRadiationExtraction.hpp"
+#include "BoxIterator.H"
 
 // General headers
 #include "AMRReductions.hpp"
@@ -263,6 +265,19 @@ void EMSBH2DLevel::computeTaggingCriterion(FArrayBox &tagging_criterion,
                      m_p.regrid_threshold_chi), current_state,
                                                 tagging_criterion);
 
+    if (m_radiation.active)
+        for (BoxIterator bit(tagging_criterion.box()); bit.ok(); ++bit)
+        {
+            const double x = (bit()[0] + .5) * m_dx - m_p.extraction_params.center[0];
+            const double y = (bit()[1] + .5) * m_dx - m_p.extraction_params.center[1];
+            const double r = std::hypot(x, y);
+            if (m_level < m_radiation.wave_level && r < 1.2 * m_radiation.wave_radius)
+                tagging_criterion(bit(), 0) = 100.;
+            for (int i = 0; i < m_p.extraction_params.num_extraction_radii; ++i)
+                if (m_level < m_p.extraction_params.extraction_levels[i] &&
+                    r < 1.2 * m_p.extraction_params.extraction_radii[i])
+                    tagging_criterion(bit(), 0) = 100.;
+        }
 }
 
 void EMSBH2DLevel::specificPostTimeStep()
@@ -542,4 +557,23 @@ void EMSBH2DLevel::specificPostTimeStep()
               em_extraction.execute_query(m_bh_amr.m_interpolator);
           }
       }
+    if (m_radiation.active &&
+        m_level == m_p.extraction_params.min_extraction_level() &&
+        at_level_timestep_multiple(m_p.extraction_params.min_extraction_level()))
+        ems_extract_radiation();
+}
+
+void EMSBH2DLevel::ems_prepare_radiation()
+{
+    fillAllGhosts();
+    BoxLoops::loop(WeylOmScalar(m_p.extraction_params.center, m_dx),
+                   m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS);
+}
+
+void EMSBH2DLevel::ems_extract_radiation()
+{
+    m_gr_amr.m_interpolator->refresh();
+    EMSRadiationExtraction extraction(m_p.extraction_params, m_dt, m_time,
+        m_time == 0., m_restart_time, m_p.coupling_function_params, m_radiation.phi_inf);
+    extraction.execute_query(m_gr_amr.m_interpolator);
 }

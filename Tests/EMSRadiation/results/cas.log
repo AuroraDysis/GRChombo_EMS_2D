@@ -1,0 +1,3 @@
+PROVED: scalar/EM rational flux components and outgoing Phi2 normalization
+Numerical transfer: 24 points, seed 1729, alpha [0.4,1.4], F [0.2,3], beta [-0.3,0.3], E/B [-1,1], 30 digits; residual < Float64 tolerance 1e-14
+CAS scope: algebraic identity; production extraction requires separate tests.

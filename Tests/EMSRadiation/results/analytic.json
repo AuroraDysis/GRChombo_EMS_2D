@@ -1,0 +1,214 @@
+[
+  {
+    "test": "pulse",
+    "theta": 33,
+    "expected": 0.0031904169316299283,
+    "measured": 0.0031904219365768496,
+    "relative_error": 1.5687438439382362e-06,
+    "peak_absolute_error": 4.155181970635219e-09,
+    "stress_energy": 0.0031904185800695657
+  },
+  {
+    "test": "pulse",
+    "theta": 65,
+    "expected": 0.0031904169316299283,
+    "measured": 0.003190417240659534,
+    "relative_error": 9.686182478318983e-08,
+    "peak_absolute_error": 2.565616026919959e-10,
+    "stress_energy": 0.003190417034568732
+  },
+  {
+    "test": "pulse",
+    "theta": 129,
+    "expected": 0.0031904169316299283,
+    "measured": 0.003190416950927618,
+    "relative_error": 6.048642031686313e-09,
+    "peak_absolute_error": 1.602181538482017e-11,
+    "stress_energy": 0.003190416938062219
+  },
+  {
+    "test": "mode",
+    "l": 0,
+    "theta": 65,
+    "expected": 0.03,
+    "measured": 0.03000000145192506,
+    "absolute_error": 2.2680995871794702e-07
+  },
+  {
+    "test": "mode",
+    "l": 0,
+    "theta": 129,
+    "expected": 0.03,
+    "measured": 0.030000000090725766,
+    "absolute_error": 1.401034708618581e-08
+  },
+  {
+    "test": "mode",
+    "l": 0,
+    "theta": 257,
+    "expected": 0.03,
+    "measured": 0.030000000005670047,
+    "absolute_error": 8.730956840859859e-10
+  },
+  {
+    "test": "mode",
+    "l": 1,
+    "theta": 65,
+    "expected": 0.03,
+    "measured": 0.030000020856008003,
+    "absolute_error": 2.760406862246977e-07
+  },
+  {
+    "test": "mode",
+    "l": 1,
+    "theta": 129,
+    "expected": 0.03,
+    "measured": 0.030000001301106066,
+    "absolute_error": 1.7080618653566132e-08
+  },
+  {
+    "test": "mode",
+    "l": 1,
+    "theta": 257,
+    "expected": 0.03,
+    "measured": 0.03000000008128181,
+    "absolute_error": 1.0648823314431475e-09
+  },
+  {
+    "test": "mode",
+    "l": 2,
+    "theta": 65,
+    "expected": 0.03,
+    "measured": 0.030000093042714178,
+    "absolute_error": 5.819507633171332e-07
+  },
+  {
+    "test": "mode",
+    "l": 2,
+    "theta": 129,
+    "expected": 0.03,
+    "measured": 0.03000000578559228,
+    "absolute_error": 3.57862843857805e-08
+  },
+  {
+    "test": "mode",
+    "l": 2,
+    "theta": 257,
+    "expected": 0.03,
+    "measured": 0.03000000036114009,
+    "absolute_error": 2.227661068554935e-09
+  },
+  {
+    "test": "mode",
+    "l": 3,
+    "theta": 65,
+    "expected": 0.03,
+    "measured": 0.030000254476518468,
+    "absolute_error": 5.554116792609098e-07
+  },
+  {
+    "test": "mode",
+    "l": 3,
+    "theta": 129,
+    "expected": 0.03,
+    "measured": 0.030000015746543145,
+    "absolute_error": 3.4149371138588334e-08
+  },
+  {
+    "test": "mode",
+    "l": 3,
+    "theta": 257,
+    "expected": 0.03,
+    "measured": 0.030000000981714587,
+    "absolute_error": 2.125690163830042e-09
+  },
+  {
+    "test": "mode",
+    "l": 4,
+    "theta": 65,
+    "expected": 0.03,
+    "measured": 0.030000543592448758,
+    "absolute_error": 1.0166705859035104e-06
+  },
+  {
+    "test": "mode",
+    "l": 4,
+    "theta": 129,
+    "expected": 0.03,
+    "measured": 0.030000033415963426,
+    "absolute_error": 6.199408146101591e-08
+  },
+  {
+    "test": "mode",
+    "l": 4,
+    "theta": 257,
+    "expected": 0.03,
+    "measured": 0.030000002079933967,
+    "absolute_error": 3.85112117509897e-09
+  },
+  {
+    "test": "mode",
+    "l": 5,
+    "theta": 65,
+    "expected": 0.03,
+    "measured": 0.030001001701411813,
+    "absolute_error": 1.0017014118145207e-06
+  },
+  {
+    "test": "mode",
+    "l": 5,
+    "theta": 129,
+    "expected": 0.03,
+    "measured": 0.0300000610677941,
+    "absolute_error": 6.106779410278151e-08
+  },
+  {
+    "test": "mode",
+    "l": 5,
+    "theta": 257,
+    "expected": 0.03,
+    "measured": 0.030000003793370873,
+    "absolute_error": 3.793370874360935e-09
+  },
+  {
+    "test": "mode",
+    "l": 6,
+    "theta": 65,
+    "expected": 0.03,
+    "measured": 0.03000167402284542,
+    "absolute_error": 1.67402284542012e-06
+  },
+  {
+    "test": "mode",
+    "l": 6,
+    "theta": 129,
+    "expected": 0.03,
+    "measured": 0.030000101030643087,
+    "absolute_error": 1.0103064308764065e-07
+  },
+  {
+    "test": "mode",
+    "l": 6,
+    "theta": 257,
+    "expected": 0.03,
+    "measured": 0.030000006260428907,
+    "absolute_error": 6.260428907917115e-09
+  },
+  {
+    "test": "outgoing-EM",
+    "expected": 0.004492528068649678,
+    "measured": 0.004492527914566742,
+    "stress": 0.0044925279870794005
+  },
+  {
+    "test": "incoming-EM",
+    "expected": 0,
+    "measured": 7.989195795015359e-37,
+    "stress": -0.0044925279870794005
+  },
+  {
+    "test": "postprocessor",
+    "quadratic_max_absolute_error": 3.552713678800501e-15,
+    "linear_max_absolute_error": 0.00461965432099154
+  }
+]
