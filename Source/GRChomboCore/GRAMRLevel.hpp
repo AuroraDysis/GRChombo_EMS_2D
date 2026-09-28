@@ -74,9 +74,11 @@ class GRAMRLevel : public AMRLevel, public InterpSource<>
     /// regrid
     virtual void regrid(const Vector<Box> &a_new_grids);
 
+  protected:
     /// things to do after regridding
     virtual void postRegrid(int a_base_level);
 
+  private:
     /// initialize grids
     virtual void initialGrid(const Vector<Box> &a_new_grids);
 

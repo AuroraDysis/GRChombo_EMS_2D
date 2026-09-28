@@ -16,6 +16,9 @@
 #include "VarsTools.hpp"
 #include <iostream>
 #include <stdio.h>
+#include <type_traits>
+
+class ReferenceStationaryGauge;
 
 template <class gauge_t, class deriv_t, class coupling_t>
 inline CCZ4Cartoon<gauge_t, deriv_t, coupling_t>::CCZ4Cartoon(
@@ -142,7 +145,17 @@ void CCZ4Cartoon<gauge_t, deriv_t, coupling_t>::compute(Cell<data_t> current_cel
     CCZ4Cartoon<gauge_t, deriv_t>::rhs_equation(rhs, vars, d1, d2, advec,
                                                 coords.y);
 
-    this->m_deriv.add_dissipation(rhs, current_cell, this->m_sigma);
+    if constexpr (std::is_same_v<gauge_t, ReferenceStationaryGauge>)
+    {
+        const IntVect iv = current_cell.get_int_vect();
+        this->m_gauge.set_lapse_rhs(rhs, vars, advec, iv);
+        this->m_deriv.add_dissipation(
+            rhs, current_cell,
+            this->m_sigma * this->m_gauge.reference(iv, gauge_t::taper));
+        FOR(i) { rhs.shift[i] = 0.; rhs.B[i] = 0.; }
+    }
+    else
+        this->m_deriv.add_dissipation(rhs, current_cell, this->m_sigma);
 
     current_cell.store_vars(rhs); // Write the rhs into the output FArrayBox
 }

@@ -1,0 +1,11 @@
+--- a/Examples/EMS/EMSBH2DLevel.cpp
++++ b/Examples/EMS/EMSBH2DLevel.cpp
+@@ -194,7 +194,7 @@ void EMSBH2DLevel::initialData()
+         rebuild_reference();
+         impose_reference_shift(m_state_new);
+     }
+-    else if (m_p.ems_data_format != "emsks2")
++    else
+         BoxLoops::loop(my_gauge_conditions,
+                        m_state_new, m_state_new, EXCLUDE_GHOST_CELLS);
+ }

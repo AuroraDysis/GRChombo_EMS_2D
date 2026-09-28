@@ -9,6 +9,7 @@
 #include "BHAMR.hpp"
 #include "DefaultLevelFactory.hpp"
 #include "GRAMRLevel.hpp"
+#include <memory>
 // Problem specific includes
 #include "EMSCouplingFunction.hpp"
 #include "EMSRadiationParameters.hpp"
@@ -33,12 +34,27 @@ class EMSBH2DLevel : public GRAMRLevel
     /// Initial data calculation
     virtual void initialData() override;
 
+    virtual void postRegrid(int a_base_level) override;
+
+#ifdef CH_USE_HDF5
+    virtual void postRestart() override;
+#endif
+
     /// Any actions that should happen just before checkpointing
     virtual void prePlotLevel() override;
 
     /// Calculation of the right hand side for the time stepping
     virtual void specificEvalRHS(GRLevelData &a_soln, GRLevelData &a_rhs,
                                  const double a_time) override;
+
+    void eval_reference_rhs(GRLevelData &a_soln, GRLevelData &a_rhs,
+                            const CouplingFunction &coupling_function);
+    void rebuild_reference();
+    void impose_reference_shift(GRLevelData &state);
+    void check_reference_floors(const GRLevelData &state) const;
+    void write_reference_diagnostics() const;
+
+    std::unique_ptr<LevelData<FArrayBox>> m_reference;
 
     /// Things to do after dt*rhs has been added to the solution
     virtual void specificUpdateODE(GRLevelData &a_soln,

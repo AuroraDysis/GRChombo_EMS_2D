@@ -1,0 +1,12 @@
+stage,wall_seconds,peak_RSS_bytes,exit
+B-M256-pilot,19.038,602636288,0
+B-M512-pilot,76.290,2732638208,0
+reference-M32-pilot,19.869,943603712,0
+reference-M32-to-1.5M,259.639,1079312384,0
+reference-M64-pilot,79.269,3523919872,0
+reference-M64-one,48.820,3250634752,0
+reference-M64-restart1,27.404,3593551872,0
+reference-M64-to-17,461.599,3598663680,0
+reference-M64-to-0.5M,421.166,3808722944,0
+reference-M32-onepluslog-pilot,15.865,818036736,0
+reference-M32-onepluslog-to-1.5M,261.122,1070366720,0
