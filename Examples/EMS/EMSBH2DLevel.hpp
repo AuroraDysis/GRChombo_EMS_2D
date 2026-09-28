@@ -33,6 +33,7 @@ class EMSBH2DLevel : public GRAMRLevel
 
     /// Initial data calculation
     virtual void initialData() override;
+    virtual void postInitialize() override;
 
     virtual void postRegrid(int a_base_level) override;
 

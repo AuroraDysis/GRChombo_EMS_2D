@@ -1,0 +1,7 @@
+case,finest_dt,final_time_over_M,stop_time_over_M,radial_boundaries_reached,new_captured,new_missing,old_dropped_nominal,epsilon_window_old_drops,missing_if_one_coarse_step_short
+ref-M32,0.0044616224001594344,10,10,100,100,0,0,0,1
+ref-M64,0.0022308112000797172,10,10,100,100,0,0,0,1
+ref-M128,0.0011154056000398586,10,10,100,100,0,0,1,1
+ref-M64-k1,0.0022308112000797172,10,10,100,100,0,0,0,1
+B-M512,0.0038370476557118734,10,10,100,100,0,0,6,1
+B-M1024,0.0019185238278559367,10,10,100,100,0,0,4,1

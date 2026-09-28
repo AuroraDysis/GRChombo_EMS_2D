@@ -4,8 +4,10 @@
 #include "CCZ4Cartoon.hpp"
 #include "ComputePack.hpp"
 #include "EMSKS2ReferenceCache.hpp"
+#include "EMSCartoonGaussConstraints.hpp"
 #include "ReferenceStationaryGauge.hpp"
 #include "SetValue.hpp"
+#include "ConstraintsCartoon.hpp"
 #ifdef CH_MPI
 #include "SPMD.H"
 #endif
@@ -74,6 +76,23 @@ void EMSBH2DLevel::check_reference_floors(const GRLevelData &state) const
     }
 }
 
+void EMSBH2DLevel::postInitialize()
+{
+    m_restart_time = 0.;
+    if (m_p.gauge_type == "reference_stationary" &&
+        m_level == m_p.max_level && !m_p.reference_diagnostics_path.empty())
+    {
+        CouplingFunction coupling(m_p.coupling_function_params);
+        BoxLoops::loop(Constraints<CouplingFunction>(m_dx, coupling,
+                       m_p.m_G_Newton), m_state_new, m_state_diagnostics,
+                       EXCLUDE_GHOST_CELLS);
+        BoxLoops::loop(EMSCartoonGaussConstraints(
+                       m_dx, m_p.coupling_function_params), m_state_new,
+                       m_state_diagnostics, EXCLUDE_GHOST_CELLS);
+        write_reference_diagnostics();
+    }
+}
+
 void EMSBH2DLevel::write_reference_diagnostics() const
 {
     if (m_p.reference_diagnostics_path.empty() || m_level != m_p.max_level)
@@ -84,8 +103,11 @@ void EMSBH2DLevel::write_reference_diagnostics() const
         return std::floor((m_time + eps) / interval) >
                std::floor((m_time - m_dt + eps) / interval);
     };
-    if (!due(m_p.reference_diagnostics_interval)) return;
-    const bool write_radial = due(m_p.reference_radial_interval);
+    const bool write_summary = m_time == 0. ||
+        due(m_p.reference_diagnostics_interval);
+    const bool write_radial = m_time == 0. ||
+        due(m_p.reference_radial_interval);
+    if (!write_summary && !write_radial) return;
     EMSKS2Profile p;
     p.load(m_p.emsbh_params.data_path);
     const double ra = p.rho_a(), rm = p.get("r_m"), rh = p.get("r_h");
@@ -235,33 +257,31 @@ void EMSBH2DLevel::write_reference_diagnostics() const
     min_lapse_margin = minima_global[0];
     min_chi_margin = minima_global[1];
 #endif
-    const bool first = m_restart_time == 0. &&
-        (m_p.reference_diagnostics_interval == 0. ?
-         m_time <= m_dt * (1. + 1e-12) :
-         m_time - m_dt < m_p.reference_diagnostics_interval);
-    std::ofstream out(m_p.reference_diagnostics_path,
-        first ? std::ios::trunc : std::ios::app);
-    if (!out) MayDay::Error("cannot write reference diagnostics");
-    if (first)
-        out << "time,time_over_M,level,mask,count,H_L2,M_L2,GaussE_L2,max_alpha_drift,max_rate,barrier_cplus_max,barrier_samples,min_lapse_margin,min_chi_margin,nonfinite,floor_count\n";
-    const char *names[] = {"join", "KS_collar", "exterior", "far"};
-    out << std::setprecision(17);
-    for (int m = 0; m < 4; ++m)
+    if (write_summary)
     {
-        const auto &d = masks[m];
-        if (!d.count) MayDay::Error("reference diagnostic mask has no cells");
-        out << m_time << ',' << m_time / p.get("M") << ',' << m_level << ','
-            << names[m] << ',' << d.count << ',' << std::sqrt(d.H2 / d.count)
-            << ',' << std::sqrt(d.M2 / d.count) << ','
-            << std::sqrt(d.GE2 / d.count) << ',' << d.alpha_drift << ','
-            << d.rate << ',' << barrier_max << ',' << barrier_count << ','
-            << min_lapse_margin << ',' << min_chi_margin << ','
-            << nonfinite << ",0\n";
+        const bool first = m_time == 0. && m_restart_time == 0.;
+        std::ofstream out(m_p.reference_diagnostics_path,
+            first ? std::ios::trunc : std::ios::app);
+        if (!out) MayDay::Error("cannot write reference diagnostics");
+        if (first)
+            out << "time,time_over_M,level,mask,count,H_L2,M_L2,GaussE_L2,max_alpha_drift,max_rate,barrier_cplus_max,barrier_samples,min_lapse_margin,min_chi_margin,nonfinite,floor_count\n";
+        const char *names[] = {"join", "KS_collar", "exterior", "far"};
+        out << std::setprecision(17);
+        for (int m = 0; m < 4; ++m)
+        {
+            const auto &d = masks[m];
+            if (!d.count) MayDay::Error("reference diagnostic mask has no cells");
+            out << m_time << ',' << m_time / p.get("M") << ',' << m_level << ','
+                << names[m] << ',' << d.count << ',' << std::sqrt(d.H2 / d.count)
+                << ',' << std::sqrt(d.M2 / d.count) << ','
+                << std::sqrt(d.GE2 / d.count) << ',' << d.alpha_drift << ','
+                << d.rate << ',' << barrier_max << ',' << barrier_count << ','
+                << min_lapse_margin << ',' << min_chi_margin << ','
+                << nonfinite << ",0\n";
+        }
     }
     if (!write_radial) return;
-    const bool first_radial = m_restart_time == 0. &&
-        (m_p.reference_radial_interval == 0. ? first :
-         m_time - m_dt < m_p.reference_radial_interval);
+    const bool first_radial = m_time == 0. && m_restart_time == 0.;
     std::ofstream radial_out(m_p.reference_diagnostics_path + ".radial.csv",
         first_radial ? std::ios::trunc : std::ios::app);
     if (!radial_out) MayDay::Error("cannot write reference radial diagnostics");
