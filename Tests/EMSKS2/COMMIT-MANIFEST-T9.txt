@@ -1,0 +1,44 @@
+T9 / cluster2 worktree manifest
+Base HEAD: 996bb25eb7be261874510745b1393104f6d1e714
+Worktree edits are uncommitted.
+Pre-registered outcome as reported: REGRESSION (B and E RHFinder modes leave `found` at the 1e-10 expansion threshold). Controller note: not a code regression — every control passes; the in-run finder threshold of the proven exp-0010 setup is 1e-7.
+Two upstream finder headers restored byte-for-byte to 996bb25; excluded.
+Seven superseded inputs deleted; excluded.
+B-M1024 local initialization omitted under the aggregate 30-minute budget; its hierarchy/cost rows are projections.
+No long evolution, MPI runtime, or HPC submission.
+
+SHA-256  path
+70929a191cb648b98bb2471b841a87a3cfe628dcd21e7f1abe6ea4369d01aade  Examples/EMS/EMSBH2DLevel.cpp
+defc6ba11a55548ca55208a296b2c6622e98da05fcd2cef08099cfa47968b5e3  Examples/EMS/EMSBH2DLevel.hpp
+66303c2731902d3630c70fc18e8e9162333778c9c769be211a382a3560c109a2  Examples/EMS/EMSBH2DLevelReference.cpp
+cf2259b1c827b87a08ea419fc99379be1f05e418e3abf1544775deb0a74400af  Examples/EMS/SimulationParameters.hpp
+818c73cb0a061d7ec7e050488496ba583b4781acdb2fc87cedbe0db4034a5d59  Tests/EMSKS2/README.md
+3c4f2bc6baa04a13f6533f5d54e4de1225cc27439731e65ccbc0e56d980b0480  Tests/EMSKS2/check_t9_wide.py
+78ec9238776c550e89162f48c9b82ef1183273054ac8cbd5892d20f77bed046d  Examples/EMS/params-cluster2-B-M1024.txt
+acb0b3a433430c8ccba561a7e76cbbec0ed7aaf53214360047bb827572136976  Examples/EMS/params-cluster2-B-M512.txt
+e9c9e18a0d4523097294c52acd58630c9963c495569e4e2c113ae67e49788f62  Examples/EMS/params-cluster2-B-M720.txt
+58d13332b63861338b755e1499f6362617d1250cf6a928be150a06250eac009f  Examples/EMS/params-cluster2-E.txt
+9c99f1778e5a6dcdc78483086c53e3e4fa5bcd0b9342dbf82a974fc3090a8b0c  Examples/EMS/params-cluster2-ref-M64-edge.txt
+f75d0b594685c67055b49757649787d65ff5d86d40d967c1628cb98172fa916c  Tests/EMSKS2/cluster2-controls.csv
+630f760eb8a5b8a844bfa742b8339d622a667d56f57ea51178fb57d154c33b7e  Tests/EMSKS2/cluster2-cost.csv
+b4d8637723a414f82981097bc08c03f30ef99c83c19267fbeff2b038f2e6f237  Tests/EMSKS2/cluster2-g4-hashes.csv
+80e21863ce1f9e949b5daeaef2c429020285351f6cb86289c5f57f4b8de89480  Tests/EMSKS2/cluster2-hierarchy.csv
+2a7f4aee6e0a172f6754cb5e85e1f715ef328acf8284da30447832c93dc50d2e  Tests/EMSKS2/cluster2-horizons.csv
+1779e611357011a3a154d298cc8084deecb3d84c7abcecb88559ecca4a5a51c5  Tests/EMSKS2/cluster2-reference-hashes.csv
+bb1e049d8c2d0efab093c1da6a27338b4011c66558993b4d36cba89860138c0e  Tests/EMSKS2/cluster2-rh-restart-differences.csv
+92ffb1fe09c1e6df083653b84852b02a82cfc9041b3f5a90b0d07024d8cd116d  Tests/EMSKS2/cluster2-rh-restart-hashes.csv
+32ffceb9a81d085c3c21875073ee0955a3bedee96044bf1b9507bd9d03017465  Tests/EMSKS2/cluster2-runs.csv
+92a292e6633e2eb0e9c22fa15cddef173aea15e7082271fe79b2dfd14f764261  Tests/EMSKS2/cluster2-wide-smoke.csv
+7d5e11234ab1ddc6d967fce98649b2f559beeeab279fbdf86781a48519c08c42  Tests/EMSKS2/t9-boundary-reference.csv
+874f3ab3ff52b335be6a9d68fea0be72953205231224cfc314e6e04e06b5f474  Tests/EMSKS2/t9-characteristics.csv
+64279f6602a159e2838a555d5a75a5a8e81903b99a6671d042d098d1b85dae43  Tests/EMSKS2/t9-cluster-cost.csv
+023324f1cd8defc0fe5f8f87925a8b6e465d795d8644a3b1817df6bc50a1ecb7  Tests/EMSKS2/t9-discriminator.csv
+b4d8637723a414f82981097bc08c03f30ef99c83c19267fbeff2b038f2e6f237  Tests/EMSKS2/t9-g4-hashes.csv
+effcfad79e79a76718e0184030b3eba016e8cb2d104c0889fb589dd0b6552c27  Tests/EMSKS2/t9-hierarchy.csv
+c0e7e977483ad47dd35245cfe0ff6f6fcb6d199c22a6e98e49e55ec4d10d83d2  Tests/EMSKS2/t9-horizon-pilots.csv
+aff9ba10c61cc1feb3c89d5b40e495548f7c39c625a246a5795b854a3f327b79  Tests/EMSKS2/t9-light-rings.csv
+0e5243dfa276f38d15a35f3870d8d1f06285ac3b072fa0d4a3941032c39055c4  Tests/EMSKS2/t9-new-hierarchy.csv
+0a45189f0850621fe3c376a3e7964b7d487e678a804776aa5ee6555916116421  Tests/EMSKS2/t9-restart-hashes.csv
+1ff932434f2df9cc72fbd2295aea7331e17b5df5f933d80e4533d1f9cc25bcde  Tests/EMSKS2/t9-rh-restart-hashes.csv
+27ce368633fb097d84dff9321bffad3c5c14b46f491b80caddcbab0cf87545b7  Tests/EMSKS2/t9-wide-B-smoke.csv
+45c1bc728e2a95d6dcef56e63079526ce1b542bdc2d0dd1e6f19e3b23f9dcab3  Tests/EMSKS2/t9-wide-reference-smoke.csv

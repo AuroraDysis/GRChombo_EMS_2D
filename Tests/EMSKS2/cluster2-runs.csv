@@ -1,0 +1,13 @@
+stage,wall_seconds,result,notes
+build-after-RH-restore,9.2,PASS,serial make DIM=2 -j8
+B-M512-initial-geometry,265.41,SUPERSEDED,RH level 0 became too coarse
+B-M512-shifted-RH-unforced,209.32,SUPERSEDED,old base-level extent shrank
+B-M512-final-two-steps,316.42,FOUND-OFF,last RH mode far
+E-final-two-steps,292.47,FOUND-OFF,last RH mode far
+ref-M64-edge-one-step,279.12,FOUND,wide profile 80 populated bins
+G4-controls,6.64,PASS,168/168 step-4 state hashes
+reference-RH-off-four-steps,4.97,PASS,84/84 vs 996bb25
+RH-restart-three-stages,27.04,PASS,84/84 evolved state; horizon max difference 4.31e-10
+B-M720-initialize,168.3,PASS,measured hierarchy
+B-M720-one-step,220.9,FOUND-OFF,last RH mode close
+B-M1024,0,NOT-RUN,aggregate local compute budget

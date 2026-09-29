@@ -1,0 +1,5 @@
+member,observed_radius_over_rh,observed_time_over_M,backtraced_source_rho,nearest_finest_axis_edge,outer_boundary_rho,ingoing_time_from_finest_axis_edge_over_M,ingoing_time_from_outer_boundary_over_M
+B,2.88,1.7,4.207821624088101,4.911420999311204,62.86618879118333,2.31717,10.8677
+B,2.0,3.2,4.049495369486976,4.911420999311204,62.86618879118333,,
+reference,2.88,5.5,6.01494513773825,6.2819643394244835,9.137402675526522,5.96793,10.9705
+reference,1.42,8.1,6.026082247094601,6.2819643394244835,9.137402675526522,,

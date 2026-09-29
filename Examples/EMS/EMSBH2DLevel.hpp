@@ -54,6 +54,7 @@ class EMSBH2DLevel : public GRAMRLevel
     void impose_reference_shift(GRLevelData &state);
     void check_reference_floors(const GRLevelData &state) const;
     void write_reference_diagnostics() const;
+    void write_wide_reference_diagnostics() const;
 
     std::unique_ptr<LevelData<FArrayBox>> m_reference;
 

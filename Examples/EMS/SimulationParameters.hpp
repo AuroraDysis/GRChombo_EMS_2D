@@ -49,6 +49,8 @@ public:
         pp.load("reference_diagnostics_interval", reference_diagnostics_interval,
                 0.0);
         pp.load("reference_radial_interval", reference_radial_interval, 0.0);
+        pp.load("reference_wide_interval", reference_wide_interval, 0.0);
+        pp.load("reference_wide_radius", reference_wide_radius, 30.0);
         pp.load("ems_ctt_data_path", emsbh_params.ctt_data_path, std::string());
         pp.load("gridpoints", emsbh_params.gridpoints, 40000);
         pp.load("star_centre", emsbh_params.star_centre,
@@ -176,6 +178,9 @@ public:
             MayDay::Error("reference_onepluslog_n must be positive");
         if (reference_diagnostics_interval < 0. || reference_radial_interval < 0.)
             MayDay::Error("reference diagnostic intervals must be nonnegative");
+        if (reference_wide_interval < 0. ||
+            (reference_wide_interval > 0. && reference_wide_radius <= 1.))
+            MayDay::Error("invalid wide reference profile interval or radius");
         if (ems_data_format != "legacy_dat" && ems_data_format != "emstrumpet1" &&
             ems_data_format != "emsks2")
             MayDay::Error("unknown ems_data_format; use legacy_dat, emstrumpet1 or emsks2");
@@ -215,6 +220,7 @@ public:
     std::string gauge_type, reference_f, reference_diagnostics_path;
     double reference_onepluslog_n;
     double reference_diagnostics_interval, reference_radial_interval;
+    double reference_wide_interval, reference_wide_radius;
     CouplingFunction::params_t coupling_function_params;
     bool EMS_not_RN;
 

@@ -461,3 +461,49 @@ The cluster parameter validation checked explicit required keys, common puncture
 The production build returned 0 in **4.55 s** after the final diagnostic change. The final G4a bundle returned 0 in **8.38 s**; the B continuous, split-first and split-restart stages returned 0 in **6.06 / 4.11 / 2.29 s**, with peak RSS **0.286 / 0.225 / 0.233 GB**. The M/32 interval stage returned 0 in **27.99 s**, peak RSS **1.069 GB**. The cadence script returned 0 in **0.03 s**. All stages were estimated from the prior T5d pilots at under five minutes and finished under ten minutes each. The serial simulation stages together took under a minute of local compute. Initial trial runs and rebuilds also stayed far below the ~20-minute total limit.
 
 Reproduce from the repository root with `CHOMBO_HOME=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib` and `OMP_NUM_THREADS=1`: `make -C Examples/EMS all DIM=2 -j4`; `python3 Tests/EMSKS2/check_t7_cadence.py`; `python3 Tests/EMSKS2/run_g4_controls.py --output /private/tmp/emsks2-t7-g4 --baseline /private/tmp/emsks2-t5b-baseline/Examples/EMS/Main_EMSBH2DBH2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex --current "$PWD/Examples/EMS/Main_EMSBH2DBH2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex"`. [B parameters](params-t7-B.txt) and [interval parameters](params-t7-interval.txt) are the exact serial inputs, pointing to the SHA-256-matched KS2 files now at `/Users/auroradysis/Workspace/EMS/artifacts/echo-evolution/t3/`. The B split control used the same parameters with `max_steps=2` for the first stage and `restart_file=chk/EMS_000002.2d.hdf5` for the second; both CSVs and the checkpoint were carried into the restart directory. The cluster MPI smoke described in T5d remains required with the updated expected t=0 rows. Serial controls establish no MPI runtime claim.
+
+## T9: controller ruling and cluster2 inputs (2026-09-29)
+
+**Pre-registered outcome as reported: REGRESSION** (controller note: this is the finder's convergence mode at the 1e-10 expansion threshold, not a code regression — every control below passes; the proven in-run setting of exp-0010 is `ems_rh_expansion_threshold = 1e-7`, tracking only). The new B and E horizon pilots begin with `found` but do not retain that mode through the requested local evolution. Their areal radii and charges remain within the 10⁻³ acceptance bands; a plausible radius/charge row is therefore insufficient to clear RHFinder for the 100 M runs. The earlier R1 source result remains **NOT-IDENTIFIED**: [`t9-characteristics.csv`](t9-characteristics.csv) disfavors the old physical boundary as the *first* incoming front, and [`t9-discriminator.csv`](t9-discriminator.csv) implicates the refinement hierarchy without uniquely locating its source. The old T9 cost and pilot CSVs remain historical records, superseded by the cluster2 tables below.
+
+### Applied rulings
+
+`Source/RHFinder/RHSurf.hpp` and `RHUnion.hpp` are byte-identical to 996bb25. The existing surface file has its original columns and 8-digit precision. Analysis computes `R_areal = sqrt(Area/(4π))`; the code no longer writes an `R_areal` column. The seven `params-t9-*.txt` files were removed. The five [`params-cluster2-*.txt`](../../Examples/EMS/) files retain the exp-0012 B intermediate and finest tagging radii (6.5485613 and 3.9291368 r_h) and use them in horizon units for E. Added coarser levels put the physical boundary at 64 M (B to 100 M), 32 M (B to 30 M), or 65.91 M (E to 100 M). An additional forced radius retains the old base-level coverage after it becomes a refined level. Each input explicitly sets damping, gauge, KO, floors, diagnostics, and RHFinder. RHFinder's level is shifted with the new coarse levels so its grid spacing matches the previously successful level-0 pilot; `RH_time_step_freq = 8` is retained. The wide profile reaches 30 r_h for B, 20 r_h for E, and 10 r_h for reference at a **0.5 M** production cadence. The original summary and short radial cadence follow exp-0012. `max_steps` and checkpoint intervals are rescaled to the coarser global time step; `stop_time` remains the physical target.
+
+The reference discriminator could not keep exp-0012's 9.137 r_h outer boundary and put a finest interface beyond 12 r_h. Its domain was therefore expanded by one coarse level, and its intermediate forced radius was raised to nest the 10.5 r_h finest forced radius. The measured finest edge is 12.707 r_h, with a 32 M physical boundary. This necessary geometry change is explicit in `params-cluster2-ref-M64-edge.txt`; the predicted far-bin arrival shift beyond 10 M is **not yet measured**.
+
+### Horizon pilots and restart
+
+[`cluster2-horizons.csv`](cluster2-horizons.csv) computes radius from the original Area column and compares Q with each KS2 file. B M/512 and E ran initialization plus two global coarse steps; B M/720 ran one, and the reference edge ran one. `FOUND` requires the last RHFinder mode to be `found` as well as both numeric errors below 10⁻³. `FOUND-OFF` means the last mode is `close` or `far` despite small radius and charge errors. All four completed pilots exited 0; non-parameter `not found` log lines: **0**.
+
+| Member | Finds | Last mode / outcome | Last R_areal (r_h=1) | Last Q (file Q) | Relative Q error |
+|---|---:|---|---:|---:|---:|
+| B M/512 | 16 | far / FOUND-OFF | 1.00007049 | 8.00032950 (8) | 4.12×10⁻⁵ |
+| B M/720 | 8 | close / FOUND-OFF | 1.00002060 | 8.00032893 (8) | 4.11×10⁻⁵ |
+| E | 8 | far / FOUND-OFF | 1.00002476 | 6.00024224 (6) | 4.04×10⁻⁵ |
+| reference M/64 edge | 2 | found / FOUND | 1.00002056 | 0.399777806 (0.399761367) | 4.11×10⁻⁵ |
+| B M/1024 | — | NOT-RUN | — | — | — |
+
+The RH-enabled M/32 reference split at step 1 and restart to step 2 retained **84/84 bit-identical evolved fields** ([`cluster2-rh-restart-hashes.csv`](cluster2-rh-restart-hashes.csv)). The largest numeric horizon-file difference was **4.30749×10⁻¹⁰** in `P_x`; the shape file was byte-identical ([`cluster2-rh-restart-differences.csv`](cluster2-rh-restart-differences.csv)). The three reference diagnostic CSVs were byte-identical. The accepted 8-digit RH restart format is therefore not claimed bitwise for all surface diagnostics.
+
+### Measured hierarchy and projected cluster cost
+
+[`cluster2-hierarchy.csv`](cluster2-hierarchy.csv) gives every level's axis and equator intercepts and substep-weighted cell counts. All intercepts below are r_h and positive; the measured boxes are symmetric across the x-axis. B M/1024 is an explicitly marked projection from B M/512 cell scaling and the exp-0012 inner B M/1024 edges. [`cluster2-cost.csv`](cluster2-cost.csv) scales the exp-0012 32-rank rates (B M/512 14.9919, B M/1024 117.622, reference M/64 4.88487 min per 10 M) by weighted cells and target length. These are **evolution-only planning estimates**; RHFinder, wide-profile, MPI, and checkpoint costs are not included.
+
+| Input | Intermediate / finest x and equator edges (r_h) | Boundary (M) | Weighted cells (million) | Target (M) | Projected 32-rank wall |
+|---|---|---:|---:|---:|---:|
+| B M/512 | 32.415 / 8.349 / 4.911 | 64 | 32.423 measured | 100 | 20.94 h |
+| B M/720 | 32.132 / 8.033 / 4.890 | 64 | 62.748 measured | 100 | 56.98 h |
+| B M/1024 | 31.924 / 8.104 / 4.789 | 32 | 65.729 projected | 30 | 25.97 h |
+| E | 32.415 / 8.349 / 4.911 | 65.91 | 20.119 measured | 100 | 9.46 h |
+| reference M/64 edge | 13.421 / 12.707 | 32 | 37.689 measured | 10 | 0.612 h |
+
+Controller note (2026-09-29): the projected walls above scale weighted cells per coarse step by the exp-0012 rate per M, but adding coarse levels makes the level-0 step 2^k times longer in time (k added levels), so the weighted cells per unit time are 2^k times smaller. Normalised per unit time (weighted cells divided by the level-0 spacing), the projections become about 2.6 h (B M/512, 100 M), 7.1 h (B M/720, 100 M), 6.3 h (B M/1024, 30 M), 3.2 h (E, 100 M) and 0.3 h (reference edge, 10 M) on one 32-rank node, before finder, wide-profile and checkpoint overheads; the cluster calibration replaces these.
+
+### Controls, resources, and claim boundary
+
+The restored serial build passed in 9.20 s. G4a versus 34f2ef0 matched **168/168** evolved fields at step 4 ([`cluster2-g4-hashes.csv`](cluster2-g4-hashes.csv)); the RH-off reference-stationary state matched **84/84** saved 996bb25 hashes at step 4 ([`cluster2-reference-hashes.csv`](cluster2-reference-hashes.csv)). A dense reference smoke wrote [80 finite populated wide bins through 10 r_h](cluster2-wide-smoke.csv); `python3 Tests/EMSKS2/check_t9_wide.py Tests/EMSKS2/cluster2-wide-smoke.csv 10` returned 0. The smoke used a shorter interval to emit within one step; the staged inputs retain 0.5 M cadence. [`cluster2-controls.csv`](cluster2-controls.csv) summarizes the checks.
+
+[`cluster2-runs.csv`](cluster2-runs.csv) records 1,799.79 s of measured local wall time, including the build and superseded B pilots, within the approximately 30-minute aggregate limit. Each run was below 10 minutes. Before and during large dispatches, `memory_pressure -Q` showed at least 32% system memory free; peak process-tree RSS could not be read in this sandbox, so the half-RAM process bound is not independently verified. B M/1024 was not initialized locally under the remaining aggregate budget. No MPI runtime or production HPC job was run.
+
+The staged 100 M runs are **not cleared** by these pilots. They have not established a stable single echo hole, long-time area/charge drift, a clean exterior, or the source of the exp-0012 incoming front. No gauge, taper, floor, blend, CCZ4, matter, or RHFinder source equation was changed.

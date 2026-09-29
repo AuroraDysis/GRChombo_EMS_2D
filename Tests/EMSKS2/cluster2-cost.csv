@@ -1,0 +1,6 @@
+case,target_M,weighted_cells,basis_weighted_cells,rate_min_per_10M,projected_wall_hours_32ranks,basis
+B-M512,100,32422912,3869696,14.9919,20.93536780894416,"weighted cells; B-M1024 projected, others initialized; evolution only, no RH/wide overhead"
+B-M720,100,62748160,3869696,14.9919,56.97601996125794,"weighted cells; B-M1024 projected, others initialized; evolution only, no RH/wide overhead"
+B-M1024,30,65728512,14883840,117.622,25.97152024767802,"weighted cells; B-M1024 projected, others initialized; evolution only, no RH/wide overhead"
+E,100,20118528,3869696,14.9919,9.460612922619955,"weighted cells; B-M1024 projected, others initialized; evolution only, no RH/wide overhead"
+ref-M64-edge,10,37689344,5017600,4.88487,0.6115392014285715,"weighted cells; B-M1024 projected, others initialized; evolution only, no RH/wide overhead"

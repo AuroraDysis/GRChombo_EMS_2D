@@ -1,5 +1,6 @@
 #include "EMSBH2DLevel.hpp"
 #include "BoxIterator.H"
+#include "IntVectSet.H"
 #include "BoxLoops.hpp"
 #include "CCZ4Cartoon.hpp"
 #include "ComputePack.hpp"
@@ -305,6 +306,106 @@ void EMSBH2DLevel::write_reference_diagnostics() const
                 std::sqrt(radial[bin].squares[k] / radial[bin].count) : 0.)
                        << ',' << radial[bin].maxima[k];
         radial_out << '\n';
+    }
+}
+
+void EMSBH2DLevel::write_wide_reference_diagnostics() const
+{
+    if (m_p.reference_wide_interval <= 0. ||
+        m_p.reference_diagnostics_path.empty() || m_time <= 0.) return;
+    const double interval = m_p.reference_wide_interval * m_p.emsbh_params.bh_mass;
+    const double eps = 1e-12 * std::max(interval, m_dt);
+    if (std::floor((m_time + eps) / interval) <=
+        std::floor((m_time - m_dt + eps) / interval)) return;
+
+    constexpr int bins = 80;
+    struct Bin { std::array<double, 5> squares{}; int count = 0; int level = -1; };
+    std::array<Bin, bins> profile{};
+    EMSKS2Profile p;
+    p.load(m_p.emsbh_params.data_path);
+    const double rh = p.get("r_h"), upper = m_p.reference_wide_radius;
+    const double scale = bins / std::log(upper);
+    const auto levels = m_bh_amr.getAMRLevels();
+    for (int lev = 0; lev < levels.size(); ++lev)
+    {
+        const auto &grid = *dynamic_cast<const EMSBH2DLevel *>(levels[lev]);
+        const auto *fine = lev + 1 < levels.size()
+            ? dynamic_cast<const EMSBH2DLevel *>(levels[lev + 1]) : nullptr;
+        for (DataIterator dit = grid.m_grids.dataIterator(); dit.ok(); ++dit)
+        {
+            IntVectSet valid(grid.m_grids[dit]);
+            if (fine)
+                for (LayoutIterator lit = fine->m_grids.layoutIterator(); lit.ok(); ++lit)
+                {
+                    Box covered(fine->m_grids[lit()]);
+                    covered.coarsen(grid.refRatio());
+                    valid -= covered;
+                }
+            const auto &state = grid.m_state_new[dit];
+            const auto &diag = grid.m_state_diagnostics[dit];
+            const auto &ref = (*grid.m_reference)[dit];
+            for (IVSIterator it(valid); it.ok(); ++it)
+            {
+                const IntVect iv = it();
+                const double x = (iv[0] + .5) * grid.m_dx -
+                    m_p.emsbh_params.star_centre[0];
+                const double y = (iv[1] + .5) * grid.m_dx -
+                    m_p.emsbh_params.star_centre[1];
+                const double rho = std::hypot(x, y) / rh;
+                if (rho < 1. || rho >= upper) continue;
+                const int bin = std::min(bins - 1, int(std::log(rho) * scale));
+                auto &b = profile[bin];
+                const double values[5] = {
+                    diag(iv, c_Ham),
+                    std::hypot(diag(iv, c_Mom1), diag(iv, c_Mom2)),
+                    diag(iv, c_GaussE),
+                    state(iv, c_K) - ref(iv, ReferenceStationaryGauge::K_star),
+                    state(iv, c_lapse) /
+                        ref(iv, ReferenceStationaryGauge::alpha_star) - 1.};
+                for (int k = 0; k < 5; ++k) b.squares[k] += values[k] * values[k];
+                ++b.count;
+                b.level = std::max(b.level, lev);
+            }
+        }
+    }
+#ifdef CH_MPI
+    std::array<double, bins * 5> sums{}, global_sums{};
+    std::array<int, bins> counts{}, global_counts{}, finest{}, global_finest{};
+    for (int i = 0; i < bins; ++i)
+    {
+        for (int k = 0; k < 5; ++k) sums[5 * i + k] = profile[i].squares[k];
+        counts[i] = profile[i].count;
+        finest[i] = profile[i].level;
+    }
+    MPI_Allreduce(sums.data(), global_sums.data(), sums.size(), MPI_DOUBLE,
+                  MPI_SUM, Chombo_MPI::comm);
+    MPI_Allreduce(counts.data(), global_counts.data(), bins, MPI_INT,
+                  MPI_SUM, Chombo_MPI::comm);
+    MPI_Allreduce(finest.data(), global_finest.data(), bins, MPI_INT,
+                  MPI_MAX, Chombo_MPI::comm);
+    if (procID() != 0) return;
+    for (int i = 0; i < bins; ++i)
+    {
+        for (int k = 0; k < 5; ++k) profile[i].squares[k] = global_sums[5 * i + k];
+        profile[i].count = global_counts[i];
+        profile[i].level = global_finest[i];
+    }
+#endif
+    const bool first = m_restart_time == 0. && m_time <= interval + m_dt + eps;
+    std::ofstream out(m_p.reference_diagnostics_path + ".wide.csv",
+                      first ? std::ios::trunc : std::ios::app);
+    if (!out) MayDay::Error("cannot write wide reference diagnostics");
+    if (first) out << "time,time_over_M,bin,rho_lo_over_rh,rho_hi_over_rh,count,finest_level,H_RMS,M_RMS,GaussE_RMS,K_minus_Kstar_RMS,alpha_drift_RMS\n";
+    out << std::setprecision(17);
+    for (int i = 0; i < bins; ++i)
+    {
+        const auto &b = profile[i];
+        out << m_time << ',' << m_time / p.get("M") << ',' << i << ','
+            << std::exp(i / scale) << ',' << std::exp((i + 1) / scale)
+            << ',' << b.count << ',' << b.level;
+        for (int k = 0; k < 5; ++k)
+            out << ',' << (b.count ? std::sqrt(b.squares[k] / b.count) : 0.);
+        out << '\n';
     }
 }
 

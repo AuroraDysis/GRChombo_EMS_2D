@@ -1,0 +1,7 @@
+member,ring_type,r_over_rh,r_over_M,source
+B,inner_maximum,1.94060478499,0.246950524256,EMSKS2Profile optical potential
+B,stable_minimum,3.66076931305,0.465849052846,EMSKS2Profile optical potential
+B,outer_maximum,14.8744594244,1.89284061406,EMSKS2Profile optical potential
+E,inner_maximum,1.84050785218,0.321599996155,EMSKS2Profile optical potential
+E,stable_minimum,4.04868635659,0.707444695316,EMSKS2Profile optical potential
+E,outer_maximum,9.47339232618,1.65532732287,EMSKS2Profile optical potential

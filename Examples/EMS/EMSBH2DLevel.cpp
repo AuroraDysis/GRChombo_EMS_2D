@@ -332,7 +332,10 @@ void EMSBH2DLevel::specificPostTimeStep()
     BoxLoops::loop(EMSCartoonGaussConstraints(m_dx, m_p.coupling_function_params),
                    m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS);
     if (m_p.gauge_type == "reference_stationary")
+    {
         write_reference_diagnostics();
+        if (m_level == 0) write_wide_reference_diagnostics();
+    }
     BoxLoops::loop(
             EMSCartoonLorentzScalars<CouplingFunction>(m_dx,
                                        m_p.mq_extraction_params.center,
