@@ -67,6 +67,7 @@ class GRAMR : public AMR
 
     int get_max_level() const { return m_max_level; }
     int get_restart_step() const { return m_restart_step; }
+    double get_current_time() const { return m_cur_time; }
 
     // Fill ghosts on multiple levels
     void fill_multilevel_ghosts(

@@ -1,0 +1,164 @@
+diff --git a/Source/GRChomboCore/GRAMRLevel.cpp b/Source/GRChomboCore/GRAMRLevel.cpp
+index b3cf6b3..4d3614d 100644
+--- a/Source/GRChomboCore/GRAMRLevel.cpp
++++ b/Source/GRChomboCore/GRAMRLevel.cpp
+@@ -5,6 +5,87 @@
+ 
+ #include "GRAMRLevel.hpp"
+ 
++#if CH_SPACEDIM == 2
++namespace
++{
++// Sixth-order point-value interpolation. Chombo's FourthOrderFillPatch
++// interpolates cell averages; the EMS state stores point values instead.
++void fill_pointwise_ghosts(LevelData<FArrayBox> &fine,
++                           const LevelData<FArrayBox> &coarse_on_fine,
++                           const ProblemDomain &fine_domain, int ratio,
++                           const Interval &comps)
++{
++    const auto &layout = fine.disjointBoxLayout();
++    const Box domain = fine_domain.domainBox();
++    const Box coarse_domain = coarsen(domain, ratio);
++    const DataIterator dit = fine.dataIterator();
++    for (int ibox = 0; ibox < dit.size(); ++ibox)
++    {
++        const DataIndex di = dit[ibox];
++        FArrayBox &dst = fine[di];
++        const FArrayBox &src = coarse_on_fine[di];
++        const Box &valid = layout[di];
++        const Box ghosts = dst.box() & domain;
++        for (BoxIterator bit(ghosts); bit.ok(); ++bit)
++        {
++            const IntVect iv = bit();
++            if (valid.contains(iv))
++                continue;
++            bool another_fine_box = false;
++            for (LayoutIterator lit = layout.layoutIterator(); lit.ok(); ++lit)
++                if (layout[lit].contains(iv))
++                {
++                    another_fine_box = true;
++                    break;
++                }
++            if (another_fine_box)
++                continue; // same-level exchange supplied this ghost
++
++            int first[2];
++            double weight[2][6];
++            for (int dir = 0; dir < 2; ++dir)
++            {
++                const double q = (iv[dir] + 0.5) / ratio - 0.5;
++                const int lower = std::max(coarse_domain.smallEnd(dir),
++                                           src.box().smallEnd(dir));
++                const int upper = std::min(coarse_domain.bigEnd(dir),
++                                           src.box().bigEnd(dir));
++                if (upper - lower < 5)
++                    MayDay::Error("pointwise ghost stencil lacks six coarse cells");
++                first[dir] = std::max(lower, std::min(int(std::floor(q)) - 2,
++                                                      upper - 5));
++                for (int k = 0; k < 6; ++k)
++                {
++                    double w = 1.;
++                    for (int j = 0; j < 6; ++j)
++                        if (j != k)
++                            w *= (q - first[dir] - j) / (k - j);
++                    weight[dir][k] = w;
++                }
++            }
++            for (int comp = comps.begin(); comp <= comps.end(); ++comp)
++            {
++                double value = 0.;
++                for (int jy = 0; jy < 6; ++jy)
++                    for (int ix = 0; ix < 6; ++ix)
++                        value += weight[0][ix] * weight[1][jy] *
++                                 src(IntVect(D_DECL(first[0] + ix,
++                                                   first[1] + jy, 0)), comp);
++                dst(iv, comp) = value;
++            }
++        }
++    }
++}
++
++DisjointBoxLayout coarsened_layout(const DisjointBoxLayout &fine, int ratio)
++{
++    DisjointBoxLayout result;
++    coarsen(result, fine, ratio);
++    return result;
++}
++} // namespace
++#endif
++
+ GRAMRLevel::GRAMRLevel(GRAMR &gr_amr, const SimulationParameters &a_p,
+                        int a_verbosity)
+     : m_gr_amr(gr_amr), m_p(a_p), m_verbosity(a_verbosity),
+@@ -937,7 +1018,22 @@ void GRAMRLevel::evalRHS(GRLevelData &rhs, GRLevelData &soln,
+         }
+ 
+         // Interpolate ghost cells from next coarser level in space and time
+-        m_patcher.fillInterp(soln, alpha, 0, 0, NUM_VARS);
++        if (m_p.t2_pointwise_ghost_interpolation)
++        {
++#if CH_SPACEDIM == 2
++            LevelData<FArrayBox> coarse_at_time(
++                coarsened_layout(soln.disjointBoxLayout(), m_ref_ratio),
++                NUM_VARS, 4 * IntVect::Unit);
++            m_patcher.getTimeInterpolator().interpolate(
++                coarse_at_time, alpha, Interval(0, NUM_VARS - 1));
++            fill_pointwise_ghosts(soln, coarse_at_time, m_problem_domain,
++                                  m_ref_ratio, Interval(0, NUM_VARS - 1));
++#else
++            MayDay::Error("pointwise ghost interpolation supports 2D only");
++#endif
++        }
++        else
++            m_patcher.fillInterp(soln, alpha, 0, 0, NUM_VARS);
+     }
+ 
+     fillBdyGhosts(soln);
+@@ -1037,8 +1133,24 @@ void GRAMRLevel::fillAllEvolutionGhosts(const Interval &a_comps)
+     if (m_coarser_level_ptr != nullptr)
+     {
+         GRAMRLevel *coarser_gr_amr_level_ptr = gr_cast(m_coarser_level_ptr);
+-        m_patcher.fillInterp(m_state_new, coarser_gr_amr_level_ptr->m_state_new,
+-                             a_comps.begin(), a_comps.begin(), a_comps.size());
++        if (m_p.t2_pointwise_ghost_interpolation)
++        {
++#if CH_SPACEDIM == 2
++            LevelData<FArrayBox> coarse_on_fine(
++                coarsened_layout(m_state_new.disjointBoxLayout(), m_ref_ratio),
++                NUM_VARS, 4 * IntVect::Unit);
++            coarser_gr_amr_level_ptr->m_state_new.copyTo(coarse_on_fine);
++            fill_pointwise_ghosts(m_state_new, coarse_on_fine,
++                                  m_problem_domain, m_ref_ratio, a_comps);
++#else
++            MayDay::Error("pointwise ghost interpolation supports 2D only");
++#endif
++        }
++        else
++            m_patcher.fillInterp(m_state_new,
++                                 coarser_gr_amr_level_ptr->m_state_new,
++                                 a_comps.begin(), a_comps.begin(),
++                                 a_comps.size());
+     }
+     fillIntralevelGhosts(a_comps);
+ }
+diff --git a/Source/GRChomboCore/SimulationParametersBase.hpp b/Source/GRChomboCore/SimulationParametersBase.hpp
+index 0ac7e03..78d4f4b 100644
+--- a/Source/GRChomboCore/SimulationParametersBase.hpp
++++ b/Source/GRChomboCore/SimulationParametersBase.hpp
+@@ -56,6 +56,8 @@ class SimulationParametersBase : public ChomboParameters
+ 
+         // Dissipation
+         pp.load("sigma", sigma, 0.1);
++        pp.load("t2_pointwise_ghost_interpolation",
++                t2_pointwise_ghost_interpolation, false);
+ 
+         // Nan Check and min chi and lapse values
+         pp.load("nan_check", nan_check, true);
+@@ -625,6 +627,7 @@ class SimulationParametersBase : public ChomboParameters
+ 
+   public:
+     double sigma; // Kreiss-Oliger dissipation parameter
++    bool t2_pointwise_ghost_interpolation;
+ 
+     bool nan_check;
+ 

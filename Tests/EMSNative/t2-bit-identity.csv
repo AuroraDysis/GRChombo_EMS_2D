@@ -1,0 +1,4 @@
+control,datasets,attributes,dataset_bits_equal,attributes_equal,raw_hdf5_container_equal
+E t0 default off final build,52,173,True,True,False
+E 2-step default off final build,4,48,True,True,False
+E normal restart guard on final build,4,48,True,True,False

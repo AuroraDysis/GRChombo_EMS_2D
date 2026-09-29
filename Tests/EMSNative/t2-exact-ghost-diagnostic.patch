@@ -1,0 +1,59 @@
+--- a/Examples/EMS/EMSBH2DLevel.cpp
++++ b/Examples/EMS/EMSBH2DLevel.cpp
+@@ -188,6 +188,37 @@
+ void EMSBH2DLevel::prePlotLevel()
+ {
+     fillAllGhosts();
++    if (m_p.t2_exact_initial_ghost_diagnostic)
++    {
++        if (m_time != 0. || m_gr_amr.get_current_time() != 0. ||
++            m_p.max_steps != 0 ||
++            m_p.ems_data_format != "emstrumpet1")
++            MayDay::Error("exact initial ghosts require t=0, max_steps=0, EMSTRUMPET 1");
++        if (m_level > 0)
++        {
++            EMSBH_trumpet_read initial(m_p.emsbh_params,
++                                       m_p.coupling_function_params,
++                                       m_p.m_G_Newton, m_dx, m_verbosity);
++            initial.compute_1d_solution();
++            const DataIterator dit = m_state_new.dataIterator();
++            for (int ibox = 0; ibox < dit.size(); ++ibox)
++            {
++                const DataIndex di = dit[ibox];
++                FArrayBox &state = m_state_new[di];
++                const Box &valid = m_grids[di];
++                const Box target = grow(valid, m_num_ghosts);
++                FArrayBox exact(grow(target, 2), NUM_VARS);
++                BoxLoops::loop(make_compute_pack(SetValue(0.0), initial),
++                               exact, exact, exact.box(), disable_simd());
++                BoxLoops::loop(GammaCartoonCalculator(m_dx), exact, exact,
++                               target, disable_simd());
++                for (BoxIterator bit(target); bit.ok(); ++bit)
++                    if (!valid.contains(bit()))
++                        for (int comp = 0; comp < NUM_VARS; ++comp)
++                            state(bit(), comp) = exact(bit(), comp);
++            }
++        }
++    }
+     // coupling not currently used in Constraint calcs
+     CouplingFunction my_coupling(m_p.coupling_function_params);
+     BoxLoops::loop(
+--- a/Examples/EMS/SimulationParameters.hpp
++++ b/Examples/EMS/SimulationParameters.hpp
+@@ -45,6 +45,8 @@
+                 false);
+         pp.load("t3_restrict_initial_covered", t3_restrict_initial_covered,
+                 false);
++        pp.load("t2_exact_initial_ghost_diagnostic",
++                t2_exact_initial_ghost_diagnostic, false);
+         pp.load("ems_ctt_data_path", emsbh_params.ctt_data_path, std::string());
+         pp.load("gridpoints", emsbh_params.gridpoints, 40000);
+         pp.load("star_centre", emsbh_params.star_centre,
+@@ -193,6 +195,7 @@
+     EMSBH_params_t emsbh_params;
+     std::string ems_data_format;
+     bool t2_guard_initial_data_after_t0;
++    bool t2_exact_initial_ghost_diagnostic;
+     bool t3_restrict_initial_covered;
+     CouplingFunction::params_t coupling_function_params;
+     bool EMS_not_RN;

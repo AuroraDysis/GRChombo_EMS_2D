@@ -1,0 +1,106 @@
+# exp-0002: single unboosted EMSTRUMPET 1 black hole, T=100 M.
+# Domain: x=[-256,256], cartoon y=[0,256], dx0=1, dx6=1/64.
+verbosity = 0
+print_progress_only_to_rank_0 = 1
+chk_prefix = chk/EMS_
+plot_prefix = plt/EMS_Plot_
+checkpoint_interval = -1
+plot_interval = 9
+num_plot_vars = 10
+plot_vars = chi lapse phi Theta Ham Mom1 Mom2 GaussE GaussB Qscalar
+
+N1 = 576
+N2 = 288
+L = 512
+max_level = 6
+regrid_interval = 0 0 0 0 0 0
+regrid_threshold_A = 1e100
+regrid_threshold_phi = 1e100
+regrid_threshold_chi = 1e100
+max_box_size = 128
+min_box_size = 8
+grid_buffer_size = 8
+fill_ratio = 0.7
+center = 256 0
+star_centre = 256 0
+isPeriodic = 0 0
+hi_boundary = 1 1
+lo_boundary = 1 2
+vars_parity = 0 0 4 0 0 0 0 4 0 0 0 1 2 0 1 2 1 2 0 0 6 3 7 4 1 2 5 0
+vars_parity_diagnostic = 0 0 0 0 0 1 2 0 0 3 0 3 0 0 0 0 0 0
+num_nonzero_asymptotic_vars = 5
+nonzero_asymptotic_vars = chi h11 h22 hww lapse
+nonzero_asymptotic_values = 1 1 1 1 1
+
+G_Newton = 1
+ems_not_rn = true
+ems_data_format = emstrumpet1
+ems_data_path = /Users/auroradysis/Workspace/EMS/artifacts/reference-alpha20-qfile.trumpet
+binary = false
+boosted = false
+bh_charge = 0.700784945779
+bh_mass = 1
+ems_alpha = 12.566370614359172
+ems_f0 = 0
+ems_f1 = 0
+ems_f2 = -20
+Ylm_amplitude = 0
+Ylm_thickness = 5
+Ylm_r0 = 80
+
+dt_multiplier = 0.0625
+stop_time = 1e10
+max_steps = 90
+max_spatial_derivative_order = 4
+nan_check = 1
+lapse_advec_coeff = 1
+lapse_coeff = 2
+lapse_power = 1
+shift_advec_coeff = 1
+shift_Gamma_coeff = 0.75
+eta = 1
+formulation = 0
+kappa1 = 0.1
+kappa2 = 0
+kappa3 = 1
+covariantZ4 = 1
+sigma = 1
+min_chi = 1e-12
+min_lapse = 1e-12
+calculate_constraint_violations = false
+
+# Charge extraction at 20, 50 and 100 M; radiative extractions off.
+activate_extraction = 0
+activate_rs_extraction = 0
+activate_em_extraction = 0
+activate_mq_extraction = 0
+mq_extraction_center = 256 0 0
+mq_num_extraction_radii = 3
+mq_extraction_radii = 20 50 100
+mq_extraction_levels = 0 0 0
+mq_num_points_phi = 64
+mq_num_points_theta = 60
+mq_num_modes = 1
+mq_modes = 0 0
+
+RH_activate = false
+RH_num_horizons = 1
+RH_initial_radii = 0.63593977642346233
+RH_initial_centre = 256
+RH_num_points = 48
+RH_time_step_freq = 4000
+RH_chase_speeds = 1
+RH_level = 6
+RH_start_times = 0
+RH_newton_crit = 0
+AH_activate = 0
+
+
+
+# T3 registered fixed physical geometric hierarchy.
+num_mass_extraction_radii = 6
+mass_extraction_levels = 1 2 3 4 5 6
+mass_extraction_radii = 50 25 12.5 6.25 3.1 1.6
+mass_extraction_center = 256 0
+t2_guard_initial_data_after_t0 = true
+t3_restrict_initial_covered = false

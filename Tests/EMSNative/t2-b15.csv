@@ -1,0 +1,5 @@
+N1,L_M,center_x_M,h0_M,max_level,p96,result,evidence
+512,448,224,0.875,15,yes,SIGSEGV,T1 macOS crash report: TreeIntVectSet::clearTree <- grow <- GRAMRLevel::tagCells(14)
+384,336,168,0.875,15,yes,PASS t=0,initialData 15 and GRChombo finished
+256,224,112,0.875,15,yes,PASS t=0,initialData 15 and GRChombo finished
+512,448,223.125,0.875,15,yes,PASS t=0,one-base-cell puncture shift; initialData 15 and GRChombo finished

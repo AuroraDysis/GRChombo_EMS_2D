@@ -33,6 +33,9 @@ class EMSBH2DLevel : public GRAMRLevel
     /// Initial data calculation
     virtual void initialData() override;
 
+    /// Match the evolution restriction on covered cells after all levels initialize.
+    virtual void postInitialize() override;
+
     /// Any actions that should happen just before checkpointing
     virtual void prePlotLevel() override;
 
