@@ -1,0 +1,30 @@
+T12 reference-relative AMR transfer manifest
+Base HEAD: 117fb8f
+Worktree edits are uncommitted.
+Pre-registered outcome: READY for X1-X4; dynamic convergence orders mixed.
+External reference.ks2 SHA-256: fb46ceecd7565c5afb5b04b4ace4dd0790a832844d3f57a28333700230870533
+External B.ks2 SHA-256: 6fe2e42892c3842a78d15ed8b1cdaccacf75d545aad8917085b8049a55a17d01
+Build products and /private/tmp checkpoints are excluded.
+
+SHA-256  bytes  path
+b95565b0ecd2ed7b4098313ab95abca4ea3088e612b3f674c591defd479af779  25264  Examples/EMS/EMSBH2DLevel.cpp
+f9b5d382ee0ef7ff20ea3ba19cf50f04b144e08d8ab3b7ac4d6ca34933805ec3  2874  Examples/EMS/EMSBH2DLevel.hpp
+57b5c564301c257ae2b02d759c52d96b08afa2737263fa342920bdde5766a71d  24766  Examples/EMS/EMSBH2DLevelReference.cpp
+db359a13e3c3c7a6d97e478129d11fac3c12ee0405ed9ce5dafad30708e33ad8  12477  Examples/EMS/SimulationParameters.hpp
+3989499831d3a732ca3037fc609576f2e624eeb969e62df20f9415ab9d07703f  44038  Source/GRChomboCore/GRAMRLevel.cpp
+c87f34d6d795163a77cf368798adc2aeebb188f17d16be2bfa8edc79cd4f17d5  9753  Source/GRChomboCore/GRAMRLevel.hpp
+6a87c097563f2b41f90ffb4411bfd762139f2ae15614ebeb1012d0dbbefa8897  1857  Examples/EMS/params-t12-ref-M64-raw.txt
+18965fdeb5a35a7e06225c6d836e5ca2d731a121209567d451378207e31b401c  1862  Examples/EMS/params-t12-ref-M64-relative.txt
+a1885360e23d80ae8c74cc0e9b78955de5152ac70f9e46dcca4691c61f2a949c  97218  Tests/EMSKS2/README.md
+30ae259c6a9bbf93d2ff8fdaf40de90e9ee373bf052f20ae28d1554c8a9c37c1  3217  Tests/EMSKS2/analyze_t12_pulse.py
+87b664b6368b8e7c20e266c3e935bdfc0a6986a6291e0ca5d840a964eb7b9130  2452  Tests/EMSKS2/run_t12_pulse.py
+fa70376881cc59ae07fe33c432dd4d3154ccdd675b8da8d545c04059d726006b  2189  Tests/EMSKS2/params-t12-static-raw.txt
+ad41e22f43ca43b869a3f37f1943d9a21beef9cf0b70bf914047927da6713b8e  2199  Tests/EMSKS2/params-t12-static-relative.txt
+f442d4fbc8d918d1d0c800fb7b35ca468057e1bf31021fdff963f0ff1cd31f50  2488  Tests/EMSKS2/t12-rhs-raw.csv
+ee06cba041ffe76c7dd55b41860be1ae5c6d4c6da146c024bdf879e159ef7a17  1493  Tests/EMSKS2/t12-rhs-relative.csv
+a03db6912b69539df18f106ad9f10f0afb9fffae621d7534a1a34bd25e477ee0  990  Tests/EMSKS2/t12-evolution-comparison.csv
+f01c81df04bb5a6a00e4795ce5f31958eb9e6405e7817920f93b9426a7889e57  6834  Tests/EMSKS2/t12-pulse-errors.csv
+b6f9c8ac964ae172588b1898ed8572820796d71c229a2121ac76dbdf4244f5f7  267  Tests/EMSKS2/t12-pulse-crossing.csv
+d1935f97cef02e9ca1183535fde61cfd43d2d4bcf5b3ff3029589d21655ee42b  495  Tests/EMSKS2/t12-pulse-cost.csv
+64d3f83dc0b4d51fe92fc8304da6ece03bad9964ded47a92c3da0f5cbb4d8f32  56643  Tests/EMSKS2/t12-raw-controls.csv
+d42dc1f7803c298a94eb02ca78a8f23b1d7e6f089de4e0c3e22bd7929e529410  14104  Tests/EMSKS2/t12-relative-restart-hashes.csv

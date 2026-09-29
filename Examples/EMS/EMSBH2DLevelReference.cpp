@@ -5,8 +5,10 @@
 #include "CCZ4Cartoon.hpp"
 #include "ComputePack.hpp"
 #include "EMSKS2ReferenceCache.hpp"
+#include "EMSBH_ks2_read.hpp"
 #include "EMSCartoonGaussConstraints.hpp"
 #include "ReferenceStationaryGauge.hpp"
+#include "GammaCartoonCalculator.hpp"
 #include "SetValue.hpp"
 #include "ConstraintsCartoon.hpp"
 #ifdef CH_MPI
@@ -41,6 +43,80 @@ void EMSBH2DLevel::rebuild_reference()
     pout() << "EMSKS2 reference cache level=" << m_level << " cells=" << cells
            << " seconds=" << std::chrono::duration<double>(
                std::chrono::steady_clock::now() - start).count() << endl;
+}
+
+void EMSBH2DLevel::rebuildTransferReference()
+{
+    if (!relativeTransfer() && m_p.reference_transfer_probe_path.empty()) return;
+    EMSBH_ks2_read setter(m_p.emsbh_params, m_p.coupling_function_params,
+                          m_dx, m_p.min_chi, m_p.min_lapse);
+    auto next = std::make_unique<GRLevelData>();
+    next->define(m_grids, NUM_VARS, m_num_ghosts * IntVect::Unit);
+    for (DataIterator dit = m_grids.dataIterator(); dit.ok(); ++dit)
+    {
+        FArrayBox &target = (*next)[dit];
+        Box halo(target.box());
+        halo.grow(2); // GammaCartoonCalculator uses a two-cell derivative stencil.
+        FArrayBox input(halo, NUM_VARS);
+        BoxLoops::loop(make_compute_pack(SetValue(0.0), setter), input, input,
+                       halo, disable_simd());
+        target.copy(input);
+        BoxLoops::loop(GammaCartoonCalculator(m_dx), input, target,
+                       target.box(), disable_simd());
+    }
+    m_transfer_reference = std::move(next);
+}
+
+void EMSBH2DLevel::write_transfer_rhs_probe()
+{
+    std::ofstream out(m_p.reference_transfer_probe_path,
+                      m_level == 0 ? std::ios::trunc : std::ios::app);
+    if (!out) MayDay::Error("cannot write reference transfer RHS probe");
+    if (m_level == 0)
+    {
+        out << "level,component,count,RMS,Linf\n";
+        return;
+    }
+    if (!m_transfer_reference) rebuildTransferReference();
+    fillAllGhosts();
+    GRLevelData rhs, uniform_rhs;
+    rhs.define(m_grids, NUM_VARS, IntVect::Zero);
+    uniform_rhs.define(m_grids, NUM_VARS, IntVect::Zero);
+    specificEvalRHS(m_state_new, rhs, m_time);
+    specificEvalRHS(*m_transfer_reference, uniform_rhs, m_time);
+    std::array<double, NUM_VARS> squares{}, maxima{};
+    int count = 0;
+    const Box domain = problemDomain().domainBox();
+    for (DataIterator dit = m_grids.dataIterator(); dit.ok(); ++dit)
+        for (BoxIterator bit(m_grids[dit]); bit.ok(); ++bit)
+        {
+            const IntVect iv = bit();
+            bool adjacent = false;
+            for (int dir = 0; dir < CH_SPACEDIM && !adjacent; ++dir)
+                for (int offset = -m_num_ghosts; offset <= m_num_ghosts; ++offset)
+                {
+                    IntVect neighbor(iv);
+                    neighbor[dir] += offset;
+                    if (!domain.contains(neighbor)) continue;
+                    bool present = false;
+                    for (LayoutIterator lit = m_grids.layoutIterator(); lit.ok(); ++lit)
+                        present |= m_grids[lit()].contains(neighbor);
+                    if (!present) adjacent = true;
+                }
+            if (!adjacent) continue;
+            ++count;
+            for (int comp = 0; comp < NUM_VARS; ++comp)
+            {
+                const double diff = rhs[dit](iv, comp) - uniform_rhs[dit](iv, comp);
+                squares[comp] += diff * diff;
+                maxima[comp] = std::max(maxima[comp], std::abs(diff));
+            }
+        }
+    out << std::setprecision(17);
+    for (int comp = 0; comp < NUM_VARS; ++comp)
+        out << m_level << ',' << UserVariables::variable_names[comp] << ','
+            << count << ',' << (count ? std::sqrt(squares[comp] / count) : 0.)
+            << ',' << maxima[comp] << '\n';
 }
 
 void EMSBH2DLevel::impose_reference_shift(GRLevelData &state)
@@ -429,6 +505,7 @@ void EMSBH2DLevel::postRegrid(int base_level)
     if (m_p.gauge_type == "reference_stationary")
     {
         rebuild_reference();
+        rebuildTransferReference();
         impose_reference_shift(m_state_new);
     }
 }
@@ -439,6 +516,7 @@ void EMSBH2DLevel::postRestart()
     if (m_p.gauge_type == "reference_stationary")
     {
         rebuild_reference();
+        rebuildTransferReference();
         impose_reference_shift(m_state_new);
     }
 }

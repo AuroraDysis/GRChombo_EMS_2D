@@ -551,3 +551,55 @@ The [old-path hashes](t11-g4-hashes.csv) are bit-identical **168/168 at step 4**
 Reproduce with `CHOMBO_HOME=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib`, `OMP_NUM_THREADS=1`, `make -C Examples/EMS all DIM=2 -j4`, and `make -C Tests/EMSKS2 all DIM=2 -j4`. Run `Tests/EMSKS2/EMSKS2RelativeLapse2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex N /Users/auroradysis/Workspace/EMS/artifacts/echo-evolution/t3/B.ks2` for N=384,512,720,1024. The final build took 10.97 s for EMS and 2.77 s for the test update; the four final R2 executions took about 0.18, 0.30, 0.58, and 1.18 s of measured stage time. The old-path control bundle took 6.69 s, the 9203bf9 baseline build 11.20 s, and the short B controls 2–5 s each.
 
 The result establishes fourth-order consistency of the relative operator and short serial behavior on these masks and inputs. It does not establish a 6 M E trajectory, MPI runtime behavior, long-time horizon tracking, or a source for the earlier incoming front. AMR transfer repair remains outside T11.
+
+## T12: reference-relative AMR transfer (2026-09-29)
+
+**Pre-registered outcome: READY for X1–X4, with a limited dynamic claim.** The stationary full evolved state is preserved across the two tested coarse–fine interfaces to round-off in the t=0 full RHS. A lapse pulse crosses a finest-level interface under subcycling, and the narrow-versus-wide fine-coverage field errors and their three-resolution orders are reported below. Those orders are mixed and do **not** establish asymptotic convergence or clear a production evolution. No 10 M cluster run was launched.
+
+### Transfer path and implementation
+
+`reference_transfer=raw` is the default; `relative` requires `gauge_type=reference_stationary`. Only EMS opts into the virtual transfer hook. The persistent transfer reference contains all 28 evolved variables at every valid and ghost cell. It uses the same `EMSBH_ks2_read` setter as `initialData`; an extra two-cell temporary halo lets `GammaCartoonCalculator` compute the **discrete** connection in the stored ghost cells. In relative mode, `initialData` ends by copying this full reference into the initial evolved state. Regrid and restart rebuild it from the file, without resetting the evolved departures. The added persistent cost is `28 × 8 = 224` bytes per ghosted patch cell, or 14.77 MB for the 65,928 cached cells in the static test. Transfer calls allocate temporary relative state arrays; the gauge reference's existing six-component cache remains separate.
+
+The exact calls are:
+
+1. `GRAMRLevel::fillAllEvolutionGhosts` calls the space-only `FourthOrderFillPatch::fillInterp(fine, coarse, ...)`, then same-level `exchange`, then physical boundary fill. Relative mode passes `fine−U_{*,f}` and `coarse−U_{*,c}` to the patcher and restores fine ghosts with `U_{*,f}`.
+2. `RK4LevelAdvance` gives the finer level's `TimeInterpolatorRK4` the coarse initial state and four stage RHSs. Relative mode subtracts `U_{*,c}` from **only** the saved initial state; stationary-reference RHSs are unchanged. At each fine `evalRHS`, `FourthOrderFillPatch::fillInterp(fine, alpha, ...)` first calls `TimeInterpolatorRK4::interpolate` on that coarse Taylor polynomial, then `FourthOrderFineInterp::interpOnPatch` for spatial fine ghosts. The fine reference is added after interpolation. `evalRHS` calls same-level `exchange` before this patch and physical boundary fill after it.
+3. `GRAMRLevel::postTimeStep` calls `CoarseAverage::averageToCoarse`. Relative mode averages fine departures and adds the coarse reference only on covered coarse cells. During regrid, `FourthOrderFineInterp::interpToFine` and `BoundaryConditions::interp_boundaries` likewise operate on departures. Raw branches at all these call sites retain the old calls and arithmetic. Derived diagnostic ghost interpolation is unchanged; `U_*` is defined for the full **evolved** state.
+
+`extrapolation_order=1` selects `BoundaryConditions::fill_extrapolating_cell` at the physical outer boundary. It does not select the Chombo coarse–fine patcher or its RK time interpolation.
+
+### X2: static background and short evolution
+
+The [raw](t12-rhs-raw.csv) and [relative](t12-rhs-relative.csv) full-RHS probes use the fixed three-level [parameter pair](params-t12-static-raw.txt) (the relative partner differs only in the transfer selector). They compare every evolved RHS component in valid cells within three cells of each fine-level interface with the **same cells** evaluated from the file-set uniform state at that fine spacing, including its discrete connection. The maximum over all 28 components is:
+
+| Fine level | Adjacent cells | Raw max RHS difference | Relative max RHS difference |
+|---:|---:|---:|---:|
+| 1 | 750 | 1.263264e-3 | 9.965336e-15 |
+| 2 | 942 | 4.281190e-3 | 4.529536e-14 |
+
+Both two-coarse-step runs exited 0 at `t=0.0713859584`. [Valid-cell comparison](t12-evolution-comparison.csv) gives the raw-minus-relative differences at those interfaces: at t=0, lapse, K and chi agree exactly, while connection `Gamma1` differs by at most `7.83e-5 / 1.43e-4` on levels 1/2 because the raw initializer computes it from interpolated ghosts. At step 2, lapse differences reach `8.17e-7 / 9.49e-7`, and K differences reach `3.19e-5 / 6.44e-5`. This is a short evolution comparison, not a stationary solution claim; the full reference RHS itself is nonzero on a finite grid.
+
+### X3: pulse crossing with subcycling
+
+The test multiplies the initial lapse by `1 + 1e-4 exp(-((x−2.3)^2+y^2)/0.35^2)`. Lapse is a gauge variable, so the physical initial metric, extrinsic curvature and matter constraints are unchanged. The extra parameter defaults to zero. Three base grids (`N1=256,384,512`, `N2=N1/2`) share `L=36.54961070210609` and **one** refinement jump. The narrow fine-level forced radius is 2, with measured positive x edges `3.391, 3.022, 2.838`; wide coverage uses radius 5 and edges `6.817, 6.829, 6.264`. `dt_multiplier=0.175` and `60/90/120` coarse steps give the common `t=1.49910512645`, with 2 fine substeps per coarse step. [The generator](run_t12_pulse.py) writes the exact inputs; [the analyzer](analyze_t12_pulse.py) reads valid fine cells from checkpoints.
+
+The incoming mask is `1.5≤x≤2.5`, `0≤y≤0.7`, inside every narrow finest level. At t=0, narrow and wide values match exactly there for all four measured fields. At the final time, [narrow-minus-wide errors](t12-pulse-errors.csv) are:
+
+| Transfer | N | Lapse RMS | K RMS | Gamma1 RMS | chi RMS |
+|---|---:|---:|---:|---:|---:|
+| raw | 256 | 2.293e-7 | 2.660e-5 | 8.955e-6 | 7.109e-6 |
+| raw | 384 | 2.518e-7 | 1.788e-5 | 8.131e-6 | 6.195e-6 |
+| raw | 512 | 1.762e-7 | 1.312e-6 | 2.168e-5 | 4.266e-6 |
+| relative | 256 | 4.445e-9 | 9.873e-8 | 3.685e-8 | 1.652e-8 |
+| relative | 384 | 6.847e-9 | 8.727e-8 | 3.967e-8 | 1.900e-8 |
+| relative | 512 | 3.581e-9 | 3.993e-8 | 1.018e-7 | 1.680e-8 |
+
+Orders `log(E_coarse/E_fine)/log(N_fine/N_coarse)` for the `256→384` and `384→512` pairs are: raw lapse `−0.231, 1.242`, K `0.980, 9.080`, Gamma1 `0.238, −3.408`, chi `0.339, 1.297`; relative lapse `−1.065, 2.253`, K `0.304, 2.718`, Gamma1 `−0.182, −3.275`, chi `−0.346, 0.429`. These are **interface-error field orders**, not continuum-solution orders. They are not monotone across all fields; relative transfer removes the stationary transfer error but does not repair the interpolation order of departures. In a separate wide `N=256` relative run without the pulse, the pulse-minus-background lapse signal in `3.5≤x≤4.0`, beyond the narrow edge, grows from `3.48e-10` at t=0 to `2.86e-7` at the final time ([crossing values](t12-pulse-crossing.csv)).
+
+### X4: controls, cost and claim boundary
+
+[Raw hashes](t12-raw-controls.csv) against the archived 34f2ef0 controls match `168/168` evolved component-level rows at step 4: trumpet reference `84/84`, echo-B `28/28`, EMSCTT `28/28`, legacy data `28/28`. Explicit raw reference-stationary runs match the 117fb8f archived standard and relative-lapse controls `84/84` each. The [relative split-restart control](t12-relative-restart-hashes.csv) matches `84/84` at step 4, including checkpointed ghosts. These controls use the same compiler, Chombo and HDF5 libraries as T11. A three-step relative run with `regrid_interval=1 1` exited 0 in 5.35 s and logged repeated reference-cache rebuilds on levels 1 and 2; its initial and final box layouts were identical, so this checks the regrid call path but not a changed-layout transfer.
+
+The final 12 two-level pulse programs all exited 0; [wall times and peak RSS](t12-pulse-cost.csv) range from 8.698 to 114.481 s and sum to 570.49 s. The largest process peak was **561,414,144 bytes** on the `N=512` relative-wide stage. The four-step exact-path `N=512` wide pilot took 5.73 s, projecting about 106 s for 120 steps; its raw completion took 105.738 s. `memory_pressure -Q` showed 64% free before this bundle and at least 40% free in sampled large stages, so the process stayed below half of 24 GiB and left more than one fifth free. The earlier three-level pulse pilot is superseded by this required two-level test. Including that pilot, all local compute remained under the approximately 40-minute budget. The short RHS pilots took 1.913/2.385 s (raw/relative); the relative continuous, split-first and restarted four-step checks took 3.161/2.353/1.557 s. The final six raw controls took 0.313, 0.192, 2.674, 0.304, 5.719 and 5.701 s. The final incremental source build, `CHOMBO_HOME=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib make -C Examples/EMS all DIM=2 -j4`, exited 0 in **9.78 s**. Every local program was under two minutes.
+
+The [cluster discriminator pair](../../Examples/EMS/params-t12-ref-M64-raw.txt) (`params-t12-ref-M64-relative.txt` is its partner) copies the exp-0012 reference M/64 two-refinement hierarchy and 10 M target, with the old finest edge near 6.2 `r_h`. Only the transfer selector differs between the pair; both explicitly use the standard lapse form. They are staged inputs, not launched cluster results. This T12 result does not identify the exp-0012 incoming front as a unique coarse–fine mechanism, establish uniform convergence for the pulse, validate MPI runtime, or combine a transfer change with the relative lapse in the first E discriminator.

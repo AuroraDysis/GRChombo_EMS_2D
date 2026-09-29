@@ -51,6 +51,12 @@ class EMSBH2DLevel : public GRAMRLevel
     void eval_reference_rhs(GRLevelData &a_soln, GRLevelData &a_rhs,
                             const CouplingFunction &coupling_function);
     void rebuild_reference();
+    bool relativeTransfer() const override
+    {
+        return m_p.reference_transfer == "relative";
+    }
+    void rebuildTransferReference() override;
+    void write_transfer_rhs_probe();
     void impose_reference_shift(GRLevelData &state);
     void check_reference_floors(const GRLevelData &state) const;
     void write_reference_diagnostics() const;

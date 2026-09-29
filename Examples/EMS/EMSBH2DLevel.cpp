@@ -182,10 +182,33 @@ void EMSBH2DLevel::initialData()
     {
         rebuild_reference();
         impose_reference_shift(m_state_new);
+        if (relativeTransfer())
+        {
+            rebuildTransferReference();
+            for (DataIterator dit = m_grids.dataIterator(); dit.ok(); ++dit)
+                m_state_new[dit].copy((*m_transfer_reference)[dit]);
+        }
     }
     else if (m_p.ems_data_format != "emsks2")
         BoxLoops::loop(my_gauge_conditions,
                        m_state_new, m_state_new, EXCLUDE_GHOST_CELLS);
+
+    if (m_p.reference_transfer_pulse_amplitude != 0.)
+        for (DataIterator dit = m_grids.dataIterator(); dit.ok(); ++dit)
+            for (BoxIterator bit(m_state_new[dit].box()); bit.ok(); ++bit)
+            {
+                const IntVect iv = bit();
+                const double x = (iv[0] + .5) * m_dx -
+                                 m_p.emsbh_params.star_centre[0] -
+                                 m_p.reference_transfer_pulse_x;
+                const double y = (iv[1] + .5) * m_dx;
+                const double w = m_p.reference_transfer_pulse_width;
+                m_state_new[dit](iv, c_lapse) *=
+                    1. + m_p.reference_transfer_pulse_amplitude *
+                             std::exp(-(x * x + y * y) / (w * w));
+            }
+    if (!m_p.reference_transfer_probe_path.empty())
+        write_transfer_rhs_probe();
 }
 
 // Things to do before a plot level - need to calculate the Weyl scalars

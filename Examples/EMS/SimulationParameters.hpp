@@ -45,6 +45,14 @@ public:
         pp.load("reference_f", reference_f, std::string("harmonic"));
         pp.load("reference_lapse_form", reference_lapse_form,
                 std::string("standard"));
+        pp.load("reference_transfer", reference_transfer, std::string("raw"));
+        pp.load("reference_transfer_probe_path", reference_transfer_probe_path,
+                std::string());
+        pp.load("reference_transfer_pulse_amplitude",
+                reference_transfer_pulse_amplitude, 0.0);
+        pp.load("reference_transfer_pulse_x", reference_transfer_pulse_x, 0.0);
+        pp.load("reference_transfer_pulse_width", reference_transfer_pulse_width,
+                1.0);
         pp.load("reference_onepluslog_n", reference_onepluslog_n, 2.0);
         pp.load("reference_diagnostics_path", reference_diagnostics_path,
                 std::string());
@@ -179,6 +187,18 @@ public:
         if (reference_lapse_form != "standard" &&
             reference_lapse_form != "relative")
             MayDay::Error("reference_lapse_form must be standard or relative");
+        if (reference_transfer != "raw" && reference_transfer != "relative")
+            MayDay::Error("reference_transfer must be raw or relative");
+        if (reference_transfer == "relative" &&
+            gauge_type != "reference_stationary")
+            MayDay::Error("relative reference_transfer requires reference_stationary");
+        if (!reference_transfer_probe_path.empty() &&
+            gauge_type != "reference_stationary")
+            MayDay::Error("reference transfer RHS probe requires reference_stationary");
+        if (reference_transfer_pulse_amplitude != 0. &&
+            (gauge_type != "reference_stationary" ||
+             !(reference_transfer_pulse_width > 0.)))
+            MayDay::Error("reference transfer lapse pulse requires reference_stationary and positive width");
         if (!(reference_onepluslog_n > 0.))
             MayDay::Error("reference_onepluslog_n must be positive");
         if (reference_diagnostics_interval < 0. || reference_radial_interval < 0.)
@@ -222,8 +242,10 @@ public:
     // EMS BH stuff
     EMSBH_params_t emsbh_params;
     std::string ems_data_format;
-    std::string gauge_type, reference_f, reference_lapse_form,
-        reference_diagnostics_path;
+    std::string gauge_type, reference_f, reference_lapse_form, reference_transfer,
+        reference_transfer_probe_path, reference_diagnostics_path;
+    double reference_transfer_pulse_amplitude, reference_transfer_pulse_x,
+        reference_transfer_pulse_width;
     double reference_onepluslog_n;
     double reference_diagnostics_interval, reference_radial_interval;
     double reference_wide_interval, reference_wide_radius;
