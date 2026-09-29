@@ -13,6 +13,7 @@ class ReferenceStationaryGauge
     struct params_t : MovingPunctureGauge::params_t
     {
         const FArrayBox *reference = nullptr;
+        const FArrayBox *relative_lapse = nullptr;
         double mass = 1.;
         double onepluslog_n = 2.;
         bool onepluslog = false;
@@ -49,6 +50,25 @@ class ReferenceStationaryGauge
             (vars.K - reference(iv, K_star) - 2 * vars.Theta) -
             reference(iv, q_star) * vars.lapse -
             vars.lapse / m_params.mass * std::log(vars.lapse / alpha_ref);
+    }
+
+    bool relative_lapse() const { return m_params.relative_lapse != nullptr; }
+
+    template <class data_t, template <typename> class vars_t, class deriv_t>
+    void set_relative_lapse_rhs(vars_t<data_t> &rhs,
+                                const vars_t<data_t> &vars,
+                                const IntVect &iv, const deriv_t &deriv,
+                                double sigma) const
+    {
+        const auto terms = deriv.scalar_advection_dissipation(
+            *m_params.relative_lapse, iv, vars.shift,
+            sigma * reference(iv, taper));
+        const double u = (*m_params.relative_lapse)(iv, 0);
+        const double k = vars.K - reference(iv, K_star) - 2 * vars.Theta;
+        rhs.lapse = vars.lapse *
+            (terms.first + terms.second -
+             (m_params.onepluslog ? m_params.onepluslog_n : vars.lapse) * k -
+             u / m_params.mass);
     }
 
   private:

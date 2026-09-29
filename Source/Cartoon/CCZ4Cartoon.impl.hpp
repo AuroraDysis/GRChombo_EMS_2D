@@ -152,6 +152,9 @@ void CCZ4Cartoon<gauge_t, deriv_t, coupling_t>::compute(Cell<data_t> current_cel
         this->m_deriv.add_dissipation(
             rhs, current_cell,
             this->m_sigma * this->m_gauge.reference(iv, gauge_t::taper));
+        if (this->m_gauge.relative_lapse())
+            this->m_gauge.set_relative_lapse_rhs(
+                rhs, vars, iv, this->m_deriv, this->m_sigma);
         FOR(i) { rhs.shift[i] = 0.; rhs.B[i] = 0.; }
     }
     else

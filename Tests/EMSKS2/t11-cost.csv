@@ -1,0 +1,5 @@
+stage,wall_seconds,exit,notes
+E-init-pilot,169.75,0,max_steps=0
+E-standard-2steps,412.55,0,dt=0.125; final RH found
+E-relative-1step-pilot,223.13,0,new RHS exercised; final RH found
+E-relative-2steps,312.89,0,dt=0.125; final RH found

@@ -126,6 +126,7 @@ void EMSBH2DLevel::write_reference_diagnostics() const
     constexpr int radial_bins = 60;
     std::array<Radial, radial_bins> radial{};
     double barrier_max = -std::numeric_limits<double>::infinity();
+    double barrier_collar_max = -std::numeric_limits<double>::infinity();
     int barrier_count = 0, nonfinite = 0;
     double min_lapse_margin = std::numeric_limits<double>::infinity();
     double min_chi_margin = min_lapse_margin;
@@ -147,17 +148,27 @@ void EMSBH2DLevel::write_reference_diagnostics() const
                                      state(iv, c_chi) / m_p.min_chi);
             for (int v = 0; v < NUM_VARS; ++v)
                 nonfinite += !std::isfinite(state(iv, v));
-            if (std::abs(rho - .95 * rh) <= m_dx)
+            if ((rho >= .90 * rh && rho <= .98 * rh) ||
+                std::abs(rho - .95 * rh) <= m_dx)
             {
                 const double nx = x / rho, ny = y / rho;
-                const double hr = nx * nx * state(iv, c_h11) +
-                    2 * nx * ny * state(iv, c_h12) + ny * ny * state(iv, c_h22);
+                const double h11 = state(iv, c_h11);
+                const double h12 = state(iv, c_h12);
+                const double h22 = state(iv, c_h22);
+                const double det = h11 * h22 - h12 * h12;
+                const double hnn_inverse =
+                    (h22 * nx * nx - 2 * h12 * nx * ny + h11 * ny * ny) / det;
                 const double beta = nx * state(iv, c_shift1) +
                                     ny * state(iv, c_shift2);
                 const double speed = -beta + state(iv, c_lapse) *
-                    std::sqrt(state(iv, c_chi) / hr);
-                barrier_max = std::max(barrier_max, speed);
-                ++barrier_count;
+                    std::sqrt(state(iv, c_chi) * hnn_inverse);
+                if (rho >= .90 * rh && rho <= .98 * rh)
+                    barrier_collar_max = std::max(barrier_collar_max, speed);
+                if (std::abs(rho - .95 * rh) <= m_dx)
+                {
+                    barrier_max = std::max(barrier_max, speed);
+                    ++barrier_count;
+                }
             }
             if (rho >= ra / 2 && rho <= 3 * rh && rho - 4 * m_dx >= ra / 2)
             {
@@ -201,7 +212,7 @@ void EMSBH2DLevel::write_reference_diagnostics() const
     }
 #ifdef CH_MPI
     std::array<double, 4 * 3 + radial_bins * 8> sums{}, sums_global{};
-    std::array<double, 4 * 2 + radial_bins * 8 + 1> maxima{}, maxima_global{};
+    std::array<double, 4 * 2 + radial_bins * 8 + 2> maxima{}, maxima_global{};
     std::array<double, 2> minima{min_lapse_margin, min_chi_margin}, minima_global{};
     std::array<int, 4 + radial_bins + 2> counts{}, counts_global{};
     for (int m = 0; m < 4; ++m)
@@ -222,7 +233,8 @@ void EMSBH2DLevel::write_reference_diagnostics() const
         }
         counts[4 + bin] = radial[bin].count;
     }
-    maxima.back() = barrier_max;
+    maxima[maxima.size() - 2] = barrier_max;
+    maxima.back() = barrier_collar_max;
     counts[4 + radial_bins] = barrier_count;
     counts[5 + radial_bins] = nonfinite;
     MPI_Allreduce(sums.data(), sums_global.data(), sums.size(), MPI_DOUBLE,
@@ -252,7 +264,8 @@ void EMSBH2DLevel::write_reference_diagnostics() const
         }
         radial[bin].count = counts_global[4 + bin];
     }
-    barrier_max = maxima_global.back();
+    barrier_max = maxima_global[maxima.size() - 2];
+    barrier_collar_max = maxima_global.back();
     barrier_count = counts_global[4 + radial_bins];
     nonfinite = counts_global[5 + radial_bins];
     min_lapse_margin = minima_global[0];
@@ -265,7 +278,7 @@ void EMSBH2DLevel::write_reference_diagnostics() const
             first ? std::ios::trunc : std::ios::app);
         if (!out) MayDay::Error("cannot write reference diagnostics");
         if (first)
-            out << "time,time_over_M,level,mask,count,H_L2,M_L2,GaussE_L2,max_alpha_drift,max_rate,barrier_cplus_max,barrier_samples,min_lapse_margin,min_chi_margin,nonfinite,floor_count\n";
+            out << "time,time_over_M,level,mask,count,H_L2,M_L2,GaussE_L2,max_alpha_drift,max_rate,barrier_cplus_max,barrier_samples,min_lapse_margin,min_chi_margin,nonfinite,floor_count,barrier_cplus_collar_max,barrier_margin\n";
         const char *names[] = {"join", "KS_collar", "exterior", "far"};
         out << std::setprecision(17);
         for (int m = 0; m < 4; ++m)
@@ -278,7 +291,8 @@ void EMSBH2DLevel::write_reference_diagnostics() const
                 << std::sqrt(d.GE2 / d.count) << ',' << d.alpha_drift << ','
                 << d.rate << ',' << barrier_max << ',' << barrier_count << ','
                 << min_lapse_margin << ',' << min_chi_margin << ','
-                << nonfinite << ",0\n";
+                << nonfinite << ",0," << barrier_collar_max << ','
+                << std::max(barrier_max, barrier_collar_max) << '\n';
         }
     }
     if (!write_radial) return;
@@ -439,6 +453,19 @@ void EMSBH2DLevel::eval_reference_rhs(GRLevelData &a_soln,
         SetValue zero_diagnostics(0.0, Interval(c_Xi + 1, NUM_VARS - 1));
         for (DataIterator dit = m_grids.dataIterator(); dit.ok(); ++dit)
         {
+            // u is temporary patch data, including ghosts; lapse remains evolved.
+            std::unique_ptr<FArrayBox> relative_lapse;
+            if (m_p.reference_lapse_form == "relative")
+            {
+                relative_lapse = std::make_unique<FArrayBox>(a_soln[dit].box(), 1);
+                for (BoxIterator bit(a_soln[dit].box()); bit.ok(); ++bit)
+                {
+                    const IntVect iv = bit();
+                    (*relative_lapse)(iv, 0) = std::log(
+                        a_soln[dit](iv, c_lapse) /
+                        (*m_reference)[dit](iv, ReferenceStationaryGauge::alpha_star));
+                }
+            }
             CCZ4_params_t<ReferenceStationaryGauge::params_t> params;
             static_cast<CCZ4_base_params_t &>(params) =
                 static_cast<const CCZ4_base_params_t &>(m_p.ccz4_params);
@@ -446,6 +473,7 @@ void EMSBH2DLevel::eval_reference_rhs(GRLevelData &a_soln,
             static_cast<MovingPunctureGauge::params_t &>(gauge) =
                 static_cast<const MovingPunctureGauge::params_t &>(m_p.ccz4_params);
             gauge.reference = &(*m_reference)[dit];
+            gauge.relative_lapse = relative_lapse.get();
             gauge.mass = m_p.emsbh_params.bh_mass;
             gauge.onepluslog = m_p.reference_f == "onepluslog";
             gauge.onepluslog_n = m_p.reference_onepluslog_n;

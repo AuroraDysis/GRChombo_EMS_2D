@@ -43,6 +43,8 @@ public:
         pp.load("ems_data_format", ems_data_format, std::string("legacy_dat"));
         pp.load("gauge_type", gauge_type, std::string("experimental"));
         pp.load("reference_f", reference_f, std::string("harmonic"));
+        pp.load("reference_lapse_form", reference_lapse_form,
+                std::string("standard"));
         pp.load("reference_onepluslog_n", reference_onepluslog_n, 2.0);
         pp.load("reference_diagnostics_path", reference_diagnostics_path,
                 std::string());
@@ -174,6 +176,9 @@ public:
             MayDay::Error("reference_stationary requires emsks2");
         if (reference_f != "harmonic" && reference_f != "onepluslog")
             MayDay::Error("reference_f must be harmonic or onepluslog");
+        if (reference_lapse_form != "standard" &&
+            reference_lapse_form != "relative")
+            MayDay::Error("reference_lapse_form must be standard or relative");
         if (!(reference_onepluslog_n > 0.))
             MayDay::Error("reference_onepluslog_n must be positive");
         if (reference_diagnostics_interval < 0. || reference_radial_interval < 0.)
@@ -217,7 +222,8 @@ public:
     // EMS BH stuff
     EMSBH_params_t emsbh_params;
     std::string ems_data_format;
-    std::string gauge_type, reference_f, reference_diagnostics_path;
+    std::string gauge_type, reference_f, reference_lapse_form,
+        reference_diagnostics_path;
     double reference_onepluslog_n;
     double reference_diagnostics_interval, reference_radial_interval;
     double reference_wide_interval, reference_wide_radius;

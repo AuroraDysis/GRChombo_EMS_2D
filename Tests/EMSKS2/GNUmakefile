@@ -1,4 +1,4 @@
-ebase := EMSKS2FixtureTest EMSKS2GridConvergence EMSKS2Regression EMSKS2RHSConvergence
+ebase := EMSKS2FixtureTest EMSKS2GridConvergence EMSKS2Regression EMSKS2RHSConvergence EMSKS2RelativeLapse
 LibNames := BoxTools
 include $(CHOMBO_HOME)/mk/Make.test
 CPPFLAGS += -I../../Examples/EMS -I../../Source/utils -I../../Source/simd \

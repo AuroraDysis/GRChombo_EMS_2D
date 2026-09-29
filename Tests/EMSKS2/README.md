@@ -507,3 +507,47 @@ The restored serial build passed in 9.20 s. G4a versus 34f2ef0 matched **168/168
 [`cluster2-runs.csv`](cluster2-runs.csv) records 1,799.79 s of measured local wall time, including the build and superseded B pilots, within the approximately 30-minute aggregate limit. Each run was below 10 minutes. Before and during large dispatches, `memory_pressure -Q` showed at least 32% system memory free; peak process-tree RSS could not be read in this sandbox, so the half-RAM process bound is not independently verified. B M/1024 was not initialized locally under the remaining aggregate budget. No MPI runtime or production HPC job was run.
 
 The staged 100 M runs are **not cleared** by these pilots. They have not established a stable single echo hole, long-time area/charge drift, a clean exterior, or the source of the exp-0012 incoming front. No gauge, taper, floor, blend, CCZ4, matter, or RHFinder source equation was changed.
+
+## T11: reference-relative lapse and corrected barrier (2026-09-29)
+
+**Pre-registered outcome: READY for the requested short discriminator, not for a 6 M or production evolution claim.** `reference_lapse_form=standard` is the default. `relative` stores (u=\log(\alpha/\alpha_*)\) in a one-component temporary `FArrayBox` per patch, including state ghosts; lapse remains the evolved field. The fourth-order advection and KO kernels evaluate this array with the prescribed shift and taper. The lapse RHS is replaced after generic physical-field dissipation, so raw-lapse KO is absent only in `relative`. The onepluslog choice retains its existing (n\alpha k\) lapse term. No CCZ4, matter, shift, damping, taper, floor, or RHFinder equation changed.
+
+The standalone [manufactured-field results](t11-relative-lapse-results.csv), [pair orders](t11-relative-lapse-orders.csv), and [unperturbed standard residual](t11-standard-tau.csv) use B.ks2 and (u_m=A\exp[-((\rho^2-r_h^2)/(0.9r_h^2))^2](1+0.2x/r_h)\). The same state has nonzero (K-K_*=0.03 A\exp(-z^2)\) and (\Theta=0.01 A\exp(-z^2)\). The test evaluates the production relative-lapse gauge method with KO excluded and compares it with the continuum RHS using analytic (\partial_i u_m\). The following are errors at M/1024 and orders from M/720 to M/1024; all 24 pair orders across M/384, M/512, M/720, and M/1024 exceed 3.5 (minimum L2 3.670, L∞ 3.749).
+
+| A | Mask | L2 error | L∞ error | L2 order | L∞ order |
+|---:|---|---:|---:|---:|---:|
+| 1e-3 | join | 3.006e-14 | 2.019e-13 | 4.047 | 3.984 |
+| 1e-3 | KS collar | 1.751e-13 | 3.340e-13 | 4.030 | 4.012 |
+| 1e-3 | exterior | 2.283e-13 | 8.094e-13 | 3.989 | 3.993 |
+| 1e-3 | far | 5.065e-15 | 3.484e-14 | 3.854 | 3.750 |
+| 1e-1 | join | 3.309e-12 | 2.258e-11 | 4.047 | 3.984 |
+| 1e-1 | KS collar | 1.939e-11 | 3.760e-11 | 4.030 | 4.013 |
+| 1e-1 | exterior | 2.373e-11 | 8.666e-11 | 3.990 | 3.992 |
+| 1e-1 | far | 5.065e-13 | 3.485e-12 | 3.854 | 3.749 |
+
+The standard-form reference residual is (\tau_h^\alpha=(D_{\beta,h}\alpha_*+Q_h\alpha_*)/\alpha_*-q_*\), with sigma 1 and the existing taper. These are L2 / L∞ by mask:
+
+| M/h | join | KS collar | exterior | far |
+|---:|---|---|---|---|
+| 512 | 0.49181 / 2.85508 | 0.04453 / 0.17915 | 1.299e-10 / 6.795e-10 | 7.515e-12 / 1.480e-11 |
+| 720 | 0.23470 / 1.58060 | 0.01785 / 0.11628 | 2.844e-11 / 1.548e-10 | 1.843e-12 / 3.603e-12 |
+| 1024 | 0.08870 / 0.66074 | 0.002075 / 0.02324 | 6.159e-12 / 3.429e-11 | 4.394e-13 / 9.996e-13 |
+
+The summary CSV retains its original columns and appends `barrier_cplus_collar_max` and `barrier_margin`. The existing `barrier_cplus_max` now uses the inverse conformal metric on the 0.95 r_h shell; the new collar maximum samples 0.90–0.98 r_h, and the margin is the maximum of both. The existing MPI maximum reduction includes both speeds. The E initial shell had 382 angular cell samples and (c_+^{\max}=-0.001535875\); the collar and margin were (-0.000875836\). Across both two-step runs every margin was finite and negative, with maximum (-0.000875325\); `nonfinite=0` in every summary row. MPI runtime was not tested.
+
+The [two discriminator inputs](../../Examples/EMS/) copy the exp-0013 E case, changing only `dt_multiplier=0.125`, `stop_time=6M`, and the new lapse-form selector; the RHFinder expansion threshold stays 1e-7. Local copies set `max_steps=2` and `checkpoint_interval=2`. Both exited 0 with final RHFinder mode `found`. [Full diagnostic rows](t11-discriminator.csv) and [costs](t11-cost.csv) are saved. At the last common summary time (t/M=0.020114\):
+
+| Mask | Standard max lapse drift | Relative max lapse drift | Standard max rate | Relative max rate |
+|---|---:|---:|---:|---:|
+| join | 0.078170 | 0.010430 | 12.3612 | 11.7113 |
+| KS collar | 0.019815 | 0.004118 | 5.67677 | 5.19051 |
+| exterior | 6.423e-5 | 3.003e-5 | 0.089225 | 0.082524 |
+| far | 4.983e-12 | 6.044e-13 | 1.97638e-8 | 1.97626e-8 |
+
+The exact-hierarchy standard initialization pilot took 169.75 s; the relative one-step pilot took 223.13 s, projecting about 276 s for two steps before extra checkpoint and diagnostic overhead. The complete standard and relative two-step programs took 412.55 s and 312.89 s. Each stayed below ten minutes; these four E stages total 1118.32 s (18.64 min), and all other local builds and controls were short. Observed system free memory stayed at or above 32% in the sampled checks; process-tree peak RSS was unavailable in this sandbox, so the half-RAM bound is not independently measured.
+
+The [old-path hashes](t11-g4-hashes.csv) are bit-identical **168/168 at step 4** versus 34f2ef0 (also 168/168 at step 0). Explicit `standard` versus a fresh 9203bf9 build is [84/84 at step 4](t11-reference-standard-hashes.csv), also 84/84 at step 0. Omitted selector versus explicit `standard` is [84/84](t11-default-standard-hashes.csv). `relative` continuous versus step-2 restart is [84/84 at step 4](t11-relative-restart-hashes.csv); summary, radial, and wide CSVs are byte-identical. These controls use the B four-step hierarchy and the same compiler and libraries.
+
+Reproduce with `CHOMBO_HOME=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib`, `OMP_NUM_THREADS=1`, `make -C Examples/EMS all DIM=2 -j4`, and `make -C Tests/EMSKS2 all DIM=2 -j4`. Run `Tests/EMSKS2/EMSKS2RelativeLapse2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex N /Users/auroradysis/Workspace/EMS/artifacts/echo-evolution/t3/B.ks2` for N=384,512,720,1024. The final build took 10.97 s for EMS and 2.77 s for the test update; the four final R2 executions took about 0.18, 0.30, 0.58, and 1.18 s of measured stage time. The old-path control bundle took 6.69 s, the 9203bf9 baseline build 11.20 s, and the short B controls 2–5 s each.
+
+The result establishes fourth-order consistency of the relative operator and short serial behavior on these masks and inputs. It does not establish a 6 M E trajectory, MPI runtime behavior, long-time horizon tracking, or a source for the earlier incoming front. AMR transfer repair remains outside T11.
