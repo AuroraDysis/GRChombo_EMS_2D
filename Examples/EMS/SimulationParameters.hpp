@@ -43,8 +43,6 @@ public:
         pp.load("ems_data_format", ems_data_format, std::string("legacy_dat"));
         pp.load("t2_guard_initial_data_after_t0", t2_guard_initial_data_after_t0,
                 false);
-        pp.load("t3_restrict_initial_covered", t3_restrict_initial_covered,
-                false);
         pp.load("ems_ctt_data_path", emsbh_params.ctt_data_path, std::string());
         pp.load("gridpoints", emsbh_params.gridpoints, 40000);
         pp.load("star_centre", emsbh_params.star_centre,
@@ -193,7 +191,6 @@ public:
     EMSBH_params_t emsbh_params;
     std::string ems_data_format;
     bool t2_guard_initial_data_after_t0;
-    bool t3_restrict_initial_covered;
     CouplingFunction::params_t coupling_function_params;
     bool EMS_not_RN;
 

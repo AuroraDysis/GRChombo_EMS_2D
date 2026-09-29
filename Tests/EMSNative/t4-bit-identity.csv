@@ -1,0 +1,11 @@
+member,test,datasets,attributes,status,left,right,differences
+E,default_t0,8,26,PASS,/private/tmp/ems-t4/control/E-baseline/plt/EMS_Plot_000000.2d.hdf5,/private/tmp/ems-t4/control/E-off/plt/EMS_Plot_000000.2d.hdf5,
+E,default_registered_t0,52,158,PASS,/private/tmp/ems-t4/control/E-registered-t0-baseline/plt/EMS_Plot_000000.2d.hdf5,/private/tmp/ems-t4/control/E-registered-t0-off/plt/EMS_Plot_000000.2d.hdf5,
+E,default_two_steps,8,26,PASS,/private/tmp/ems-t4/control/E-baseline/chk/EMS_000002.2d.hdf5,/private/tmp/ems-t4/control/E-off/chk/EMS_000002.2d.hdf5,
+E,default_regrid_two_steps,8,26,PASS,/private/tmp/ems-t4/control/E-regrid-baseline/chk/EMS_000002.2d.hdf5,/private/tmp/ems-t4/control/E-regrid-off/chk/EMS_000002.2d.hdf5,
+E,point_restart_four_steps,8,26,PASS,/private/tmp/ems-t4/control/E-point-full/chk/EMS_000004.2d.hdf5,/private/tmp/ems-t4/control/E-point-restart/chk/EMS_000004.2d.hdf5,
+ref,default_t0,8,26,PASS,/private/tmp/ems-t4/control/ref-baseline/plt/EMS_Plot_000000.2d.hdf5,/private/tmp/ems-t4/control/ref-off/plt/EMS_Plot_000000.2d.hdf5,
+ref,default_registered_t0,28,86,PASS,/private/tmp/ems-t4/control/ref-registered-t0-baseline/plt/EMS_Plot_000000.2d.hdf5,/private/tmp/ems-t4/control/ref-registered-t0-off/plt/EMS_Plot_000000.2d.hdf5,
+ref,default_two_steps,8,26,PASS,/private/tmp/ems-t4/control/ref-baseline/chk/EMS_000002.2d.hdf5,/private/tmp/ems-t4/control/ref-off/chk/EMS_000002.2d.hdf5,
+ref,default_regrid_two_steps,8,26,PASS,/private/tmp/ems-t4/control/ref-regrid-baseline/chk/EMS_000002.2d.hdf5,/private/tmp/ems-t4/control/ref-regrid-off/chk/EMS_000002.2d.hdf5,
+ref,point_restart_four_steps,8,26,PASS,/private/tmp/ems-t4/control/ref-point-full/chk/EMS_000004.2d.hdf5,/private/tmp/ems-t4/control/ref-point-restart/chk/EMS_000004.2d.hdf5,

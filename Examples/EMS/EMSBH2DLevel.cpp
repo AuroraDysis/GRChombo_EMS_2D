@@ -86,7 +86,7 @@ void EMSBH2DLevel::specificAdvance()
 void EMSBH2DLevel::initialData()
 {
     CH_TIME("EMSBH2DLevel::initialData");
-    if (m_p.t2_guard_initial_data_after_t0 &&
+    if ((m_p.amr_transfer == "point" || m_p.t2_guard_initial_data_after_t0) &&
         (m_time > 0. || m_gr_amr.get_current_time() > 0.))
         MayDay::Error("initialData called after t=0 (incomplete restart hierarchy)");
     if (m_verbosity)
@@ -167,19 +167,6 @@ void EMSBH2DLevel::initialData()
     auto my_gauge_conditions = ExperimentalGauge(m_p.ccz4_params);
     BoxLoops::loop(my_gauge_conditions,
                       m_state_new, m_state_new, EXCLUDE_GHOST_CELLS);
-}
-
-void EMSBH2DLevel::postInitialize()
-{
-    m_restart_time = 0.;
-    if (m_p.t3_restrict_initial_covered && m_finer_level_ptr != nullptr)
-    {
-        auto *finer = dynamic_cast<EMSBH2DLevel *>(m_finer_level_ptr);
-        CH_assert(finer != nullptr);
-        finer->m_coarse_average.averageToCoarse(m_state_new,
-                                                finer->m_state_new);
-        fillBdyGhosts(m_state_new);
-    }
 }
 
 

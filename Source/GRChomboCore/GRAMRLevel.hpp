@@ -18,6 +18,7 @@
 #include "BoundaryConditions.hpp"
 #include "GRAMR.hpp"
 #include "GRLevelData.hpp"
+#include "PointAMRTransfer.hpp"
 #include "InterpSource.hpp"
 #include "SimulationParameters.hpp"
 #include "UserVariables.hpp" // need NUM_VARS
@@ -243,6 +244,8 @@ class GRAMRLevel : public AMRLevel, public InterpSource<>
                                //!< fine levels of ghosts for diagnostics
     FourthOrderFineInterp m_fine_interp; //!< executes the interpolation from
                                          //!< coarse to fine when regridding
+    PointAMRTransfer m_point_transfer;
+    int m_rk_stage = 0;
 
     DisjointBoxLayout m_grids;       //!< Holds grid setup (the layout of boxes)
     DisjointBoxLayout m_grown_grids; //!< Holds grown grid setup (for

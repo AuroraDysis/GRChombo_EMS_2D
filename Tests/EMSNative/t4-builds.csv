@@ -1,0 +1,4 @@
+role,binary,sha256,build_log,source_base
+baseline,/private/tmp/ems-t4/baseline.ex,146bc287e95e85d82ed1fff7034384add83263107acdec2fc60ed116d0f69bf8,/private/tmp/ems-t4/build-baseline/run.log,cd92a4b
+point,/private/tmp/ems-t4/point.ex,f0a64c526e3d160175d894f5f7c4d84b4189809dd833f4f17ff2cb7087cd1bb7,/private/tmp/ems-t4/build-point/run.log,cd92a4b + uncommitted T4; see manifest
+operator_wave,/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/PointTransferTest2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex,6d5b02e65ac574086a08e37c677a6c54f3c489ca2f8d32b16312940740c721f6,/private/tmp/ems-t4/build-test/run.log,cd92a4b + uncommitted T4; see manifest

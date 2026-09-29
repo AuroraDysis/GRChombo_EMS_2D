@@ -137,11 +137,14 @@ Real GRAMRLevel::advance()
         t_coarser_old = t_coarser_new - coarser_gr_amr_level_ptr->m_dt;
     }
 
+    m_rk_stage = 0;
     if (m_finer_level_ptr != nullptr)
     {
         GRAMRLevel *fine_gr_amr_level_ptr = gr_cast(m_finer_level_ptr);
         RK4LevelAdvance(m_state_new, m_state_old,
-                        fine_gr_amr_level_ptr->m_patcher.getTimeInterpolator(),
+                        m_p.amr_transfer == "point"
+                            ? fine_gr_amr_level_ptr->m_point_transfer.time
+                            : fine_gr_amr_level_ptr->m_patcher.getTimeInterpolator(),
                         *coarser_data_old, t_coarser_old, *coarser_data_new,
                         t_coarser_new, *coarser_fr, *finer_fr, m_time, m_dt,
                         *this);
@@ -170,8 +173,15 @@ void GRAMRLevel::postTimeStep()
     if (m_finer_level_ptr != nullptr)
     {
         GRAMRLevel *finer_gr_amr_level_ptr = gr_cast(m_finer_level_ptr);
-        finer_gr_amr_level_ptr->m_coarse_average.averageToCoarse(
-            m_state_new, finer_gr_amr_level_ptr->m_state_new);
+        if (m_p.amr_transfer == "point")
+        {
+            finer_gr_amr_level_ptr->fillAllEvolutionGhosts();
+            finer_gr_amr_level_ptr->m_point_transfer.restrict_to_coarse(
+                m_state_new, finer_gr_amr_level_ptr->m_state_new);
+        }
+        else
+            finer_gr_amr_level_ptr->m_coarse_average.averageToCoarse(
+                m_state_new, finer_gr_amr_level_ptr->m_state_new);
         // Synchronise times to avoid floating point errors for finer levels
         finer_gr_amr_level_ptr->time(m_time);
     }
@@ -310,9 +320,15 @@ void GRAMRLevel::regrid(const Vector<Box> &a_new_grids)
     if (m_coarser_level_ptr != nullptr)
     {
         GRAMRLevel *coarser_gr_amr_level_ptr = gr_cast(m_coarser_level_ptr);
-        m_patcher.define(level_domain, coarser_gr_amr_level_ptr->m_grids,
-                         NUM_VARS, coarser_gr_amr_level_ptr->problemDomain(),
-                         m_ref_ratio, m_num_ghosts);
+        if (m_p.amr_transfer == "point")
+            m_point_transfer.define(level_domain, coarser_gr_amr_level_ptr->m_grids,
+                                    m_problem_domain, m_ref_ratio, m_num_ghosts,
+                                    coarser_gr_amr_level_ptr->m_dx, m_p.center,
+                                    m_p.boundary_params);
+        else
+            m_patcher.define(level_domain, coarser_gr_amr_level_ptr->m_grids,
+                             NUM_VARS, coarser_gr_amr_level_ptr->problemDomain(),
+                             m_ref_ratio, m_num_ghosts);
         if (NUM_DIAGNOSTIC_VARS > 0)
         {
             m_patcher_diagnostics.define(
@@ -322,11 +338,17 @@ void GRAMRLevel::regrid(const Vector<Box> &a_new_grids)
         }
 
         // interpolate from coarser level
-        m_fine_interp.interpToFine(m_state_new,
-                                   coarser_gr_amr_level_ptr->m_state_new);
+        if (m_p.amr_transfer == "point")
+            m_point_transfer.fill(m_state_new,
+                                  coarser_gr_amr_level_ptr->m_state_new,
+                                  Interval(0, NUM_VARS - 1), true);
+        else
+            m_fine_interp.interpToFine(m_state_new,
+                                       coarser_gr_amr_level_ptr->m_state_new);
 
         // also interpolate fine boundary cells
-        if (m_p.boundary_params.nonperiodic_boundaries_exist)
+        if (m_p.amr_transfer != "point" &&
+            m_p.boundary_params.nonperiodic_boundaries_exist)
         {
             m_boundaries.interp_boundaries(
                 m_state_new, coarser_gr_amr_level_ptr->m_state_new, Side::Hi);
@@ -399,9 +421,15 @@ void GRAMRLevel::initialGrid(const Vector<Box> &a_new_grids)
     if (m_coarser_level_ptr != nullptr)
     {
         GRAMRLevel *coarser_gr_amr_level_ptr = gr_cast(m_coarser_level_ptr);
-        m_patcher.define(level_domain, coarser_gr_amr_level_ptr->m_grids,
-                         NUM_VARS, coarser_gr_amr_level_ptr->problemDomain(),
-                         m_ref_ratio, m_num_ghosts);
+        if (m_p.amr_transfer == "point")
+            m_point_transfer.define(level_domain, coarser_gr_amr_level_ptr->m_grids,
+                                    m_problem_domain, m_ref_ratio, m_num_ghosts,
+                                    coarser_gr_amr_level_ptr->m_dx, m_p.center,
+                                    m_p.boundary_params);
+        else
+            m_patcher.define(level_domain, coarser_gr_amr_level_ptr->m_grids,
+                             NUM_VARS, coarser_gr_amr_level_ptr->problemDomain(),
+                             m_ref_ratio, m_num_ghosts);
         if (NUM_DIAGNOSTIC_VARS > 0)
         {
             m_patcher_diagnostics.define(
@@ -704,9 +732,15 @@ void GRAMRLevel::readCheckpointLevel(HDF5Handle &a_handle)
     if (m_coarser_level_ptr != nullptr)
     {
         GRAMRLevel *coarser_gr_amr_level_ptr = gr_cast(m_coarser_level_ptr);
-        m_patcher.define(level_domain, coarser_gr_amr_level_ptr->m_grids,
-                         NUM_VARS, coarser_gr_amr_level_ptr->problemDomain(),
-                         m_ref_ratio, m_num_ghosts);
+        if (m_p.amr_transfer == "point")
+            m_point_transfer.define(level_domain, coarser_gr_amr_level_ptr->m_grids,
+                                    m_problem_domain, m_ref_ratio, m_num_ghosts,
+                                    coarser_gr_amr_level_ptr->m_dx, m_p.center,
+                                    m_p.boundary_params);
+        else
+            m_patcher.define(level_domain, coarser_gr_amr_level_ptr->m_grids,
+                             NUM_VARS, coarser_gr_amr_level_ptr->problemDomain(),
+                             m_ref_ratio, m_num_ghosts);
         if (NUM_DIAGNOSTIC_VARS > 0)
         {
             m_patcher_diagnostics.define(
@@ -937,8 +971,21 @@ void GRAMRLevel::evalRHS(GRLevelData &rhs, GRLevelData &soln,
         }
 
         // Interpolate ghost cells from next coarser level in space and time
-        m_patcher.fillInterp(soln, alpha, 0, 0, NUM_VARS);
+        if (m_p.amr_transfer == "point")
+        {
+            // Chombo's intermediate expects the fine-step START, not the
+            // stage time. Stages 1 and 2 are distinct at identical time.
+            const double theta = std::round(
+                2. * (m_time - oldCrseTime) / (newCrseTime - oldCrseTime)) / 2.;
+            m_point_transfer.fill_stage(soln, theta, m_rk_stage);
+            soln.exchange(m_exchange_copier);
+        }
+        else
+            m_patcher.fillInterp(soln, alpha, 0, 0, NUM_VARS);
     }
+
+    if (m_p.amr_transfer == "point")
+        ++m_rk_stage;
 
     fillBdyGhosts(soln);
 
@@ -1037,8 +1084,12 @@ void GRAMRLevel::fillAllEvolutionGhosts(const Interval &a_comps)
     if (m_coarser_level_ptr != nullptr)
     {
         GRAMRLevel *coarser_gr_amr_level_ptr = gr_cast(m_coarser_level_ptr);
-        m_patcher.fillInterp(m_state_new, coarser_gr_amr_level_ptr->m_state_new,
-                             a_comps.begin(), a_comps.begin(), a_comps.size());
+        if (m_p.amr_transfer == "point")
+            m_point_transfer.fill(m_state_new,
+                                  coarser_gr_amr_level_ptr->m_state_new, a_comps);
+        else
+            m_patcher.fillInterp(m_state_new, coarser_gr_amr_level_ptr->m_state_new,
+                                 a_comps.begin(), a_comps.begin(), a_comps.size());
     }
     fillIntralevelGhosts(a_comps);
 }
@@ -1053,9 +1104,14 @@ void GRAMRLevel::fillAllDiagnosticsGhosts(const Interval &a_comps)
     if (m_coarser_level_ptr != nullptr)
     {
         GRAMRLevel *coarser_gr_amr_level_ptr = gr_cast(m_coarser_level_ptr);
-        m_patcher_diagnostics.fillInterp(
-            m_state_diagnostics, coarser_gr_amr_level_ptr->m_state_diagnostics,
-            a_comps.begin(), a_comps.begin(), a_comps.size());
+        if (m_p.amr_transfer == "point")
+            m_point_transfer.fill(m_state_diagnostics,
+                                  coarser_gr_amr_level_ptr->m_state_diagnostics,
+                                  a_comps, false, VariableType::diagnostic);
+        else
+            m_patcher_diagnostics.fillInterp(
+                m_state_diagnostics, coarser_gr_amr_level_ptr->m_state_diagnostics,
+                a_comps.begin(), a_comps.begin(), a_comps.size());
     }
     m_state_diagnostics.exchange(a_comps, m_exchange_copier);
 

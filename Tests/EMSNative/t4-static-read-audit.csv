@@ -1,0 +1,12 @@
+path,line,role,after_t0,basis
+Examples/EMS/EMSBH2DLevel.cpp,89,if ((m_p.amr_transfer,aborts before any reader,source inspection; complete two-level restart uses absent source path
+Examples/EMS/EMSBH2DLevel.cpp,98,EMSBH_trumpet_read emdbh,initialData only,source inspection; complete two-level restart uses absent source path
+Examples/EMS/EMSBH2DLevel.cpp,100,compute_1d_solution(),initialData only,source inspection; complete two-level restart uses absent source path
+Examples/EMS/EMSBH2DLevel.cpp,114,compute_1d_solution(),initialData only,source inspection; complete two-level restart uses absent source path
+Examples/EMS/EMSBH2DLevel.cpp,147,compute_1d_solution(),initialData only,source inspection; complete two-level restart uses absent source path
+Source/GRChomboCore/PointAMRTransfer.hpp,101,void fill(,current arrays only,source inspection; complete two-level restart uses absent source path
+Source/GRChomboCore/PointAMRTransfer.hpp,113,void fill_stage(,current arrays only,source inspection; complete two-level restart uses absent source path
+Source/GRChomboCore/PointAMRTransfer.hpp,123,void restrict_to_coarse(,current arrays only,source inspection; complete two-level restart uses absent source path
+Source/GRChomboCore/GRAMRLevel.cpp,99,Real GRAMRLevel::advance(),current arrays only,source inspection; complete two-level restart uses absent source path
+Source/GRChomboCore/GRAMRLevel.cpp,168,void GRAMRLevel::postTimeStep(),current arrays only,source inspection; complete two-level restart uses absent source path
+Source/GRChomboCore/GRAMRLevel.cpp,292,void GRAMRLevel::regrid(,current arrays only,source inspection; complete two-level restart uses absent source path

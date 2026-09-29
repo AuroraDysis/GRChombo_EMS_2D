@@ -18,7 +18,7 @@ RH = {"E": 0.0060286129392158804, "B": 0.0014189019194714414,
       "R": 0.63593977642346233}
 
 
-def measure(name, path, member, center, classes):
+def measure(name, path, member, center, classes, extra_masks=None):
     if member == "R":
         masks = {"horizon": (RH[member], 2 * RH[member]),
                  "near_hole": (0.1, 2.), "ring": (2., 4.), "far": (4., 8.)}
@@ -32,6 +32,7 @@ def measure(name, path, member, center, classes):
             "far": (4., 8.),
             "outer_boundary_shell": (0., 1.),
         }
+    masks.update(extra_masks or {})
     acc = defaultdict(lambda: [0., 0., 0, 0.])
     with h5py.File(path) as f:
         component_names = [f.attrs[f"component_{i}"].decode() for i in range(int(f.attrs["num_components"]))]

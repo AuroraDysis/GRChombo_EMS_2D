@@ -1,0 +1,4 @@
+scale,valid_numeric_values,valid_bit_differences,same_level_ghost_values,same_level_ghost_bit_differences
+low,3906560,0,427728,0
+mid,8494080,0,2159136,0
+high,18677760,0,3874752,0

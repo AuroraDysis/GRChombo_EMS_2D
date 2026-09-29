@@ -1,0 +1,61 @@
+{
+  "status": "PROVED",
+  "scope": "algebraic identities and offline probe \u2014 production physics and floor saturation not certified",
+  "assumptions": "P8: eight distinct consecutive nodes, degree<=7 per coordinate; log inversion: 0<u<1, nu>0, x=log(R/ell), R,ell>0",
+  "witness": "sum(w_k*(first+k)^p)-q^p=0 for p=0..7; f(x+delta)-f(x)+delta=0",
+  "simplifier_roles": "deterministic expand CLOSE; no general simplifier",
+  "excluded_loci": "coincident stencil nodes; u=0,1; nu=0",
+  "moments": [
+    {
+      "q": "-1/4",
+      "first": -4,
+      "weights": [
+        "-429/262144",
+        "4095/262144",
+        "-19305/262144",
+        "75075/262144",
+        "225225/262144",
+        "-27027/262144",
+        "5005/262144",
+        "-495/262144"
+      ],
+      "residuals": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "q": "1/4",
+      "first": -3,
+      "weights": [
+        "-495/262144",
+        "5005/262144",
+        "-27027/262144",
+        "225225/262144",
+        "75075/262144",
+        "-19305/262144",
+        "4095/262144",
+        "-429/262144"
+      ],
+      "residuals": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "log_coordinate_residual": 0,
+  "float64_tensor_polynomial_max_error": 2.168404344971009e-19,
+  "float64_log_crosscheck_error": 5.2635586871892785e-18
+}

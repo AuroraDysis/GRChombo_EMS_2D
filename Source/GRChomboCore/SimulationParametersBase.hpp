@@ -56,6 +56,9 @@ class SimulationParametersBase : public ChomboParameters
 
         // Dissipation
         pp.load("sigma", sigma, 0.1);
+        pp.load("amr_transfer", amr_transfer, std::string("legacy"));
+        if (amr_transfer != "legacy" && amr_transfer != "point")
+            MayDay::Error("amr_transfer must be legacy or point");
 
         // Nan Check and min chi and lapse values
         pp.load("nan_check", nan_check, true);
@@ -625,6 +628,7 @@ class SimulationParametersBase : public ChomboParameters
 
   public:
     double sigma; // Kreiss-Oliger dissipation parameter
+    std::string amr_transfer; // One opt-in switch for space AND RK-stage transfer.
 
     bool nan_check;
 

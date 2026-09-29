@@ -1,0 +1,97 @@
+{
+  "status": "PROVED",
+  "scope": "algebraic identity \u2014 production physics not certified",
+  "assumptions": "ratio=2; point values; six distinct consecutive real nodes; degree<=5 per coordinate; autonomous smooth vector ODE formal jet; theta real; equality modulo H^4",
+  "excluded_loci": "none; stencil denominators are nonzero integer differences",
+  "simplifier_roles": "no general simplifier; deterministic expand and coefficient extraction CLOSE; asserts exit nonzero",
+  "branches": "none",
+  "moments": [
+    {
+      "name": "prolong_left",
+      "weights": [
+        "63/8192",
+        "-495/8192",
+        "1155/4096",
+        "3465/4096",
+        "-693/8192",
+        "77/8192"
+      ],
+      "residuals": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "prolong_right",
+      "weights": [
+        "77/8192",
+        "-693/8192",
+        "3465/4096",
+        "1155/4096",
+        "-495/8192",
+        "63/8192"
+      ],
+      "residuals": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "restriction",
+      "weights": [
+        "3/256",
+        "-25/256",
+        "75/128",
+        "75/128",
+        "-25/256",
+        "3/256"
+      ],
+      "residuals": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "stage_coefficients": [
+    [
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  ],
+  "legacy_stage_residuals": [
+    "-D*H**3/128",
+    "D*H**3/64"
+  ]
+}
