@@ -1,3 +1,0 @@
-file,rows,numeric_values,largest_absolute_difference,row,column,left,right,byte_identical
-rh_surf_0.dat,2,38,4.307487560937413e-10,2,7,-1.90937413e-17,4.30748737e-10,False
-rh_f0.dat,2,202,0,,,,,True

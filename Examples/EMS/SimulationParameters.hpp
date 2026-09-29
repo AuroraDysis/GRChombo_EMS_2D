@@ -41,26 +41,6 @@ public:
         // EMSBH initial data params
         pp.load("ems_data_path", emsbh_params.data_path); // the default should fail
         pp.load("ems_data_format", ems_data_format, std::string("legacy_dat"));
-        pp.load("gauge_type", gauge_type, std::string("experimental"));
-        pp.load("reference_f", reference_f, std::string("harmonic"));
-        pp.load("reference_lapse_form", reference_lapse_form,
-                std::string("standard"));
-        pp.load("reference_transfer", reference_transfer, std::string("raw"));
-        pp.load("reference_transfer_probe_path", reference_transfer_probe_path,
-                std::string());
-        pp.load("reference_transfer_pulse_amplitude",
-                reference_transfer_pulse_amplitude, 0.0);
-        pp.load("reference_transfer_pulse_x", reference_transfer_pulse_x, 0.0);
-        pp.load("reference_transfer_pulse_width", reference_transfer_pulse_width,
-                1.0);
-        pp.load("reference_onepluslog_n", reference_onepluslog_n, 2.0);
-        pp.load("reference_diagnostics_path", reference_diagnostics_path,
-                std::string());
-        pp.load("reference_diagnostics_interval", reference_diagnostics_interval,
-                0.0);
-        pp.load("reference_radial_interval", reference_radial_interval, 0.0);
-        pp.load("reference_wide_interval", reference_wide_interval, 0.0);
-        pp.load("reference_wide_radius", reference_wide_radius, 30.0);
         pp.load("ems_ctt_data_path", emsbh_params.ctt_data_path, std::string());
         pp.load("gridpoints", emsbh_params.gridpoints, 40000);
         pp.load("star_centre", emsbh_params.star_centre,
@@ -177,44 +157,10 @@ public:
 
     void check_params()
     {
-        if (gauge_type != "experimental" && gauge_type != "reference_stationary")
-            MayDay::Error("unknown gauge_type");
-        if (gauge_type == "reference_stationary" &&
-            ems_data_format != "emsks2")
-            MayDay::Error("reference_stationary requires emsks2");
-        if (reference_f != "harmonic" && reference_f != "onepluslog")
-            MayDay::Error("reference_f must be harmonic or onepluslog");
-        if (reference_lapse_form != "standard" &&
-            reference_lapse_form != "relative")
-            MayDay::Error("reference_lapse_form must be standard or relative");
-        if (reference_transfer != "raw" && reference_transfer != "relative")
-            MayDay::Error("reference_transfer must be raw or relative");
-        if (reference_transfer == "relative" &&
-            gauge_type != "reference_stationary")
-            MayDay::Error("relative reference_transfer requires reference_stationary");
-        if (!reference_transfer_probe_path.empty() &&
-            gauge_type != "reference_stationary")
-            MayDay::Error("reference transfer RHS probe requires reference_stationary");
-        if (reference_transfer_pulse_amplitude != 0. &&
-            (gauge_type != "reference_stationary" ||
-             !(reference_transfer_pulse_width > 0.)))
-            MayDay::Error("reference transfer lapse pulse requires reference_stationary and positive width");
-        if (!(reference_onepluslog_n > 0.))
-            MayDay::Error("reference_onepluslog_n must be positive");
-        if (reference_diagnostics_interval < 0. || reference_radial_interval < 0.)
-            MayDay::Error("reference diagnostic intervals must be nonnegative");
-        if (reference_wide_interval < 0. ||
-            (reference_wide_interval > 0. && reference_wide_radius <= 1.))
-            MayDay::Error("invalid wide reference profile interval or radius");
-        if (ems_data_format != "legacy_dat" && ems_data_format != "emstrumpet1" &&
-            ems_data_format != "emsks2")
-            MayDay::Error("unknown ems_data_format; use legacy_dat, emstrumpet1 or emsks2");
+        if (ems_data_format != "legacy_dat" && ems_data_format != "emstrumpet1")
+            MayDay::Error("unknown ems_data_format; use legacy_dat or emstrumpet1");
         if (ems_data_format == "emstrumpet1" && !EMS_not_RN)
             MayDay::Error("emstrumpet1 requires ems_not_rn = true");
-        if (ems_data_format == "emsks2" &&
-            (!EMS_not_RN || emsbh_params.binary || emsbh_params.boosted ||
-             emsbh_params.rapidity != 0))
-            MayDay::Error("emsks2 requires ems_not_rn and one unboosted object");
         if (!emsbh_params.ctt_data_path.empty() &&
             (ems_data_format != "emstrumpet1" || !emsbh_params.binary))
             MayDay::Error("ems_ctt_data_path requires an emstrumpet1 binary");
@@ -242,13 +188,6 @@ public:
     // EMS BH stuff
     EMSBH_params_t emsbh_params;
     std::string ems_data_format;
-    std::string gauge_type, reference_f, reference_lapse_form, reference_transfer,
-        reference_transfer_probe_path, reference_diagnostics_path;
-    double reference_transfer_pulse_amplitude, reference_transfer_pulse_x,
-        reference_transfer_pulse_width;
-    double reference_onepluslog_n;
-    double reference_diagnostics_interval, reference_radial_interval;
-    double reference_wide_interval, reference_wide_radius;
     CouplingFunction::params_t coupling_function_params;
     bool EMS_not_RN;
 

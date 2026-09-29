@@ -7,12 +7,10 @@
 #define FOURTHORDERDERIVATIVES_HPP_
 
 #include "Cell.hpp"
-#include "FArrayBox.H"
 #include "DimensionDefinitions.hpp"
 #include "Tensor.hpp"
 #include "UserVariables.hpp"
 #include <array>
-#include <utility>
 
 class FourthOrderDerivatives
 {
@@ -362,28 +360,6 @@ class FourthOrderDerivatives
                 weight_far * in[idx + 2 * stride] +
                 weight_vfar * in[idx + 3 * stride]) *
                m_one_over_dx;
-    }
-
-    // Evaluate the same advection and KO kernels on a one-component patch field.
-    std::pair<double, double> scalar_advection_dissipation(
-        const FArrayBox &field, const IntVect &iv,
-        const Tensor<1, double> &shift, double factor) const
-    {
-        double advection = 0., dissipation = 0.;
-        FOR(dir)
-        {
-            double values[7];
-            for (int j = -3; j <= 3; ++j)
-            {
-                IntVect at = iv;
-                at[dir] += j;
-                values[j + 3] = field(at, 0);
-            }
-            advection += advection_term(values, 3, shift[dir], 1,
-                                         simd_compare_gt(shift[dir], 0.));
-            dissipation += factor * dissipation_term<double>(values, 3, 1);
-        }
-        return {advection, dissipation};
     }
 
     template <class data_t, template <typename> class vars_t>

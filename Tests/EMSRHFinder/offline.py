@@ -149,7 +149,7 @@ def main():
     ap.add_argument('history', type=Path, help='directory containing original rh_surf/rh_f histories')
     ap.add_argument('output', type=Path, help='new output directory (never reused)')
     ap.add_argument('checkpoints', type=Path, nargs='+')
-    ap.add_argument('--ems-root', type=Path, help='unchanged EMS.jl tree, required for mass projection')
+    ap.add_argument('--ems-root', type=Path, required=True, help='unchanged EMS.jl tree with test environment and production family table')
     ap.add_argument('--executable', type=Path)
     ap.add_argument('--points', type=int, nargs='+', default=[96,192])
     ap.add_argument('--threads', type=int, default=8)
@@ -158,29 +158,13 @@ def main():
     ap.add_argument('--expected-mass', type=float, default=float('nan'), help='isolated control only')
     ap.add_argument('--expected-area', type=float, default=float('nan'))
     ap.add_argument('--expected-charge', type=float, default=float('nan'))
-    ap.add_argument('--sphere-seed', action='store_true', help='seed one puncture-centred sphere at KS2 r_h')
-    ap.add_argument('--skip-mass', action='store_true', help='measure surfaces without the horizon-family projection')
     args = ap.parse_args()
     if (not 10 <= args.cap <= 1800 or args.threads < 1 or len(set(args.points)) != len(args.points)
             or any(n < 8 or n > 4096 for n in args.points)):
         ap.error('invalid cap, threads or angular counts')
-    if args.sphere_seed and not args.skip_mass:
-        ap.error('--sphere-seed requires --skip-mass')
-    if not args.skip_mass and args.ems_root is None:
-        ap.error('--ems-root is required unless --skip-mass is set')
-    args.ems_root = args.ems_root.resolve() if args.ems_root else HERE
+    args.ems_root = args.ems_root.resolve()
     args.output = args.output.resolve()
     p = params(args.parameters)
-    if args.sphere_seed:
-        ks2 = Path(p['ems_data_path'])
-        metadata = {k: v for line in ks2.read_text().splitlines() if line.startswith('# ') and '=' in line
-                    for k, v in [line[2:].split('=', 1)]}
-        radius = float(metadata['r_h'])
-        centre = float(p['star_centre'].split()[0])
-        p.update(RH_num_horizons='1', RH_initial_radii=format(radius, '.17g'),
-                 RH_initial_centre=format(centre, '.17g'), RH_num_points='96',
-                 RH_level='0', RH_time_step_freq='400', RH_chase_speeds='0.125',
-                 RH_start_times='0', RH_newton_crit='0')
     binaries = list(HERE.glob('EMSRHCheckpoint2d.*.ex'))
     if not args.executable and len(binaries) != 1:
         ap.error('supply --executable when there is not exactly one build')
@@ -192,7 +176,7 @@ def main():
     for cp in args.checkpoints:
         cp = cp.resolve()
         info = checkpoint_info(cp)
-        saved, skipped = ({}, {}) if args.sphere_seed else seeds(p, args.history, info['time'])
+        saved, skipped = seeds(p, args.history, info['time'])
         plans.append((cp, info, saved, skipped))
     print(json.dumps(dict(checkpoints=[dict(path=str(cp), **info, skipped=skipped) for cp, info, _, skipped in plans],
                           mpi_ranks=1, threads=args.threads, points=args.points, cap_per_case=args.cap,
@@ -203,16 +187,11 @@ def main():
         return
     args.output.mkdir(parents=True)
     failed = False
-    batch_start = time.monotonic()
     for number, (cp, info, saved, skipped) in enumerate(plans):
         output = args.output/f'{number:04d}-{cp.stem}'
         output.mkdir()
-        sources = [cp, args.parameters.resolve(), exe, HERE/'offline.py']
-        if args.sphere_seed:
-            sources.append(Path(p['ems_data_path']).resolve())
-        if not args.skip_mass:
-            sources += [HERE/'postprocess.py', HERE/'postprocess.jl',
-                        args.ems_root/'artifacts/horizon-family/production/alpha20-positive.hfamily']
+        sources = [cp, args.parameters.resolve(), exe, HERE/'offline.py', HERE/'postprocess.py', HERE/'postprocess.jl',
+                   args.ems_root/'artifacts/horizon-family/production/alpha20-positive.hfamily']
         sources += [args.history/f for i in saved for f in (f'rh_surf_{i}.dat', f'rh_f{i}.dat')]
         before = {str(s.resolve()):digest(s) for s in sources}
         runs, statuses = [], []
@@ -225,10 +204,6 @@ def main():
             q.update(restart_file=str(cp), checkpoint_interval=-1, plot_interval=-1,
                      offline_points=n, offline_seconds=args.cap-5, verbosity=0,
                      ignore_checkpoint_name_mismatch=0)
-            if args.sphere_seed:
-                q['offline_sphere_seed'] = '1'
-            if args.skip_mass:
-                q['offline_skip_mass'] = '1'
             (directory/'params.txt').write_text(''.join(f'{k} = {v}\n' for k,v in q.items()))
             for i, pair in saved.items():
                 for name, row in zip((f'rh_surf_{i}.dat', f'rh_f{i}.dat'), pair):
@@ -243,11 +218,7 @@ def main():
                     code = 124
             rss = resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss
             result = dict(N_theta=n, exit=code, seconds=time.monotonic()-start,
-                          peak_child_rss_bytes=int(rss*(1 if sys.platform == 'darwin' else 1024)),
-                          stage=f'checkpoint_{number}/N_{n}',
-                          elapsed_seconds=time.monotonic()-batch_start,
-                          items_done=number*len(args.points)+len(statuses)+1,
-                          items_total=len(plans)*len(args.points))
+                          peak_child_rss_bytes=int(rss*(1 if sys.platform == 'darwin' else 1024)))
             statuses.append(result)
             (output/'status.json').write_text(json.dumps(statuses, indent=2)+'\n')
             print(json.dumps(result), flush=True)
@@ -255,8 +226,7 @@ def main():
                 raise RuntimeError(f'checkpoint find failed: {directory}; exit {code}')
             failed |= code != 0
             runs.append(directory)
-        if not args.skip_mass:
-            collect(runs, p, saved, args, output)
+        collect(runs, p, saved, args, output)
         if before != {str(s.resolve()):digest(s) for s in sources}:
             raise RuntimeError('an input changed during the offline run')
         (output/'inputs.json').write_text(json.dumps(dict(info=info, skipped=skipped, sha256=before,

@@ -1,2 +1,0 @@
-case,init_pilot_wall_seconds,one_coarse_wall_seconds,twelve_coarse_wall_seconds,evolution_seconds,finest_steps,seconds_per_finest_step,seconds_per_M,projected_100M_M512_hours,projected_100M_M1024_hours,scaling_assumption
-B harmonic fixed AMR,39.71,57.17,227.059,182.3706,96,1.89969375,3890.5728,108.07146666666665,864.5717333333332,same physical boxes; 2D cell count x4 and steps per M x2

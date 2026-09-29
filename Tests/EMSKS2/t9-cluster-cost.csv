@@ -1,8 +1,0 @@
-case,target_M,weighted_cells,weighted_cell_ratio_basis,projected_evolution_wall_hours_32ranks,finder_serial_extrapolation_hours,basis
-B-M512,100,24876032,6.428420216988622,16.062372175178616,0.41520355555555555,actual B M/512 hierarchy; old cluster rate scaled by weighted cells
-B-M720,100,49193325.0,17.876885750521488,44.66808058054051,0.58388,projected hierarchy cells; M/720 is nearest admissible below M/724
-B-M1024,30,99504128,6.685380116959064,39.31738900584795,0.24912213333333336,projected hierarchy cells; measured old M/1024 cluster rate
-E-equivalent,10,12432384,0.49977359733256493,0.5846251412100009,0.030238173751705292,actual E hierarchy; B cluster rate scaled by weighted cells and code duration
-discriminator-old-edge,3,5442560,1.4064567345858692,0.10542729359618945,0.012456106666666668,"outer domain doubled, original refinement hierarchy projected"
-discriminator-outer-edge,3,24876032,6.428420216988622,0.4818711652553585,0.012456106666666668,same as B M/512 for 3 M
-reference-M64,10,14059520,2.8020408163265307,0.22812675204081634,0.04634613333333333,actual expanded reference hierarchy; old exp-0012 M/64 rate scaled by weighted cells

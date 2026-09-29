@@ -4,50 +4,6 @@
  */
 
 #include "GRAMRLevel.hpp"
-#include "BoxIterator.H"
-
-namespace
-{
-void relative_data(GRLevelData &out, const GRLevelData &state,
-                   const GRLevelData &reference)
-{
-    out.define(state.disjointBoxLayout(), state.nComp(), state.ghostVect());
-    for (DataIterator dit = state.dataIterator(); dit.ok(); ++dit)
-    {
-        out[dit].copy(state[dit]);
-        out[dit] -= reference[dit];
-    }
-}
-
-void restore_ghosts(GRLevelData &state, const GRLevelData &relative,
-                    const GRLevelData &reference)
-{
-    const auto &grids = state.disjointBoxLayout();
-    for (DataIterator dit = grids.dataIterator(); dit.ok(); ++dit)
-        for (BoxIterator bit(state[dit].box()); bit.ok(); ++bit)
-        {
-            const IntVect iv = bit();
-            if (!grids[dit].contains(iv))
-                for (int comp = 0; comp < state.nComp(); ++comp)
-                    state[dit](iv, comp) =
-                        reference[dit](iv, comp) + relative[dit](iv, comp);
-        }
-}
-
-struct RelativeTimeInterpolator
-{
-    TimeInterpolatorRK4 &time;
-    const GRLevelData &reference;
-    void setDt(Real dt) { time.setDt(dt); }
-    void saveInitialSoln(const GRLevelData &state)
-    {
-        GRLevelData relative;
-        relative_data(relative, state, reference);
-        time.saveInitialSoln(relative);
-    }
-    void saveRHS(const GRLevelData &rhs) { time.saveRHS(rhs); }
-};
-}
 
 GRAMRLevel::GRAMRLevel(GRAMR &gr_amr, const SimulationParameters &a_p,
                        int a_verbosity)
@@ -184,22 +140,11 @@ Real GRAMRLevel::advance()
     if (m_finer_level_ptr != nullptr)
     {
         GRAMRLevel *fine_gr_amr_level_ptr = gr_cast(m_finer_level_ptr);
-        if (fine_gr_amr_level_ptr->relativeTransfer() && m_transfer_reference)
-        {
-            RelativeTimeInterpolator interpolator{
-                fine_gr_amr_level_ptr->m_patcher.getTimeInterpolator(),
-                *m_transfer_reference};
-            RK4LevelAdvance(m_state_new, m_state_old, interpolator,
-                            *coarser_data_old, t_coarser_old, *coarser_data_new,
-                            t_coarser_new, *coarser_fr, *finer_fr, m_time, m_dt,
-                            *this);
-        }
-        else
-            RK4LevelAdvance(m_state_new, m_state_old,
-                            fine_gr_amr_level_ptr->m_patcher.getTimeInterpolator(),
-                            *coarser_data_old, t_coarser_old, *coarser_data_new,
-                            t_coarser_new, *coarser_fr, *finer_fr, m_time, m_dt,
-                            *this);
+        RK4LevelAdvance(m_state_new, m_state_old,
+                        fine_gr_amr_level_ptr->m_patcher.getTimeInterpolator(),
+                        *coarser_data_old, t_coarser_old, *coarser_data_new,
+                        t_coarser_new, *coarser_fr, *finer_fr, m_time, m_dt,
+                        *this);
     }
     else
     {
@@ -225,32 +170,8 @@ void GRAMRLevel::postTimeStep()
     if (m_finer_level_ptr != nullptr)
     {
         GRAMRLevel *finer_gr_amr_level_ptr = gr_cast(m_finer_level_ptr);
-        if (finer_gr_amr_level_ptr->relativeTransfer() &&
-            m_transfer_reference && finer_gr_amr_level_ptr->m_transfer_reference)
-        {
-            GRLevelData coarse_relative, fine_relative;
-            relative_data(coarse_relative, m_state_new, *m_transfer_reference);
-            relative_data(fine_relative, finer_gr_amr_level_ptr->m_state_new,
-                          *finer_gr_amr_level_ptr->m_transfer_reference);
-            finer_gr_amr_level_ptr->m_coarse_average.averageToCoarse(
-                coarse_relative, fine_relative);
-            for (DataIterator dit = m_grids.dataIterator(); dit.ok(); ++dit)
-                for (LayoutIterator lit = finer_gr_amr_level_ptr->m_grids.layoutIterator();
-                     lit.ok(); ++lit)
-                {
-                    Box covered(finer_gr_amr_level_ptr->m_grids[lit()]);
-                    covered.coarsen(m_ref_ratio);
-                    covered &= m_grids[dit];
-                    for (BoxIterator bit(covered); bit.ok(); ++bit)
-                        for (int comp = 0; comp < NUM_VARS; ++comp)
-                            m_state_new[dit](bit(), comp) =
-                                (*m_transfer_reference)[dit](bit(), comp) +
-                                coarse_relative[dit](bit(), comp);
-                }
-        }
-        else
-            finer_gr_amr_level_ptr->m_coarse_average.averageToCoarse(
-                m_state_new, finer_gr_amr_level_ptr->m_state_new);
+        finer_gr_amr_level_ptr->m_coarse_average.averageToCoarse(
+            m_state_new, finer_gr_amr_level_ptr->m_state_new);
         // Synchronise times to avoid floating point errors for finer levels
         finer_gr_amr_level_ptr->time(m_time);
     }
@@ -380,7 +301,6 @@ void GRAMRLevel::regrid(const Vector<Box> &a_new_grids)
     // reshape state with new grids
     IntVect iv_ghosts = m_num_ghosts * IntVect::Unit;
     m_state_new.define(level_domain, NUM_VARS, iv_ghosts);
-    if (relativeTransfer()) rebuildTransferReference();
 
     // maintain interlevel stuff
     defineExchangeCopier(level_domain);
@@ -402,51 +322,16 @@ void GRAMRLevel::regrid(const Vector<Box> &a_new_grids)
         }
 
         // interpolate from coarser level
-        if (relativeTransfer() && m_transfer_reference &&
-            coarser_gr_amr_level_ptr->m_transfer_reference)
-        {
-            GRLevelData coarse_relative, fine_relative;
-            relative_data(coarse_relative, coarser_gr_amr_level_ptr->m_state_new,
-                          *coarser_gr_amr_level_ptr->m_transfer_reference);
-            fine_relative.define(level_domain, NUM_VARS, iv_ghosts);
-            m_fine_interp.interpToFine(fine_relative, coarse_relative);
-            for (DataIterator dit = m_grids.dataIterator(); dit.ok(); ++dit)
-                for (BoxIterator bit(m_grids[dit]); bit.ok(); ++bit)
-                    for (int comp = 0; comp < NUM_VARS; ++comp)
-                        m_state_new[dit](bit(), comp) =
-                            (*m_transfer_reference)[dit](bit(), comp) +
-                            fine_relative[dit](bit(), comp);
-        }
-        else
-            m_fine_interp.interpToFine(m_state_new,
-                                       coarser_gr_amr_level_ptr->m_state_new);
+        m_fine_interp.interpToFine(m_state_new,
+                                   coarser_gr_amr_level_ptr->m_state_new);
 
         // also interpolate fine boundary cells
         if (m_p.boundary_params.nonperiodic_boundaries_exist)
         {
-            if (relativeTransfer() && m_transfer_reference &&
-                coarser_gr_amr_level_ptr->m_transfer_reference)
-            {
-                GRLevelData fine_relative, coarse_relative;
-                fine_relative.define(level_domain, NUM_VARS, iv_ghosts);
-                fine_relative.setVal(0.);
-                relative_data(coarse_relative,
-                              coarser_gr_amr_level_ptr->m_state_new,
-                              *coarser_gr_amr_level_ptr->m_transfer_reference);
-                m_boundaries.interp_boundaries(fine_relative, coarse_relative,
-                                              Side::Hi);
-                m_boundaries.interp_boundaries(fine_relative, coarse_relative,
-                                              Side::Lo);
-                restore_ghosts(m_state_new, fine_relative,
-                               *m_transfer_reference);
-            }
-            else
-            {
-                m_boundaries.interp_boundaries(
-                    m_state_new, coarser_gr_amr_level_ptr->m_state_new, Side::Hi);
-                m_boundaries.interp_boundaries(
-                    m_state_new, coarser_gr_amr_level_ptr->m_state_new, Side::Lo);
-            }
+            m_boundaries.interp_boundaries(
+                m_state_new, coarser_gr_amr_level_ptr->m_state_new, Side::Hi);
+            m_boundaries.interp_boundaries(
+                m_state_new, coarser_gr_amr_level_ptr->m_state_new, Side::Lo);
         }
     }
 
@@ -1052,15 +937,7 @@ void GRAMRLevel::evalRHS(GRLevelData &rhs, GRLevelData &soln,
         }
 
         // Interpolate ghost cells from next coarser level in space and time
-        if (relativeTransfer() && m_transfer_reference)
-        {
-            GRLevelData relative;
-            relative_data(relative, soln, *m_transfer_reference);
-            m_patcher.fillInterp(relative, alpha, 0, 0, NUM_VARS);
-            restore_ghosts(soln, relative, *m_transfer_reference);
-        }
-        else
-            m_patcher.fillInterp(soln, alpha, 0, 0, NUM_VARS);
+        m_patcher.fillInterp(soln, alpha, 0, 0, NUM_VARS);
     }
 
     fillBdyGhosts(soln);
@@ -1160,20 +1037,8 @@ void GRAMRLevel::fillAllEvolutionGhosts(const Interval &a_comps)
     if (m_coarser_level_ptr != nullptr)
     {
         GRAMRLevel *coarser_gr_amr_level_ptr = gr_cast(m_coarser_level_ptr);
-        if (relativeTransfer() && m_transfer_reference &&
-            coarser_gr_amr_level_ptr->m_transfer_reference)
-        {
-            GRLevelData fine_relative, coarse_relative;
-            relative_data(fine_relative, m_state_new, *m_transfer_reference);
-            relative_data(coarse_relative, coarser_gr_amr_level_ptr->m_state_new,
-                          *coarser_gr_amr_level_ptr->m_transfer_reference);
-            m_patcher.fillInterp(fine_relative, coarse_relative,
-                                 a_comps.begin(), a_comps.begin(), a_comps.size());
-            restore_ghosts(m_state_new, fine_relative, *m_transfer_reference);
-        }
-        else
-            m_patcher.fillInterp(m_state_new, coarser_gr_amr_level_ptr->m_state_new,
-                                 a_comps.begin(), a_comps.begin(), a_comps.size());
+        m_patcher.fillInterp(m_state_new, coarser_gr_amr_level_ptr->m_state_new,
+                             a_comps.begin(), a_comps.begin(), a_comps.size());
     }
     fillIntralevelGhosts(a_comps);
 }

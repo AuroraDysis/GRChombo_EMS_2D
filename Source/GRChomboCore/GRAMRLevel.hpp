@@ -23,7 +23,6 @@
 #include "UserVariables.hpp" // need NUM_VARS
 #include <fstream>
 #include <limits>
-#include <memory>
 #include <sys/time.h>
 
 // Chombo namespace
@@ -75,11 +74,9 @@ class GRAMRLevel : public AMRLevel, public InterpSource<>
     /// regrid
     virtual void regrid(const Vector<Box> &a_new_grids);
 
-  protected:
     /// things to do after regridding
     virtual void postRegrid(int a_base_level);
 
-  private:
     /// initialize grids
     virtual void initialGrid(const Vector<Box> &a_new_grids);
 
@@ -144,9 +141,6 @@ class GRAMRLevel : public AMRLevel, public InterpSource<>
 
     /// (Pure) virtual function for the initial data calculation
     virtual void initialData() = 0;
-
-    virtual bool relativeTransfer() const { return false; }
-    virtual void rebuildTransferReference() {}
 
     /// Computes which cells have insufficient resolution and should be tagged
     virtual void computeTaggingCriterion(FArrayBox &tagging_criterion,
@@ -229,7 +223,6 @@ class GRAMRLevel : public AMRLevel, public InterpSource<>
     GRLevelData m_state_old; //!< the solution at the old time
     GRLevelData m_state_new; //!< the solution at the new time
     GRLevelData m_state_diagnostics;
-    std::unique_ptr<GRLevelData> m_transfer_reference;
     Real m_dx; //!< grid spacing
     double m_restart_time;
 

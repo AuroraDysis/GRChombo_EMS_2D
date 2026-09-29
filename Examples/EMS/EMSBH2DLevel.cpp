@@ -2,7 +2,9 @@
  * Copyright 2012 The GRChombo collaboration.
  * Please refer to LICENSE in GRChombo's root directory.
  */
-#include <cmath>
+#include <fstream>
+#include <mutex>
+#include <memory>
 
 #include "EMSBH2DLevel.hpp"
 #include "EMSRadiationExtraction.hpp"
@@ -32,7 +34,6 @@
 // EMS includes
 #include "EMSBH_read.hpp"
 #include "EMSBH_trumpet_read.hpp"
-#include "EMSBH_ks2_read.hpp"
 #include "EMSCouplingFunction.hpp"
 #include "EMSCartoonGaussConstraints.hpp"
 // #include "FixSuperposition_K.hpp"
@@ -68,14 +69,10 @@
 
 void EMSBH2DLevel::specificAdvance()
 {
-    if (m_p.gauge_type == "reference_stationary")
-        check_reference_floors(m_state_new);
     // Enforce the trace free A_ij condition and positive chi and alpha
     BoxLoops::loop(
         make_compute_pack(TraceARemovalCartoon(), PositiveChiAndAlpha(m_p.min_chi, m_p.min_lapse)),
         m_state_new, m_state_new, INCLUDE_GHOST_CELLS);
-    if (m_p.gauge_type == "reference_stationary")
-        impose_reference_shift(m_state_new);
 
     // Check for nan's
     if (m_p.nan_check)
@@ -93,20 +90,7 @@ void EMSBH2DLevel::initialData()
         pout() << "EMSBH2DLevel::initialData " << m_level << endl;
 
     // Read initial data for RN or EMS
-    if (m_p.ems_data_format == "emsks2")
-    {
-        EMSBH_ks2_read emdbh(m_p.emsbh_params, m_p.coupling_function_params,
-                             m_dx, m_p.min_chi, m_p.min_lapse);
-        BoxLoops::loop(make_compute_pack(SetValue(0.0), emdbh), m_state_new,
-                       m_state_new, INCLUDE_GHOST_CELLS, disable_simd());
-        pout() << "EMSKS 2 level " << m_level << " floor activation counts: chi="
-               << emdbh.chi_floor_count() << " lapse="
-               << emdbh.lapse_floor_count() << endl;
-        fillAllGhosts();
-        BoxLoops::loop(GammaCartoonCalculator(m_dx), m_state_new, m_state_new,
-                       EXCLUDE_GHOST_CELLS, disable_simd());
-    }
-    else if (m_p.ems_data_format == "emstrumpet1")
+    if (m_p.ems_data_format == "emstrumpet1")
     {
         EMSBH_trumpet_read emdbh(m_p.emsbh_params, m_p.coupling_function_params,
                                  m_p.m_G_Newton, m_dx, m_verbosity);
@@ -178,38 +162,11 @@ void EMSBH2DLevel::initialData()
     // Exp/Int gauge ONLY! to initialise B^i
     // auto my_gauge_conditions = IntegratedMovingPunctureGauge(m_p.ccz4_params);
     auto my_gauge_conditions = ExperimentalGauge(m_p.ccz4_params);
-    if (m_p.gauge_type == "reference_stationary")
-    {
-        rebuild_reference();
-        impose_reference_shift(m_state_new);
-        if (relativeTransfer())
-        {
-            rebuildTransferReference();
-            for (DataIterator dit = m_grids.dataIterator(); dit.ok(); ++dit)
-                m_state_new[dit].copy((*m_transfer_reference)[dit]);
-        }
-    }
-    else if (m_p.ems_data_format != "emsks2")
-        BoxLoops::loop(my_gauge_conditions,
-                       m_state_new, m_state_new, EXCLUDE_GHOST_CELLS);
-
-    if (m_p.reference_transfer_pulse_amplitude != 0.)
-        for (DataIterator dit = m_grids.dataIterator(); dit.ok(); ++dit)
-            for (BoxIterator bit(m_state_new[dit].box()); bit.ok(); ++bit)
-            {
-                const IntVect iv = bit();
-                const double x = (iv[0] + .5) * m_dx -
-                                 m_p.emsbh_params.star_centre[0] -
-                                 m_p.reference_transfer_pulse_x;
-                const double y = (iv[1] + .5) * m_dx;
-                const double w = m_p.reference_transfer_pulse_width;
-                m_state_new[dit](iv, c_lapse) *=
-                    1. + m_p.reference_transfer_pulse_amplitude *
-                             std::exp(-(x * x + y * y) / (w * w));
-            }
-    if (!m_p.reference_transfer_probe_path.empty())
-        write_transfer_rhs_probe();
+    BoxLoops::loop(my_gauge_conditions,
+                      m_state_new, m_state_new, EXCLUDE_GHOST_CELLS);
 }
+
+
 
 // Things to do before a plot level - need to calculate the Weyl scalars
 void EMSBH2DLevel::prePlotLevel()
@@ -244,11 +201,6 @@ void EMSBH2DLevel::specificEvalRHS(GRLevelData &a_soln,
                                          GRLevelData &a_rhs,
                                          const double a_time)
 {
-    if (m_p.gauge_type == "reference_stationary")
-    {
-        impose_reference_shift(a_soln);
-        check_reference_floors(a_soln);
-    }
     ////////////////////////////////////////
     // Enforce positive chi and alpha and trace free A
     BoxLoops::loop(
@@ -259,12 +211,6 @@ void EMSBH2DLevel::specificEvalRHS(GRLevelData &a_soln,
     ///////////////////////////////////
     // Coupling Function
     CouplingFunction coupling_function(m_p.coupling_function_params);
-
-    if (m_p.gauge_type == "reference_stationary")
-    {
-        eval_reference_rhs(a_soln, a_rhs, coupling_function);
-        return;
-    }
 
 
     ////////////////////////////
@@ -354,11 +300,6 @@ void EMSBH2DLevel::specificPostTimeStep()
                        m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS);
     BoxLoops::loop(EMSCartoonGaussConstraints(m_dx, m_p.coupling_function_params),
                    m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS);
-    if (m_p.gauge_type == "reference_stationary")
-    {
-        write_reference_diagnostics();
-        if (m_level == 0) write_wide_reference_diagnostics();
-    }
     BoxLoops::loop(
             EMSCartoonLorentzScalars<CouplingFunction>(m_dx,
                                        m_p.mq_extraction_params.center,
