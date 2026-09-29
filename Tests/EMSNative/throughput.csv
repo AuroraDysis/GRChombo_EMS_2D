@@ -1,0 +1,3 @@
+run,coarse_steps,threads,updated_cells,wall_seconds,cell_updates_per_second,peak_rss_bytes,conditions
+E12-p192-diagnostic,1,4,177297152,739.6093107499764,239717.30672267723,463421440,fixed geometric AMR; plot and checkpoint at 0 and 1; includes initialization and I/O
+exp-0002-like-local,2,4,15161344,74.08154495898634,204657.50286922004,799309824,reference profile; dynamic AMR regrid_interval=1; no plot/checkpoint; includes initialization

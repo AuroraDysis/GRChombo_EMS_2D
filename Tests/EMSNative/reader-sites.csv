@@ -1,0 +1,171 @@
+file,line,scope,source_line
+Tests/EMSCTT/EMSCTTGridConvergence.cpp,7,standalone_test,"#include ""EMSBH_trumpet_read.hpp"""
+Tests/EMSCTT/EMSCTTGridConvergence.cpp,87,standalone_test,"EMSBH_trumpet_read reader(params, coupling, 1., dx, 0);"
+Tests/EMSTrumpet/EMSTrumpetGridConvergence.cpp,13,standalone_test,"#include ""EMSBH_trumpet_read.hpp"""
+Tests/EMSTrumpet/EMSTrumpetGridConvergence.cpp,107,standalone_test,EMSTrumpetSolution_read profile;
+Tests/EMSTrumpet/EMSTrumpetGridConvergence.cpp,124,standalone_test,"EMSBH_trumpet_read reader(params, coupling, 1.0, dx, 0);"
+Tests/EMSTrumpet/EMSTrumpetFixtureTest.cpp,6,standalone_test,"#include ""EMSBH_trumpet_read.hpp"""
+Tests/EMSTrumpet/EMSTrumpetFixtureTest.cpp,85,standalone_test,"const EMSBH_trumpet_read &a_reader,"
+Tests/EMSTrumpet/EMSTrumpetFixtureTest.cpp,94,standalone_test,"a_reader.m_1d_sol.get_chebyshev_value(j, a_values[0], d));"
+Tests/EMSTrumpet/EMSTrumpetFixtureTest.cpp,100,standalone_test,a_reader.m_1d_sol.compute_radial_vars(a_values[0]);
+Tests/EMSTrumpet/EMSTrumpetFixtureTest.cpp,156,standalone_test,const EMSBH_trumpet_read &a_reader)
+Tests/EMSTrumpet/EMSTrumpetFixtureTest.cpp,230,standalone_test,EMSTrumpetSolution_read profile;
+Tests/EMSTrumpet/EMSTrumpetFixtureTest.cpp,236,standalone_test,"EMSBH_trumpet_read reader(params, coupling, 1.0, 1.0, 0);"
+Tests/EMSTrumpet/EMSTrumpetFixtureTest.cpp,293,standalone_test,"if (reader.m_1d_sol.check_file(dir + ""/"" + malformed_file.first,"
+Examples/EMS/EMSBH2DLevel.cpp,36,production_initial_data,"#include ""EMSBH_trumpet_read.hpp"""
+Examples/EMS/EMSBH2DLevel.cpp,95,production_initial_data,"EMSBH_trumpet_read emdbh(m_p.emsbh_params, m_p.coupling_function_params,"
+Examples/EMS/EMSBH2DLevel.cpp,97,production_initial_data,emdbh.compute_1d_solution();
+Examples/EMS/EMSBH2DLevel.cpp,111,production_initial_data,emdbh.compute_1d_solution();
+Examples/EMS/EMSBH2DLevel.cpp,144,production_initial_data,emdbh.compute_1d_solution();
+Tests/EMSTrumpet/EMSTrumpetBinaryGridConvergence.cpp,13,standalone_test,"#include ""EMSBH_trumpet_read.hpp"""
+Tests/EMSTrumpet/EMSTrumpetBinaryGridConvergence.cpp,87,standalone_test,const EMSBH_trumpet_read &reader;
+Tests/EMSTrumpet/EMSTrumpetBinaryGridConvergence.cpp,136,standalone_test,"EMSBH_trumpet_read reader(params, coupling, 1.0, dx, 0);"
+Tests/EMSCTT/EMSCTTFixtureTest.cpp,1,standalone_test,"#include ""EMSBH_trumpet_read.hpp"""
+Tests/EMSCTT/EMSCTTFixtureTest.cpp,75,standalone_test,"const EMSTrumpetSolution_read &profile,"
+Tests/EMSCTT/EMSCTTFixtureTest.cpp,76,standalone_test,const EMSCTTSolution_read::binding_t &binding)
+Tests/EMSCTT/EMSCTTFixtureTest.cpp,114,standalone_test,EMSCTTSolution_read reader;
+Tests/EMSCTT/EMSCTTFixtureTest.cpp,200,standalone_test,"static void parity(const std::string &dir, const EMSBH_trumpet_read &reader)"
+Tests/EMSCTT/EMSCTTFixtureTest.cpp,331,standalone_test,"EMSBH_trumpet_read reader(params, coupling, 1., 1., 0);"
+Tests/EMSCTT/EMSCTTFixtureTest.cpp,333,standalone_test,const EMSCTTSolution_read::binding_t binding{
+Tests/EMSCTT/EMSCTTFixtureTest.cpp,337,standalone_test,reader.m_1d_sol.get_coupling_parameters()};
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.hpp,9,reader_implementation,"#include ""1D_SOL/EMSTrumpetSolution_read.hpp"""
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.hpp,10,reader_implementation,"#include ""1D_SOL/EMSCTTSolution_read.hpp"""
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.hpp,20,reader_implementation,class EMSBH_trumpet_read
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.hpp,32,reader_implementation,"EMSBH_trumpet_read(EMSBH_params_t a_params_EMSBH,"
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.hpp,60,reader_implementation,const EMSCTTSolution_read &ctt_solution() const { return *m_ctt_sol; }
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.hpp,62,reader_implementation,EMSTrumpetSolution_read m_1d_sol;
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.hpp,69,reader_implementation,std::shared_ptr<const EMSCTTSolution_read> m_ctt_sol;
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.hpp,79,reader_implementation,"#include ""EMSBH_trumpet_read.impl.hpp"""
+Source/InitialConditions/EMSBH/RNBH_read.impl.hpp,29,reader_implementation,"pout() << ""run m_1d_sol.main()"" << endl;"
+Source/InitialConditions/EMSBH/RNBH_read.impl.hpp,30,reader_implementation,"m_1d_sol.set_initialcondition_params(m_params_EMSBH, m_params_coupling_function);"
+Source/InitialConditions/EMSBH/RNBH_read.impl.hpp,31,reader_implementation,"pout() << ""completed m_1d_sol.main()"" << endl;"
+Source/InitialConditions/EMSBH/RNBH_read.impl.hpp,121,reader_implementation,double psi = m_1d_sol.calc_psi(r);
+Source/InitialConditions/EMSBH/RNBH_read.impl.hpp,122,reader_implementation,double Er = m_1d_sol.calc_Er(r);
+Source/InitialConditions/EMSBH/RNBH_read.impl.hpp,150,reader_implementation,vars.lapse = 1./m_1d_sol.calc_psi(r);
+Source/InitialConditions/EMSBH/RNBH_read.impl.hpp,246,reader_implementation,psi = m_1d_sol.calc_psi(r);
+Source/InitialConditions/EMSBH/RNBH_read.impl.hpp,247,reader_implementation,Er = m_1d_sol.calc_Er(r);
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,7,reader_implementation,"#error ""This file should only be included through EMSBH_trumpet_read.hpp"""
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,17,reader_implementation,inline EMSBH_trumpet_read::EMSBH_trumpet_read(
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,29,reader_implementation,inline void EMSBH_trumpet_read::compute_1d_solution()
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,31,reader_implementation,m_1d_sol.main(m_params_EMSBH.data_path);
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,32,reader_implementation,if (m_1d_sol.get_coupling_parameters() !=
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,45,reader_implementation,const EMSCTTSolution_read::binding_t binding{
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,47,reader_implementation,m_1d_sol.get_coupling_parameters()};
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,48,reader_implementation,auto companion = std::make_shared<EMSCTTSolution_read>();
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,59,reader_implementation,"inline Tensor<2, double, 4> EMSBH_trumpet_read::lorentz_transform("
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,75,reader_implementation,inline typename EMSBH_trumpet_read::template ems_adm_vars_t<data_t>
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,76,reader_implementation,"EMSBH_trumpet_read::compute_ems_adm_vars(data_t a_x, data_t a_y, data_t a_z,"
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,88,reader_implementation,const auto radial_vars = m_1d_sol.compute_radial_vars(R);
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,167,reader_implementation,"-m_1d_sol.get_chebyshev_value(2, radial_vars.s) +"
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,168,reader_implementation,"(1 - radial_vars.s) * m_1d_sol.get_chebyshev_value(2, radial_vars.s, 1);"
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,171,reader_implementation,(m_1d_sol.get_nu() * radial_vars.s * (1 - radial_vars.s) /
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,207,reader_implementation,inline typename EMSBH_trumpet_read::template ems_adm_vars_t<data_t>
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,208,reader_implementation,"EMSBH_trumpet_read::compute_binary_ems_adm_vars(data_t a_x, data_t a_y,"
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,223,reader_implementation,const double charge = a_mass * m_1d_sol.get_native_charge();
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,255,reader_implementation,superposed_vars.phi = m_1d_sol.get_phi_inf() +
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,256,reader_implementation,(left_bh.phi - m_1d_sol.get_phi_inf()) +
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,257,reader_implementation,(right_bh.phi - m_1d_sol.get_phi_inf());
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,314,reader_implementation,EMSBH_trumpet_read::conformal_decomposition(
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,355,reader_implementation,"EMSBH_trumpet_read::compute_single_bh_vars(data_t a_x, data_t a_y,"
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,365,reader_implementation,"EMSBH_trumpet_read::compute_binary_bh_vars(data_t a_x, data_t a_y,"
+Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp,375,reader_implementation,inline void EMSBH_trumpet_read::compute(Cell<data_t> a_current_cell) const
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,7,reader_implementation,"#error ""This file should only be included through EMSTrumpetSolution_read.hpp"""
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,24,reader_implementation,"EMSTrumpetSolution_read::parse_finite_double(const std::string &a_text,"
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,36,reader_implementation,"inline bool EMSTrumpetSolution_read::parse_degree(const std::string &a_text,"
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,60,reader_implementation,EMSTrumpetSolution_read::compute_derivative_coefficients(
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,75,reader_implementation,inline double EMSTrumpetSolution_read::evaluate_clenshaw(
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,89,reader_implementation,inline double EMSTrumpetSolution_read::compute_coupling(double a_phi) const
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,97,reader_implementation,inline void EMSTrumpetSolution_read::main(const std::string &a_data_path)
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,105,reader_implementation,"inline bool EMSTrumpetSolution_read::check_file(const std::string &a_data_path,"
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,113,reader_implementation,inline bool EMSTrumpetSolution_read::read_from_file(std::string &a_reason)
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,258,reader_implementation,"inline double EMSTrumpetSolution_read::get_chebyshev_value(int a_field,"
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,266,reader_implementation,EMSTrumpetSolution_read::get_coupling_parameters() const
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,273,reader_implementation,"EMSTrumpetSolution_read::invert_compactified_coordinate(double a_R,"
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,303,reader_implementation,EMSTrumpetSolution_read::get_compactified_coordinate(double a_R) const
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,311,reader_implementation,inline EMSTrumpetSolution_read::ems_radial_vars_t
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp,312,reader_implementation,EMSTrumpetSolution_read::compute_radial_vars(double a_R) const
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,31,reader_implementation,"pout() << ""run m_1d_sol.main()"" << endl;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,32,reader_implementation,m_1d_sol.main(m_data_path);
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,33,reader_implementation,"pout() << ""completed m_1d_sol.main()"" << endl;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,151,reader_implementation,"double X = m_1d_sol.get_value_interp(m_1d_sol.X,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,152,reader_implementation,"double a = m_1d_sol.get_value_interp(m_1d_sol.a,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,153,reader_implementation,"double b = m_1d_sol.get_value_interp(m_1d_sol.b,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,178,reader_implementation,"double E_r = m_1d_sol.get_value_interp(m_1d_sol.Er,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,184,reader_implementation,"double AaaUL = m_1d_sol.get_value_interp(m_1d_sol.Aa,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,192,reader_implementation,"double betaR = m_1d_sol.get_value_interp(m_1d_sol.shift,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,195,reader_implementation,"//vars.lapse = m_1d_sol.get_value_interp(m_1d_sol.lapse,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,201,reader_implementation,"vars.K = m_1d_sol.get_value_interp(m_1d_sol.K,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,228,reader_implementation,"vars.phi = m_1d_sol.get_value_interp(m_1d_sol.phi,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,230,reader_implementation,"vars.Pi = -m_1d_sol.get_value_interp(m_1d_sol.pi,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,324,reader_implementation,"double X = m_1d_sol.get_value_interp(m_1d_sol.X,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,325,reader_implementation,"double a = m_1d_sol.get_value_interp(m_1d_sol.a,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,326,reader_implementation,"double b = m_1d_sol.get_value_interp(m_1d_sol.b,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,351,reader_implementation,"double E_r = m_1d_sol.get_value_interp(m_1d_sol.Er,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,357,reader_implementation,"double AaaUL = m_1d_sol.get_value_interp(m_1d_sol.Aa,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,365,reader_implementation,"double betaR = m_1d_sol.get_value_interp(m_1d_sol.shift,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,373,reader_implementation,"vars.K += m_1d_sol.get_value_interp(m_1d_sol.K,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,400,reader_implementation,"vars.phi += m_1d_sol.get_value_interp(m_1d_sol.phi,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,402,reader_implementation,"vars.Pi += -m_1d_sol.get_value_interp(m_1d_sol.pi,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,575,reader_implementation,"double X = m_1d_sol.get_value_interp(m_1d_sol.X,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,576,reader_implementation,"double a = m_1d_sol.get_value_interp(m_1d_sol.a,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,577,reader_implementation,"double b = m_1d_sol.get_value_interp(m_1d_sol.b,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,602,reader_implementation,"double E_r = m_1d_sol.get_value_interp(m_1d_sol.Er,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,608,reader_implementation,"double AaaUL = m_1d_sol.get_value_interp(m_1d_sol.Aa,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,616,reader_implementation,"double betaR = m_1d_sol.get_value_interp(m_1d_sol.shift,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,619,reader_implementation,"vars.lapse = m_1d_sol.get_value_interp(m_1d_sol.lapse,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,634,reader_implementation,"vars.K = m_1d_sol.get_value_interp(m_1d_sol.K,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,666,reader_implementation,"vars.phi = m_1d_sol.get_value_interp(m_1d_sol.phi,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,668,reader_implementation,"vars.Pi = -m_1d_sol.get_value_interp(m_1d_sol.pi,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,878,reader_implementation,"//     double X = m_1d_sol.get_value_interp_o4(m_1d_sol.X,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,879,reader_implementation,"//     double a = m_1d_sol.get_value_interp_o4(m_1d_sol.a,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,880,reader_implementation,"//     double b = m_1d_sol.get_value_interp_o4(m_1d_sol.b,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,881,reader_implementation,"//     double alpha = m_1d_sol.get_value_interp_o4(m_1d_sol.lapse,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,882,reader_implementation,"//     double betaR = m_1d_sol.get_value_interp_o4(m_1d_sol.shift,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,883,reader_implementation,"//     double dXdr = m_1d_sol.get_deriv_interp_o4(m_1d_sol.X,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,884,reader_implementation,"//     double dadr = m_1d_sol.get_deriv_interp_o4(m_1d_sol.a,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,885,reader_implementation,"//     double dbdr = m_1d_sol.get_deriv_interp_o4(m_1d_sol.b,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,886,reader_implementation,"//     double dalpha_dr = m_1d_sol.get_deriv_interp_o4(m_1d_sol.lapse,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,887,reader_implementation,"//     double dbetaR_dr = m_1d_sol.get_deriv_interp_o4(m_1d_sol.shift,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,895,reader_implementation,"//     double dalpha_dt = -2.*a*m_1d_sol.get_value_interp_o4(m_1d_sol.K,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,896,reader_implementation,"//     double dbetaR_dt = m_1d_sol.get_value_interp_o4(m_1d_sol.Br,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1138,reader_implementation,"//     vars.phi += m_1d_sol.get_value_interp_o4(m_1d_sol.phi,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1143,reader_implementation,"//     double dphi_dr = m_1d_sol.get_deriv_interp_o4(m_1d_sol.phi,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1145,reader_implementation,"//     double default_pi = -m_1d_sol.get_value_interp_o4(m_1d_sol.pi,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1178,reader_implementation,"//     double EUr = m_1d_sol.get_value_interp_o4(m_1d_sol.Er,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1292,reader_implementation,"//     double AaaUL = m_1d_sol.get_value_interp(m_1d_sol.Aa,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1293,reader_implementation,"//     double inputK = m_1d_sol.get_value_interp(m_1d_sol.K,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1821,reader_implementation,double r_join = m_1d_sol.r_join;
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1897,reader_implementation,"double X = m_1d_sol.get_value_interp_o4(m_1d_sol.X,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1898,reader_implementation,"double a = m_1d_sol.get_value_interp_o4(m_1d_sol.a,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1899,reader_implementation,"double b = m_1d_sol.get_value_interp_o4(m_1d_sol.b,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1900,reader_implementation,"double alpha = m_1d_sol.get_value_interp_o4(m_1d_sol.lapse,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1901,reader_implementation,"double betaR = m_1d_sol.get_value_interp_o4(m_1d_sol.shift,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1902,reader_implementation,"double dXdr = m_1d_sol.get_deriv_interp_o4(m_1d_sol.X,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1903,reader_implementation,"double dadr = m_1d_sol.get_deriv_interp_o4(m_1d_sol.a,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1904,reader_implementation,"double dbdr = m_1d_sol.get_deriv_interp_o4(m_1d_sol.b,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1905,reader_implementation,"double dalpha_dr = m_1d_sol.get_deriv_interp_o4(m_1d_sol.lapse,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1906,reader_implementation,"double dbetaR_dr = m_1d_sol.get_deriv_interp_o4(m_1d_sol.shift,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1929,reader_implementation,"double dalpha_dt = -2.*alpha*m_1d_sol.get_value_interp_o4(m_1d_sol.K,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,1930,reader_implementation,"double dbetaR_dt = m_1d_sol.get_value_interp_o4(m_1d_sol.Br,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,2184,reader_implementation,"double temp_phi = m_1d_sol.get_value_interp_o4(m_1d_sol.phi,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,2189,reader_implementation,"double dphi_dr = m_1d_sol.get_deriv_interp_o4(m_1d_sol.phi,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,2191,reader_implementation,"double default_pi = -m_1d_sol.get_value_interp_o4(m_1d_sol.pi,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,2234,reader_implementation,"double EUr = m_1d_sol.get_value_interp_o4(m_1d_sol.Er,r)*root_kappa;"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,2354,reader_implementation,"double AaaUL = m_1d_sol.get_value_interp_o4(m_1d_sol.Aa,r);"
+Source/InitialConditions/EMSBH/EMSBH_read.impl.hpp,2355,reader_implementation,"double inputK = m_1d_sol.get_value_interp_o4(m_1d_sol.K,r);"
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.hpp,15,reader_implementation,class EMSTrumpetSolution_read
+Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.hpp,73,reader_implementation,"#include ""EMSTrumpetSolution_read.impl.hpp"""
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.hpp,5,reader_implementation,"#include ""EMSTrumpetSolution_read.hpp"""
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.hpp,12,reader_implementation,class EMSCTTSolution_read
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.hpp,26,reader_implementation,"const EMSTrumpetSolution_read &a_profile,"
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.hpp,51,reader_implementation,"#include ""EMSCTTSolution_read.impl.hpp"""
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.impl.hpp,2,reader_implementation,"#error ""Include EMSCTTSolution_read.hpp instead"""
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.impl.hpp,17,reader_implementation,"inline bool EMSCTTSolution_read::number(const std::string &text, double &value)"
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.impl.hpp,27,reader_implementation,"inline bool EMSCTTSolution_read::integer(const std::string &text, int &value,"
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.impl.hpp,48,reader_implementation,inline bool EMSCTTSolution_read::hash_string(const std::string &text)
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.impl.hpp,55,reader_implementation,inline bool EMSCTTSolution_read::check_file(
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.impl.hpp,56,reader_implementation,"const std::string &a_path, const EMSTrumpetSolution_read &a_profile,"
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.impl.hpp,307,reader_implementation,"inline bool EMSCTTSolution_read::matches(double mass, double separation,"
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.impl.hpp,315,reader_implementation,"inline double EMSCTTSolution_read::clenshaw(const double *a, int n, double x)"
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.impl.hpp,326,reader_implementation,inline EMSCTTSolution_read::correction_t
+Source/InitialConditions/EMSBH/1D_SOL/EMSCTTSolution_read.impl.hpp,327,reader_implementation,"EMSCTTSolution_read::evaluate(double x, double y, double z, int panel,"
