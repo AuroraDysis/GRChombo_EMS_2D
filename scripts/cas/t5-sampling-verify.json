@@ -1,0 +1,34 @@
+{
+  "status": "PROVED",
+  "scope": "algebraic identity \u2014 production physics not certified",
+  "assumptions": "real q; distinct integer stencil nodes; psi>0; alpha>=0 (zero by continuity); h>0; coefficient a real; ratio=3/2",
+  "witnesses": "Lagrange moment residuals in QQ[q]; equality of speed squares with positive branches; scaled fourth-order difference residual",
+  "excluded_loci": "psi=0; stencil denominators i-j=0 excluded by distinct nodes",
+  "normal_form": "expand polynomial coefficients and cancel rational residuals; asserts CLOSE; no general simplifier",
+  "moments": {
+    "6": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "8": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "scale": "81/16",
+  "numeric_seed": 1729,
+  "numeric_points": 32,
+  "numeric_precision_digits": 60,
+  "numeric_region": "psi [0.5,10], alpha [0.0001,1]",
+  "max_independent_speed_residual": "7.7787690973264271339300800672251553007378152109014589163764e-62"
+}

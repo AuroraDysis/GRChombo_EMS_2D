@@ -44,6 +44,8 @@ int runGRChombo(int argc, char *argv[])
         bh_amr, sim_params.origin, sim_params.dx, sim_params.boundary_params,
         sim_params.verbosity);
     bh_amr.set_interpolator(&interpolator);
+    for (int i=0;i<bh_amr.getAMRLevels().size();++i)
+        dynamic_cast<EMSBH2DLevel *>(bh_amr.getAMRLevels()[i])->ems_t7_initial();
     if (radiation.active)
     {
         const auto levels = bh_amr.getAMRLevels();

@@ -1,0 +1,75 @@
+# T6: A/B/C saved-data analysis complete; C FOLLOWS-FACE, precise producing operation underdetermined.
+# Baseline HEAD 03e31ef569edd09735316e3061b7732859b09b0a. No commit.
+# SHA-256; historical T4/T5 manifests retain their earlier README hashes.
+# The authors RHSurf/RHUnion match HEAD. No evolution/gauge/transfer/Chombo change.
+# Each new C++ behavior is opt-in, default false; same-platform default controls pass bitwise.
+# DETACHED_QUEUE_PID 11659 LAUNCH_UTC 2026-09-30T05:42:20.863192+00:00
+# BUILD_OR_INPUT 65eee5cf491ee86ff8b3e25f23163272cd1c97e3532dc55218ff446b8e30b3b5  /private/tmp/ems-t6/evolution.ex
+# BUILD_OR_INPUT b7d450d21dd47ebb5e85ea8b646de8866c6301818d2104cb683344fe838ae125  /private/tmp/ems-t6/rh-baseline.ex
+# BUILD_OR_INPUT f0a64c526e3d160175d894f5f7c4d84b4189809dd833f4f17ff2cb7087cd1bb7  /private/tmp/ems-t4/point.ex
+# BUILD_OR_INPUT 787845c5183bff3f1f943edea4f68c5e3ba7523af4c607e25ba2f613037fc15f  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSRHFinder/EMSRHCheckpoint2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex
+# BUILD_OR_INPUT 3c9e3e946f95375a27477466f4e51b1cafbea2f14392acb2d19128582c98cfd6  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Source/RHFinder/RHSurf.hpp
+# BUILD_OR_INPUT 1174747f4ee8f2e18a61cd2fb0618d1a4f3c6974c9929bcae85fd8f64519f885  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Source/RHFinder/RHUnion.hpp
+# BUILD_OR_INPUT 6f0820a576620f1f7230c701131af56a2312b130e31d5de2a752c32cefe6d24f  /Users/auroradysis/Workspace/EMS/artifacts/reference-alpha20-qfile.trumpet
+# BUILD_OR_INPUT 003f9ac82cf468cf43a2e9b79f319fc3255ca139823a4fdabb0b798625496d0d  /Users/auroradysis/Workspace/EMS-deps/worktrees/consult-5-reply.md
+# RUN {"command": ["/private/tmp/ems-t6/evolution.ex", "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/params/t6-ref-mid-face2.txt"], "directory": "/private/tmp/ems-t6/evolution/face2", "memory_bound_GB": 4, "threads": 4}
+# RUN {"command": ["/private/tmp/ems-t6/evolution.ex", "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/params/t6-ref-mid-face3.txt"], "directory": "/private/tmp/ems-t6/evolution/face3", "memory_bound_GB": 4, "threads": 4}
+# External checkpoints/finder hashes: t6-finder-input-audit.csv; C plot/strip hashes: t6c-input-audit.csv and t6c-strip-audit.csv.
+# C face2 done.exit=0; wall=292.191831 s; RSS=270745600 bytes; total output=1297279844 bytes.
+# C face3 done.exit=0; wall=448.098164 s; RSS=356368384 bytes; total output=1465269202 bytes.
+# C analysis uses current fields only; new analysis adds no C++ change or simulation run.
+8b366e77b6750b9302e7551bc04b6c0bc7e51aa0856561649c4541642b56450e  Examples/EMS/EMSBH2DLevel.cpp
+381982890c6873f880dfd35440a739acfa1cb7d22a8e5fbac3b3f7bb218874ba  Examples/EMS/EMSBH2DLevel.hpp
+533cf78d3ba3b2be9351fbcf1cd8e145c85404feb2113dd1016e88efd616e55a  Tests/EMSNative/README.md
+80851cc3fea3dd9a3eacfcfb70f33138f90ae68b038fa1521fd69183c5c0e904  Tests/EMSNative/figures/t6c-incoming-fields.pdf
+892504dffb4fdf19882d4fbf84d0380326032816e080c0fe6e3e75a446693354  Tests/EMSNative/figures/t6c-incoming-fields.png
+e9fe1fbc7170f48d218dc30562da850ae421dc03351d79b8cb8727fcb5934985  Tests/EMSNative/figures/t6c-interface-events.pdf
+2de42bfe8eaadae3fd3a81b3070d53fdb0e25c2ca497d689647894d0ba3b95cc  Tests/EMSNative/figures/t6c-interface-events.png
+0eb51f9475864b73fdb8e9d50e791ace9a85da5d6831236095036479594a4447  Tests/EMSNative/figures/t6c-speed-width.pdf
+48cfbe7b6eb8ec43c4a718f3ebc36210f5f18527c0ea2ac39f3dcd9a98707e87  Tests/EMSNative/figures/t6c-speed-width.png
+cb104b8a5742d90781ce74d81f75802b98590d5ec0b25e7b7e68b7daef77a9fa  Tests/EMSNative/params/t6-ref-mid-face2.txt
+b35741ac7887900c0f8890f8af6c5a57749bb89eab8766b9032f83c3a4bea70c  Tests/EMSNative/params/t6-ref-mid-face3.txt
+e5f170b14a82ca3c898114fd6473c005915048790569cc0934b207329b6d7cf6  Tests/EMSNative/t4-run.py
+14cfe51b9b7d4ad843979c8b71e77bf64ce7ea8be0228b312f907bbec30c4ba4  Tests/EMSNative/t5-analyze.py
+6becfde6df6db12c9832d191b35e6e551b288ce65985a129ed9808293baa8ab6  Tests/EMSNative/t6-boxes.csv
+0f6b435803e000376d688c41bfbb4944ecc3170aa3a2c068ab05629cda1d25ef  Tests/EMSNative/t6-charge-drift.csv
+e347834dd5657c67bf058d0b0405269373d9a653acddc291b5acb4b595a9e75a  Tests/EMSNative/t6-check.py
+c83ea3f1e72632d76a189cfae811394825b1ee3ef152cc8a6b16f338049bec84  Tests/EMSNative/t6-cluster-t0-comparison.csv
+7eeec1ef51f9512c4aa342e36e753d11721da031e52853cc32fdd941f7fb7fd8  Tests/EMSNative/t6-controls.csv
+23901bdf54a7c89ac7af43b7601272c95a50093d6e4cbf9ddb169d296547f194  Tests/EMSNative/t6-finder-final.csv
+010ab2b377e96fa63c37a1fbb2cceca801148e1756e66aaffcd2c17476326030  Tests/EMSNative/t6-finder-history.csv
+3c4473550d640479d0e7870aa4eb85680d87911871bec0e663dc706ef7aeb067  Tests/EMSNative/t6-finder-input-audit.csv
+a36bcb4e4d2f9b814a5508286252b8a89b15c5c0182f5c4f7878b1b638de3c08  Tests/EMSNative/t6-finder-runs.csv
+f30e451abb6b9c118e91d4a87b0e945ffd57e4e461ffc13314855dfc31f7d058  Tests/EMSNative/t6-finder-stages.csv
+23f1b93708f401e28ee732fc5d6646167efce9b928249d45a826a05f265bda63  Tests/EMSNative/t6-fixed-spheres.csv
+2844ca4dd292e37ddfdd7f2b632430ac9684dd67b0a6b2605ec01aae2f4f3669  Tests/EMSNative/t6-horizons.py
+781a8890783486a5408b01b609178bbb744d6404ee80aaa68466da17e4eb2566  Tests/EMSNative/t6-layout.csv
+abf9591ca9854a03f17c2cae9a58d577fd46d01e182252ae47b2f66de160fe1e  Tests/EMSNative/t6-native-drift.csv
+6e41effd987c13c55ac283ae0c74478d40f116aad0a8fa8b4831a4131fdc13c3  Tests/EMSNative/t6-norms.csv
+5413a62be559e36889a0639d364eb11ea5976417a00d9db7abd4cf238b59ecf7  Tests/EMSNative/t6-norms.py
+9e81bd960efb3ec5413146e4415616746102c66fb2484905b7432c5ab02b2c90  Tests/EMSNative/t6-orders.csv
+e542b50b15cda99a8463e313c381953b2d72713c72303dad5072396f61bbce89  Tests/EMSNative/t6-resource-plan.csv
+3efcfa2990a1c9e66867316e13f0a3a54aefaba261574bbd989be233c1f9b9de  Tests/EMSNative/t6-run-plan.json
+4e7110ec22b2fe5b33d146ed26cf730b2330ff0b593e7abc1bd0b696f72ac648  Tests/EMSNative/t6-runs.csv
+0ca30a9522f2fcd483223c69e0c973413ce7f4b2f0a79c461c00c0f195e6141e  Tests/EMSNative/t6c-analyze.py
+94076f543130d4675bb4cbdf40c390863cea2dcc6ec0bb6a1a2162e608f851f2  Tests/EMSNative/t6c-driver-decay.csv
+a2758af0d302af51a30a668f657cb3397a9439572dd368592ee9617b1e36af78  Tests/EMSNative/t6c-event-pairs.csv
+e574d9488b3734b00df39f83612d4aadb89874bfd94ab8816d085ced26f39c7c  Tests/EMSNative/t6c-events.csv
+d01469f33407f3caa7fd6e7b8e89dace68cb08c85baadff2b0d420d1af52decb  Tests/EMSNative/t6c-field-at-front.csv
+2db6f901ff884176eb2f876a1a4dc2097230dff6dd4585498fe28768607b7269  Tests/EMSNative/t6c-field-curvature-tracks.csv
+dc5f4447e64467cd00055936c4fad47e721a48697dc5d050a854920609f93ded  Tests/EMSNative/t6c-front-fits.csv
+b5d8f1ada7156cd254b405d7a9ae50bc3e66f4a4132933d357f40f6638e64cf0  Tests/EMSNative/t6c-front-tracks.csv
+29f277ee79b48c9d3ac466ff5ad9c17baf8803e6ebf072dd048bb88e9b6b3b9b  Tests/EMSNative/t6c-input-audit.csv
+87c99f0c8429542fcc3f3efee7808e770d12562c4d9f83e09a0bea35624c52c8  Tests/EMSNative/t6c-mask-norms.csv
+0e5af9b442bc22129ed5d0c110d2ae8a6871c3ac7cedf34f8513d15c57d209ef  Tests/EMSNative/t6c-native-bands.csv
+208b88294c59364c62ed081b93fc19837fd952a8524f4b08d7d9f983a3a18311  Tests/EMSNative/t6c-native-widths.csv
+fe3bd8d7665f5617299ec538100cc654a5ab659f969af66cfef7d90813c183c0  Tests/EMSNative/t6c-restriction-replay.csv
+4a8b7c11cf9dfa6b05c956db5ef4192a2c0e7722fe84a7b1dbe166270ea568c2  Tests/EMSNative/t6c-strip-audit.csv
+a7279f38d4955f95539d120d034e90c0c3e5d7314bba47fca1199425c62f97cf  Tests/EMSNative/t6c-strip-profiles.csv
+5559a3a1d9adbd19829de7861a547cb968a5dbba3469a6fa0164f6d9e9d5dcf2  Tests/EMSRHFinder/harness/EMSRHCheckpoint.cpp
+3df8c8646fbd741df7e6d1c8f4907956dd668b912f8044091b5b61498839f6c4  scripts/cas/t5-evidence.md
+0fa5c49c5fbd245f6469ca1fd550ab6af391761f52374c8a45b2b22889669583  scripts/cas/t5-sampling-verify.json
+2f967a242de9fb3565ff2cd4c14be58789e603aedeed46a349feaa61737443af  scripts/cas/t5-sampling-verify.py
+89eb415257fb96185e8e07eafeb2e53ace73a876396167f5b93d7074bcc90de2  scripts/cas/t6c-characteristics.json
+c2c4eb23ea16ef97fde89c06ca996a8b03107d8e97de2e6407e6e367aa624300  scripts/cas/t6c-characteristics.py
+e2e86320f0173c96bbb87d91ce7d42c97f25e9e441200cf07946368cba901c27  scripts/cas/t6c-evidence.md

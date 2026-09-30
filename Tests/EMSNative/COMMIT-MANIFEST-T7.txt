@@ -1,0 +1,178 @@
+# T7: B complete; A registered/detached to 6 M, awaiting controller analysis.
+# HEAD 03e31ef569edd09735316e3061b7732859b09b0a. No commit.
+# New C++ behavior: t7_diagnostics default false. Equations, gauge, operator formulas and author finder unchanged.
+# All Float64 HDF5 datasets/attributes pass default-off controls; recording-on also passes two-step controls.
+# Prior T4/T5/T6 manifests are historical; this manifest supersedes hashes of shared modified files.
+# Bytes SHA-256. Fixed hierarchy, current fields only, no static profile used after t=0.
+# DETACHED_QUEUE_PID 83312
+# LAUNCH {   "queue_pid": 83312,   "launch_utc": "2026-09-30T09:25:03.299278+00:00",   "clock": "RUNNING_OR_STARTING",   "space": "QUEUED_SERIAL",   "markers": [     "/private/tmp/ems-t7/evolution/clock/done.exit",     "/private/tmp/ems-t7/evolution/space/done.exit"   ] } 
+# BUILD_OR_INPUT 15e9e81bb100c3bfb508637cadd2f82c0df79814f8f8f73c22b607b5199aebdf  /private/tmp/ems-t7/evolution.ex
+# BUILD_OR_INPUT d3af9a1f0e09c4766f333b37727f66e49ace4c6e7bc61e6e2d3b01f15b46ca2d  /private/tmp/ems-t7/maxwell.ex
+# BUILD_OR_INPUT 65eee5cf491ee86ff8b3e25f23163272cd1c97e3532dc55218ff446b8e30b3b5  /private/tmp/ems-t6/evolution.ex
+# BUILD_OR_INPUT 2abc3832c2f4fc60cbd44fac5cc242de24f123d7fbaf18206060684f84aa5e3f  /opt/homebrew/Cellar/xz/5.8.4/bin/xz
+# BUILD_OR_INPUT 4de127268c665ef6eea993fb5ca68f6a5995eb7a2d934310c8e24179ef3567ca  /Users/auroradysis/Workspace/EMS-deps/worktrees/consult-5b-reply.md
+# BUILD_OR_INPUT 892a5e9e88e7d3740b5370b5937b256532455420fe951b5e1f43b21840148f2b  /private/tmp/ems-t7/evolution/plan.json
+# BUILD_OR_INPUT 13f3a8215e53d852fcca7b283370bc2cd896e90fa2825ca788b61e1005f4050e  /private/tmp/ems-t7/evolution/clock/params.txt
+# BUILD_OR_INPUT df4dfa413407876403175a5a16a567b3f74a9462cf680cdecd02f0c29e9296d8  /private/tmp/ems-t7/evolution/space/params.txt
+# BUILD_OR_INPUT e1afbe200804c4b631b5d24022f7d2e9006cbe2d74e3e0302ec017921a9b7122  /private/tmp/ems-t7/probes/clock-final-xz/params.txt
+# BUILD_OR_INPUT b7b588d917a2bfdb3754f4ed28255f5c81b21290e24561bfbbe45593703083d5  /private/tmp/ems-t7/probes/space-final-xz/params.txt
+# BUILD_OR_INPUT 4417c7acb56f3fb8b29aa03ba00976ab17decd74edde856c905e8fe3a5960c81  /private/tmp/ems-t7/probes/clock-final-xz/stats.json
+# BUILD_OR_INPUT f94c9cc87e1803986dc5638cc8366cd9137fab2ea80467b790663e418eb24792  /private/tmp/ems-t7/probes/space-final-xz/stats.json
+# BUILD_OR_INPUT 686c8031e1da2353af26f8317822975db7df55dedab0e80be75bc83f2f8cf2c5  /private/tmp/ems-t7/controls/clock-final/baseline/params.txt
+# BUILD_OR_INPUT 90e1f4a58e7022d57034f2248d7c850cc220a8064068507c8eae03b4c85b3f7d  /private/tmp/ems-t7/controls/legacy-E/baseline/params.txt
+# BUILD_OR_INPUT 90e1f4a58e7022d57034f2248d7c850cc220a8064068507c8eae03b4c85b3f7d  /private/tmp/ems-t7/controls/legacy-E/default/params.txt
+# BUILD_OR_INPUT 90e1f4a58e7022d57034f2248d7c850cc220a8064068507c8eae03b4c85b3f7d  /private/tmp/ems-t7/controls/legacy-E/default-final/params.txt
+# BUILD_OR_INPUT e839e490c3b84d0894f181096eadee3c934f6519388d7bf0b935737f85611dbf  /private/tmp/ems-t7/controls/legacy-ref/baseline/params.txt
+# BUILD_OR_INPUT e839e490c3b84d0894f181096eadee3c934f6519388d7bf0b935737f85611dbf  /private/tmp/ems-t7/controls/legacy-ref/default/params.txt
+# BUILD_OR_INPUT e839e490c3b84d0894f181096eadee3c934f6519388d7bf0b935737f85611dbf  /private/tmp/ems-t7/controls/legacy-ref/default-final/params.txt
+# BUILD_OR_INPUT c08dbe1b2044d35e7fac2624bbeee74f0bb982d8f5e3c1239983b58cb13a37c4  /private/tmp/ems-t7/controls/point-ref/baseline/params.txt
+# BUILD_OR_INPUT c08dbe1b2044d35e7fac2624bbeee74f0bb982d8f5e3c1239983b58cb13a37c4  /private/tmp/ems-t7/controls/point-ref/default/params.txt
+# BUILD_OR_INPUT c08dbe1b2044d35e7fac2624bbeee74f0bb982d8f5e3c1239983b58cb13a37c4  /private/tmp/ems-t7/controls/point-ref/default-final/params.txt
+# BUILD_OR_INPUT d50d8d162ab3fdca457c84cd12344d9137ec8ed4803a452dad1a8d024f1344a7  /private/tmp/ems-t7/controls/space-final/baseline/params.txt
+# BUILD_OR_INPUT 584717b04c169a92ec91d6b8e5f65cb48051d649fa48fbd6c80f5c60f5e487eb  /private/tmp/ems-t7/maxwell/E-low/EMS_000000.2d/params.txt
+# BUILD_OR_INPUT e7c7d433f85223d56acdf2489a6220b48f5702ee6e38ec6725593170473bd541  /private/tmp/ems-t7/maxwell/E-low/EMS_000021.2d/params.txt
+# BUILD_OR_INPUT 2f235e9340aad8206b2a96a03ac23da59163764f90c5ae8ceeaff066e2c7092e  /private/tmp/ems-t7/maxwell/E-low/EMS_000042.2d/params.txt
+# BUILD_OR_INPUT b2128af8cfbc75d5503c849bbaf6954ae57bb012190dfd88dbab345134cc2439  /private/tmp/ems-t7/maxwell/E-low/EMS_000046.2d/params.txt
+# BUILD_OR_INPUT fe543258fb0473488959d36f8f40ebbbc23410ff73e6252e489594e12ced1f06  /private/tmp/ems-t7/maxwell/E-mid/EMS_000000.2d/params.txt
+# BUILD_OR_INPUT 8ff99d3f69eb9944a135dbea1a803ef6da0b17dc538625af4f14629b894e8644  /private/tmp/ems-t7/maxwell/E-mid/EMS_000032.2d/params.txt
+# BUILD_OR_INPUT 0cd52c2cc076ee1545a5d8aef447f52f73cf05d778146288d7ab0c1e4425499c  /private/tmp/ems-t7/maxwell/E-mid/EMS_000064.2d/params.txt
+# BUILD_OR_INPUT 4ce52b0f2ca3ee066559e87c399e5001964d65742ed19a0c908e49fae8462b06  /private/tmp/ems-t7/maxwell/E-mid/EMS_000069.2d/params.txt
+# BUILD_OR_INPUT bd7a51bddcbf7d4f8a2f74818515e01707cabcc914918651f84b0f7f641ba106  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0019/submissions/exp-0019/params-E-low.txt
+# BUILD_OR_INPUT d33f6838b5312171e61c079b668af6b343b9fab931e03363a3f0ea29206606f2  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0019/submissions/exp-0019/params-E-mid.txt
+# CHECKPOINT fd27753feb40aa72198f61df4f7d2c76aa497affe622fd3d07e733bc980ad868  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-low/chk/EMS_000000.2d.hdf5
+# CHECKPOINT b69ac91c6854ac67bea645b5ffb0c6c14c731571dda6c190fbd85c68ddaa8387  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-low/chk/EMS_000021.2d.hdf5
+# CHECKPOINT 10bdef5330dad3d8662525da704195d71db175c73864614d11ef87568a24bb26  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-low/chk/EMS_000042.2d.hdf5
+# CHECKPOINT 8954bbc2bf18f0dd87286f39ab8ea6465ad79e0a9c942efcb105655a20f28bdc  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-low/chk/EMS_000046.2d.hdf5
+# CHECKPOINT aa30ee89d28d1e672711c7fff795aeec6bcdeb69dd728c010bb201476e20b90a  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-mid/chk/EMS_000000.2d.hdf5
+# CHECKPOINT 668e8b94c5707a6444034aff97d8f4be4dac5487d8a936e1747dc463101740af  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-mid/chk/EMS_000032.2d.hdf5
+# CHECKPOINT c485751192f2b22f91be65d1f208a9a62d72e651264d585da33d3ff63dc8c8fa  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-mid/chk/EMS_000064.2d.hdf5
+# CHECKPOINT f82f7a19d6a72ec0241a4c78beeaee593622a5d3bd0696289f778793aa639b8a  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-mid/chk/EMS_000069.2d.hdf5
+# T7-E update: shared hashes refreshed; original detached-launch/input records above retained verbatim.
+# T7 A running space paths in retained comments were not read for this refresh.
+# See COMMIT-MANIFEST-T7-E.txt for checkpoint qualification and new diagnostics provenance.
+# T7 A RESUMPTION: clock/space done.exit=0; completed analysis added; historical launch above retained.
+# T7 A mixed decision and source/sampling limits: see COMMIT-MANIFEST-T7-A.txt. Current shared file hashes follow.
+d75e0771c6026844f3f847f83d6bb5d10cc6f1553350b5537e5171ba250e33f3  Examples/EMS/EMSBH2DLevel.cpp
+b5fbb9c2c1f1f319cc149c1cee456f8ff3180b1d0d63ad6d7b131cc0ec01b92f  Examples/EMS/EMSBH2DLevel.hpp
+c7a6683e647526019d9be219d714f6c91036a50740766537096228b276e40414  Examples/EMS/Main_EMSBH2DBH.cpp
+ed59c01f278a6942ab345129eb845e86864b9c37f113e8c99fa991d416f70d2e  Examples/EMS/T7RHS.hpp
+c3d11fd082bf2dddafbc3aa63a8f5f82198a535a52cd3e537c21401db782921e  Source/Cartoon/CCZ4Cartoon.hpp
+beb935bd2dc3123120a59b1f3af1d750c9e9119681c5455ce5dac85ad81cb42f  Source/Cartoon/CCZ4Cartoon.impl.hpp
+a1a95033f7b78c5897e7bac9e742b0382593f0cad234214087ad007bef590e58  Source/GRChomboCore/GRAMRLevel.cpp
+576c658c11a524c790ef074aa6b8b929b0c558fb1bbe80032027d2b967edc3d0  Source/GRChomboCore/GRAMRLevel.hpp
+36acaf89f5a8f937d92df7cc19782dc04594891645a119f8eba384dd0dfe73f1  Source/GRChomboCore/PointAMRTransfer.hpp
+1f927ccc7fdd17c017c714a751f24a1e565849d2df925ccc756540b0f3a5a6fa  Source/GRChomboCore/T7OperationRecorder.hpp
+3c9e3e946f95375a27477466f4e51b1cafbea2f14392acb2d19128582c98cfd6  Source/RHFinder/RHSurf.hpp
+1174747f4ee8f2e18a61cd2fb0618d1a4f3c6974c9929bcae85fd8f64519f885  Source/RHFinder/RHUnion.hpp
+c3201e7f1aea64b543a65db92edf8dbf768d451f49e4b8ee40ef93822e83138b  Tests/EMSNative/COMMIT-MANIFEST-T7-A.txt
+1400ea6aa1f0328e8ab12ef1a54676d4279ddecd3c728b3c17637ae232684da1  Tests/EMSNative/COMMIT-MANIFEST-T7-E.txt
+feff3009c930e0e42a9d124d291e394f87491dbcc78a4f71802fc61da93781c1  Tests/EMSNative/README.md
+d8a4d13bbd260bf025c908e37d6a654fab19d65744d7de107e66758733a0383f  Tests/EMSNative/T7AReplay.cpp
+9b8f89859a2c1527b0a5551a4b90288c3093e3bf803f14da34f9909c52376410  Tests/EMSNative/T7EInitial.cpp
+b164c039727b1ac0551f3e751588f21144ff8b9928a2b08e9d8dc460d08bfe1f  Tests/EMSNative/T7ENative.cpp
+66727d571fe127706c870e118ddcd8a4de4cab06854d68fdd745eedbb51737f3  Tests/EMSNative/figures/t7a-incident-profiles.pdf
+e518da7dee55ad69125ea2a92d0f8f5ccebd8512ef29f26b512634f3619a9d7a  Tests/EMSNative/figures/t7a-incident-profiles.png
+709ae16c1b4b1f47aac1e7ffcb2b18fa27b21d3c024818648e14d4148fd36be0  Tests/EMSNative/figures/t7a-operation-replay.pdf
+25ca1ea7bbdd91bcda61888137efa3a231f0bd59b3b6cb83a746b7dce71e85e0  Tests/EMSNative/figures/t7a-operation-replay.png
+c52a535eacc8d697bf3dcfef49339998f7da9e650641469f3eb7adab43828540  Tests/EMSNative/figures/t7a-packet-wake.pdf
+85ffd50b142294e0540fce93d9317b2a92a14189e1cc4ea93dc65b9ebeaa5dbe  Tests/EMSNative/figures/t7a-packet-wake.png
+45ce20bab41364b16d10cca89879b1c7ea0b644e1e386b92d12123dcc67418b3  Tests/EMSNative/figures/t7e-constraint-rms.pdf
+291a7f741b24c590a926bad576a8ffa64c7c06b92c8a632d258b21e4511f5991  Tests/EMSNative/figures/t7e-constraint-rms.png
+547f869486adf4760aae6d6f868b27b1713d537d576717bea290a62d210a45fa  Tests/EMSNative/figures/t7e-far-profiles.pdf
+0662ee9db6753f2f1cc8340ecdef9023c8ee2509a1c1a5767d9034658a4b0374  Tests/EMSNative/figures/t7e-far-profiles.png
+49f654506db2faa47efec053e2bd76757b74ea637c7b2e171f63c938038e5c2b  Tests/EMSNative/figures/t7e-horizons.pdf
+3fd767b1dea72f09ab2d94fdd641b1b817b7431432d6bd089ad77c2c7aed9329  Tests/EMSNative/figures/t7e-horizons.png
+df4dfa413407876403175a5a16a567b3f74a9462cf680cdecd02f0c29e9296d8  Tests/EMSNative/params/t7-ref-fine-space.txt
+13f3a8215e53d852fcca7b283370bc2cd896e90fa2825ca788b61e1005f4050e  Tests/EMSNative/params/t7-ref-mid-clock.txt
+14cfe51b9b7d4ad843979c8b71e77bf64ce7ea8be0228b312f907bbec30c4ba4  Tests/EMSNative/t5-analyze.py
+c83ea3f1e72632d76a189cfae811394825b1ee3ef152cc8a6b16f338049bec84  Tests/EMSNative/t6-cluster-t0-comparison.csv
+23901bdf54a7c89ac7af43b7601272c95a50093d6e4cbf9ddb169d296547f194  Tests/EMSNative/t6-finder-final.csv
+010ab2b377e96fa63c37a1fbb2cceca801148e1756e66aaffcd2c17476326030  Tests/EMSNative/t6-finder-history.csv
+3c4473550d640479d0e7870aa4eb85680d87911871bec0e663dc706ef7aeb067  Tests/EMSNative/t6-finder-input-audit.csv
+f30e451abb6b9c118e91d4a87b0e945ffd57e4e461ffc13314855dfc31f7d058  Tests/EMSNative/t6-finder-stages.csv
+2844ca4dd292e37ddfdd7f2b632430ac9684dd67b0a6b2605ec01aae2f4f3669  Tests/EMSNative/t6-horizons.py
+0ca30a9522f2fcd483223c69e0c973413ce7f4b2f0a79c461c00c0f195e6141e  Tests/EMSNative/t6c-analyze.py
+7b873875314b9a0638208f4f8e8138946076173662b5b2fdb1932dc3adc9e4ea  Tests/EMSNative/t7-E-boxes.csv
+ef5e6a031bc66a44268db68cae4c398e1f3b3fd7c47b2f293d41100056c0861c  Tests/EMSNative/t7-E-shell-layout.csv
+102825990c296557da5197a8db388661f38db90ab032b97b275e3ec109a0c4d3  Tests/EMSNative/t7-boxes.csv
+2c522ee93e433ff2f1fb13aa8bd27ccd7127167fdafe515ba6ec33cceb8d4727  Tests/EMSNative/t7-check.py
+2942e55344581e231f6ed318c6a4fb4f389b94a255542d4a77e36543d02bedf5  Tests/EMSNative/t7-cleaner-audit.csv
+5e251ef07c1a1d4b4741f08a06a42e569b984faafba7a75fbcabee2c8f1fe54c  Tests/EMSNative/t7-cleanup.csv
+372252885da50f9f0ebe3675c891ea3db9ad36c91deaede03480dec927c4f440  Tests/EMSNative/t7-control-files.csv
+7baebe2bbc7c97f3fcff843c63fe24c4a5e455853ce7d71ad7e18c9751f6781f  Tests/EMSNative/t7-controls.csv
+d229cd4069cc6bc1a31d6f5acdc2f1628b8db5cf349609ee507f3642de9d10dd  Tests/EMSNative/t7-layout.csv
+e13d32b8ff7e1f91f1c1129ba09410450ece7b9d5f44e513dbec3f0ff6727db5  Tests/EMSNative/t7-maxwell-budget.csv
+c389884ad3db382fdabd3911320827ad05e1e426bf942892517877b874e52ae5  Tests/EMSNative/t7-maxwell-checks.csv
+30c0cf3de23998c473974b7e5fe6eb943e44b9cacdefd58e530b240518385fff  Tests/EMSNative/t7-maxwell-input-audit.csv
+360df98f7f5801e6c2db26e52e7b1d1fc56bc654ca6679a2d86f3bef698eb670  Tests/EMSNative/t7-maxwell-sources.csv
+c25c8c27e16b2359b7587708550c784b544b0415de3f000d627b0ddc1816d949  Tests/EMSNative/t7-maxwell.py
+67e3ccd2348c8d8a9076173f814043534d4710f820058ace95480bcd1fc32b66  Tests/EMSNative/t7-operation-replay.csv
+e7de5156df1c4ba1d4d9001c7fd97537060ad45036500928d8001d85845bada1  Tests/EMSNative/t7-recorder-checks.csv
+9d4a79aaa139858f26106321a88183585290495bf76d03529c7f4f27109f52d3  Tests/EMSNative/t7-resource-plan.csv
+892a5e9e88e7d3740b5370b5937b256532455420fe951b5e1f43b21840148f2b  Tests/EMSNative/t7-run-plan.json
+36dd4da8dbec258f9a263a874ce79bfe7d6e28b9badff9fe2166a7792858b5cb  Tests/EMSNative/t7-run.py
+77c7478b437afd402eb4d9139557c12d419bd8e34833ac3a522fc008889b957f  Tests/EMSNative/t7-runs.csv
+495cbaf310fdf07a07b40f4f442abf7fdc618c8e7d75b0e1d77925123b4af73e  Tests/EMSNative/t7-source-audit.csv
+b8f9208a13361de4d62a20ba0e476cc5f4cbb81b9e66063aeac6d59ffd2b738c  Tests/EMSNative/t7a-analyze.py
+95b259f47249c050f8958721367ed7e5eb93ecb333236ec983740a16245df9f4  Tests/EMSNative/t7a-archived-tables.csv
+c20c43519deb40845a1bb9c0b910a17f77ff33cbe9120275ff998b50ca35e990  Tests/EMSNative/t7a-baseline-metrics.csv
+43ac9e41269f98d595a3fa61b38b0ef9bd3d6e3373fce0c97835dab446a736ab  Tests/EMSNative/t7a-check.py
+d0d633beaad3e5ca6633627d283b521367d2d283e89d2c8e4780a7c8364720ba  Tests/EMSNative/t7a-cleanup.csv
+7a4a26f5affdd46414a8290cb20579f54ea996469c44d299cfc2e9f8c2d1d6de  Tests/EMSNative/t7a-common-packet-history.csv
+c92374ff96301cae4e530102a19d9d2d08ff31522e7aec9d98734970850f74db  Tests/EMSNative/t7a-common-packet-ratios.csv
+092e23af94df916ccd63a4797f5a9c269705de7242eae6686db7d11503da7d66  Tests/EMSNative/t7a-common-seams.csv
+96a0dc9ff0a45ddb1c9ae5023ee48b6d96f8214559d3ae631d78d4210f638b33  Tests/EMSNative/t7a-composite-metrics.csv
+5b5e40ee36c1c0a0b0e920cafa4bcbe05cd90fc2df2a0550c8d2c10cd4522329  Tests/EMSNative/t7a-default-parameters.csv
+e95f0fa2a40993678762c3907bc945918e1c9aa99fa6eadc22787bbead2474b3  Tests/EMSNative/t7a-events.csv
+8cee485cd23346af88809509e4089d5310e7c98b39eac1beaaeb51c767d98b17  Tests/EMSNative/t7a-incident-tracks.csv
+0ccc333de873c81717c3fb88f8cafc71ddcb7e051ca6dd80ac7d3abb32e2a5ac  Tests/EMSNative/t7a-native-metrics.csv
+538b407ed15a09fad22399c403e0756f44a4d1d51d81b3c2a900e39365db1c09  Tests/EMSNative/t7a-phase-summary.csv
+79d3e2f32c2cd95f5e74f4645e36fee30da6ceeb08240d55406d4991f17bef37  Tests/EMSNative/t7a-profile-contrasts.csv
+3b9ac6910f0b1142489ec6a39dd98e7f1895a407b82356b8c6811ae3918a4db8  Tests/EMSNative/t7a-profile-metrics.csv
+cf102e64177332905c9d2b88cedb6b967cc7b9c8a15ab7da2655a9ab7e465024  Tests/EMSNative/t7a-projection-summary.csv
+9b792ec2a216710c523f90482ab809f3ea7f849cb8d87f9d9a7494e579f24252  Tests/EMSNative/t7a-ratios.csv
+441f2481a21f0df955db0e6e90f62092a904ba4ad80b6c2bf2fe49e212640d16  Tests/EMSNative/t7a-ray-wake-ratios.csv
+4ea88be6d918a11b12853942392ef3c4a15ac7f3177b7b39d71b80d971463e63  Tests/EMSNative/t7a-report.py
+69700b09a1874e7261903c152db6c184f730282955a0a5e017f4f83df6a5a3e9  Tests/EMSNative/t7a-restriction-summary.csv
+e2057314a9f8b6ea3b0aa51bcd83f5d9f6416a278e1efd9bafc0b644fa50f4af  Tests/EMSNative/t7a-run-audit.csv
+dd250e196fbede25665b719f30840252ab091e44cb518edbd51418bd4274bd2c  Tests/EMSNative/t7a-sampling-sensitivity.csv
+98fcebc10a8b0dd019d211ca1875eb648c5da401b08ea8c630790bb3d0b40a50  Tests/EMSNative/t7a-source-controls.csv
+25dac2188ae3bbbf455c562c072979df18af36de06e81db16e93383c8045437d  Tests/EMSNative/t7a-source-summary.csv
+ed9bf27d01478355de05d02f7f43bb5f6da64e700d66696fed0034a087e0e033  Tests/EMSNative/t7a-speed-fits.csv
+ac46c4b59e58cb31c18d7ebd4867a185f515ae66ade4bd56fc1f698aa3874b86  Tests/EMSNative/t7a-stage-summary.csv
+864fc31c24657b07f11f467f20d2f0361db203629d68ffc2817a1a4e6ccb1cea  Tests/EMSNative/t7a-width-summary.csv
+16e6d2e0f84a53c72bf590d597d02ab47d0172c5a2fb135e5d9deec519ac000b  Tests/EMSNative/t7e-analysis-performance.csv
+147b73d4b4812d1220a373885772e661c2294f9dd4cffbace032dcf8bcadb991  Tests/EMSNative/t7e-analyze.py
+8da1d0b2b604ecdc309cd3da559ab55327742ea03cd78a86cc6b20e92c5b0c95  Tests/EMSNative/t7e-check.py
+4e4795204622d6ee4f5e54f03153aba3557ee3dd54780a4bd521816dee3a9352  Tests/EMSNative/t7e-checkpoint-localization.csv
+c4c69e193ecc7aab14f99d7513eed2654a48f5cbb532dbc8e5dc4560a453f557  Tests/EMSNative/t7e-constraint-orders.csv
+3c24f631920017929e379e91b421e137049db78fce90646f36b86e1473a53c26  Tests/EMSNative/t7e-constraint-rms.csv
+e2d624d60a97a556ef49a22a304122258169c8fb692e9ffc9b40f46fb1bba141  Tests/EMSNative/t7e-controls.csv
+b96372923205b887bff4e1f31d93ae34a1d38775332837d07220137d2463f29f  Tests/EMSNative/t7e-coordinate-controls.csv
+a134ad052daf7798c32c68cda95c967cdaa749d5d2555487681c7f18a3b1a8a2  Tests/EMSNative/t7e-coordinate-errors.csv
+553f098d1c6eba144b04604744be2d0ab8649eb5c356f0395d68819c53465e6d  Tests/EMSNative/t7e-far-profiles.csv
+5e8fabfc338f735a2090eee1d877fe652be1e5f3a241d12bc0a401a0fec5f405  Tests/EMSNative/t7e-finder-input-audit.csv
+2c597a2b1835333a78cb48e27ae1e530e2ac15078c1e74dfa704f2302bf7c47d  Tests/EMSNative/t7e-finder-runs.csv
+78327250d63a0e80ce2eaed786fa55b3a580d5c005468b9994c6ab5296312dcd  Tests/EMSNative/t7e-finder-stages.csv
+8da026de7a606a01a653461b91ffb1234a98741066d72038b27f0e5f16cd2cef  Tests/EMSNative/t7e-gamma-controls.csv
+4cf6a9aa4bdc7d210c532fa17fe879bfed27e2031762206e12ae0df8ab8f94ea  Tests/EMSNative/t7e-horizon-budgets.csv
+4bc30aaea5cf2e5f8601bc9897ad0a52b7b9a63450f9a0da2ee642b58959b104  Tests/EMSNative/t7e-horizon-drifts.csv
+e073ad0c4a633834e24a80c381ace101e4c4a0945dd73d3c996b607ad8c7140c  Tests/EMSNative/t7e-horizon-richardson.csv
+aa97389d827d5c345b6f15f37d421db466f3d0eda5d4c5346cab4a2c41781f4f  Tests/EMSNative/t7e-horizons.py
+cc8746ab207b6986b985a71c5fde4475cfefbd1c59bb7556ed28c3b7af2011ef  Tests/EMSNative/t7e-layout.csv
+3d4db189bb835aa293c8d251eb611c6368738a410b3241863a2e9da61b625898  Tests/EMSNative/t7e-localize.py
+bc206dc9fbc09bfec373b986fbeac50dea2701c606960b9f31881cfa66ce4292  Tests/EMSNative/t7e-qualified-horizons.csv
+414f84add46f1784edbe1bd7d937ff7634af413b9dd25d261402eb76b8ddc584  Tests/EMSNative/t7e-report.py
+f43fb50d9bf0282c71a3654c6d7959e0945eed1fd686989910081c6771e103eb  Tests/EMSRHFinder/harness/EMSRHCheckpoint.cpp
+3df8c8646fbd741df7e6d1c8f4907956dd668b912f8044091b5b61498839f6c4  scripts/cas/t5-evidence.md
+0fa5c49c5fbd245f6469ca1fd550ab6af391761f52374c8a45b2b22889669583  scripts/cas/t5-sampling-verify.json
+2f967a242de9fb3565ff2cd4c14be58789e603aedeed46a349feaa61737443af  scripts/cas/t5-sampling-verify.py
+89eb415257fb96185e8e07eafeb2e53ace73a876396167f5b93d7074bcc90de2  scripts/cas/t6c-characteristics.json
+c2c4eb23ea16ef97fde89c06ca996a8b03107d8e97de2e6407e6e367aa624300  scripts/cas/t6c-characteristics.py
+e2e86320f0173c96bbb87d91ce7d42c97f25e9e441200cf07946368cba901c27  scripts/cas/t6c-evidence.md
+1a9e7e0351887f5833e0745b8fe460c619b244df18f3e06b6d257acddec8f3fd  scripts/cas/t7-evidence.md
+a427ea7824dac260861686e8ec29f3865b13268d3385f7ecd5e20fc6df4a5044  scripts/cas/t7-maxwell-verify.json
+b68bd988b1b5e3f4da9b2b9a8fec3b9f5e96adbc88125faeb71a824c76146113  scripts/cas/t7-maxwell-verify.py
+f81d45864fc944032dd7fca992817d40eec835126408e13c4bac8eab91b1c7c3  scripts/cas/t7e-evidence.md
+b60e467a2fcd631107828ce0417e96fe5880bca17df455c13840338ac04d999a  scripts/cas/t7e-initial-verify.json
+283d211b5559acce3ae11663b387f689e6a2f27d13461fdce225d77a37bd57d8  scripts/cas/t7e-initial-verify.py

@@ -145,6 +145,8 @@ class PointAMRTransfer
     }
 
     PointRK4Interpolator time;
+    const GRLevelData &t7_coarse_support() const { return m_coarse_data; }
+    const LayoutData<std::vector<Stencil>> &t7_ghost_stencils() const { return m_ghost_stencils; }
 
   private:
     Stencil stencil(const IntVect &iv) const

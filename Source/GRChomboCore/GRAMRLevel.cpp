@@ -8,13 +8,69 @@
 GRAMRLevel::GRAMRLevel(GRAMR &gr_amr, const SimulationParameters &a_p,
                        int a_verbosity)
     : m_gr_amr(gr_amr), m_p(a_p), m_verbosity(a_verbosity),
-      m_num_ghosts(a_p.num_ghosts)
+      m_t7(a_p.data_path),m_num_ghosts(a_p.num_ghosts)
 {
     if (m_verbosity)
         pout() << "GRAMRLevel constructor" << endl;
 }
 
 GRAMRLevel::~GRAMRLevel() {}
+
+std::pair<double,double> GRAMRLevel::t7_faces() const
+{
+    auto extent=[](const GRAMRLevel *p) {
+        if (!p) return -1.;
+        double a=0.;const auto &g=p->m_state_new.disjointBoxLayout();
+        for (LayoutIterator it=g.layoutIterator();it.ok();++it) a=std::max(a,(g[it()].bigEnd(1)+1)*p->m_dx);
+        return a;
+    };
+    return {extent(this),extent(m_finer_level_ptr?gr_cast(m_finer_level_ptr):nullptr)};
+}
+void GRAMRLevel::t7_record(int phase,const GRLevelData &data,int growth,int first,int n,double h)
+{
+    if (!m_t7.enabled || m_level<4 || m_level>6) return;
+    auto f=t7_faces();if (h==0.) h=m_dx;
+    if (phase==40 || phase==10)
+    {
+        const bool parent=phase==40;
+        auto regions=T7OperationRecorder::windows(parent?m_dx:2*m_dx,m_p.center[0],f.first,-1.);
+        int source=0;
+        for (DataIterator it=data.dataIterator();it.ok();++it,++source)
+        {
+            int region=0;Box valid=data.disjointBoxLayout()[it()];
+            for (const auto &window:regions)
+            {
+                IntVectSet cells;
+                if (parent)
+                {
+                    auto dep=T7OperationRecorder::dependencies(window&m_state_new.disjointBoxLayout()[it()]);
+                    IntVectSet mirrored=dep;
+                    for (IVSIterator iv(dep);iv.ok();++iv) if (iv()[1]<0)
+                    { auto p=iv();p[1]=-p[1]-1;mirrored|=p; }
+                    for (const auto &s:m_point_transfer.t7_ghost_stencils()[it()]) if (mirrored.contains(s.fine))
+                        for (int y=0;y<6;++y) for (int x=0;x<6;++x)
+                            cells|=s.first+IntVect(D_DECL(x,y,0));
+                }
+                else
+                {
+                    Box coarse=coarsen(valid,2)&window;
+                    for (BoxIterator bit(coarse);bit.ok();++bit)
+                        for (int y=-2;y<=3;++y) for (int x=-2;x<=3;++x)
+                            cells|=2*bit()+IntVect(D_DECL(x,y,0));
+                }
+                std::vector<IntVect> selected;
+                for (IVSIterator iv(cells);iv.ok();++iv)
+                { if (!data[it()].box().contains(iv())) MayDay::Error("T7 incomplete operator support");selected.push_back(iv()); }
+                m_t7.frame(phase,m_level,source*16+region,data[it()],valid,selected,first,n,m_time,h,m_dt,f.first,-1.);
+                ++region;
+            }
+        }
+        return;
+    }
+    if (phase==40) f.second=-1.; // only this level's own ghosts use the parent
+    auto regions=T7OperationRecorder::windows(h,m_p.center[0],f.first,f.second);
+    m_t7.record(phase,m_level,data,regions,growth,first,n,m_time+((phase==6 || phase==7)?m_dt:0.),h,m_dt,f.first,f.second);
+}
 
 void GRAMRLevel::define(AMRLevel *a_coarser_level_ptr,
                         const Box &a_problem_domain, int a_level,
@@ -175,9 +231,12 @@ void GRAMRLevel::postTimeStep()
         GRAMRLevel *finer_gr_amr_level_ptr = gr_cast(m_finer_level_ptr);
         if (m_p.amr_transfer == "point")
         {
+            if (m_t7.enabled) {t7_record(9,m_state_new,0);finer_gr_amr_level_ptr->t7_record(8,finer_gr_amr_level_ptr->m_state_new,0);}
             finer_gr_amr_level_ptr->fillAllEvolutionGhosts();
+            if (m_t7.enabled) finer_gr_amr_level_ptr->t7_record(10,finer_gr_amr_level_ptr->m_state_new,4);
             finer_gr_amr_level_ptr->m_point_transfer.restrict_to_coarse(
                 m_state_new, finer_gr_amr_level_ptr->m_state_new);
+            if (m_t7.enabled) t7_record(11,m_state_new,0);
         }
         else
             finer_gr_amr_level_ptr->m_coarse_average.averageToCoarse(
@@ -940,6 +999,12 @@ void GRAMRLevel::evalRHS(GRLevelData &rhs, GRLevelData &soln,
                          Real time, Real fluxWeight)
 {
     CH_TIME("GRAMRLevel::evalRHS");
+    if (m_t7.enabled)
+    {
+        m_t7.stage=m_rk_stage;m_t7.stage_time=time;
+        m_t7.coarse_old=oldCrseTime;m_t7.coarse_new=newCrseTime;
+        m_t7.step_fraction=oldCrseSoln.isDefined()?(m_time-oldCrseTime)/(newCrseTime-oldCrseTime):0.;
+    }
     if (m_verbosity)
         pout() << "GRAMRLevel::evalRHS" << endl;
 
@@ -977,7 +1042,9 @@ void GRAMRLevel::evalRHS(GRLevelData &rhs, GRLevelData &soln,
             // stage time. Stages 1 and 2 are distinct at identical time.
             const double theta = std::round(
                 2. * (m_time - oldCrseTime) / (newCrseTime - oldCrseTime)) / 2.;
+            if (m_t7.enabled) m_t7.step_fraction=theta;
             m_point_transfer.fill_stage(soln, theta, m_rk_stage);
+            if (m_t7.enabled) t7_record(40,m_point_transfer.t7_coarse_support(),4,0,NUM_VARS,2*m_dx);
             soln.exchange(m_exchange_copier);
         }
         else
@@ -1003,9 +1070,11 @@ void GRAMRLevel::evalRHS(GRLevelData &rhs, GRLevelData &soln,
 void GRAMRLevel::updateODE(GRLevelData &soln, const GRLevelData &rhs, Real dt)
 {
     CH_TIME("GRAMRLevel::updateODE");
+    if (m_t7.enabled) {m_t7.update_dt=dt;t7_record(12,soln,0);}
     // m_grown_grids will include outer boundary ghosts in the case of
     // nonperiodic BCs but will just be the problem domain otherwise.
     soln.plus(rhs, dt, m_grown_grids);
+    if (m_t7.enabled) t7_record(13,soln,0);
 
     specificUpdateODE(soln, rhs, dt);
     fillBdyGhosts(soln);

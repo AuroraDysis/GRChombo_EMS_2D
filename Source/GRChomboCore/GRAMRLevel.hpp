@@ -19,6 +19,7 @@
 #include "GRAMR.hpp"
 #include "GRLevelData.hpp"
 #include "PointAMRTransfer.hpp"
+#include "T7OperationRecorder.hpp"
 #include "InterpSource.hpp"
 #include "SimulationParameters.hpp"
 #include "UserVariables.hpp" // need NUM_VARS
@@ -246,6 +247,9 @@ class GRAMRLevel : public AMRLevel, public InterpSource<>
                                          //!< coarse to fine when regridding
     PointAMRTransfer m_point_transfer;
     int m_rk_stage = 0;
+    T7OperationRecorder m_t7;
+    std::pair<double,double> t7_faces() const;
+    void t7_record(int phase,const GRLevelData &data,int growth=3,int first=0,int n=NUM_VARS,double h=0.);
 
     DisjointBoxLayout m_grids;       //!< Holds grid setup (the layout of boxes)
     DisjointBoxLayout m_grown_grids; //!< Holds grown grid setup (for

@@ -1,0 +1,82 @@
+# T7-E: completed three-grid E checkpoint qualification and constraint diagnosis.
+# HEAD 03e31ef569edd09735316e3061b7732859b09b0a; no commit.
+# Production evolution and author finder source untouched in T7-E. Standalone diagnostics only.
+# Static input evaluation only at checkpoint time exactly zero. Current fields at evolved times.
+# At most four threads; recorded peak parent RSS 1207238656 bytes. No new long simulation.
+# T7 A space directory, process and marker were not opened or polled.
+# READY-EXCEPT: checkpoint budgets qualified; full interval and exact E packet emission operation not certified.
+# SHA-256 bytes. External INPUT hashes retain read-only provenance.
+# INPUT fd27753feb40aa72198f61df4f7d2c76aa497affe622fd3d07e733bc980ad868   /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-low/chk/EMS_000000.2d.hdf5
+# INPUT b69ac91c6854ac67bea645b5ffb0c6c14c731571dda6c190fbd85c68ddaa8387   /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-low/chk/EMS_000021.2d.hdf5
+# INPUT 10bdef5330dad3d8662525da704195d71db175c73864614d11ef87568a24bb26   /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-low/chk/EMS_000042.2d.hdf5
+# INPUT 8954bbc2bf18f0dd87286f39ab8ea6465ad79e0a9c942efcb105655a20f28bdc   /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-low/chk/EMS_000046.2d.hdf5
+# INPUT aa30ee89d28d1e672711c7fff795aeec6bcdeb69dd728c010bb201476e20b90a   /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-mid/chk/EMS_000000.2d.hdf5
+# INPUT 668e8b94c5707a6444034aff97d8f4be4dac5487d8a936e1747dc463101740af   /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-mid/chk/EMS_000032.2d.hdf5
+# INPUT c485751192f2b22f91be65d1f208a9a62d72e651264d585da33d3ff63dc8c8fa   /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-mid/chk/EMS_000064.2d.hdf5
+# INPUT f82f7a19d6a72ec0241a4c78beeaee593622a5d3bd0696289f778793aa639b8a   /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-mid/chk/EMS_000069.2d.hdf5
+# INPUT 3c9e3e946f95375a27477466f4e51b1cafbea2f14392acb2d19128582c98cfd6  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Source/RHFinder/RHSurf.hpp
+# INPUT 1174747f4ee8f2e18a61cd2fb0618d1a4f3c6974c9929bcae85fd8f64519f885  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Source/RHFinder/RHUnion.hpp
+# INPUT c46ab239edcfc3ccf8c1ac913995d5664964f484266bf542c723e597b39f307d  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSRHFinder/EMSRHCheckpoint2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex
+# INPUT ef18bb100c773266ae820376f297fb39c74152bf875e8149d762b7034e344d6a  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-high/chk/EMS_000000.2d.hdf5
+# INPUT 5ef434200cf194b025d630d5aca654c5486507ef52987070359105b93f943348  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-high/chk/EMS_000051.2d.hdf5
+# INPUT 0930168d85d50f5a95258084acbf09d2fe00a2a27ad02d728ced18b153c447bf  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-high/chk/EMS_000097.2d.hdf5
+# INPUT 9125c6884928e32d439d11f27739428977ef2d991156756742b5b0599f7115b9  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-high/chk/EMS_000103.2d.hdf5
+# INPUT 75e38668140482f546b8924eefde7832d15537a229c73994f6d49a625b2897f8  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-high/constraint-rms.csv
+# INPUT 83dd1fefeedb7fd23e19a4ac1d87c280e6041584a14875ec1d98b520e65c9fd8  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-high/constraint_norms.dat
+# INPUT a5bba92da42c1bebadb7ec5273a8294e1e6af664cc4f26311bcd15913569f7d6  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-high/finder-values.csv
+# INPUT 00bf58b6005b86d89fa2c6a3647d56d8e6648b6eb31b6d3a3e32ef058bfc2f4b  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-high/rh_f0.dat
+# INPUT 2bb5f7474a818f3f4ec3f0ab737b1255c2ddd70a8be20f714ea78eb74df2fb75  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-high/rh_surf_0.dat
+# INPUT 9c1aedd5b69be09a8e83acd7ef30032ea136e375a642c67cf48e0458b97456b8  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-low/constraint-rms.csv
+# INPUT d5e2772390f1943bb2959ceb872c750fa05a68af88a038798782218fc1b1e034  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-low/constraint_norms.dat
+# INPUT 2850a30b74632cf37b6df7ae9b8dd241a55a19d1949d3ff59f32df917ae2686a  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-low/finder-values.csv
+# INPUT a97a5917dd5887e06346a728b1b37437bf3b00041ce033fe6e81d12ab4c241e2  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-low/rh_f0.dat
+# INPUT 41e49a7933e06dd2b2de39b842af4b82a02dc60fcfeaefa2603b9b5d1d336455  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-low/rh_surf_0.dat
+# INPUT 284a774acf8823f7b13a4f0e139c13c89a7a3ef76280d41bfbffcf20e92670e2  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-mid/constraint-rms.csv
+# INPUT 084f9a33a4ae5979fede600ea1c798bd55f1037880903f9bbe996e1b2dda3499  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-mid/constraint_norms.dat
+# INPUT 20af1dbf0f9c654e4025a898c957a3e56611b8262c0b02996035f46874391fce  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-mid/finder-values.csv
+# INPUT 7d7bb8b01999df1750ade68864ec9bdc0dafc4f639a28d625fdf9fac6d6af351  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-mid/rh_f0.dat
+# INPUT f654c329676c8ddda3f1b6eb272e7e871a224b484f10fa7bf91955aedf501194  /Users/auroradysis/Workspace/EMS/.data/exp-0019/E-mid/rh_surf_0.dat
+# INPUT 2a8de074ae17c0b11d323d4b0933a6bdb7430a5305473c8cc7d4ce37f39fa793  /Users/auroradysis/Workspace/EMS/artifacts/echo/E.trumpet
+# INPUT 4bf805a7602afaa5fc8c97bb9286bbee5e5a6ea88db8155da8613f677da6599d  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0019/submissions/exp-0019/params-E-high.txt
+# INPUT bd7a51bddcbf7d4f8a2f74818515e01707cabcc914918651f84b0f7f641ba106  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0019/submissions/exp-0019/params-E-low.txt
+# INPUT d33f6838b5312171e61c079b668af6b343b9fab931e03363a3f0ea29206606f2  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0019/submissions/exp-0019/params-E-mid.txt
+d52d60c1ac42bbfbefd03b6fb37145dfccf4ab013ee1cd0551ef91781f84b586  Tests/EMSNative/README.md
+9b8f89859a2c1527b0a5551a4b90288c3093e3bf803f14da34f9909c52376410  Tests/EMSNative/T7EInitial.cpp
+b164c039727b1ac0551f3e751588f21144ff8b9928a2b08e9d8dc460d08bfe1f  Tests/EMSNative/T7ENative.cpp
+45ce20bab41364b16d10cca89879b1c7ea0b644e1e386b92d12123dcc67418b3  Tests/EMSNative/figures/t7e-constraint-rms.pdf
+291a7f741b24c590a926bad576a8ffa64c7c06b92c8a632d258b21e4511f5991  Tests/EMSNative/figures/t7e-constraint-rms.png
+547f869486adf4760aae6d6f868b27b1713d537d576717bea290a62d210a45fa  Tests/EMSNative/figures/t7e-far-profiles.pdf
+0662ee9db6753f2f1cc8340ecdef9023c8ee2509a1c1a5767d9034658a4b0374  Tests/EMSNative/figures/t7e-far-profiles.png
+49f654506db2faa47efec053e2bd76757b74ea637c7b2e171f63c938038e5c2b  Tests/EMSNative/figures/t7e-horizons.pdf
+3fd767b1dea72f09ab2d94fdd641b1b817b7431432d6bd089ad77c2c7aed9329  Tests/EMSNative/figures/t7e-horizons.png
+c83ea3f1e72632d76a189cfae811394825b1ee3ef152cc8a6b16f338049bec84  Tests/EMSNative/t6-cluster-t0-comparison.csv
+23901bdf54a7c89ac7af43b7601272c95a50093d6e4cbf9ddb169d296547f194  Tests/EMSNative/t6-finder-final.csv
+010ab2b377e96fa63c37a1fbb2cceca801148e1756e66aaffcd2c17476326030  Tests/EMSNative/t6-finder-history.csv
+3c4473550d640479d0e7870aa4eb85680d87911871bec0e663dc706ef7aeb067  Tests/EMSNative/t6-finder-input-audit.csv
+f30e451abb6b9c118e91d4a87b0e945ffd57e4e461ffc13314855dfc31f7d058  Tests/EMSNative/t6-finder-stages.csv
+2844ca4dd292e37ddfdd7f2b632430ac9684dd67b0a6b2605ec01aae2f4f3669  Tests/EMSNative/t6-horizons.py
+16e6d2e0f84a53c72bf590d597d02ab47d0172c5a2fb135e5d9deec519ac000b  Tests/EMSNative/t7e-analysis-performance.csv
+147b73d4b4812d1220a373885772e661c2294f9dd4cffbace032dcf8bcadb991  Tests/EMSNative/t7e-analyze.py
+8da1d0b2b604ecdc309cd3da559ab55327742ea03cd78a86cc6b20e92c5b0c95  Tests/EMSNative/t7e-check.py
+4e4795204622d6ee4f5e54f03153aba3557ee3dd54780a4bd521816dee3a9352  Tests/EMSNative/t7e-checkpoint-localization.csv
+c4c69e193ecc7aab14f99d7513eed2654a48f5cbb532dbc8e5dc4560a453f557  Tests/EMSNative/t7e-constraint-orders.csv
+3c24f631920017929e379e91b421e137049db78fce90646f36b86e1473a53c26  Tests/EMSNative/t7e-constraint-rms.csv
+e2d624d60a97a556ef49a22a304122258169c8fb692e9ffc9b40f46fb1bba141  Tests/EMSNative/t7e-controls.csv
+b96372923205b887bff4e1f31d93ae34a1d38775332837d07220137d2463f29f  Tests/EMSNative/t7e-coordinate-controls.csv
+a134ad052daf7798c32c68cda95c967cdaa749d5d2555487681c7f18a3b1a8a2  Tests/EMSNative/t7e-coordinate-errors.csv
+553f098d1c6eba144b04604744be2d0ab8649eb5c356f0395d68819c53465e6d  Tests/EMSNative/t7e-far-profiles.csv
+5e8fabfc338f735a2090eee1d877fe652be1e5f3a241d12bc0a401a0fec5f405  Tests/EMSNative/t7e-finder-input-audit.csv
+2c597a2b1835333a78cb48e27ae1e530e2ac15078c1e74dfa704f2302bf7c47d  Tests/EMSNative/t7e-finder-runs.csv
+78327250d63a0e80ce2eaed786fa55b3a580d5c005468b9994c6ab5296312dcd  Tests/EMSNative/t7e-finder-stages.csv
+8da026de7a606a01a653461b91ffb1234a98741066d72038b27f0e5f16cd2cef  Tests/EMSNative/t7e-gamma-controls.csv
+4cf6a9aa4bdc7d210c532fa17fe879bfed27e2031762206e12ae0df8ab8f94ea  Tests/EMSNative/t7e-horizon-budgets.csv
+4bc30aaea5cf2e5f8601bc9897ad0a52b7b9a63450f9a0da2ee642b58959b104  Tests/EMSNative/t7e-horizon-drifts.csv
+e073ad0c4a633834e24a80c381ace101e4c4a0945dd73d3c996b607ad8c7140c  Tests/EMSNative/t7e-horizon-richardson.csv
+aa97389d827d5c345b6f15f37d421db466f3d0eda5d4c5346cab4a2c41781f4f  Tests/EMSNative/t7e-horizons.py
+cc8746ab207b6986b985a71c5fde4475cfefbd1c59bb7556ed28c3b7af2011ef  Tests/EMSNative/t7e-layout.csv
+3d4db189bb835aa293c8d251eb611c6368738a410b3241863a2e9da61b625898  Tests/EMSNative/t7e-localize.py
+bc206dc9fbc09bfec373b986fbeac50dea2701c606960b9f31881cfa66ce4292  Tests/EMSNative/t7e-qualified-horizons.csv
+414f84add46f1784edbe1bd7d937ff7634af413b9dd25d261402eb76b8ddc584  Tests/EMSNative/t7e-report.py
+f81d45864fc944032dd7fca992817d40eec835126408e13c4bac8eab91b1c7c3  scripts/cas/t7e-evidence.md
+b60e467a2fcd631107828ce0417e96fe5880bca17df455c13840338ac04d999a  scripts/cas/t7e-initial-verify.json
+283d211b5559acce3ae11663b387f689e6a2f27d13461fdce225d77a37bd57d8  scripts/cas/t7e-initial-verify.py

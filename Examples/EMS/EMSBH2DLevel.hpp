@@ -25,6 +25,15 @@ class EMSBH2DLevel : public GRAMRLevel
         GRParmParse pp;
         return EMSRadiationParameters(pp, m_p);
     }();
+    bool m_t6_interface_diagnostics = [] {
+        GRParmParse pp;
+        bool enabled;
+        pp.load("t6_interface_diagnostics", enabled, false);
+        return enabled;
+    }();
+    void t6_write_interface_strips() const;
+    double m_t7_snapshot_time=-1.;
+    void t7_snapshot();
 
     /// Things to do at every full timestep
     ///(might include several substeps, e.g. in RK4)
@@ -54,6 +63,7 @@ class EMSBH2DLevel : public GRAMRLevel
     virtual void specificPostTimeStep() override;
 
   public:
+    void ems_t7_initial();
     // Prepare every level before the initial extraction after interpolator setup.
     void ems_prepare_radiation();
     void ems_extract_radiation();

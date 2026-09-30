@@ -1,0 +1,443 @@
+# T7 A completed-run receiving-resolution analysis; HEAD 03e31ef569edd09735316e3061b7732859b09b0a. No commit.
+# READY-EXCEPT: mixed spatial/temporal effects; finite-width and original Ham source operation not uniquely qualified.
+# Current saved fields only; no static profile evaluation. Production/author finder unchanged in this analysis.
+# Both markers zero; no new evolution launched. One/two bounded analysis streams; <=4 threads, <=8 GB.
+# Original registration preserved verbatim. This manifest supersedes shared README hashes in historical manifests.
+# INPUT and RETAINED are checksum-verified SHA-256, byte size, absolute path. Removed own intermediates are separately recorded.
+# Replay RHS bit-identical; stage ghost scaled error <=1.77e-15; RK4 Theta replay <=1.50e-21.
+# Default-off/recording-on controls inherited unchanged; standalone T7AReplay never enters evolution.
+# INPUT 4de127268c665ef6eea993fb5ca68f6a5995eb7a2d934310c8e24179ef3567ca 22445 /Users/auroradysis/Workspace/EMS-deps/worktrees/consult-5b-reply.md
+# INPUT b35741ac7887900c0f8890f8af6c5a57749bb89eab8766b9032f83c3a4bea70c 2353 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/params/t6-ref-mid-face3.txt
+# INPUT 3b7482f68fdb3217ed2f33d458805cc8f09c2748542f6e27d7d9788338764f06 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000000.2d.hdf5
+# INPUT 8874cf416a2c84999558395ad95b827536fdf70d41f05762fb9768719c35c1e9 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000003.2d.hdf5
+# INPUT a4a40543e43d61918293573c8102eee8d5d99f9767c75a61ee7f8cdf3c5583a3 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000006.2d.hdf5
+# INPUT 218b1977603312042092adce88d213a4d2cb8362f899fed25944e0c5cef132c7 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000009.2d.hdf5
+# INPUT 3f1d2f2da5dd93b77371b8073edcddaac703969f5c0550b0a47a016f6a438d83 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000012.2d.hdf5
+# INPUT 7c3154d47eebff4dda6b1e87f2aa33845939f58b6ac492143a2e64ee9484abd1 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000015.2d.hdf5
+# INPUT 218aa1b9d45b86baefebb00d62233df36590a383dc8d31505c46d59210ec865a 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000018.2d.hdf5
+# INPUT 98ee7fae0629a1041d9dad39987fdf37da7d568a362464bccec861517d08d804 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000021.2d.hdf5
+# INPUT 05ff48cabb707af674c4e15ccaec89f87d1bafcdc35e479dbb8eff7c7b15b53a 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000024.2d.hdf5
+# INPUT bb67e4951b8bc29ad7579af26850c49666aafd8576669064c837657c4b1bd057 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000027.2d.hdf5
+# INPUT f309a30ad49b9fffb346b5081be94257a6773879d11cb91eba3d0fcb4a0b71e4 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000030.2d.hdf5
+# INPUT 8d29440d2c053dbb682b258e6b8c44062b3fc3615a5d59234a77635db248e786 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000033.2d.hdf5
+# INPUT d50b3be74744d08418055695e1140ec9c6e408cf982f4bdc647193f06c8932f6 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000036.2d.hdf5
+# INPUT e62fd98886389ef2bf578a48c71fe4fad9a0104b6ecdd2f97e3ea2a05a8ef8cd 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000039.2d.hdf5
+# INPUT a575fa2fc446a1984b88d6f61d7b60fd6dbedd9e95716f4e60aa922792d00911 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000042.2d.hdf5
+# INPUT e78bf281b991540c15a72e0f802455e398287d97ae39b989f0d0260945e950b9 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000045.2d.hdf5
+# INPUT f8009e471d4b9bd348c5871c8d56e76f2177ab5889803723a58892441bef48ef 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000048.2d.hdf5
+# INPUT 92de1b87469cfe31bba8e6bf82daa0c575f11f238f9740b5fc0dc8aaac4b55e6 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000051.2d.hdf5
+# INPUT d3e5feaeff53dfd9a15b601cd6e187dacab8acaa62c9a012f0aaf4cec4182b2a 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000054.2d.hdf5
+# INPUT 053478ea9fc28862353737601f71a671b281e5f3fcf4aa8546b1d758d7776910 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000057.2d.hdf5
+# INPUT eebf5b1587727345c4fa12a628c9c86b6b63a8f9ffa2e48fc8cf155a8b851e61 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000060.2d.hdf5
+# INPUT 9e7f1787a1ef551b3e2e846e2e5b15c262a2ed5c25ce8047567ce731376975b4 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000063.2d.hdf5
+# INPUT b0689c0d8fd917e45a1e30ae75ea64e5283c9f71ed4f1f4b59a463ad11255174 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000066.2d.hdf5
+# INPUT 2748235c8e13e699d34623676e4521f589fc31c015e376d42a957fa7646b2b88 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000069.2d.hdf5
+# INPUT d3b235c44b3d8ff9c63956b2f83ec4984f75dd40ab9a55593ed48c7b2848c527 54779424 /private/tmp/ems-t6/evolution/face3/plt/EMS_Plot_000072.2d.hdf5
+# INPUT 393be5751fd37a8a5eebd61fdd2165ba9b665a9313810a45502b7a1c0d8de5b5 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t0.083333.bin
+# INPUT db5f41f1b6fbc7dcfc6c94f5a8059e6e9edd444b96bf40e65f9e75f1f189bab7 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t0.166667.bin
+# INPUT 77f377220d51198c165fc9140f5cc98214ba7f2a1144e07317b2a0718e64fc1f 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t0.250000.bin
+# INPUT 1af0564f02930910eed7141bc059372e71b5e514d35a329366c895f2436188d4 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t0.333333.bin
+# INPUT 113f5bf5423b4a9a1bee79e2ad3180a74a68051d9c58d65ca8602eec7f2cbba4 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t0.416667.bin
+# INPUT b776333edac1ac301f24417342b4999b4d372807eab56e59912a37398dbc5b44 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t0.500000.bin
+# INPUT cc459139938c66cafb3dd9f2243d040e6df48750f9a852fa0d63d277126df062 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t0.583333.bin
+# INPUT 0f1e9b08a21270cdfe4c572cb2e70ee4c779256c5902a97f8d591522579fd46b 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t0.666667.bin
+# INPUT 3c45ed32f14f5727080efec43e0bbe7b198c0e3880a561a70febbb4715cf0179 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t0.750000.bin
+# INPUT da72017f46d6ee2002c15f813c30439310bac54c93a4cd13b8dc422a2990807a 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t0.833333.bin
+# INPUT 54db8dcdfebf29ba73fe7963b23d7805587ca805c0933fa085b862337f63326a 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t0.916667.bin
+# INPUT bdaf6a7503d54835682ac951bf5fcbedd474b15aff45c8553295b087474bccd9 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t1.000000.bin
+# INPUT 1607d890ea2da585ae71ba64fd6f9582782c7d5ad13f193aa31e86ef999d1710 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t1.083333.bin
+# INPUT 91b0f6c3295b08f94763c523a62d4b6f2f590717c158224ec4bdd4c6d998b546 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t1.166667.bin
+# INPUT 129daf7742a79f5bdd9118d246b3a9953a6b599cfb491a802d87c7e24eed9c8c 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t1.250000.bin
+# INPUT 5b5961cdf98e9ae9df031f730c75eb2c0aa3f03297bf1f2b527150d50ae23f5f 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t1.333333.bin
+# INPUT 3ec5637eabbeec5ece0e7aa3a777ea0a9b20ee33b84670c38f00e152f6100df4 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t1.416667.bin
+# INPUT 3bfe4acb2f75dc7f2685583c1dcbe2f3c9c1d464c324950422c1eb227dc558e9 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t1.500000.bin
+# INPUT 350154205f0a36450b1624ac4e18a5f0c1fb58e4b71c1c849ce3e88c4fc82b3a 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t1.583333.bin
+# INPUT a101c0d174c2cd7e5eac46e7fefd12315e78c321a1f162ad9fe0d64826557c76 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t1.666667.bin
+# INPUT 7ff34786c8b3b1bdcdf33967dd8d82abec93655970eefc082a1f1be078da5e37 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t1.750000.bin
+# INPUT 71fdb3a1791d69a0e9418fa667d071d3453ec616c39cc37a56c2807a3809f493 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t1.833333.bin
+# INPUT 1076a71240e8d68047028aec7405439edb917e106e7307126f1e54dd107127de 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t1.916667.bin
+# INPUT 3006d238a5a04160f9e472b51453feee03cadd691534fca95b1e330eefde6754 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t2.000000.bin
+# INPUT 760eb412e3a4b5743985749a1b972552939616986cf78431d8216996f99e922d 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t2.083333.bin
+# INPUT 68825bc68bf2fff12811bdbd8cbb61e818519485606aa9b7c1fa506875efcfbe 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t2.166667.bin
+# INPUT 5bb54628276dad6b33de8deb7e867936fd15a86ce4332949c36127deb7c2ed66 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t2.250000.bin
+# INPUT c15d247201a952f2d239c1b5457be5dd871527c038ac69bd10edb08c763b3c08 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t2.333333.bin
+# INPUT 53303fa6487c7491ce5f7756ef1151dfeacadb6b36f0cb4a6c79e7e2b40e4be4 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t2.416667.bin
+# INPUT a7b192115beacafbbcd0d2b8dd7403522a72005ee4e8fee8d247362f981d82f8 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t2.500000.bin
+# INPUT 505d8dfe89efd57b9a8a6e2079f45a2e2695c6c9fb5b7c657b11f2d0a0dd8169 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t2.583333.bin
+# INPUT 7e6b2628cb88c1f7436421dc3ddec5a12eb6e431bc2ce18887c79f7cf6daf1e3 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t2.666667.bin
+# INPUT 25bb7b328184b7d19e6fea233b85f649ea635992a89728285708b3a2df957472 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t2.750000.bin
+# INPUT e46d095442a1ddb477b7609c001b3081ba89ce642515bffb409bd50f9b2e40fb 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t2.833333.bin
+# INPUT 4f96ac36b4af425f011199da65eea6032b72c715867ac68b25bac83fbd39543d 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t2.916667.bin
+# INPUT e00c5f887298d0685b190b79b166f03333ebf4c61325b9b6b412a2ef2cffaf57 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t3.000000.bin
+# INPUT 8bb2fab1a3cb7aa7ec59d94f1da213cc24fdab5e5243a03ab49f7df1477d625b 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t3.083333.bin
+# INPUT b66a698be8d78c6bb515e55f4215d65240d772ed488e9168cf801f9bf39a39f4 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t3.166667.bin
+# INPUT 04c68defdf33680520cde4c6ce9e66a58021198d64a5459c2d22e048b05c31d7 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t3.250000.bin
+# INPUT d33944c5845fba63580c10f92cf3edb0f357fc21ab40d1c1cdc4698767b64432 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t3.333333.bin
+# INPUT b22a6e03369f333cd969b2878dfbde11f7b2e380b768cb470f620a140dbeae52 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t3.416667.bin
+# INPUT a70330c34594d17288702376eee5f49da3e91aec65a180d79bf156309f184c07 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t3.500000.bin
+# INPUT 47cb3e1fc224df3008f767e9b3561047fad0e965fd020467ac8d946805f49cbf 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t3.583333.bin
+# INPUT 634143979f30f26ce5fff14ed65efecbca4586989ef1be813ab2326253f3b2f0 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t3.666667.bin
+# INPUT 20d6b9598dee949731bbbf2d2073915528e79578c898f50d651436c8a2f51e6b 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t3.750000.bin
+# INPUT cd3ecf460057095256632ddd8ba9d56e80a43d80a15f2776a260b006217ed437 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t3.833333.bin
+# INPUT 45720f2bff3ea4c9347273a20ce11ce0d367790679dd233de4e76d9b68d68d1e 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t3.916667.bin
+# INPUT 5b23c1e30573427b74c50bc52de4a6fbe122bdf3222e6efb258903bdc1a87752 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t4.000000.bin
+# INPUT cad93fe4c3372d7731a222eec7075926440cb6147b225035744fc85173ab5c89 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t4.083333.bin
+# INPUT 60994a1873b00499d3dfe477ac58bebf7443770b9ca93fb3afee2da21705f0be 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t4.166667.bin
+# INPUT 92083e3fa40e23248d9f371b3f96c23718e5a9c2f32a82cd2c3f18f3c560d043 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t4.250000.bin
+# INPUT 5fead77c8af3c7566dfdc4834487f96d7ebbf5a20abafbfc795620464432aa7a 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t4.333333.bin
+# INPUT a2c08180833ae62966b4d5854804321e79429458687ee5fbab7a52b819ffaf5f 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t4.416667.bin
+# INPUT 9f3b344c39f1f3e90236c53ebe11c389b13b21cc81844867a5c9371600dd0922 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t4.500000.bin
+# INPUT d5dc229bba90b5ae78de711706a1fc39bb0906ebc1bed5b35ef3888215e6aee8 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t4.583333.bin
+# INPUT 138175670a523d5fc6593ba4709dcf5ea1eb6d11d500ebf9be745e1cfb5a8bac 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t4.666667.bin
+# INPUT 8e6668164a419182f4ce0d1d352d22608dbf84ce7ca8e85f424b627f46f32f90 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t4.750000.bin
+# INPUT 22cb30e7cec0d4a406245c01a2067caad862b844b9ee13ebf2968c945aaf55c9 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t4.833333.bin
+# INPUT b0e503303a0090ed155bc020863fd35de69ec12d3cbc63c2a9bad98acfd94b1b 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t4.916667.bin
+# INPUT b8a82e63af838d7c7dc9ca6a2008211014ba3a467b55dc7e0df89c718da61751 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t5.000000.bin
+# INPUT d68224c2078248bfa5071edcf1a623c760fa884e011b79d011891e3ec57551bc 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t5.083333.bin
+# INPUT 9e2f96d4270678e6cac9a694b20f6a41a8ba04eedd341ec2e38152effaa620b9 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t5.166667.bin
+# INPUT 5743d80e7c2f47dd769cf1fad2916caeac330051fa8380158badcd6b6b136c88 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t5.250000.bin
+# INPUT fc3f45c57f3d703d2cf60207af5d9c444ad7a66cbc8363803d37c2cbd445ee54 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t5.333333.bin
+# INPUT 041cc0a3033388ffdc9aa554f9fe52548441027bf0642004c34b85ddb7863507 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t5.416667.bin
+# INPUT 4d79491c7e55d42b22300ade2135a90cac6962a4ebe8c822153f6dc004deff88 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t5.500000.bin
+# INPUT ea9326fe186f1bdcf276705a3c77bd6fe0913c55158f51d3f7fca6d0c9607270 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t5.583333.bin
+# INPUT f9736574806dec07c4287a00f9db3001f575febea0c7537f8525679d7f0fbb6d 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t5.666667.bin
+# INPUT dc09dc3c43d6ac91d19fbb8c6732d4132405d6f985194c66499a41f4f29ad9ec 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t5.750000.bin
+# INPUT 342ea01c03ebd3240e3f354d9be47110d62f02403ebe2513fa5bc3877e7245a9 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t5.833333.bin
+# INPUT 5001daabdfe8342e964b71121e67ee4834ec709c1f48d79ccd81f30dd0318262 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t5.916667.bin
+# INPUT 581c391017ec8f86003f09017ca512bee3f7fda47ee1030a7da287d3a7cc6f32 439540 /private/tmp/ems-t6/evolution/face3/strips/t6-level4-t6.000000.bin
+# INPUT a80be68f128cb46a7f59cd28c1dc2a69752ee499caa95c45836a0b99273ec4d1 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t0.083333.bin
+# INPUT 518cd237701798ed74cc7250ef9d4cf35a50d7cb582a8260b1e2ea263ac3f9fe 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t0.166667.bin
+# INPUT 6e2d0941124b021ffa8772bf6e36a057e1136f5854a56de168a452e238dcad17 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t0.250000.bin
+# INPUT 7981861e8ca864cbc7d2f44e89b3f3997771cd20d1fc23a3c37d6cbddbb0e09e 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t0.333333.bin
+# INPUT f9125593708a03d149622b1f29bc7708b8e53b0e5acf8a2ed5fca802a6f7e849 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t0.416667.bin
+# INPUT cdbc86a970f6bf919a9ea892711722ae2863547a5579f7efe07620e238ec4be2 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t0.500000.bin
+# INPUT 00da65a195b6805e42482cfd3668216179907581103329090ca1e177d78b57c0 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t0.583333.bin
+# INPUT aea3a84c48eb14b2d049230031c093d323679c37c535703e2401cad785fba28a 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t0.666667.bin
+# INPUT b820c57496f9cea0c5f79f15b7d72874adb6ebb1cb9c5149754ccdadcb20dbdb 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t0.750000.bin
+# INPUT 06e268a7241232c9e38fb57eb194fcfe8e59fd1c818e0f82fe1668c9b8d08a18 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t0.833333.bin
+# INPUT 88e10daf608c4c53d2197c6948176fba18105d2144442eca7e7cc3de80ccc169 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t0.916667.bin
+# INPUT 8568f64de266a58e9ccbd3242167d552a6b3a845707c5921dbf960a2d217759b 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t1.000000.bin
+# INPUT ab34a333919fda93ffaea5f100982dcf3f5c1b0d341f41e5203cbf73a7129df1 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t1.083333.bin
+# INPUT 3c0172f9429e8c6f7c2ed31db01c36690cb06d8d773dda4118d859b20d732b8a 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t1.166667.bin
+# INPUT 630b833ec2ec6825aa0c6d037d48ab1369dd180be08acf9b5e6b431da2853726 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t1.250000.bin
+# INPUT 95c9b6a5590b6c5eb25a03f6fffadf7e0f11b83f444be16ee0757912f654fa66 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t1.333333.bin
+# INPUT d7771346a3f6c5bfbc7c5947f206956cb31d67d5253c1b6a4fc49894437cfab5 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t1.416667.bin
+# INPUT afe3b2c66340e0a4bc6f444553d15d7c5a8e649f060fe7cb5da35537de394341 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t1.500000.bin
+# INPUT 076dcfbc695dcf67ab26670124e9a39b8a02ee7757e777bd4d09591728dd1aba 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t1.583333.bin
+# INPUT 671306b3544e45009db5cdf32594766d1c0cc9d70894dc5bb961bc6c181f348f 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t1.666667.bin
+# INPUT c38f8b52b30a79ef39ca0a5e7af66f868c851ec64bc6e2ae2ae2276235c561cf 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t1.750000.bin
+# INPUT d1f6287f41c10250c2c5972035ec9d0d605412d62290cf010ad1f3cad27319bb 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t1.833333.bin
+# INPUT 1be6a65d8e226754d952a215244a598190ecaaec0cfffd3a7db525626c42edae 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t1.916667.bin
+# INPUT d042063e976196b79a849dad66a0b30b0ad6eccff0ca5b3a86df685418351ef2 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t2.000000.bin
+# INPUT 3e540786089d4fabab8998ba63a74505596c5e68e7c363c5e893d25bf3d16ba8 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t2.083333.bin
+# INPUT b5fc0e0a74862b5f871a36036e6fd57c0eb9acba00452288853c2e95951079a6 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t2.166667.bin
+# INPUT 0f28a7676687b87f3984d42b94a9502e0182ae0b8772cea315d497d6921b2af1 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t2.250000.bin
+# INPUT 28f971592042fbb89981a542118d32601494aff4c6abcc2d0bf2c7378f3eb79e 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t2.333333.bin
+# INPUT 40c6f699746a1abe72341741d550503f759abc369da67771f9661d9405ee421e 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t2.416667.bin
+# INPUT 067cd6ae6f50b69b1c500e50d9993ae813ffc2d9139c39c8bd2970861ddbdb8a 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t2.500000.bin
+# INPUT 3845ba65ac1b626e24dd4d7b00c16eefeebe3305eace74d3fe8598a474ae1053 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t2.583333.bin
+# INPUT 7b3c33e81be5639cc0d67bf0f135b5309380f8196a615d80589be20e5e77d8d3 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t2.666667.bin
+# INPUT a450d0e1bd9cbb23489d147fc02e359163d72b3cf17dbf6728055973c624e8f2 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t2.750000.bin
+# INPUT e1d1fc7f139e09220f796bec0dbba9c748404c63a4f3acd302c0f99b2497e6f1 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t2.833333.bin
+# INPUT 8d11da1c28f834efcae106cfa20bc35edce3547c8cffb72202a7b4f080aab9e5 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t2.916667.bin
+# INPUT eb7bf21f2b384a4dffa9cbd046c9dbfb9a857c2d427bbe65cecbc1ae983d85b9 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t3.000000.bin
+# INPUT 781c565efa334eb61f56fcd516ba6a2464d3e4354682ecbc4f90441c965060fd 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t3.083333.bin
+# INPUT 5c03c7c06575dc65c9c13f300a8488887d555866e2dde84479524c2b228daf07 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t3.166667.bin
+# INPUT aeddaec908a857e3a34aad96c34f387cffeef53c219c1ec8c07e1fb7edc3d953 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t3.250000.bin
+# INPUT 4bc893924745387a9fe34210086fef07830781aca63d4db6927222dfba95f88b 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t3.333333.bin
+# INPUT 63f81f46525a828d311d4e6869744b37712c71708c0c28f923f933d272ae9e37 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t3.416667.bin
+# INPUT 84a3ba9b2ce92e9fa7ce7364bbd51252c8757b766ff7367f0dbd6a9e2c7315d6 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t3.500000.bin
+# INPUT 860936370975eaf37d93fe347f0cfaa1caaa561c570cafca77634b805c37c73d 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t3.583333.bin
+# INPUT 9adbc4d0c1a9f64a5672ca667c3ed40df256afab97d68c92961f6610d18350de 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t3.666667.bin
+# INPUT f0c05c4bab575cc023a4e5aa5c412260d1eb4ee29118097231fb6c8a48135e5c 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t3.750000.bin
+# INPUT ad70ab72fefe9f6326740d48680e6dec6a7aed656021b92e758aa2307415dc5c 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t3.833333.bin
+# INPUT ea844d643372c78e188635efff31dd669f1c321267969c2fff9a517a1080f210 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t3.916667.bin
+# INPUT ad586d38684596295485f0364aef2e4600d95e85d09d7a1a7424738180b2f6f4 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t4.000000.bin
+# INPUT 8a7fc24272d50d08249557e02b7186efbe6cf888ed4f24e56661499150b3f82e 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t4.083333.bin
+# INPUT 9b592b29f0558607b2ed3e11fa808c58001ebdc1784a96430d85db1c990379b4 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t4.166667.bin
+# INPUT 2cf9fd28a49bc05b318039d93f0ac2200a255b520b9c545b39223368c54b3f77 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t4.250000.bin
+# INPUT e1658f325efbd3d3292fe1579182d47c1b5250aca9dbd78916f2b3d9f6b8723e 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t4.333333.bin
+# INPUT 0857c91e27513f9ba4c3d2ecf6d5e4220993f2e9d9f012a6883d16357590c95a 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t4.416667.bin
+# INPUT e4ba70344632c31d0aa68e2d3bc3ed8a768159b886bc3f32bc84bf721dfd75b9 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t4.500000.bin
+# INPUT 13e5553966650a2543ccd1075da590269012c872166b6ff8dfcf9308276cae69 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t4.583333.bin
+# INPUT 94ceab5198708aa23a16dfad11017340dfb7a7ea07d9c086a32c259cab06066d 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t4.666667.bin
+# INPUT 5fca439afd2de50ad136d6c29124ae2f2653c80cdcf215520126917fc9f21a70 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t4.750000.bin
+# INPUT 3859115498ad56dd1e08ae5ba10545c9fa8c48b71e4890ca52a2b43a43d8f82f 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t4.833333.bin
+# INPUT 105c183e57110d8f56f930226f96f6e025b46c93bb35e5f6fccf46157e1f1ffc 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t4.916667.bin
+# INPUT f6f8adb0e7fefd6efd6b02264284b92d9b7c9839951728d15aaf24d248c2ddd9 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t5.000000.bin
+# INPUT d891788241880b015243f47f38b08efc86c24d253b6d3e00a49e57bf0ee74b90 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t5.083333.bin
+# INPUT ae314aaa2ceedae97fb253cdcc0218348644899faf6d2b8093454953cc8a3538 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t5.166667.bin
+# INPUT 3f0aada7592c95cf4342d5ba8ee250313384db8e851b2ce3fda9370bc5fe76f8 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t5.250000.bin
+# INPUT 74608b31e66a8189963355f6961f5cdf5067af198f26546117e925a5973d69f3 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t5.333333.bin
+# INPUT 9ee68655cf117393f224cca8796dd25f1fe57fb5e3395fb6981537e293465436 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t5.416667.bin
+# INPUT deafc75ea8d708e774ea9352b76f899f16d5fd1851d683f68f04aa1c492b88da 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t5.500000.bin
+# INPUT aa734f414fe77bce6d6e4b2cf048ea471c661930f9b97504668cf123a8feeadb 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t5.583333.bin
+# INPUT a06205f36b96d7df93aee934d57adca1dc7809c7fe6fd5f6afafb43d57d568b2 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t5.666667.bin
+# INPUT b551f96bfb4f96f5054a929c7204a14eb92be4ba307b3cbb1ce43977debc2145 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t5.750000.bin
+# INPUT 474279b989f771ad13825eb05aee3fc4658e823f0d76323919bc0795dbb226e2 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t5.833333.bin
+# INPUT 0cad33555ae67d3ebb7df989d89bd059a51b00d3f343e1365951d4ed58b57dc2 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t5.916667.bin
+# INPUT 3eea2cfe88f772c3c0f3a7608577dd751bd04828444b1d0722816aedc1fb268c 550132 /private/tmp/ems-t6/evolution/face3/strips/t6-level5-t6.000000.bin
+# INPUT a884b4776420b4b8ad38e634fe209cdd16b88f6ab8ab75ca5d1b38de697f7381 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t0.083333.bin
+# INPUT 3272cc9ffb3fbef8783dc1c69fd741ac120812d502b5baa71a96b8fdc97111ba 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t0.166667.bin
+# INPUT 53e6a06dc788e8cd24338fba209a94ae38468cc6489279beecd5c49202cdc8e3 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t0.250000.bin
+# INPUT ba570ba56943ecf57507a6bd3d3279202cc842fa67526460c76c8c49e1498de6 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t0.333333.bin
+# INPUT 6d97f291cedb6bffde0e777654014be293cc042f529546f6774bc22225e7c0d3 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t0.416667.bin
+# INPUT 8533b1b0d00d153c7a2d624b06020c3e1aa31e6e6c0d5e98ee2034b15f8a8839 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t0.500000.bin
+# INPUT b77b7fb523656ffb1dcc6cb9f1e3775c92499170137f852c9408cd116ba22ab5 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t0.583333.bin
+# INPUT 73c3a395d27ac13437b473808a30b6b2428fed6996ad90073f7a15e1cbb80ef6 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t0.666667.bin
+# INPUT 29878b8358903529ff26acc77c04d5b0236632e253eb0b898af88d48363fe53c 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t0.750000.bin
+# INPUT 21a06adcecdfa25b6a12add2e898a1d218419ed68947f2271f656fc7f172359b 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t0.833333.bin
+# INPUT f0876a43ddfa911688c973e91ba0ff2bab8446db9f2fd8f45912d55971ef8d66 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t0.916667.bin
+# INPUT 93b836f0b677bb4f19a2ad2072b681c9b8f76e0feef2df948796b2869b8e882c 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t1.000000.bin
+# INPUT 9e144963fcba3b46a07a8a403dd8a0720b37a1a3430e2b03736daddd255b9f1c 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t1.083333.bin
+# INPUT 87a3a26fe6cc14c12c8152a8e24cb845c27c3a1a63a961022e36d46a55cacce4 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t1.166667.bin
+# INPUT 464efa8f3b261e54ddb86ec80df04fc60b0d982e42e6e8cd62beb2714498e414 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t1.250000.bin
+# INPUT e150f92a4e50038485569c2d6f9d875e012166df43a76497a1bc3f346bf6e710 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t1.333333.bin
+# INPUT 8ab8e01c296a795b2250ca34904bda63b5468acd8dd732c23e250d15cd5fb104 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t1.416667.bin
+# INPUT f36d3d7e58b877f7a58d456478eae54c5cfe52fe1ad557c9580265d0677c4474 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t1.500000.bin
+# INPUT 063a42d9ba60ba813045dc552170a2403030b453103eb6cf99c95ab4e52317c0 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t1.583333.bin
+# INPUT 7c2306da20302c0010f530594fe1b8b285d343272ee95876071f56ca1f176d43 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t1.666667.bin
+# INPUT c43008ed5937a024f2580c875fd8123a886c19f28feb0408729fe50354bb7561 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t1.750000.bin
+# INPUT 7707a0ed33f25cad6152fbb791b59f5b0eefd1c6ac56f82cdae95f2ca8b88fe0 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t1.833333.bin
+# INPUT f690d86ec067454d328454fd74b7190c2eabcc459d6273d87df03efd73ddbef3 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t1.916667.bin
+# INPUT c4c8d3a1c21a653e7d6a7601f64e29157e5fbf4712bb733dbcd8335ad9f1fd89 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t2.000000.bin
+# INPUT 24691842eb11656f065c974157f4ef8bf5d2a9723b55004767fe2ff20b4addfc 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t2.083333.bin
+# INPUT aa99a3fa02cf7642c06bd2083cc0558be2502e4a816fcc15e6c8fff0d4bbf3b2 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t2.166667.bin
+# INPUT f8a67c7a9e76e14a481fe1ad9df9ed23d900e0948f5ec4d95be686a52bbe56a3 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t2.250000.bin
+# INPUT b278a0343885dcfb2212579217682fdd867a8df2a19c7deff98b241dfd79e08a 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t2.333333.bin
+# INPUT 1719db954d539dcb90a12586da9f2863bae502c51ae5d687b43620fd6bcf43f6 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t2.416667.bin
+# INPUT 5dfda35f59566b7a7cfc7d35f6439f5f708e58251fb9a52ac782b8423a4b81c2 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t2.500000.bin
+# INPUT 01632af8ddfe6a4f3f643421c541ede9cad0f7e1111242871f2b07fdb1d7c105 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t2.583333.bin
+# INPUT 29fb27217737a163ae44667da76788a40aaef8b36a9c56095b6ede6cd9e59805 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t2.666667.bin
+# INPUT 64f4ce84c31468a3227889207a530bad9acb1707f87d13e260477c049ba720be 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t2.750000.bin
+# INPUT cde736c53aeef5c63b8d48365ee7d6fa0046e8421ea53dce84f68c658f4e8c91 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t2.833333.bin
+# INPUT 575fe610e1a5a343c12698fad249259700af9306d923860866af65e8ce86a615 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t2.916667.bin
+# INPUT 318b33cb9609064050a417f4c5e1352ddfe5554ac058e28b7d8914f6ee5e27ea 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t3.000000.bin
+# INPUT 6b7ca96797e904b33a31e06f15707542649220c4af73952422d0e600435f39e0 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t3.083333.bin
+# INPUT 90795bbce120df3c6b4e83a3d3f3dd453d2121b99b5a4486a8b6c37a9c3d1329 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t3.166667.bin
+# INPUT ef8cecf58af33796548b5e75589738784c6fa31ec518e414fe1884201310b12f 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t3.250000.bin
+# INPUT 1524ebda8d3a927b1fdb00c4ffec3c47bd1c491958b6ecfe52caa85b940222f0 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t3.333333.bin
+# INPUT 1352a9a90b79be9e82c3f639a3c0bc50cd0b9577ba676a5e9afe85499c48fd80 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t3.416667.bin
+# INPUT 171457d7e0e09ab767982877772c3f7282bede21b73c7bdc8eb9ae27f142a0e1 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t3.500000.bin
+# INPUT 7bdfa31d86d9927e314414f6d85a034842d930c4a2eddd5174a1be0210c28076 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t3.583333.bin
+# INPUT 96cd16b3ede9aa4e47df33edc967b9f96e78952d555617be4790cea187c5b29d 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t3.666667.bin
+# INPUT 2f4341e8269a15f63d4913644626878e2cb539adbe019462091264e811097cdc 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t3.750000.bin
+# INPUT f8de796cacde8641618a4fea2294e1f43dd270598a3c39e7287acf58e1eaa459 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t3.833333.bin
+# INPUT d47d3f5c76ea1d0483599c915765a815154420137fa30de78cbea111c6a5145f 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t3.916667.bin
+# INPUT d5f98c1157bcb62637ace55992966617d6ad554989c3fd06fcb962a18b7c3083 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t4.000000.bin
+# INPUT 1b393ecf94189eb38251abcd68f4646ea9da8f8d005f8e1fe0a1da963059fac4 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t4.083333.bin
+# INPUT c09705f97631b91f33ed8113e77cea6ff5f8e3e8df7713e989f217be9f9d7bff 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t4.166667.bin
+# INPUT ff4021091224014627b367136635b51d461eadbc3041669a29fbe446f78da022 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t4.250000.bin
+# INPUT 0835aa250eb8b7705b5b1874f65b796526594a7be703cfa5a5c72dd2896b74ea 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t4.333333.bin
+# INPUT 5b4c433a5b7d1a59be1c91edc1a2d2159eba93230ad2eaa81be8f3b7b0826f7d 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t4.416667.bin
+# INPUT afd33ad8aa3b6879a8e1f80629bf42066ef88ea245ccbc009c171c3cae97f3c9 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t4.500000.bin
+# INPUT 500524e50d294c2d6c25f08209206afed5af8777ad144b99fc4e54bf56c5970d 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t4.583333.bin
+# INPUT 73ae7dc287bd0728f11a5e965bbebcd59206ca53fbe04e9424ed09dcacc41c40 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t4.666667.bin
+# INPUT ed982cfd0b28ab6f28c246bf850d9a557fbba6f5984e65f843fee9ccc14685f6 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t4.750000.bin
+# INPUT 4995f9552a8dd8f169c868e4dd41aa681582989e432ed0a81c298388d68abf3a 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t4.833333.bin
+# INPUT 48700c25692cc8f61f8a465b61ac17b8c0f042efb7e0baa3c4a6886fd3298324 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t4.916667.bin
+# INPUT a5db20e60d777e9a7fbde80290aa0f151215b5af7ca1a30e94f2468e6af448b0 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t5.000000.bin
+# INPUT 2114007414b57b5b727dd53f5f675592c371cf3823916a31df9bd883192bd847 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t5.083333.bin
+# INPUT 1dee70d7def8ce4412947bae421494454135ae02a9ea50cc2f1af06960f431a2 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t5.166667.bin
+# INPUT bb0da1efde7ab406a534a9792d6426726286389a187bc6d549695f20efa3f6c4 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t5.250000.bin
+# INPUT bef266ec25ec19aebdb0031ffa0dc7d40532e7716c7770dc81a7329b0dffa138 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t5.333333.bin
+# INPUT e2ee352a4e6968331701c96f7c03e7fa0c64d3460a3731e84f224caf6672f4b3 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t5.416667.bin
+# INPUT 0346cf2f8ff6ac9eaba8d916e97cde430d4f5b508102201e3c88cde666ecd6eb 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t5.500000.bin
+# INPUT 5b931992f8f55f98a120b8418654a123a2c252758a82a69b9eb60f5d157b0ab0 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t5.583333.bin
+# INPUT d43383617146a5bd7eff0e2bfe1d4462cee625ac003ae4d98c2071f052b6ed3a 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t5.666667.bin
+# INPUT b1fe27ef72720e7d7e5a25fb1fa126d0b60a24131aae9511cea0785317fb5575 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t5.750000.bin
+# INPUT 6ff3b865789880cec96ad67ed2bb95574d5755527652a4d81ce112a9e87a8d82 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t5.833333.bin
+# INPUT 1358a17677fc04262cf6ca7893e00b5412a4db083f755f43b3572ae6dc987393 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t5.916667.bin
+# INPUT e8abc4d9794bdaa3d5b6acc8832e2c681a128742d6510ac63a2db372cbb7c174 329524 /private/tmp/ems-t6/evolution/face3/strips/t6-level6-t6.000000.bin
+# INPUT 64ed6e9fe5851ae75a493c1d5a4716ee5861c5f4f66da4972a5d476ed59e399f 5184 /private/tmp/ems-t7/evolution/clock/M_ADM.dat
+# INPUT cf2a8b224b6d6d6c958082aa9f436bee01cacdd8b9bb72638ad068baedfd97c8 8064 /private/tmp/ems-t7/evolution/clock/constraint_norms.dat
+# INPUT 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa 2 /private/tmp/ems-t7/evolution/clock/done.exit
+# INPUT f33482cd6dfcb027e7ec84c609b01f05100eff6c9cd91043b9a820b809bc65d9 5184 /private/tmp/ems-t7/evolution/clock/min_chi.dat
+# INPUT 13f3a8215e53d852fcca7b283370bc2cd896e90fa2825ca788b61e1005f4050e 2379 /private/tmp/ems-t7/evolution/clock/params.txt
+# INPUT 265e34ce8f3c587fb58c83c2ef0dc38b1464725f5d11c6a0bbfe121c07eca8d1 10 /private/tmp/ems-t7/evolution/clock/peak_rss_bytes
+# INPUT 4f7db724ccfbcf04801391efc96b1c7795d0ff36766228e9ba9ebe0cb4feec20 1578318 /private/tmp/ems-t7/evolution/clock/run.log
+# INPUT 6b0a7dac5cae0128e86ba3050debbd36cd437fd084da03a930a6bdd05b86a445 12479948 /private/tmp/ems-t7/evolution/clock/t7-snapshot-L4.xz
+# INPUT 515a687155538ca7ec72b531a480f414c08c758987ff62e6b2cc3c072b77e599 50860308 /private/tmp/ems-t7/evolution/clock/t7-snapshot-L5.xz
+# INPUT 87283945a76a37aae7c4e97a420a617dcce34f9b3a3048e77048c06f0534d9b6 73548336 /private/tmp/ems-t7/evolution/clock/t7-snapshot-L6.xz
+# INPUT f30ded0ce2ba08e49a86b97d824451e710270ddbcad150fdfcb346e233517125 177123144 /private/tmp/ems-t7/evolution/clock/t7-stage-L4.xz
+# INPUT bc1aa4f5ae2f59ed3cf78ce49e55adf08ddf817b7dc40bc2712930ca2ad10d01 889864616 /private/tmp/ems-t7/evolution/clock/t7-stage-L5.xz
+# INPUT 37efb91e6dd2fc85a422369381825088ad0f0d581b7ca959e8bb8a74041e9d59 1056649648 /private/tmp/ems-t7/evolution/clock/t7-stage-L6.xz
+# INPUT f1fa7bb95fc2bfb140b529bed2b043310acc67757e213bb81df168304d0bd3ba 12 /private/tmp/ems-t7/evolution/clock/wall_seconds
+# INPUT 9515f48fd5380fbf633eb210a387907ed779dffa45025f28e77ef9b79964d304 5184 /private/tmp/ems-t7/evolution/space/M_ADM.dat
+# INPUT ca11d1a3414a0a5210ecde7b9991bc87284dd662633759b576c15a8eb4837978 8064 /private/tmp/ems-t7/evolution/space/constraint_norms.dat
+# INPUT 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa 2 /private/tmp/ems-t7/evolution/space/done.exit
+# INPUT 28308ab1dd7df8a100a33482c39153be89412ccadf660da6b8cc4a6d332e7add 5184 /private/tmp/ems-t7/evolution/space/min_chi.dat
+# INPUT df4dfa413407876403175a5a16a567b3f74a9462cf680cdecd02f0c29e9296d8 2386 /private/tmp/ems-t7/evolution/space/params.txt
+# INPUT f8ac349f17e85b05f79c5f1bce707b6603499f3a01b0c9affa996e76996ce57c 11 /private/tmp/ems-t7/evolution/space/peak_rss_bytes
+# INPUT b45b17553278cc855f11a709ab470083f8ab8b275249995fa9bf33b68b97733b 1597132 /private/tmp/ems-t7/evolution/space/run.log
+# INPUT 018c4e433ed437503e7e5e904d9e0266230f3a0a7bfe7b69722415b964988e56 46300596 /private/tmp/ems-t7/evolution/space/t7-snapshot-L4.xz
+# INPUT 4b01c3ca79b7ee68d6d13c6f989c716b381b32308232a64ea4e6cc2dc14a7d0c 219288140 /private/tmp/ems-t7/evolution/space/t7-snapshot-L5.xz
+# INPUT c64fe1cb1c4d1549fcd467dd03984b60eb91f6c992b877aeb184951258af2df4 352792124 /private/tmp/ems-t7/evolution/space/t7-snapshot-L6.xz
+# INPUT e1467c16fa8961b4622625de5a13d14082ed405c7c10034832e4548971a1424c 185800940 /private/tmp/ems-t7/evolution/space/t7-stage-L4.xz
+# INPUT 0f619873033c725fcc5c7793d8cb8cb6fde2506f23d49ebc9df7250cbb9dcc83 888345448 /private/tmp/ems-t7/evolution/space/t7-stage-L5.xz
+# INPUT d8f9bab325c2d64e029be107620c0717796a1d306250f2eaad2b312158d2b657 1058833892 /private/tmp/ems-t7/evolution/space/t7-stage-L6.xz
+# INPUT 4eb92415ce86a1b789126a9cd8c2d166ced8e213a5b00f9616ae398d7a3f8c28 12 /private/tmp/ems-t7/evolution/space/wall_seconds
+# INPUT e923e66114ac197e3a92f11a07c253424dc7379fa5b232c70b15ccf493dffd23 373936 /private/tmp/ems-t7a/replay.ex
+# RETAINED a322b08701b94050b056a3366dda2ec9c171bf1002771a921e020fdf4e9d4268 75171952 /private/tmp/ems-t7a/T6_face3-rays.npz
+# RETAINED ed1ca9d27b6313e17f93b3cffd3cdf3bb838c369cba5da4dda9ac6abb7090149 21430751 /private/tmp/ems-t7a/clock-L4-events.pkl.gz
+# RETAINED 5a7f63c0f76ccbe2803d9b29c80f4d9e3a932bc361867c7b935923652e0106f3 123914414 /private/tmp/ems-t7a/clock-L5-events.pkl.gz
+# RETAINED a9a43bb9676ba4966eb097aec86ff509906c25586d3793b2cd0b5047b59abb73 160843242 /private/tmp/ems-t7a/clock-L6-events.pkl.gz
+# RETAINED e94e0d843d9410808e3b82b11ce28db1350624f35b53c7d7fbd10e8682687a5c 219290872 /private/tmp/ems-t7a/clock-rays.npz
+# RETAINED c65fdd29f7d2df0585acede322b4950ab50e5c6ae76afe9e5e9cab74830eab86 20450759 /private/tmp/ems-t7a/space-L4-events.pkl.gz
+# RETAINED e8cfe7a687ec3006865f55a5b9d2e20fc47da1c3b01caa375e6af20371574c05 96726302 /private/tmp/ems-t7a/space-L5-events.pkl.gz
+# RETAINED 34e49697332a0ea43df113b3f2145ecc5056b893c49ac7d2479e9bdf680aefca 125909124 /private/tmp/ems-t7a/space-L6-events.pkl.gz
+# RETAINED f6eea0f59c952c190bf32b002b9ad9f7745eb7cef2ebde0058bd33db61e30438 232055033 /private/tmp/ems-t7a/space-rays.npz
+# RETAINED 2013bec2f1172cf4530ecabfba386f292c84cfa494106ad7459fb0a3f0b6deb1 4079 /private/tmp/ems-t7a/tables/t7a-global-operation-deltas-clock-L4.csv
+# RETAINED 321c8e4c8a480c8034b7801e3f34e37114c6d0b6f3dfe61ff6c4b1c9ad006513 4072 /private/tmp/ems-t7a/tables/t7a-global-operation-deltas-clock-L5.csv
+# RETAINED 5e4d0b796ec7752480672026f20a84066c730f0c6c6d121010537090e7f91fbf 3175 /private/tmp/ems-t7a/tables/t7a-global-operation-deltas-clock-L6.csv
+# RETAINED b0cb922fc9a4818beac09f47e7bad82bbcafda925071935d4bf70dd0cbbc26ce 4077 /private/tmp/ems-t7a/tables/t7a-global-operation-deltas-space-L4.csv
+# RETAINED 9bf769141b2bd8b07e1aa3c5db2fa4bfcaf021296a47f383cb1f196b29d2c809 4086 /private/tmp/ems-t7a/tables/t7a-global-operation-deltas-space-L5.csv
+# RETAINED 79fb367c2b63963ccca4344b40158812b7427df2cf4fa8a9ff0faae3436956b6 3171 /private/tmp/ems-t7a/tables/t7a-global-operation-deltas-space-L6.csv
+# RETAINED 5be416a1215db1c862f25f2b6781050793c744494b2003f6f7c8d0806b938495 147251 /private/tmp/ems-t7a/tables/t7a-legacy-strip-peaks.csv
+# RETAINED 671e1065812ec174071dff58b5112a8a6c83ffbf4abf5d35330adc459842f28b 83093 /private/tmp/ems-t7a/tables/t7a-native-widths-clock-L5.csv
+# RETAINED 23ced3db0f924b47a09f8182373b6f54798e61b82463d8e9907effff913bb957 185581 /private/tmp/ems-t7a/tables/t7a-native-widths-clock-L6.csv
+# RETAINED 3e974dad3751b586a7736d2f9d291c19ae3836fad532fda4b96a20bdb8c348e0 177075 /private/tmp/ems-t7a/tables/t7a-native-widths-clock.csv
+# RETAINED 25a109fefff64dac28042fd44131e73ae92b6d99e6a671e5350dccc88316a9ae 82256 /private/tmp/ems-t7a/tables/t7a-native-widths-space-L5.csv
+# RETAINED 02682212f48ccf177c760289955f154bd1d70cce687bb691a910aac0e20da13e 185117 /private/tmp/ems-t7a/tables/t7a-native-widths-space-L6.csv
+# RETAINED 879eebae1b52c6720982228ec4fda80835a9b1f4345e19f94164eb36ec354ccb 176556 /private/tmp/ems-t7a/tables/t7a-native-widths-space.csv
+# RETAINED 569ef917e3ed87f9376200d5597c52c08bbff1405e7fa340be1265ed6648e48d 1318471 /private/tmp/ems-t7a/tables/t7a-operations-clock-L4.csv
+# RETAINED 200562e5f484263d2d9a1e2b689e114987167104605cf3961554f72294cc3f2a 2636112 /private/tmp/ems-t7a/tables/t7a-operations-clock-L5.csv
+# RETAINED ca16800cdb3d1a332be5973fbad1c8ca2a66c66398e0a5708d58b048a7cbe0e6 1188787 /private/tmp/ems-t7a/tables/t7a-operations-clock-L6.csv
+# RETAINED 401491f54d5139526c4a281f34bf9b832f1da9b62b383c5dcc6e60269027ab8e 1067868 /private/tmp/ems-t7a/tables/t7a-operations-space-L4.csv
+# RETAINED 2b9d7d83995d12ca830e84cfb68bc8295c587e9c7a1379cc8b4e51851c5494d7 2148333 /private/tmp/ems-t7a/tables/t7a-operations-space-L5.csv
+# RETAINED 3224c884ace53f283d5d181041b9e9da919fbae4f01eb255cf1d2277b82f7c9e 974122 /private/tmp/ems-t7a/tables/t7a-operations-space-L6.csv
+# RETAINED 01cb3f8c50ed295d8c73fdf07ac4e5918b05adefc3290418c188e20963b79f9c 6422 /private/tmp/ems-t7a/tables/t7a-packet-ratios.csv
+# RETAINED 7e4fa1dded75c7e4c01416b206d2511d1b261e8c462dd179497fa02266a6c91c 229 /private/tmp/ems-t7a/tables/t7a-performance-clock-L4.csv
+# RETAINED 72e1ec93c72031d07ab46fe569590dbdc35f18f00ef325549117760b69a1efa7 229 /private/tmp/ems-t7a/tables/t7a-performance-clock-L5.csv
+# RETAINED 632803346317b333c0a530eeb36c9f5172488228422603218daa71211febf20d 230 /private/tmp/ems-t7a/tables/t7a-performance-clock-L6.csv
+# RETAINED 41bb5ec85194e68633a9134fb9ea81b39206cbae98f1ea349871034df103943c 230 /private/tmp/ems-t7a/tables/t7a-performance-space-L4.csv
+# RETAINED bd86f727cacaf1f024cac5adac1c5faf3abe22e04f5480abc99d4806fdda2015 230 /private/tmp/ems-t7a/tables/t7a-performance-space-L5.csv
+# RETAINED 60ec15f683c765b0e8a52245595dabfc53a26138b3fb3cd33a92aaea0cf73542 231 /private/tmp/ems-t7a/tables/t7a-performance-space-L6.csv
+# RETAINED b1e3de0f4efa4da9671ad272c2529066a9884af748a21b7d07838ea2e15176ac 140216 /private/tmp/ems-t7a/tables/t7a-restriction-clock-L4.csv
+# RETAINED 91893be33c74e256a20f1d03339c6b4c3310d796dd7e1430f286354546e35c0e 294011 /private/tmp/ems-t7a/tables/t7a-restriction-clock-L5.csv
+# RETAINED 967d4f6641680aff9447205da9879871850ea7cf99bdd16252c4c038b683e19e 112162 /private/tmp/ems-t7a/tables/t7a-restriction-space-L4.csv
+# RETAINED e35ad78757c5d538e41d18cff0ca35bfee8c93ba6800266a059b2bd66ab2c488 239689 /private/tmp/ems-t7a/tables/t7a-restriction-space-L5.csv
+# RETAINED e229f06569b5f03b70596846ddc2460ca26622932222e21f744b650c934e53b2 171913 /private/tmp/ems-t7a/tables/t7a-rk-budget-clock-L4.csv
+# RETAINED e38041d84ba3b20974795f3138add1b4aa71dec19dd5b72f36bbd7606c69d627 703591 /private/tmp/ems-t7a/tables/t7a-rk-budget-clock-L5.csv
+# RETAINED fda04c85cb6f93900549af47817545c53d04a9ac9268fac39ac214844b74365e 720812 /private/tmp/ems-t7a/tables/t7a-rk-budget-clock-L6.csv
+# RETAINED ca24929aed2c5986fdf33567b5185ebf52b3e57f2c08c6cee2990f803a725349 342991 /private/tmp/ems-t7a/tables/t7a-rk-budget-space-L4.csv
+# RETAINED f720a5c110928863bb3eb05f5c8ce9d7c6374fc5f0d27bc8e38797e5ec921b02 565494 /private/tmp/ems-t7a/tables/t7a-rk-budget-space-L5.csv
+# RETAINED 5c296a5a3e0c7a2afeef3e5249ffd2e6214b91848da752f4e0b4bbed9b525c6f 582992 /private/tmp/ems-t7a/tables/t7a-rk-budget-space-L6.csv
+# RETAINED ec3e728549644f70cb5eb53d72485053d01349b242171185b101e07b7015f1ae 316 /private/tmp/ems-t7a/tables/t7a-scratch-hashes-clock-L4.csv
+# RETAINED 773c1b7241c816852255519b9dd40cb2560f67a3fb1db3b25346c0c239af35d2 317 /private/tmp/ems-t7a/tables/t7a-scratch-hashes-clock-L5.csv
+# RETAINED 057fc04c1328739633ead217a0f3f9d8db87df862c08cebd7861195c1e0b0903 316 /private/tmp/ems-t7a/tables/t7a-scratch-hashes-clock-L6.csv
+# RETAINED c7dec0ee8ed286c1dad5b7e503d23582788c703cf97134a98ef6093be7576eb1 316 /private/tmp/ems-t7a/tables/t7a-scratch-hashes-space-L4.csv
+# RETAINED dbe26304681d64ded0d85fc78fc13fc4e8a2e9ce0b6e1a8a0cd35e45efd688d9 317 /private/tmp/ems-t7a/tables/t7a-scratch-hashes-space-L5.csv
+# RETAINED fc51b10cdb51c1d1bb91372497e614b74c63623f1d419623aef00caa8d86fb8b 316 /private/tmp/ems-t7a/tables/t7a-scratch-hashes-space-L6.csv
+# RETAINED 7a488e9911b74c0ff3f9f89a0207b9b1df998ae9cf0eac3808da82735a0a91d1 7746 /private/tmp/ems-t7a/tables/t7a-snapshot-audit-clock-L4.csv
+# RETAINED ef3a1750d88a7bf493e53d3066a7400e275e3f5307a2c7c52fc4a6edd6089bc0 7702 /private/tmp/ems-t7a/tables/t7a-snapshot-audit-clock-L5.csv
+# RETAINED ce8640ebbbfaa29955686dc250cfae837def403dff08028101972f740284b24a 7731 /private/tmp/ems-t7a/tables/t7a-snapshot-audit-clock-L6.csv
+# RETAINED 7684bae4eb4885279de417e53fe15b8ed0d2b12c4f2a07fb95bb8d4fcc8a1ee9 7727 /private/tmp/ems-t7a/tables/t7a-snapshot-audit-space-L4.csv
+# RETAINED d780fd8fedd3610c3d56aea0a0220975a7dec8cad56ef5b6a887c9d52ed60cbf 7756 /private/tmp/ems-t7a/tables/t7a-snapshot-audit-space-L5.csv
+# RETAINED 93f0619b2e56dbafcfa2f269616ee3a04dc8467d8376d13f007dfa774d1c4cc6 7778 /private/tmp/ems-t7a/tables/t7a-snapshot-audit-space-L6.csv
+# RETAINED ced8e00703d7df973712931e4e886c5442c25d751cd543870368a947d16cf799 329261 /private/tmp/ems-t7a/tables/t7a-snapshot-metrics-clock-L4.csv
+# RETAINED cd6a6c1ec05c6fb309767002135db3c022459bc3d5da3e705aaf5fc150fe8d67 661267 /private/tmp/ems-t7a/tables/t7a-snapshot-metrics-clock-L5.csv
+# RETAINED d95f1c60c26d18a0993773889f89359219cc3f13a348fc6b49ad06c79f307fc3 332703 /private/tmp/ems-t7a/tables/t7a-snapshot-metrics-clock-L6.csv
+# RETAINED c96f071429f07c8ca772e8f62d9dcd12df382cfc824f97a3d9aefb90fb84c6ee 330107 /private/tmp/ems-t7a/tables/t7a-snapshot-metrics-space-L4.csv
+# RETAINED c80e41657d4e3abf4c2f9134d28edc90953a9c91b6953d0fc49251412174f95b 664167 /private/tmp/ems-t7a/tables/t7a-snapshot-metrics-space-L5.csv
+# RETAINED 245bac152c56bdb6fc5fccd95f82272e73feba92bff0a2e638e24bfdc40004fc 333503 /private/tmp/ems-t7a/tables/t7a-snapshot-metrics-space-L6.csv
+# RETAINED 9519aa06e86fb81d82541e40196b10f56d9c5f07a040172f2ecc8ec51baa677b 824 /private/tmp/ems-t7a/tables/t7a-stage-audit-clock-L4.csv
+# RETAINED 5b6f75d15c8b7721b32ec8acffaa20e765716ed8fdba4cf39250ed173276c284 884 /private/tmp/ems-t7a/tables/t7a-stage-audit-clock-L5.csv
+# RETAINED 1351dd5695fbaddf7eab0b43b881af09f3aa9259de62cbaa1989b884b42881f6 867 /private/tmp/ems-t7a/tables/t7a-stage-audit-clock-L6.csv
+# RETAINED b2f0ecf766e0728c46fbe41152fbb4943a4ca16860fee00d71cbf6ba91a75677 831 /private/tmp/ems-t7a/tables/t7a-stage-audit-space-L4.csv
+# RETAINED 1beea5f33450689c390a9f3779fd4f43ad5bb3c70eb8941d4e5b5712f534d0c3 884 /private/tmp/ems-t7a/tables/t7a-stage-audit-space-L5.csv
+# RETAINED a6ce4d386a134496b549a92f391744f3a1b9c2b0fb101eaab90dd294a1dec361 867 /private/tmp/ems-t7a/tables/t7a-stage-audit-space-L6.csv
+# RETAINED b208ee26ed46d6c093b94473a9a243173cc2a1c04981f7eaf25c114c51f0ce53 3099440 /private/tmp/ems-t7a/tables/t7a-stage-native-clock-L4.csv
+# RETAINED 6b9bd8a87d5d3ec2d9da6fe262a19099fd25b5f3dd88f2227708ece5df168813 9825507 /private/tmp/ems-t7a/tables/t7a-stage-native-clock-L5.csv
+# RETAINED 14217bf20d4a8f50648b705f676ab351443c0505ea81b6146ad3a3bdbb4066b1 5461429 /private/tmp/ems-t7a/tables/t7a-stage-native-clock-L6.csv
+# RETAINED c6e2828bdf7fdca40059843e79009fff7fd5edb13d1356201767ce5b86e1840e 2591283 /private/tmp/ems-t7a/tables/t7a-stage-native-space-L4.csv
+# RETAINED 231a5e59a899f78f012aad884a0c0530f24822fadc204d0800a0b740912403e7 7807456 /private/tmp/ems-t7a/tables/t7a-stage-native-space-L5.csv
+# RETAINED fd4c2f5799c0e3f0ee29559f4666152b09eb3860e8a9f2a8d0a91f6a20cf36ac 4414340 /private/tmp/ems-t7a/tables/t7a-stage-native-space-L6.csv
+# FORMER_INTERMEDIATE d575b34ae18a1339cc60a6a14f7937e6087a00b9944b5d9d3e9d59645532d845 182576126 /private/tmp/ems-t7a/T6_face3-rays.npz REPLACED_BY_VERIFIED_LOSSLESS_COMPRESSED_NPZ
+# FORMER_INTERMEDIATE 822937f747adeb8c99240c90602bc926869f5e37de2476e3a0604308f694fd84 533084030 /private/tmp/ems-t7a/clock-rays.npz REPLACED_BY_VERIFIED_LOSSLESS_COMPRESSED_NPZ
+# FORMER_INTERMEDIATE 15925c1d696c9811b115279aba0fe3310b342e6196481a22edc205fe8d37a38e 533084030 /private/tmp/ems-t7a/space-rays.npz REPLACED_BY_VERIFIED_LOSSLESS_COMPRESSED_NPZ
+# FORMER_INTERMEDIATE 4a78fe7b53caf380e1f9d68fa46faf8a0f28a2822f3574fb6d561adff1a16fc8 182576126 /private/tmp/ems-t7a/T6_face3-L4.npz REMOVED_REDUNDANT_DERIVED_LEVEL_RAY_CACHE;ORIGINAL_STREAMS_AND_COMPOSITE_RAYS_RETAINED
+# FORMER_INTERMEDIATE a47a1cec689a5220f9e508e5a72a7c721b02d3c2ad0c6af2163070f8de4dea66 182576126 /private/tmp/ems-t7a/T6_face3-L5.npz REMOVED_REDUNDANT_DERIVED_LEVEL_RAY_CACHE;ORIGINAL_STREAMS_AND_COMPOSITE_RAYS_RETAINED
+# FORMER_INTERMEDIATE 2fe8d70fbf687d211e7593a470abf78c1d5804d95d1a73713f3c66cfcfc2c1f9 182576126 /private/tmp/ems-t7a/T6_face3-L6.npz REMOVED_REDUNDANT_DERIVED_LEVEL_RAY_CACHE;ORIGINAL_STREAMS_AND_COMPOSITE_RAYS_RETAINED
+# FORMER_INTERMEDIATE 05265f413bfe86fa6d0826bb51eaa611b539f008effcab01534242fcc314396a 533084030 /private/tmp/ems-t7a/clock-L4.npz REMOVED_REDUNDANT_DERIVED_LEVEL_RAY_CACHE;ORIGINAL_STREAMS_AND_COMPOSITE_RAYS_RETAINED
+# FORMER_INTERMEDIATE 50dea60f4893d27db6053838b31fe5ad7643008574ca7b1d430bc7243965d516 533084030 /private/tmp/ems-t7a/clock-L5.npz REMOVED_REDUNDANT_DERIVED_LEVEL_RAY_CACHE;ORIGINAL_STREAMS_AND_COMPOSITE_RAYS_RETAINED
+# FORMER_INTERMEDIATE bd3879f89367b2b9c2389618b934601b4d84fece343454fd633a17e257862f68 533084030 /private/tmp/ems-t7a/clock-L6.npz REMOVED_REDUNDANT_DERIVED_LEVEL_RAY_CACHE;ORIGINAL_STREAMS_AND_COMPOSITE_RAYS_RETAINED
+# FORMER_INTERMEDIATE ea925b1c5fe128eb95906ca26f9844a244cdcc4acd3023cdcdb2475300ba1661 533084030 /private/tmp/ems-t7a/space-L4.npz REMOVED_REDUNDANT_DERIVED_LEVEL_RAY_CACHE;ORIGINAL_STREAMS_AND_COMPOSITE_RAYS_RETAINED
+# FORMER_INTERMEDIATE 324c473130359d85fcd95aeda716a97c65339f1cf2723ae626667096481c2d53 533084030 /private/tmp/ems-t7a/space-L5.npz REMOVED_REDUNDANT_DERIVED_LEVEL_RAY_CACHE;ORIGINAL_STREAMS_AND_COMPOSITE_RAYS_RETAINED
+# FORMER_INTERMEDIATE 532e35b24a3bae3b39225b457e27d7247ac19940551c718dba6eb29008c98b47 533084030 /private/tmp/ems-t7a/space-L6.npz REMOVED_REDUNDANT_DERIVED_LEVEL_RAY_CACHE;ORIGINAL_STREAMS_AND_COMPOSITE_RAYS_RETAINED
+# REMOVED_SCRATCH 89dac031ac1e8cfff06a3bb18b7004542b5caae0d5e464cc2a68dd32e8ac1ff7 135333504 /private/tmp/ems-t7a/clock-L4-stencils.bin
+# REMOVED_SCRATCH ace09b395c14a1df2ec0823e7efc328ccc02b0dc24882ee833a73c4c526a0814 5614272 /private/tmp/ems-t7a/clock-L4-replay.bin
+# REMOVED_SCRATCH 9627b6bbcb4a9ea167fb33ff1343c92fc972f3d55ae88f389ab4ca867fd904a6 428182368 /private/tmp/ems-t7a/clock-L5-stencils.bin
+# REMOVED_SCRATCH 126d39c1dd1508ceb0a1e4153d7b85ae7896077cdf6e4ad3dbcf661f49d5e34a 17763024 /private/tmp/ems-t7a/clock-L5-replay.bin
+# REMOVED_SCRATCH a80d2b76231e6ea0ceacc35746d473717d517bb84fde0466a43d24a2ede4c7ee 236503872 /private/tmp/ems-t7a/clock-L6-stencils.bin
+# REMOVED_SCRATCH a799e642ff59174d49214d1e0b84f5f791cdfce8f31b301480f00c57711c726a 9811296 /private/tmp/ems-t7a/clock-L6-replay.bin
+# REMOVED_SCRATCH 688aa5b7ea6bacb0dacd7aa8d8c7a15ffefcf26811a2d33e95e242e0d0c8eff2 112821888 /private/tmp/ems-t7a/space-L4-stencils.bin
+# REMOVED_SCRATCH fa86bb5513c3f7cf6326267ec441964d8a77269953ca8321cfb5077bf1813c3a 4680384 /private/tmp/ems-t7a/space-L4-replay.bin
+# REMOVED_SCRATCH 2be082f2d492ca7fd950646d89bc22f5233d718148a56c166828c7384c6c274c 338135904 /private/tmp/ems-t7a/space-L5-stencils.bin
+# REMOVED_SCRATCH dabacc81de8caef7f05eefa0ff27a2c492528cf512409b5df16d6c7b18c49c9a 14027472 /private/tmp/ems-t7a/space-L5-replay.bin
+# REMOVED_SCRATCH d7264c07a383c7b0e0716a1e4a6145f2f9d69d7f33c5acfc772eb7f1a1c326f2 191480640 /private/tmp/ems-t7a/space-L6-stencils.bin
+# REMOVED_SCRATCH 4b24be74e78d42703ac7153d3fd5dcea7d1eaf418f2011473f87ad75ccd9df5b 7943520 /private/tmp/ems-t7a/space-L6-replay.bin
+d75e0771c6026844f3f847f83d6bb5d10cc6f1553350b5537e5171ba250e33f3  Examples/EMS/EMSBH2DLevel.cpp
+b5fbb9c2c1f1f319cc149c1cee456f8ff3180b1d0d63ad6d7b131cc0ec01b92f  Examples/EMS/EMSBH2DLevel.hpp
+c7a6683e647526019d9be219d714f6c91036a50740766537096228b276e40414  Examples/EMS/Main_EMSBH2DBH.cpp
+ed59c01f278a6942ab345129eb845e86864b9c37f113e8c99fa991d416f70d2e  Examples/EMS/T7RHS.hpp
+c3d11fd082bf2dddafbc3aa63a8f5f82198a535a52cd3e537c21401db782921e  Source/Cartoon/CCZ4Cartoon.hpp
+beb935bd2dc3123120a59b1f3af1d750c9e9119681c5455ce5dac85ad81cb42f  Source/Cartoon/CCZ4Cartoon.impl.hpp
+a1a95033f7b78c5897e7bac9e742b0382593f0cad234214087ad007bef590e58  Source/GRChomboCore/GRAMRLevel.cpp
+576c658c11a524c790ef074aa6b8b929b0c558fb1bbe80032027d2b967edc3d0  Source/GRChomboCore/GRAMRLevel.hpp
+36acaf89f5a8f937d92df7cc19782dc04594891645a119f8eba384dd0dfe73f1  Source/GRChomboCore/PointAMRTransfer.hpp
+1f927ccc7fdd17c017c714a751f24a1e565849d2df925ccc756540b0f3a5a6fa  Source/GRChomboCore/T7OperationRecorder.hpp
+3c9e3e946f95375a27477466f4e51b1cafbea2f14392acb2d19128582c98cfd6  Source/RHFinder/RHSurf.hpp
+1174747f4ee8f2e18a61cd2fb0618d1a4f3c6974c9929bcae85fd8f64519f885  Source/RHFinder/RHUnion.hpp
+feff3009c930e0e42a9d124d291e394f87491dbcc78a4f71802fc61da93781c1  Tests/EMSNative/README.md
+d8a4d13bbd260bf025c908e37d6a654fab19d65744d7de107e66758733a0383f  Tests/EMSNative/T7AReplay.cpp
+66727d571fe127706c870e118ddcd8a4de4cab06854d68fdd745eedbb51737f3  Tests/EMSNative/figures/t7a-incident-profiles.pdf
+e518da7dee55ad69125ea2a92d0f8f5ccebd8512ef29f26b512634f3619a9d7a  Tests/EMSNative/figures/t7a-incident-profiles.png
+709ae16c1b4b1f47aac1e7ffcb2b18fa27b21d3c024818648e14d4148fd36be0  Tests/EMSNative/figures/t7a-operation-replay.pdf
+25ca1ea7bbdd91bcda61888137efa3a231f0bd59b3b6cb83a746b7dce71e85e0  Tests/EMSNative/figures/t7a-operation-replay.png
+c52a535eacc8d697bf3dcfef49339998f7da9e650641469f3eb7adab43828540  Tests/EMSNative/figures/t7a-packet-wake.pdf
+85ffd50b142294e0540fce93d9317b2a92a14189e1cc4ea93dc65b9ebeaa5dbe  Tests/EMSNative/figures/t7a-packet-wake.png
+14cfe51b9b7d4ad843979c8b71e77bf64ce7ea8be0228b312f907bbec30c4ba4  Tests/EMSNative/t5-analyze.py
+0ca30a9522f2fcd483223c69e0c973413ce7f4b2f0a79c461c00c0f195e6141e  Tests/EMSNative/t6c-analyze.py
+102825990c296557da5197a8db388661f38db90ab032b97b275e3ec109a0c4d3  Tests/EMSNative/t7-boxes.csv
+2c522ee93e433ff2f1fb13aa8bd27ccd7127167fdafe515ba6ec33cceb8d4727  Tests/EMSNative/t7-check.py
+7baebe2bbc7c97f3fcff843c63fe24c4a5e455853ce7d71ad7e18c9751f6781f  Tests/EMSNative/t7-controls.csv
+d229cd4069cc6bc1a31d6f5acdc2f1628b8db5cf349609ee507f3642de9d10dd  Tests/EMSNative/t7-layout.csv
+e7de5156df1c4ba1d4d9001c7fd97537060ad45036500928d8001d85845bada1  Tests/EMSNative/t7-recorder-checks.csv
+b8f9208a13361de4d62a20ba0e476cc5f4cbb81b9e66063aeac6d59ffd2b738c  Tests/EMSNative/t7a-analyze.py
+95b259f47249c050f8958721367ed7e5eb93ecb333236ec983740a16245df9f4  Tests/EMSNative/t7a-archived-tables.csv
+c20c43519deb40845a1bb9c0b910a17f77ff33cbe9120275ff998b50ca35e990  Tests/EMSNative/t7a-baseline-metrics.csv
+43ac9e41269f98d595a3fa61b38b0ef9bd3d6e3373fce0c97835dab446a736ab  Tests/EMSNative/t7a-check.py
+d0d633beaad3e5ca6633627d283b521367d2d283e89d2c8e4780a7c8364720ba  Tests/EMSNative/t7a-cleanup.csv
+7a4a26f5affdd46414a8290cb20579f54ea996469c44d299cfc2e9f8c2d1d6de  Tests/EMSNative/t7a-common-packet-history.csv
+c92374ff96301cae4e530102a19d9d2d08ff31522e7aec9d98734970850f74db  Tests/EMSNative/t7a-common-packet-ratios.csv
+092e23af94df916ccd63a4797f5a9c269705de7242eae6686db7d11503da7d66  Tests/EMSNative/t7a-common-seams.csv
+96a0dc9ff0a45ddb1c9ae5023ee48b6d96f8214559d3ae631d78d4210f638b33  Tests/EMSNative/t7a-composite-metrics.csv
+5b5e40ee36c1c0a0b0e920cafa4bcbe05cd90fc2df2a0550c8d2c10cd4522329  Tests/EMSNative/t7a-default-parameters.csv
+e95f0fa2a40993678762c3907bc945918e1c9aa99fa6eadc22787bbead2474b3  Tests/EMSNative/t7a-events.csv
+8cee485cd23346af88809509e4089d5310e7c98b39eac1beaaeb51c767d98b17  Tests/EMSNative/t7a-incident-tracks.csv
+0ccc333de873c81717c3fb88f8cafc71ddcb7e051ca6dd80ac7d3abb32e2a5ac  Tests/EMSNative/t7a-native-metrics.csv
+538b407ed15a09fad22399c403e0756f44a4d1d51d81b3c2a900e39365db1c09  Tests/EMSNative/t7a-phase-summary.csv
+79d3e2f32c2cd95f5e74f4645e36fee30da6ceeb08240d55406d4991f17bef37  Tests/EMSNative/t7a-profile-contrasts.csv
+3b9ac6910f0b1142489ec6a39dd98e7f1895a407b82356b8c6811ae3918a4db8  Tests/EMSNative/t7a-profile-metrics.csv
+cf102e64177332905c9d2b88cedb6b967cc7b9c8a15ab7da2655a9ab7e465024  Tests/EMSNative/t7a-projection-summary.csv
+9b792ec2a216710c523f90482ab809f3ea7f849cb8d87f9d9a7494e579f24252  Tests/EMSNative/t7a-ratios.csv
+441f2481a21f0df955db0e6e90f62092a904ba4ad80b6c2bf2fe49e212640d16  Tests/EMSNative/t7a-ray-wake-ratios.csv
+4ea88be6d918a11b12853942392ef3c4a15ac7f3177b7b39d71b80d971463e63  Tests/EMSNative/t7a-report.py
+69700b09a1874e7261903c152db6c184f730282955a0a5e017f4f83df6a5a3e9  Tests/EMSNative/t7a-restriction-summary.csv
+e2057314a9f8b6ea3b0aa51bcd83f5d9f6416a278e1efd9bafc0b644fa50f4af  Tests/EMSNative/t7a-run-audit.csv
+dd250e196fbede25665b719f30840252ab091e44cb518edbd51418bd4274bd2c  Tests/EMSNative/t7a-sampling-sensitivity.csv
+98fcebc10a8b0dd019d211ca1875eb648c5da401b08ea8c630790bb3d0b40a50  Tests/EMSNative/t7a-source-controls.csv
+25dac2188ae3bbbf455c562c072979df18af36de06e81db16e93383c8045437d  Tests/EMSNative/t7a-source-summary.csv
+ed9bf27d01478355de05d02f7f43bb5f6da64e700d66696fed0034a087e0e033  Tests/EMSNative/t7a-speed-fits.csv
+ac46c4b59e58cb31c18d7ebd4867a185f515ae66ade4bd56fc1f698aa3874b86  Tests/EMSNative/t7a-stage-summary.csv
+864fc31c24657b07f11f467f20d2f0361db203629d68ffc2817a1a4e6ccb1cea  Tests/EMSNative/t7a-width-summary.csv
+cc8746ab207b6986b985a71c5fde4475cfefbd1c59bb7556ed28c3b7af2011ef  Tests/EMSNative/t7e-layout.csv
+3d4db189bb835aa293c8d251eb611c6368738a410b3241863a2e9da61b625898  Tests/EMSNative/t7e-localize.py
+f43fb50d9bf0282c71a3654c6d7959e0945eed1fd686989910081c6771e103eb  Tests/EMSRHFinder/harness/EMSRHCheckpoint.cpp
+3df8c8646fbd741df7e6d1c8f4907956dd668b912f8044091b5b61498839f6c4  scripts/cas/t5-evidence.md
+0fa5c49c5fbd245f6469ca1fd550ab6af391761f52374c8a45b2b22889669583  scripts/cas/t5-sampling-verify.json
+2f967a242de9fb3565ff2cd4c14be58789e603aedeed46a349feaa61737443af  scripts/cas/t5-sampling-verify.py
+89eb415257fb96185e8e07eafeb2e53ace73a876396167f5b93d7074bcc90de2  scripts/cas/t6c-characteristics.json
+c2c4eb23ea16ef97fde89c06ca996a8b03107d8e97de2e6407e6e367aa624300  scripts/cas/t6c-characteristics.py
+e2e86320f0173c96bbb87d91ce7d42c97f25e9e441200cf07946368cba901c27  scripts/cas/t6c-evidence.md

@@ -1,0 +1,15 @@
+{
+  "status": "PROVED",
+  "scope": "algebraic identity \u2014 production physics not certified",
+  "assumptions": "chi,hww,F,alpha,kappa,g positive; H positive definite; real current fields; cleaner coefficients frozen; advection excluded",
+  "witness": "exact directional derivative residuals, scalar-coupling cancellation, cleaner determinant and determinant-omission residual",
+  "normal_form": "factor rational/square-root directional residual; expand polynomial coefficients; boolean assert CLOSE",
+  "branch": "positive volume square roots",
+  "exclusions": "zero/nonpositive metric determinants; full variable-coefficient CCZ4 stability not claimed",
+  "numerical_seed": 7007,
+  "points": 24,
+  "precision_digits": 60,
+  "max_independent_directional_residual": "2.91703841149741017522378002520943323777668070408804709364115e-62",
+  "cleaner_polynomial": "z^2+alpha*kappa*z+alpha^2*chi*g*k^2",
+  "continuum_budget": "Qout-QH=(1/sqrt(2*pi))*integral(sqrt(gamma)*GaussE*d3x); GaussE=F*CE"
+}

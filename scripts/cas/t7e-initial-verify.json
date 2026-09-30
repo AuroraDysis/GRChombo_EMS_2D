@@ -1,0 +1,14 @@
+{
+  "status": "PROVED",
+  "contract": "r>0, c(r)>0, 0<theta<pi; literal equality over rational differential expressions",
+  "witness": "0",
+  "excluded": "r=0,c=0,sin(theta)=0",
+  "seed": 945825,
+  "n": 12,
+  "dps": 60,
+  "worst_numeric_residual": "3.11150763893057085357203202689006212029512608436058356655056e-60",
+  "sample_region": "[0.2,2]^3 Cartesian, chi=1+r^2+exp(-r)/10",
+  "stencil_absolute_weight_sum": "16/3",
+  "ricci_coordinate_sensitivity_factor": "32/3",
+  "scope": "algebraic identity \u2014 production physics not certified"
+}

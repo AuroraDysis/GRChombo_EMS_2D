@@ -5,6 +5,7 @@
 #include <fstream>
 #include <mutex>
 #include <memory>
+#include <cstdint>
 
 #include "EMSBH2DLevel.hpp"
 #include "EMSRadiationExtraction.hpp"
@@ -67,18 +68,120 @@
 #include "ADMQuantitiesExtraction.hpp"
 #include "GammaCartoonCalculator.hpp"
 
+void EMSBH2DLevel::t6_write_interface_strips() const
+{
+#ifdef CH_MPI
+    MayDay::Error("t6_interface_diagnostics is a local serial diagnostic");
+#endif
+    const auto extent = [](const GRAMRLevel &level) {
+        double a = 0.;
+        const auto &layout = level.getLevelData().disjointBoxLayout();
+        for (LayoutIterator it = layout.layoutIterator(); it.ok(); ++it)
+            a = std::max(a, (layout[it()].bigEnd(1)+1)*level.get_dx());
+        return a;
+    };
+    const auto levels = m_gr_amr.get_gramrlevels();
+    const GRAMRLevel *finer = m_level+1 < int(levels.size()) ? levels[m_level+1] : nullptr;
+    const double a = extent(*this), b = finer ? extent(*finer) : -1.;
+    const double width = 2*m_dx;
+    std::ofstream out(m_p.data_path + "strips/t6-level" + std::to_string(m_level) +
+                      "-t" + std::to_string(m_time) + ".bin", std::ios::binary);
+    if (!out) MayDay::Error("cannot open T6 interface strip");
+    out.write("T6STRIP1", 8);
+    const double meta[] = {m_time, m_dx, a, b};
+    const std::uint32_t header[] = {std::uint32_t(m_level), NUM_VARS, NUM_VARS+8};
+    out.write(reinterpret_cast<const char *>(meta), sizeof(meta));
+    out.write(reinterpret_cast<const char *>(header), sizeof(header));
+    const int constraints[] = {c_Ham, c_Mom1, c_Mom2, c_GaussE, c_GaussB};
+    const auto near = [width](double x, double y, double face) {
+        if (face < 0.) return false;
+        x = std::abs(x);
+        return (x <= face && y <= face)
+            ? std::min(face-x, face-y) <= width
+            : std::hypot(std::max(x-face, 0.), std::max(y-face, 0.)) <= width;
+    };
+    for (DataIterator it = m_state_new.dataIterator(); it.ok(); ++it)
+        for (BoxIterator cell(m_state_new.disjointBoxLayout()[it()]); cell.ok(); ++cell)
+        {
+            const auto iv = cell();
+            const double x = (iv[0]+.5)*m_dx-m_p.center[0], y = (iv[1]+.5)*m_dx;
+            if (!near(x, y, a) && !near(x, y, b)) continue;
+            double covered = 0.;
+            if (finer)
+            {
+                const auto &layout = finer->getLevelData().disjointBoxLayout();
+                for (LayoutIterator fine = layout.layoutIterator(); fine.ok(); ++fine)
+                {
+                    Box box = layout[fine()];
+                    box.coarsen(2);
+                    if (box.contains(iv)) { covered = 1.; break; }
+                }
+            }
+            std::array<double, NUM_VARS+8> row;
+            row[0] = x; row[1] = y; row[2] = covered;
+            for (int c=0; c<NUM_VARS; ++c) row[3+c] = m_state_new[it()](iv, c);
+            for (int c=0; c<5; ++c)
+                row[3+NUM_VARS+c] = m_state_diagnostics[it()](iv, constraints[c]);
+            out.write(reinterpret_cast<const char *>(row.data()), sizeof(row));
+        }
+    if (!out) MayDay::Error("T6 interface strip write failed");
+}
+
 void EMSBH2DLevel::specificAdvance()
 {
+    if (m_t7.enabled) t7_record(6,m_state_new,0);
     // Enforce the trace free A_ij condition and positive chi and alpha
     BoxLoops::loop(
         make_compute_pack(TraceARemovalCartoon(), PositiveChiAndAlpha(m_p.min_chi, m_p.min_lapse)),
         m_state_new, m_state_new, INCLUDE_GHOST_CELLS);
+    if (m_t7.enabled) t7_record(7,m_state_new,0);
 
     // Check for nan's
     if (m_p.nan_check)
         BoxLoops::loop(
             NanCheck(m_dx, m_p.center, "NaNCheck in specific Advance: "),
             m_state_new, m_state_new, EXCLUDE_GHOST_CELLS, disable_simd());
+}
+
+void EMSBH2DLevel::ems_t7_initial()
+{
+    if (!m_t7.enabled || m_level<4 || m_level>6) return;
+    // Initial diagnostics must also preserve the stored, unfilled ghost bits.
+    std::vector<std::unique_ptr<FArrayBox>> saved;
+    for (DataIterator it=m_state_new.dataIterator();it.ok();++it)
+    {
+        saved.emplace_back(new FArrayBox(m_state_new[it()].box(),NUM_VARS));
+        saved.back()->copy(m_state_new[it()]);
+    }
+    prePlotLevel();int i=0;
+    for (DataIterator it=m_state_new.dataIterator();it.ok();++it,++i)
+        m_state_new[it()].copy(*saved[i]);
+}
+
+void EMSBH2DLevel::t7_snapshot()
+{
+    if (m_level<4 || m_level>6 || m_time==m_t7_snapshot_time ||
+        std::abs(12*m_time-std::round(12*m_time))>1e-9) return;
+    m_t7_snapshot_time=m_time;auto f=t7_faces();int source=0;
+    for (DataIterator it=m_state_new.dataIterator();it.ok();++it,++source)
+    {
+        Box b=m_state_new.disjointBoxLayout()[it()];std::vector<IntVect> cells;
+        FArrayBox data(b,NUM_VARS+5);
+        for (BoxIterator bit(b);bit.ok();++bit)
+        {
+            double x=(bit()[0]+.5)*m_dx-m_p.center[0],y=(bit()[1]+.5)*m_dx,r=std::hypot(x,y);
+            bool selected=(r>.5 && r<6.5 && (y<.05 || std::abs(x)<.05 || std::abs(y-std::abs(x))<.035));
+            for (double a:{f.first,f.second}) if (a>0 && a<=4.+1e-10)
+                selected|=std::abs(x)<=a+.1875 && y<=a+.1875 &&
+                    (std::abs(std::abs(x)-a)<.1875 || std::abs(y-a)<.1875);
+            if (!selected) continue;
+            cells.push_back(bit());
+            for (int c=0;c<NUM_VARS;++c) data(bit(),c)=m_state_new[it()](bit(),c);
+            int k=NUM_VARS;
+            for (int c:{c_Ham,c_Mom1,c_Mom2,c_GaussE,c_GaussB}) data(bit(),k++)=m_state_diagnostics[it()](bit(),c);
+        }
+        m_t7.frame(50,m_level,source,data,b,cells,0,NUM_VARS+5,m_time,m_dx,m_dt,f.first,f.second,true);
+    }
 }
 
 
@@ -198,17 +301,20 @@ void EMSBH2DLevel::prePlotLevel()
                                                                  ),
 
       m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS);
+    if (m_t7.enabled) t7_snapshot();
 }
 
 void EMSBH2DLevel::specificEvalRHS(GRLevelData &a_soln,
                                          GRLevelData &a_rhs,
                                          const double a_time)
 {
+    if (m_t7.enabled) t7_record(2,a_soln);
     ////////////////////////////////////////
     // Enforce positive chi and alpha and trace free A
     BoxLoops::loop(
         make_compute_pack(TraceARemovalCartoon(), PositiveChiAndAlpha(m_p.min_chi, m_p.min_lapse)),
         a_soln, a_soln, INCLUDE_GHOST_CELLS);
+    if (m_t7.enabled) t7_record(3,a_soln);
 
 
     ///////////////////////////////////
@@ -247,14 +353,38 @@ void EMSBH2DLevel::specificEvalRHS(GRLevelData &a_soln,
     SetValue set_analysis_vars_zero(0.0, Interval(c_Xi + 1, NUM_VARS - 1));
     auto compute_pack =
         make_compute_pack(my_ccz4_cartoon, set_analysis_vars_zero);
-    BoxLoops::loop(compute_pack, a_soln, a_rhs, EXCLUDE_GHOST_CELLS);
+    if (m_t7.enabled && m_level>=4 && m_level<=6)
+    {
+        auto f=t7_faces();auto windows=T7OperationRecorder::windows(m_dx,m_p.center[0],f.first,f.second);
+        int source=0;
+        for (DataIterator it=a_soln.dataIterator();it.ok();++it,++source)
+        {
+            FArrayBox capture(a_rhs[it()].box(),2*NUM_VARS);
+            my_ccz4_cartoon.t7_capture(&capture,&windows);
+            BoxLoops::loop(make_compute_pack(my_ccz4_cartoon,set_analysis_vars_zero),a_soln[it()],a_rhs[it()],a_soln.disjointBoxLayout()[it()]);
+            int region=0;
+            for (const auto &window:windows)
+            {
+                Box b=window&a_soln.disjointBoxLayout()[it()];std::vector<IntVect> cells;
+                for (BoxIterator bit(b);bit.ok();++bit) cells.push_back(bit());
+                for (int part=0;part<2;++part)
+                    m_t7.frame(20+part,m_level,source*16+region,capture,a_soln.disjointBoxLayout()[it()],cells,
+                               part*NUM_VARS,NUM_VARS,m_time,m_dx,m_dt,f.first,f.second);
+                ++region;
+            }
+        }
+        t7_record(22,a_rhs,0);
+    }
+    else BoxLoops::loop(compute_pack, a_soln, a_rhs, EXCLUDE_GHOST_CELLS);
 }
 
 void EMSBH2DLevel::specificUpdateODE(GRLevelData &a_soln,
                                            const GRLevelData &a_rhs, Real a_dt)
 {
+    if (m_t7.enabled) t7_record(4,a_soln,0);
     // Enforce the trace free A_ij condition
     BoxLoops::loop(TraceARemovalCartoon(), a_soln, a_soln, INCLUDE_GHOST_CELLS);
+    if (m_t7.enabled) t7_record(5,a_soln,0);
 }
 
 
@@ -308,6 +438,10 @@ void EMSBH2DLevel::specificPostTimeStep()
                                        m_p.mq_extraction_params.center,
                                             m_p.coupling_function_params),
                       m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS);
+
+    if (m_t6_interface_diagnostics && m_level >= 4 && at_level_timestep_multiple(0))
+        t6_write_interface_strips();
+    if (m_t7.enabled && at_level_timestep_multiple(0)) t7_snapshot();
 
         //////////////////////////////////////////////
         // Horizon finding (if used)

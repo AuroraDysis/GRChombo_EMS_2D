@@ -1,0 +1,12 @@
+control,variant,kind,files,result
+legacy-E,default-off,plt,3,BIT_IDENTICAL
+legacy-E,default-off,chk,2,BIT_IDENTICAL
+legacy-ref,default-off,plt,3,BIT_IDENTICAL
+legacy-ref,default-off,chk,2,BIT_IDENTICAL
+point-ref,default-off,plt,2,BIT_IDENTICAL
+point-ref,default-off,chk,2,BIT_IDENTICAL
+clock-final-xz,recording-on,plt,2,BIT_IDENTICAL
+clock-final-xz,recording-on,chk,2,BIT_IDENTICAL
+space-final-xz,recording-on,plt,2,BIT_IDENTICAL
+space-final-xz,recording-on,chk,2,BIT_IDENTICAL
+frozen-E-terminal-finder,default-off,physical_CSV_and_shapes,3,BIT_IDENTICAL

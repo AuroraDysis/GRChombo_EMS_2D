@@ -1,0 +1,52 @@
+# T5 exp-0019 diagnosis; INTERFACE association measured; causal feeding inferred; mode/operator unresolved.
+# Analysis only on baseline 03e31ef. SHA-256. No commit; no production change; no new simulation.
+# External read-only plot hashes are recorded in Tests/EMSNative/t5-input-audit.csv.
+# Historical COMMIT-MANIFEST-T4.txt is retained unchanged; its README hash predates the T5 appendix.
+# INPUT 1e4beb92ad2e26fbd101327404071e9b7fadb50fcebde6c9a23bd5170ccbaa9b  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0019/submissions/exp-0019/params-ref-low.txt
+# INPUT a9de50b00cb51c0139ea8d3282e8794e6625ecb0667f14eb8af3f2c16be3db45  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0019/submissions/exp-0019/params-ref-mid.txt
+# INPUT 9b44f6193252807f549003c5307a0a3a55049e5049dd62ff90a55b580b80c41c  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0019/submissions/exp-0019/params-ref-high.txt
+8aec2fdda725c73cdef815df368faeb1b5e24f4d1872271d26911508d0eba8cb  Tests/EMSNative/README.md
+731608016b6986eccac744ec5f5ca2e034201a69fbf0131a50a6cdbc8497357f  Tests/EMSNative/figures/t5-angle-orders.pdf
+0295f8a5c16a1a4ca8f8d4056bba31cda8de1148487407f8dfc454cd1f11fbb9  Tests/EMSNative/figures/t5-angle-orders.png
+11d57bbba407e4fefc6bf63d55a58cdbdbbd1e574d403cb68cc736f44bddcf03  Tests/EMSNative/figures/t5-constraints-spacetime.pdf
+d88c45741b2dde676ba35d0ec7df9bbab4c6d18ed5dfd315d5e69714a8ef4c86  Tests/EMSNative/figures/t5-constraints-spacetime.png
+4f48ecc4c58a1f5ae6a7874f6168f385f91d29ebb17fb9256460cf721895dddf  Tests/EMSNative/figures/t5-field-differences.pdf
+ea55f7fbb483d0bef4fa199dcf52b91adf745151464db75e67a153d516e19a6f  Tests/EMSNative/figures/t5-field-differences.png
+075d30e25dc9e4c83f0a7871458bea6cb80b4e9d1ff7af304dfd0fca9de25117  Tests/EMSNative/figures/t5-front-packets.pdf
+70bb78cf11779aa610215a77716653dbd7072ead7b4b65e7a2c1e21863814faa  Tests/EMSNative/figures/t5-front-packets.png
+05e04aa2c9d8eff820d54e5e5380d19296bd455ffdcb7103b5f882589f8785c4  Tests/EMSNative/figures/t5-front-speed.pdf
+bfd3bfd23f0828d94d79b22c055645c0191a96d69c650f5a7bf761150b298ca2  Tests/EMSNative/figures/t5-front-speed.png
+8ff692ff6f393d4db9020fc926f908b37c60417e30e7dce7140e412580c4a745  Tests/EMSNative/figures/t5-global-constraints.pdf
+e7861be16c820c247f0326601e3fa647e25558168bd25ad946efd0db792e8253  Tests/EMSNative/figures/t5-global-constraints.png
+df7a4e399abce28d69b658d494ecb241b8ea9e26c7a27ce1b5656368e9865b3e  Tests/EMSNative/figures/t5-global-field-differences.pdf
+7f131d7ceefb9b60f9d1644d4855c223bc149182e9a1b87b810e6efd55cc2afa  Tests/EMSNative/figures/t5-global-field-differences.png
+e0c74415381cec872f252e659dc57f37b09c585dfa930ab13745e69db70a24c4  Tests/EMSNative/figures/t5-outer-boundary.pdf
+a0b7a441145f029792c5a92d402855a1acdd0f247e4c7b83e025ae25e9bde867  Tests/EMSNative/figures/t5-outer-boundary.png
+0955e1d3bf3e377b3893119671784b186891dc208d95ef71d8989a73f4cfeb2e  Tests/EMSNative/figures/t5-ray-field-orders.pdf
+1e4387c0508e2f00ec7f747f0116106a7c5a794fd3367033cc0b3bd5fb1ec29f  Tests/EMSNative/figures/t5-ray-field-orders.png
+f72fb4cbe55e82faaeed85cf4ff9bd01f03fc7b7d3f9bbce773a1be77693343f  Tests/EMSNative/figures/t5-rays-and-interfaces.pdf
+03d0e158d3d1b26c315b0f7ab0a681ea492bac047a70fa4caa1a6157eb95a363  Tests/EMSNative/figures/t5-rays-and-interfaces.png
+6ac6c7a0e6887ce65c5a52750ff9e6e1e6fad6c9984ef498b5f32100d7a79602  Tests/EMSNative/figures/t5-temporal-gauge-change.pdf
+2b6b09c85a2ce49347b912d4624032d3e61122f69e4a4dad1b0b75003b03c92d  Tests/EMSNative/figures/t5-temporal-gauge-change.png
+4fed8fc803921aeeabdf59ecbc791157cd9c08ede78973a5420a09cbee663916  Tests/EMSNative/t5-analysis-performance.csv
+14cfe51b9b7d4ad843979c8b71e77bf64ce7ea8be0228b312f907bbec30c4ba4  Tests/EMSNative/t5-analyze.py
+f3b8333ae78d79e27a86117d01927fcb84cc5569b5a1c136f33efc72e765c3a8  Tests/EMSNative/t5-constraint-profiles.csv
+85fa35d08019e5820eac328eda1b846b91e68cef4aaf4d3f72138207c161fd4e  Tests/EMSNative/t5-field-differences.csv
+a8631a506f3222715b491bb070d83b7952b00b94d5ff9cc6d6c4e52902518565  Tests/EMSNative/t5-front-fits.csv
+599fc485c5e5f3330d7223b57bf9c9cc8523e5c1e1fc544474c0febc07a1dde7  Tests/EMSNative/t5-front-tracks.csv
+730dd4b86c7c64acfe21d42b3cf38a78d52352277af82d39803d476a276489eb  Tests/EMSNative/t5-global-profiles.csv
+3f5fe7117b783881857e759d3b555312df585519f391dbd441032d938a1c9c35  Tests/EMSNative/t5-input-audit.csv
+65bec95ec18792b779f3f11cbc860c13925fcc6f56000c1555ea2972bf07fbe1  Tests/EMSNative/t5-interface-events.csv
+8976adfe7d873e0854331fb4ec104f5bb3a5af8b7f54aa9f3559b9eb5979b928  Tests/EMSNative/t5-layout.csv
+e4ee2fc794bff89d0a126d4ad5d1c35528ae4742a399c8c391ba942f24da1bca  Tests/EMSNative/t5-line-profiles.csv
+42055d704c102d5257374939561bbaffbb26b27bbb210b9d9b2826361a4b0273  Tests/EMSNative/t5-mask-norms.csv
+495a9329b7a8966d39c9ae744fe02c90ba9591510fa0d444dc0db99db34f39f8  Tests/EMSNative/t5-mask-orders.csv
+c080a69196e3ee2a2fc8c7e7a2a35d563dfb8a48483e30aa372499b00c4f0428  Tests/EMSNative/t5-outer-profiles.csv
+799a05236654e7fbda01a67b1c2dbdebec5f811bbca449f06599da1ac8f4a0d9  Tests/EMSNative/t5-packet-orders.csv
+06ee6092c7a974f1108d0bb024de9e0a8f186da6ab3fd7da50d043ba4f0b7ed4  Tests/EMSNative/t5-pulse-widths.csv
+8861f837423606f8bf3c2f1ef4a9cded2f547567d289a5b773dd7734a033a2a9  Tests/EMSNative/t5-report-performance.csv
+11304dbb48d345197007ba0112ce9e5cc8a5f051874652fa46d730fb9e9de4b1  Tests/EMSNative/t5-report.py
+ca44ec5eef9c24dfbec7f2ac89297265dd0d0c335a4f7ef37cdfd224122812ca  Tests/EMSNative/t5-variable-availability.csv
+3df8c8646fbd741df7e6d1c8f4907956dd668b912f8044091b5b61498839f6c4  scripts/cas/t5-evidence.md
+0fa5c49c5fbd245f6469ca1fd550ab6af391761f52374c8a45b2b22889669583  scripts/cas/t5-sampling-verify.json
+2f967a242de9fb3565ff2cd4c14be58789e603aedeed46a349feaa61737443af  scripts/cas/t5-sampling-verify.py

@@ -4,6 +4,10 @@
 #include "DefaultLevelFactory.hpp"
 #include "GRAMRLevel.hpp"
 #include "RHUnion.hpp"
+#include "T7RHS.hpp"
+#include "EMSCartoonGaussConstraints.hpp"
+#include "BoxLoops.hpp"
+#include <cstdint>
 
 class FrozenLevel : public GRAMRLevel
 {
@@ -14,6 +18,34 @@ class FrozenLevel : public GRAMRLevel
     { throw std::runtime_error("offline snapshot must never advance"); }
     void computeTaggingCriterion(FArrayBox &, const FArrayBox &) override
     { throw std::runtime_error("offline snapshot must never regrid"); }
+    void t7_prepare() { fillAllEvolutionGhosts(); }
+    void t7_dump(const SimulationParameters &p)
+    {
+        std::ofstream out("maxwell.bin",std::ios::binary);
+        if (!out) throw std::runtime_error("T7 Maxwell output open failed");
+        out.write("T7MAX001",8);
+        const double meta[]={m_time,m_dx,p.center[0]};
+        const std::uint32_t header[]={std::uint32_t(m_level),NUM_VARS,T7RHS::components};
+        out.write(reinterpret_cast<const char*>(meta),sizeof(meta));
+        out.write(reinterpret_cast<const char*>(header),sizeof(header));
+        T7RHS kernel(p.ccz4_params,m_dx,p.sigma,CouplingFunction(p.coupling_function_params),p.m_G_Newton,p.formulation);
+        for (DataIterator it=m_state_new.dataIterator();it.ok();++it)
+        {
+            const Box b=m_state_new.disjointBoxLayout()[it()];
+            FArrayBox rhs(b,T7RHS::components),gauss(b,NUM_DIAGNOSTIC_VARS);
+            BoxLoops::loop(kernel,m_state_new[it()],rhs,b,disable_simd());
+            BoxLoops::loop(EMSCartoonGaussConstraints(m_dx,p.coupling_function_params),m_state_new[it()],gauss,b,disable_simd());
+            const std::int32_t bounds[]={b.smallEnd(0),b.smallEnd(1),b.bigEnd(0),b.bigEnd(1)};
+            out.write(reinterpret_cast<const char*>(bounds),sizeof(bounds));
+            for (BoxIterator cell(b);cell.ok();++cell)
+            {
+                for (int c=0;c<NUM_VARS;++c) {double v=m_state_new[it()](cell(),c);out.write(reinterpret_cast<const char*>(&v),8);}
+                for (int c=0;c<T7RHS::components;++c) {double v=rhs(cell(),c);out.write(reinterpret_cast<const char*>(&v),8);}
+                for (int c:{c_GaussE,c_GaussB}) {double v=gauss(cell(),c);out.write(reinterpret_cast<const char*>(&v),8);}
+            }
+        }
+        if (!out) throw std::runtime_error("T7 Maxwell output write failed");
+    }
 };
 
 // Seed interpolation only. The unchanged finder subsequently solves at this N.
@@ -62,6 +94,10 @@ int run(int argc, char **argv)
     SimulationParameters p(pp);
     int n, max_updates, floor_window;
     double limit;
+    bool t6_checkpoint_diagnostics;
+    bool t7_diagnostics;
+    pp.load("t7_diagnostics",t7_diagnostics,false);
+    pp.load("t6_checkpoint_diagnostics", t6_checkpoint_diagnostics, false);
     pp.load("offline_points", n, 96);
     pp.load("offline_max_updates", max_updates, 2000);
     pp.load("offline_floor_window", floor_window, 64);
@@ -78,7 +114,16 @@ int run(int argc, char **argv)
         coarse->problemDomain().domainBox().bigEnd() != p.ivN)
         throw std::runtime_error("parameter grid does not match checkpoint");
     for (const auto *level : amr.get_gramrlevels())
-        if (level->time() != time) throw std::runtime_error("checkpoint levels are not synchronized");
+        if (level->time() != time &&
+            (!t6_checkpoint_diagnostics || !std::isfinite(level->time()) ||
+             std::abs(level->time()-time) > 64*std::numeric_limits<double>::epsilon()*std::max(1.,std::abs(time))))
+            throw std::runtime_error("checkpoint levels are not synchronized");
+    if (t7_diagnostics)
+    {
+        for (auto *level:amr.get_gramrlevels()) dynamic_cast<FrozenLevel*>(level)->t7_prepare();
+        dynamic_cast<FrozenLevel*>(amr.get_gramrlevels().back())->t7_dump(p);
+        return 0;
+    }
     AMRInterpolator<Lagrange<4>> interp(amr, p.origin, p.dx, p.boundary_params, 0);
     amr.set_interpolator(&interp);
     RHUnion rh;
@@ -117,6 +162,35 @@ int run(int argc, char **argv)
     {
         record(out, s, time, -1, 0., "SEED_REPLAY", 0, 0.);
         s = resample(s, n);
+        // Frozen E snapshots have a strongly collapsed conformal factor.
+        // Only this opt-in diagnostic changes the author's chase multiplier.
+        if (t6_checkpoint_diagnostics) s.m_chase_speed = 2.;
+    }
+    if (t6_checkpoint_diagnostics)
+    {
+        // Fixed coordinate spheres use exactly RHSurf's EMS displacement flux.
+        // They do not chase, re-centre, or supply an evolution boundary value.
+        RHUnion spheres;
+        spheres.set_interpolator(&interp);
+        const double radii[] = {.02, .05, .1};
+        for (int i=0; i<3; ++i)
+        {
+            spheres.m_surfaces.emplace_back(n, RHUnion::NG,
+                std::vector<double>{p.center[0], 0.}, i);
+            auto &s = spheres.m_surfaces.back();
+            std::fill(s.m_f.begin(), s.m_f.end(), radii[i]);
+        }
+        spheres.set_coupling_params(c.alpha, c.f0, c.f1, c.f2);
+        spheres.interpolate_fields();
+        if (procID() == 0)
+        {
+            std::ofstream fixed("fixed-spheres.csv");
+            fixed << "time,N_theta,radius,centre,A,Q\n";
+            for (const auto &s : spheres.m_surfaces)
+                fixed << std::setprecision(17) << time << ',' << n << ','
+                      << radii[s.m_index] << ',' << s.m_centre[0] << ','
+                      << s.Area() << ',' << s.Q_charge() << '\n';
+        }
     }
     if (procID() == 0)
         for (size_t k=0; k<rh.m_surfaces.size(); ++k)

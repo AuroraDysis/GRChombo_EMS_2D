@@ -1,0 +1,3 @@
+case,probe_base_steps,probe_stop_M,wall_seconds,peak_evolution_child_RSS_GB,compression,stage_bytes_per_two_steps,snapshot_bytes_per_two_frames,projected_run_output_GB,projected_wall_minutes,planned_wall_minutes,memory_bound_GB,coarse_steps,snapshot_times_per_level,collective_evolution_output_ceiling_GB
+clock,2,0.08333333333333333,19.132810916984454,0.338968576,xz -3 single-thread each stream; Float64 bit-XOR and byte planes,30372332,3547988,2.316309466,22.959373100381345,45,1.5,144,73,5.7
+space,2,0.08333333333333333,65.87432299996726,1.26255104,xz -3 single-thread each stream; Float64 bit-XOR and byte planes,30450600,15536952,2.759541948,79.04918759996072,120,4,144,73,5.7

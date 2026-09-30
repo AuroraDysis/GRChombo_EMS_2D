@@ -1,0 +1,20 @@
+[
+  {
+    "directory": "/private/tmp/ems-t6/evolution/face2",
+    "command": [
+      "/private/tmp/ems-t6/evolution.ex",
+      "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/params/t6-ref-mid-face2.txt"
+    ],
+    "threads": 4,
+    "memory_bound_GB": 4
+  },
+  {
+    "directory": "/private/tmp/ems-t6/evolution/face3",
+    "command": [
+      "/private/tmp/ems-t6/evolution.ex",
+      "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/params/t6-ref-mid-face3.txt"
+    ],
+    "threads": 4,
+    "memory_bound_GB": 4
+  }
+]

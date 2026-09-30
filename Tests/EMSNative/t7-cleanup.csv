@@ -1,0 +1,161 @@
+path,bytes_deleted,reason
+/private/tmp/ems-t7/probes/clock/plt,109558848,T7-owned superseded bounded probe HDF5; final controls retained
+/private/tmp/ems-t7/probes/clock/chk,105228640,T7-owned superseded bounded probe HDF5; final controls retained
+/private/tmp/ems-t7/probes/clock/t7-stage-L6.gz,71573484,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/clock/t7-snapshot-L6.gz,3057007,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/clock/t7-snapshot-L5.gz,2283729,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/clock/t7-snapshot-L4.gz,552149,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/clock/t7-stage-L4.gz,30390604,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/clock/t7-stage-L5.gz,101088702,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/space/plt,409774816,T7-owned superseded bounded probe HDF5; final controls retained
+/private/tmp/ems-t7/probes/space/chk,392848896,T7-owned superseded bounded probe HDF5; final controls retained
+/private/tmp/ems-t7/probes/space/t7-stage-L6.gz,72143678,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/space/t7-snapshot-L6.gz,11831969,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/space/t7-snapshot-L5.gz,8681625,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/space/t7-snapshot-L4.gz,1875831,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/space/t7-stage-L4.gz,26256958,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/space/t7-stage-L5.gz,96169811,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/clock-final/plt,109558848,T7-owned superseded bounded probe HDF5; final controls retained
+/private/tmp/ems-t7/probes/clock-final/chk,105228640,T7-owned superseded bounded probe HDF5; final controls retained
+/private/tmp/ems-t7/probes/clock-final/t7-stage-L6.gz,37626763,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/clock-final/t7-snapshot-L6.gz,3181532,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/clock-final/t7-snapshot-L5.gz,2375763,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/clock-final/t7-snapshot-L4.gz,584789,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/clock-final/t7-stage-L4.gz,10075105,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/clock-final/t7-stage-L5.gz,43357752,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/space-final/plt,438024928,T7-owned superseded bounded probe HDF5; final controls retained
+/private/tmp/ems-t7/probes/space-final/chk,418539008,T7-owned superseded bounded probe HDF5; final controls retained
+/private/tmp/ems-t7/probes/space-final/t7-stage-L6.gz,37867308,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/space-final/t7-snapshot-L6.gz,13050041,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/space-final/t7-snapshot-L5.gz,9421150,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/space-final/t7-snapshot-L4.gz,2038363,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/space-final/t7-stage-L4.gz,12753382,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/probes/space-final/t7-stage-L5.gz,38180426,T7-owned superseded over-budget recording prototype
+/private/tmp/ems-t7/maxwell/E-mid/EMS_000032.2d/maxwell.bin,43620524,T7-owned frozen replay compressed losslessly; reader accepts .bin.gz
+/private/tmp/ems-t7/maxwell/E-mid/EMS_000069.2d/maxwell.bin,43620524,T7-owned frozen replay compressed losslessly; reader accepts .bin.gz
+/private/tmp/ems-t7/maxwell/E-mid/EMS_000064.2d/maxwell.bin,43620524,T7-owned frozen replay compressed losslessly; reader accepts .bin.gz
+/private/tmp/ems-t7/maxwell/E-mid/EMS_000000.2d/maxwell.bin,43620524,T7-owned frozen replay compressed losslessly; reader accepts .bin.gz
+/private/tmp/ems-t7/maxwell/E-low/EMS_000042.2d/maxwell.bin,20420684,T7-owned frozen replay compressed losslessly; reader accepts .bin.gz
+/private/tmp/ems-t7/maxwell/E-low/EMS_000046.2d/maxwell.bin,20420684,T7-owned frozen replay compressed losslessly; reader accepts .bin.gz
+/private/tmp/ems-t7/maxwell/E-low/EMS_000021.2d/maxwell.bin,20420684,T7-owned frozen replay compressed losslessly; reader accepts .bin.gz
+/private/tmp/ems-t7/maxwell/E-low/EMS_000000.2d/maxwell.bin,20420684,T7-owned frozen replay compressed losslessly; reader accepts .bin.gz
+/private/tmp/ems-t7/controls/point-ref/default-final/plt/EMS_Plot_000000.2d.hdf5,48696864,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/point-ref/default-final/plt/EMS_Plot_000003.2d.hdf5,48696864,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/point-ref/default-final/chk/EMS_000003.2d.hdf5,46372784,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/point-ref/default-final/chk/EMS_000000.2d.hdf5,46372784,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/point-ref/default/plt/EMS_Plot_000000.2d.hdf5,48696864,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/point-ref/default/plt/EMS_Plot_000003.2d.hdf5,48696864,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/point-ref/default/chk/EMS_000003.2d.hdf5,46372784,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/point-ref/default/chk/EMS_000000.2d.hdf5,46372784,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/point-ref/baseline/plt/EMS_Plot_000000.2d.hdf5,48696864,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/point-ref/baseline/plt/EMS_Plot_000003.2d.hdf5,48696864,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/point-ref/baseline/chk/EMS_000003.2d.hdf5,46372784,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/point-ref/baseline/chk/EMS_000000.2d.hdf5,46372784,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/default-final/plt/EMS_Plot_000000.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/default-final/plt/EMS_Plot_000001.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/default-final/plt/EMS_Plot_000002.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/default-final/chk/EMS_000002.2d.hdf5,973528,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/default-final/chk/EMS_000000.2d.hdf5,973528,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/default/plt/EMS_Plot_000000.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/default/plt/EMS_Plot_000001.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/default/plt/EMS_Plot_000002.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/default/chk/EMS_000002.2d.hdf5,973528,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/default/chk/EMS_000000.2d.hdf5,973528,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/baseline/plt/EMS_Plot_000000.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/baseline/plt/EMS_Plot_000001.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/baseline/plt/EMS_Plot_000002.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/baseline/chk/EMS_000002.2d.hdf5,973528,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-E/baseline/chk/EMS_000000.2d.hdf5,973528,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/space-final/baseline/plt/EMS_Plot_000000.2d.hdf5,219012464,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/space-final/baseline/plt/EMS_Plot_000002.2d.hdf5,219012464,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/space-final/baseline/chk/EMS_000002.2d.hdf5,209269504,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/space-final/baseline/chk/EMS_000000.2d.hdf5,209269504,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/clock-final/baseline/plt/EMS_Plot_000000.2d.hdf5,54779424,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/clock-final/baseline/plt/EMS_Plot_000002.2d.hdf5,54779424,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/clock-final/baseline/chk/EMS_000002.2d.hdf5,52614320,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/clock-final/baseline/chk/EMS_000000.2d.hdf5,52614320,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/default-final/plt/EMS_Plot_000000.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/default-final/plt/EMS_Plot_000001.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/default-final/plt/EMS_Plot_000002.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/default-final/chk/EMS_000002.2d.hdf5,973528,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/default-final/chk/EMS_000000.2d.hdf5,973528,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/default/plt/EMS_Plot_000000.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/default/plt/EMS_Plot_000001.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/default/plt/EMS_Plot_000002.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/default/chk/EMS_000002.2d.hdf5,973528,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/default/chk/EMS_000000.2d.hdf5,973528,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/baseline/plt/EMS_Plot_000000.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/baseline/plt/EMS_Plot_000001.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/baseline/plt/EMS_Plot_000002.2d.hdf5,269584,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/baseline/chk/EMS_000002.2d.hdf5,973528,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/controls/legacy-ref/baseline/chk/EMS_000000.2d.hdf5,973528,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-registered/plt/EMS_Plot_000000.2d.hdf5,219012464,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-registered/plt/EMS_Plot_000002.2d.hdf5,219012464,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-registered/chk/EMS_000002.2d.hdf5,209269504,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-registered/chk/EMS_000000.2d.hdf5,209269504,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-approved/plt/EMS_Plot_000000.2d.hdf5,54779424,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-approved/plt/EMS_Plot_000002.2d.hdf5,54779424,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-approved/chk/EMS_000002.2d.hdf5,52614320,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-approved/chk/EMS_000000.2d.hdf5,52614320,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-final-xz/plt/EMS_Plot_000000.2d.hdf5,219012464,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-final-xz/plt/EMS_Plot_000002.2d.hdf5,219012464,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-final-xz/chk/EMS_000002.2d.hdf5,209269504,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-final-xz/chk/EMS_000000.2d.hdf5,209269504,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-exact/plt/EMS_Plot_000000.2d.hdf5,219012464,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-exact/plt/EMS_Plot_000002.2d.hdf5,219012464,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-exact/chk/EMS_000002.2d.hdf5,209269504,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-exact/chk/EMS_000000.2d.hdf5,209269504,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-exact/plt/EMS_Plot_000000.2d.hdf5,54779424,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-exact/plt/EMS_Plot_000002.2d.hdf5,54779424,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-exact/chk/EMS_000002.2d.hdf5,52614320,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-exact/chk/EMS_000000.2d.hdf5,52614320,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-final-xz/plt/EMS_Plot_000000.2d.hdf5,54779424,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-final-xz/plt/EMS_Plot_000002.2d.hdf5,54779424,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-final-xz/chk/EMS_000002.2d.hdf5,52614320,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-final-xz/chk/EMS_000000.2d.hdf5,52614320,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-registered/plt/EMS_Plot_000000.2d.hdf5,54779424,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-registered/plt/EMS_Plot_000002.2d.hdf5,54779424,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-registered/chk/EMS_000002.2d.hdf5,52614320,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/clock-registered/chk/EMS_000000.2d.hdf5,52614320,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-approved/plt/EMS_Plot_000000.2d.hdf5,219012464,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-approved/plt/EMS_Plot_000002.2d.hdf5,219012464,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-approved/chk/EMS_000002.2d.hdf5,209269504,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-approved/chk/EMS_000000.2d.hdf5,209269504,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-layout/plt/EMS_Plot_000000.2d.hdf5,219012464,T7-owned verified or superseded bounded comparison HDF5; fixtures and result CSVs retained
+/private/tmp/ems-t7/probes/space-approved/t7-stage-L6.gz,16909780,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-approved/t7-snapshot-L6.gz,10305389,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-approved/t7-snapshot-L5.gz,7072419,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-approved/t7-snapshot-L4.gz,1492350,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-approved/t7-stage-L4.gz,2998558,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-approved/t7-stage-L5.gz,14194230,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-registered/t7-stage-L6.gz,17006013,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-registered/t7-snapshot-L6.gz,3082629,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-registered/t7-snapshot-L5.gz,2304106,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-registered/t7-snapshot-L4.gz,567811,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-registered/t7-stage-L4.gz,2771315,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-registered/t7-stage-L5.gz,14328411,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-exact/t7-stage-L6.gz,17876821,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-exact/t7-snapshot-L6.gz,3181532,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-exact/t7-snapshot-L5.gz,2375763,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-exact/t7-snapshot-L4.gz,584789,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-exact/t7-stage-L4.gz,2923263,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-exact/t7-stage-L5.gz,15072826,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-exact/t7-stage-L6.gz,17965429,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-exact/t7-snapshot-L6.gz,13050041,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-exact/t7-snapshot-L5.gz,9421150,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-exact/t7-snapshot-L4.gz,2038363,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-exact/t7-stage-L4.gz,3401859,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-exact/t7-stage-L5.gz,15123395,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-approved/t7-stage-L6.gz,16827026,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-approved/t7-snapshot-L6.gz,2496098,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-approved/t7-snapshot-L5.gz,1702724,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-approved/t7-snapshot-L4.gz,427675,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-approved/t7-stage-L4.gz,2739513,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/clock-approved/t7-stage-L5.gz,14173573,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-registered/t7-stage-L6.gz,17088387,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-registered/t7-snapshot-L6.gz,12632773,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-registered/t7-snapshot-L5.gz,9130108,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-registered/t7-snapshot-L4.gz,1978284,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-registered/t7-stage-L4.gz,3052886,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/probes/space-registered/t7-stage-L5.gz,14360164,T7-owned superseded recorder prototype
+/private/tmp/ems-t7/xz-size-probe.xz,12683588,T7-owned completed codec sizing probe

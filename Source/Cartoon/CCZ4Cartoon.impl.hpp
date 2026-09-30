@@ -142,6 +142,23 @@ void CCZ4Cartoon<gauge_t, deriv_t, coupling_t>::compute(Cell<data_t> current_cel
     CCZ4Cartoon<gauge_t, deriv_t>::rhs_equation(rhs, vars, d1, d2, advec,
                                                 coords.y);
 
+    if (m_t7_capture)
+    {
+        bool selected=false;
+        for (const auto &b:*m_t7_regions)
+            for (int lane=0;lane<simd_traits<double>::simd_len;++lane)
+                selected|=b.contains(current_cell.get_int_vect()+lane*BASISV(0));
+        if (selected)
+        {
+            BoxPointers pointers(*m_t7_capture,*m_t7_capture);
+            Cell<data_t> target(current_cell.get_int_vect(),pointers);
+            target.store_vars(rhs); // actual production RHS before KO
+            Vars<data_t> ko;VarsTools::assign(ko,0.);
+            this->m_deriv.add_dissipation(ko,current_cell,this->m_sigma);
+            ko.enum_mapping([&](const int &c,data_t &v){target.store_vars(v,NUM_VARS+c);});
+        }
+    }
+
     this->m_deriv.add_dissipation(rhs, current_cell, this->m_sigma);
 
     current_cell.store_vars(rhs); // Write the rhs into the output FArrayBox

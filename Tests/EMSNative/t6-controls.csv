@@ -1,0 +1,10 @@
+control,variant,kind,files,result
+reference_mid_7_levels_3_steps,default,plt,2,BIT_IDENTICAL
+reference_mid_7_levels_3_steps,default,chk,2,BIT_IDENTICAL
+reference_mid_7_levels_3_steps,strip-on,plt,2,BIT_IDENTICAL
+reference_mid_7_levels_3_steps,strip-on,chk,2,BIT_IDENTICAL
+E_legacy_regrid_2_steps,default,plt,3,BIT_IDENTICAL
+E_legacy_regrid_2_steps,default,chk,2,BIT_IDENTICAL
+ref_legacy_regrid_2_steps,default,plt,3,BIT_IDENTICAL
+ref_legacy_regrid_2_steps,default,chk,2,BIT_IDENTICAL
+frozen_E_low_terminal_400_chase_iterations,default,physical_CSV_and_shapes,3,BIT_IDENTICAL

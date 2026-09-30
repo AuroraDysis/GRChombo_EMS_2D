@@ -66,6 +66,8 @@ class CCZ4Cartoon : public CCZ4RHS<gauge_t>
      * cell; there should rarely be a need to call it directly.
      */
     template <class data_t> void compute(Cell<data_t> current_cell) const;
+    void t7_capture(FArrayBox *out,const std::vector<Box> *regions)
+    { m_t7_capture=out;m_t7_regions=regions; }
 
   protected:
     /// Calculates the rhs for CCZ4 with cartoon terms
@@ -90,6 +92,8 @@ class CCZ4Cartoon : public CCZ4RHS<gauge_t>
 
     const double m_G_Newton;
     const coupling_t m_coupling;
+    FArrayBox *m_t7_capture=nullptr;
+    const std::vector<Box> *m_t7_regions=nullptr;
 };
 
 #include "CCZ4Cartoon.impl.hpp"

@@ -1,0 +1,10 @@
+# Large regenerable T5–T7 outputs kept out of git (sha256, bytes, path); regenerate with the scripts named in README § T5–T7.
+f3b8333ae78d79e27a86117d01927fcb84cc5569b5a1c136f33efc72e765c3a8  24474302  Tests/EMSNative/t5-constraint-profiles.csv
+85fa35d08019e5820eac328eda1b846b91e68cef4aaf4d3f72138207c161fd4e  26344256  Tests/EMSNative/t5-field-differences.csv
+730dd4b86c7c64acfe21d42b3cf38a78d52352277af82d39803d476a276489eb  15572333  Tests/EMSNative/t5-global-profiles.csv
+e4ee2fc794bff89d0a126d4ad5d1c35528ae4742a399c8c391ba942f24da1bca  16429038  Tests/EMSNative/t5-line-profiles.csv
+c080a69196e3ee2a2fc8c7e7a2a35d563dfb8a48483e30aa372499b00c4f0428  2164902  Tests/EMSNative/t5-outer-profiles.csv
+2db6f901ff884176eb2f876a1a4dc2097230dff6dd4585498fe28768607b7269  1523797  Tests/EMSNative/t6c-field-curvature-tracks.csv
+a7279f38d4955f95539d120d034e90c0c3e5d7314bba47fca1199425c62f97cf  1136938  Tests/EMSNative/t6c-strip-profiles.csv
+96a0dc9ff0a45ddb1c9ae5023ee48b6d96f8214559d3ae631d78d4210f638b33  2172659  Tests/EMSNative/t7a-composite-metrics.csv
+0ccc333de873c81717c3fb88f8cafc71ddcb7e051ca6dd80ac7d3abb32e2a5ac  3103684  Tests/EMSNative/t7a-native-metrics.csv

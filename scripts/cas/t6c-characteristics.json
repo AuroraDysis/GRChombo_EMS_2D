@@ -1,0 +1,19 @@
+{
+  "status": "PROVED",
+  "scope": "algebraic identity \u2014 production physics not certified",
+  "assumptions": "alpha,chi,conformal inverse-normal metric,mu positive; beta real; homogeneous frozen 1D gauge block; Theta=0; lower-order forcing/damping/KO excluded",
+  "witness": "exact characteristic-polynomial coefficient residuals; transverse 2x2 determinant",
+  "normal_form": "expand polynomial coefficients; boolean asserts CLOSE; no general simplifier",
+  "branch": "positive square roots; coordinate outward speeds -beta_n+c",
+  "exclusions": "nonpositive metric/alpha/chi; coincident eigenvalues excluded from independent numerical eigenvector interpretations",
+  "speed_squares": [
+    "9 alpha chi g / 5",
+    "4 mu g / 3",
+    "mu g"
+  ],
+  "numerical_seed": 6019,
+  "points": 24,
+  "precision_digits": 60,
+  "numeric_region": "alpha,chi,g,mu in [0.2,1.5], beta in [-0.2,0.2]",
+  "max_independent_eigenvalue_residual": "5.42958082993384613948319588692315839991499501720921832363072e-59"
+}

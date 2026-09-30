@@ -1,0 +1,3 @@
+case,plot_bytes_measured,plots_planned,strip_bytes_per_coarse_step,coarse_steps_planned,projected_output_bytes,threads,memory_bound_GB,wall_minutes_low,wall_minutes_high
+face2,48696864,25,1098012,72,1296478464,4,4,8,12
+face3,54779424,25,1319196,72,1464467712,4,4,13,20

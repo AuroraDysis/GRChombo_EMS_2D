@@ -1,0 +1,5 @@
+case,operation,fine_level,times_checked,cells_checked,max_scaled_error,result
+clock-final-xz,restriction_outermost_covered_row_and_corner,5,4,8,8.673617379884035e-19,PASS
+clock-final-xz,restriction_outermost_covered_row_and_corner,6,4,12,5.421010862427522e-20,PASS
+space-final-xz,restriction_outermost_covered_row_and_corner,5,4,12,2.710505431213761e-20,PASS
+space-final-xz,restriction_outermost_covered_row_and_corner,6,4,12,2.710505431213761e-20,PASS

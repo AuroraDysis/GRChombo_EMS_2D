@@ -1,0 +1,20 @@
+[
+  {
+    "command": [
+      "/private/tmp/ems-t7/evolution.ex",
+      "params.txt"
+    ],
+    "directory": "/private/tmp/ems-t7/evolution/clock",
+    "memory_bound_GB": 1.5,
+    "threads": 4
+  },
+  {
+    "command": [
+      "/private/tmp/ems-t7/evolution.ex",
+      "params.txt"
+    ],
+    "directory": "/private/tmp/ems-t7/evolution/space",
+    "memory_bound_GB": 4,
+    "threads": 4
+  }
+]
