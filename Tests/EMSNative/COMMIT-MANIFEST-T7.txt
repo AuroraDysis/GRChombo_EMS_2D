@@ -199,3 +199,8 @@ d4f45274d32b501b546a9366f0c1845637a43988c03376140485186bdbf94ac7  Tests/EMSNativ
 1cca92fca749bfdfafe29ebb07014eb3d5658d8e47b5104cf258146f1e4cc74b  Tests/EMSNative/t7-clock2-stage-audit.csv
 0c151e3e1badb81ae8a6ca032a15656b122c37691bca543fc0d6f7fa4250c696  Tests/EMSNative/t7-clock2-supplemental-norms.csv
 c5ad6ec2ae5a1a58d2dff262f6a1685313b86a90cc483e17d73c0b4f416e649f  Tests/EMSNative/t7-clock2-time-grouping-correction.csv
+
+# T8 analysis: prior entries retained as historical tranche records; no C++ change, no commit.
+# Current README and complete T8 artifact/input/cache provenance follow.
+5ce80db9e7fbce2b6532337d65ac02e69fc4a8ebd378901fb591d1e64c4c1cef  Tests/EMSNative/README.md
+ac52ad6e90e966d044b439162653da4ce8d1305424a5435e29063b197fdd16b7  Tests/EMSNative/COMMIT-MANIFEST-T8.txt

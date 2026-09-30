@@ -8,3 +8,5 @@ c080a69196e3ee2a2fc8c7e7a2a35d563dfb8a48483e30aa372499b00c4f0428  2164902  Tests
 a7279f38d4955f95539d120d034e90c0c3e5d7314bba47fca1199425c62f97cf  1136938  Tests/EMSNative/t6c-strip-profiles.csv
 96a0dc9ff0a45ddb1c9ae5023ee48b6d96f8214559d3ae631d78d4210f638b33  2172659  Tests/EMSNative/t7a-composite-metrics.csv
 0ccc333de873c81717c3fb88f8cafc71ddcb7e051ca6dd80ac7d3abb32e2a5ac  3103684  Tests/EMSNative/t7a-native-metrics.csv
+6a2daab94149fb815b09c1b628cda856539842a25dea23159ccd8cb95c269859  11719069  Tests/EMSNative/figures/t8-pulse-map.pdf
+dbdd4310e20ef4bd02b59085031341ed15618935f240afbe48ade1034ecc3979  4134037  Tests/EMSNative/t8-native-curvature-candidates.csv

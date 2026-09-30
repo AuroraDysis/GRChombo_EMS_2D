@@ -1,0 +1,4 @@
+leg,exit,endpoint_M,steps,sigma,point,fixed_hierarchy,missing_or_failure_lines,plots,qualified_rows,steady_median_s,steady_min_s,steady_max_s,sum_coarse_step_s,params_sha256,MPI_ranks,OMP_threads,startup_reader_messages,reader_messages_after_first_step,sigma_evidence,post_t0_reader_guard
+E-low,0,10.5,48,1,True,True,0,13,26,256.0,254.0,258.0,12293.0,64b3cf370aa10385e698307e0f88048603008d97c3956d59f8905b4ff67eefa4,32,4,91,0,SEALED_PARAMETER_FILE;VALUE_NOT_ECHOED_BY_VERBOSITY_1,True
+E-mid,0,10.500000000000004,72,1,True,True,0,13,26,162.0,161.0,164.0,11690.0,29eaefb63242e2daa73e8a6b25f62b91a1dd5394c7bbb829d3ae2d7b90a4dcc8,32,4,91,0,SEALED_PARAMETER_FILE;VALUE_NOT_ECHOED_BY_VERBOSITY_1,True
+E-high,0,10.499999999999986,108,1,True,True,0,13,26,104.0,103.0,105.0,11239.0,47720008a301ccfb03620ced4bd115bed4446dab2f116fec99344ea09fda9de8,32,4,91,0,SEALED_PARAMETER_FILE;VALUE_NOT_ECHOED_BY_VERBOSITY_1,True

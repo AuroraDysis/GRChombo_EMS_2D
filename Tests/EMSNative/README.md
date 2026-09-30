@@ -1853,3 +1853,200 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /Users/auroradysis/miniconda3/bin/pytho
 ```
 
 The qualification runner refuses an existing output directory; preserve cached results or set its OUT constant to a fresh output root before a deliberate repeat. Per-checkpoint scratch tables live in /private/tmp/ems-t7e/tables; consolidated deliverables are in this directory. [COMMIT-MANIFEST-T7-E.txt](COMMIT-MANIFEST-T7-E.txt) freezes this tranche, and [COMMIT-MANIFEST-T7.txt](COMMIT-MANIFEST-T7.txt) refreshes shared artifact hashes while retaining the old detached-run records without opening the running space directory.
+
+
+## T8 — exp-0020 admission
+
+**READY-EXCEPT: analysis complete; scientific admission FAIL.** This is an analysis of completed exp-0020, at worktree HEAD `da038609c41cef8193cd671f5f4af07b24d17079`. No simulation, remote transfer, evolution/C++ change or commit was made. The proposed continuation and alternative layout below were not launched. The acceptance criteria are those of the sealed [submit-contract.md §8](/Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/submit-contract.md), including every fixed mask/time and the entire horizon interval. The contract does not specify a universal order≥3 threshold; `<3` flags below report measured low orders, while finite negative orders establish failure to decrease over the measured pair. Zero and roundoff cases retain undefined orders.
+
+The read-only input root is `/Users/auroradysis/Workspace/EMS/.data/exp-0020`. All three physical chains end at 10.5 M, synchronized on all 13 levels: 48/72/108 coarse steps. `run.exit`, `evolution.exit`, `reduction.exit` are 0, and physical-chain, qualification and common-reduction markers are present. Each leg has 13 plots at 0, 0.875, …, 10.5 M, all 34 registered Float64 components. Every plot header, union and valid value was checked. The controller reports zero differences from `rclone check`, for 2.67/6.12/14.07 GB; that checksum result is recorded as controller provenance, not claimed as a second local rclone invocation. MPI32/OMP4 are read back in each run.log; sigma=1, point transfers, fixed hierarchy and post-t0 reader guard are in the sealed parameter files. Full pout streams contain no missing-variable/startup/NanCheck/MayDay failure, and no profile-reader message after the first logged coarse step (91 startup messages per leg). The positive-time guard remains enabled. Across all saved valid states, zero chi/lapse floor cells were found; minimum chi is 1.233120e-6 / 5.491514e-7 / 2.136207e-7 and minimum lapse 1.110459e-3 / 3.413461e-4 / 7.714410e-5. An absence of sampled floor cells does not measure unsaved stage projections.
+
+All evolution diagnostics use current saved fields. Field time increments use consecutive **positive-time** snapshots; no static reader, t=0 field target or static-profile subtraction enters positive-time analysis. The horizon baseline is the independently re-found numerical t=0 horizon. The only initial-tail calculation below evaluates a boundary formula on the current t=0 plot, as an initial-data diagnostic.
+
+### Acceptance and reduction check
+
+| item | verdict | measured condition |
+| --- | --- | --- |
+| physical_completion_and_health | PASS | 3 legs at 10.5 M; exit 0; 39 complete plots; all current valid values finite; zero sampled floor cells |
+| all_evolved_fields_self_convergence | FAIL | 220 negative post-t0 field/mask/time rows among 3696; genuine near-hole and transported errors; interpolation-limited rows reported separately |
+| all_carried_constraints_tend_to_zero | FAIL | 220 post-t0 constraint/mask/time rows have a negative pair; outer boundary orders near zero; GaussB and Lambda exactly zero |
+| finest_qualified_area_drift_common_ladder | PASS | max 5.249097e-7; angular drift sensitivity 7.231890e-9; stopping sensitivity estimate 2.233888e-6; budget 1e-3 |
+| finest_qualified_charge_drift_common_ladder | PASS | max 4.931294e-5; angular drift sensitivity 9.941381e-9; stopping sensitivity estimate 5.444041e-10; budget 2e-4 |
+| full_interval_horizon_and_inter_rung_uncertainty | PARTIAL | native area excursion -4.478462e-3 at 0.972222222 M, residual RMS 0.0358493, mode far; no saved state at this time; early area inter-rung differences below stopping sensitivity |
+| MQ_required_reporting | PASS | 228 native time rows, 3 radii each; all finite; 12 positive common times per rung; no t0 MQ row |
+| admission_and_100M_extension | FAIL | field/constraint gates fail; horizon entire-interval qualification incomplete; no extension launched |
+
+The complete 37-field × 11-mask × 13-time table is [t8-field-orders.csv](t8-field-orders.csv): both raw self-differences, measured order, original floor/zero status and four-versus-six-node sampling spread are retained. This includes all 28 evolved fields and reconstructed/current constraints, not a chosen subset. [t8-field-order-summary.csv](t8-field-order-summary.csv) gives every field/mask range and undefined count. All 1716 direct constraint rows, including Theta, Lambda, Xi and Z1/Z2/Z, are retained in [t8-constraint-orders.csv](t8-constraint-orders.csv); [t8-constraint-summary.csv](t8-constraint-summary.csv) summarizes each of the 12 constraints. GaussB and Lambda RMS are exactly zero on every grid, mask and time. Other zero/roundoff rows have no claimed convergence order.
+
+The coordinate-volume composite norm is sqrt(sum(2π y h_l² C²)/sum(2π y h_l²)) over uncovered cells. Constraint norms use each rung's fixed physical masks; field self-differences use identical low-rung uncovered physical centres and low-rung weights for both pairs. No temporal interpolation is used: all 13 times match exactly to 1e-10. The reduction's 1e-13 constraint floor rule is preserved. Every raw constraint value and both printed orders were checked against the per-leg files, not only the following two spot checks:
+
+| time | mask / constraint | low / mid / high RMS | low→mid / mid→high | cells low / mid / high |
+| --- | --- | --- | --- | --- |
+| 10.5 | far / Ham | 5.553305e-08 / 3.555638e-09 / 4.015941e-10 | 6.778/5.379 | 24576 / 55296 / 124416 |
+| 10.5 | outer_boundary_shell / Theta | 1.769651e-08 / 1.764686e-08 / 1.763104e-08 | 0.007/0.002 | 1532 / 4592 / 10332 |
+
+These are counts of **post-t0** rows with at least one negative order, followed by low positive `<3` and undefined counts. There are 336 field rows and 144 constraint rows per mask (12 times). `≥3` is a descriptive bucket, not an extra acceptance requirement.
+
+| mask | 28 fields: negative / low / undefined | 12 constraints: negative / low / undefined |
+| --- | --- | --- |
+| horizon | 20 / 37 / 48 | 0 / 0 / 24 |
+| inside_inner_ring | 25 / 55 / 48 | 0 / 0 / 24 |
+| cavity | 10 / 92 / 48 | 0 / 0 / 24 |
+| between_rings | 3 / 125 / 49 | 0 / 11 / 24 |
+| outer_ring | 24 / 67 / 72 | 12 / 38 / 24 |
+| far | 9 / 17 / 72 | 29 / 20 / 24 |
+| cavity_core | 32 / 76 / 48 | 0 / 1 / 24 |
+| outer_ring_core | 22 / 71 / 51 | 13 / 35 / 24 |
+| far_core | 4 / 7 / 72 | 20 / 12 / 24 |
+| exterior_wake | 20 / 89 / 72 | 44 / 22 / 24 |
+| outer_boundary_shell | 51 / 155 / 48 | 102 / 18 / 24 |
+
+Some negative field orders are well above sampling uncertainty: horizon lapse at 5.25 M has D_LM=4.375636e-5, D_MH=9.446018e-5, p=-1.897922 and interpolation spread/D_small=1.598031e-6. Cavity-core Gamma1 at 8.75 M has 3.291094e-7 / 1.856178e-6, p=-4.266420 and spread fraction 4.866649e-7. These cannot be dismissed as interpolation floors. Other orders are not numerically qualified: far-core phi at 0.875 M has p=4.968989 but the registered sampling spread is 88.08 times the smaller self-difference. The complete tables keep these conditions alongside the apparent orders. Outer-boundary K at 1.75 M has p=-4.238190 and spread fraction 0.855, so its precise self-order is sampling-sensitive, while the independently reduced nonzero shell constraint floor is not.
+
+Endpoint direct orders for every mask are below. Each entry is low→mid / mid→high; all earlier low/negative/undefined values remain in the linked table and the minima in t8-constraint-summary.csv. Large endpoint orders do not establish an asymptotic single-power error law.
+
+| mask | Ham | Mom | GaussE | Theta |
+| --- | --- | --- | --- | --- |
+| horizon | 4.496/7.478 | 4.974/7.868 | 4.766/7.505 | 6.139/8.279 |
+| inside_inner_ring | 5.773/9.333 | 5.994/8.342 | 5.518/7.909 | 6.810/9.899 |
+| cavity | 7.180/10.286 | 6.788/10.560 | 6.617/10.510 | 8.566/9.417 |
+| between_rings | 7.179/10.286 | 6.787/10.561 | 6.617/10.510 | 8.566/9.414 |
+| outer_ring | 4.749/4.326 | 4.266/1.454 | 5.542/5.558 | 5.233/4.811 |
+| far | 6.778/5.379 | 7.014/5.169 | 4.117/4.061 | 5.219/4.075 |
+| cavity_core | 8.934/10.992 | 8.378/12.589 | 8.190/12.956 | 9.142/7.699 |
+| outer_ring_core | 4.968/5.843 | 4.616/2.343 | 5.231/4.306 | 5.046/4.117 |
+| far_core | 1.287/-0.409 | 1.340/-0.460 | 4.082/4.056 | 3.942/3.770 |
+| exterior_wake | 5.359/6.907 | 5.877/6.809 | 4.203/4.071 | 5.834/5.936 |
+| outer_boundary_shell | -0.027/0.005 | 0.043/-0.319 | 0.260/-0.026 | 0.007/0.002 |
+
+![Composite constraint RMS, all fixed masks; color low/mid/high, solid Ham, dashed Mom, dotted GaussE.](figures/t8-constraint-rms.png)
+
+### Independent horizon qualification and MQ charge
+
+All 78 common-ladder re-finds (13 times × 48/96 angles × 3 rungs) are FOUND at the frozen stage-2 threshold, with negative inward expansion. The reported finder `err` is mean squared expansion, so the actual RMS is sqrt(err)≤1e-6. Qualification preserves current evolved bits, seeds from the saved numerical shape and changes neither the author's finder nor evolution. [t8-qualified-horizons.csv](t8-qualified-horizons.csv) records all 39 N96 areas/charges/residuals and angular/stopping sensitivities; original N48/96 results remain read-only in exp-0020.
+
+| rung | numerical A0 / Q0 | A(10.5) / Q(10.5) | max abs(ΔA/A0) | max abs(ΔQ/Q0) |
+| --- | --- | --- | --- | --- |
+| E-low | 0.383694979862 / 1.048453144558 | 0.383560256797 / 1.039519766407 | 3.511202e-04 | 8.520532e-03 |
+| E-mid | 0.383694906807 / 1.048453070105 | 0.383701798998 / 1.047430782800 | 1.796269e-05 | 9.750435e-04 |
+| E-high | 0.383694894111 / 1.048453059857 | 0.383695095516 / 1.048504762164 | 5.249097e-07 | 4.931294e-05 |
+
+| rung | max angular drift sensitivity A / Q | max stopping drift estimate A / Q | native largest area candidate: time / relative drift |
+| --- | --- | --- | --- |
+| E-low | 2.187318e-07 / 1.524922e-06 | 2.235455e-06 / 1.051674e-07 | 1.09375 / -5.814081e-03 |
+| E-mid | 2.416222e-08 / 1.812187e-07 | 2.233628e-06 / 6.705520e-09 | 1.02083333 / -5.186362e-03 |
+| E-high | 7.231890e-09 / 9.941381e-09 | 2.233888e-06 / 5.444041e-10 | 0.972222222 / -4.478462e-03 |
+
+Angular drift sensitivity is the difference between N48 and N96 **relative to each angular resolution's numerical t=0 value**. The stopping estimate sums the measured stage-1→stage-2 sensitivity at t and its baseline contribution; it is a conservative sensitivity estimator, not a rigorous residual-to-observable bound. Absolute N48−N96 high t=0 differences are 5.137015e-5 in area and 1.403682e-4 in charge, approximately 1.339e-4 relative; they largely cancel in drifts. Thus sampled drift-budget PASS does not certify absolute area/charge at the finest inter-rung separation. Early area drift differences are also smaller than the stopping sensitivity. No reliable absolute Richardson extrapolation is claimed under that uncertainty.
+
+At E-high's largest native area excursion, t=0.972222222 M, A/A0−1=-4.478462e-3, mode=far and RMS expansion=0.03584930, over 35000 times the independent stopping threshold. Low/mid corresponding excursions have RMS 0.04693786 / 0.04154381. Qualified high area at adjacent saved times 0.875 / 1.75 M is -1.680757e-7 / -7.926128e-8. This supports a native tracking error, but the current fields at the intervening candidate times are unavailable locally; it does not independently qualify those times. Under the explicit §8 coverage rule, whole-interval area acceptance stays PARTIAL. The highest charge drift is well above extraction/stopping sensitivity and stays below its budget on the qualified ladder. Low/mid charge drift exceeds 2e-4; only the finest budget is a contract requirement.
+
+![Qualified numerical-baseline area and charge; dotted native values are unqualified; bands show angular plus stopping sensitivity.](figures/t8-horizons.png)
+
+The sealed parameters enable MQ at centre (336,0,0), radii 20/50/100 M, 97 theta points and 64 phi points, with extraction level setting 0 on every rung; native RH tracking uses 96 points and RH_level=0 on every rung. The author's MQ histories have 48/72/108 positive-time rows, covering every coarse step and all 12 positive common-ladder times. There is no written MQ t=0 row, so first→last changes below use the first positive numerical row, not an invented t=0 value. Every value/time/rung is retained in [t8-mq-charge.csv](t8-mq-charge.csv). These are the native extraction values; no extra angular convergence of MQ is certified.
+
+| rung | radius M | first / last Q | minimum / maximum Q | first→last relative change |
+| --- | --- | --- | --- | --- |
+| E-low | 20 | 1.0484062792 / 1.0484062706 | 1.0484062706 / 1.0484062792 | -8.202927e-09 |
+| E-low | 50 | 1.0484062792 / 1.0484062791 | 1.0484062790 / 1.0484062792 | -9.538292e-11 |
+| E-low | 100 | 1.0484062792 / 1.0484062792 | 1.0484062792 / 1.0484062792 | 0.000000e+00 |
+| E-mid | 20 | 1.0484062792 / 1.0484062774 | 1.0484062774 / 1.0484062792 | -1.716892e-09 |
+| E-mid | 50 | 1.0484062792 / 1.0484062792 | 1.0484062792 / 1.0484062792 | 0.000000e+00 |
+| E-mid | 100 | 1.0484062792 / 1.0484062792 | 1.0484062792 / 1.0484062792 | 0.000000e+00 |
+| E-high | 20 | 1.0484062792 / 1.0484062789 | 1.0484062789 / 1.0484062792 | -2.861487e-10 |
+| E-high | 50 | 1.0484062792 / 1.0484062792 | 1.0484062792 / 1.0484062792 | 0.000000e+00 |
+| E-high | 100 | 1.0484062792 / 1.0484062792 | 1.0484062792 / 1.0484062792 | 0.000000e+00 |
+
+MQ charge near 1.0484062792 differs from N96 horizon charge at t=0 by about 4.69e-5, predominantly the finder's angular quadrature. This constant absolute extraction offset is not an electromagnetic evolution drift; comparison of each numerical baseline and the common-quadrature Gauss budget below separates it.
+
+### Faces, incident identity and resolution
+
+Every plot has the registered common rectangular unions [-R_l,R_l] × [0,R_l], R_l=112/2^l for l=1,…,12: 56, 28, 14, 7, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375, 0.0546875, 0.02734375 M. This removes exp-0019's unequal E rung faces. The actual box census remains in the sealed submission; unions were independently checked in all 39 plots. Tensor six/eight-node sampling uses valid current fields and parity at the exact axis; no boundary ghost values, coordinate stretch or reference state are substituted. Sampling is checked on smooth degree-four polynomials and odd-axis parity. All native fourth-order curvature candidates are preserved separately, including rejected/clipped ones.
+
+The early outgoing ridge is identified in Gamma_n radial curvature and the shift. Independent peaks in fixed physical windows selected from the observed maps give axis speeds 0.9883 / 1.0027 / 0.9983, and corner speeds 1.00324 / 1.00328 / 1.00305 (low/mid/high). Axis fits have two pre-face samples; corner fits have three and phase RMS 0.006–0.011 M. These are phase fits, not exact crossing captures. Current-field longitudinal shift speeds are approximately 0.99995 at r≈2.64 and 0.99998 at r≈6.14. Local lapse speeds there are 0.836 and 1.072, and light/constraint speeds 0.532 and 0.741. **Inferred identity:** the early disturbance follows the longitudinal shift/Gamma family; its phase is inconsistent with a light-speed constraint mode over this path. It carries constraint error as well. Driver B has only rhs_B=-0.1 B in the actual ExperimentalGauge, and is distinct from magnetic Bx/By/Bz; its smooth local profile is not an independent outgoing B wave. K/lapse also show the later broader relaxation disturbance. A unique E packet-creation operation cannot be replayed from plots alone; the T7 stage experiment is prior evidence, not an E stage capture.
+
+Measured early phase arrivals are approximately 1.7–1.75 / 2.48 M at the 1.75 M axial/corner face, 3.50 / 4.95 M at 3.5 M and 7.0 / 9.90 M at 7 M. Common snapshots bracket these, with at least ±0.4375 M temporal sampling uncertainty. All faces ≤7 M have been crossed by the early ridge at 10.5 M; faces ≥14 M have not. The later broad disturbance has crossed the 1.75 M face and the axial 3.5 M face by 10.5 M, but its corner crest at r≈4.48 M remains inside the 3.5 M diagonal intersection (4.94975 M); it has not reached the 7 M face. This later crossing contributes to the late far-mask error mixture. Arrivals and widths at faces ≤0.875 M occur before the first post-t0 plot and cannot be qualified from this cadence. The 1.75 M axial incoming sample sits on the upstream 0.875 M interface: its six/eight-node widths differ by 97–435%, so it is explicitly rejected. No spurious subcell width is used in the layout decision. [t8-face-arrivals.csv](t8-face-arrivals.csv) labels early unresolved extrapolations and un-crossed faces.
+
+The following widths are half-prominence widths of the current Gamma_n curvature lobe, taken **before** the listed face. The full table includes peak radius, signed amplitude, P6/P8 phase and width spread, native off-axis/diagonal checks, fine/coarse spacing, characteristic speeds and current fields. Fine-cell count is twice the receiving-cell count. Curvature prominence is a shape measurement, not a field amplitude or a continuum jump. The corner row at 1.75 M uses the positive leading lobe; the later early-ridge rows use the negative lobe consistently across rungs.
+
+| face / ray / branch | sample time | width M: low / mid / high | receiving cells: low / mid / high | P6/P8 width spread |
+| --- | --- | --- | --- | --- |
+| 1.75 / corner / EARLY_GAMMA_SHIFT | 1.75 | 0.02983 / 0.02198 / 0.01649 | 1.09 / 1.21 / 1.36 | 2.63% / 2.17% / 0.00% |
+| 3.5 / axis / EARLY_GAMMA_SHIFT | 2.625 | 0.07562 / 0.05343 / 0.03826 | 1.38 / 1.47 / 1.57 | 3.24% / 1.31% / 0.44% |
+| 3.5 / corner / EARLY_GAMMA_SHIFT | 4.375 | 0.07263 / 0.05043 / 0.03516 | 1.33 / 1.38 / 1.45 | 0.88% / 0.60% / 0.31% |
+| 7 / axis / EARLY_GAMMA_SHIFT | 6.125 | 0.15075 / 0.12935 / 0.08871 | 1.38 / 1.77 / 1.82 | 3.46% / 0.93% / 1.02% |
+| 7 / corner / EARLY_GAMMA_SHIFT | 8.75 | 0.11854 / 0.10340 / 0.07458 | 1.08 / 1.42 / 1.53 | 1.00% / 0.09% / 0.23% |
+| 3.5 / axis / LATE_BROAD | 8.75 | 0.51126 / 0.50825 / 0.52720 | 9.35 / 13.94 / 21.69 | 0.03% / 0.01% / 0.00% |
+| 3.5 / corner / LATE_BROAD | 10.5 | 0.49315 / 0.44458 / 0.45275 | 9.02 / 12.19 / 18.63 | 0.00% / 0.00% / 0.00% |
+
+At 3.5 M axial and corner, width ratios mid/low and high/mid are 0.707/0.716 and 0.694/0.697; at 7 M axial they are 0.858/0.686. Native widths corroborate the same thin lobes (e.g. 3.5 M axial 0.08027 / 0.05587 / 0.03841 M versus P6 0.07562 / 0.05343 / 0.03826). All qualified early rows have fewer than 2 receiving cells, versus the proposed ~4-cell minimum. Refinement sharpens this ridge; a resolved, fixed physical incident width is **not established**. The late broad wave's physical width is approximately constant, with 9–22 receiving cells on the 3.5 M axial face. Its prominence basin is partly truncated by the local window/face, so these are local-lobe widths, not a complete global pulse support. The distinction prevents applying T7 reference's spatial lever to every E transient without a new contrast.
+
+At t=2.625 M before 3.5 M on the axis, detrended current Gamma_n amplitudes are 1.320568e-7 / 2.859095e-7 / 6.261624e-7 (P6/P8 spread 3.23e-10 / 4.72e-10 / 6.05e-10); Theta amplitudes are 8.673986e-12 / 1.316192e-11 / 1.570896e-11, and Ham 1.623432e-9 / 2.586473e-9 / 2.320506e-9. In the same lobe, smooth lapse and K spatial background dominates their raw ranges. The local affine-background amplitudes, raw ranges and interpolation uncertainty for lapse/K/Theta/shift/Gamma/driver-B/chi/EMS fields are all in [t8-pulse-field-amplitudes.csv](t8-pulse-field-amplitudes.csv); this background uses the same snapshot's endpoints, never a static target.
+
+![Early and later disturbances in successive positive-time increments/current constraints; dashed common faces.](figures/t8-pulse-map.png)
+
+![Current incident profiles at t=2.625 M, exact axis, all three rungs.](figures/t8-incident-profiles.png)
+
+![Pre-face early widths and receiving-cell counts; the 4-cell line is a proposed resolution condition, not a passed gate.](figures/t8-face-widths.png)
+
+The negative Ham/Mom orders coincide with pulse/interface passage: exterior_wake at 1.75 M has -1.452/-1.266 and -0.979/-0.846; far at 4.375 M has -1.480/-1.557 and -1.578/-1.672; far_core at 7 M has -0.033/-0.721 and 0.813/-0.514. At 10.5 M, far Ham/Mom become 6.778/5.379 and 7.014/5.169, but far_core remains 1.287/-0.409 and 1.340/-0.460. These positive bulk far orders do not establish that every exterior error has disappeared.
+
+The current native-cell localization is in [t8-interface-localization.csv](t8-interface-localization.csv). At 4.375 M E-high's far Ham maximum is 8.073454e-7 on level 5 at (-2.55816,3.49392), beside the 3.5 M face; at 7 M it is 1.473430e-8 on level 4 at (0.01215,6.98785), beside the 7 M face. At 10.5 M low/mid far error is dominated by levels 4/5 and the later 3.5 M disturbance; the common physical 3.5 M collar contains 47.0% / 38.9% / 3.31% of far Ham squared error. Thus even the late large far orders reflect a changing mixture of errors, not a clean uniform wake exponent.
+
+At the same endpoint, E-high far_core has 99.9% of Ham squared error on level 4 and only 0.09% in the 7 M collar; its peak is 2.303622e-9 at (-5.578125,5.578125), r≈7.889 M, in the diagonal interior. Mid peaks at (5.596354,5.596354). This is a spatial packet, not the level-7 face/roundoff floor: even a conservative Float64 second-derivative scale 16 ε/h4²≈6.0e-12 on high is hundreds of times smaller. Late interface scattering/reflection is consistent with prior T7 evidence, but its precise E emission point/operation is **unresolved** by the 0.875 M snapshots. No speed or source attribution is forced onto that diagonal packet.
+
+### Outer-boundary shell
+
+The three outer faces x=±336 M and y=336 M are Sommerfeld (type 1); y=0 is reflective (type 2), with the supplied parity. Asymptotic values are one for chi,h11,h22,hww,lapse and zero for every other evolved variable. [BoundaryConditions.cpp](../../Source/GRChomboCore/BoundaryConditions.cpp) `fill_sommerfeld_cell` imposes -x^i/r ∂_i u+(u_infinity-u)/r for every component, with unit coordinate speed and second-order derivative stencils. It has no separate constraint/gauge characteristic treatment and assumes a 1/r radiative tail for every variable. The actual gauge's lapse characteristic approaches sqrt(1.8), not one.
+
+**Measured:** initial outer-shell Ham RMS is 1.9540e-14 / 4.2422e-14 / 9.5803e-14, Mom around 1e-22, GaussE around 1e-18 and Theta exactly zero. At 10.5 M high Ham/Mom/GaussE/Theta are 6.010383e-9 / 5.609613e-10 / 2.223589e-9 / 1.763104e-8, with endpoint orders -0.0265/0.0050, 0.0430/-0.3193, 0.2604/-0.0264 and 0.00693/0.00221. This is a continuum-size boundary-fed error relative to the measured spatial sequence; it does not tend to zero. It rises rapidly from t=0 and remains nonzero, though the travelling crest decreases after its initial peak rather than growing exponentially.
+
+Current t=0 valid interior tails already give a nonzero Sommerfeld RHS: high RMS 5.803786e-8 for chi, 1.969152e-8 for lapse, and approximately 1e-11 for shift. This is a consistency indicator in a 4–5-cell interior band, not a replay of the first boundary-ghost RHS or a comparison with a static solution at positive time. The source reader compactifies all positive radii to 0<s<1 and has no finite-radius cutoff at 336 M; initial constraint residuals at the boundary are also tiny. Thus literal data-file truncation at 336 M does not explain the observed growing constraint shell.
+
+On six common face-normal rays, the independently selected high Ham crests travel inward at 0.986–1.000 M/M, with phase-fit RMS≤0.046 M. On x=336,y=84 the Ham crest reaches depth 10.375 M at t=10.5, peak 2.920468e-8; Theta's 10%-amplitude extent reaches 10.75 M and its boundary-region amplitude remains about 2.19e-8. High consecutive-positive-time lapse increments have a 10% leading-extent speed 1.352 M/M, compatible with the faster lapse family plus threshold/dispersion uncertainty; their switching peak is not used as a characteristic-speed measurement. All threshold, six/eight-node and ray sensitivities remain in [t8-boundary-features.csv](t8-boundary-features.csv) and [t8-boundary-speeds.csv](t8-boundary-speeds.csv).
+
+**Inferred cause:** the non-characteristic Sommerfeld/tail prescription continuously excites an incoming constraint/gauge response. The early onset at the outer faces, nearly resolution-independent shell, nonzero initial tail forcing and inward crests support this. It cannot be a return of the hole's outgoing transient at 10.5 M: that front is still within approximately 11 M, hundreds of M away. A unique separation of BC-tail mismatch from BC derivative order would require a boundary-specific control, which this read-only analysis does not provide.
+
+For a 100 M run, a conditional fastest far-field gauge speed sqrt(1.8) gives travel times at least ≈250 M to the hole and ≈236 / 213 / 176 M to the nearest points of MQ spheres 20/50/100 M. Measured extents at 10.5 M are consistent with that separation. Direct causal contamination of hole/MQ by this outer signal before 100 M is therefore not expected under the current measured characteristic families. Nonetheless the outer mask already fails the **domain-wide** acceptance contract; causal distance is not permission to omit that mask or call the whole run convergent.
+
+![Incoming outer-boundary constraints on the common x=336,y=84 normal; log10 amplitude.](figures/t8-outer-boundary.png)
+
+### Charge rate, Gauss budget and the 100 M policy
+
+The endpoint-average relative charge rates are -8.114792e-4 / -9.286128e-5 / +4.696471e-6 per M. Linear fits over all 13 times give -9.249606e-4 / -1.036468e-4 / +5.233154e-6; fits over 1.75–10.5 M give -1.006890e-3 / -1.086599e-4 / +5.828814e-6, with fit RMS 9.04e-5 / 3.30e-5 / 1.30e-6 in relative charge. High is monotone over the late interval; its small early variation is retained. The rate reversal mid→high is real relative to extraction uncertainty, but three rungs cannot distinguish a converging multi-term error from a positive resolution-independent limit. A single-power three-rate fit has apparent p≈5.080 and nonzero intercept +2.255329e-5/M; this is a fitted model, not evidence that the continuum drift has that value. Taking log of the signed drift ratios is undefined and is not used.
+
+The T7 B current-field Maxwell identity is reused with unchanged normalization: D^i=sqrt(gamma) F gamma^ij E_j, GaussE=F C_E, and Q_out−Q_H=(1/sqrt(2π)) integral sqrt(gamma) GaussE d³x. F is not multiplied a second time. Local plots already contain the full current state and GaussE, so the E-high remote checkpoint was **not pulled or needed for this signed shell check**. The re-found numerical horizon and r=0.02 M sphere both lie within level 12's 0.02734375 M common face, with no refinement interface in the shell. Six/eight-node sampling and 96×64 / 192×128 Gauss quadrature provide sensitivity checks. Both fluxes use the same converged quadrature, removing the finder's N96 constant angular offset.
+
+| rung | Q(0.02)−Q(H) | signed Gauss volume | volume−flux gap | local finest h M |
+| --- | --- | --- | --- | --- |
+| E-low | 9.517485e-03 | 9.520352e-03 | 2.866979e-06 | 2.136230e-04 |
+| E-mid | 1.020522e-03 | 1.020389e-03 | -1.323681e-07 | 1.424154e-04 |
+| E-high | -5.108032e-05 | -5.108176e-05 | -1.440812e-09 | 9.494358e-05 |
+
+High's volume matches its negative flux gap to 1.44e-9, or 0.0028%; the positive horizon drift is accompanied by a negative near-horizon Gauss budget, not a finder-angular/stopping floor. Low/mid signs and gap sizes remain consistent with T7 B's constraint/flux deficits. This is a frozen-state signed inventory, not an integral of the moving-horizon charge rate and not a native/cleaner/KO tendency decomposition for exp-0020. T7 B showed competing native, cleaning and KO sources rather than a common single KO source. The local high plot suffices for this inventory; a checkpoint/current-RHS replay would be needed to extend that source split. A fourth rung (h0=7/27 M with the same physical faces) is still needed to decide resolution-independent versus sign-changing converging rate; the existing three-grid data cannot decide that asymptotic question.
+
+If the measured late slope simply persists, high charge drift at 25.375 / 49.875 / 100.625 M would be +1.360166e-4 / +2.788225e-4 / +5.746348e-4, anchored at its measured 10.5 M drift. [t8-charge-rate-projections.csv](t8-charge-rate-projections.csv) retains both projection conventions at all endpoints; [t8-charge-rate-model.csv](t8-charge-rate-model.csv) records the conditional three-rate fit. This conditional linear projection breaches 2e-4 around 36.4 M; endpoint-average extrapolation instead gives ≈4.7e-4 at 100 M and a crossing around 42.6 M. Neither is a prediction. Improving outer receiving resolution does not itself establish a fix for the near-horizon Gauss imbalance, whose shell contains no AMR face.
+
+**Policy proposal, not admission:** retain the common faces and unchanged chain only for a separately authorized diagnostic continuation; the present contract fails and no 100 M production continuation is admitted. The original chain would cost the following additional wall hours from its completed 10.5 M state at the measured production median rate. Native rates are 256 (254–258) / 162 (161–164) / 104 (103–105) s per coarse step, rather than using the approximate smoke rates. Numbers exclude queue, new I/O and future-rate changes.
+
+| endpoint M | additional steps: low / mid / high | additional median wall h: low / mid / high |
+| --- | --- | --- |
+| 25.375 | 68 / 102 / 153 | 4.84 / 4.59 / 4.42 |
+| 49.875 | 180 / 270 / 405 | 12.80 / 12.15 / 11.70 |
+| 100.625 | 412 / 618 / 927 | 29.30 / 27.81 / 26.78 |
+
+For a **newly qualified spatial policy**, target four times the present receiving resolution at the demonstrated 1.75, 3.5 and 7 M transport faces; 2× would still leave the measured 3.5/7 M thin lobes below four receiving cells on most rays. One concrete common, block-aligned candidate retains h0 and levels 8–12, and enlarges unions of levels 1–7 by four in half-width: new R1…R7=224,112,56,28,14,7,3.5 M. The old 1.75/0.875 M transport interfaces disappear inside the enlarged level-7 union; the 3.5/7/14/28/56 M receiving spacings become 4× finer, with additional parent faces at 112/224 M. Fine innermost spacing and data/gauge/equations/transfer/sigma remain unchanged. All proposed faces lie on common block-aligned unions for the three rungs; this is a geometry/work census only, not executed code or an authorized regrid of the frozen chain. [t8-layout-proposal.csv](t8-layout-proposal.csv) specifies every level/rung.
+
+Holding the **incident physical profile** fixed, receiving counts at 3.5 M would rise from 1.33–1.57 to 5.31–6.30, and at 7 M from 1.08–1.82 to 4.34–7.30. That premise is deliberately conditional: the early E width shrinks with h in the present global three-grid contrast. The new policy keeps the inner source resolution fixed and must show that it does not merely sharpen a new subcell pulse. Widths at future 14/28/56 M crossings have not been measured by 10.5 M and must be audited at subsequent endpoint collections.
+
+The proposed union area increases 16× on levels 1–7. Its exact sum(cells_l 2^l) work ratio is 1.464691, an increase of 46.47% over exp-0020, with about 6× as many valid cells. This **work model is not a measured wall/memory rate**; MPI box utilization is demonstrably non-linear (the high rung's step is faster than low). A same-node step benchmark would price it. Scaling the observed E-mid 10.5 M evolution by this model gives about 4.76 h for a one-leg qualification contrast, only a planning estimate. Full 100 M pricing for the altered hierarchy cannot honestly be called measured without that benchmark. It belongs on the cluster, not this memory-limited local machine.
+
+The cheapest policy test is one altered E-mid run to 10.5 M against the completed E-mid baseline, with the inner hierarchy unchanged, the above fixed common unions, point transfers and sigma=1; **not launched**. Capture exact incoming profiles and interface constraint packets frequently enough to resolve the 1.75/3.5/7 M crossings, including corners. Pass the spatial hypothesis only if the incoming physical width/amplitude remain within the registered interpolation/time-sampling uncertainty, receiving count is ≥4, and emitted/reflected packet and fixed-mask wake norms fall materially (a preregistered ≥4× reduction is a useful minimum for this 4× receiving contrast). Kill this policy if the incident width shrinks proportionally to the receiving h, the count stays below four, or the packet/wake reduction is absent. A positive one-leg contrast would select a policy; it would **not** replace three-grid admission. The horizon interval coverage, high charge's sign-changing rate, remaining inner/outer-ring negative field/constraint orders, far-core diagonal packet, unmeasured future faces and outer-shell boundary floor would still block the full convergence gate. T7/clock-2 establishes a ≤2% first-order temporal contribution in its reference contrast; that favors spending the next test on space, without treating temporal or finite-width qualification as already proved for E.
+
+### Reproduction and evidence scope
+
+[t8-analyze.py](t8-analyze.py) reuses the sealed read-only audit loader and existing compensated tensor sampler/Maxwell geometry; no dependency or generated evolution artifact was added. Run `tables`, `profiles E-low`, `profiles E-mid`, `profiles E-high`, `features`, `shell`, `localize`, `finish`, `check` with `/Users/auroradysis/miniconda3/bin/python`, `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1`, and `MPLCONFIGDIR=/private/tmp/ems-t8/mpl`. Cached current-ray arrays and outer rays are under `/private/tmp/ems-t8`; their hashes are retained in [COMMIT-MANIFEST-T8.txt](COMMIT-MANIFEST-T8.txt). Profiles took 29.77/29.26/33.42 s and peak process RSS 1.02/1.24/2.22 GB, one thread each; at most two such processes overlapped. No operation approached the detached-run threshold. Nothing belonging to other tranches was deleted.
+
+The runnable check verifies row counts, all saved finite/floor census, exact GaussB/Lambda zeros, and six/eight-node polynomial/parity sampling. The direct reduction checks cover all constraint rows. Figures were visually inspected. No C++ files differ from HEAD, so no new default-path bit-identity control is needed for this analysis-only tranche. `git diff --check` passes; no commit was made.
+
+**Measured:** failed admission rows, numerical-horizon drifts/sensitivity, thin and broad profile widths, common unions, negative high Gauss shell inventory and near-unit inward boundary propagation. **Inferred:** early longitudinal shift/Gamma identity and BC-driven outer contamination; interface association is supported by locations and T7 prior controls. **Unresolved:** continuum width/source of the earliest thin E disturbance, the unique operation emitting the late diagonal packet, between-plot qualified area excursions, and whether the high charge-rate sign change approaches a nonzero limit. These limits prevent a scientific admission PASS and a validated 100 M layout claim.

@@ -1,0 +1,159 @@
+# T8 exp-0020 admission analysis; no commit, no evolution/C++ change.
+# HEAD da038609c41cef8193cd671f5f4af07b24d17079
+# Local plots: controller rclone check zero differences; local count/header/geometry/current-valid checks pass for all 39.
+# Raw plots are read-only and retained; no second raw-plot hash or remote transfer is claimed.
+# Scientific admission FAIL; sample horizon budgets PASS, whole-interval horizon qualification PARTIAL.
+# Static reader never invoked; all positive-time field comparisons use resolutions/current positive-time snapshots.
+# Artifact checksums follow.
+5ce80db9e7fbce2b6532337d65ac02e69fc4a8ebd378901fb591d1e64c4c1cef  Tests/EMSNative/README.md
+fee9379bb1d2359c2f310ed2dc71a9c931141139835f919c21bb8aa66d365c9f  Tests/EMSNative/figures/t8-constraint-rms.pdf
+fbcab94ff6ea66dd4f8a3428af0f916cf084fa4ed56447a0c8191d1a4ff4e233  Tests/EMSNative/figures/t8-constraint-rms.png
+b10e49367eb27a3aa0c00b34860ef17659b0512d529104210a13d7cf2d7a93ef  Tests/EMSNative/figures/t8-face-widths.pdf
+6be02c54f21136e4c5f6d2b0cf95b9d130076801d71a28b42fd9b5447088a934  Tests/EMSNative/figures/t8-face-widths.png
+4cb6c7fe40cb588d01e65352de50e28c6041104b050469852df721a4c35c799f  Tests/EMSNative/figures/t8-horizons.pdf
+21256a345cd862e87c6ab558a626e6cfaebd7aaebdd7566bb9a67dd68b118891  Tests/EMSNative/figures/t8-horizons.png
+8ecb98183a6ad00626468d252e5831083a5c4f03db2432603dd002bf10eea35d  Tests/EMSNative/figures/t8-incident-profiles.pdf
+11b9fc29cdfe4b823c1336fb6696112f79e5ba73802fde2f6c4fc7369eb2d389  Tests/EMSNative/figures/t8-incident-profiles.png
+2748cb645cca34538c40ea131feb3749e5fe5500de9b3c1d9a094bdffc99c8dc  Tests/EMSNative/figures/t8-outer-boundary.pdf
+c87f0aa6086f89ee12e95ea3696acc5498a344cdcdb107bf0d3092c6ae141822  Tests/EMSNative/figures/t8-outer-boundary.png
+6a2daab94149fb815b09c1b628cda856539842a25dea23159ccd8cb95c269859  Tests/EMSNative/figures/t8-pulse-map.pdf
+7664a107f874cdeb2654e875c84f6decbfdaa056bb44f7b2ef0aafae89d886a9  Tests/EMSNative/figures/t8-pulse-map.png
+108974d21b84378f7909894994bc5d0ba690134d4baaca8f3862d7bfbbd89926  Tests/EMSNative/t8-admission.csv
+ce373b6b7f2df10849bf4f7f1d46dec19287f62edbb5edc2d309f39eb9ffe160  Tests/EMSNative/t8-analyze.py
+862b235e753e8efdcbc7d7a5b3e7cc600a34fa8f8c295ca47df92b34636cc88e  Tests/EMSNative/t8-boundary-features.csv
+9b66f13b2057d09e417275f2d3159f1034697ff95e7bc4037028838c89fdc8ac  Tests/EMSNative/t8-boundary-speeds.csv
+3167080daa0fb3cf6e555f4abef5ddadc5050ae944d725dfb7ee5d0eab4d3f38  Tests/EMSNative/t8-boundary-tail.csv
+c2b2f5b060ca97661174d72c8343649b0ca680504d415a9c2af09d7c1a682eb7  Tests/EMSNative/t8-charge-rate-model.csv
+df7332e2bfd1a6891fc609017c16682b0172fad0d8af858a711f827d2a67ed2d  Tests/EMSNative/t8-charge-rate-projections.csv
+e557065496f37ef25780a8b63537586df28df4273acf48fcb766da24f92af0d2  Tests/EMSNative/t8-coarse-step-times.csv
+1bb15313dada65f9559ffb526a4710df70c015227ca8a001b2a5a695a07f3080  Tests/EMSNative/t8-constraint-orders.csv
+86902093e0767e7023bfb78d14c8ed7ae50dc99e21abdd58e207b39b5f94a219  Tests/EMSNative/t8-constraint-summary.csv
+65a53af1cbba5bc2e531aab8bc9090b9044abee86dc3893f6ac825cae3139f5b  Tests/EMSNative/t8-continuation-cost.csv
+327be34290430caf23a44508d348fcbcbdf368f11ec07c66b441f0134acb870e  Tests/EMSNative/t8-current-snapshot-audit.csv
+acf39db258ec929dc775e6021f38031ad03c8ea74818bf39c61af254c2b3da90  Tests/EMSNative/t8-face-arrivals.csv
+9cccc35da8255eecfadc617ccf215a49573603174bb7314f1669cbc69a65ec9a  Tests/EMSNative/t8-field-order-summary.csv
+194c5428eb5252c89adf20072d4437d9d61f5463b5f9981d9d07c863f719fe61  Tests/EMSNative/t8-field-orders.csv
+9d71537d9e565305b19a399ad04107f531372e20b5f788df98553866849f8750  Tests/EMSNative/t8-gauss-shell.csv
+2702d36ed7ff0db0f12d5eb8459eb9699899e2e1268ceabaf85952f6a03e5dd1  Tests/EMSNative/t8-horizon-summary.csv
+e51d87430752ffa088dc7af27a917a9cbd845f8deea6a556e76c252b23e2738b  Tests/EMSNative/t8-interface-localization.csv
+922170a85a33635f1b587f7a869763ccf75e54710eab998f466b60f22a64fb0b  Tests/EMSNative/t8-layout-proposal.csv
+90bbf6da2ae0a38e35bee531b45a6ddaec437b66faedeaa69cbf1f944019b7a5  Tests/EMSNative/t8-mq-charge.csv
+459bcf7cf7f0c17a2f82288ca37a417d564d1b1cd19dd0bb4edb3efe0a0c9aba  Tests/EMSNative/t8-mq-summary.csv
+dbdd4310e20ef4bd02b59085031341ed15618935f240afbe48ade1034ecc3979  Tests/EMSNative/t8-native-curvature-candidates.csv
+0f60eb3618bda96bffe54c6ce52380392c7152334071f7df35b1f6e7e24f41bb  Tests/EMSNative/t8-native-horizon-history.csv
+e9d629a0f3295a966f8e9e6c5111d97e2e6b8c7732a2d8049a5f13e090de0b7b  Tests/EMSNative/t8-order-flag-counts.csv
+d98e84476c572323543c271e58220faacd49be03d06062330e9d36fecdd796dc  Tests/EMSNative/t8-plot-census.csv
+f10cbe1405f5e23d68976161ac77c62bf2f24b71980c1675ae0668796e3b4558  Tests/EMSNative/t8-pulse-field-amplitudes.csv
+143a0a96c189f254ceed97f17648a021d6d7c47e9a138788eb25e39cc77867b0  Tests/EMSNative/t8-pulse-speed-fits.csv
+6efc68438f8cfbafa79049ef7b0f789f69f966673310607dcc6ac27c22fbecf9  Tests/EMSNative/t8-pulse-widths.csv
+6b930cc787ee8440426af992fa4670cb4b8ccacc2e0dd53b3cbe538831d2488b  Tests/EMSNative/t8-qualified-horizons.csv
+54ddc3adfb1bf91585b2d5022d0891121bb77cf2dbe40613160d8c2b102ab897  Tests/EMSNative/t8-reduction-spots.csv
+1d9d4e0542c5a6878ec504cfd9b7f1b2b393dc368f5ec1fd3c1a7134e689bf6d  Tests/EMSNative/t8-run-audit.csv
+# REUSED_SOURCE 0ca30a9522f2fcd483223c69e0c973413ce7f4b2f0a79c461c00c0f195e6141e  Tests/EMSNative/t6c-analyze.py
+# REUSED_SOURCE 14cfe51b9b7d4ad843979c8b71e77bf64ce7ea8be0228b312f907bbec30c4ba4  Tests/EMSNative/t5-analyze.py
+# REUSED_SOURCE c25c8c27e16b2359b7587708550c784b544b0415de3f000d627b0ddc1816d949  Tests/EMSNative/t7-maxwell.py
+# REUSED_SOURCE e38708637c3fc5655acca9eb33dbbbf817a772a8b2094d19bd8a3f11c0892fff  Source/GRChomboCore/BoundaryConditions.cpp
+# REUSED_SOURCE 8223cb716710f5eb7842d716bebde8b0b1cc053d002324a2eebcf56f161b4c5a  Source/CCZ4/ExperimentalGauge.hpp
+# READ_ONLY_INPUT d0a3d7f73467b7d2b30ff76d89ddc675139445a23f4ea10995e8c1f2095537b8  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/submit-contract.md
+# READ_ONLY_INPUT 2e9660693eb4271d70bb4b0bfd7f1e834e2de1704c3d72a81d8559ce793323d1  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/reduce.py
+# READ_ONLY_INPUT 36b100726ebd522346655e931f2cac395ee13d1f568e0f0145db5744ded295f7  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/audit.py
+# READ_ONLY_INPUT 443a836695f14c08f35b3dfe9faadc53c7bc77625ca8c1b65451ef65598aa35a  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/qualify.py
+# READ_ONLY_INPUT 544ba7bf4bb76e3af616f37bd064b57b08d381af64d70826ddd78a64a96d5b12  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/box-census.csv
+# READ_ONLY_INPUT 64b3cf370aa10385e698307e0f88048603008d97c3956d59f8905b4ff67eefa4  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/params-E-low.txt
+# READ_ONLY_INPUT 29eaefb63242e2daa73e8a6b25f62b91a1dd5394c7bbb829d3ae2d7b90a4dcc8  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/params-E-mid.txt
+# READ_ONLY_INPUT 47720008a301ccfb03620ced4bd115bed4446dab2f116fec99344ea09fda9de8  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/params-E-high.txt
+# READ_ONLY_INPUT b8a1bab6e21e6b4933ccea49315a4429308eeb9784dc9077d795b7d5410f273c  /Users/auroradysis/Workspace/EMS/.data/exp-0020/self-differences.csv
+# READ_ONLY_INPUT aea13287d9f942cd94d60279bc2446ed27139ed6185aef2b7542c9cb40dd5974  /Users/auroradysis/Workspace/EMS/.data/exp-0020/constraint-orders.csv
+# READ_ONLY_INPUT 578f55f5b5c9186d368c97ccea5d014ebfed23044bb97e1ac3213532dc5eb6c3  /Users/auroradysis/Workspace/EMS/.data/exp-0020/reduction.done
+# READ_ONLY_INPUT 7aa92f9b1022989b6bc372ccb80b041d7249d2c2813ceb52de79fad52af2338d  /Users/auroradysis/Workspace/EMS/.data/exp-0020/collection.sha256
+# READ_ONLY_INPUT 475408c22ecb81d437af8e46abe4bea9785ee152b8c3e02b653c019616b7566e  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/constraint-rms.csv
+# READ_ONLY_INPUT 73019773bd29875f11c9d7fa0f98143fb6e9e9e90907c4efb19c0fc7baa2abec  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/finder-values.csv
+# READ_ONLY_INPUT 2ca45974680fe39db0d8a26ccda6b892c4bf2f90c9bd0ec5e284d45dadc7e8ca  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/mq-values.csv
+# READ_ONLY_INPUT d9ceaf0a5929fd9b181d8f496eb8d2aa393d4deef205cf5324c4bd4e7912939e  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/qualified-horizons.csv
+# READ_ONLY_INPUT 32b28c626ac07153b345dd7360f68fca3e7cfc1822519ffdc6e47eab327826ce  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/field-audit.csv
+# READ_ONLY_INPUT c08d2a510eeae059579df10b367ffa3e7278301e8f0c51cf798ec739c5031f81  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/qualification.done
+# READ_ONLY_INPUT 6701bbec35a0c0661565164ecd4ec25fb57f0280ec17fef69941d69fd7b9aea5  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/run.done
+# READ_ONLY_INPUT 066342d684c71c6faccc665806a643d2bb1ee7366484909121511a273bcb4a73  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/run.log
+# READ_ONLY_INPUT 9aa52494bddd3d125bd751d28256b05ee36593fd8d98db16fc39ea2d507f3621  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/pout.0.gz
+# READ_ONLY_INPUT 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/run.exit
+# READ_ONLY_INPUT 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/evolution.exit
+# READ_ONLY_INPUT 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/reduction.exit
+# READ_ONLY_INPUT 6701bbec35a0c0661565164ecd4ec25fb57f0280ec17fef69941d69fd7b9aea5  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/chain.done
+# READ_ONLY_INPUT a546e1b607114d1c6fd2f63d31c7711a2433e66d0044a4ef6500aa2807a89497  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/constraint-rms.csv
+# READ_ONLY_INPUT f031e95dd44b714a7e5342ad58109b6fb3c9513ae3ec5c3fb2869a3c50787916  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/finder-values.csv
+# READ_ONLY_INPUT d70de81afb745b7938ddfb570426d363324d63c5daccc32743f0cdce3a97cff8  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/mq-values.csv
+# READ_ONLY_INPUT fd5443929a66149ffc687c07441bfc1eebeb658ba0c1495e2447022bd4843894  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/qualified-horizons.csv
+# READ_ONLY_INPUT 8e8cee5d7b9abc011e0c27bde21063f3dd4c7f0721159ccb467a6557adb3aa43  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/field-audit.csv
+# READ_ONLY_INPUT a5a3d361154715c8cc544cc7bd497f9ce03715a7247eb2acfdd13e1035d85a59  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/qualification.done
+# READ_ONLY_INPUT 376a603a36e79daa68b7808198a61b423e63513f3a7fa7e626627ac054839088  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/run.done
+# READ_ONLY_INPUT 066342d684c71c6faccc665806a643d2bb1ee7366484909121511a273bcb4a73  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/run.log
+# READ_ONLY_INPUT 27043ec0734eb7bbd876411d4777f640b9f2771675ce78301c51624e9d626fe2  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/pout.0.gz
+# READ_ONLY_INPUT 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/run.exit
+# READ_ONLY_INPUT 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/evolution.exit
+# READ_ONLY_INPUT 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/reduction.exit
+# READ_ONLY_INPUT 376a603a36e79daa68b7808198a61b423e63513f3a7fa7e626627ac054839088  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/chain.done
+# READ_ONLY_INPUT 51cc4296c8399b81dc24c2ebb96c30d1d74601fbb69ce0535d89b17c11a91b98  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/constraint-rms.csv
+# READ_ONLY_INPUT fabe2ba6ef03078efe0ccbb6c45fe9c3ae9ed41273f581763fc482b15a67c3aa  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/finder-values.csv
+# READ_ONLY_INPUT 3aef2c442363cfd49e103939d9c1ba16ad8a220534bc7889aa96950963881ce2  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/mq-values.csv
+# READ_ONLY_INPUT 13c692b96e10cefb98b914fc98c6243a0127180d6ee6812eb8a365d4bd165060  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/qualified-horizons.csv
+# READ_ONLY_INPUT ff3f2b6ba4c403faccdde3ba58426f9d71b68f8cc6c90fd4bd8224b3eb9879d3  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/field-audit.csv
+# READ_ONLY_INPUT 507b58cec5fb303f16f10b5028fd340d46db9924706a1b8c3823b6e34f7c1f69  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/qualification.done
+# READ_ONLY_INPUT 85ac8452e5ea20b220a193bc92a5f6a6abe862f9ce604a1bfd1fb2c6b70a70d3  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/run.done
+# READ_ONLY_INPUT 066342d684c71c6faccc665806a643d2bb1ee7366484909121511a273bcb4a73  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/run.log
+# READ_ONLY_INPUT 36c575907aadbe43c55d1b34364e447ed593f320c27a3663fa8c7bc581ad3e7f  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/pout.0.gz
+# READ_ONLY_INPUT 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/run.exit
+# READ_ONLY_INPUT 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/evolution.exit
+# READ_ONLY_INPUT 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/reduction.exit
+# READ_ONLY_INPUT 85ac8452e5ea20b220a193bc92a5f6a6abe862f9ce604a1bfd1fb2c6b70a70d3  /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/chain.done
+# RETAINED_CURRENT_FIELD_CACHE 7371078ff1fed2e31f500c99b23b83ea3d39beeb69e8525d0872fc23a04b2b33  /private/tmp/ems-t8/E-high-outer.npz
+# RETAINED_CURRENT_FIELD_CACHE fbafb6b5a5a39c413f356706a40e85f469b3b06da74453b303b5422b9f20998e  /private/tmp/ems-t8/E-high-rays.npz
+# RETAINED_CURRENT_FIELD_CACHE 6ef929b96f61a0dfbc73545439e115c6c8d1efaf05cb2118159f3a9b63f22bc3  /private/tmp/ems-t8/E-low-outer.npz
+# RETAINED_CURRENT_FIELD_CACHE 6e8fd7337fd3166052c49ec45fca58318a4c93d0537863352f711b274645341f  /private/tmp/ems-t8/E-low-rays.npz
+# RETAINED_CURRENT_FIELD_CACHE 007fd1bb669d38fb0150785ef2860da55731c1992d0685bf162977d22eaade7e  /private/tmp/ems-t8/E-mid-outer.npz
+# RETAINED_CURRENT_FIELD_CACHE cf944eb1132a0f672b9eb1ecd8605bfa785861b381fe7491cfbca0c3b01e25fe  /private/tmp/ems-t8/E-mid-rays.npz
+# RETAINED_DEPTH_BIN_NORMS d97fcf35aa5baad8290c16a06b813ca7756a4e06eb9517f6b2eedf23783c17f0  /private/tmp/ems-t8/E-high-boundary.csv
+# RETAINED_DEPTH_BIN_NORMS 7fdc6494217087c25d2973261d3168d31d48973314ec4e41fca59ff611471a58  /private/tmp/ems-t8/E-low-boundary.csv
+# RETAINED_DEPTH_BIN_NORMS 26e51976dc75a7b8ed8cf50d311dcca783d2feeefc01a800e37e31882d65e671  /private/tmp/ems-t8/E-mid-boundary.csv
+# RESOURCE_RECORD f4a8cd55d965ed5df311890feec43262467ed2ccc053116125e2cdc5cb77c0cc  /private/tmp/ems-t8/E-high-performance.csv
+# RESOURCE_RECORD 49dab2fbd64ab8613e3f681dcb390d9a84a3e1bc0e307e39e81b5c4ba8ed48d9  /private/tmp/ems-t8/E-low-performance.csv
+# RESOURCE_RECORD f18afdf25abf110b60833b27d4ab5b5df9b366bf718733ccf1e310267249f5bf  /private/tmp/ems-t8/E-mid-performance.csv
+# RETAINED_REPORT_GENERATOR 60b0b55c34c74866a6012af815b445a90b5ce3634a7be845655f1461aa21c43f  /private/tmp/ems-t8/report.py
+# READ_ONLY_PLOT E-low 0.0 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000000.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 0.875 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000004.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 1.75 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000008.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 2.625 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000012.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 3.5 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000016.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 4.375 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000020.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 5.25 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000024.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 6.125 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000028.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 7.0 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000032.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 7.875 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000036.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 8.75 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000040.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 9.625 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000044.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 10.5 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000048.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 0.0 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000000.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 0.875 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000006.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 1.75 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000012.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 2.625 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000018.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 3.5 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000024.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 4.375 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000030.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 5.25 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000036.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 6.125 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000042.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 7.0 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000048.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 7.875 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000054.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 8.75 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000060.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 9.625 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000066.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 10.5 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000072.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 0.0 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000000.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 0.875 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000009.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 1.75 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000018.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 2.625 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000027.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 3.5 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000036.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 4.375 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000045.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 5.25 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000054.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 6.125 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000063.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 7.0 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000072.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 7.875 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000081.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 8.75 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000090.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 9.625 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000099.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 10.5 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000108.2d.hdf5; checksum=CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES

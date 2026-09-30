@@ -1,0 +1,9 @@
+item,verdict,evidence
+physical_completion_and_health,PASS,3 legs at 10.5 M; exit 0; 39 complete plots; all current valid values finite; zero sampled floor cells
+all_evolved_fields_self_convergence,FAIL,220 negative post-t0 field/mask/time rows among 3696; genuine near-hole and transported errors; interpolation-limited rows reported separately
+all_carried_constraints_tend_to_zero,FAIL,220 post-t0 constraint/mask/time rows have a negative pair; outer boundary orders near zero; GaussB and Lambda exactly zero
+finest_qualified_area_drift_common_ladder,PASS,max 5.249097e-7; angular drift sensitivity 7.231890e-9; stopping sensitivity estimate 2.233888e-6; budget 1e-3
+finest_qualified_charge_drift_common_ladder,PASS,max 4.931294e-5; angular drift sensitivity 9.941381e-9; stopping sensitivity estimate 5.444041e-10; budget 2e-4
+full_interval_horizon_and_inter_rung_uncertainty,PARTIAL,"native area excursion -4.478462e-3 at 0.972222222 M, residual RMS 0.0358493, mode far; no saved state at this time; early area inter-rung differences below stopping sensitivity"
+MQ_required_reporting,PASS,"228 native time rows, 3 radii each; all finite; 12 positive common times per rung; no t0 MQ row"
+admission_and_100M_extension,FAIL,field/constraint gates fail; horizon entire-interval qualification incomplete; no extension launched
