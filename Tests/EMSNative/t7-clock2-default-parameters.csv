@@ -1,0 +1,25 @@
+message
+Parameter: num_ghosts not found in parameter file. It has been set to its default value = 3.
+Parameter: tag_buffer_size not found in parameter file. It has been set to its default value = 3.
+Parameter: ignore_checkpoint_name_mismatch not found in parameter file. It has been set to its default value = 0.
+Parameter: regrid_threshold not found in parameter file. It has been set to its default value = 0.5.
+Parameter: write_plot_ghosts not found in parameter file. It has been set to its default value = 0.
+Parameter: data_subpath not found in parameter file. It has been set to its default value = .
+Parameter: ems_ctt_data_path not found in parameter file. It has been set to its default value = .
+Parameter: gridpoints not found in parameter file. It has been set to its default value = 40000.
+Parameter: boost_rapidity not found in parameter file. It has been set to its default value = 0.
+Parameter: separation not found in parameter file. It has been set to its default value = 0.
+Parameter: activate_mass_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: num_points_phi_mass not found in parameter file. It has been set to its default value = 2.
+Parameter: num_points_theta_mass not found in parameter file. It has been set to its default value = 4.
+Parameter: activate_mass_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: num_points_phi_mass not found in parameter file. It has been set to its default value = 2.
+Parameter: num_points_theta_mass not found in parameter file. It has been set to its default value = 4.
+Parameter: activate_gw_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: num_vars_inf_norm not found in parameter file. It has been set to its default value = 0.
+Parameter: vars_inf_norm not found in parameter file. It has been set to its default value =.
+Parameter: num_ghosts not found in parameter file. It has been set to its default value = 3.
+Parameter: tag_buffer_size not found in parameter file. It has been set to its default value = 3.
+Parameter: ignore_checkpoint_name_mismatch not found in parameter file. It has been set to its default value = 0.
+Parameter: regrid_threshold not found in parameter file. It has been set to its default value = 0.5.
+Parameter: write_plot_ghosts not found in parameter file. It has been set to its default value = 0.

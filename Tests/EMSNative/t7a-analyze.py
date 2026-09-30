@@ -14,6 +14,10 @@ V=t6.VARS;R=np.arange(.5,6.5+1/768,1/384);TIMES=np.arange(73)/12
 RAYS=('axis_plus','equator','diagonal');NV=np.array(((1,0),(0,1),(2**-.5,2**-.5)))
 ODD=t6.ODD
 FACES={4:8.,5:4.,6:3.}
+def snapshot_time(t):
+ q=round(t*12)/12
+ assert abs(t-q)<1e-9, 'time outside the registered 1/12 M ladder'
+ return q
 def artifact(name):
  p=HERE/name
  return p if p.exists() else TMP/'tables'/name
@@ -153,7 +157,7 @@ def combined():
   if r['dominant'] and r['ray'] in ('axis_plus','diagonal'):print(r)
  # Composite volume norms in a fixed physical collar, independently of box decomposition.
  groups=defaultdict(list)
- for r in rows:groups[(r['case'],r['time_M'],r['face_M'],r['ray'],r['band'],r['field'])].append(r)
+ for r in rows:groups[(r['case'],snapshot_time(r['time_M']),r['face_M'],r['ray'],r['band'],r['field'])].append(r)
  composite=[]
  for key,rr in sorted(groups.items()):
   w=sum(q['weight'] for q in rr);ss=sum(q['square_sum'] for q in rr)

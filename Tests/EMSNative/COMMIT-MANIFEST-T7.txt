@@ -1,3 +1,4 @@
+# CLOCK2_COMPLETED_ANALYSIS READY/PASS at b5d1ab912183a696110b733b7b0d81b4934b4b71; Python composite-time reduction corrected; source/executable unchanged; no commit.
 # T7: B complete; A registered/detached to 6 M, awaiting controller analysis.
 # HEAD 03e31ef569edd09735316e3061b7732859b09b0a. No commit.
 # New C++ behavior: t7_diagnostics default false. Equations, gauge, operator formulas and author finder unchanged.
@@ -52,6 +53,8 @@
 # See COMMIT-MANIFEST-T7-E.txt for checkpoint qualification and new diagnostics provenance.
 # T7 A RESUMPTION: clock/space done.exit=0; completed analysis added; historical launch above retained.
 # T7 A mixed decision and source/sampling limits: see COMMIT-MANIFEST-T7-A.txt. Current shared file hashes follow.
+# clock-2 PREPARED/BLOCKED_NOT_LAUNCHED at b5d1ab9; identical executable lacks additional requested capture; historical registrations retained.
+# clock-2 controller amendment resolved blocker; detached PID 15826 RUNS_PENDING, first steps verified; historical registration lines retained.
 d75e0771c6026844f3f847f83d6bb5d10cc6f1553350b5537e5171ba250e33f3  Examples/EMS/EMSBH2DLevel.cpp
 b5fbb9c2c1f1f319cc149c1cee456f8ff3180b1d0d63ad6d7b131cc0ec01b92f  Examples/EMS/EMSBH2DLevel.hpp
 c7a6683e647526019d9be219d714f6c91036a50740766537096228b276e40414  Examples/EMS/Main_EMSBH2DBH.cpp
@@ -65,8 +68,9 @@ a1a95033f7b78c5897e7bac9e742b0382593f0cad234214087ad007bef590e58  Source/GRChomb
 3c9e3e946f95375a27477466f4e51b1cafbea2f14392acb2d19128582c98cfd6  Source/RHFinder/RHSurf.hpp
 1174747f4ee8f2e18a61cd2fb0618d1a4f3c6974c9929bcae85fd8f64519f885  Source/RHFinder/RHUnion.hpp
 c3201e7f1aea64b543a65db92edf8dbf768d451f49e4b8ee40ef93822e83138b  Tests/EMSNative/COMMIT-MANIFEST-T7-A.txt
+88cc6826ecf8da2ecf7ccf11d8780c6e6f4e11d85e15c13ccb170696b39acb6a  Tests/EMSNative/COMMIT-MANIFEST-T7-CLOCK2.txt
 1400ea6aa1f0328e8ab12ef1a54676d4279ddecd3c728b3c17637ae232684da1  Tests/EMSNative/COMMIT-MANIFEST-T7-E.txt
-feff3009c930e0e42a9d124d291e394f87491dbcc78a4f71802fc61da93781c1  Tests/EMSNative/README.md
+a5a29a14a5045230178a113a6506f549ee426888a6c0c4e29228497846d986c1  Tests/EMSNative/README.md
 d8a4d13bbd260bf025c908e37d6a654fab19d65744d7de107e66758733a0383f  Tests/EMSNative/T7AReplay.cpp
 9b8f89859a2c1527b0a5551a4b90288c3093e3bf803f14da34f9909c52376410  Tests/EMSNative/T7EInitial.cpp
 b164c039727b1ac0551f3e751588f21144ff8b9928a2b08e9d8dc460d08bfe1f  Tests/EMSNative/T7ENative.cpp
@@ -84,6 +88,7 @@ c52a535eacc8d697bf3dcfef49339998f7da9e650641469f3eb7adab43828540  Tests/EMSNativ
 3fd767b1dea72f09ab2d94fdd641b1b817b7431432d6bd089ad77c2c7aed9329  Tests/EMSNative/figures/t7e-horizons.png
 df4dfa413407876403175a5a16a567b3f74a9462cf680cdecd02f0c29e9296d8  Tests/EMSNative/params/t7-ref-fine-space.txt
 13f3a8215e53d852fcca7b283370bc2cd896e90fa2825ca788b61e1005f4050e  Tests/EMSNative/params/t7-ref-mid-clock.txt
+63588c5070c6b642180e7d247d5ab9176ff9b04e856156239c8d34e2f6dd4ff6  Tests/EMSNative/params/t7-ref-mid-clock2.txt
 14cfe51b9b7d4ad843979c8b71e77bf64ce7ea8be0228b312f907bbec30c4ba4  Tests/EMSNative/t5-analyze.py
 c83ea3f1e72632d76a189cfae811394825b1ee3ef152cc8a6b16f338049bec84  Tests/EMSNative/t6-cluster-t0-comparison.csv
 23901bdf54a7c89ac7af43b7601272c95a50093d6e4cbf9ddb169d296547f194  Tests/EMSNative/t6-finder-final.csv
@@ -98,6 +103,9 @@ ef5e6a031bc66a44268db68cae4c398e1f3b3fd7c47b2f293d41100056c0861c  Tests/EMSNativ
 2c522ee93e433ff2f1fb13aa8bd27ccd7127167fdafe515ba6ec33cceb8d4727  Tests/EMSNative/t7-check.py
 2942e55344581e231f6ed318c6a4fb4f389b94a255542d4a77e36543d02bedf5  Tests/EMSNative/t7-cleaner-audit.csv
 5e251ef07c1a1d4b4741f08a06a42e569b984faafba7a75fbcabee2c8f1fe54c  Tests/EMSNative/t7-cleanup.csv
+f6abf4c84b04e43c020905085a77c81f71831598322f0a546bfc19ee4b7b9b50  Tests/EMSNative/t7-clock2-first-steps.txt
+0a8a9d068e8a77adf173a6e20f8060d4d5d1ddfb3d681ad7ae6c1afe76d8df3b  Tests/EMSNative/t7-clock2-registration.csv
+1eada5eeabccc60823015e748f37ef35e93b56b5d780e84b0499343bef8c188c  Tests/EMSNative/t7-clock2-run-plan.json
 372252885da50f9f0ebe3675c891ea3db9ad36c91deaede03480dec927c4f440  Tests/EMSNative/t7-control-files.csv
 7baebe2bbc7c97f3fcff843c63fe24c4a5e455853ce7d71ad7e18c9751f6781f  Tests/EMSNative/t7-controls.csv
 d229cd4069cc6bc1a31d6f5acdc2f1628b8db5cf349609ee507f3642de9d10dd  Tests/EMSNative/t7-layout.csv
@@ -113,7 +121,7 @@ e7de5156df1c4ba1d4d9001c7fd97537060ad45036500928d8001d85845bada1  Tests/EMSNativ
 36dd4da8dbec258f9a263a874ce79bfe7d6e28b9badff9fe2166a7792858b5cb  Tests/EMSNative/t7-run.py
 77c7478b437afd402eb4d9139557c12d419bd8e34833ac3a522fc008889b957f  Tests/EMSNative/t7-runs.csv
 495cbaf310fdf07a07b40f4f442abf7fdc618c8e7d75b0e1d77925123b4af73e  Tests/EMSNative/t7-source-audit.csv
-b8f9208a13361de4d62a20ba0e476cc5f4cbb81b9e66063aeac6d59ffd2b738c  Tests/EMSNative/t7a-analyze.py
+7736efca707f19530c2fc7c9576deacff7bffc48918acb71d870b9cd8f62269b  Tests/EMSNative/t7a-analyze.py
 95b259f47249c050f8958721367ed7e5eb93ecb333236ec983740a16245df9f4  Tests/EMSNative/t7a-archived-tables.csv
 c20c43519deb40845a1bb9c0b910a17f77ff33cbe9120275ff998b50ca35e990  Tests/EMSNative/t7a-baseline-metrics.csv
 43ac9e41269f98d595a3fa61b38b0ef9bd3d6e3373fce0c97835dab446a736ab  Tests/EMSNative/t7a-check.py
@@ -176,3 +184,18 @@ b68bd988b1b5e3f4da9b2b9a8fec3b9f5e96adbc88125faeb71a824c76146113  scripts/cas/t7
 f81d45864fc944032dd7fca992817d40eec835126408e13c4bac8eab91b1c7c3  scripts/cas/t7e-evidence.md
 b60e467a2fcd631107828ce0417e96fe5880bca17df455c13840338ac04d999a  scripts/cas/t7e-initial-verify.json
 283d211b5559acce3ae11663b387f689e6a2f27d13461fdce225d77a37bd57d8  scripts/cas/t7e-initial-verify.py
+80793b73fdca42c389a1506e1cd6a6c997921cb5a71a46cbc679cf96c2fc9208  Tests/EMSNative/figures/t7-clock2-norms.pdf
+9b90bc4886b3d05e047749af82c6ce9096483557cff2d6d079f2465dc5cd4b75  Tests/EMSNative/figures/t7-clock2-norms.png
+6d8200ead3f78d7cd7fa7cee17a8a46502f7b23a0cbd3646d99979fdc3efa25b  Tests/EMSNative/t7-clock2-analyze.py
+fda08ce5f78ec0c3fcc419909c5c8fe8f1ea70dd0c281a9e1fdffdcbb47066ec  Tests/EMSNative/t7-clock2-composite-metrics.csv
+b63faa2a350253bfcb3196162899e9529f2516e8e86b507537715c0bf519274e  Tests/EMSNative/t7-clock2-default-parameters.csv
+d9cc9a231fcfdc41332be62654c481fba5b0ad788a64b4057d53f8305653e2d1  Tests/EMSNative/t7-clock2-input-audit.csv
+381cac18aa7716d70cff16517bb939335c558ae4db6f6ad7e39ccebb6d439eae  Tests/EMSNative/t7-clock2-norm-comparison.csv
+7d19046ba05cf85dd65aeb6837a59ec05da436e3029f0c6eb27f39b0d9f39ddc  Tests/EMSNative/t7-clock2-packet-history.csv
+fa5ae5c4f5c253a0bb7ab3ac60b4f6976046903c1c63ad43ac9d743f849deb8d  Tests/EMSNative/t7-clock2-ray-wake-comparison.csv
+64dc6a2f77e0ac41092efdac77f02a35e38233f9b71971466b3c0c40b2d669ab  Tests/EMSNative/t7-clock2-run-audit.csv
+fa5ac7597b6b94ffdb506a966dde1d3606bf984e060279318581de048c80c739  Tests/EMSNative/t7-clock2-snapshot-audit.csv
+d4f45274d32b501b546a9366f0c1845637a43988c03376140485186bdbf94ac7  Tests/EMSNative/t7-clock2-source-controls.csv
+1cca92fca749bfdfafe29ebb07014eb3d5658d8e47b5104cf258146f1e4cc74b  Tests/EMSNative/t7-clock2-stage-audit.csv
+0c151e3e1badb81ae8a6ca032a15656b122c37691bca543fc0d6f7fa4250c696  Tests/EMSNative/t7-clock2-supplemental-norms.csv
+c5ad6ec2ae5a1a58d2dff262f6a1685313b86a90cc483e17d73c0b4f416e649f  Tests/EMSNative/t7-clock2-time-grouping-correction.csv

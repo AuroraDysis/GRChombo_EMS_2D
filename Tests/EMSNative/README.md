@@ -1520,6 +1520,118 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /Users/auroradysis/miniconda3/bin/pytho
 
 Native widths and ray_wakes are separate bounded operations. The native replay build uses the already installed local serial Chombo and T7E's one-compiler build helper; no library or production source is modified. [COMMIT-MANIFEST-T7-A.txt](COMMIT-MANIFEST-T7-A.txt) records this analysis, and the shared T7 manifest is refreshed. No commit.
 
+### A — clock-2 registration (not launched)
+
+**BLOCKED:** the controller requires the identical clock executable with only timestep/step-count/cadence changes, and full pre/post-fill plus neighboring RHS capture. The identical executable does not implement the requested additional capture. Its SHA-256 is `15e9e81bb100c3bfb508637cadd2f82c0df79814f8f8f73c22b607b5199aebdf`, verified against the original T7 build manifest. No replacement executable, C++ edit, evolution, or commit is made.
+
+Controller notebook registration, verbatim:
+
+> the clock leg again with h0 = 4/3 M, Δt0 = 1/48 M, to 6 M (≈ 34 min), full pre/post-fill and neighbouring RHS capture. PASS (temporal exception ruled out) if every relevant collar/packet/wake norm changes by ≤ 5 % and by < 20 % of the spatial contrast; KILL 'resolution alone' if any change is ≥ 50 % of the spatial contrast; in between, temporal coupling stays a priority.
+
+[params/t7-ref-mid-clock2.txt](params/t7-ref-mid-clock2.txt) is prepared. Its parameter dictionary differs from the completed clock leg in exactly `dt_multiplier: 0.03125 → 0.015625` and `max_steps: 144 → 288`. All other parameters are identical, including point transfers, sigma=1, fixed hierarchy, disabled global plots/checkpoints, Float64 current-field recording and the t>0 initial-data guard. h0=4/3 M and dt0=1/48 M give CFL=1/64; 288 steps end at 6 M. The existing hard-coded 1/12 M capture ladder now occurs every four coarse steps, retaining 73 snapshot times per recorded level. No cadence parameter needs changing. Unions/faces and seams are inherited identically from the verified clock initial layout; no runtime placement derives from the static data.
+
+| item | prepared value / condition |
+| --- | --- |
+| executable command | `/private/tmp/ems-t7/evolution.ex params.txt` |
+| run directory | `/private/tmp/ems-t7-clock2/evolution/clock-2` |
+| run log | `/private/tmp/ems-t7-clock2/evolution/clock-2/run.log` (not created) |
+| marker | `/private/tmp/ems-t7-clock2/evolution/clock-2/done.exit` (not created) |
+| launch plan | `/private/tmp/ems-t7-clock2/evolution/plan.json`, copied in [t7-clock2-run-plan.json](t7-clock2-run-plan.json) |
+| planned wall | approximately 34 min, twice the measured 17.0127 min clock wall |
+| planned evolution resources | four OpenMP threads; 1.5 GB bound, native clock RSS measured 0.3541 GB, bounded existing xz dictionaries additional |
+| planned output | 4,384,163,408 bytes = 2 × 2,123,637,408 original stage bytes + 136,888,592 unchanged snapshot bytes; estimate for the **existing** capture only |
+| disk gate | existing t7-run.py gate 5,700,000,000 bytes on the fresh evolution root, below 6 GB; old completed legs are outside it |
+| status | BLOCKED_NOT_LAUNCHED; no PID, first steps or done marker |
+
+The prepared detach command is:
+
+```sh
+/Users/auroradysis/miniconda3/bin/python Tests/EMSNative/t7-run.py --detach /private/tmp/ems-t7-clock2/evolution/plan.json
+```
+
+The source evidence is direct: [GRAMRLevel.cpp](../../Source/GRChomboCore/GRAMRLevel.cpp) calls `fill_stage` at line 1046 and only then records dense parent support at 1047; the first fine stage recording is in `specificEvalRHS` at [EMSBH2DLevel.cpp](../../Examples/EMS/EMSBH2DLevel.cpp) line 311, after fill and boundary completion. RHS phases 20/21 write `window ∩ valid` only (lines 368–372), and phase 22 uses growth zero (376). [T7OperationRecorder.hpp](../../Source/GRChomboCore/T7OperationRecorder.hpp) exposes only the existing `t7_diagnostics` switch and fixed target windows; no parameter enables pre-fill or neighboring RHS recording. Complete saved **state operands** for core RHS replay do not supply missing neighboring RHS or pre-fill states. This is the limitation already measured in the completed analysis above. Running the prepared identical executable would support the norm comparison but would knowingly omit part of the controller's registered capture, so it is not launched.
+
+**Analysis on controller resumption after a compliant run:** audit exit, sigma, required variables, floors/nonfinite values and actual box unions; evaluate common physical interface collars, independently selected axial/corner packet peaks, and inner/outer interface-excluded volume-weighted wake RMS at 4 and 6 M, retaining full time histories on the 1/12 M ladder. For every relevant norm N, tabulate N_clock, N_clock2, N_space, |N_clock2−N_clock|/|N_clock|, and |N_clock2−N_clock|/|N_space−N_clock|. Zero contrasts are reported explicitly rather than divided by zero. PASS requires every registered row to satisfy ≤0.05 and <0.20; any row with contrast fraction ≥0.50 gives KILL resolution alone; otherwise temporal coupling stays a priority. Incoming current-field profile/phase sampling sensitivities and capture-order limitations remain explicit. Full pre/post-fill and neighboring RHS replay is contingent on resolving the executable/capture incompatibility; no verdict is assigned before measurements.
+
+Controller amendment before launch: clock-2 uses the SAME executable and SAME capture as clock; full pre/post-fill and neighboring RHS capture is dropped, with the registered collar/packet/wake norm PASS/KILL/in-between criteria unchanged.
+
+Launched detached with t7-run.py, queue PID 15826; first level-0 advances at 0.0208333 and 0.0416667 M are logged (dt0=1/48 M). Status RUNS-PENDING; run directory `/private/tmp/ems-t7-clock2/evolution/clock-2`, log `run.log`, atomic marker `/private/tmp/ems-t7-clock2/evolution/clock-2/done.exit` pending; planned wall approximately 34 min. On resumption compute the registered norm-change/space-contrast table and unchanged PASS/KILL/in-between verdict using the original capture. [First-step evidence](t7-clock2-first-steps.txt). No completion wait or commit.
+
+
+#### clock-2 completed results and T7 A norm erratum
+
+**READY; PASS under the unchanged registered norm criterion.** The completed marker is `/private/tmp/ems-t7-clock2/evolution/clock-2/done.exit = 0`. All 20 rows in the registered packet/wake/late-collar table satisfy both limits after combining all uncovered level contributions at the same physical time: the largest absolute clock-2/clock change is 1.80338%, and the largest absolute fraction of the spatial contrast is 0.02615849. The limits remain 5% and strictly less than 0.20. No row reaches the 0.50 KILL limit. This is the registered temporal-exception verdict through 6 M, not an RK4 temporal-order measurement or a 100 M admission.
+
+**Correction to the preceding T7 A late-collar claim.** `t7a-analyze.py:combined` used exact Float64 times as composite grouping keys. At t=4 M, clock level-5 and level-6 contributions have times 3.9999999999999947 and 3.9999999999999942 M; at t=6 M, levels 4 and 5 have 6.000000000000008 and 6.000000000000007 M. Those differences are below 2e-15 M, but the reduction emitted separate level rows. The preceding late-collar table selected the receiving-level row; T6's plot-based composite included both levels. The claimed material clock effect compared different cell sets. The physical masks and volume norm themselves were unchanged.
+
+Here every contribution is assigned to the registered 1/12 M time ladder only after checking its discrepancy is below 1e-9 M, then square sums and volume weights are combined over all uncovered levels. The shared grouping helper is fixed for future reductions; the previous CSVs and tables are retained unchanged as historical evidence. [t7-clock2-time-grouping-correction.csv](t7-clock2-time-grouping-correction.csv) retains every published value, corrected value, raw level time, level list and cell count for all 48 broad collar/wake rows. The four affected primary rows are:
+
+| face / t / field | T6 RMS | published clock RMS | corrected clock RMS | clock-2 RMS | corrected space RMS | published → corrected clock cells |
+| --- | --- | --- | --- | --- | --- | --- |
+| 3 / 4 / Ham | 9.43602551e-06 | 5.40281263e-06 | 9.39682978e-06 | 9.33585601e-06 | 2.56537776e-06 | 584 → 2856 |
+| 3 / 4 / Theta | 1.27985250e-07 | 7.85050764e-08 | 1.26902789e-07 | 1.26357364e-07 | 1.96415296e-08 | 584 → 2856 |
+| 4 / 6 / Ham | 6.45753995e-06 | 3.52576698e-06 | 6.46456899e-06 | 6.40927108e-06 | 2.00706098e-06 | 194 → 954 |
+| 4 / 6 / Theta | 1.23199476e-07 | 7.44001927e-08 | 1.22515071e-07 | 1.22165484e-07 | 2.19755904e-08 | 194 → 954 |
+
+The corrected clock and clock-2 use exactly the same cell sets and volume weights. Space uses four times as many cells in the same physical regions. The original packet peak table and the eight bulk Hamiltonian wake rows are unaffected. **The preceding conclusion that late interface collars require prioritizing temporal coupling is withdrawn:** it depended on this reduction error. The source of that error is the analysis grouping, not a measured evolution operation.
+
+For the comparison below, first change is clock−T6 (dt0: 1/12→1/24 M), second change is clock-2−clock (1/24→1/48 M), and spatial contrast is space−clock (h0: 4/3→2/3 M at dt0=1/24 M). The contrast ratio is |second change|/|spatial contrast|; signed ratios are also retained in the CSV. Packet peaks are selected independently over the entire 1/12 M ladder in the frozen physical windows. The 4 M corner peaks are increasing endpoint maxima, not completed passage peaks. Wake masks retain the fixed 1/12 M interface exclusion and 0.1875 M outer extent, with the physical coordinate-volume weight 2π y h_level² over uncovered cells. Late collars retain |max(|x|,y)−face|<1/12 M. No event, region, timestep criterion or constraint normalization is changed.
+
+| region / field | t/M | clock-2/clock − 1 (%) | space/clock − 1 (%) | absolute contrast ratio | clock/T6 − 1 (%) | clock-2/T6 − 1 (%) | second/first signed change |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 3 M axis peak / Theta | 3.33333 | -0.6749 | -76.1249 | 0.008866 | -1.3075 | -1.9736 | +0.50945 |
+| 3 M axis peak / Ham | 3.41667 | -0.6684 | -68.3893 | 0.009773 | -1.3192 | -1.9788 | +0.49997 |
+| 3 M corner peak / Theta | 4.58333 | -1.2399 | -47.3994 | 0.026158 | -2.4074 | -3.6175 | +0.50263 |
+| 3 M corner peak / Ham | 4.66667 | -0.8304 | -72.3654 | 0.011475 | -1.6216 | -2.4386 | +0.50378 |
+| 4 M axis peak / Theta | 4.41667 | -0.4757 | -76.4952 | 0.006219 | -0.9057 | -1.3771 | +0.52052 |
+| 4 M axis peak / Ham | 4.50000 | -0.6628 | -55.0153 | 0.012048 | -1.2922 | -1.9465 | +0.50631 |
+| 4 M corner peak (endpoint) / Ham | 6.00000 | -1.8034 | -71.3844 | 0.025263 | -3.4581 | -5.1991 | +0.50346 |
+| 4 M corner peak (endpoint) / Theta | 6.00000 | +0.5286 | -67.6355 | 0.007815 | +1.1013 | +1.6357 | +0.48522 |
+| 3 M inner / Ham | 4.00000 | -0.6486 | -72.2735 | 0.008974 | -1.2656 | -1.9059 | +0.50599 |
+| 3 M inner / Ham | 6.00000 | -0.7896 | -75.5047 | 0.010457 | -1.5436 | -2.3210 | +0.50362 |
+| 4 M inner (pre-front) / Ham | 4.00000 | -1.0649 | -96.9538 | 0.010984 | -2.4448 | -3.4837 | +0.42493 |
+| 4 M inner / Ham | 6.00000 | -0.5748 | -67.8559 | 0.008471 | -1.1186 | -1.6870 | +0.50811 |
+| 3 M outer / Ham | 4.00000 | +0.6543 | -75.0730 | 0.008715 | +1.3262 | +1.9891 | +0.49989 |
+| 3 M outer / Ham | 6.00000 | -0.7264 | -68.7816 | 0.010561 | -1.4149 | -2.1310 | +0.50615 |
+| 4 M outer (pre-front) / Ham | 4.00000 | +1.3331 | -92.5617 | 0.014402 | +2.6646 | +4.0331 | +0.51363 |
+| 4 M outer / Ham | 6.00000 | +0.7529 | -81.4301 | 0.009246 | +1.5353 | +2.2997 | +0.49793 |
+| 3 M collar / Ham | 4.00000 | -0.6489 | -72.6995 | 0.008925 | -0.4154 | -1.0616 | +1.55562 |
+| 3 M collar / Theta | 4.00000 | -0.4298 | -84.5224 | 0.005085 | -0.8458 | -1.2719 | +0.50388 |
+| 4 M collar / Ham | 6.00000 | -0.8554 | -68.9529 | 0.012406 | +0.1089 | -0.7475 | -7.86707 |
+| 4 M collar / Theta | 6.00000 | -0.2853 | -82.0629 | 0.003477 | -0.5555 | -0.8393 | +0.51079 |
+
+Every row is PASS. The deciding largest contrast fraction is the 3 M corner Theta peak (0.02615849); the largest percentage change is the censored 4 M corner Hamiltonian peak (−1.80338%). The largest late-collar fraction is the 4 M Hamiltonian collar at t=6 (0.01240557). [t7-clock2-norm-comparison.csv](t7-clock2-norm-comparison.csv) supplies all four raw norms, peak times, counts, signed differences, ratios and conditions. [t7-clock2-composite-metrics.csv](t7-clock2-composite-metrics.csv) and [t7-clock2-packet-history.csv](t7-clock2-packet-history.csv) retain the complete 73-time histories. The 48 broad volume-norm comparisons for Ham, Theta, Mom and GaussE all pass; their maximum percentage change is 3.82730% (4.0 M wake_inner, Theta, t=4.0) and maximum contrast fraction 0.05279917. All 36 P6/P8 ray-wake comparisons also pass (maximum change 0.90708%, maximum contrast fraction 0.00936745). These additional norms are retained in [t7-clock2-supplemental-norms.csv](t7-clock2-supplemental-norms.csv) and [t7-clock2-ray-wake-comparison.csv](t7-clock2-ray-wake-comparison.csv).
+
+**Temporal scaling does not show RK4's 1/16 pattern.** The independently selected packet norms have second/first absolute-change ratios 0.48522–0.52052, and the eight bulk Hamiltonian wakes 0.42493–0.51363. If interpreted as a leading smooth timestep power in these particular norms, the packet ratios correspond to approximately first order (0.942–1.043), not fourth order. The two late Theta collars give 0.50388/0.51079. Late Ham gives +1.55562 at 3 M, and −7.86707 at 4 M: the latter reverses sign after a first change of only +0.10885%. These diagnostic norms do not establish the global temporal order of the evolved fields. T6 plot ghost-refresh ordering differs from the new level post-step capture and can affect Hamiltonian derivatives; independent peaks are nonlinear observables. Nonetheless the failure of 1/16 scaling is measured, and is not relabelled as fourth-order temporal convergence. Its magnitude passes the pre-registered comparison with the spatial effect.
+
+![Registered clock-2 norm comparison](figures/t7-clock2-norms.png)
+
+The figure shows the signed percentage change, the absolute fraction of the spatial contrast, and the absolute second/first clock-change ratio. Dashed lines mark the frozen 5%, 0.20/0.50 and 1/16 reference values. The corrected 4 M Ham collar has a negative signed temporal ratio; its absolute magnitude is plotted. The PNG and PDF retain the same 20 table entries and the endpoint qualification.
+
+**Audit and controls.** The same executable hash is `15e9e81bb100c3bfb508637cadd2f82c0df79814f8f8f73c22b607b5199aebdf`; the only parameter differences from clock remain dt_multiplier and max_steps. Point transfers, sigma=1, fixed hierarchy, nan_check=1, and the t>0 initial-data guard are enabled. All 28 evolved components and five snapshot constraints are present. All 6,794,496 stage frames and 876 snapshot frames decode as finite Float64; each stage phase count is exactly twice clock's. The 24 default-parameter messages match clock exactly. Captured snapshot minima are chi=0.0937198388075 and lapse=0.285472910607; captured stage/snapshot floor hits and projection changes to chi/lapse are zero. GaussB is exactly zero in the captured snapshots. The maximum stage-time discrepancy is 2.96096e-16 M, and physical+KO versus total RHS discrepancy is 3.46945e-18 in max(1,|terms|) units. This is an audit of recorded operands, not the dropped additional pre-fill/neighbouring-RHS replay.
+
+The negative `min_chi.dat` column is not an evolved-chi minimum: the frozen EMS post-step code constructs `AMRReductions<VariableType::diagnostic>` and then calls `min(c_chi)`. `c_chi=0` indexes diagnostic `mod_F`, whose producer writes FF=2 BB−2 EE. The diagnostic label is therefore wrong. The captured evolved-chi values are positive; these recordings do not certify floor activity in the unsaved puncture region. This source finding is recorded read-only; no C++ change is made.
+
+Actual recorded L4–L6 box unions and seams match clock, and the L0–L6 fixed-hierarchy parameters and executable are identical. All 13 production/recorder/finder source controls remain unchanged. Measured wall is 1721.307661 s (28.68846 min); native peak RSS is 0.353403 GB and run output is 4,214,628,177 bytes. Analysis streams use one thread and at most three simultaneous stage decoders; peak measured per-stream RSS is 0.153158 GB and the longest stream call is 92.09 s. No new evolution run or commit is made. [t7-clock2-run-audit.csv](t7-clock2-run-audit.csv), [t7-clock2-input-audit.csv](t7-clock2-input-audit.csv), [t7-clock2-stage-audit.csv](t7-clock2-stage-audit.csv), [t7-clock2-snapshot-audit.csv](t7-clock2-snapshot-audit.csv) and [t7-clock2-source-controls.csv](t7-clock2-source-controls.csv) retain the measurements and hashes.
+
+**Implication for the 100 M layout policy.** The clock-negligible condition now passes for these reference norms through 6 M, so the receiving-resolution qualification can proceed without the former late-collar temporal exception. The measured spatial suppression of packets and interface-excluded wakes remains the larger effect. This does not certify a finite incident-width limit, fourth-order packet/wake convergence or a 100 M E chain: the first-face width ratios were 0.731/0.752, and even space had only 1.93/1.53 receiving cells across the closed half-height feature at the next 4 M axial/corner face. There is no qualified 8 M crossing in these 6 M runs. The previously registered fixed-face h0=1/3 M, dt0=1/48 M spatial rung remains necessary to check width stability (ratio ≥0.85), rising receiving-cell count and packet/wake order ≥3 with sampling uncertainty <10% of the contrast; it is not launched here.
+
+For E, use its evolved transient widths and common physical face unions across resolution rungs, including receiving levels 4,3,2,1,0 and their diagonal corners. The exp-0019 mid/high level-4 faces differed (5.541667/5.444444 M); this reference clock test cannot remove that confounding of the E far mask or independently qualify E's horizon budgets. The common-face exp-0020 data must supply its own evidence. Keep transport regions and parent levels sufficiently resolved at every face crossed; the present norms certify no universal cells-per-width target or 100 M error budget. No static profile enters this analysis.
+
+Reproduction uses the existing installed Python, lossless decoder, native ROI helpers and current-field P6/P8 sampling:
+
+```sh
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /Users/auroradysis/miniconda3/bin/python Tests/EMSNative/t7-clock2-analyze.py snapshots 6
+# Repeat snapshots and stages separately for levels 4, 5 and 6 (bounded calls).
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /Users/auroradysis/miniconda3/bin/python Tests/EMSNative/t7-clock2-analyze.py finish
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /Users/auroradysis/miniconda3/bin/python Tests/EMSNative/t7-clock2-analyze.py ray_wakes
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /Users/auroradysis/miniconda3/bin/python Tests/EMSNative/t7-clock2-analyze.py audit
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MPLCONFIGDIR=/private/tmp/ems-t7-clock2-analysis/mpl /Users/auroradysis/miniconda3/bin/python Tests/EMSNative/t7-clock2-analyze.py figures
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /Users/auroradysis/miniconda3/bin/python Tests/EMSNative/t7-clock2-analyze.py check
+```
+
+The runnable check covers strict gate thresholds, zero contrasts, common-time grouping and exact reproduction of the preceding clock packet amplitudes and peak times. Original run streams and preceding T7 A large CSVs are retained. Small per-level derived tables remain in `/private/tmp/ems-t7-clock2-analysis/`, with hashes in [COMMIT-MANIFEST-T7-CLOCK2.txt](COMMIT-MANIFEST-T7-CLOCK2.txt); the shared T7 manifest is refreshed. The registration and controller amendment above are preserved verbatim.
+
 ## T7-E — exp-0019 E, three-grid qualification and constraint diagnosis
 
 **READY-EXCEPT:** every supplied E checkpoint has a qualified 48/96-point numerical horizon. High passes both budgets on those checkpoints; the early interval between t=0 and the first late checkpoint is not independently qualified. The t=0 Hamiltonian loss of order is dominated on the finer grids by absolute-coordinate rounding in the initial setter, amplified by second derivatives. The evolved far-mask signal is a time-dependent discretization packet/wake above the instantaneous Float64 floor; its exact source operation is not established by the saved E states alone.

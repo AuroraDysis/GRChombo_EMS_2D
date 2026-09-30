@@ -1,0 +1,82 @@
+# Clock-2 completed analysis: READY; registered norm gate PASS; no commit.
+# HEAD b5d1ab912183a696110b733b7b0d81b4934b4b71; C++/executable unchanged; current evolved recordings and numerical baselines only.
+# Controller amendment retained verbatim: same executable/capture; additional pre-fill/neighbouring RHS capture dropped.
+# Registration CSV and first-step evidence retained as immutable launch records; current completion is run-audit.csv and done.exit=0.
+# h0=4/3 M; dt0=1/48 M; sigma=1; point transfers; fixed faces; 288 coarse steps to 6 M.
+# All 20 primary, 48 broad volume and 36 P6/P8 ray norms PASS after matching level timestamps.
+# Primary max |clock2/clock-1|=0.018033839; max |clock2-clock|/|space-clock|=0.026158490.
+# T7 A exact-Float64 composite time-key bug fixed in Python only; historical tables not overwritten.
+# ANALYSIS_BEFORE b8f9208a13361de4d62a20ba0e476cc5f4cbb81b9e66063aeac6d59ffd2b738c Tests/EMSNative/t7a-analyze.py
+# Frozen physical ROIs/criteria retained; common time requires <1e-9 M from the registered 1/12 M ladder.
+# CHECK exit=0: exact original-clock packet peaks/times, strict threshold/zero contrasts, common-time keys and numeric ratios.
+# AUDIT done.exit=0; sigma=1; 6,794,496 stage frames/876 snapshot frames finite; captured floor hits=0; GaussB=0.
+# Runtime 1721.307661 s; native RSS 353402880 bytes; output 4214628177 bytes.
+# Per-stage phase counts exactly twice clock; 13 unchanged production/recorder/finder source hashes.
+# No original stream, protected large CSV or cited table deleted. No static file evaluated.
+# RETAINED_INPUT 102825990c296557da5197a8db388661f38db90ab032b97b275e3ec109a0c4d3 4228 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t7-boxes.csv
+# RETAINED_INPUT 2c522ee93e433ff2f1fb13aa8bd27ccd7127167fdafe515ba6ec33cceb8d4727 10382 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t7-check.py
+# RETAINED_INPUT 36dd4da8dbec258f9a263a874ce79bfe7d6e28b9badff9fe2166a7792858b5cb 3181 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t7-run.py
+# RETAINED_INPUT c20c43519deb40845a1bb9c0b910a17f77ff33cbe9120275ff998b50ca35e990 453228 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t7a-baseline-metrics.csv
+# RETAINED_INPUT c92374ff96301cae4e530102a19d9d2d08ff31522e7aec9d98734970850f74db 7642 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t7a-common-packet-ratios.csv
+# RETAINED_INPUT 96a0dc9ff0a45ddb1c9ae5023ee48b6d96f8214559d3ae631d78d4210f638b33 2172659 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t7a-composite-metrics.csv
+# RETAINED_INPUT 0ccc333de873c81717c3fb88f8cafc71ddcb7e051ca6dd80ac7d3abb32e2a5ac 3103684 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t7a-native-metrics.csv
+# RETAINED_INPUT 9b792ec2a216710c523f90482ab809f3ea7f849cb8d87f9d9a7494e579f24252 8241 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t7a-ratios.csv
+# RETAINED_INPUT 441f2481a21f0df955db0e6e90f62092a904ba4ad80b6c2bf2fe49e212640d16 7279 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t7a-ray-wake-ratios.csv
+# RETAINED_INPUT 98fcebc10a8b0dd019d211ca1875eb648c5da401b08ea8c630790bb3d0b40a50 1969 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t7a-source-controls.csv
+# RETAINED_INPUT 515a687155538ca7ec72b531a480f414c08c758987ff62e6b2cc3c072b77e599 50860308 /private/tmp/ems-t7/evolution/clock/t7-snapshot-L5.xz
+# RETAINED_INPUT 87283945a76a37aae7c4e97a420a617dcce34f9b3a3048e77048c06f0534d9b6 73548336 /private/tmp/ems-t7/evolution/clock/t7-snapshot-L6.xz
+# RETAINED_INPUT 15e9e81bb100c3bfb508637cadd2f82c0df79814f8f8f73c22b607b5199aebdf 2098016 /private/tmp/ems-t7/evolution.ex
+# RETAINED_INPUT 7a1476521db72489267e9954a960042b53b34356c8b508984fb1596b57f8d310 10368 /private/tmp/ems-t7-clock2/evolution/clock-2/M_ADM.dat
+# RETAINED_INPUT ca1fa3a9bc986ffb619899236851af192a5286c055a5c9f17cb9e3f01975f09c 16128 /private/tmp/ems-t7-clock2/evolution/clock-2/constraint_norms.dat
+# RETAINED_INPUT 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa 2 /private/tmp/ems-t7-clock2/evolution/clock-2/done.exit
+# RETAINED_INPUT e1e9e4016083d9a219968168f5a121d0f31bcb4b2c02a889d4a56829e5ecadec 10368 /private/tmp/ems-t7-clock2/evolution/clock-2/min_chi.dat
+# RETAINED_INPUT 63588c5070c6b642180e7d247d5ab9176ff9b04e856156239c8d34e2f6dd4ff6 2380 /private/tmp/ems-t7-clock2/evolution/clock-2/params.txt
+# RETAINED_INPUT 499eb9a7d3e2e4453e37f934c4a73879027b499760ed8235dd0e7aa4c37b86e9 10 /private/tmp/ems-t7-clock2/evolution/clock-2/peak_rss_bytes
+# RETAINED_INPUT 84d5f7d29d46001f23e81af35339e951274aa75b5239f7cf312196b07b1b81f6 3150777 /private/tmp/ems-t7-clock2/evolution/clock-2/run.log
+# RETAINED_INPUT df36d385f64176307f75de15822c867835c860b299a185485773cd4ba1fe04c6 12491956 /private/tmp/ems-t7-clock2/evolution/clock-2/t7-snapshot-L4.xz
+# RETAINED_INPUT 1c4a519badb387b8a40e1ab417634317b68d2cefe9009e97c46748f8e00ac74e 50907920 /private/tmp/ems-t7-clock2/evolution/clock-2/t7-snapshot-L5.xz
+# RETAINED_INPUT 3f32f95e3d6756b2041069500746f43ad3af64eaecfbc173ec25d919c6b119db 73618732 /private/tmp/ems-t7-clock2/evolution/clock-2/t7-snapshot-L6.xz
+# RETAINED_INPUT 922f2bac889102bf868ed93ebf06db02c8f448e346a73892953153bf980178f5 341474292 /private/tmp/ems-t7-clock2/evolution/clock-2/t7-stage-L4.xz
+# RETAINED_INPUT e8aaab5540d0c2d5a57d7e277f16c38fd5f2bfa2b1859276b2ce40b0a6eeab17 1709088268 /private/tmp/ems-t7-clock2/evolution/clock-2/t7-stage-L5.xz
+# RETAINED_INPUT b4dbb8f2418add8e916c281aae86a1510ce07b98f3f440357381a2e1fff50b0c 2023856964 /private/tmp/ems-t7-clock2/evolution/clock-2/t7-stage-L6.xz
+# RETAINED_INPUT 19b1a01061710f9158060f282d26d94545545e7f03214e3a084048642ac20b32 12 /private/tmp/ems-t7-clock2/evolution/clock-2/wall_seconds
+# RETAINED_INPUT 1eada5eeabccc60823015e748f37ef35e93b56b5d780e84b0499343bef8c188c 207 /private/tmp/ems-t7-clock2/evolution/plan.json
+# RETAINED_INPUT e94beb73fbcf2d10ed0611fad2b3446f06a2b2738cad7a1c6246ba4171724ce7 333565 /private/tmp/ems-t7-clock2-analysis/metrics-L4.csv
+# RETAINED_INPUT 54110cf31aad1586b38679a66860ef3574091e5647a2903827866ea8898d6c32 669959 /private/tmp/ems-t7-clock2-analysis/metrics-L5.csv
+# RETAINED_INPUT 64816ed82ca3e518eeece16451cecc583efaa5765aa7f135f04f3191d73ee109 336820 /private/tmp/ems-t7-clock2-analysis/metrics-L6.csv
+# RETAINED_INPUT cad9f1748594eb9bc837c42e353e3b820e2860451b057c400669bbbfdb1d4fdf 27732 /private/tmp/ems-t7-clock2-analysis/packets-L4.csv
+# RETAINED_INPUT ffaba1288cc9d9a01b4d561fe35f9c76660ac2941bfbe76b718e7bbce49ff158 55179 /private/tmp/ems-t7-clock2-analysis/packets-L5.csv
+# RETAINED_INPUT c0439a028493de65a0b0bcd7b24d725246fc21d6f4616c15a07d73a104333b2f 27737 /private/tmp/ems-t7-clock2-analysis/packets-L6.csv
+# RETAINED_INPUT 22e98c0660ef8077a01906f591ee8ffdd314472c95a1fe18397c4a0477370396 283 /private/tmp/ems-t7-clock2-analysis/snapshot-input-L4.csv
+# RETAINED_INPUT 04efd3198e0a977ce09963e6824557e5ef4f8cfe2a7006616fae7d6cdf58f4e1 283 /private/tmp/ems-t7-clock2-analysis/snapshot-input-L5.csv
+# RETAINED_INPUT ed7813934dcfe84111139ab5f2bbcd94b4507256a0e3fae893e37e775524a6af 283 /private/tmp/ems-t7-clock2-analysis/snapshot-input-L6.csv
+# RETAINED_INPUT b2f669790648d40fde5429cc4a5440dfd9d08f896991cacd1d4a593e0e75a27f 5654 /private/tmp/ems-t7-clock2-analysis/snapshots-L4.csv
+# RETAINED_INPUT 61d812eb7ffd11dc73fb6530562ebe48e93760877248d28fb8ea5646840bdeb1 5639 /private/tmp/ems-t7-clock2-analysis/snapshots-L5.csv
+# RETAINED_INPUT 0ba6533a6879fdd7cee6ab0545342343612614f9f9d169cc938edddaf3511b8e 5651 /private/tmp/ems-t7-clock2-analysis/snapshots-L6.csv
+# RETAINED_INPUT 02dfc7cc529feca87c9bcc349e5f6bd4dda6b6352dc09757f639ffdfeb9f6284 681 /private/tmp/ems-t7-clock2-analysis/stage-input-L4.csv
+# RETAINED_INPUT eff90d6266308442d105f694d42c3969a469ad00e2e260eefca6b61158a04d5d 722 /private/tmp/ems-t7-clock2-analysis/stage-input-L5.csv
+# RETAINED_INPUT c740386cd84f3265a6bf9705e8627ec233a502526e977bf5db5e48cf64c7d0b1 693 /private/tmp/ems-t7-clock2-analysis/stage-input-L6.csv
+# RETAINED_INPUT 9519aa06e86fb81d82541e40196b10f56d9c5f07a040172f2ecc8ec51baa677b 824 /private/tmp/ems-t7a/tables/t7a-stage-audit-clock-L4.csv
+# RETAINED_INPUT 5b6f75d15c8b7721b32ec8acffaa20e765716ed8fdba4cf39250ed173276c284 884 /private/tmp/ems-t7a/tables/t7a-stage-audit-clock-L5.csv
+# RETAINED_INPUT 1351dd5695fbaddf7eab0b43b881af09f3aa9259de62cbaa1989b884b42881f6 867 /private/tmp/ems-t7a/tables/t7a-stage-audit-clock-L6.csv
+a5a29a14a5045230178a113a6506f549ee426888a6c0c4e29228497846d986c1  Tests/EMSNative/README.md
+80793b73fdca42c389a1506e1cd6a6c997921cb5a71a46cbc679cf96c2fc9208  Tests/EMSNative/figures/t7-clock2-norms.pdf
+9b90bc4886b3d05e047749af82c6ce9096483557cff2d6d079f2465dc5cd4b75  Tests/EMSNative/figures/t7-clock2-norms.png
+63588c5070c6b642180e7d247d5ab9176ff9b04e856156239c8d34e2f6dd4ff6  Tests/EMSNative/params/t7-ref-mid-clock2.txt
+6d8200ead3f78d7cd7fa7cee17a8a46502f7b23a0cbd3646d99979fdc3efa25b  Tests/EMSNative/t7-clock2-analyze.py
+fda08ce5f78ec0c3fcc419909c5c8fe8f1ea70dd0c281a9e1fdffdcbb47066ec  Tests/EMSNative/t7-clock2-composite-metrics.csv
+b63faa2a350253bfcb3196162899e9529f2516e8e86b507537715c0bf519274e  Tests/EMSNative/t7-clock2-default-parameters.csv
+f6abf4c84b04e43c020905085a77c81f71831598322f0a546bfc19ee4b7b9b50  Tests/EMSNative/t7-clock2-first-steps.txt
+d9cc9a231fcfdc41332be62654c481fba5b0ad788a64b4057d53f8305653e2d1  Tests/EMSNative/t7-clock2-input-audit.csv
+381cac18aa7716d70cff16517bb939335c558ae4db6f6ad7e39ccebb6d439eae  Tests/EMSNative/t7-clock2-norm-comparison.csv
+7d19046ba05cf85dd65aeb6837a59ec05da436e3029f0c6eb27f39b0d9f39ddc  Tests/EMSNative/t7-clock2-packet-history.csv
+fa5ae5c4f5c253a0bb7ab3ac60b4f6976046903c1c63ad43ac9d743f849deb8d  Tests/EMSNative/t7-clock2-ray-wake-comparison.csv
+0a8a9d068e8a77adf173a6e20f8060d4d5d1ddfb3d681ad7ae6c1afe76d8df3b  Tests/EMSNative/t7-clock2-registration.csv
+64dc6a2f77e0ac41092efdac77f02a35e38233f9b71971466b3c0c40b2d669ab  Tests/EMSNative/t7-clock2-run-audit.csv
+1eada5eeabccc60823015e748f37ef35e93b56b5d780e84b0499343bef8c188c  Tests/EMSNative/t7-clock2-run-plan.json
+fa5ac7597b6b94ffdb506a966dde1d3606bf984e060279318581de048c80c739  Tests/EMSNative/t7-clock2-snapshot-audit.csv
+d4f45274d32b501b546a9366f0c1845637a43988c03376140485186bdbf94ac7  Tests/EMSNative/t7-clock2-source-controls.csv
+1cca92fca749bfdfafe29ebb07014eb3d5658d8e47b5104cf258146f1e4cc74b  Tests/EMSNative/t7-clock2-stage-audit.csv
+0c151e3e1badb81ae8a6ca032a15656b122c37691bca543fc0d6f7fa4250c696  Tests/EMSNative/t7-clock2-supplemental-norms.csv
+c5ad6ec2ae5a1a58d2dff262f6a1685313b86a90cc483e17d73c0b4f416e649f  Tests/EMSNative/t7-clock2-time-grouping-correction.csv
+7736efca707f19530c2fc7c9576deacff7bffc48918acb71d870b9cd8f62269b  Tests/EMSNative/t7a-analyze.py

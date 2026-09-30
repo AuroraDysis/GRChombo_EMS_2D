@@ -1,0 +1,3 @@
+GRAMRLevel::advance level 0 at time 0 (0 M/hr). Boxes on this rank: 6 / 6
+GRAMRLevel::advance level 0 at time 0.0208333 (12.8344 M/hr). Boxes on this rank: 6 / 6
+GRAMRLevel::advance level 0 at time 0.0416667 (13.3437 M/hr). Boxes on this rank: 6 / 6
