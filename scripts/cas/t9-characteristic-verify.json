@@ -1,0 +1,23 @@
+{
+  "status": "PROVED",
+  "claim": "conditional left eigenvectors of 3x3 frozen longitudinal shift block",
+  "witness": "lP-lambda*l rational numerator identically zero, both signs",
+  "ring": "QQ[b,c,mu]",
+  "domain": "c>0,mu>0,b real,b!=+/-c; g=3c^2/(4mu)>0",
+  "branch": "c is positive speed relative to shift",
+  "assumptions": "frozen current metric and shift; K/Theta/lapse/metric principal perturbations excluded; cartoon radial terms, damping, KO and matter are forcing",
+  "outgoing": "Gamma_n - c/mu*d_r beta_n - c/(mu*(c-beta_n))*B_driver_n",
+  "incoming": "Gamma_n + c/mu*d_r beta_n - c/(mu*(c+beta_n))*B_driver_n",
+  "coordinate_speeds": "outgoing c-beta_n; incoming -c-beta_n; B has zero principal speed",
+  "numeric_status": "CORROBORATED",
+  "seed": 9009,
+  "points": 32,
+  "precision_digits": 60,
+  "region": "c in [0.6,1.4],mu in [0.5,1],b in [-0.2,0.2]",
+  "max_numeric_residual": "3.11150763893057085357203202689006212029512608436058356655056e-61",
+  "sampling_status": "PROVED",
+  "sampling_witness": "sum L_i(x) i^k - x^k polynomial zero in QQ[x], all 0<=k<n,n=6,8; derivatives 0..3",
+  "sampling_exact_checks": 56,
+  "directional_exact_checks": 8,
+  "directional_witness": "radial cubic/quintic synthetic vectors project to (nx^2+ny^2)^(p+1) r^(2p+1), p=1,2; derivatives 0..3"
+}

@@ -2050,3 +2050,168 @@ The cheapest policy test is one altered E-mid run to 10.5 M against the complete
 The runnable check verifies row counts, all saved finite/floor census, exact GaussB/Lambda zeros, and six/eight-node polynomial/parity sampling. The direct reduction checks cover all constraint rows. Figures were visually inspected. No C++ files differ from HEAD, so no new default-path bit-identity control is needed for this analysis-only tranche. `git diff --check` passes; no commit was made.
 
 **Measured:** failed admission rows, numerical-horizon drifts/sensitivity, thin and broad profile widths, common unions, negative high Gauss shell inventory and near-unit inward boundary propagation. **Inferred:** early longitudinal shift/Gamma identity and BC-driven outer contamination; interface association is supported by locations and T7 prior controls. **Unresolved:** continuum width/source of the earliest thin E disturbance, the unique operation emitting the late diagonal packet, between-plot qualified area excursions, and whether the high charge-rate sign change approaches a nonzero limit. These limits prevent a scientific admission PASS and a validated 100 M layout claim.
+
+
+## T9 — Continuum character of the early shift/Gamma front
+
+**Read-only result: continuum regularity remains unresolved. The growing narrow feature is predominantly metric-consistent Gamma, not the conformal Gamma constraint. These three rungs do not certify a bounded limiting characteristic profile with a stable nonzero first-derivative jump.** No reduced exterior convergence order is justified by this analysis. The axial/equatorial t=1.75 M profiles overlap a refinement face; they cannot supply the requested clean single-level test. The clean t=2.625 M axial/equatorial and t=4.375 M profiles, together with the t=1.75 M diagonal, still establish the conclusions below.
+
+The complete [consult-6-reply.md](../../../consult-6-reply.md) ruling was read before analysis. Only the existing exp-0020 current plot states at t=0, 0.875, 1.75, 2.625 and 4.375 M were read: five files per rung, from the controller's checksum-verified set of thirteen per rung. EMS remains read-only. No static data reader is used even at t=0; initial diagnostics use the saved numerical state. No evolution, gauge, Chombo operator, finder or C++ file changed, no simulation launched, and no commit was made.
+
+### Profiles, characteristic projection and reconstruction qualification
+
+Use the original coordinates x=X-336 M, y>=0, r in M. The axis, equator and diagonal have fixed normals (1,0), (0,1), (1,1)/sqrt(2); beta_n=n_i beta^i and Gamma_n=n_i Gamma^i are coordinate longitudinal components. All positive-time profiles share the resolution-independent interval [t-0.65,t+0.65] M and the same 0.0005 M sampling ladder. The initial interval is [0.0001,0.04] M. Compensated six/eight-node tensor Lagrange sampling uses current valid fields and parity at y=0. Complete dense signed states and derivatives are retained in /private/tmp/ems-t9, with hashes in the manifest (W derivatives above second order and derivatives of the frozen g coefficient are explicitly undefined); the small [signed-profile CSV](t9-signed-profiles.csv) retains dense samples near the front and coarser samples outside it. The [raw profile figures at 1.75](figures/t9-signed-profiles-1p75.png), [2.625](figures/t9-signed-profiles-2p625.png) and [4.375 M](figures/t9-signed-profiles-4p375.png) show signed current beta, Gamma and the outgoing projection, with P6/P8 shading.
+
+For a conditional longitudinal gauge projection set p=partial_r beta_n, mu=0.75, b=beta_n, g=n_i h^ij n_j and c=sqrt(4 mu g/3). Freeze b and g at each independently selected current front. ExperimentalGauge gives beta_t=beta advection+mu Gamma-eta beta-B_drv and B_drv,t=-0.1 B_drv, with **no B_drv advection**. The normal highest-derivative terms of the author's Gamma equation are (4/3)g beta_n,rr. The reduced principal matrix and its projections are
+
+```text
+U=(p,Gamma_n,B_drv,n),   U_t=P U_r+forcing,
+P=[[b,mu,-1],[4g/3,b,0],[0,0,0]].
+W_out=Gamma_n-(c/mu) partial_r beta_n-c/[mu(c-b)] B_drv,n,
+W_in =Gamma_n+(c/mu) partial_r beta_n-c/[mu(c+b)] B_drv,n.
+v_out=c-b, v_in=-c-b; B_drv has zero principal speed.
+```
+
+This freezes metric/lapse/K/Theta principal perturbations and omits transverse/radial cartoon principal interactions from the planar block. In particular, the implemented -4 alpha h^ij K_,j/3+2 alpha h^ij Theta_,j and other geometry terms remain forcing; they are present in the evolution. These are **conditional projections, not full CCZ4 characteristic variables or a mode-purity proof**, and the planar approximation is not asserted near the puncture. Frozen coefficients come only from current fields, not a static target. P6/P8 use the same frozen coefficients. The conditional left-eigenvector identity is exactly proved in QQ[b,c,mu], with c,mu>0 and b!=+/-c, and independently checked at 32 points/60 digits to residual 3.111508e-61. [CAS evidence and assumptions](../../scripts/cas/t9-evidence.md) and [JSON witness](../../scripts/cas/t9-characteristic-verify.json) are retained.
+
+At 2.625 M the outgoing fixed-window feature amplitudes are 5.689039e-7 / 7.981032e-7 / 1.256318e-6 on the axis, versus 2.336609e-8 / 2.388804e-8 / 2.500906e-8 for W_in. This favors outgoing longitudinal-shift content, within the conditional approximation. Current v_out=0.999946 / 0.999946 / 0.999946 M/M, consistent with the independently measured T8 propagation speed near one. Speed matching alone does not identify a shock.
+
+Windows follow the already measured T8 early ridge; no characteristic-speed prediction selects a peak. One convention selects the largest absolute Gamma_n second-derivative feature in the fixed physical search interval [t-0.3,t+0.3], after a cubic fit to the **same current profile** on fixed sidebands 0.4<=|r-t|<=0.6 M. Its location is r_f and its width is the half-prominence width of that derivative lobe; this is not the entire multilobed packet width. All field amplitudes are measured in the same fixed |r-r_f|<=0.1 M interval, with the same sideband construction; each field's derivative-lobe width is recorded by the same rule. Raw signed profiles and raw J are never background-subtracted. Fits of degree 3/5/7 are retained in [background sensitivity](t9-background-sensitivity.csv). No fitted background enters the evolution. A dominant curvature lobe can switch within the multilobed packet, particularly on the diagonal, so its phase is not treated as a unique wave crest.
+
+| t/M | ray | r_f low / mid / high | width/M low / mid / high | fine cells low / mid / high | max P6/P8 width spread |
+| --- | --- | --- | --- | --- | --- |
+| 1.75 | corner | 1.7280 / 1.7340 / 1.7385 | 0.022940 / 0.016758 / 0.012291 | 1.678 / 1.839 / 2.023 | 0.2592% |
+| 2.625 | axis | 2.6390 / 2.6420 / 2.6395 | 0.059561 / 0.041472 / 0.029487 | 2.178 / 2.275 / 2.426 | 0.3798% |
+| 2.625 | equator | 2.6395 / 2.6420 / 2.6395 | 0.059498 / 0.041432 / 0.029468 | 2.176 / 2.273 / 2.425 | 0.3772% |
+| 2.625 | corner | 2.6430 / 2.6025 / 2.6085 | 0.035529 / 0.024079 / 0.017572 | 1.299 / 1.321 / 1.446 | 1.2024% |
+| 4.375 | axis | 4.3695 / 4.3910 / 4.3900 | 0.119097 / 0.080124 / 0.054133 | 2.178 / 2.198 / 2.227 | 1.0612% |
+| 4.375 | equator | 4.3695 / 4.3910 / 4.3900 | 0.119281 / 0.080004 / 0.054108 | 2.181 / 2.194 / 2.226 | 1.0422% |
+| 4.375 | corner | 4.3890 / 4.3895 / 4.3480 | 0.055718 / 0.038734 / 0.025932 | 2.038 / 2.125 / 2.134 | 0.2687% |
+
+The listed receiving counts are half the fine counts. At 2.625 M the dominant axial curvature lobe occupies only 1.089 / 1.138 / 1.213 receiving cells; the diagonal occupies 0.650 / 0.660 / 0.723. Its width has not saturated physically. The positive-time width increases as the feature propagates through coarser levels; on the diagonal it is 0.011973 / 0.008781 / 0.006487 M at 0.875 M, 0.022940 / 0.016758 / 0.012291 M at 1.75 M, and 0.055718 / 0.038734 / 0.025932 M at 4.375 M. This is not a measured narrowing in time at fixed resolution.
+
+**Geometry exception:** axial/equatorial t=1.75 M fronts lie at the fixed level-6 face 1.75 M. P6/P8 change the apparent curvature-lobe width by as much as 674% / 679%, and the selected location by 0.029 M. Those widths are unqualified. The earliest 0.875 M axial/equatorial front likewise overlaps the level-7 face 0.875 M. Current same-parent profiles (level 5 at 1.75 M, level 6 at 0.875 M) are retained as sensitivity controls; these include covered/restricted current coarse cells, not a clean substitute for the finest uncovered state. The 1.75 M diagonal is clean over delta<=0.4. At 2.625 M the diagonal delta=0.2/0.4 integrals cross the child level-6 diagonal face sqrt(2)*1.75=2.474874 M; delta=0.1 does not. At 4.375 M axial rays lie on level 4 and the diagonal on level 5, clean over delta<=0.4. The full per-rung [sampling/geometry qualification](t9-sampling-qualification.csv), parent comparisons and every crossed level are retained.
+
+The polynomial sampler and derivatives through third order reproduce design-degree polynomials with worst scaled Float64 residual 6.063298e-13. Native metric Gamma agrees with the sealed reducer's independent Z calculation to scaled 3.469447e-18. These check implementation; P6/P8 spread and the geometry exceptions qualify sampling, not continuum smoothness or accuracy of a two-cell wave.
+
+### Signed derivative-jump test
+
+For beta_n, Gamma_n and W_out, evaluate J_h over [r_f-delta,r_f+delta], with delta=0.1,0.2,0.4 M fixed across resolutions. Join the dense P6/P8 values with a C2 cubic reconstruction; its piecewise linear second derivative is integrated with each zero split, recording positive and negative lobe totals separately. Their sum equals the endpoint first-derivative difference. Local-polynomial endpoint derivatives and half-density C2 reconstruction are independent sensitivity columns. The C2 joining prevents stencil-switch discontinuities in a local Lagrange derivative from being silently omitted from the signed integral. It can also expose interpolation ringing in higher derivatives; such lobe totals are not asserted to be continuum distributions.
+
+| ray | delta/M | field | low J | mid J | high J | max |P8-P6| | levels |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| axis | 0.1 | beta | 4.803762e-06 | 4.831502e-06 | 4.861109e-06 | 3.250976e-10 | 5 |
+| axis | 0.1 | Gamma | 4.077016e-06 | 9.513846e-06 | -4.661527e-06 | 3.677166e-08 | 5 |
+| axis | 0.1 | Wout | 1.282769e-05 | 2.342248e-05 | -3.953508e-06 | 5.266652e-07 | 5 |
+| axis | 0.2 | beta | 9.515202e-06 | 9.491331e-06 | 9.510911e-06 | 8.523397e-11 | 5 |
+| axis | 0.2 | Gamma | 9.108472e-06 | 1.046361e-05 | 1.002609e-05 | 1.061202e-08 | 5 |
+| axis | 0.2 | Wout | 2.784328e-05 | 3.050164e-05 | 2.962967e-05 | 3.988060e-08 | 5 |
+| axis | 0.4 | beta | 1.910447e-05 | 1.904490e-05 | 1.909500e-05 | 6.705102e-13 | 5 |
+| axis | 0.4 | Gamma | 2.012792e-05 | 2.006875e-05 | 2.010743e-05 | 3.724453e-10 | 5 |
+| axis | 0.4 | Wout | 5.982074e-05 | 5.965799e-05 | 5.977201e-05 | 4.593622e-10 | 5 |
+| equator | 0.1 | beta | 4.802013e-06 | 4.831835e-06 | 4.860528e-06 | 3.205606e-10 | 5 |
+| equator | 0.1 | Gamma | 4.091537e-06 | 9.505728e-06 | -4.683449e-06 | 3.653220e-08 | 5 |
+| equator | 0.1 | Wout | 1.285053e-05 | 2.341421e-05 | -3.994926e-06 | 5.276262e-07 | 5 |
+| equator | 0.2 | beta | 9.510369e-06 | 9.491441e-06 | 9.510966e-06 | 8.485915e-11 | 5 |
+| equator | 0.2 | Gamma | 9.098503e-06 | 1.045665e-05 | 1.002654e-05 | 1.115576e-08 | 5 |
+| equator | 0.2 | Wout | 2.781876e-05 | 3.048843e-05 | 2.963037e-05 | 4.041474e-08 | 5 |
+| equator | 0.4 | beta | 1.909511e-05 | 1.904503e-05 | 1.909503e-05 | 3.120057e-13 | 5 |
+| equator | 0.4 | Gamma | 2.011924e-05 | 2.006857e-05 | 2.010730e-05 | 3.121293e-10 | 5 |
+| equator | 0.4 | Wout | 5.979494e-05 | 5.965736e-05 | 5.977174e-05 | 4.448877e-10 | 5 |
+| corner | 0.1 | beta | 4.856731e-06 | 4.997842e-06 | 4.935809e-06 | 3.691597e-10 | 5 |
+| corner | 0.1 | Gamma | 5.574357e-06 | 8.981320e-06 | 1.646187e-06 | 2.458095e-07 | 5 |
+| corner | 0.1 | Wout | 1.601928e-05 | 2.288583e-05 | 8.195245e-06 | 6.106200e-07 | 5 |
+| corner | 0.2 | beta | 9.476128e-06 | 9.864022e-06 | 9.809470e-06 | 1.510198e-09 | 5,6 |
+| corner | 0.2 | Gamma | 1.158289e-05 | 1.170971e-05 | 9.591209e-06 | 1.307091e-08 | 5,6 |
+| corner | 0.2 | Wout | 3.082373e-05 | 2.940704e-05 | 2.932249e-05 | 3.900927e-07 | 5,6 |
+| corner | 0.4 | beta | 1.902641e-05 | 1.984131e-05 | 1.972031e-05 | 1.119768e-10 | 5,6 |
+| corner | 0.4 | Gamma | 1.938514e-05 | 2.156067e-05 | 2.041935e-05 | 4.838559e-09 | 5,6 |
+| corner | 0.4 | Wout | 5.901621e-05 | 6.219421e-05 | 6.108986e-05 | 7.486736e-08 | 5,6 |
+
+Units: J_beta is M^-1; J_Gamma and J_W are M^-2. [All times, all rays, individual lobes, one-sided values/slopes and parent sensitivity](t9-jump-integrals.csv) and the [three-rung summary](t9-jump-summary.csv) contain the complete measurements. The integration/endpoint discrepancy is at roundoff: maximum on the 2.625 M axis is below 1.5e-17. At axial delta=0.1 the largest P6/P8 spread is 3.68e-8 for Gamma and 5.27e-7 for W_out; half-density changes W_out by as much as 1.08e-6, about 27% of the high value. Its small-window value is therefore reconstruction-sensitive, though the sign and three-rung instability persist. At delta=0.4 these W sensitivities fall to 4.59e-10 and 4.42e-12. No precision certificate is inferred from a small net difference of much larger signed lobes.
+
+The shift J roughly doubles when delta doubles: on high, 4.861109e-6, 9.510911e-6, 1.909500e-5. These nonzero values are chiefly smooth curvature spread through the integration interval, not a delta-independent localized jump. At fixed delta=0.4 the three axial beta/Gamma/W integrals agree within about 0.32% and are finite and nonzero; this supports stable finite-window integrals, not a localized derivative jump. On axis, Gamma and W_out at delta=0.1 vary nonmonotonically and change sign on high. At delta=0.4 their net values look stable, but they are about twice the delta=0.2 values and are sensitive to the smooth interval contribution. For Gamma, positive/negative delta=0.4 integrals are +2.583688e-5/-5.708964e-6 (low), +4.362481e-5/-2.355606e-5 (mid), and +9.913193e-5/-7.902450e-5 (high), leaving net approximately 2.01e-5. A growing oscillatory lobe is not a stable derivative-jump certificate.
+
+| rung | field | u_left | u_right | u_r,left | u_r,right | extrapolated [u_r] |
+| --- | --- | --- | --- | --- | --- | --- |
+| low | beta | 5.781163e-05 | 3.717010e-05 | -3.665693e-05 | -1.755246e-05 | 2.405240e-07 |
+| mid | beta | 5.770156e-05 | 3.711729e-05 | -3.655338e-05 | -1.750849e-05 | 3.459914e-07 |
+| high | beta | 5.779300e-05 | 3.716106e-05 | -3.663950e-05 | -1.754450e-05 | 3.182728e-07 |
+| low | Gamma | 1.836858e-05 | 3.935751e-06 | -2.865840e-05 | -8.530481e-06 | -3.768647e-06 |
+| mid | Gamma | 1.828221e-05 | 3.909488e-06 | -2.854600e-05 | -8.477250e-06 | -2.595213e-06 |
+| high | Gamma | 1.835353e-05 | 3.930576e-06 | -2.862918e-05 | -8.521749e-06 | -1.044002e-06 |
+| low | Wout | 1.302979e-04 | 7.104549e-05 | -1.061000e-04 | -4.627931e-05 | -7.302804e-06 |
+| mid | Wout | 1.299794e-04 | 7.090536e-05 | -1.057777e-04 | -4.611973e-05 | -5.104199e-06 |
+| high | Wout | 1.302439e-04 | 7.102050e-05 | -1.060257e-04 | -4.625368e-05 | -1.958990e-06 |
+
+The endpoint values/slopes above are at r_f+/-0.4 M. The last column is the difference of first derivatives extrapolated to r_f with separate current-profile cubic fits on [r_f-delta,r_f-delta/2] and [r_f+delta/2,r_f+delta]. The corresponding extrapolated value jumps and every delta are in the CSV. On axis, beta's extrapolated derivative jump ranges from -2.72e-8 to +2.41e-7 on low, -1.32e-7 to +5.43e-7 on mid, and -1.51e-6 to +3.18e-7 on high as delta changes. Gamma and W extrapolations also change sign/size strongly with delta and rung. A stable nonzero continuum jump is **not established**; nor do these finite-resolution tests prove that every jump is zero.
+
+The clean additional-time tests show the same distinction. At 1.75 M diagonal, delta=0.2 J_beta=1.935115e-5 / 1.924054e-5 / 1.915832e-5, J_Gamma=1.458561e-5 / 1.463713e-5 / 1.465190e-5, J_W=5.470169e-5 / 5.468521e-5 / 5.462814e-5; at delta=0.4 they approximately double. At 4.375 M axis, delta=0.2 J_Gamma=3.722269e-6 / 3.796578e-6 / 3.563717e-6 and J_W=9.072383e-6 / 9.221477e-6 / 8.746373e-6, again roughly doubling at delta=0.4. Small delta=0.1 values retain dispersion/rung dependence. The diagonal 4.375 M rows are also retained. None supplies a delta-insensitive weak-front certificate.
+
+![Signed integrals versus native spacing at 2.625 M; all three rays, fixed deltas and P6/P8 spread.](figures/t9-jumps-2p625.png)
+
+The [1.75 M](figures/t9-jumps-1p75.png) and [4.375 M](figures/t9-jumps-4p375.png) figures show the same test, including the explicitly unqualified axial early-face rows.
+
+### Native conformal Gamma constraint and field bounds
+
+Compute metric Gamma from the **current h_ij** with the native fourth-order cartoon derivatives, using the stored parity/patch ghosts, and the exact 2D-plus-ww contraction
+
+```text
+Gamma_metric^i = sum_jk h^jk Gamma^i_jk
+              + [ (delta^i_y-h^iy hww)/y - (1/2) sum_j h^ij partial_j hww ] / hww,
+C_Gamma^i = Gamma_evolved^i - Gamma_metric^i = 2 Z^i / chi.
+```
+
+The ww term and hww denominator are included, not approximated by -partial_j h^ij or omitted at the axis. The calculation uses the same numerical fields/ghosts as the reducer; exact-axis samples use parity, while the derivatives themselves are computed at native y=(j+1/2)h. Separate 2D and ww profiles are retained in the signed-profile CSV and dense cache. This is a numerical fourth-order metric derivative at a poorly resolved front; its agreement with evolved Gamma is evidence about content, not a continuum derivative theorem.
+
+| ray | Gamma amplitude low / mid / high | C_Gamma amplitude low / mid / high | C_Gamma/Gamma feature RMS | minimum metric correlation |
+| --- | --- | --- | --- | --- |
+| axis | 2.589320e-07 / 3.727264e-07 / 6.016942e-07 | 4.266260e-09 / 6.434409e-09 / 1.019572e-08 | 1.820% / 2.003% / 2.042% | 0.999821 |
+| equator | 2.602460e-07 / 3.734413e-07 / 6.025523e-07 | 4.256037e-09 / 6.373587e-09 / 1.020542e-08 | 1.752% / 2.002% / 2.046% | 0.999820 |
+| corner | 5.011700e-07 / 6.831927e-07 / 1.315923e-06 | 1.792562e-08 / 3.029803e-08 / 4.051862e-08 | 4.266% / 5.152% / 3.675% | 0.998782 |
+
+Amplitudes above use the same current-profile fixed-sideband cubic detrend and fixed delta=0.1 window. At the clean axial event, the evolved and metric Gamma feature correlations exceed 0.99982 and metric Gamma has approximately 98% of the evolved feature RMS. On the diagonal correlation exceeds 0.99878. The C_Gamma spike itself increases under refinement and must remain in the convergence battery, but it accounts for only about 2% axial and 4–5% diagonal feature RMS. It is **not the main growing feature**. A numerical AMR disturbance can be mostly metric-consistent, so this does not rule out numerical generation upstream.
+
+Fixed-window amplitudes replace T8's moving, locally linear window: axial Gamma peaks are 2.589320e-7 / 3.727264e-7 / 6.016942e-7, with amplitude orders -0.898 / -1.181, and width orders 0.893 / 0.841. A_gamma*width is 1.542e-8 / 1.546e-8 / 1.774e-8, much closer to constant than T8's moving-window estimate, but this product is neither a signed derivative integral nor proof of a bounded field limit. Degree 5/7 sidebands change Gamma amplitudes by only a few percent. Shift detrended amplitude is much more sensitive to background degree: on high it is 3.48e-8 (degree 3), 2.01e-8 (5), 1.47e-8 (7). No shift-jump inference is made from that fitted amplitude.
+
+| t/M | ray | beta p | Gamma p | W_out p | metric Gamma p | C_Gamma p |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1.75 | corner | -0.244 | -1.039 | -1.038 | -1.047 | -0.333 |
+| 2.625 | axis | -0.489 | -1.436 | -1.435 | -1.443 | -0.077 |
+| 2.625 | equator | -0.543 | -1.435 | -1.435 | -1.443 | -0.229 |
+| 2.625 | corner | -0.479 | -1.311 | -1.304 | -1.327 | -0.147 |
+| 4.375 | axis | 0.320 | -1.017 | -1.018 | -0.915 | 1.111 |
+| 4.375 | corner | -0.574 | -1.423 | -1.422 | -1.427 | 0.716 |
+
+These self-orders use raw P6 fields on the **same unaligned physical interval [t-0.2,t+0.2]** on every rung; p=log(RMS_low_mid/RMS_mid_high)/log(1.5). [Differences and interpolation sensitivity](t9-profile-differences.csv) retain all three rays/times. On the 2.625 M axis, Gamma differences are 5.530179e-8 then 9.898252e-8; interpolation RMS is <=0.344% of the smaller difference. The negative order is not a P6/P8 ambiguity. The diagonal window at this time overlaps the child face; its C_Gamma self-order is interpolation-sensitive and is not a clean isolated-front order. The fixed delta=0.1 feature RMS comparison above avoids that face.
+
+Every current sampled field is finite on every rung; large raw background values can keep the three maxima bounded even while a small spike grows. The full raw profiles are retained, and metric Gamma shares the growing spike. **Three finite maxima are not a bounded continuum-profile certificate.** Gamma/W and even some small shift differences grow between successive pairs, so this sequence has not demonstrated a Cauchy profile in the tested front norm. Growing peak amplitude with narrowing width could be pre-asymptotic transport error or a stronger singular limit; neither is proved with three rungs.
+
+![Evolved and metric Gamma features on identical physical intervals; solid and dashed curves nearly coincide.](figures/t9-metric-gamma-features.png)
+
+![Native conformal Gamma constraint; face locations and P6/P8 spread are shown.](figures/t9-gamma-constraint.png)
+
+### Launch and four mechanisms
+
+The saved initial state has Gamma amplitudes <=2.09e-12 on the axis and <=1.90e-12 on the diagonal over r=0.0001–0.04 M; C_Gamma is also at Float64 derivative roundoff. No outgoing Gamma jump is resolved there at t=0. Initial beta on the high axis at r=0.0001 / 0.0003 / 0.001 / 0.003 M is 3.633232e-5 / 1.075174e-4 / 3.343027e-4 / 7.737628e-4; beta_r is 0.361414 / 0.349859 / 0.296345 / 0.151519. All three rungs agree closely at fixed r and show a smooth throat-scale variation over the sampled interval. Initial B_drv=0.75 Gamma-beta is represented by the saved evolved driver, not reintroduced as a positive-time target. [Initial fixed-radius probes](t9-initial-probes.csv) and the complete [launch metrics](t9-launch.csv) retain P6/P8 sensitivity. The r=0 puncture is not a native cell centre; interpolation at r close to one finest cell cannot determine continuum differentiability at r=0.
+
+By t=0.875 M the diagonal Gamma feature is clear in a single valid level, with current peak around 3.47e-5 / 4.69e-5 / 6.32e-5 and width 0.011973 / 0.008781 / 0.006487 M. Its C_Gamma feature is only about 3.2–3.8e-7. Thus the phenomenon exists by the first evolved output and is not merely a 3.5 M-face creation. It has already passed several inner refinement boundaries. The cadence **cannot determine** the launch time inside 0<t<0.875, whether a subcell puncture irregularity seeds it, whether it steepens before 0.875, or which inner interface/operation first contributes. The axial earliest rows additionally coincide with a face.
+
+![Saved initial shift and derivative, and the first evolved diagonal Gamma profile.](figures/t9-launch.png)
+
+| Mechanism | Evidence for | Evidence against / unresolved requirement | Classification |
+| --- | --- | --- | --- |
+| Initial weak discontinuity | Early outgoing longitudinal content; width shrinks under refinement. | No stable localized J, no demonstrated Cauchy characteristic profile; t=0 sampled beta is smooth and Gamma at roundoff. Puncture r=0 and 0<t<0.875 are unresolved. | Not established; an unresolved initial singularity is not excluded. |
+| Nonlinear steepening | Full gauge/geometry evolution is nonlinear; an event before the first snapshot is possible. | No resolved initially smooth pulse followed into a finite steepening time; measured physical width broadens after 0.875 as it travels through coarser levels. Speed near one is not a shock test. | Not established. |
+| Smooth throat-scale pulse | Initial shift/derivative have a smooth measured physical scale; three-cell transport can be strongly pre-asymptotic. | Incident derivative-lobe width remains about 1–2.4 fine cells and does not saturate in physical units; Gamma/W field differences have genuine negative orders. | Plausible but no resolved limiting width. |
+| Numerical Gamma/AMR artifact | Grid-width feature, multiple prior inner-face passages, oscillatory profiles, negative field self-orders and explicit face sensitivity at 0.875/1.75. | The clean growing front is mostly metric-consistent, so a **primarily C_Gamma reduction-constraint artifact is disfavored**. No source-fixed transport contrast or operator replay is in these data. | Numerical transport/source contamination remains plausible; location/operation unproved. |
+
+**Causal statement:** measured: a predominantly metric-consistent outgoing shift/Gamma feature with grid-scale derivative lobes and nonconvergent front field differences. Inferred: severe transport under-resolution is a plausible contributor. Unresolved: the continuum regularity of the incident source and the initial/upstream operation creating it. There is no basis here to label it a demonstrated Gamma-driver shock, choose a universal p=1 or p=1.5 exterior regime, or authorize exp-0020 as a convergence-certified 100 M chain.
+
+### Next experiment and artifacts
+
+Proceed with the expert's **rank 2 source-fixed transport-resolution contrast**, before rank 3 initialization. Keep the inner source hierarchy/spacing and initial gauge data identical, and use one bounded short pair through approximately 4.5 M with improved receiving resolution or delayed receiving transitions before the 0.875/1.75/3.5 M faces. Register actual aligned unions; start with one doubling of transport resolution, not indefinite enlargement. Sample current native characteristic rays near the source on a <=0.001 M ladder through the first 0.1 M, then retain the same fixed-interval/J diagnostics before and after crossings. The small early ray output is needed because full coarse-step plots cannot resolve a throat-scale launch. No static-profile targets, reference-restoring evolution operations or gauge-law change is allowed; diagnostics compare current fields and resolutions.
+
+Support transport resolution as an interface-error lever if the inner incident source profile is unchanged within interpolation uncertainty and the emitted constraint packet decreases. That alone does not establish continuum regularity: record raw Gamma/W profile changes, and require a stable physical width or a delta-insensitive finite jump with bounded limiting field profiles before a regularity-based admission. If width continues to track receiving h while Gamma grows and the field differences remain negative, kill the claim that wider transport regions alone certify continuum regularity; do not keep enlarging them without a source-regularity diagnosis. A pair by itself is not a new three-grid admission. If the fixed-source transport control does not resolve the issue, rank 3 tests **B_drv(t=0)=0 alone**, with every other initial datum and evolution unchanged, on a separate chain. Retain that initialization only if it reduces the measured outgoing disturbance without worsening near-hole constraints/horizon retention. Neither experiment was launched in T9.
+
+[t9-analyze.py](t9-analyze.py) reuses the T8 sampler/audit imports and the sealed native derivative helper; the handwritten derivative weights have the exact/runtime checks above. Reproduce `profiles E-low`, `profiles E-mid`, `profiles E-high`, `measure`, `check`, `figures` with `/Users/auroradysis/miniconda3/bin/python`, `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1`, and `MPLCONFIGDIR=/private/tmp/ems-t9/mpl`. Every command took seconds (selected profiles approximately 3.4 / 4.7 / 7.3 s), peak process RSS <=0.78 GB; at most three one-thread profile processes overlapped. No detached analysis or simulation was needed. Public CSVs are small (largest signed-profile table approximately 8 MB); dense caches are approximately 135 MB and retained with hashes. No output from another tranche was deleted. [COMMIT-MANIFEST-T9.txt](COMMIT-MANIFEST-T9.txt) records public artifacts, the fixed input/source provenance and dense-cache hashes.

@@ -1,0 +1,118 @@
+# T9: read-only exp-0020 front reanalysis; HEAD 9bd95c8; no commit.
+# SHA256  relative path; public artifacts below. Manifest does not hash itself.
+# No C++/Chombo/finder/equation/gauge change. No simulations or detached jobs.
+# Numeric evolved-field and sampled state arithmetic is Float64; CAS proof numerics 60 digits.
+# W derivatives above order 2 and g derivatives are explicitly undefined in dense caches.
+# Inputs: controller rclone check reported zero differences, all 13 plots per leg; selected 5 per leg.
+# Resource limit <=4 threads, <=8 GB; profiles used <=3 one-thread processes, max individual RSS <=0.80 GB.
+e2ce411d6797d4b898be06f881c75df2792cd3cac563c5c6cd97ff0b35772b85  Tests/EMSNative/README.md
+a6e770d7b39779896ede31039550efc1eebeda21257e640fa2bd0037ee3f14e5  Tests/EMSNative/t9-analyze.py
+66d5dad3bc5a566107155fc36ad382cd69a1c2ae7bf0a2dc951509c475cf5334  Tests/EMSNative/t9-background-sensitivity.csv
+a2639260f771e5028105ce29ae9b0c6686728afb83e27761bda65221160a103f  Tests/EMSNative/t9-fixed-window-scaling.csv
+560867a2c581913bb4d56d1df8d27b945ff8407601e0ce2db2db53044a3d0405  Tests/EMSNative/t9-front-census.csv
+2372a179947a7436a0b320dd323c0ea63f3a0517e11994ca5ee17756c6c56226  Tests/EMSNative/t9-front-metrics.csv
+d847bd12aa0d1973f3cf8b110cf8b9a8ce67cbe47344032e55bd7734f8f16bd0  Tests/EMSNative/t9-gamma-content.csv
+27b3d8f36b1fb58c08b8024aa6c021a70658d16db4708a78ecc43e5c276a618d  Tests/EMSNative/t9-initial-probes.csv
+13bdee3a448abc5542e6ecd60218ef5de6d486c62fe6f52409f5e283b8b1d169  Tests/EMSNative/t9-jump-integrals.csv
+7ba4df20170382c03c494ddb55ce11caefe1e02c9be2102f3401dfbad2b9d47e  Tests/EMSNative/t9-jump-summary.csv
+1d5e5f0494d24c2c5f280a9c1431c28e3b2b140711b1909751db85d6823b6335  Tests/EMSNative/t9-launch.csv
+4118be7f47a7837dae2ee69605fe5cbc3b00f585dcfaf27ab6304f007d312390  Tests/EMSNative/t9-profile-differences.csv
+8a0ca7827ccfe62292fb611b4deee5a26dd9c86852ef684f0b1269598ab4de98  Tests/EMSNative/t9-sampling-checks.csv
+ed01f5561408df80e15760ad4a9fad45df12b49fd65af6aa3c855ce76381675e  Tests/EMSNative/t9-sampling-qualification.csv
+a5419876d9cd4ce70bb65cda4b236585cc5f108d0346e74550f3e8e53f8e3779  Tests/EMSNative/t9-signed-profiles.csv
+c93d9748c18487467044b37335d604ff36baeddbfccafe92740ff8474e6b2877  Tests/EMSNative/figures/t9-gamma-constraint.pdf
+a3035ba58f8f24f571a07a97c0b54a016b7b60a68c59c43a9cd128be84badb09  Tests/EMSNative/figures/t9-gamma-constraint.png
+ea53a48676d787778eed406f4728232732b9c5cb6bd8b09eb4a080d5647fcd04  Tests/EMSNative/figures/t9-jumps-1p75.pdf
+a4d21c511f302c3b2d73fe4f1a54383675b294cbc3198f53b8b770766036ab9e  Tests/EMSNative/figures/t9-jumps-1p75.png
+9dbd416322fa2ca00174d4ee20bda17fabb292d39f26003dee4657ff516be491  Tests/EMSNative/figures/t9-jumps-2p625.pdf
+5aa1ae7f0518f70216a6c04fbb54beb87968584b87ea815fac0c46380987c7bb  Tests/EMSNative/figures/t9-jumps-2p625.png
+e094476beec2e0c0444c9ef1a6c08d76154d8c747a921c1895a27309b8cf99a7  Tests/EMSNative/figures/t9-jumps-4p375.pdf
+edbe1f60a73d22b19d8bebf808fa6e2948a60d7ca797263fdb3c09c7dc463f5f  Tests/EMSNative/figures/t9-jumps-4p375.png
+e445d6fbe3b69a9e9872d9fdd3ecc4a13e8a3a3e687f28813ca7b105f5a6e318  Tests/EMSNative/figures/t9-launch.pdf
+c874bd47835c0e80b836d3276f68098826177da9c692151caf30232916838f94  Tests/EMSNative/figures/t9-launch.png
+095813fe9adac2b2001fec77a3fe2ffd90bf2392d29e9554f46ec631d03ab3b7  Tests/EMSNative/figures/t9-metric-gamma-features.pdf
+3be678e5c5d352fc09c69124c821fb8204465c81da5d6b74f2274f39372e00cf  Tests/EMSNative/figures/t9-metric-gamma-features.png
+18aa86db76a60f69e9b467608275255aceb286968f29141b561d2aa73a854a0b  Tests/EMSNative/figures/t9-signed-profiles-1p75.pdf
+95815e0700e129f947290bce2d2c4e22e1d76ed9ed71a205b477dec8c133475a  Tests/EMSNative/figures/t9-signed-profiles-1p75.png
+51a5965c6a5e023b12d3497611773bf159d754f7a6a9a29670259b3f6097e70e  Tests/EMSNative/figures/t9-signed-profiles-2p625.pdf
+9af7032c100c6d73fb8f1e00356ccf075a7d86369960e463559614a029c60b27  Tests/EMSNative/figures/t9-signed-profiles-2p625.png
+539144dcd5901909fac9f4ad2d5db977b7312d5192b959ad30d220b40f141f33  Tests/EMSNative/figures/t9-signed-profiles-4p375.pdf
+9cb0359fc2828d23485bd8849f9269944ad1993b8bb840e7011bba39d3087599  Tests/EMSNative/figures/t9-signed-profiles-4p375.png
+9926b9a53300bea78f77ab975c0e5e7357ef645626bed69207599043e6001a25  scripts/cas/t9-characteristic-verify.json
+bb85ba44c9bf1019fda7239e153dad3ccad49a258f5b58aca4adeb37fd31c047  scripts/cas/t9-characteristic-verify.py
+890503ffb40cc5f2540f77809805b9eac2db6bd0d961554826effbe03e75c1c6  scripts/cas/t9-evidence.md
+# RETAINED T9 DENSE CURRENT-FIELD CACHES AND REPORT GENERATOR (not committed)
+# CACHE e5701765ca829c92e42ff27edb2e35c784cf76af3a4210f8e0ce546e724ca652  /private/tmp/ems-t9/E-high-0-axis.npz  1769952 bytes
+# CACHE 9abd9324238f34c992f4a016fd0a754f2950e202ec03dc345a57399ce2b8756a  /private/tmp/ems-t9/E-high-0-corner.npz  1801733 bytes
+# CACHE 41a74b295666bb32054b3f52b7e99bdb69183ad4b903b11b26fc1bc7010753cd  /private/tmp/ems-t9/E-high-0-equator.npz  1760602 bytes
+# CACHE a19c165603a5d542b8b96bd73ec9c0cbec9c4350e11f2972dab1ee906ecc8207  /private/tmp/ems-t9/E-high-0.875-axis.npz  3492572 bytes
+# CACHE ecfa5db645f580ebd8a3ce22f56b4a812122c7257f4b54ef62d74421ad254960  /private/tmp/ems-t9/E-high-0.875-corner.npz  3494102 bytes
+# CACHE 7a567ec045485791ead4e8aa22d05cfb70ea70595f5038f8d999cd95752a9e99  /private/tmp/ems-t9/E-high-0.875-equator.npz  3487165 bytes
+# CACHE e8ba02a3a4e4d9f5d3144bfdcf7b5e56fc0426bc13b26338000544201d7b54fc  /private/tmp/ems-t9/E-high-1.75-axis.npz  3469868 bytes
+# CACHE d9c987de2c27c4e2697184083792d1f721d2bcec654c68d0101cfaf83eedc8a4  /private/tmp/ems-t9/E-high-1.75-corner.npz  3463345 bytes
+# CACHE 5ef14ca89dd97dbd6046d5cd3afe6dc5acf51d96fbbdfdf2a656da2b6ed82ead  /private/tmp/ems-t9/E-high-1.75-equator.npz  3460210 bytes
+# CACHE de04145a554406be741186edf27a27b68605e8f53ddaee7bc4d5f3c4d36d2d16  /private/tmp/ems-t9/E-high-2.625-axis.npz  3464758 bytes
+# CACHE 8fe8707a6da3ce5d8867a2a2a87bcec3402244506ebbf05c58aad22da5fd8905  /private/tmp/ems-t9/E-high-2.625-corner.npz  3485663 bytes
+# CACHE ce124bd7813a7ece0a7005c2566ef86a6ba4e98746e293a94580a73c1cfabf8d  /private/tmp/ems-t9/E-high-2.625-equator.npz  3464987 bytes
+# CACHE 6d0ec0bb9c67201a7732ce8d37ef4eb4e69806b937a7adfa3f5937990268901e  /private/tmp/ems-t9/E-high-4.375-axis.npz  3445902 bytes
+# CACHE 9f63ae0c0233032d9383240161a630d399f98fa6029ad8bd9b786e1f388f4196  /private/tmp/ems-t9/E-high-4.375-corner.npz  3437337 bytes
+# CACHE 201a6021e1c98bfc953277737583ac0c2c69b4f027ad4a0833b8db461a0a04a8  /private/tmp/ems-t9/E-high-4.375-equator.npz  3449872 bytes
+# CACHE fd236a2ee0539840382576ea6f21458232ae004cb214e259c04b8a872c73f19a  /private/tmp/ems-t9/E-low-0-axis.npz  1790525 bytes
+# CACHE f4a16aa242a7249049bfb09425c9643c5a1506fb20fb1fbecca52fccdd201419  /private/tmp/ems-t9/E-low-0-corner.npz  1765634 bytes
+# CACHE 50b2835da8bb724d2e3163bb00de9a18d42b915bbaac1055872f1c2188b31b4e  /private/tmp/ems-t9/E-low-0-equator.npz  1796014 bytes
+# CACHE 42cdba1b520bb3f636dd4800a2c60716a166b1d4a6ac25b96f3adc4af154efa6  /private/tmp/ems-t9/E-low-0.875-axis.npz  3520537 bytes
+# CACHE 9cc731a65e0070fc9aed48f882577c154d1d95715d8fcbda21ddc9fcffd9f292  /private/tmp/ems-t9/E-low-0.875-corner.npz  3508318 bytes
+# CACHE 45e0cdc1bc2203d8452b84207758550a71eaa55e518ed181c8c6ac97a62a7c5a  /private/tmp/ems-t9/E-low-0.875-equator.npz  3521104 bytes
+# CACHE 1e7b56d56f712baf603a52d48d5e6d3fa9f0c5faf95ac13b04dde8fed581d926  /private/tmp/ems-t9/E-low-1.75-axis.npz  3486356 bytes
+# CACHE c0dbb636141df09debafc0f3ecc8951f205de7c143619866600111a84c2c6cb2  /private/tmp/ems-t9/E-low-1.75-corner.npz  3473173 bytes
+# CACHE 6950080cab75fff4092108bf23ebacb0c46a216e262ab7594b88b07e46524d51  /private/tmp/ems-t9/E-low-1.75-equator.npz  3482611 bytes
+# CACHE b108ac33b279680daf6c60aa679415ef28e735086054650f616fcc87e397e690  /private/tmp/ems-t9/E-low-2.625-axis.npz  3475191 bytes
+# CACHE c4492a8190c0282cc172cccae0ccb4075e9a9c644f751e9bc4d8eeec9bf52d37  /private/tmp/ems-t9/E-low-2.625-corner.npz  3491178 bytes
+# CACHE 7cc915fa9701837e23d8a74a9685b7e357bfd81f49b628b912f6402cf7e6b742  /private/tmp/ems-t9/E-low-2.625-equator.npz  3477882 bytes
+# CACHE bb9e22ae736b9b9eb996a978df1e6ab40dd6b3629915821f287d4a02cdb205a8  /private/tmp/ems-t9/E-low-4.375-axis.npz  3444638 bytes
+# CACHE c96ce6608e94f767ed88551287a9cf6b532a712bb5e6eccff35986a79598f7b2  /private/tmp/ems-t9/E-low-4.375-corner.npz  3446276 bytes
+# CACHE 97ff1b01accc83de6b24af88a3f01c92ec10f30da4119f37e99227289130140b  /private/tmp/ems-t9/E-low-4.375-equator.npz  3448456 bytes
+# CACHE 58c89ca4488d42e59d38694a73dc999c2a365e11afc59956cb5d73c781e9051e  /private/tmp/ems-t9/E-mid-0-axis.npz  1804196 bytes
+# CACHE 7b71a24eccf44f9a1bf5999a4b7c92c2ec38a8ecc2f9e2a6cd9a4697969c8a9f  /private/tmp/ems-t9/E-mid-0-corner.npz  1800951 bytes
+# CACHE 8981bd7765471c711f6acce13313698079b83e9e82d0d978cf392c2a10387e47  /private/tmp/ems-t9/E-mid-0-equator.npz  1807795 bytes
+# CACHE 786353a8b51a3189435e9e3088655b12ea30875a1d7c418b00284f14402675d8  /private/tmp/ems-t9/E-mid-0.875-axis.npz  3508879 bytes
+# CACHE 2fbca9f86d40d2f39ad5afa7e416c631ce5d6b0e0102df260316177d987a3fa2  /private/tmp/ems-t9/E-mid-0.875-corner.npz  3500088 bytes
+# CACHE 82573bc850928f8840367988a2052184f1a468307d1593b313f36be24a20acc3  /private/tmp/ems-t9/E-mid-0.875-equator.npz  3507381 bytes
+# CACHE 65fbf6ec898a90dec00677d2c94aff52494df10d28b44830e69645065da1043b  /private/tmp/ems-t9/E-mid-1.75-axis.npz  3476834 bytes
+# CACHE df1097de0ac2d7ea1e3c62145e7393431c823bdeab244ddd6c5c751fbd74f491  /private/tmp/ems-t9/E-mid-1.75-corner.npz  3465490 bytes
+# CACHE aa0d7f3a6c47635243320cd0f0bfa71c9eec19508da00cdc53c8501966f40738  /private/tmp/ems-t9/E-mid-1.75-equator.npz  3471180 bytes
+# CACHE 59c7342ab929f267fd4877392a3d630806257df6b35b7c23be75d9751bcb2e16  /private/tmp/ems-t9/E-mid-2.625-axis.npz  3473993 bytes
+# CACHE a2a9a10f0f89efbf7159cafefc4f62c04d74d7c7124028a606690c57b079a9e0  /private/tmp/ems-t9/E-mid-2.625-corner.npz  3486816 bytes
+# CACHE 79f3f73381b15b82c8b0e8d2cd8967f241d0d271c18696c48391400d091b506f  /private/tmp/ems-t9/E-mid-2.625-equator.npz  3473799 bytes
+# CACHE 1561f5781d57937d9ff7beaacf635bb1fec9436af3889a8782a67450b923bcf5  /private/tmp/ems-t9/E-mid-4.375-axis.npz  3445566 bytes
+# CACHE f897159645a5973839fadf82234a8237890f944d3ab26fd8af9bf47c40d6c29d  /private/tmp/ems-t9/E-mid-4.375-corner.npz  3443827 bytes
+# CACHE 97d7ed4c4770780da6765dc5c63ccc47d920700430a2c5a1a929ec6a65995d85  /private/tmp/ems-t9/E-mid-4.375-equator.npz  3450844 bytes
+# CACHE 709e740641074f7e0e8c7fda4651f87717b44156e5f25eb3ef7c5a7e73809340  /private/tmp/ems-t9/E-high-metadata.csv  6332 bytes
+# CACHE 31516f8258bc610528bbb3d75e09e5fb982485e0fd6696580861e73d3c7c9d1e  /private/tmp/ems-t9/E-low-metadata.csv  6134 bytes
+# CACHE 12068ef7e1ad0f039d2cf8f586c34a8f2c7bb00aff729a87769f7641fa3654ae  /private/tmp/ems-t9/E-mid-metadata.csv  6243 bytes
+# CACHE 98a0b7bb7bbb4a991d4465f2271bc9019424c829c92ac4c23dfb3587d76729d9  /private/tmp/ems-t9/report.py  25331 bytes
+# READ_ONLY_SOURCE 879d9cf7c2d62765180074449829d9a22942c3594ca386e22b8cfc26817a5550  /Users/auroradysis/Workspace/EMS-deps/worktrees/consult-6-reply.md
+# READ_ONLY_SOURCE 36b100726ebd522346655e931f2cac395ee13d1f568e0f0145db5744ded295f7  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/audit.py
+# READ_ONLY_SOURCE 64b3cf370aa10385e698307e0f88048603008d97c3956d59f8905b4ff67eefa4  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/params-E-low.txt
+# READ_ONLY_SOURCE 29eaefb63242e2daa73e8a6b25f62b91a1dd5394c7bbb829d3ae2d7b90a4dcc8  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/params-E-mid.txt
+# READ_ONLY_SOURCE 47720008a301ccfb03620ced4bd115bed4446dab2f116fec99344ea09fda9de8  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/params-E-high.txt
+# READ_ONLY_SOURCE 8223cb716710f5eb7842d716bebde8b0b1cc053d002324a2eebcf56f161b4c5a  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Source/CCZ4/ExperimentalGauge.hpp
+# READ_ONLY_SOURCE beb935bd2dc3123120a59b1f3af1d750c9e9119681c5455ce5dac85ad81cb42f  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Source/Cartoon/CCZ4Cartoon.impl.hpp
+# READ_ONLY_SOURCE ce373b6b7f2df10849bf4f7f1d46dec19287f62edbb5edc2d309f39eb9ffe160  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t8-analyze.py
+# READ_ONLY_SOURCE 0ca30a9522f2fcd483223c69e0c973413ce7f4b2f0a79c461c00c0f195e6141e  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t6c-analyze.py
+# READ_ONLY_SOURCE 14cfe51b9b7d4ad843979c8b71e77bf64ce7ea8be0228b312f907bbec30c4ba4  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t5-analyze.py
+# READ_ONLY_PLOT E-high 0.0 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000000.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 0.875 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000009.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 1.75 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000018.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 2.625 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000027.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-high 4.375 1082075480 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-high/plt/EMS_Plot_000045.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 0.0 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000000.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 0.875 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000004.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 1.75 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000008.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 2.625 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000012.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-low 4.375 205191856 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-low/plt/EMS_Plot_000020.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 0.0 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000000.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 0.875 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000006.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 1.75 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000012.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 2.625 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000018.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES
+# READ_ONLY_PLOT E-mid 4.375 470523432 bytes /Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000030.2d.hdf5; CONTROLLER_RCLONE_CHECK_ZERO_DIFFERENCES

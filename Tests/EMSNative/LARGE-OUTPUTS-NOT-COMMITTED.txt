@@ -10,3 +10,9 @@ a7279f38d4955f95539d120d034e90c0c3e5d7314bba47fca1199425c62f97cf  1136938  Tests
 0ccc333de873c81717c3fb88f8cafc71ddcb7e051ca6dd80ac7d3abb32e2a5ac  3103684  Tests/EMSNative/t7a-native-metrics.csv
 6a2daab94149fb815b09c1b628cda856539842a25dea23159ccd8cb95c269859  11719069  Tests/EMSNative/figures/t8-pulse-map.pdf
 dbdd4310e20ef4bd02b59085031341ed15618935f240afbe48ade1034ecc3979  4134037  Tests/EMSNative/t8-native-curvature-candidates.csv
+# T9 (regenerate with Tests/EMSNative/t9-analyze.py, README § T9; PNG versions of the figures are committed)
+a5419876d9cd4ce70bb65cda4b236585cc5f108d0346e74550f3e8e53f8e3779  8043223  Tests/EMSNative/t9-signed-profiles.csv
+c93d9748c18487467044b37335d604ff36baeddbfccafe92740ff8474e6b2877  1309698  Tests/EMSNative/figures/t9-gamma-constraint.pdf
+18aa86db76a60f69e9b467608275255aceb286968f29141b561d2aa73a854a0b  1262952  Tests/EMSNative/figures/t9-signed-profiles-1p75.pdf
+51a5965c6a5e023b12d3497611773bf159d754f7a6a9a29670259b3f6097e70e  1229001  Tests/EMSNative/figures/t9-signed-profiles-2p625.pdf
+539144dcd5901909fac9f4ad2d5db977b7312d5192b959ad30d220b40f141f33  1268530  Tests/EMSNative/figures/t9-signed-profiles-4p375.pdf
