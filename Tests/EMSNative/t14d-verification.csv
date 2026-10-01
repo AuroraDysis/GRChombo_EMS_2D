@@ -1,0 +1,13 @@
+check,value,result
+I8/I10 centred polynomial moments,20,PASS
+retained I8 bit identity,4117680,PASS
+57 x 16 screen rows,912,PASS
+unqualified table retains each row,41,PASS
+initial floor versus sampling counts,16,PASS
+frozen endpoint contraction,0.16595501546625843,PASS
+5x denominator bounds unbounded when required,0,PASS
+32 x 57 direct constraint orders,1824,PASS
+direct orders reproduce norm ratios,1824,PASS
+measured 3 GB process/tree caps,457703424,PASS
+extraction markers,4,PASS
+unexecuted Stage D draft,1,PASS

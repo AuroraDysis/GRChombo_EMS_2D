@@ -1,0 +1,173 @@
+T14d at ba95217; I8 and |I8-I10| only; no further variants, evolution, SSH or commit.
+All numerical processes measured; process/tree cap 3 GB; serial OMP=2 BLAS=1.
+Input hashes below were pinned before extraction and rechecked by the manifest.
+c4015aba43d8aca618820f64588f8585466cdc16b4682dec9fba6889283bafa6  437368  /private/tmp/ems-t13/replay.ex
+955bd9feb77bbb6dced5d6b49ba29cf1d70924b331a41d4d08a4ddd447b5bceb  16094  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t13-analyze.py
+2c522ee93e433ff2f1fb13aa8bd27ccd7127167fdafe515ba6ec33cceb8d4727  10382  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t7-check.py
+5ea2ddeb0cd9ece2bd8a8ac2192c12e11f4eb36beffae38af51e178fefa0741f  343285  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14-screen-history.csv
+c18cd986e13b863040276655956e6b7998abc82bbf9fa2e00f448c5ee4b283cc  74650948  /private/tmp/ems-t13/evolution/maximal/t13-t7-stage-L12.xz
+c5de9d712d4beb56ac5f38be6890cc92bd83060ce0863b6386bdf7b4a474d550  392247116  /private/tmp/ems-t14/evolution/max13/t13-t7-stage-L13.xz
+01b8ddcd5de83a0be85aa927722d9e7e07de356d69f7f81166082c7a0aa4d411  2346743832  /private/tmp/ems-t14/evolution/max14/t13-t7-stage-L14.xz
+6e66377685508b64332b047b320be3b6d9f45b9eb6ef14eb3fe44dcbd93186cd  3826608720  /private/tmp/ems-t14/evolution/max14-half/t13-t7-stage-L14.xz
+36b100726ebd522346655e931f2cac395ee13d1f568e0f0145db5744ded295f7  13437  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/audit.py
+47720008a301ccfb03620ced4bd115bed4446dab2f116fec99344ea09fda9de8  3304  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/params-E-high.txt
+64b3cf370aa10385e698307e0f88048603008d97c3956d59f8905b4ff67eefa4  3243  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/params-E-low.txt
+29eaefb63242e2daa73e8a6b25f62b91a1dd5394c7bbb829d3ae2d7b90a4dcc8  3303  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/params-E-mid.txt
+d0a3d7f73467b7d2b30ff76d89ddc675139445a23f4ea10995e8c1f2095537b8  36746  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/submit-contract.md
+3482190a1dc0824ba9f45f659c4e44396904bf2c042934f735fbf02dde511adb  265674  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/COMMIT-MANIFEST-T14.txt
+5010bd7ffeb87a347043520ad88f8e28a413c96036bde80f08de2f18d93d0510  479661  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/README.md
+03db6ad8f88d3903b81befa2ff4c2e4f9c6a3ffe0da5f4093b57f88f5ed11fd3  46469  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/figures/t14d-constraint-orders.pdf
+656f66b2f7d521f683186644023adc120c3c58b9e1ab194176dc857d284cc816  750951  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/figures/t14d-constraint-orders.png
+7c65ae213d38db6af63b98208562dac4e1ec23879ebd63c89888c0a00e104bb5  45674  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/figures/t14d-significance.pdf
+cd454f494bd2481d4e2628e8f3c5ffce7390690f1de589d3254ca671a01e1c57  715179  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/figures/t14d-significance.png
+a2f16d22772fdb787e18a9c482d0b3f060f730f3e6a9146f071cd6ca3b6e27b3  6572  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t13-run.py
+7e484471b3454968652763a690bf76af6d1dc825d02c44e21f007d4a1a63e8f8  5526  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14-census.csv
+c75eb1d85cd4b5314d2d033981088e8bb6094560f2b6cf38aadb2dca4be5b1bd  1509  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14-native-lobes.csv
+14256679ad963596e1fd31e4704fdc025381949950807d40d602dc3929dfe396  927  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14-run.py
+2a8d66b5a015c90f53704d638d22034a1e93e2ab124cff7d6c4f6bfc28acbb64  57889  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-amplitude-history.csv
+8e411e27fd18df8027d320828ae7a8be00ce0910143882c620a90e39e476b20d  16506  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-analyze.py
+9a34d744102efd557c63e1b5216fc4d1bc51eaca631689cfdb971bb37bcc7584  332896  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-constraint-history.csv
+b6dc3c2d2604af853a3c75a1c8382b6159df1651a291d8ca5a7260ae3bf20a16  391925  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-constraint-orders-history.csv
+ac777373f0b6ee2f41fb478cce7c5f255d49e9417ba0b641c8e91ba04730d8c9  6584  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-constraint-orders.csv
+995af1c42a00c18d16c228179475488a19ef50ce9660d811ae9b12ee3d0a6de1  88  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-identity-max12.csv
+a26a106ff4bceeb5b041a2f8a5b9a7192ab5a25aec791d9280465a8561bde418  88  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-identity-max13.csv
+7299fc78f56e0f18d414934b54d4f85a5d6d39792103b9868f9d130f78c70416  98  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-identity-max14-half.csv
+d5f5ef619bcc95b1a95c1b45f24195d24f1553cf6614ac0237972844118bc189  88  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-identity-max14.csv
+227ab8abefead9076ba92bd3be1d448b299ce90e35e9881fb63cf2dbf5fa39b1  3732  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-registration.json
+569ca8dd0e6aa8d4985756318cbf67545e66658aada7af256a62867b3e98be3f  31932  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-report.py
+80c4112e89955613ec25b765931b4184604db61e2f5f75979990240bfb7eaf9c  2733  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-resources.csv
+8558a7fa650590feff617f195773ceda5ad5dbbe57e228c9f7c0441a94f64127  353745  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-screen-history.csv
+acacdeb173f9b4481a8b1a997fd4377ca40ea5add75eb56da97a35b7c0a8b42e  3999  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-screen.csv
+992b37d9e03ecae7ca47fa8ba075b38cdfc0c1ff53fce1a534017a3de3e43016  792  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-stageD-cost.csv
+ec397b73aff5f4eb37c275978ff282465565efdc93a80fc4f3870ba942ea537a  10800  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-stageD-design.md
+13eb09dbd79e3841457c94eb03577d3567952ee1fac6d6153cec6d42d4217a9a  880  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-stageD-masks.csv
+10f28042494bc0f6e6fafb39643e01841cc375c6d04d7321326a309a9c543533  14039  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-unqualified.csv
+012376d5b835a13bca3e9a607ec91378104ac01827031c442e7b0d35ba151231  504  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-verdict.json
+1ca63a1ffcc3f120f5d138306887849b8a93861d965a46ca86bb847a1263ef1c  529  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14d-verification.csv
+1d9d4e0542c5a6878ec504cfd9b7f1b2b393dc368f5ec1fd3c1a7134e689bf6d  911  /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t8-run-audit.csv
+a2b63325b28b3b344f17045c6bc004b70c1d8ae80cd97d6203e6f43f2a821112  82  /private/tmp/ems-t14d/resources/t14d-design-segments.child.json
+57a067410581aca418075b551627da01121dbcc4279c8e6e586e4cefcc406cc5  747  /private/tmp/ems-t14d/resources/t14d-design-segments.resources.json
+bcb9a000debdc9190fe6122841f8aee8c1af8187ce177ccad9581cfd24b85f29  53  /private/tmp/ems-t14d/resources/t14d-design-segments.time
+d8c1c735d08501d40231013e8d60823a2a03754de0d782ecede77b227327df73  81  /private/tmp/ems-t14d/resources/t14d-native-max12.child.json
+60b1fc1ce513f02f1b283ddd1f932fbe959a65a4878e28a5605bb9ca28cc5bfe  834  /private/tmp/ems-t14d/resources/t14d-native-max12.resources.json
+27a504fb4edc4e32e4b93272f9ecf02c71d4f7681920ef63e473016b6a7f03fd  53  /private/tmp/ems-t14d/resources/t14d-native-max12.time
+d739048633bd448a9651c7d3bc44effd7aa07ecfca4c8ea9060c32110e8eae75  81  /private/tmp/ems-t14d/resources/t14d-native-max13.child.json
+578f2edfc0748940fe5d2c213d6b89efa4b5d33ecf1d516f12584840a31755c1  833  /private/tmp/ems-t14d/resources/t14d-native-max13.resources.json
+76108a0c5b5b970957277c3ae123ea6b70066d45c75764f9b4f8cb1d7ce58c43  53  /private/tmp/ems-t14d/resources/t14d-native-max13.time
+43586774ec58ea1370d504e881278505a41b03caffb657ec0769d3167770b64e  81  /private/tmp/ems-t14d/resources/t14d-native-max14-half.child.json
+f60bbc799abf70c859ed9906bb26c7b5a328bb40aa84cdac09a42459b6490ecb  848  /private/tmp/ems-t14d/resources/t14d-native-max14-half.resources.json
+a506c55c232576388dc2b02050560fcb72a167da4f7089ee3510e656b24a8443  53  /private/tmp/ems-t14d/resources/t14d-native-max14-half.time
+a8ff323d55ae71be074eaa93a19f8ac30468f52d5b4b49f397c0ddf3c28d9b37  81  /private/tmp/ems-t14d/resources/t14d-native-max14.child.json
+df52b804d0198415d87b86b51533fcb44eb9fca97bde438a87f280c09d6135f9  834  /private/tmp/ems-t14d/resources/t14d-native-max14.resources.json
+8d7781027953298b00535d01a132acce9ede7e006c989211b90546ca1fd2d7a2  53  /private/tmp/ems-t14d/resources/t14d-native-max14.time
+a42ff687736b421293deb831fa9ec8a234150eeb76a0381a4052d1d79edad796  82  /private/tmp/ems-t14d/resources/t14d-register-corrected.child.json
+220352e851e9f684dda2ed78beaf63e2482b94b176648ace8b2fcf84ea599637  860  /private/tmp/ems-t14d/resources/t14d-register-corrected.resources.json
+5727260c2a96bebda720c2da30c85beef94ec66141d547ddf61ee982fcfc3614  53  /private/tmp/ems-t14d/resources/t14d-register-corrected.time
+0f62ece96b152d70f1231f235ce46f7328567027639bc327d0bb9ce152167ebc  82  /private/tmp/ems-t14d/resources/t14d-register.child.json
+47c770fa9fd75484a900a2ddadb1ca26e187d5039c54530ebc6d2c5ecf398a64  684  /private/tmp/ems-t14d/resources/t14d-register.resources.json
+721e89def8a61e8eb53304ab43c7d264772e16723a600419abc9d3f6957fbb34  53  /private/tmp/ems-t14d/resources/t14d-register.time
+2c2dca47b168b1cf36086d4bf36457ee4e2b4e65a24305ae7b80385696b318e9  82  /private/tmp/ems-t14d/resources/t14d-report-final.child.json
+194a498d8b82b18aa7106f1b2b5cfeda85cde550fc982171081e678c74992904  743  /private/tmp/ems-t14d/resources/t14d-report-final.resources.json
+a7af451cfcfc5bed8bf90699f8edfb55750af9db7937ea1f0d09495e73e71241  53  /private/tmp/ems-t14d/resources/t14d-report-final.time
+3b0412f0d2936a15e46acb7188a8bd0f0b205cfe72ac6352fb22ddc4501ae61c  83  /private/tmp/ems-t14d/resources/t14d-screen-counts.child.json
+28e5d612f4792852fc99ec74a0f352305c332b6c748f69009709cbddfea68d03  858  /private/tmp/ems-t14d/resources/t14d-screen-counts.resources.json
+cc4c7997e28f22ebcb2835deef6852f70d149c6cdd2aa8a4f6335cf3a5349db4  53  /private/tmp/ems-t14d/resources/t14d-screen-counts.time
+1db8b733f934f55c09507245fa06b775bb99f06b0eb14d101ac0591d9dcc4c51  83  /private/tmp/ems-t14d/resources/t14d-screen.child.json
+4a0cf03fad93c6f6a991e340d2dd42c7ded001536523e709f72b6bbdfee37b6a  846  /private/tmp/ems-t14d/resources/t14d-screen.resources.json
+1e63705722c8fc21e33e8a4fec6a9419180215e27abe51dd6f5d534f01ba8a27  53  /private/tmp/ems-t14d/resources/t14d-screen.time
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  2  /private/tmp/ems-t14d/t14d-extract/done.exit
+ba6ebae0b1256dca1cfeaba1cf25587ff125b43cb69ff46245e406247c5a8451  53  /private/tmp/ems-t14d/t14d-extract/launcher.log
+28f8cf23892550a8fea9b67cbede50bd815cfb9e9c6b5f9cc32c272e7cd756d5  6  /private/tmp/ems-t14d/t14d-extract/launcher.pid
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  2  /private/tmp/ems-t14d/t14d-extract/max12/done.exit
+3c0ff8f327b0c5260af51c05e37510701468ac3258dfc61d764f2e31a91abeab  531  /private/tmp/ems-t14d/t14d-extract/max12/run.log
+0be34609087ffd8f5f6ae845eb67309f8743cd359958f6176b074e99addada63  83  /private/tmp/ems-t14d/t14d-extract/max12/t14d-extract-max12.child.json
+0bffa05a1ef25ccc6a752d3bfdd45fdb22bdd2798b2679047935ccba19ecf082  1085  /private/tmp/ems-t14d/t14d-extract/max12/t14d-extract-max12.resources.json
+1be6a90a564617a7738d67ffb5b7765ce3f3e30f212556ddfc8acd3f6ded260e  53  /private/tmp/ems-t14d/t14d-extract/max12/t14d-extract-max12.time
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  2  /private/tmp/ems-t14d/t14d-extract/max13/done.exit
+edb657cfd392351582cb02ecb74fb1c3f5d47b07fc0e92a6fd699f86547a27d4  551  /private/tmp/ems-t14d/t14d-extract/max13/run.log
+9084c1c953d358abc5437b944e2f0b20cd5844a13210dded02d241316717ab1a  83  /private/tmp/ems-t14d/t14d-extract/max13/t14d-extract-max13.child.json
+8861673f68d7eb692ed3fef8bb0aa476c0a8dc1258b2d592e814ee409ed3a9b5  1086  /private/tmp/ems-t14d/t14d-extract/max13/t14d-extract-max13.resources.json
+6716debafe127112579729465321fa1076c18bd158903d3814af6d5e8406b7bb  53  /private/tmp/ems-t14d/t14d-extract/max13/t14d-extract-max13.time
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  2  /private/tmp/ems-t14d/t14d-extract/max14/done.exit
+90843cdc2aa2cc15c93d317c65e8ff90e08802d47b3333be613d964cfa367c46  552  /private/tmp/ems-t14d/t14d-extract/max14/run.log
+5ddceb983deabc2b39ab82a01b79e8c6ef37c4634fac9823b56150d728942e0e  83  /private/tmp/ems-t14d/t14d-extract/max14/t14d-extract-max14.child.json
+cf093b2af7ec7922f210305f033b97c039f7f89f0f3804f0699c72e6401b7f51  1086  /private/tmp/ems-t14d/t14d-extract/max14/t14d-extract-max14.resources.json
+77086658d9466ffa2de5acc96d8637bd74fe71a41adc6bdadd93b345e7a5b602  53  /private/tmp/ems-t14d/t14d-extract/max14/t14d-extract-max14.time
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  2  /private/tmp/ems-t14d/t14d-extract/max14-half/done.exit
+725429f727da4469bc48a4c32314baef3caec2327fbe51e4c3ad4271d2e58d00  557  /private/tmp/ems-t14d/t14d-extract/max14-half/run.log
+fa9a2ce9fb082f63f68e1061200e6c639316d9ad6162c565b48cb07b08dd9aa8  83  /private/tmp/ems-t14d/t14d-extract/max14-half/t14d-extract-max14-half.child.json
+52871d7b356b3741e00b38b460ab84c2698262382c3198ca536bcf0633468b6d  1102  /private/tmp/ems-t14d/t14d-extract/max14-half/t14d-extract-max14-half.resources.json
+6c45a0b3ac08baef7b2115a00af2330e6e03cdc90272f1e8e1eb97f8dfa3e148  53  /private/tmp/ems-t14d/t14d-extract/max14-half/t14d-extract-max14-half.time
+e22eb0bf1002c30275aafde1f9824cdc0603acaa30f528282760248c9629153f  1354  /private/tmp/ems-t14d/t14d-extract/plan.json
+8490f6086f21b36f9570c2b9e0f217236898042b2a1ce5ac426d63c37bfc7348  83  /private/tmp/ems-t14d/t14d-extract/queue.child.json
+47a55741cfab757003eafe7ec8ee4d55284cca2c4c6ae5b8587bea4522ad652f  2564  /private/tmp/ems-t14d/t14d-extract/queue.resources.json
+dbd7ac083198c7f2ea1bc5864836cb5608bfc37f00772dde3097549f7b03d1c1  53  /private/tmp/ems-t14d/t14d-extract/queue.time
+2e0f47aa5897b54f38951a003a46e09f31352dfba8d10478de5113bb3181b061  5840208  /private/tmp/ems-t14d/t14d-max12-axis-profiles.npz
+2cb859529d556b26b6eafe81d48774bb09cdcdfa31190b7e07edc916c5ed8abb  6406338  /private/tmp/ems-t14d/t14d-max12-diagonal-profiles.npz
+42c603c2e8f5ed6ac698cf598bead5bf8f8150c0992c43fce257caace4af4c84  451  /private/tmp/ems-t14d/t14d-max12-extraction.json
+5f8bd45591120da2c9312f66b97b7053333a4652e0a5991001602a5c668dd887  24377760  /private/tmp/ems-t14d/t14d-max12-q.bin
+f8bcd33519e8127487525e9408a1e93ad34e7d5e68f07f636865d27e718e0036  5763119  /private/tmp/ems-t14d/t14d-max13-axis-profiles.npz
+a312c2899aa9f44303c57a66afbb340cd515ca864b99ac801bc3be5c7780c0a1  6346391  /private/tmp/ems-t14d/t14d-max13-diagonal-profiles.npz
+e64641f50d6f9ca64f8d320e1e5b5e523e7cf21a4c886cc2195233fc55517631  471  /private/tmp/ems-t14d/t14d-max13-extraction.json
+e99bca4e06268d0e8f3121483a1e9a4298ef64bbb824041c5f232e37e76adc19  48509280  /private/tmp/ems-t14d/t14d-max13-q.bin
+58d7eceac6f9778210141301f08ba536c717895e6f7d7db56226f8d127a9bba6  5707664  /private/tmp/ems-t14d/t14d-max14-axis-profiles.npz
+9952d89d6abdc46010db795d9ea08daacb07847bbe6c15913606693cc8b9bf78  6274915  /private/tmp/ems-t14d/t14d-max14-diagonal-profiles.npz
+0aa9175d12873a3559450dbba66380287a27d56d07dc74bb2abafd010c2b34d0  472  /private/tmp/ems-t14d/t14d-max14-extraction.json
+959c8bca5a057cb49c32817d74d42041851cb03b19a1dddddfe18ff1e296931f  5707392  /private/tmp/ems-t14d/t14d-max14-half-axis-profiles.npz
+fcb197160accfd97ff065d57edde768ac2e0f82860c6343436bbb314b7d8f2b8  6274533  /private/tmp/ems-t14d/t14d-max14-half-diagonal-profiles.npz
+90eecc33d0a543749e79be999e5968d9fbbbd6b5d9eab61f162b75de8d34c661  477  /private/tmp/ems-t14d/t14d-max14-half-extraction.json
+25f11dba861488fe51635dc030cb3994ba883f942b9734cb85a2af0b5e5ae977  87004800  /private/tmp/ems-t14d/t14d-max14-half-q.bin
+60cf1c436335a82f35e3def748c674c5ee27b5bddba4c4fd3c40ec5845512399  87004800  /private/tmp/ems-t14d/t14d-max14-q.bin
+9f11db180744beca6f65d5b6e1a7b7f24974542850edff002614c5dc9c201339  148951  /private/tmp/ems-t14d/t14d-mpl/fontlist-v390.json
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  2  /private/tmp/ems-t14d/t14d-reporting/check/done.exit
+e6da736aa0d5856c9425729296fe12a62cbe0cc2b725617fa3c73cfe9945ec85  1213  /private/tmp/ems-t14d/t14d-reporting/check/run.log
+b9649241beb7903628b1e5dba5db0e7f487257cdcf4dd661c491b39996268431  82  /private/tmp/ems-t14d/t14d-reporting/check/t14d-check.child.json
+b754607a2c4c3cbec63756de545b704e2b0c1530eb9ecfd21baf64c29d678879  855  /private/tmp/ems-t14d/t14d-reporting/check/t14d-check.resources.json
+e06a54104870c11eb858db1b0e8bc4738fdcad2a7e4135f73b5c06aa70c957f7  53  /private/tmp/ems-t14d/t14d-reporting/check/t14d-check.time
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  2  /private/tmp/ems-t14d/t14d-reporting/design/done.exit
+4df6ccbf50260ddaa735f08a3430726e4b5b9ea271890f5a0dfbb840f339b1d4  121  /private/tmp/ems-t14d/t14d-reporting/design/run.log
+6bc3e84bf0cade7313d606af3676e422df22b983890a2c4971a1a4539b969324  82  /private/tmp/ems-t14d/t14d-reporting/design/t14d-design.child.json
+e2b23f7f25ae69ebdc4fe693f25ec2e04df4def68938c612ae42832eeeae8548  858  /private/tmp/ems-t14d/t14d-reporting/design/t14d-design.resources.json
+ad13e07fe9d2516a2b4e60e5a462ad1edbb4a9afbddcc1f2e80f702985c5418e  53  /private/tmp/ems-t14d/t14d-reporting/design/t14d-design.time
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  2  /private/tmp/ems-t14d/t14d-reporting/done.exit
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  2  /private/tmp/ems-t14d/t14d-reporting/figures/done.exit
+42b84dc44cb0bae9e781f28c1cab4f4eb13ea4bf35228c6926e33911ce281cad  153  /private/tmp/ems-t14d/t14d-reporting/figures/run.log
+625be36c5d55b7687c8b12d43bf973e27aa72fdd080ca98d384549c3fdd4409d  83  /private/tmp/ems-t14d/t14d-reporting/figures/t14d-figures.child.json
+a01982e8797921d7f1237145703b4c9c1aa47d462e7eeb9bee71a59c5954127b  971  /private/tmp/ems-t14d/t14d-reporting/figures/t14d-figures.resources.json
+acbe4f4121c53f45035b05668224437f269bae6b69f6d1d715cf16ab87ae2413  53  /private/tmp/ems-t14d/t14d-reporting/figures/t14d-figures.time
+ba6ebae0b1256dca1cfeaba1cf25587ff125b43cb69ff46245e406247c5a8451  53  /private/tmp/ems-t14d/t14d-reporting/launcher.log
+25d36fdaa5e85353a28a5d86ada64c737524a4598d50e3761f0550a03b879ecd  6  /private/tmp/ems-t14d/t14d-reporting/launcher.pid
+ac7b487d5b9d5562ead150a066841166c40aa70b657e31b3625debf2d4f36f2d  1247  /private/tmp/ems-t14d/t14d-reporting/plan.json
+57512dd94d21dd8174b16349111c8d0c4dc45a8aaaf498f45b5933c3c495827d  83  /private/tmp/ems-t14d/t14d-reporting/queue.child.json
+f5cb9b24201b926b6bec7c465b52e2475c4ecac3f49aeefef017bf7d9e4603c6  1891  /private/tmp/ems-t14d/t14d-reporting/queue.resources.json
+2da428772cb91d64a6e4b2da242da2ca9efe4eec889c9247184b0f7280e3fd2c  53  /private/tmp/ems-t14d/t14d-reporting/queue.time
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  2  /private/tmp/ems-t14d/t14d-reporting/report/done.exit
+fc9b5cd83d3957a2f2e9dc53fb618d39babddf34c97cce6ef32bab4e2d32510e  74  /private/tmp/ems-t14d/t14d-reporting/report/run.log
+464663f1ec08826175f641518e766844473ea198130aad2638e6fbb2fd2a6aae  82  /private/tmp/ems-t14d/t14d-reporting/report/t14d-report.child.json
+6001b932252adcc31cf2b486df2e50d58a0a6fb931dd568b61f57f37e5d535b6  751  /private/tmp/ems-t14d/t14d-reporting/report/t14d-report.resources.json
+a2f400d1fec445da456b3ca52b70467f477573205c2318ef7e748be12bd3ec1e  53  /private/tmp/ems-t14d/t14d-reporting/report/t14d-report.time
+RESOURCE t14d-design-segments peak_RSS_bytes=52674560 tree_bytes=17924096 returncode=0 record=/private/tmp/ems-t14d/resources/t14d-design-segments.resources.json
+RESOURCE t14d-native-max12 peak_RSS_bytes=17170432 tree_bytes=39419904 returncode=0 record=/private/tmp/ems-t14d/resources/t14d-native-max12.resources.json
+RESOURCE t14d-native-max13 peak_RSS_bytes=15974400 tree_bytes=37814272 returncode=0 record=/private/tmp/ems-t14d/resources/t14d-native-max13.resources.json
+RESOURCE t14d-native-max14-half peak_RSS_bytes=17645568 tree_bytes=40943616 returncode=0 record=/private/tmp/ems-t14d/resources/t14d-native-max14-half.resources.json
+RESOURCE t14d-native-max14 peak_RSS_bytes=16334848 tree_bytes=38830080 returncode=0 record=/private/tmp/ems-t14d/resources/t14d-native-max14.resources.json
+RESOURCE t14d-register-corrected peak_RSS_bytes=74219520 tree_bytes=109740032 returncode=0 record=/private/tmp/ems-t14d/resources/t14d-register-corrected.resources.json
+RESOURCE t14d-register peak_RSS_bytes=16613376 tree_bytes=19070976 returncode=2 record=/private/tmp/ems-t14d/resources/t14d-register.resources.json
+RESOURCE t14d-report-final peak_RSS_bytes=57344000 tree_bytes=18464768 returncode=0 record=/private/tmp/ems-t14d/resources/t14d-report-final.resources.json
+RESOURCE t14d-screen-counts peak_RSS_bytes=106135552 tree_bytes=141459456 returncode=0 record=/private/tmp/ems-t14d/resources/t14d-screen-counts.resources.json
+RESOURCE t14d-screen peak_RSS_bytes=122880000 tree_bytes=154468352 returncode=0 record=/private/tmp/ems-t14d/resources/t14d-screen.resources.json
+RESOURCE t14d-extract-max12 peak_RSS_bytes=199229440 tree_bytes=229015552 returncode=0 record=/private/tmp/ems-t14d/t14d-extract/max12/t14d-extract-max12.resources.json
+RESOURCE t14d-extract-max13 peak_RSS_bytes=295993344 tree_bytes=331841536 returncode=0 record=/private/tmp/ems-t14d/t14d-extract/max13/t14d-extract-max13.resources.json
+RESOURCE t14d-extract-max14 peak_RSS_bytes=394149888 tree_bytes=427393024 returncode=0 record=/private/tmp/ems-t14d/t14d-extract/max14/t14d-extract-max14.resources.json
+RESOURCE t14d-extract-max14-half peak_RSS_bytes=457703424 tree_bytes=492355584 returncode=0 record=/private/tmp/ems-t14d/t14d-extract/max14-half/t14d-extract-max14-half.resources.json
+RESOURCE queue peak_RSS_bytes=457703424 tree_bytes=531187056 returncode=0 record=/private/tmp/ems-t14d/t14d-extract/queue.resources.json
+RESOURCE t14d-check peak_RSS_bytes=61095936 tree_bytes=91226112 returncode=0 record=/private/tmp/ems-t14d/t14d-reporting/check/t14d-check.resources.json
+RESOURCE t14d-design peak_RSS_bytes=52494336 tree_bytes=80756736 returncode=0 record=/private/tmp/ems-t14d/t14d-reporting/design/t14d-design.resources.json
+RESOURCE t14d-figures peak_RSS_bytes=396247040 tree_bytes=422888264 returncode=0 record=/private/tmp/ems-t14d/t14d-reporting/figures/t14d-figures.resources.json
+RESOURCE queue peak_RSS_bytes=396247040 tree_bytes=460688144 returncode=0 record=/private/tmp/ems-t14d/t14d-reporting/queue.resources.json
+RESOURCE t14d-report peak_RSS_bytes=59539456 tree_bytes=19152896 returncode=0 record=/private/tmp/ems-t14d/t14d-reporting/report/t14d-report.resources.json
+b43237d75d6cc61e80c7ede5c9962292716afcbda4f5055b73d3f17c1de9698e  857  /private/tmp/ems-t14d/resources/t14d-manifest-final.resources.json
+dd5faa53a6a460a50ec1ccd17fad240c27e99d873e4424769c178184e6fea847  82  /private/tmp/ems-t14d/resources/t14d-manifest-final.child.json
+02980c81c8e6fff06aed81ac76529fe1357e68423a6d22240be393f1ff7082e9  53  /private/tmp/ems-t14d/resources/t14d-manifest-final.time
+RESOURCE t14d-manifest-final peak_RSS_bytes=74006528 tree_bytes=111951872 returncode=0 record=/private/tmp/ems-t14d/resources/t14d-manifest-final.resources.json
+RESOURCE t14d-manifest-seal peak_RSS_bytes=25821184 returncode=0 measurement=getrusage(RUSAGE_SELF)

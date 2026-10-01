@@ -1,0 +1,125 @@
+{
+  "baseline": "ba95217",
+  "central": "I8",
+  "spread": "abs(I8-I10)",
+  "unchanged": [
+    "runs",
+    "57 clocks",
+    "W",
+    "peak/radial RMS",
+    "5x significance",
+    "temporal <=0.2 of both spatial differences",
+    "empirical initial Gamma floor",
+    "status classes",
+    "registered decision table"
+  ],
+  "W_M": [
+    0.00075,
+    0.0025
+  ],
+  "samples": 258,
+  "times_M": [
+    0.0,
+    3.5603841145833336e-05,
+    7.120768229166667e-05,
+    0.0001068115234375,
+    0.00014241536458333334,
+    0.00017801920572916668,
+    0.00021362304687500003,
+    0.0002492268880208333,
+    0.00028483072916666663,
+    0.0003204345703125,
+    0.0003560384114583333,
+    0.0003916422526041667,
+    0.00042724609375,
+    0.00046284993489583337,
+    0.0004984537760416667,
+    0.0005340576171875,
+    0.0005696614583333334,
+    0.0006052652994791666,
+    0.000640869140625,
+    0.0006764729817708334,
+    0.0007120768229166667,
+    0.0007476806640625,
+    0.0007832845052083334,
+    0.0008188883463541667,
+    0.0008544921875000001,
+    0.0008900960286458334,
+    0.0009256998697916667,
+    0.0009613037109375001,
+    0.0009969075520833335,
+    0.0010325113932291667,
+    0.001068115234375,
+    0.0011037190755208333,
+    0.0011393229166666665,
+    0.0011749267578125,
+    0.0012105305989583333,
+    0.0012461344401041665,
+    0.0012817382812499998,
+    0.0013173421223958333,
+    0.0013529459635416665,
+    0.0013885498046875,
+    0.0014241536458333333,
+    0.0014597574869791667,
+    0.001495361328125,
+    0.0015309651692708333,
+    0.0015665690104166665,
+    0.0016021728515625,
+    0.0016377766927083333,
+    0.0016733805338541667,
+    0.001708984375,
+    0.0017445882161458335,
+    0.0017801920572916667,
+    0.0018157958984375,
+    0.0018513997395833333,
+    0.0018870035807291667,
+    0.001922607421875,
+    0.0019582112630208335,
+    0.001993815104166667
+  ],
+  "history_start_rule": "first positive common clock when all four fields, both rays and both norms exceed 5x interpolation",
+  "Stage_D_exclusion_R_M": 0.005,
+  "operator_variants_remaining": 0,
+  "inputs": [
+    {
+      "path": "/private/tmp/ems-t13/replay.ex",
+      "bytes": 437368,
+      "sha256": "c4015aba43d8aca618820f64588f8585466cdc16b4682dec9fba6889283bafa6"
+    },
+    {
+      "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t13-analyze.py",
+      "bytes": 16094,
+      "sha256": "955bd9feb77bbb6dced5d6b49ba29cf1d70924b331a41d4d08a4ddd447b5bceb"
+    },
+    {
+      "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t7-check.py",
+      "bytes": 10382,
+      "sha256": "2c522ee93e433ff2f1fb13aa8bd27ccd7127167fdafe515ba6ec33cceb8d4727"
+    },
+    {
+      "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t14-screen-history.csv",
+      "bytes": 343285,
+      "sha256": "5ea2ddeb0cd9ece2bd8a8ac2192c12e11f4eb36beffae38af51e178fefa0741f"
+    },
+    {
+      "path": "/private/tmp/ems-t13/evolution/maximal/t13-t7-stage-L12.xz",
+      "bytes": 74650948,
+      "sha256": "c18cd986e13b863040276655956e6b7998abc82bbf9fa2e00f448c5ee4b283cc"
+    },
+    {
+      "path": "/private/tmp/ems-t14/evolution/max13/t13-t7-stage-L13.xz",
+      "bytes": 392247116,
+      "sha256": "c5de9d712d4beb56ac5f38be6890cc92bd83060ce0863b6386bdf7b4a474d550"
+    },
+    {
+      "path": "/private/tmp/ems-t14/evolution/max14/t13-t7-stage-L14.xz",
+      "bytes": 2346743832,
+      "sha256": "01b8ddcd5de83a0be85aa927722d9e7e07de356d69f7f81166082c7a0aa4d411"
+    },
+    {
+      "path": "/private/tmp/ems-t14/evolution/max14-half/t13-t7-stage-L14.xz",
+      "bytes": 3826608720,
+      "sha256": "6e66377685508b64332b047b320be3b6d9f45b9eb6ef14eb3fe44dcbd93186cd"
+    }
+  ]
+}

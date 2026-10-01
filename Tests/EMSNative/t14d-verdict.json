@@ -1,0 +1,20 @@
+{
+  "verdict": "inconclusive",
+  "endpoint_pass": true,
+  "positive_unqualified": 25,
+  "initial_unqualified_rows": 16,
+  "initial_floor_rows": 8,
+  "initial_uncertainty_rows": 8,
+  "noncontracting": 0,
+  "marginal": 0,
+  "first_all_significant_step": 10,
+  "first_all_significant_time_M": 0.0003560384114583333,
+  "later_sampling_exceptions": [
+    13,
+    14,
+    15
+  ],
+  "max_temporal_fraction": 0.004009677440655378,
+  "max_qualified_rho": 0.34676561033237996,
+  "operator_variants_remaining": 0
+}

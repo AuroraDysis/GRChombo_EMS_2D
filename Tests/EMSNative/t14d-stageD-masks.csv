@@ -1,0 +1,14 @@
+mask,R_min_M,R_max_M,geometry
+puncture_excluded,0.005,20.0,fixed isotropic radial shell
+horizon,0.0060286129392158804,0.012057225878431761,fixed isotropic radial shell
+inside_inner_ring,0.012057225878431761,0.026758927819264387,fixed isotropic radial shell
+cavity,0.026758927819264387,0.11726522703740201,fixed isotropic radial shell
+between_rings,0.026758927819264387,0.7385298961059745,fixed isotropic radial shell
+outer_ring,0.5908239168847796,0.8862358753271694,fixed isotropic radial shell
+far,4.0,8.0,fixed isotropic radial shell
+cavity_core,0.055,0.075,fixed isotropic radial shell
+outer_ring_core,0.85,1.0,fixed isotropic radial shell
+far_core,6.5,8.0,fixed isotropic radial shell
+exterior_wake,1.0,20.0,fixed isotropic radial shell
+receiving_side_3p5,3.5,4.375,fixed isotropic radial shell
+outer_boundary_shell,0.0,1.0,distance from x=+-336 or y=336; y>1 M

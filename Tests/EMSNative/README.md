@@ -3142,3 +3142,113 @@ Fixed P6 weighted step-profile closure is within **7.6233e-20 M^-1**. Trace remo
 Final analysis peak RSS is **1.198047 GB**, sampled active-tree peak **1.312571 GB**; every recorded process stays below 3 GB. The stage-attribution helper now streams one ordered stage group instead of retaining all sixteen; numerical groups and accumulation order are unchanged, with sixteen-group and native/RK closure checks. The highest evolution peak is **1.854325 GB**. All six per-rung analysis job markers are zero and no job remains pending. Exact hashes of overwritten closure outputs were reconstructed from the retained lossless q arrays and retained per frame; no native RHS rerun was needed for those hashes. Original failed census, output-gated run and first verification failure remain recorded. [Completed resource table](t14-resources.csv), [restart completion](t14-restart-completion.csv), [verification](t14-verification.csv).
 
 Reproduce with the measured `t14-run.py` wrapper, `T14_OUTPUT_ROOT=/private/tmp/ems-t14/analysis T14_DISK_CAP_BYTES=8000000000`: `t14-analyze.py extract max13|max14|max14-half`, `screen`, and `stages max13|max14|max14-half`; then `t14-report.py baseline`, `figures`, `check`, `report`, and `t14-prepare.py manifest`. Per-rung jobs and their atomic markers are under `analysis/jobs`; all native caches and exact removed-payload hashes are retained under `analysis`. They run serially, <=4 threads, under measured 3 GB per-process and active-tree gates. Production sources, binaries, parameters, equations, gauge, KO, transfers, precision, puncture formulation and the author's finder remain unchanged. No SSH or commit.
+
+## T14d — predeclared I8/I10 analysis-only follow-up
+
+**Endpoint PASS; full registered history INCONCLUSIVE.** The operator predeclared one change before this result: central I8 and spread |I8-I10| replace I6 and |I6-I8|. Rungs, all 57 clocks, W=[0.00075,0.0025] M, 258 samples, peak/radial RMS norms, >5x significance, temporal <=0.2 of both spatial differences, initial numerical-floor treatment and the decision table remain frozen. No further operator variants are tried. [Registration](t14d-registration.json) pins all required stored inputs, exact common clocks, the history-start rule and Stage D exclusion radius before re-screening. Baseline HEAD is ba95217 on t14-stagec.
+
+All four completed native recorder streams were re-extracted, including T13 alpha_K max12; the stopped control is excluded. Frozen T13Replay --state evaluates the same native current-state metric connection and constraints on 7x7 stencils. I10 uses tensor ten-point nodes, current-state reflection parity, and the same anchor-subtracted sampling routine. Stored support is complete at all 57 clocks. Every re-extracted I8 value, including constraint components, is bit-identical to the retained T13/T14 I8 cache. No static EMS file is opened, no state is evolved, and no T13/T14 artifact is overwritten.
+
+Common endpoint remains 0.001993815104166667 M; the original control's step 448 supplies that physical time. Maximum clock defect is 4.33681e-19 M. I10 plus native derivatives requires a conservative 8h analysis support collar instead of I8's 7h. This changes only the diagnostic support accounting; all cells remain in the stored finest recorder interior. With the same 1.1 speed bound, the limiting L14 axis/diagonal arrival margins beyond 0.002 M remain approximately 0.001682824 / 0.002348491 M. Characteristic separation does not assert compact FD/KO numerical support.
+
+### Screen and remaining entries
+
+All endpoint pairs below are peak / RMS. Margin is min(D12,13/(5E12,13), D13,14/(5E13,14)), where E is the sum of each pair's |I8-I10| norm spreads; >1 qualifies. History counts are **qualified/contracting/uncertainty/floor**, each out of 56 positive clocks. Initial status is reported separately below.
+
+| Ray | Field | Endpoint rho_D peak / RMS | Minimum margin peak / RMS | History counts peak / RMS |
+| --- | --- | --- | --- | --- |
+| axis | Gamma | 0.165955 / 0.128914 | 92.69 / 129.67 | 53/53/3/0 / 56/56/0/0 |
+| axis | metric_Gamma | 0.120096 / 0.098844 | 31.20 / 26.18 | 55/55/1/0 / 56/56/0/0 |
+| axis | shift | 0.127138 / 0.116370 | 61.26 / 180.00 | 52/52/4/0 / 52/52/4/0 |
+| axis | lapse | 0.033763 / 0.029697 | 24.31 / 25.71 | 44/44/12/0 / 55/55/1/0 |
+| diagonal | Gamma | 0.072404 / 0.081556 | 190.24 / 182.37 | 56/56/0/0 / 56/56/0/0 |
+| diagonal | metric_Gamma | 0.099173 / 0.050527 | 7.56 / 9.23 | 56/56/0/0 / 56/56/0/0 |
+| diagonal | shift | 0.066591 / 0.064405 | 323.48 / 411.73 | 56/56/0/0 / 56/56/0/0 |
+| diagonal | lapse | 0.019855 / 0.017710 | 65.64 / 62.97 | 56/56/0/0 / 56/56/0/0 |
+
+The full screen retains **25 positive sampling-unqualified entries**, compared with T14's 53. All are on the axis. There are no positive numerical-floor, temporal-unqualified, marginal or significant noncontracting entries. Every qualified history entry contracts, with maximum rho_D **0.34676561**. The largest finest temporal fraction is **0.00400967744**, far below 0.2. The endpoint minimum sampling margin is **7.55795**. Recomputed disturbance amplitudes retain T14's nonzero stabilizing trend; [amplitude history](t14d-amplitude-history.csv) gives every rung at every common clock. No amplitude gate was introduced.
+
+The previously long axis-lapse peak band shrinks to steps 1–9 and 13–15; steps 10–12 and 16–56 qualify. I8/I10 need not improve every early entry: the Gamma peak exceptions move to steps 2–4, and axis metric-Gamma peak remains unresolved at step 4. The complete table below lists every unqualified entry, including all 16 initial entries: eight Gamma/metric-Gamma numerical-floor rows and eight shift/lapse sampling-unqualified rows. The numerical t=0 baseline is not treated as bitwise zero. Pair labels refer to max12,max13 and max13,max14; native steps are 2/4/8 times the listed max12 step for max13/max14/control.
+
+| Step | Time / M | Ray | Field | Norm | Status | Interpolation-failed pair | Floor-failed pair | Margin12,13 | Margin13,14 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0 | 0 | axis | Gamma | RMS | numerical-floor | — | 12,13;13,14 | 3.9402 | 3.04024 |
+| 0 | 0 | axis | Gamma | peak | numerical-floor | — | 12,13;13,14 | 3.91509 | 2.92285 |
+| 0 | 0 | axis | lapse | RMS | uncertainty-dominated | 12,13;13,14 | — | 0.316194 | 0.222532 |
+| 0 | 0 | axis | lapse | peak | uncertainty-dominated | 12,13;13,14 | — | 0.182658 | 0.222566 |
+| 0 | 0 | axis | metric_Gamma | RMS | numerical-floor | — | 12,13;13,14 | 3.9402 | 3.04024 |
+| 0 | 0 | axis | metric_Gamma | peak | numerical-floor | — | 12,13;13,14 | 3.91509 | 2.92285 |
+| 0 | 0 | axis | shift | RMS | uncertainty-dominated | 12,13;13,14 | — | 0.25903 | 0.216495 |
+| 0 | 0 | axis | shift | peak | uncertainty-dominated | 12,13;13,14 | — | 0.252546 | 0.221383 |
+| 0 | 0 | diagonal | Gamma | RMS | numerical-floor | — | 12,13;13,14 | 4.40488 | 4.17156 |
+| 0 | 0 | diagonal | Gamma | peak | numerical-floor | — | 12,13;13,14 | 3.69985 | 4.09432 |
+| 0 | 0 | diagonal | lapse | RMS | uncertainty-dominated | 12,13;13,14 | — | 0.419507 | 0.218393 |
+| 0 | 0 | diagonal | lapse | peak | uncertainty-dominated | 12,13;13,14 | — | 0.409968 | 0.219156 |
+| 0 | 0 | diagonal | metric_Gamma | RMS | numerical-floor | — | 12,13;13,14 | 4.40488 | 4.17156 |
+| 0 | 0 | diagonal | metric_Gamma | peak | numerical-floor | — | 12,13;13,14 | 3.69985 | 4.09432 |
+| 0 | 0 | diagonal | shift | RMS | uncertainty-dominated | 12,13;13,14 | — | 0.142239 | 0.142157 |
+| 0 | 0 | diagonal | shift | peak | uncertainty-dominated | 12,13;13,14 | — | 0.1433 | 0.144007 |
+| 1 | 3.56038411458e-05 | axis | lapse | RMS | uncertainty-dominated | 12,13 | — | 0.910437 | 8.98356 |
+| 1 | 3.56038411458e-05 | axis | lapse | peak | uncertainty-dominated | 12,13 | — | 0.358711 | 6.88826 |
+| 1 | 3.56038411458e-05 | axis | shift | RMS | uncertainty-dominated | 12,13 | — | 0.864747 | 1.95523 |
+| 1 | 3.56038411458e-05 | axis | shift | peak | uncertainty-dominated | 12,13 | — | 0.424018 | 1.68034 |
+| 2 | 7.12076822917e-05 | axis | Gamma | peak | uncertainty-dominated | 12,13 | — | 0.772176 | 109.571 |
+| 2 | 7.12076822917e-05 | axis | lapse | peak | uncertainty-dominated | 12,13 | — | 0.337801 | 13.5175 |
+| 2 | 7.12076822917e-05 | axis | shift | RMS | uncertainty-dominated | 12,13 | — | 0.582233 | 4.5954 |
+| 2 | 7.12076822917e-05 | axis | shift | peak | uncertainty-dominated | 12,13 | — | 0.25184 | 3.46743 |
+| 3 | 0.000106811523438 | axis | Gamma | peak | uncertainty-dominated | 12,13 | — | 0.675526 | 113.964 |
+| 3 | 0.000106811523438 | axis | lapse | peak | uncertainty-dominated | 12,13 | — | 0.395597 | 19.8646 |
+| 3 | 0.000106811523438 | axis | shift | RMS | uncertainty-dominated | 12,13 | — | 0.397951 | 17.6692 |
+| 3 | 0.000106811523438 | axis | shift | peak | uncertainty-dominated | 12,13 | — | 0.2993 | 13.0398 |
+| 4 | 0.000142415364583 | axis | Gamma | peak | uncertainty-dominated | 12,13 | — | 0.633896 | 89.7871 |
+| 4 | 0.000142415364583 | axis | lapse | peak | uncertainty-dominated | 12,13 | — | 0.45043 | 21.9477 |
+| 4 | 0.000142415364583 | axis | metric_Gamma | peak | uncertainty-dominated | 13,14 | — | 3.57426 | 0.725 |
+| 4 | 0.000142415364583 | axis | shift | RMS | uncertainty-dominated | 12,13 | — | 0.909356 | 36.7953 |
+| 4 | 0.000142415364583 | axis | shift | peak | uncertainty-dominated | 12,13 | — | 0.598614 | 24.4648 |
+| 5 | 0.000178019205729 | axis | lapse | peak | uncertainty-dominated | 12,13 | — | 0.500205 | 20.7836 |
+| 6 | 0.000213623046875 | axis | lapse | peak | uncertainty-dominated | 12,13 | — | 0.548825 | 20.5445 |
+| 7 | 0.000249226888021 | axis | lapse | peak | uncertainty-dominated | 12,13 | — | 0.604453 | 21.9273 |
+| 8 | 0.000284830729167 | axis | lapse | peak | uncertainty-dominated | 12,13 | — | 0.686469 | 25.8566 |
+| 9 | 0.000320434570312 | axis | lapse | peak | uncertainty-dominated | 12,13 | — | 0.86804 | 35.765 |
+| 13 | 0.000462849934896 | axis | lapse | peak | uncertainty-dominated | 12,13 | — | 0.994938 | 21.0528 |
+| 14 | 0.000498453776042 | axis | lapse | peak | uncertainty-dominated | 12,13 | — | 0.990149 | 13.923 |
+| 15 | 0.000534057617188 | axis | lapse | peak | uncertainty-dominated | 12,13 | — | 0.990564 | 10.3911 |
+
+[Every common-time screen](t14d-screen-history.csv) retains both 1x and **5x** rho sensitivity intervals. The 5x upper ratio is infinite whenever D12,13<=5E12,13; finite 1x bounds do not qualify these rows. Numerical-floor ratios remain undefined. Bounds describe empirical diagnostic sensitivity, not rigorous continuum-error intervals. The original significance/status gate is unchanged; no extra ratio-bound admission threshold is added.
+
+**Verdict: INCONCLUSIVE.** The residual positive-time uncertainty prevents the full registered-history pass. Stop tightening interpolation. No automatic ladder extension, method change or production admission follows. The independently requested Stage D draft is supplied below for the operator's admission decision, irrespective of this verdict.
+
+![Fixed 5x sampling margins across all fields and clocks](figures/t14d-significance.png)
+
+### Constraint-to-zero orders on W
+
+For c=C_Gamma,Ham,Mom,GaussE, observed p is log2(||c_h||/||c_h/2||) and log2(||c_h/2||/||c_h/4||). These are direct constraint residual orders, distinct from evolved-field self-difference orders. Mom is the norm of its sampled Cartesian components; C_Gamma is signed longitudinal evolved-minus-native metric Gamma. The same I8/I10 diagnostic operator and radial peak/RMS norms are used. **Design order is four**, with no lower regularity order assumed. Each cell below is max12→max13 / max13→max14. History sup compares each rung's supremum norm over the same 57 clocks; it is not the maximum instantaneous order.
+
+| Ray | Constraint | Endpoint peak p | Endpoint RMS p | History-sup peak p | History-sup RMS p |
+| --- | --- | --- | --- | --- | --- |
+| axis | C_Gamma | 3.217 / 7.090 | 3.437 / 7.161 | 3.217 / 7.090 | 3.437 / 7.161 |
+| axis | Ham | 3.274 / 6.804 | 3.553 / 6.971 | 3.274 / 6.804 | 3.553 / 6.971 |
+| axis | Mom | 3.234 / 7.035 | 3.345 / 7.046 | 3.234 / 7.035 | 3.345 / 7.046 |
+| axis | GaussE | 2.531 / 4.898 | 3.036 / 6.093 | 2.531 / 4.898 | 3.036 / 6.093 |
+| diagonal | C_Gamma | 3.322 / 6.215 | 4.309 / 5.731 | 3.322 / 6.215 | 4.309 / 5.731 |
+| diagonal | Ham | 4.432 / 6.713 | 5.060 / 6.540 | 4.432 / 6.713 | 5.060 / 6.540 |
+| diagonal | Mom | 3.366 / 7.385 | 4.395 / 6.578 | 3.629 / 6.362 | 4.395 / 5.733 |
+| diagonal | GaussE | 3.928 / 7.891 | 4.664 / 7.401 | 3.928 / 7.891 | 4.664 / 7.401 |
+
+All endpoint constraint norm pairs exceed 5x their own interpolation spreads. The histories do not exhibit a uniform asymptotic fourth-order regime: axis coarse-pair endpoint orders are about 2.53–3.55, while fine-pair orders often exceed six. Large orders are measured cancellation/transient ratios, not proof of a higher design order. [All 1824 instantaneous pair orders](t14d-constraint-orders-history.csv) retain initial/positive clocks, raw norms, sampling qualification and 5x order sensitivity bounds; [summary](t14d-constraint-orders.csv) retains initial, endpoint, history-sup and positive-time min/max orders and qualified counts. Initial zero C_Gamma orders are undefined. Some positive constraint rows are sampling-limited and remain visibly marked, without a roundoff waiver.
+
+![Constraint order histories; hollow markers are sampling-limited](figures/t14d-constraint-orders.png)
+
+Blue curves show max12→max13 and green curves max13→max14; dashed curves are peak norms and solid curves RMS. Hollow markers retain sampling-unqualified orders.
+
+### Stage D — for the operator's admission decision
+
+The complete [unexecuted design](t14d-stageD-design.md) specifies the fresh E 3/2 global chain with common exp-0020 faces plus levels 13–14 on all rungs, the fixed R>=0.005 M exclusion, all inherited masks and the boundary issue, time-resolved field/constraint evidence, unchanged numerical-t=0 horizon budgets, independent sphere charges and a finest dt/2 control. The history-start rule evaluates to **step 10, t=0.00035603841145833332 M**. Steps [13, 14, 15] later fail: that first significant clock does not retroactively pass T14d or justify dropping any row. The exclusion radius was fixed before this result and the history-start rule is frozen for a prospective fresh qualifying run.
+
+The extra source levels multiply the valid-cell subcycle work by approximately four; the full nominal chain plus finest dt/2 control is priced in the draft using measured exp-0020 256/162/104 s coarse-step medians on one node per leg, 32 MPI x 4 OpenMP. The estimate is a cell-step model, not a measured new cluster rate. [Fixed masks](t14d-stageD-masks.csv), [rungs and cost model](t14d-stageD-cost.csv). No run, cluster contact or finder invocation is authorized or performed.
+
+### Verification and resources
+
+Final measured analysis peak RSS is **457,703,424 bytes**, sampled active-tree peak **531,187,056 bytes**. Numerical processes run serially, OMP=2 and BLAS=1, under the existing 3 GB per-process/tree gates. The sandbox timer's kern.clockrate failure is handled by the existing wait4/libproc measurement; actual child return codes are retained. An initial register invocation used a relative script path under the wrapper's changed directory and exited 2; the corrected absolute-path registration completed before any extraction. Both records remain in [resources](t14d-resources.csv). Native payloads removed were only T14d-owned intermediates, with exact hashes retained; native q and I8/I10 caches remain under /private/tmp/ems-t14d. [Checks](t14d-verification.csv), [manifest](t14d-manifest.txt).
+
+Reproduce serially with the measured t14-run.py wrapper, T14_OUTPUT_ROOT=/private/tmp/ems-t14d and T14_DISK_CAP_BYTES=8000000000, using absolute script paths: t14d-analyze.py register; extract max12|max13|max14|max14-half; screen; t14d-report.py design; figures; check; report; manifest. Never reuse the stopped control or overwrite T13/T14 outputs. No production source, evolved state, gauge, KO, equation, transfer, precision, finder or initial-data reader was changed. No SSH or commit.
