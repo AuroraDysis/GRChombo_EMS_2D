@@ -1,0 +1,13 @@
+{
+  "status": "PROVED",
+  "witness": "g gi=I, L Li=I; transformed inverse gtt=-J/alpha^2; binary squared identity",
+  "assumptions": "alpha,X>0; real b_i,q; |q|<1; J,w>0; binary 0<lo<=hi<=1",
+  "excluded_locus": "alpha=0, X=0, q^2=1, J=0; binary hi=0 or denominator=0",
+  "numeric_status": "CORROBORATED",
+  "seed": 1609,
+  "count": 64,
+  "decimal_precision": 70,
+  "region": "alpha [.05,1], X [.02,1], b_i [-.08,.08], eta [-.3,.3]",
+  "worst_relative": "1.167548703633128025542950750174162994283398747376079086782886537759384e-67",
+  "axis_witness": "PROVED: (D1_h(y^5)-5y^4)/y=-8h^3 at y=h/2; consistency example, not a dominance attribution"
+}

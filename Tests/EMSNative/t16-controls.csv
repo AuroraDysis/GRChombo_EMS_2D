@@ -1,0 +1,17 @@
+transfer,boosted,variant,file,Float64_values,bit_mismatches
+point,False,omitted,plt/EMS_Plot_000000.2d.hdf5,89600,0
+point,False,omitted,chk/EMS_000002.2d.hdf5,119840,0
+point,False,false,plt/EMS_Plot_000000.2d.hdf5,89600,0
+point,False,false,chk/EMS_000002.2d.hdf5,119840,0
+point,True,omitted,plt/EMS_Plot_000000.2d.hdf5,89600,0
+point,True,omitted,chk/EMS_000002.2d.hdf5,119840,0
+point,True,false,plt/EMS_Plot_000000.2d.hdf5,89600,0
+point,True,false,chk/EMS_000002.2d.hdf5,119840,0
+legacy,False,omitted,plt/EMS_Plot_000000.2d.hdf5,89600,0
+legacy,False,omitted,chk/EMS_000002.2d.hdf5,119840,0
+legacy,False,false,plt/EMS_Plot_000000.2d.hdf5,89600,0
+legacy,False,false,chk/EMS_000002.2d.hdf5,119840,0
+legacy,True,omitted,plt/EMS_Plot_000000.2d.hdf5,89600,0
+legacy,True,omitted,chk/EMS_000002.2d.hdf5,119840,0
+legacy,True,false,plt/EMS_Plot_000000.2d.hdf5,89600,0
+legacy,True,false,chk/EMS_000002.2d.hdf5,119840,0

@@ -13,6 +13,7 @@
 #include "TensorAlgebra.hpp"
 #include "parstream.H"
 #include <cmath>
+#include <limits>
 
 inline EMSBH_trumpet_read::EMSBH_trumpet_read(
     EMSBH_params_t a_params_EMSBH,
@@ -22,6 +23,9 @@ inline EMSBH_trumpet_read::EMSBH_trumpet_read(
       m_params_coupling_function(a_params_coupling_function),
       m_G_Newton(a_G_Newton), m_dx(a_dx), m_verbosity(a_verbosity)
 {
+    if (m_params_EMSBH.use_maximal_initial_lapse &&
+        m_params_EMSBH.use_geometric_initial_lapse)
+        MayDay::Error("initial maximal and geometric lapse options are exclusive");
     if (m_params_EMSBH.use_maximal_initial_lapse &&
         (m_params_EMSBH.boosted || m_params_EMSBH.rapidity != 0. ||
          m_params_EMSBH.binary || m_params_EMSBH.separation != 0. ||
@@ -40,6 +44,8 @@ inline void EMSBH_trumpet_read::compute_1d_solution()
             m_params_coupling_function.alpha, m_params_coupling_function.f0,
             m_params_coupling_function.f1, m_params_coupling_function.f2})
         MayDay::Error("EMSTRUMPET coupling differs from run parameters");
+    if (m_params_EMSBH.use_geometric_initial_lapse)
+        check_geometric_lapse();
     m_ctt_sol.reset();
     if (!m_params_EMSBH.ctt_data_path.empty())
     {
@@ -60,6 +66,73 @@ inline void EMSBH_trumpet_read::compute_1d_solution()
     }
     if (m_verbosity)
         pout() << "EMSTRUMPET radial solution ready" << std::endl;
+}
+
+inline void EMSBH_trumpet_read::check_geometric_lapse() const
+{
+    const double eta = m_params_EMSBH.boosted ? m_params_EMSBH.rapidity : 0.;
+    double worst = 0., worst_roundoff = 0.;
+    // Well-conditioned isolated samples, both boost signs, including off plane.
+    // Near-puncture positivity is checked on every actual setter evaluation.
+    for (double sign : {-1., 1.})
+        for (double R : {.05, .1, 1., 16., 32., 1024.})
+            for (const auto &n : {std::array<double, 3>{1., 0., 0.},
+                                  std::array<double, 3>{.6, .48, .64}})
+            {
+                const auto r = m_1d_sol.compute_radial_vars(R);
+                const double c = std::cosh(sign * eta), sh = std::sinh(sign * eta);
+                Tensor<2, double, 4> g = {0.}, L = {0.};
+                g[0][0] = r.shift_R * r.shift_R -
+                          r.lapse * r.lapse * r.X * r.X;
+                for (int i = 0; i < 3; ++i)
+                {
+                    g[0][i + 1] = g[i + 1][0] = r.shift_R * n[i];
+                    g[i + 1][i + 1] = 1.;
+                }
+                L[0][0] = L[1][1] = c;
+                L[0][1] = L[1][0] = -sh;
+                L[2][2] = L[3][3] = 1.;
+                const auto boosted = lorentz_transform(g, L);
+                double a[4][8] = {}, norm = 0.;
+                for (int i = 0; i < 4; ++i)
+                {
+                    double row = 0.;
+                    for (int j = 0; j < 4; ++j)
+                    { a[i][j] = boosted[i][j]; row += std::abs(a[i][j]); }
+                    a[i][i + 4] = 1.; norm = std::max(norm, row);
+                }
+                for (int j = 0; j < 4; ++j)
+                {
+                    int p = j;
+                    for (int i = j + 1; i < 4; ++i)
+                        if (std::abs(a[i][j]) > std::abs(a[p][j])) p = i;
+                    for (int k = 0; k < 8; ++k) std::swap(a[j][k], a[p][k]);
+                    const double pivot = a[j][j];
+                    if (pivot == 0. || !std::isfinite(pivot))
+                        MayDay::Error("geometric lapse: singular four-metric audit");
+                    for (int k = 0; k < 8; ++k) a[j][k] /= pivot;
+                    for (int i = 0; i < 4; ++i) if (i != j)
+                    {
+                        const double f = a[i][j];
+                        for (int k = 0; k < 8; ++k) a[i][k] -= f * a[j][k];
+                    }
+                }
+                double invnorm = 0.;
+                for (int i = 0; i < 4; ++i)
+                { double row = 0.; for (int j = 4; j < 8; ++j) row += std::abs(a[i][j]);
+                  invnorm = std::max(invnorm, row); }
+                const double inverted = 1. / (r.X * std::sqrt(-a[0][4]));
+                const auto adm = compute_ems_adm_vars(R * n[0] / c, R * n[1],
+                    R * n[2], 1., 0., sign * eta);
+                const double relative = std::abs(inverted / adm.lapse - 1.);
+                const double roundoff = std::numeric_limits<double>::epsilon() * norm * invnorm;
+                if (!std::isfinite(relative) || relative > 64. * roundoff)
+                    MayDay::Error("geometric lapse: four-metric inverse disagrees beyond roundoff");
+                worst = std::max(worst, relative);
+                worst_roundoff = std::max(worst_roundoff, relative / roundoff);
+            }
+    pout() << "Geometric lapse 4x4 audit: samples=24 max_relative=" << worst
+           << " max_condition_scaled_eps=" << worst_roundoff << std::endl;
 }
 
 inline Tensor<2, double, 4> EMSBH_trumpet_read::lorentz_transform(
@@ -207,6 +280,10 @@ EMSBH_trumpet_read::compute_ems_adm_vars(data_t a_x, data_t a_y, data_t a_z,
     for (int i = 0; i < 3; ++i)
         adm_vars.B[i] = alpha * radial_vars.X / std::sqrt(J) * h[i];
     adm_vars.lapse = alpha / std::sqrt(J);
+    if (m_params_EMSBH.use_geometric_initial_lapse &&
+        (!(adm_vars.lapse > 0. && adm_vars.lapse <= 1.) ||
+         !std::isfinite(adm_vars.lapse)))
+        MayDay::Error("geometric initial lapse outside (0,1]; no clipping");
     adm_vars.chi = radial_vars.X * radial_vars.X / std::cbrt(J);
     return adm_vars;
 }
@@ -226,6 +303,16 @@ EMSBH_trumpet_read::compute_binary_ems_adm_vars(data_t a_x, data_t a_y,
     const auto right_bh = compute_ems_adm_vars(a_x, a_y, a_z, a_mass,
                                                a_separation / 2, -a_rapidity);
     ems_adm_vars_t<data_t> superposed_vars{};
+    if (m_params_EMSBH.use_geometric_initial_lapse)
+    {
+        const data_t lo = std::min(left_bh.lapse, right_bh.lapse);
+        const data_t hi = std::max(left_bh.lapse, right_bh.lapse);
+        const data_t ratio = lo / hi;
+        const data_t denominator = 1. + ratio * ratio - lo * lo;
+        if (!(denominator > 0.) || !std::isfinite(denominator))
+            MayDay::Error("binary geometric lapse: invalid denominator; no clipping");
+        superposed_vars.lapse = lo / std::sqrt(denominator);
+    }
     Tensor<1, data_t, 3> electric_density = {0.}, magnetic_density = {0.};
     const double c = std::cosh(a_rapidity);
     const double charge = a_mass * m_1d_sol.get_native_charge();
@@ -344,7 +431,8 @@ EMSBH_trumpet_read::conformal_decomposition(
     }
     vars.hww = chi * gamma[2][2];
     vars.Aww = chi * (a_adm_vars.K[2][2] - K * gamma[2][2] / 3);
-    vars.lapse = m_params_EMSBH.use_maximal_initial_lapse
+    vars.lapse = (m_params_EMSBH.use_maximal_initial_lapse ||
+                  m_params_EMSBH.use_geometric_initial_lapse)
                      ? a_adm_vars.lapse : std::sqrt(chi);
     vars.shift[0] = a_adm_vars.shift[0];
     vars.shift[1] = a_adm_vars.shift[1];

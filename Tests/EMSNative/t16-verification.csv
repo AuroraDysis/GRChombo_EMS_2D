@@ -1,0 +1,14 @@
+check,count,result,evidence
+"pipeline pinned inputs, executables, captures and caches",368,PASS,/private/tmp/ems-t16/verification/pipeline-manifest.txt
+completed evolution,1,PASS,"child rc=0, no gate; RSS=803717120; tree=1343263616"
+completed pipeline,1,PASS,"child rc=0, no gate; RSS=803717120; tree=1409966600"
+completed pipeline/job,1,PASS,"child rc=0, no gate; RSS=803717120; tree=1374001896"
+pipeline component receipts,4,PASS,successful child receipts; timer rc=1 is sandbox kern.clockrate denial
+L13-sqrt native completion,75,PASS,stop=0.00197601318359375; finite replay; Base RHS bit mismatches=0; floors=0; reader after advance=0; gate clear
+L13-geometric native completion,75,PASS,stop=0.00197601318359375; finite replay; Base RHS bit mismatches=0; floors=0; reader after advance=0; gate clear
+L14-sqrt native completion,75,PASS,stop=0.0019893646240234375; finite replay; Base RHS bit mismatches=0; floors=0; reader after advance=0; gate clear
+L14-geometric native completion,75,PASS,stop=0.0019893646240234375; finite replay; Base RHS bit mismatches=0; floors=0; reader after advance=0; gate clear
+all replay Float64 values and profile-derived CSV norms,33885000,PASS,four independent native legs; 9600 history rows
+t16-controls.csv,16,PASS,all bit mismatches zero
+t16-nonlapse-identity.csv,2,PASS,all bit mismatches zero
+all historical resource receipts,87,PASS,"per-process and active-tree gates <3 GB, including retained failed setup attempts"

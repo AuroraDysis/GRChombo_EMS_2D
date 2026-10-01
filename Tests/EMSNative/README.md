@@ -3251,4 +3251,189 @@ The extra source levels multiply the valid-cell subcycle work by approximately f
 
 Final measured analysis peak RSS is **457,703,424 bytes**, sampled active-tree peak **531,187,056 bytes**. Numerical processes run serially, OMP=2 and BLAS=1, under the existing 3 GB per-process/tree gates. The sandbox timer's kern.clockrate failure is handled by the existing wait4/libproc measurement; actual child return codes are retained. An initial register invocation used a relative script path under the wrapper's changed directory and exited 2; the corrected absolute-path registration completed before any extraction. Both records remain in [resources](t14d-resources.csv). Native payloads removed were only T14d-owned intermediates, with exact hashes retained; native q and I8/I10 caches remain under /private/tmp/ems-t14d. [Checks](t14d-verification.csv), [manifest](t14d-manifest.txt).
 
-Reproduce serially with the measured t14-run.py wrapper, T14_OUTPUT_ROOT=/private/tmp/ems-t14d and T14_DISK_CAP_BYTES=8000000000, using absolute script paths: t14d-analyze.py register; extract max12|max13|max14|max14-half; screen; t14d-report.py design; figures; check; report; manifest. Never reuse the stopped control or overwrite T13/T14 outputs. No production source, evolved state, gauge, KO, equation, transfer, precision, finder or initial-data reader was changed. No SSH or commit.
+## T16 — opt-in geometric initial lapse for boosted and binary data
+
+### Predeclaration, before compilation or numerical runs
+
+Baseline is fork main **5da576b**, branch t14-stagec. The read-only trace finds that `EMSBH_trumpet_read.impl.hpp:90–139` constructs the full Lorentz-transformed stationary maximal-trumpet four-metric and obtains the isolated shift by inverting its spatial block. It is the transformed stationary shift, not an independently chosen seed shift. Line 209 already computes its geometric lapse, alpha_K/sqrt(J), with J=(cosh(eta)-sinh(eta) beta_x)^2-sinh(eta)^2 alpha_K^2 X^2. Lines 347–350 discard that lapse in the boosted/default path and set lapse=sqrt(chi), retaining the transformed shift. Lines 224–227 and 254–261 build the binary from opposite boosts and add their shifts. The CTT correction at lines 285–315 changes gamma by psi^4, the trace-free extrinsic curvature by psi^-2 plus C, covariant E/B by psi^-2 and Pi by psi^-6; phi, the curvature trace and both conserved EM densities retain their prescribed seed values. It changes neither lapse nor shift. The final binary lapse is therefore sqrt(chi_final), including the CTT correction, and its shift is the sum of the two transformed isolated shifts. The parameter/setter maximal-lapse guards remain restricted to an unboosted single hole. `ExperimentalGauge.hpp:55–74` initializes B=0.75 Gamma-beta, and lines 85–96 evolve lapse, shift and B with the existing gauge; that initialization is retained.
+
+The predeclared isolated control is **pure translation at t=0**, RHS(u)+v partial_x u=0 for every non-gauge evolved component. The head-on direction called z in the task is **x in this code**; the boost matrix has Lambda_tx=-sinh(eta), so the hole moves toward +x at v=tanh(eta). No zero-RHS condition is imposed. Lapse, shift and gauge B are reported separately, outside this identity. Physical RHS and KO are separately recorded, as is their sum. The smooth-domain design order is four; puncture-window orders are measured rather than assumed. No identity is imposed on a binary CTT state.
+
+The two isolated rungs use the T13 physical faces: domain [0,672]x[0,336] M_i, centre (336,0), h0=7/8 M_i, base 768x384, faces 112/2^l M_i at levels l>=1, finest levels **13 and 14**. Finest spacings are 0.0001068115234375 and 0.00005340576171875 M_i. The read-only alpha=0.9, e=8 profile has R_h=0.0060404520035922523 M_i, giving **56.5524 and 113.1048 cells**, above T13 E-mid's 42.3314 cells. Tests-only T14 dense tag storage is reused at deep levels. Transfers, gauge, KO sigma=1, all equations, Float64 and puncture coordinates are unchanged; the t2 guard is true. RHFinder is unchanged and disabled for these launch-only tests.
+
+The audit uses native fourth-order derivatives, native metric Gamma including cartoon terms, native trace projection and the original B initialization. It reports every component on the first positive-y cell row (axis limit) and on the diagonal, on W=[0.00075,0.0025] M_i and a smooth collar [0.01,0.02] M_i; fixed physical radial samples are used for the translation control. An independent eighth-order centred translation derivative supplies the reference. Components whose reference/residual is roundoff-limited retain that label rather than an invented convergence order.
+
+The launch comparison is sqrt(chi) versus the proposed geometric lapse on each rung, dt=h/4, requested window 0.002 M_i. Common clocks are coarse-rung finest-step clocks through t_stop=74*(7/8)/8192/4=0.00197601318359375 M_i. Signed Gamma_n, metric Gamma_n, beta_n and lapse disturbances are measured against the captured **numerical t=0 state** at the same fixed physical coordinates on W, with peak and RMS on axis and diagonal, without time or pulse alignment. I8 central sampling and |I8-I10| spread are used; marginal signals retain their uncertainty. Native puncture-cell changes and floors corroborate the profiles. Constraints C_Gamma, Hamiltonian, momentum and GaussE are recorded. A short launch comparison is evidence about the candidate, not admission of final binary CTT data or exterior evolution. No temporal-control evolution was requested under T16; dt/2 certification remains a limit of this comparison.
+
+Before the flag is used, the closed-form boosted lapse is checked symbolically against the full inverse metric and numerically against an independently inverted 4x4 metric. Both boost signs and off-plane samples enter the check. The binary candidate is evaluated stably as min(a1,a2)/sqrt(1+(min/max)^2-min^2), with positive finite denominators and 0<a_A<=1 required; no clipping. Full native-grid ranges and near-companion geometric samples are reported separately from the pending certified-CTT binary audit. Default-off initial plots and two-step checkpoints are compared bitwise to the frozen baseline, including omitted/explicit-false flag cases.
+
+Only serial numerical processes run, OMP=2 and BLAS=1, with measured **3,000,000,000-byte per-process and active-tree gates**, output ceiling <=8 GB. Long work is detached with atomic done.exit markers. No SSH, companion construction, commit, static-data use in positive-time evolution, or changes to RHFinder are authorized.
+
+### Measured isolated initialization and current status
+
+The opt-in flag is `ems_use_geometric_initial_lapse`, omitted/false by default. The existing maximal option retains all single-unboosted restrictions; simultaneous flags and non-EMSTRUMPET/RN use are rejected. The setter reuses its existing full-geometry isolated lapse and assigns the stable inverse-square-addition candidate for a binary before the CTT correction, which leaves that candidate untouched. No non-lapse setter expression or native evolution term was changed.
+
+The exact [CAS witness](t16-cas.json) closes the inverse-metric and stable-binary identities. Its independently assembled 70-digit four-metric inversions span 64 samples with worst relative difference 1.167548703633128025542950750174162994283398747376079086782886537759384e-67. Each opt-in initialization also independently inverts 24 Float64 four-metrics, with both boost signs and off-plane directions. The measured maximum relative discrepancy is **8.88178e-16**, or **1.49351 condition-scaled eps** (declared limit 64). The bound is a numerical matrix-inversion roundoff criterion; finite sampling does not prove the lapse inequality globally. Every actual opt-in setter evaluation separately enforces positivity, finiteness and a<=1, with no clipping.
+
+Default identity passes **1,675,520 Float64 values** in sixteen initial-plot/two-step-checkpoint comparisons: unboosted and boosted progenitors, point and legacy transfers, flag omitted and explicitly false, against the frozen 5da576b production executable. The [control table](t16-controls.csv) records zero bit mismatches. All seven [parameter guards](t16-guards.csv) meet their expected acceptance/rejection. The [output filter check](t16-filter-check.csv) preserves 183,708 Float64 values bitwise, including a skipped-clock XOR-delta chain and an unchanged stage frame.
+
+The actual initialization census confirms every stated face and level. Native grid values, including ghosts, are finite and no chi or lapse floor activates. The isolated minimum geometric lapse is 1.5942598099528705e-4 on L13 and 6.249679544383461e-5 on L14; maximum is 0.9979038379089187 on both. The geometric companion checks transplant each isolated grid footprint by +/-32 M_i to include the opposite-hole neighborhood; these are **per-hole geometric evaluations**, not a final CTT binary state or an admission audit. All denominators and lapse bounds pass. [L13 ranges](t16-ranges-L13.csv), [L14 ranges](t16-ranges-L14.csv).
+
+| Finest rung | Footprint evaluated | a minimum | a maximum |
+| --- | --- | --- | --- |
+| 13 | isolated-native | 0.000159 | 0.998 |
+| 13 | left-hole-near-right-footprint | 0.276 | 0.998 |
+| 13 | right-hole-near-left-footprint | 0.276 | 0.998 |
+| 14 | isolated-native | 6.25e-05 | 0.998 |
+| 14 | left-hole-near-right-footprint | 0.276 | 0.998 |
+| 14 | right-hole-near-left-footprint | 0.276 | 0.998 |
+
+For the native control, the reported residual is physical_RHS+v D8_x u, with KO and its summed residual retained separately. Every nonzero non-gauge residual decreases under refinement; Lambda, Bx, By and Ez are exactly zero here. The discrete audit uses 33 equally spaced requested radial samples per window. The axis is the first positive-y native row and the diagonal uses the nearest native y row, rather than interpolating the RHS. All peak/RMS amplitudes and orders for all 28 components are retained in [audit summary](t16-audit-summary.csv), with [sqrt(chi) raw audit](t16-audit-sqrt.csv) and [geometric raw audit](t16-audit-geometric.csv).
+
+| Non-gauge component | p RMS W axis | p RMS W diagonal | p RMS smooth axis | p RMS smooth diagonal |
+| --- | --- | --- | --- | --- |
+| chi | 4.14 | 4.15 | 4.02 | 4.05 |
+| h11 | 3.95 | 4 | 4 | 4.01 |
+| h12 | 4.9 | 3.05 | 5 | 4 |
+| h22 | 3.94 | 3.99 | 4 | 3.98 |
+| hww | 3.92 | 4 | 4 | 3.99 |
+| K | 3.93 | 4.06 | 4 | 3.38 |
+| A11 | 6.75 | 4.23 | 4.01 | 4.03 |
+| A12 | 5.55 | 5.63 | 4.96 | 3.91 |
+| A22 | 6.78 | 4.23 | 4.01 | 4.03 |
+| Aww | 4.57 | 6.21 | 4.01 | 3.98 |
+| Theta | 3.94 | 4 | 3.98 | 3.73 |
+| Gamma1 | 3.89 | 4.18 | 3.88 | 3.52 |
+| Gamma2 | 2.91 | 4.47 | 3 | 3.46 |
+| phi | 4.51 | 6.5 | 4.03 | 3.93 |
+| Pi | 4.5 | 6.18 | 4.02 | 3.94 |
+| Lambda | zero | zero | zero | zero |
+| Bx | zero | zero | zero | zero |
+| By | zero | zero | zero | zero |
+| Bz | 6.27 | 7.01 | 4.76 | 4.13 |
+| Ex | 4.56 | 5.63 | 4.04 | 4.23 |
+| Ey | 5.83 | 4.31 | 5.04 | 4.01 |
+| Ez | zero | zero | zero | zero |
+| Xi | 5.92 | 5.76 | 4 | 4 |
+
+The smooth collar predominantly exhibits fourth-order behavior, with finite two-rung deviations retained in the table. The first-row transverse Gamma residual is third order (2.999 smooth, 2.911 on W). This is consistent with native cartoon D1(beta)/y terms: the exact polynomial witness D1_h(y^5)-5y^4=-4h^4 becomes -8h^3 at y=h/2. That consistency example does not prove which term dominates this measured Gamma residual. Two resolutions do not establish an asymptotic order or eliminate a smaller source below the discretization error. No uniform fourth-order certificate is claimed at the axis or puncture.
+
+| Ray | Field | Geometric identity RMS, L14 | Geometric/sqrt(chi) residual | Observed p |
+| --- | --- | --- | --- | --- |
+| axis | K | 4.15e-06 | 5.45e-06 | 3.93 |
+| axis | Gamma1 | 0.000747 | 3.66e-06 | 3.89 |
+| axis | Gamma2 | 0.00786 | 0.00161 | 2.91 |
+| axis | phi | 9.56e-08 | 4e-05 | 4.51 |
+| axis | Pi | 1.5e-06 | 4.56e-05 | 4.5 |
+| axis | Ex | 0.0156 | 0.178 | 4.56 |
+| diagonal | K | 4.02e-07 | 5.28e-07 | 4.06 |
+| diagonal | Gamma1 | 0.000172 | 1.19e-06 | 4.18 |
+| diagonal | Gamma2 | 7.43e-05 | 5.16e-07 | 4.47 |
+| diagonal | phi | 2.07e-08 | 8.67e-06 | 6.5 |
+| diagonal | Pi | 4.39e-07 | 1.34e-05 | 6.18 |
+| diagonal | Ex | 0.00304 | 0.0533 | 5.63 |
+
+The code gauge remains independent of the translated-geometry identity: initial lapse RHS=beta dot grad(alpha)-1.8 alpha(K-2Theta), shift RHS=beta dot grad(beta) after its initialized driver cancellation, and gauge B RHS=-0.1 B. The native audit separately reports these physical RHS and KO terms. They are not required to translate the stationary four-geometry.
+
+| Ray | Gauge field | Physical RHS RMS, L14 | KO RMS, L14 |
+| --- | --- | --- | --- |
+| axis | lapse | 0.355 | 1.39e-06 |
+| axis | shift1 | 0.0223 | 9.9e-09 |
+| axis | shift2 | 0.000101 | 2.53e-09 |
+| axis | B1 | 0.00146 | 2.13e-06 |
+| axis | B2 | 9.44e-07 | 1.79e-07 |
+| diagonal | lapse | 0.249 | 1.34e-06 |
+| diagonal | shift1 | 0.0252 | 1e-08 |
+| diagonal | shift2 | 0.00329 | 8.71e-09 |
+| diagonal | B1 | 0.0015 | 2.87e-06 |
+| diagonal | B2 | 1.42e-05 | 1.09e-06 |
+
+**READY-EXCEPT: the isolated measurements are complete and verified; temporal certification and the certified-companion binary audit remain unavailable.** Each native leg is checked against its own actual-child receipt, clear output/memory gates, completion log, registered stop, finite current-state replay and floor/reader records. The enclosing evolution worker and pipeline receipts also pass those execution checks. The preserved pipeline manifest authenticates 368 inputs, executables, captures and caches; 33,885,000 replay Float64 values are finite and the native RHS comparison has zero bit mismatches. All 9,600 profile-history norms/spreads reproduce from the stored I8/I10 caches. [Verification](t16-verification.csv) distinguishes these checks from a scientific admission verdict. An initial follow-up verification used a nonexistent evolution queue-receipt name; the corrected check uses the actual evolution-worker receipt. Both resource records remain retained.
+
+Endpoint ratios below are geometric/sqrt(chi) disturbance at the common physical time **0.00197601318359375 M_i**. For each amplitude A, e=5 norm(I8-I10), after subtracting the respective captured numerical t=0 profile. The displayed sensitivity intervals are [(G-e_G)/(S+e_S),(G+e_G)/(S-e_S)], with the lower numerator floored at zero and an unbounded upper value if S<=e_S. The reduction margin is (S-G)/(e_S+e_G); greater than one resolves the amplitude reduction at this sampling budget. These are sensitivity estimates from the declared interpolation spread, not rigorous interpolation-error bounds. Every endpoint field amplitude and reduction qualifies. [Endpoint amplitudes and signal margins](t16-launch-endpoint.csv), [all-clock sensitivity intervals and reduction margins](t16-sampling-margins.csv).
+
+| Finest rung | Ray | Field | Peak ratio | RMS ratio | Peak 5x interval | RMS 5x interval | Min reduction margin |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 13 | axis | Gamma | 0.00986 | 0.0124 | 0.00985519–0.00986775 | 0.0124052–0.0124082 | 2.57e+04 |
+| 13 | axis | metric_Gamma | 0.13 | 0.0402 | 0.126088–0.133571 | 0.0391039–0.0413326 | 93.3 |
+| 13 | axis | shift | 0.48 | 0.438 | 0.479916–0.479931 | 0.438248–0.438252 | 4.58e+04 |
+| 13 | axis | lapse | 0.765 | 0.798 | 0.764474–0.764965 | 0.797868–0.797977 | 784 |
+| 13 | diagonal | Gamma | 0.00586 | 0.00755 | 0.00586178–0.00586381 | 0.00754466–0.00754581 | 3.62e+04 |
+| 13 | diagonal | metric_Gamma | 0.00936 | 0.00818 | 0.00912978–0.00959151 | 0.00810441–0.00825426 | 1.06e+03 |
+| 13 | diagonal | shift | 0.307 | 0.272 | 0.306762–0.306765 | 0.272258–0.272259 | 2.35e+05 |
+| 13 | diagonal | lapse | 0.787 | 0.802 | 0.786786–0.786948 | 0.802251–0.802277 | 2.18e+03 |
+| 14 | axis | Gamma | 0.00999 | 0.0125 | 0.00998914–0.00998942 | 0.0125115–0.0125116 | 2.12e+05 |
+| 14 | axis | metric_Gamma | 0.02 | 0.0128 | 0.0196481–0.0204152 | 0.0127356–0.0128929 | 715 |
+| 14 | axis | shift | 0.48 | 0.439 | 0.480367–0.480367 | 0.438516–0.438516 | 1.85e+06 |
+| 14 | axis | lapse | 0.763 | 0.798 | 0.762811–0.762828 | 0.798135–0.798137 | 2.27e+04 |
+| 14 | diagonal | Gamma | 0.00591 | 0.00762 | 0.00590892–0.00590904 | 0.00761988–0.00761993 | 3.06e+05 |
+| 14 | diagonal | metric_Gamma | 0.00591 | 0.00765 | 0.00590285–0.00591548 | 0.00764697–0.00764998 | 4.69e+04 |
+| 14 | diagonal | shift | 0.307 | 0.272 | 0.307252–0.307252 | 0.272429–0.272429 | 6.25e+06 |
+| 14 | diagonal | lapse | 0.79 | 0.802 | 0.790241–0.790242 | 0.802395–0.802395 | 2.36e+05 |
+
+The history retains **75 exact common clocks** including t=0 and all 74 positive clocks, without time interpolation or alignment. At t=0 every disturbance is identically zero and its ratio is undefined. All **2,368/2,368 positive-time disturbance entries** exceed their own 5x spread in both variants; uncertainty-dominated count is zero and no entry is discarded. The smallest signal margin is 5.13425, for L13 axis metric-Gamma peak at step 15, t=0.000400543212890625 M_i. The [empty unqualified-entry ledger](t16-unqualified-history.csv) retains its schema. Reduction is sampling-resolved in **2,228/2,368** entries; the remaining 140 are measured early shift increases, not an interpolation failure. [History counts, extrema and every enhanced step](t16-history-summary.csv), [raw history](t16-launch-history.csv).
+
+| Rung | Ray | Field | History peak ratio range | History RMS ratio range | Reduction counts peak / RMS | Min signal margins peak / RMS |
+| --- | --- | --- | --- | --- | --- | --- |
+| 13 | axis | Gamma | 0.002809–0.009861 | 0.004307–0.01241 | 74/74 / 74/74 | 56.3 / 462 |
+| 13 | axis | metric_Gamma | 0.002816–0.1298 | 0.004318–0.04022 | 74/74 / 74/74 | 5.13 / 25 |
+| 13 | axis | shift | 0.4792–5.526 | 0.4333–7.49 | 55/74 / 51/74 | 1.94e+03 / 6.49e+03 |
+| 13 | axis | lapse | 0.7596–0.7668 | 0.7979–0.8051 | 74/74 / 74/74 | 790 / 6.2e+03 |
+| 13 | diagonal | Gamma | 0.001517–0.005863 | 0.002327–0.007545 | 74/74 / 74/74 | 158 / 1.08e+03 |
+| 13 | diagonal | metric_Gamma | 0.001514–0.00936 | 0.002323–0.008179 | 74/74 / 74/74 | 16.4 / 78.3 |
+| 13 | diagonal | shift | 0.3051–5.582 | 0.2696–7.114 | 61/74 / 59/74 | 1.33e+04 / 5.58e+04 |
+| 13 | diagonal | lapse | 0.7608–0.7869 | 0.8023–0.8047 | 74/74 / 74/74 | 6.94e+03 / 4.66e+04 |
+| 14 | axis | Gamma | 0.002826–0.009989 | 0.004336–0.01251 | 74/74 / 74/74 | 4.38e+03 / 3.07e+04 |
+| 14 | axis | metric_Gamma | 0.002826–0.02003 | 0.004337–0.01281 | 74/74 / 74/74 | 25.8 / 168 |
+| 14 | axis | shift | 0.4797–5.526 | 0.4336–7.488 | 55/74 / 51/74 | 1.2e+05 / 6.82e+05 |
+| 14 | axis | lapse | 0.7628–0.7656 | 0.7981–0.8051 | 74/74 / 74/74 | 9.37e+04 / 8.74e+05 |
+| 14 | diagonal | Gamma | 0.001515–0.005909 | 0.002326–0.00762 | 74/74 / 74/74 | 4.35e+03 / 2.92e+04 |
+| 14 | diagonal | metric_Gamma | 0.001515–0.005909 | 0.002326–0.007648 | 74/74 / 74/74 | 599 / 4.43e+03 |
+| 14 | diagonal | shift | 0.3056–5.583 | 0.2698–7.12 | 61/74 / 59/74 | 3.29e+05 / 1.89e+06 |
+| 14 | diagonal | lapse | 0.7617–0.7902 | 0.8024–0.8047 | 74/74 / 74/74 | 1.28e+06 / 1.06e+07 |
+
+Gamma, metric Gamma and lapse disturbance are smaller throughout the positive history on both rays and rungs. The shift is larger at steps 1–19 (axis peak), 1–23 (axis RMS), 1–13 (diagonal peak) and 1–15 (diagonal RMS). Its largest ratio is **7.49014**, L13 axis RMS at step 11, t=0.000293731689453125 M_i. All shift norms become smaller at step 24, t=0.000640869140625 M_i, and remain smaller through the common endpoint. The endpoint improvement therefore does not establish uniform suppression of the complete launch history. Fixed-coordinate disturbances include physical translation and gauge response. No factor-two admission criterion or binary source-cancellation verdict was preregistered for this isolated comparison.
+
+**Temporal margin: not measured.** The frozen registration has no same-grid dt/2 leg. Both h and dt halve between L13 and L14, so the table below reports combined spatial/temporal sensitivity and cannot establish temporal subdominance. The common clocks coincide exactly; native final times are not mixed or interpolated. In particular, evolved Gamma geometric amplitudes rise by approximately 0.8–1.2% under refinement while remaining strongly below sqrt(chi); coarse axis metric-Gamma peak decreases sharply on refinement. No self-contraction order is inferred from these two amplitudes. [Rung trend](t16-rung-trend.csv).
+
+| Ray | Field | sqrt fine/coarse peak | sqrt fine/coarse RMS | geometric fine/coarse peak | geometric fine/coarse RMS |
+| --- | --- | --- | --- | --- | --- |
+| axis | Gamma | 0.999 | 1 | 1.01 | 1.01 |
+| axis | metric_Gamma | 0.999 | 0.992 | 0.154 | 0.316 |
+| axis | shift | 1 | 1 | 1 | 1 |
+| axis | lapse | 1 | 1 | 1 | 1 |
+| diagonal | Gamma | 1 | 1 | 1.01 | 1.01 |
+| diagonal | metric_Gamma | 1 | 1 | 0.631 | 0.935 |
+| diagonal | shift | 1 | 1 | 1 | 1 |
+| diagonal | lapse | 0.996 | 1 | 1 | 1 |
+
+The native puncture diagnostic uses the same four cells adjacent to the initial puncture on each rung, without radial interpolation. Its endpoint peak-change ratios corroborate suppression of Gamma and lapse, with a smaller longitudinal-shift benefit than on W. They compare different physical cell locations between rungs and do not define a fixed-domain convergence order. [All native puncture ratios and instantaneous KO peaks](t16-puncture-ratios.csv), [captured native changes](t16-native-puncture.csv). KO peaks are RHS terms and are not an integrated fraction of the evolved change; no KO-share attribution is inferred.
+
+| Native field | L13 peak-change ratio | L14 peak-change ratio |
+| --- | --- | --- |
+| Gamma1 | 0.0876 | 0.0356 |
+| Gamma2 | 0.0596 | 0.0245 |
+| shift1 | 0.68 | 0.71 |
+| shift2 | 0.0174 | 0.0112 |
+| lapse | 0.351 | 0.308 |
+
+Constraints are absolute native residuals on the same W, not disturbances from t=0. Endpoint C_Gamma improves by roughly a factor 2.3–2.5 and its five-spread intervals exclude one. Ham, Mom and GaussE endpoint ratios lie between **0.999676 and 1.002996**; every corresponding five-spread interval includes one. Thus their small central changes, including increases, are sampling-unresolved. Some early constraint entries are uncertainty-dominated and remain labelled in the complete table; early fine-grid C_Gamma peak can also increase. The lapse change does not demonstrate suppression of the entire constraint battery throughout history. [Absolute amplitudes, endpoint intervals and history qualification counts](t16-constraint-summary.csv), [all-clock intervals](t16-sampling-margins.csv).
+
+| Ray | Constraint | L13 peak ratio | L13 RMS ratio | L14 peak ratio | L14 RMS ratio | Qualified counts: L13 peak/RMS, L14 peak/RMS |
+| --- | --- | --- | --- | --- | --- | --- |
+| axis | C_Gamma | 0.413234 | 0.438065 | 0.402676 | 0.414124 | 72/74 / 72/74 / 74/74 / 74/74 |
+| axis | Ham | 1.000519 | 1.000982 | 1.001783 | 1.002065 | 69/74 / 72/74 / 74/74 / 74/74 |
+| axis | Mom | 1.001425 | 1.001206 | 1.002556 | 1.002318 | 72/74 / 73/74 / 74/74 / 74/74 |
+| axis | GaussE | 1.000030 | 1.000451 | 1.000320 | 1.000913 | 71/74 / 74/74 / 71/74 / 74/74 |
+| diagonal | C_Gamma | 0.406136 | 0.415671 | 0.416762 | 0.420641 | 64/74 / 70/74 / 74/74 / 74/74 |
+| diagonal | Ham | 1.000377 | 1.000707 | 0.999676 | 1.000309 | 74/74 / 74/74 / 74/74 / 74/74 |
+| diagonal | Mom | 1.000176 | 1.000501 | 1.000267 | 1.001226 | 74/74 / 74/74 / 74/74 / 74/74 |
+| diagonal | GaussE | 1.002996 | 1.000529 | 1.002360 | 1.002830 | 73/74 / 74/74 / 74/74 / 74/74 |
+
+Across the complete native runs, chi/lapse floor counts are 0/0, nonfinite counts 0, and positive-time static-reader messages 0. The initial driver cancels exactly and all retained t=0 non-lapse values match bitwise between the two lapse variants. The native stops are 0.00197601318359375 (L13) and 0.0019893646240234375 (L14); only the common 75 clocks enter the ratio history.
+
+Measured process peak is **803717120 bytes**, sampled active-tree peak **1409966600 bytes**. Measurements are in [resources](t16-resources.csv), including failed setup attempts; each numerical process stays below 3 GB and uses OMP=2, BLAS=1. The final follow-up verification also stays within the cap. The native compiler/reader/recorder evidence is pinned in [manifest](t16-manifest.txt). The final manifest writer has its own receipt under `/private/tmp/ems-t16/final-manifest`; that receipt is finalized after manifest creation and is not self-hashed.
+
+The binary step needs the **certified tranche-2a EMSCTT/1 companion for this exact alpha=0.9, e=8 profile**, authenticated against its profile SHA-256 and the solver/end-tail provenance, with masses (1,1), centres (-16,+16), rapidities (+atanh(v),-atanh(v)), and couplings (4pi,0,0,-0.9). Its consumed-order/end-transfer certificate and reconstructed constraints, ADM mass, individual areas and charges must accompany it. Then the same unchanged companion supplies both lapse variants on the final reconstructed CTT state: positive per-hole/combined denominators, native-grid min/max including the companion neighborhoods, unchanged non-lapse fields and initialized driver cancellation, constraints and refinement-controlled source/launch comparison. No binary companion was constructed and no final-CTT binary audit or launch was run. The isolated result cannot admit a binary Killing lapse or prove binary source cancellation.
+
+For this completed T16 evidence, rerun only the analysis with absolute paths under the measured `t16-run.py` wrapper: `t16-verify.py`; `t16-analyze.py resources`; `t16-report.py`; then `t16-analyze.py resources` for the final manifest. The verification consumes the retained native replay/profile caches and authenticates the original captures. If regenerating caches is necessary, `t16-analyze.py analyze` replays those stored captures and never opens the static trumpet. No new evolution is needed.

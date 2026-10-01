@@ -1,0 +1,5 @@
+level,ray,face_M,buffer_M,initial_max_family_speed,provisional_bound,arrival_bound_M,margin_beyond_window_M,condition
+13,axis,0.013671875,0.0008544921875,1.0546137306697225,1.1,0.009379438920454545,0.0073794389204545445,conditional characteristic estimate; FD/KO tails are not compact
+13,diagonal,0.013671875,0.0008544921875,1.0546137306697225,1.1,0.010045105326848755,0.008045105326848755,conditional characteristic estimate; FD/KO tails are not compact
+14,axis,0.0068359375,0.00042724609375,1.0546069089259793,1.1,0.0035533558238636355,0.0015533558238636355,conditional characteristic estimate; FD/KO tails are not compact
+14,diagonal,0.0068359375,0.00042724609375,1.0546069089259793,1.1,0.004219022230257846,0.002219022230257846,conditional characteristic estimate; FD/KO tails are not compact

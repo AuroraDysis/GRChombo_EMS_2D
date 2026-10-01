@@ -71,6 +71,8 @@ class EMSBH_trumpet_read
     static Tensor<2, double, 4>
     lorentz_transform(const Tensor<2, double, 4> &a_tensor,
                       const Tensor<2, double, 4> &a_lorentz_matrix);
+    //! Independent Float64 4x4 inverse audit, only during opt-in initialization.
+    void check_geometric_lapse() const;
     template <class data_t>
     CCZ4CartoonVars::VarsWithGauge<data_t>
     conformal_decomposition(const ems_adm_vars_t<data_t> &a_adm_vars) const;

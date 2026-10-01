@@ -1,0 +1,8 @@
+case,expected_accept,returncode,result
+geometric-boost,True,0,PASS
+geometric-binary,True,0,PASS
+maximal-boost,False,250,PASS
+maximal-binary,False,250,PASS
+both,False,250,PASS
+legacy,False,250,PASS
+RN,False,250,PASS

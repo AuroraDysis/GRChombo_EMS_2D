@@ -1,0 +1,11 @@
+{
+  "status": "READY-EXCEPT",
+  "binary": "pending certified tranche-2a companion",
+  "temporal_control": "not registered or measured",
+  "isolated": "verified; endpoint reductions resolved; early shift enhanced",
+  "positive_history_entries": 2368,
+  "qualified_positive_history_entries": 2368,
+  "sampling_resolved_reductions": 2228,
+  "peak_rss_bytes": 803717120,
+  "sampled_tree_peak_bytes": 1409966600
+}

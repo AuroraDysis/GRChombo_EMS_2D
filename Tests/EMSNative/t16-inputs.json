@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-echobin/artifacts/echo-binary/a0.9-e8.trumpet",
+    "sha256": "4d7cc0b975d4dde0c4da8400ef0bbad8c3e57716c9708c160d19e56288a76f90",
+    "bytes": 8096
+  },
+  {
+    "path": "/private/tmp/ems-t16/baseline/launch.ex",
+    "sha256": "691c2a6e9008482f91962e17148e16ba37c8381c2a983421c7c54e7a41a7ab8e",
+    "bytes": 2117984
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/consult-8-reply.md",
+    "sha256": "f64b31e9624d2619183f3497768df84f1e784ec7dda4db074d615f01d274ab61",
+    "bytes": 26589
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/docs/binary-ctt.md",
+    "sha256": "20f69e876b7bfa2ef33ab366eabb3edf1cfc86b13217be1c52e8b7b9044d3eee",
+    "bytes": 67928
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/docs/binary-ctt-format.md",
+    "sha256": "dcc709fbabe410239112a70ff2cb5b50c7493d9bca61fcac68ce43541a17af0f",
+    "bytes": 40929
+  }
+]

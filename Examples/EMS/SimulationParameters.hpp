@@ -46,6 +46,8 @@ public:
         pp.load("ems_ctt_data_path", emsbh_params.ctt_data_path, std::string());
         pp.load("ems_use_maximal_initial_lapse",
                 emsbh_params.use_maximal_initial_lapse, false);
+        pp.load("ems_use_geometric_initial_lapse",
+                emsbh_params.use_geometric_initial_lapse, false);
         pp.load("gridpoints", emsbh_params.gridpoints, 40000);
         pp.load("star_centre", emsbh_params.star_centre,
                 {0.5 * L, 0.5 * L});
@@ -161,6 +163,11 @@ public:
 
     void check_params()
     {
+        if (emsbh_params.use_geometric_initial_lapse &&
+            (ems_data_format != "emstrumpet1" || !EMS_not_RN ||
+             emsbh_params.use_maximal_initial_lapse))
+            MayDay::Error("ems_use_geometric_initial_lapse requires emstrumpet1 "
+                          "EMS data and is exclusive with the maximal option");
         if (emsbh_params.use_maximal_initial_lapse &&
             (ems_data_format != "emstrumpet1" || !EMS_not_RN ||
              emsbh_params.boosted || emsbh_params.rapidity != 0. ||
