@@ -130,7 +130,18 @@ void EMSBH2DLevel::t6_write_interface_strips() const
 void EMSBH2DLevel::specificAdvance()
 {
     if (m_t7.enabled) t7_record(6,m_state_new,0);
+    const bool capture=m_t13.stage_capture(m_level,m_p.max_level);
+    if (capture) t13_record(6,m_state_new,m_time+m_dt);
+    m_t13.floors(m_level,m_state_new,m_time+m_dt,"advance",m_p.min_chi,m_p.min_lapse,c_chi,c_lapse);
     // Enforce the trace free A_ij condition and positive chi and alpha
+    if (capture)
+    {
+        BoxLoops::loop(TraceARemovalCartoon(),m_state_new,m_state_new,INCLUDE_GHOST_CELLS);
+        t13_record(16,m_state_new,m_time+m_dt);
+        BoxLoops::loop(PositiveChiAndAlpha(m_p.min_chi,m_p.min_lapse),m_state_new,m_state_new,INCLUDE_GHOST_CELLS);
+        t13_record(17,m_state_new,m_time+m_dt);
+    }
+    else
     BoxLoops::loop(
         make_compute_pack(TraceARemovalCartoon(), PositiveChiAndAlpha(m_p.min_chi, m_p.min_lapse)),
         m_state_new, m_state_new, INCLUDE_GHOST_CELLS);
@@ -141,6 +152,14 @@ void EMSBH2DLevel::specificAdvance()
         BoxLoops::loop(
             NanCheck(m_dx, m_p.center, "NaNCheck in specific Advance: "),
             m_state_new, m_state_new, EXCLUDE_GHOST_CELLS, disable_simd());
+}
+
+void EMSBH2DLevel::ems_t13_initial()
+{
+    if (!m_t13.enabled()) return;
+    if (m_time!=0.) MayDay::Error("T13 launch audit requires a t=0 start");
+    m_t13.floors(m_level,m_state_new,m_time,"initial",m_p.min_chi,m_p.min_lapse,c_chi,c_lapse);
+    t13_snapshot();
 }
 
 void EMSBH2DLevel::ems_t7_initial()
@@ -309,11 +328,22 @@ void EMSBH2DLevel::specificEvalRHS(GRLevelData &a_soln,
                                          const double a_time)
 {
     if (m_t7.enabled) t7_record(2,a_soln);
+    const bool t13=m_t13.stage_capture(m_level,m_p.max_level);
+    if (t13) t13_record(2,a_soln,m_time);
+    m_t13.floors(m_level,a_soln,a_time,"stage",m_p.min_chi,m_p.min_lapse,c_chi,c_lapse);
     ////////////////////////////////////////
     // Enforce positive chi and alpha and trace free A
-    BoxLoops::loop(
+    if (t13)
+    {
+        BoxLoops::loop(TraceARemovalCartoon(),a_soln,a_soln,INCLUDE_GHOST_CELLS);
+        t13_record(14,a_soln,m_time);
+        BoxLoops::loop(PositiveChiAndAlpha(m_p.min_chi,m_p.min_lapse),a_soln,a_soln,INCLUDE_GHOST_CELLS);
+        t13_record(15,a_soln,m_time);
+    }
+    else BoxLoops::loop(
         make_compute_pack(TraceARemovalCartoon(), PositiveChiAndAlpha(m_p.min_chi, m_p.min_lapse)),
         a_soln, a_soln, INCLUDE_GHOST_CELLS);
+    if (t13) t13_record(3,a_soln,m_time);
     if (m_t7.enabled) t7_record(3,a_soln);
 
 
@@ -353,15 +383,20 @@ void EMSBH2DLevel::specificEvalRHS(GRLevelData &a_soln,
     SetValue set_analysis_vars_zero(0.0, Interval(c_Xi + 1, NUM_VARS - 1));
     auto compute_pack =
         make_compute_pack(my_ccz4_cartoon, set_analysis_vars_zero);
-    if (m_t7.enabled && m_level>=4 && m_level<=6)
+    if (t13 || (m_t7.enabled && m_level>=4 && m_level<=6))
     {
-        auto f=t7_faces();auto windows=T7OperationRecorder::windows(m_dx,m_p.center[0],f.first,f.second);
+        auto f=t7_faces();auto windows=t13?T13LaunchRecorder::windows(m_dx,m_p.center[0]):T7OperationRecorder::windows(m_dx,m_p.center[0],f.first,f.second);
         int source=0;
         for (DataIterator it=a_soln.dataIterator();it.ok();++it,++source)
         {
             FArrayBox capture(a_rhs[it()].box(),2*NUM_VARS);
             my_ccz4_cartoon.t7_capture(&capture,&windows);
             BoxLoops::loop(make_compute_pack(my_ccz4_cartoon,set_analysis_vars_zero),a_soln[it()],a_rhs[it()],a_soln.disjointBoxLayout()[it()]);
+            if (t13)
+            {
+                m_t13.parts(m_level,source,capture,a_soln.disjointBoxLayout()[it()],m_time,m_dx,m_dt,m_p.center[0]);
+                continue;
+            }
             int region=0;
             for (const auto &window:windows)
             {
@@ -382,8 +417,11 @@ void EMSBH2DLevel::specificUpdateODE(GRLevelData &a_soln,
                                            const GRLevelData &a_rhs, Real a_dt)
 {
     if (m_t7.enabled) t7_record(4,a_soln,0);
+    const bool capture=m_t13.stage_capture(m_level,m_p.max_level);
+    if (capture) t13_record(4,a_soln,m_time,0);
     // Enforce the trace free A_ij condition
     BoxLoops::loop(TraceARemovalCartoon(), a_soln, a_soln, INCLUDE_GHOST_CELLS);
+    if (capture) t13_record(5,a_soln,m_time,0);
     if (m_t7.enabled) t7_record(5,a_soln,0);
 }
 

@@ -1,0 +1,20 @@
+{
+  "jobs": [
+    {
+      "name": "max13",
+      "directory": "/private/tmp/ems-t13-stageC/evolution/max13",
+      "command": [
+        "/private/tmp/ems-t13/launch.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/params/t13-stageC-E-mid-max13.txt"
+      ]
+    },
+    {
+      "name": "max14",
+      "directory": "/private/tmp/ems-t13-stageC/evolution/max14",
+      "command": [
+        "/private/tmp/ems-t13/launch.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/params/t13-stageC-E-mid-max14.txt"
+      ]
+    }
+  ]
+}

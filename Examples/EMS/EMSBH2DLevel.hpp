@@ -64,6 +64,7 @@ class EMSBH2DLevel : public GRAMRLevel
 
   public:
     void ems_t7_initial();
+    void ems_t13_initial();
     // Prepare every level before the initial extraction after interpolator setup.
     void ems_prepare_radiation();
     void ems_extract_radiation();

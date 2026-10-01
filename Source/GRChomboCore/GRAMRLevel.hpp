@@ -20,6 +20,7 @@
 #include "GRLevelData.hpp"
 #include "PointAMRTransfer.hpp"
 #include "T7OperationRecorder.hpp"
+#include "T13LaunchRecorder.hpp"
 #include "InterpSource.hpp"
 #include "SimulationParameters.hpp"
 #include "UserVariables.hpp" // need NUM_VARS
@@ -248,6 +249,9 @@ class GRAMRLevel : public AMRLevel, public InterpSource<>
     PointAMRTransfer m_point_transfer;
     int m_rk_stage = 0;
     T7OperationRecorder m_t7;
+    T13LaunchRecorder m_t13;
+    void t13_record(int phase,const GRLevelData &data,double time,int growth=3);
+    void t13_snapshot();
     std::pair<double,double> t7_faces() const;
     void t7_record(int phase,const GRLevelData &data,int growth=3,int first=0,int n=NUM_VARS,double h=0.);
 

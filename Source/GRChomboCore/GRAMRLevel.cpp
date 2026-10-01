@@ -8,13 +8,31 @@
 GRAMRLevel::GRAMRLevel(GRAMR &gr_amr, const SimulationParameters &a_p,
                        int a_verbosity)
     : m_gr_amr(gr_amr), m_p(a_p), m_verbosity(a_verbosity),
-      m_t7(a_p.data_path),m_num_ghosts(a_p.num_ghosts)
+      m_t7(a_p.data_path),m_t13(a_p.data_path),m_num_ghosts(a_p.num_ghosts)
 {
     if (m_verbosity)
         pout() << "GRAMRLevel constructor" << endl;
 }
 
 GRAMRLevel::~GRAMRLevel() {}
+
+void GRAMRLevel::t13_record(int phase,const GRLevelData &data,double time,int growth)
+{
+    m_t13.record(phase,m_level,data,time,m_dx,m_dt,m_p.center[0],growth);
+}
+
+void GRAMRLevel::t13_snapshot()
+{
+    if (!m_t13.selected(m_level,m_p.max_level)) return;
+    // Fill a COPY: the recorder never changes the evolved state or its ghosts.
+    GRLevelData sample;
+    sample.define(m_state_new.disjointBoxLayout(),NUM_VARS,m_state_new.ghostVect());
+    for (DataIterator it=sample.dataIterator();it.ok();++it)
+        sample[it()].copy(m_state_new[it()]);
+    sample.exchange(m_exchange_copier);
+    fillBdyGhosts(sample);
+    t13_record(50,sample,m_time);
+}
 
 std::pair<double,double> GRAMRLevel::t7_faces() const
 {
@@ -251,6 +269,17 @@ void GRAMRLevel::postTimeStep()
     // enforce solution BCs - this is required after the averaging
     // and postentially after specificPostTimeStep actions
     fillBdyGhosts(m_state_new);
+
+    if (m_t13.enabled() && m_level==m_p.max_level)
+    {
+        t13_snapshot();
+        if (m_coarser_level_ptr) gr_cast(m_coarser_level_ptr)->t13_snapshot();
+        ++m_t13.steps;
+        // Keep the frozen timestep: finish at the last native step inside the
+        // requested window, rather than taking a shortened, inconsistent step.
+        if (m_time+m_dt>m_t13.stop+32*std::numeric_limits<double>::epsilon()*m_t13.stop)
+            throw T13LaunchStop{m_time};
+    }
 
     if (m_verbosity)
         pout() << "GRAMRLevel::postTimeStep " << m_level << " finished" << endl;
@@ -999,6 +1028,9 @@ void GRAMRLevel::evalRHS(GRLevelData &rhs, GRLevelData &soln,
                          Real time, Real fluxWeight)
 {
     CH_TIME("GRAMRLevel::evalRHS");
+    if (m_t13.stage_capture(m_level,m_p.max_level))
+        m_t13.stage(m_rk_stage,time,oldCrseTime,newCrseTime,
+                   oldCrseSoln.isDefined()?(m_time-oldCrseTime)/(newCrseTime-oldCrseTime):0.);
     if (m_t7.enabled)
     {
         m_t7.stage=m_rk_stage;m_t7.stage_time=time;
@@ -1064,16 +1096,20 @@ void GRAMRLevel::evalRHS(GRLevelData &rhs, GRLevelData &soln,
         m_boundaries.fill_rhs_boundaries(Side::Lo, soln, rhs);
         m_boundaries.fill_rhs_boundaries(Side::Hi, soln, rhs);
     }
+    if (m_t13.stage_capture(m_level,m_p.max_level)) t13_record(22,rhs,m_time,0);
 }
 
 // implements soln += dt*rhs
 void GRAMRLevel::updateODE(GRLevelData &soln, const GRLevelData &rhs, Real dt)
 {
     CH_TIME("GRAMRLevel::updateODE");
+    if (m_t13.stage_capture(m_level,m_p.max_level))
+    {m_t13.update(dt);t13_record(12,soln,m_time,0);}
     if (m_t7.enabled) {m_t7.update_dt=dt;t7_record(12,soln,0);}
     // m_grown_grids will include outer boundary ghosts in the case of
     // nonperiodic BCs but will just be the problem domain otherwise.
     soln.plus(rhs, dt, m_grown_grids);
+    if (m_t13.stage_capture(m_level,m_p.max_level)) t13_record(13,soln,m_time,0);
     if (m_t7.enabled) t7_record(13,soln,0);
 
     specificUpdateODE(soln, rhs, dt);

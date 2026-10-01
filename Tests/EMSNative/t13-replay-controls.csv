@@ -1,0 +1,2 @@
+directory,level,native_samples,RHS_Float64_values,RHS_bit_mismatches,projected_state_bit_mismatches,physical_plus_KO_max_eps,RK_update_max_eps,Gamma_term_sum_max_eps
+/private/tmp/ems-t13/controls/E-point-capture,1,32,896,0,0,0.838240610272084,0.25,0.875

@@ -46,6 +46,8 @@ int runGRChombo(int argc, char *argv[])
     bh_amr.set_interpolator(&interpolator);
     for (int i=0;i<bh_amr.getAMRLevels().size();++i)
         dynamic_cast<EMSBH2DLevel *>(bh_amr.getAMRLevels()[i])->ems_t7_initial();
+    for (int i=0;i<bh_amr.getAMRLevels().size();++i)
+        dynamic_cast<EMSBH2DLevel *>(bh_amr.getAMRLevels()[i])->ems_t13_initial();
     if (radiation.active)
     {
         const auto levels = bh_amr.getAMRLevels();
@@ -84,13 +86,22 @@ int runGRChombo(int argc, char *argv[])
 
     std::chrono::time_point<Clock> start_time = Clock::now();
 
-    bh_amr.run(sim_params.stop_time, sim_params.max_steps);
+    bool launch_stopped=false;
+    try { bh_amr.run(sim_params.stop_time, sim_params.max_steps); }
+    catch (const T13LaunchStop &stop)
+    {
+        launch_stopped=true;
+        pout()<<std::setprecision(17)<<"T13 clean native stop at "<<stop.time<<" M; no unsynchronized plot/checkpoint written."<<std::endl;
+        std::ofstream out(sim_params.data_path+"t13-stop.csv");
+        out<<"actual_time_M\n"<<std::setprecision(17)<<stop.time<<'\n';
+        if (!out) MayDay::Error("T13 stop record write failed");
+    }
 
     auto now = Clock::now();
     auto duration = std::chrono::duration_cast<Minutes>(now - start_time);
     pout() << "Total simulation time (mins): " << duration.count() << ".\n";
 
-    bh_amr.conclude();
+    if (!launch_stopped) bh_amr.conclude();
 
     CH_TIMER_REPORT(); // Report results when running with Chombo timers.
 

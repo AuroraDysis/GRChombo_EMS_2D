@@ -1,0 +1,17 @@
+check,value,result
+frozen default/control files,12,PASS
+non-lapse initialized mismatches,0,PASS
+actual production RHS mismatches,0,PASS
+original done.exit,0,PASS
+maximal done.exit,0,PASS
+original-half done.exit,0,PASS
+maximal-half done.exit,0,PASS
+floor/nonfinite/reader counts,0,PASS
+common native endpoints,0.001993815104166667,PASS
+largest history disturbance ratio,0.001852759848132738,PASS
+resolved absolute constraint worsening,0,PASS
+all exact replay payload hashes,128,PASS
+peak process RSS / GB,1.646804992,PASS
+peak sampled total / GB,1.791410176,PASS
+figure artifact pairs,4,PASS
+innermost cell R / M,0.00010070287004202947,PASS

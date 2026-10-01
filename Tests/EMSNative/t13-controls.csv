@@ -1,0 +1,13 @@
+leg,mode,variant,file,Float64_values,bit_mismatches,pass_control
+E,legacy,off,plt/EMS_Plot_000000.2d.hdf5,89600,0,True
+E,legacy,off,chk/EMS_000002.2d.hdf5,119840,0,True
+E,point,off,plt/EMS_Plot_000000.2d.hdf5,89600,0,True
+E,point,off,chk/EMS_000002.2d.hdf5,119840,0,True
+E,point,capture,plt/EMS_Plot_000000.2d.hdf5,89600,0,True
+E,point,capture,chk/EMS_000002.2d.hdf5,119840,0,True
+ref,legacy,off,plt/EMS_Plot_000000.2d.hdf5,89600,0,True
+ref,legacy,off,chk/EMS_000002.2d.hdf5,119840,0,True
+ref,point,off,plt/EMS_Plot_000000.2d.hdf5,89600,0,True
+ref,point,off,chk/EMS_000002.2d.hdf5,119840,0,True
+ref,point,capture,plt/EMS_Plot_000000.2d.hdf5,89600,0,True
+ref,point,capture,chk/EMS_000002.2d.hdf5,119840,0,True

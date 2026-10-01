@@ -1,0 +1,9 @@
+run,ray,native_cells,Gamma_peak,Gamma_RMS,condition,GaussB_nonzero
+original,axis,13,0.07480889401073818,0.0514392094822186,axis first-row proxy y=h/2; diagonal native centres; unweighted cell RMS,0
+original,diagonal,8,0.07451756895764239,0.050162535166013204,axis first-row proxy y=h/2; diagonal native centres; unweighted cell RMS,0
+maximal,axis,13,9.258966882905912e-05,7.26401329628616e-05,axis first-row proxy y=h/2; diagonal native centres; unweighted cell RMS,0
+maximal,diagonal,8,8.846764118812106e-05,7.613274872812019e-05,axis first-row proxy y=h/2; diagonal native centres; unweighted cell RMS,0
+original-half,axis,13,0.07480931772245432,0.051439221709108744,axis first-row proxy y=h/2; diagonal native centres; unweighted cell RMS,0
+original-half,diagonal,8,0.07451817895171986,0.05016256131750503,axis first-row proxy y=h/2; diagonal native centres; unweighted cell RMS,0
+maximal-half,axis,13,9.256309753857885e-05,7.263914676702946e-05,axis first-row proxy y=h/2; diagonal native centres; unweighted cell RMS,0
+maximal-half,diagonal,8,8.849369098058837e-05,7.613184428716203e-05,axis first-row proxy y=h/2; diagonal native centres; unweighted cell RMS,0
