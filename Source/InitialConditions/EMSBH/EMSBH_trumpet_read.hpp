@@ -34,7 +34,7 @@ class EMSBH_trumpet_read
                        double a_G_Newton, double a_dx, int a_verbosity);
     //! Read the radial solution and verify the run coupling.
     void compute_1d_solution();
-    //! Store final CCZ4 fields, including the precollapsed lapse sqrt(chi).
+    //! Store final CCZ4 fields; initial lapse defaults to sqrt(chi).
     template <class data_t> void compute(Cell<data_t> a_current_cell) const;
     //! Physical fields for fixture comparisons.
     template <class data_t>
@@ -72,8 +72,8 @@ class EMSBH_trumpet_read
     lorentz_transform(const Tensor<2, double, 4> &a_tensor,
                       const Tensor<2, double, 4> &a_lorentz_matrix);
     template <class data_t>
-    static CCZ4CartoonVars::VarsWithGauge<data_t>
-    conformal_decomposition(const ems_adm_vars_t<data_t> &a_adm_vars);
+    CCZ4CartoonVars::VarsWithGauge<data_t>
+    conformal_decomposition(const ems_adm_vars_t<data_t> &a_adm_vars) const;
 };
 
 #include "EMSBH_trumpet_read.impl.hpp"

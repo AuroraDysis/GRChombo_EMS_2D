@@ -1,0 +1,7 @@
+case,exit,expected_accept,passes,log
+default,0,True,True,/private/tmp/ems-t12/parser-default.log
+maximal,0,True,True,/private/tmp/ems-t12/parser-maximal.log
+boost,-6,False,True,/private/tmp/ems-t12/parser-boost.log
+binary,-6,False,True,/private/tmp/ems-t12/parser-binary.log
+separation,-6,False,True,/private/tmp/ems-t12/parser-separation.log
+ctt,-6,False,True,/private/tmp/ems-t12/parser-ctt.log

@@ -1,0 +1,25 @@
+# T12 matched-lapse source evidence
+
+## Exact identity claim
+
+The claim is consult-7 identities (1)–(3), the reconstructed shift relation, and the conformal-metric strain with its off-constraint residual. The domain is real isotropic R>0, areal r>0, with exp(delta)>0 and differentiable radial fields away from the puncture. Identity (3) is off constraint: M_beta and C_M are arbitrary measured residuals. Identity (1) additionally assumes M_beta=M_beta'=C_M=0; identity (2) additionally sets the evolved lapse and its derivative equal to alpha_K and alpha_K'. These assumptions are not imposed in the numerical reader check.
+
+The witness lives in the rational function field over QQ in R,r and independent radial jet symbols. Replacing function derivatives by independent jet symbols is equivalent because the expression is local and algebraic in those jets. The source uses m=16*pi*Pi*phi' as an independent symbol, so no value of pi or matter equation is assumed in the algebra. `together` followed by `cancel` is a CLOSE: its numerator must be exactly zero or the script exits nonzero. The excluded original denominators R=0 and r=0 remain excluded even when the residual denominator normalizes to one. No general simplifier, radical crossing, logarithm identity, code generation or coefficient-fitting threshold is used. Positive-radius assumptions discharge every division; exp(delta) is represented by a positive real generator.
+
+All five exact witnesses close. An independently implemented arbitrary-function differentiation check at 24 seeded radii, seed 12012, uses 60 digits and has worst normalized disagreement 2.878e-61. It is a falsifier of the transcription, not a second proof. `t12-source-identity.py` and its JSON record the algebra, assumptions, points and visible failure tests. Status: **PROVED**.
+
+CAS scope: algebraic identity — production physics not certified.
+
+## Reader and runtime transfer claim
+
+The finite claim is that the Float64 Chebyshev-reader jets, passed through the unmodified native CCZ4 RHS, satisfy identity (3) within their operation/evaluation budget, and that alpha_K removes the original mismatch source down to the measured residual budget. The representation is exactly the Float64 coefficients and metadata parsed from E.trumpet, lifted into 60-digit arithmetic. No spectral coefficient is refitted and no momentum or shift residual is set to zero.
+
+The independent side uses a forward Chebyshev recurrence, implicit-map root solve and high-precision differentiation. The native side uses the actual C++ reader, analytic radial jets and the production CCZ4Cartoon equation. These are separate derivative and evaluation implementations. The independent comparison spans 14 specified radii from 1e-6 to about 10 M for each lapse; the dense Float64 identity comparison has 8,009 radii for each lapse. The symbolic proof covers the identity; finite numerical checks corroborate the transfer only.
+
+The Float64 budget is 128*epsilon times the sum of radial operation magnitudes **before cancellation**, retaining b'' and the separate b'/R and b/R^2 pieces, plus independently measured residual and evaluation discrepancy for the source test. The initial collapsed-shift-term estimate failed at R=1e-6: defect 1.519e-10 versus 1.263e-11. The multiplier was not increased; the scale was corrected to include the omitted, individually large derivative operations. Both estimates remain in the comparison CSV. This is an engineering roundoff estimate, not a certified interval enclosure. A further same-native-point check covers all 82,807 coordinates for both lapse modes: the maximal source maxima are 1.79e-12 / 6.37e-12 / 4.80e-12 on low/mid/high, and the identity defect/budget maximum is below 0.028. Float64 residuals are measured at every point; no constraint is imposed. At the independent points the worst evaluation discrepancy is 5.255e-10 and worst Float64 identity defect is 1.519e-10; at all dense points the defect/budget maximum is below 0.021. Independently measured C_M remains nonzero (up to approximately 1e-13 near the puncture); alpha_K's residual source is approximately 1e-18–1e-15 there. M_beta is evaluated independently, including its derivative, rather than replaced by its exact map identity.
+
+The positivity/floor census exhausts the actual finite initialization and three-ghost-cell coordinates, including repeated overlaps, in all 13 levels of each hierarchy. It asserts the Float64 values Y>0, G>0, finite alpha_K>0 and positive margins to configured 1e-12 lapse/chi floors. It does not prove positivity at every real radius. The oversampled radial line stops at 1e-6 M, above the configured floor-crossing regime; R=0 is excluded. `t12-reader-budget.py`, JSON and the reader/native CSVs retain these scopes and data. Status: **CORROBORATED**.
+
+CAS scope: transfer layer — production physics not certified.
+
+Commands: `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /Users/auroradysis/miniconda3/bin/python scripts/cas/t12-source-identity.py` and the same command with `t12-reader-budget.py`. All static-file uses are t=0 diagnostics. No emitted-pulse claim follows from this CAS result.

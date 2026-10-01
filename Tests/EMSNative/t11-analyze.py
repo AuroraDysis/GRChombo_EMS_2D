@@ -100,7 +100,7 @@ class Jet:
  def exp(a):
   e=np.exp(a.v);return Jet(e,e*a.d,e*(a.dd+a.d*a.d))
 
-def continuum(xy,name):
+def continuum(xy,name,initial_lapse='original'):
  # This function is intentionally separate from every positive-time cache path.
  R=np.hypot(xy[:,0],xy[:,1]);assert (R>0).all();R.tofile(TMP/'r.bin')
  with (TMP/'cheb.bin').open('wb') as out,(TMP/'cheb.log').open('w') as log:
@@ -111,12 +111,17 @@ def continuum(xy,name):
  D=Jet(a[:,12],a[:,13]*sr,a[:,14]*sr**2+a[:,13]*srr)
  P=Jet(a[:,16],a[:,17]*sr,a[:,18]*sr**2+a[:,17]*srr)
  metadata={k.strip():float(v) for line in PROFILE.read_text().splitlines() if line.startswith('# ') for k,sep,v in [line[2:].partition('=')] if sep and k in ('ell','C','phi_inf','q_native')}
- X=metadata['ell']*S**(1/nu)/Y;chi=X*X;alpha=X # actual conformal_decomposition, NOT the stored Killing lapse
+ X=metadata['ell']*S**(1/nu)/Y;chi=X*X
  b=-metadata['C']*metadata['ell']*S**(1/nu)*T*T/(Y**3)
  curvature=metadata['C']*(T*T*D).exp()*T**3/Y**3
  phi=metadata['phi_inf']+T*P
  ps=Jet(-a[:,16]+t*a[:,17],(-2*a[:,17]+t*a[:,18])*sr,(-3*a[:,18]+t*a[:,19])*sr**2+(-2*a[:,17]+t*a[:,18])*srr)
  gg=Jet(a[:,8]+t*a[:,9],t*a[:,10]*sr,(-a[:,10]+t*a[:,11])*sr**2+t*a[:,10]*srr)
+ # Keep Jet on the left: ndarray * Jet dispatches elementwise object operations.
+ alpha_K=(-(T*T*D)).exp()*nu*S*gg/(Y*(1+S*(nu-1)))
+ assert alpha_K.v.shape==R.shape and alpha_K.v.dtype!=object
+ assert initial_lapse in ('original','maximal')
+ alpha=X if initial_lapse=='original' else alpha_K
  pi=-metadata['C']*(T*T*D).exp()*T**4*ps/(Y**2*gg)
  coupling=(8*math.pi*.8*phi*phi).exp();electric=metadata['q_native']/(coupling*(Y/T)*Jet(R,np.ones_like(R)))
  n=xy/R[:,None];v=np.zeros((len(R),N));d1=np.zeros((len(R),N,2));d2=np.zeros((len(R),N,2,2))
@@ -142,7 +147,8 @@ def continuum(xy,name):
  record=np.column_stack((np.zeros(len(R)),xy[:,1],xy[:,0],v,d1.reshape(len(R),-1),d2.reshape(len(R),-1),adv))
  record.tofile(TMP/'analytic.bin');subprocess.run([str(TMP/'rhs.ex'),'--t0-analytic',str(TMP/'analytic.bin'),str(TMP/'analytic-out.bin')],check=True,timeout=60)
  q=np.fromfile(TMP/'analytic-out.bin').reshape(-1,COL);assert np.isfinite(q).all()
- np.savez_compressed(TMP/f'{name}-continuum.npz',xy=xy,q=q,Killing_lapse=a[:,4])
+ jets=np.stack([np.column_stack((z.v,np.broadcast_to(z.d,R.shape),np.broadcast_to(z.dd,R.shape))) for z in (X,alpha_K,b,curvature,chi,pi,phi,Y,gg)],axis=1)
+ np.savez_compressed(TMP/f'{name}-continuum.npz',xy=xy,q=q,Killing_lapse=a[:,4],radial_jets=jets)
  return q
 
 def rms(x):return float(np.sqrt(np.mean(np.asarray(x)**2)))

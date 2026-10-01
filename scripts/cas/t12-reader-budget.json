@@ -1,0 +1,18 @@
+{
+  "status": "CORROBORATED",
+  "scope": "transfer layer \u2014 production physics not certified",
+  "definition": "Forward Chebyshev recurrence of exactly lifted Float64 coefficients; independent implicit-map differentiation at 60 digits; no constraint imposed",
+  "points": 28,
+  "r_min": 1e-06,
+  "r_max": 10.004606230728392,
+  "precision_digits": 60,
+  "profile_sha256": "2a8de074ae17c0b11d323d4b0933a6bdb7430a5305473c8cc7d4ce37f39fa793",
+  "nu": "1.3372155112113841557430760076385922729969024658203125",
+  "Y0": "0.13570329494190452491785263634048497107549788596700529629965",
+  "G0": "0.911204279677850880262524121742066975814510184407413946333126",
+  "a_K": "42.3302598936569123609622030747506549548139800410371706824553",
+  "maximal_continuum_source_max": 5.249936425412256e-10,
+  "worst_evaluation_discrepancy": 5.255174073681701e-10,
+  "worst_identity3_Float64_defect": 1.519066980776963e-10,
+  "reader_budget": "independently measured residual contribution + Float64/60-digit evaluation discrepancy + 128 epsilon sum of pre-cancellation radial operation magnitudes; multiplier unchanged, collapsed shift-term estimate corrected to include bprime/R and b/R^2"
+}

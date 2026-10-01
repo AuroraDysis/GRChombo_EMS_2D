@@ -20,3 +20,8 @@ c93d9748c18487467044b37335d604ff36baeddbfccafe92740ff8474e6b2877  1309698  Tests
 b693b44b2a721c217bb4519c3b64028b2653ce5c271ecd520b37d0f8c4a571ed  1381707  Tests/EMSNative/t10-signed-profiles.csv
 # T11 (regenerate with Tests/EMSNative/t11-analyze.py, README § T11)
 cbffc6581e756a1e6f63e893205feb8a59d4bfc0756a46df93246a6460434cca  3558370  Tests/EMSNative/t11-native-profiles.csv
+
+# T12 (dense regenerable diagnostics; see README section T12 and t12-analyze.py / scripts/cas/t12-reader-budget.py)
+97716414b0615e162afb9195c84ea87f3bbc7d072807b132630917b76a1a2379  8085654  Tests/EMSNative/t12-native-profiles.csv
+15ac4276c2198a8f63616d35744ea95b18360bb636274b889058572ea452581f  3884759  Tests/EMSNative/t12-identity-profiles.csv
+3eb63a6d26ca813704401364c3ed61c3d19195793b6669af3b79db890b752208  1380479  Tests/EMSNative/t12-reader-line.csv

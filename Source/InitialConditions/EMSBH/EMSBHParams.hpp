@@ -24,6 +24,7 @@ struct EMSBH_params_t
     double Ylm_r0;
     std::string data_path;
     std::string ctt_data_path; //!< optional EMSCTT 1 companion
+    bool use_maximal_initial_lapse = false; //!< t=0 unboosted single hole only
     std::array<double, CH_SPACEDIM> star_centre; //!< coordinates of the centre
 };
 

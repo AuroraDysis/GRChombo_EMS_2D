@@ -22,6 +22,12 @@ inline EMSBH_trumpet_read::EMSBH_trumpet_read(
       m_params_coupling_function(a_params_coupling_function),
       m_G_Newton(a_G_Newton), m_dx(a_dx), m_verbosity(a_verbosity)
 {
+    if (m_params_EMSBH.use_maximal_initial_lapse &&
+        (m_params_EMSBH.boosted || m_params_EMSBH.rapidity != 0. ||
+         m_params_EMSBH.binary || m_params_EMSBH.separation != 0. ||
+         !m_params_EMSBH.ctt_data_path.empty()))
+        MayDay::Error("ems_use_maximal_initial_lapse requires an unboosted "
+                      "single hole without an EMSCTT companion");
     if (m_params_EMSBH.star_centre[1] != 0)
         MayDay::Error("EMSTRUMPET object must lie on the cartoon axis");
 }
@@ -77,6 +83,8 @@ EMSBH_trumpet_read::compute_ems_adm_vars(data_t a_x, data_t a_y, data_t a_z,
                                          double a_mass, double a_center,
                                          double a_rapidity) const
 {
+    if (m_params_EMSBH.use_maximal_initial_lapse && a_rapidity != 0.)
+        MayDay::Error("ems_use_maximal_initial_lapse does not support boosts");
     if (!(a_mass > 0) || !std::isfinite(a_mass))
         MayDay::Error("EMSTRUMPET mass must be positive and finite");
     const double c = std::cosh(a_rapidity), sh = std::sinh(a_rapidity);
@@ -312,7 +320,7 @@ EMSBH_trumpet_read::compute_binary_ems_adm_vars(data_t a_x, data_t a_y,
 template <class data_t>
 inline CCZ4CartoonVars::VarsWithGauge<data_t>
 EMSBH_trumpet_read::conformal_decomposition(
-    const ems_adm_vars_t<data_t> &a_adm_vars)
+    const ems_adm_vars_t<data_t> &a_adm_vars) const
 {
     const auto &gamma = a_adm_vars.gamma;
     const data_t det = TensorAlgebra::compute_determinant_sym(gamma);
@@ -336,7 +344,8 @@ EMSBH_trumpet_read::conformal_decomposition(
     }
     vars.hww = chi * gamma[2][2];
     vars.Aww = chi * (a_adm_vars.K[2][2] - K * gamma[2][2] / 3);
-    vars.lapse = std::sqrt(chi);
+    vars.lapse = m_params_EMSBH.use_maximal_initial_lapse
+                     ? a_adm_vars.lapse : std::sqrt(chi);
     vars.shift[0] = a_adm_vars.shift[0];
     vars.shift[1] = a_adm_vars.shift[1];
     vars.phi = a_adm_vars.phi;
@@ -366,6 +375,8 @@ EMSBH_trumpet_read::compute_binary_bh_vars(data_t a_x, data_t a_y,
                                            double a_mass, double a_separation,
                                            double a_rapidity, int a_panel) const
 {
+    if (m_params_EMSBH.use_maximal_initial_lapse)
+        MayDay::Error("ems_use_maximal_initial_lapse does not support binaries");
     return conformal_decomposition(
         compute_binary_ems_adm_vars(a_x, a_y, a_mass, a_separation, a_rapidity,
                                     data_t(0), a_panel));

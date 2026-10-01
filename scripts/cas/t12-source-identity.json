@@ -1,0 +1,58 @@
+{
+  "status": "PROVED",
+  "scope": "algebraic identity \u2014 production physics not certified",
+  "algebra": "rational function field over QQ in R,r and independent jet symbols",
+  "domain": "real R>0,r>0; e=exp(delta)>0; smooth radial fields for R>0; identity 1 assumes M_beta=M_beta_prime=C_M=0, identity 2 additionally alpha=alpha_K; identity 3 has no constraint assumption",
+  "normal_form": "together/cancel numerator equality; no general simplifier or branch-crossing transformation",
+  "witnesses": {
+    "identity_3_off_constraint": {
+      "numerator": "0",
+      "denominator": "1"
+    },
+    "identity_1_on_constraint": {
+      "numerator": "0",
+      "denominator": "1"
+    },
+    "identity_2_matched_lapse": {
+      "numerator": "0",
+      "denominator": "1"
+    },
+    "map_shift_identity": {
+      "numerator": "0",
+      "denominator": "1"
+    },
+    "metric_strain_with_Mbeta": {
+      "numerator": "0",
+      "denominator": "1"
+    }
+  },
+  "falsifier_seed": 12012,
+  "precision_digits": 60,
+  "falsifier_points": [
+    "3.7938032613065693",
+    "5.580457892753737",
+    "7.033145140574456",
+    "5.173828457681428",
+    "0.018323248030847544",
+    "1.8043874955523187",
+    "0.014931710238681103",
+    "0.154013309723559",
+    "1.5084571281000203",
+    "0.7832584458466604",
+    "3.7309575951702603",
+    "0.007485728072660789",
+    "0.023557084342984126",
+    "0.11182242239652289",
+    "0.11683507844028335",
+    "1.1719835711055624",
+    "7.948813987737619",
+    "0.006010827026580362",
+    "0.8347754022023008",
+    "0.001681039641678324",
+    "0.001646459714185245",
+    "0.004869723460570453",
+    "2.141375191982656",
+    "0.08131152161815422"
+  ],
+  "worst_normalized_falsifier": "2.87777587142496285696471460872851743425766238003080648389138e-61"
+}

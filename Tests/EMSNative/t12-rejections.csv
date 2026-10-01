@@ -1,0 +1,8 @@
+case,exit,rejected,message
+boost,-6,True,ems_use_maximal_initial_lapse requires an unboosted single hole without an EMSCTT companion !!!
+boost_flag,-6,True,ems_use_maximal_initial_lapse requires an unboosted single hole without an EMSCTT companion !!!
+binary,-6,True,ems_use_maximal_initial_lapse requires an unboosted single hole without an EMSCTT companion !!!
+separation,-6,True,ems_use_maximal_initial_lapse requires an unboosted single hole without an EMSCTT companion !!!
+ctt,-6,True,ems_use_maximal_initial_lapse requires an unboosted single hole without an EMSCTT companion !!!
+helper_boost,-6,True,ems_use_maximal_initial_lapse does not support boosts !!!
+helper_binary,-6,True,ems_use_maximal_initial_lapse does not support binaries !!!

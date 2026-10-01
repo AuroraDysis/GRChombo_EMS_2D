@@ -1,0 +1,4 @@
+stage,chunk_points,peak_RSS_bytes,wall_s,completed
+continuum,1024,304218112,15.0277945,True
+measure,1024,486227968,5.7125087,True
+native_high,0,548700160,8.0072943,True
