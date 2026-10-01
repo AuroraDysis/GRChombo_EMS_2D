@@ -1,0 +1,10 @@
+{
+  "status": "READY-EXCEPT",
+  "recommendation": "ems_use_geometric_initial_lapse=true",
+  "companion": "documented diagnostic only; known D2 mismatch",
+  "qualified": 4160,
+  "uncertainty_dominated": 0,
+  "resolved_reductions": 3960,
+  "convergence_admission": false,
+  "peak_RSS_bytes": 2636562432
+}

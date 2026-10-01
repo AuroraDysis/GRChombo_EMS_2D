@@ -1,0 +1,2 @@
+check,result,input_frames,output_frames
+"both-hole crop, half-clock exclusion, first-stage retention, XOR round trip",BIT_IDENTICAL,5,4

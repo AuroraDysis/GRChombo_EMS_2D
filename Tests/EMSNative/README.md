@@ -3437,3 +3437,204 @@ Measured process peak is **803717120 bytes**, sampled active-tree peak **1409966
 The binary step needs the **certified tranche-2a EMSCTT/1 companion for this exact alpha=0.9, e=8 profile**, authenticated against its profile SHA-256 and the solver/end-tail provenance, with masses (1,1), centres (-16,+16), rapidities (+atanh(v),-atanh(v)), and couplings (4pi,0,0,-0.9). Its consumed-order/end-transfer certificate and reconstructed constraints, ADM mass, individual areas and charges must accompany it. Then the same unchanged companion supplies both lapse variants on the final reconstructed CTT state: positive per-hole/combined denominators, native-grid min/max including the companion neighborhoods, unchanged non-lapse fields and initialized driver cancellation, constraints and refinement-controlled source/launch comparison. No binary companion was constructed and no final-CTT binary audit or launch was run. The isolated result cannot admit a binary Killing lapse or prove binary source cancellation.
 
 For this completed T16 evidence, rerun only the analysis with absolute paths under the measured `t16-run.py` wrapper: `t16-verify.py`; `t16-analyze.py resources`; `t16-report.py`; then `t16-analyze.py resources` for the final manifest. The verification consumes the retained native replay/profile caches and authenticates the original captures. If regenerating caches is necessary, `t16-analyze.py analyze` replays those stored captures and never opens the static trumpet. No new evolution is needed.
+
+## T16b — documented-diagnostic binary companion, preregistered native audit and launch
+
+Baseline is fork main 31176be. The operator authorizes n32-r6.ctt (SHA-256 46253cb8d3bf6255b149b44bed7d4899cd97c697fe677a9846649bfbb2bdc4ee) as DOCUMENTED DIAGNOSTIC DATA for this binary test, not certified data. Its audit reports only value/first-derivative interface matching, a D2(logpsi) jump about 8.89e-6, and crossing/within ratios up to 306. No companion is constructed or altered. The exact supplied mass, separation, rapidity and coupling lines are consumed; the centres are translated together to (320,0) and (352,0) in the native [0,672]x[0,336] domain.
+
+Before compilation or evolution, the two GLOBAL rungs are fixed: base 672x336 with h0=1 M_i and 1344x672 with h0=0.5 M_i. Both have levels 0–13 and per-hole square faces 128/2^l M_i at l>=1; overlapping outer boxes merge. Finest h=1/8192 and 1/16384, R_h/h=49.4834 and 98.9668 at each hole. Dense Tests-only fixed tags select those boxes; production equations, gauge, KO=1, Float64, puncture treatment, transfers and the unmodified RHFinder remain unchanged. Regridding and RHFinder are disabled and the t2 reader guard is on. Global refinement is necessary to change the native interface-sheet spacing; adding only a puncture level would leave the exterior test unchanged.
+
+At numerical t=0, the final native CTT state is audited before any advance. Every actual cell including ghosts is checked for each isolated geometric a_A and combined alpha_bin: finite, 0<a<=1, without clipping. The stable existing setter formula is used. The geometric state is compared directly, bit by bit, to the default's stored non-lapse stream on the same hierarchy before it advances. Native physical and KO Gamma RHS, its existing 13-term attribution, K/lapse RHS and initialized-driver cancellation are recorded in the four innermost cells at each hole, with all 28 RHS components checked against Base. There is no binary translation or Killing-source identity. Puncture-limit samples use R=10^-2,...,10^-10 and report alpha_bin/a_own for each hole, excluding the puncture itself.
+
+Composite native constraint regions use uncovered valid cells and cylindrical-coordinate-volume weights y*h^2. Fixed regions are each Euclidean hole collar 0.01<=r_A<=0.02, the inter-hole box |x-336|<=8, 0<=y<=8, far field 80<=r_global<=128, and elsewhere with r_near>=0.01 and r_global<=128 excluding interface sheets. Ham, vector Mom, GaussE, GaussB and vector C_Gamma are reported in peak/RMS. No continuum solver residual is substituted for native derivatives.
+
+Interface sheets are defined geometrically from all 34 companion PANEL records and the native selector, not from measured constraints. At each physical point, the declared COARSE hierarchy fixes h_c(x,y). Every distinct panel selected at offsets (i h_c,j h_c), i,j=-3,...,3, labels the associated sheet with the ordered panel-ID pair. This defines the same physical sheet mask on both rungs and covers the native FD/KO stencil. The selector is cross-checked against native forced-panel evaluation on sampled actual cells. Actual native-stencil crossings are recorded separately, as are coarse-AMR-face proximity flags. Each pair is reported both in the full sheet and with coarse AMR faces excluded. Interfaces that no actual native stencil crosses are listed as unobserved. Fine/coarse constraint norm ratios report growth, decrease or sampling absence; absence of growth on two coarse rungs does not certify C2 matching or admit a convergence campaign despite the known interface failure.
+
+The launch uses dt=h/4 and the isolated T16 W=[0.00075,0.0025] M_i at both holes. Axis/diagonal rays point toward the other hole: n=(+1,0),(+1,+1)/sqrt(2) on the left and (-1,0),(-1,+1)/sqrt(2) on the right. The numerical t=0 profile is subtracted without alignment. Central I8 and |I8-I10| spreads, peak/trapezoidal RMS, and the 5x significance rule are frozen. All 66 common clocks (t=0 plus 65 positive clocks) through 0.001983642578125 M_i are retained; native fine stop is 0.0019989013671875 M_i and its unmatched last half-clock is excluded. Ratios are geometric/sqrt(chi), with five-spread sensitivity intervals and early enhancement entries retained. Native puncture cells and floors corroborate the profiles. Both h and dt change, so no same-grid temporal bound is claimed. Copy-free extra recorder calls only write current native arrays; the first four steps also retain pre-RHS state, enforced state and resulting RHS at both holes. Snapshot compression is lossless and crops only stored output to the same I10/native-stencil support.
+
+Numerical work is serial with OMP=2 and BLAS=1, <=4 active threads. The per-process RSS/footprint watchdog is 6,000,000,000 bytes, tree gate 6,500,000,000 bytes, output ceiling 8 GB. The potentially long four-leg queue and analysis run detached, with own done.exit and actual-child resource receipts. No SSH or commit. A low-resolution merger recommendation will distinguish an initial-lapse choice from the companion's unresolved convergence admission.
+
+### Binary pipeline preparation
+
+The Tests-only harness compiles against the unchanged production objects. Its measured build peak RSS is 548,470,784 bytes. A smaller, levels 0–4 initialization fixture verifies native companion consumption, positive bounded lapse, initialized-driver cancellation and exact native/Base RHS agreement at both holes. The geometric option compares 3,444,120 non-lapse Float64 values including ghosts against the default stream with zero bit mismatches; the native constraint CSVs are also byte-identical. The fixture peak RSS is 139,968,512 bytes. These are software checks, not the registered physical results. [Software check](t16b-software-check.csv) and [lossless capture check](t16b-filter-check.csv) retain the receipts.
+
+The capture check exercises both hole centres, off-window exclusion, common-clock selection, first-stage retention and XOR delta decoding; every retained Float64 bit agrees. The four physical legs run serially under `/private/tmp/ems-t16b/evolution/`. The enclosing completion marker is `/private/tmp/ems-t16b/pipeline/done.exit`; each leg and the evolution queue have their own `done.exit`. The analysis then verifies receipts, stops, floors, all fixed regions and captured clocks, produces the launch/interface tables, and refreshes `t16b-manifest.txt`. A zero exit marker alone is not an admission decision.
+
+### Completed diagnostic binary evidence
+
+**READY-EXCEPT: native binary audit and launch comparison complete; the companion remains documented diagnostic data, not convergence-certified.** Every leg has its own actual-child receipt, clean native stop, clear gates and finite bit-matched native replay. Geometric runs compare all native non-lapse values including ghosts directly against the default stream before advancing; zero mismatches. Native t=0 constraints also match exactly between lapse variants. [Run receipts/floors](t16b-run-audits.csv), [ranges](t16b-ranges.csv), [limits](t16b-puncture-limits.csv), [coarse default raw source terms](/private/tmp/ems-t16b/evolution/coarse-sqrt/t16b-source.csv). Filled-ghost differences between the native lapse and a fresh geometric setter evaluation remain recorded in each run’s raw ranges table.
+
+The resumed verification checks each native leg and enclosing pipeline against its own actual-child receipt, including the sandbox timer fallback; it recomputes all fixed native t=0 norms and cached launch amplitudes/spreads and checks the ratio intervals. The pre-refresh manifest has 253 entries with zero hash mismatches. [Completion checks](t16b-completion-checks.csv) record the native 13-term source attribution and independent resampling at t=0, the first clock and the endpoint. The closed-form/4x4 inversion route agrees to a printed maximum relative error 8.88178e-16 at 24 samples for every invocation. At both punctures alpha_bin/a_own is 0.9998919207 at R=0.01, 0.9999999983 at R=1e-4, and rounds to exactly 1 by R=1e-7; the smallest tested R is 1e-10. This is a sampled puncture-limit check, not a binary source-cancellation identity.
+
+| Run | Quantity | Minimum | Maximum |
+| --- | --- | --- | --- |
+| coarse-sqrt | a_left | 0.00019092 | 0.99795 |
+| coarse-sqrt | a_right | 0.00019092 | 0.99795 |
+| coarse-sqrt | alpha_bin | 0.00019092 | 0.99582 |
+| coarse-sqrt | native_lapse | 0.00083952 | 0.99584 |
+| coarse-geometric | a_left | 0.00019092 | 0.99795 |
+| coarse-geometric | a_right | 0.00019092 | 0.99795 |
+| coarse-geometric | alpha_bin | 0.00019092 | 0.99582 |
+| coarse-geometric | native_lapse | 0.00019092 | 0.99582 |
+| fine-sqrt | a_left | 7.4857e-05 | 0.99795 |
+| fine-sqrt | a_right | 7.4857e-05 | 0.99795 |
+| fine-sqrt | alpha_bin | 7.4857e-05 | 0.99581 |
+| fine-sqrt | native_lapse | 0.00042002 | 0.99582 |
+| fine-geometric | a_left | 7.4857e-05 | 0.99795 |
+| fine-geometric | a_right | 7.4857e-05 | 0.99795 |
+| fine-geometric | alpha_bin | 7.4857e-05 | 0.99581 |
+| fine-geometric | native_lapse | 7.4857e-05 | 0.99581 |
+
+Native t=0 longitudinal Gamma source at the four innermost cells, peak norms. Gauge RHS remains the native gauge and no binary translation identity is imposed. Physical RHS, KO and their actual sum are separate; all Base RHS bit comparisons and initialized-driver cancellations are zero.
+
+| Rung | Hole | sqrt physical | sqrt KO | sqrt total | geometric physical | geometric KO | geometric total |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| coarse | left | 379.53 | 0.27212 | 379.8 | 5.8195 | 0.27212 | 6.0917 |
+| coarse | right | 379.53 | 0.27212 | 379.8 | 5.8195 | 0.27212 | 6.0917 |
+| fine | left | 406.98 | 0.21146 | 407.2 | 4.5452 | 0.21146 | 4.7566 |
+| fine | right | 406.98 | 0.21146 | 407.2 | 4.5452 | 0.21146 | 4.7566 |
+
+Constraints on the final CTT composite state use native derivatives and the registered fixed masks. GaussB zero rows retain zero, without invented orders.
+
+| Region | Constraint | Coarse peak | Coarse RMS | Fine peak | Fine RMS |
+| --- | --- | --- | --- | --- | --- |
+| collar-left | Ham | 1.1905e-05 | 1.4573e-06 | 7.6066e-07 | 9.0369e-08 |
+| collar-left | Mom | 6.6546e-05 | 1.6525e-05 | 4.195e-06 | 1.033e-06 |
+| collar-left | GaussE | 1.6082e-06 | 3.7578e-07 | 1.0303e-07 | 2.3494e-08 |
+| collar-left | GaussB | 0 | 0 | 0 | 0 |
+| collar-left | C_Gamma | 0 | 0 | 0 | 0 |
+| collar-right | Ham | 1.1905e-05 | 1.4573e-06 | 7.6003e-07 | 9.0368e-08 |
+| collar-right | Mom | 6.6546e-05 | 1.6525e-05 | 4.195e-06 | 1.033e-06 |
+| collar-right | GaussE | 1.6082e-06 | 3.7578e-07 | 1.0303e-07 | 2.3494e-08 |
+| collar-right | GaussB | 0 | 0 | 0 | 0 |
+| collar-right | C_Gamma | 0 | 0 | 0 | 0 |
+| interhole | Ham | 1.0091e-09 | 9.8254e-11 | 2.6696e-10 | 7.0222e-12 |
+| interhole | Mom | 8.9205e-12 | 1.6489e-12 | 5.8395e-13 | 1.0324e-13 |
+| interhole | GaussE | 1.7354e-10 | 1.3443e-11 | 1.1095e-11 | 8.4012e-13 |
+| interhole | GaussB | 0 | 0 | 0 | 0 |
+| interhole | C_Gamma | 0 | 0 | 0 | 0 |
+| far | Ham | 5.6016e-12 | 1.4841e-13 | 9.7328e-13 | 9.5633e-14 |
+| far | Mom | 2.5147e-13 | 1.87e-14 | 1.6113e-14 | 1.2263e-15 |
+| far | GaussE | 6.9682e-13 | 4.7386e-14 | 4.4631e-14 | 2.9597e-15 |
+| far | GaussB | 0 | 0 | 0 | 0 |
+| far | C_Gamma | 0 | 0 | 0 | 0 |
+| elsewhere-off-sheet | Ham | 1.1905e-05 | 2.2509e-11 | 7.6066e-07 | 1.5358e-12 |
+| elsewhere-off-sheet | Mom | 5.2225e-05 | 3.9605e-11 | 3.3628e-06 | 2.4767e-12 |
+| elsewhere-off-sheet | GaussE | 1.6082e-06 | 3.7537e-12 | 1.0303e-07 | 2.3457e-13 |
+| elsewhere-off-sheet | GaussB | 0 | 0 | 0 | 0 |
+| elsewhere-off-sheet | C_Gamma | 0 | 0 | 0 | 0 |
+
+Endpoint ratios are geometric/sqrt(chi) at 0.001983642578125 M_i. Sampling sensitivity intervals use five times |I8-I10|: max(0,G-eG)/(S+eS) to (G+eG)/(S-eS), unbounded if the denominator fails. Reduction margin is (S-G)/(eG+eS). These are declared sampling sensitivity estimates, not rigorous interpolation-error bounds. Full intervals and every positive clock remain in [ratios](t16b-launch-ratios.csv).
+
+| Rung | Hole | Ray | Field | Peak ratio | RMS ratio | Min signal margin 5x | Min reduction margin 5x |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| coarse | left | axis | Gamma | 0.044044 | 0.047879 | 8075.3 | 19942 |
+| coarse | left | axis | metric_Gamma | 0.18826 | 0.075571 | 55.899 | 68.103 |
+| coarse | left | axis | shift | 0.35128 | 0.29311 | 33730 | 19573 |
+| coarse | left | axis | lapse | 0.76552 | 0.79455 | 1529.8 | 282.23 |
+| coarse | left | diagonal | Gamma | 0.047548 | 0.051491 | 24203 | 22389 |
+| coarse | left | diagonal | metric_Gamma | 0.047544 | 0.05195 | 82.762 | 438.57 |
+| coarse | left | diagonal | shift | 0.22237 | 0.17462 | 2.044e+05 | 1.9299e+05 |
+| coarse | left | diagonal | lapse | 0.77399 | 0.79787 | 9312 | 1655 |
+| coarse | right | axis | Gamma | 0.044044 | 0.047879 | 8075.3 | 19942 |
+| coarse | right | axis | metric_Gamma | 0.18826 | 0.075571 | 55.899 | 68.103 |
+| coarse | right | axis | shift | 0.35128 | 0.29311 | 33730 | 19573 |
+| coarse | right | axis | lapse | 0.76552 | 0.79455 | 1529.8 | 282.23 |
+| coarse | right | diagonal | Gamma | 0.047548 | 0.051491 | 24203 | 22389 |
+| coarse | right | diagonal | metric_Gamma | 0.047544 | 0.05195 | 82.762 | 438.57 |
+| coarse | right | diagonal | shift | 0.22237 | 0.17462 | 2.044e+05 | 1.9299e+05 |
+| coarse | right | diagonal | lapse | 0.77399 | 0.79787 | 9312 | 1655 |
+| fine | left | axis | Gamma | 0.043924 | 0.047723 | 1.6337e+05 | 1.5257e+05 |
+| fine | left | axis | metric_Gamma | 0.043923 | 0.047788 | 129.54 | 799.95 |
+| fine | left | axis | shift | 0.35194 | 0.29345 | 2.6141e+06 | 1.4636e+06 |
+| fine | left | axis | lapse | 0.75952 | 0.79456 | 55599 | 11016 |
+| fine | left | diagonal | Gamma | 0.047517 | 0.051376 | 2.2287e+05 | 2.0939e+05 |
+| fine | left | diagonal | metric_Gamma | 0.047517 | 0.051356 | 1695.3 | 9592.6 |
+| fine | left | diagonal | shift | 0.22308 | 0.17488 | 5.7046e+06 | 4.2278e+06 |
+| fine | left | diagonal | lapse | 0.78139 | 0.79826 | 1.5589e+06 | 2.8476e+05 |
+| fine | right | axis | Gamma | 0.043924 | 0.047723 | 1.6337e+05 | 1.5257e+05 |
+| fine | right | axis | metric_Gamma | 0.043923 | 0.047788 | 129.54 | 799.95 |
+| fine | right | axis | shift | 0.35194 | 0.29345 | 2.6141e+06 | 1.4636e+06 |
+| fine | right | axis | lapse | 0.75952 | 0.79456 | 55599 | 11016 |
+| fine | right | diagonal | Gamma | 0.047517 | 0.051376 | 2.2287e+05 | 2.0939e+05 |
+| fine | right | diagonal | metric_Gamma | 0.047517 | 0.051356 | 1695.3 | 9592.6 |
+| fine | right | diagonal | shift | 0.22308 | 0.17488 | 5.7047e+06 | 4.2279e+06 |
+| fine | right | diagonal | lapse | 0.78139 | 0.79826 | 1.5589e+06 | 2.8476e+05 |
+
+Across the complete history, 4160/4160 entries qualify; 0 are uncertainty-dominated. Early enhanced-step lists and peak/RMS extrema for each hole/ray/field/rung are retained in [history summary](t16b-history-summary.csv), together with [native puncture changes and KO peaks](t16b-native-puncture.csv). No early row is dropped. At t=0 disturbances are zero and ratios undefined. No same-grid dt/2 temporal control was registered; changing h and dt together cannot bound temporal error.
+
+Evolved Gamma, metric Gamma and lapse have resolved reductions at all 65 positive clocks on both rays, holes and rungs. Shift has a resolved early enhancement: axis peak at steps 1–14 and RMS at steps 1–16, diagonal peak at steps 1–9 and RMS at steps 1–11, the same bands on both rungs and holes. The largest shift ratio is 8.0543. Thus endpoint reduction is not uniform suppression of every gauge disturbance during the launch.
+
+Interface sheets use the same coarse-h physical mask on both rungs. Each cell below is coarse / fine / fine-to-coarse ratio for Ham. The complete [interface-growth table](t16b-interface-growth.csv) includes Mom, GaussE, GaussB and C_Gamma, actual stencil crossings and counts. [Coverage](t16b-interface-coverage.csv) lists geometric interfaces not crossed by an actual native stencil. Non-adjacent panel-pair corner transitions are kept separately in the complete data and are not labelled a single physical interface. Full sheets and AMR-face-excluded subsets distinguish the companion seams from AMR transfers; absence on a subset stays labelled.
+
+| Panels | Interface | Full peak | Full RMS | AMR-face-excluded peak | AMR-face-excluded RMS |
+| --- | --- | --- | --- | --- | --- |
+| 1:2 | radial | 1.5396 / 0.59563 / 0.38687 | 0.19027 / 0.028032 / 0.14732 | 1.5396 / 0.59563 / 0.38687 | 0.19027 / 0.028032 / 0.14732 |
+| 1:6 | angular | 1.5396 / 0.59563 / 0.38687 | 1.5394 / 0.27418 / 0.17811 | 1.5396 / 0.59563 / 0.38687 | 1.5394 / 0.27418 / 0.17811 |
+| 2:3 | radial | 8.1503e-06 / 5.1964e-07 / 0.063757 | 2.1828e-06 / 1.3648e-07 / 0.062523 | 8.1503e-06 / 5.1964e-07 / 0.063757 | 2.1828e-06 / 1.3648e-07 / 0.062523 |
+| 2:7 | angular | 0.22046 / 0.084284 / 0.38231 | 0.00403 / 0.00043889 / 0.10891 | 0.22046 / 0.084284 / 0.38231 | 0.00403 / 0.00043889 / 0.10891 |
+| 3:4 | radial | 8.2541e-08 / 5.2842e-09 / 0.064019 | 1.3517e-08 / 7.9208e-10 / 0.058599 | 6.0033e-09 / 6.2314e-10 / 0.1038 | 1.2833e-09 / 1.6015e-10 / 0.12479 |
+| 3:8 | angular | 3.4681e-06 / 2.0962e-07 / 0.060443 | 4.8207e-09 / 3.2054e-10 / 0.066493 | 2.3431e-06 / 1.5276e-07 / 0.065195 | 3.7621e-09 / 2.7315e-10 / 0.072606 |
+| 4:5 | radial | 1.1755e-09 / 1.5506e-09 / 1.3191 | 1.6731e-10 / 2.1001e-10 / 1.2552 | 4.4576e-10 / 1.5506e-09 / 3.4786 | 9.3924e-11 / 2.5812e-10 / 2.7482 |
+| 4:9 | angular | 2.5635e-08 / 1.6201e-09 / 0.063197 | 5.5517e-10 / 3.7888e-11 / 0.068247 | 1.0082e-08 / 6.6662e-10 / 0.066119 | 4.2016e-10 / 3.1859e-11 / 0.075825 |
+| 5:10 | angular | 3.5459e-10 / 2.047e-09 / 5.7728 | 3.5008e-11 / 1.1145e-10 / 3.1837 | 3.5459e-10 / 1.265e-09 / 3.5675 | 3.4523e-11 / 9.4777e-11 / 2.7453 |
+| 5:21 | outer-sphere | 4.594e-11 / 8.213e-10 / 17.878 | 2.1551e-12 / 1.8919e-11 / 8.7785 | 1.3444e-12 / 3.7518e-12 / 2.7908 | 2.966e-13 / 4.464e-13 / 1.505 |
+| 6:7 | radial | 1.5392 / 0.59553 / 0.3869 | 0.22974 / 0.032958 / 0.14346 | 1.5392 / 0.59553 / 0.3869 | 0.22974 / 0.032958 / 0.14346 |
+| 7:8 | radial | 8.1592e-06 / 5.2048e-07 / 0.063791 | 1.9484e-06 / 1.2164e-07 / 0.06243 | 8.1592e-06 / 5.2048e-07 / 0.063791 | 1.9484e-06 / 1.2164e-07 / 0.06243 |
+| 8:9 | radial | 8.252e-08 / 5.2817e-09 / 0.064004 | 1.1343e-08 / 7.24e-10 / 0.063831 | 6.04e-09 / 7.0993e-10 / 0.11754 | 1.317e-09 / 1.623e-10 / 0.12323 |
+| 9:10 | radial | 1.0091e-09 / 2.6063e-09 / 2.5829 | 1.7788e-10 / 2.8576e-10 / 1.6065 | 6.5062e-10 / 2.4148e-09 / 3.7115 | 1.0692e-10 / 2.886e-10 / 2.6993 |
+| 10:15 | bridge-plane | 2.5388e-10 / 2.047e-09 / 8.0629 | 2.9869e-11 / 1.1321e-10 / 3.7903 | 2.5388e-10 / 1.0103e-09 / 3.9795 | 2.8258e-11 / 7.6198e-11 / 2.6965 |
+| 11:12 | radial | 1.5392 / 0.59553 / 0.3869 | 0.22974 / 0.032958 / 0.14346 | 1.5392 / 0.59553 / 0.3869 | 0.22974 / 0.032958 / 0.14346 |
+| 11:16 | angular | 1.5396 / 0.59563 / 0.38687 | 1.5394 / 0.27418 / 0.17811 | 1.5396 / 0.59563 / 0.38687 | 1.5394 / 0.27418 / 0.17811 |
+| 12:13 | radial | 8.1592e-06 / 5.2117e-07 / 0.063874 | 1.9484e-06 / 1.2164e-07 / 0.062431 | 8.1592e-06 / 5.2117e-07 / 0.063874 | 1.9484e-06 / 1.2164e-07 / 0.062431 |
+| 12:17 | angular | 0.22046 / 0.084284 / 0.38231 | 0.00403 / 0.00043889 / 0.10891 | 0.22046 / 0.084284 / 0.38231 | 0.00403 / 0.00043889 / 0.10891 |
+| 13:14 | radial | 8.2532e-08 / 5.2594e-09 / 0.063726 | 1.1343e-08 / 7.2422e-10 / 0.06385 | 6.0222e-09 / 7.1484e-10 / 0.1187 | 1.3171e-09 / 1.6399e-10 / 0.12451 |
+| 13:18 | angular | 3.4685e-06 / 2.066e-07 / 0.059565 | 4.8207e-09 / 3.2061e-10 / 0.066507 | 2.343e-06 / 1.5342e-07 / 0.065481 | 3.7621e-09 / 2.7319e-10 / 0.072617 |
+| 14:15 | radial | 1.009e-09 / 2.5999e-09 / 2.5768 | 1.7783e-10 / 2.857e-10 / 1.6065 | 6.5121e-10 / 2.4159e-09 / 3.7098 | 1.0683e-10 / 2.8855e-10 / 2.701 |
+| 14:19 | angular | 2.5608e-08 / 1.6937e-09 / 0.066139 | 5.5516e-10 / 3.781e-11 / 0.068107 | 1.0074e-08 / 6.8719e-10 / 0.068216 | 4.2015e-10 / 3.1813e-11 / 0.075719 |
+| 15:20 | angular | 3.5491e-10 / 2.047e-09 / 5.7675 | 3.5008e-11 / 1.1146e-10 / 3.1837 | 3.5491e-10 / 1.2659e-09 / 3.5667 | 3.4523e-11 / 9.4779e-11 / 2.7454 |
+| 16:17 | radial | 1.5396 / 0.59563 / 0.38687 | 0.19027 / 0.028032 / 0.14732 | 1.5396 / 0.59563 / 0.38687 | 0.19027 / 0.028032 / 0.14732 |
+| 17:18 | radial | 8.1515e-06 / 5.1691e-07 / 0.063412 | 2.1828e-06 / 1.3647e-07 / 0.062519 | 8.1515e-06 / 5.1691e-07 / 0.063412 | 2.1828e-06 / 1.3647e-07 / 0.062519 |
+| 18:19 | radial | 8.2532e-08 / 5.298e-09 / 0.064193 | 1.3517e-08 / 7.9264e-10 / 0.058641 | 6.0079e-09 / 6.9156e-10 / 0.11511 | 1.2835e-09 / 1.6031e-10 / 0.12491 |
+| 19:20 | radial | 1.1757e-09 / 1.5454e-09 / 1.3145 | 1.6729e-10 / 2.1002e-10 / 1.2554 | 4.4609e-10 / 1.5454e-09 / 3.4644 | 9.3886e-11 / 2.5815e-10 / 2.7497 |
+| 20:22 | outer-sphere | 4.5938e-11 / 8.213e-10 / 17.878 | 2.155e-12 / 1.8919e-11 / 8.7787 | 1.3462e-12 / 3.7486e-12 / 2.7847 | 2.9661e-13 / 4.4666e-13 / 1.5058 |
+| 21:22 | angular | 3.6199e-08 / 7.2476e-08 / 2.0021 | 2.8714e-09 / 4.0667e-09 / 1.4163 | 3.6199e-08 / 7.2476e-08 / 2.0021 | 2.8766e-09 / 4.0741e-09 / 1.4163 |
+
+Mom and GaussE below use the same AMR-face-excluded sheets; each entry is again coarse / fine / ratio. GaussB and C_Gamma vanish exactly on every t=0 sheet in both options; their ratios/orders are undefined.
+
+| Panels | Mom peak | Mom RMS | GaussE peak | GaussE RMS |
+| --- | --- | --- | --- | --- |
+| 1:2 | 58753 / 4.7798e+05 / 8.1355 | 10000 / 21990 / 2.199 | 193.16 / 193.48 / 1.0017 | 34.104 / 13.056 / 0.38283 |
+| 1:6 | 58753 / 4.7798e+05 / 8.1355 | 58752 / 2.2415e+05 / 3.8152 | 193.16 / 193.48 / 1.0017 | 193.16 / 127.25 / 0.65881 |
+| 2:3 | 8.6072e-05 / 5.369e-06 / 0.062379 | 5.9584e-05 / 3.7263e-06 / 0.062539 | 1.1809e-06 / 7.5165e-08 / 0.063651 | 6.1318e-07 / 3.8357e-08 / 0.062555 |
+| 2:7 | 29550 / 22916 / 0.77551 | 414 / 110.4 / 0.26668 | 103.93 / 45.629 / 0.43904 | 1.4554 / 0.20028 / 0.13762 |
+| 3:4 | 5.0132e-11 / 3.1396e-12 / 0.062626 | 4.0198e-11 / 2.5121e-12 / 0.062494 | 2.4367e-10 / 1.5334e-11 / 0.062929 | 1.0584e-10 / 6.6251e-12 / 0.062597 |
+| 3:8 | 6.1262e-05 / 3.925e-06 / 0.064068 | 5.3262e-08 / 3.3388e-09 / 0.062685 | 9.2116e-07 / 5.9274e-08 / 0.064348 | 3.5769e-09 / 2.2324e-10 / 0.062412 |
+| 4:5 | 5.0741e-12 / 9.3075e-12 / 1.8343 | 5.3633e-13 / 2.9978e-13 / 0.55895 | 1.3445e-11 / 8.4874e-13 / 0.063124 | 5.3699e-12 / 3.3629e-13 / 0.062626 |
+| 4:9 | 4.9797e-10 / 3.1574e-11 / 0.063406 | 4.6102e-11 / 2.8853e-12 / 0.062586 | 1.4264e-09 / 9.301e-11 / 0.065205 | 1.187e-10 / 7.4165e-12 / 0.062483 |
+| 5:10 | 6.4852e-12 / 9.3075e-12 / 1.4352 | 5.2735e-13 / 3.4911e-13 / 0.66201 | 9.0181e-11 / 5.8322e-12 / 0.064672 | 2.8358e-12 / 1.7677e-13 / 0.062334 |
+| 5:21 | 1.399e-13 / 4.6231e-14 / 0.33044 | 3.4179e-14 / 5.3065e-15 / 0.15526 | 3.8458e-13 / 2.4637e-14 / 0.064062 | 6.7762e-14 / 4.2327e-15 / 0.062464 |
+| 6:7 | 58751 / 4.7798e+05 / 8.1358 | 11946 / 25845 / 2.1634 | 193.16 / 193.48 / 1.0017 | 40.797 / 15.201 / 0.37261 |
+| 7:8 | 8.5612e-05 / 5.3577e-06 / 0.062581 | 5.5421e-05 / 3.4594e-06 / 0.06242 | 1.1562e-06 / 7.3247e-08 / 0.063349 | 3.6989e-07 / 2.2962e-08 / 0.062076 |
+| 8:9 | 4.5485e-11 / 2.8531e-12 / 0.062726 | 3.8411e-11 / 2.3998e-12 / 0.062478 | 2.3875e-10 / 1.4966e-11 / 0.062686 | 8.5633e-11 / 5.346e-12 / 0.062429 |
+| 9:10 | 6.4852e-12 / 8.8307e-12 / 1.3617 | 9.927e-13 / 9.3471e-13 / 0.94158 | 1.3215e-11 / 8.3427e-13 / 0.063129 | 4.3065e-12 / 2.6889e-13 / 0.062437 |
+| 10:15 | 8.4437e-13 / 1.7903e-12 / 2.1203 | 2.6912e-13 / 2.9988e-13 / 1.1143 | 3.9726e-12 / 2.4869e-13 / 0.0626 | 3.7006e-13 / 2.3168e-14 / 0.062607 |
+| 11:12 | 58751 / 4.7798e+05 / 8.1358 | 11946 / 25845 / 2.1634 | 193.16 / 193.48 / 1.0017 | 40.797 / 15.201 / 0.37261 |
+| 11:16 | 58753 / 4.7798e+05 / 8.1355 | 58752 / 2.2415e+05 / 3.8152 | 193.16 / 193.48 / 1.0017 | 193.16 / 127.25 / 0.65881 |
+| 12:13 | 8.5612e-05 / 5.3577e-06 / 0.062581 | 5.5421e-05 / 3.4594e-06 / 0.06242 | 1.1562e-06 / 7.324e-08 / 0.063344 | 3.6989e-07 / 2.2961e-08 / 0.062076 |
+| 12:17 | 29550 / 22916 / 0.77551 | 414 / 110.4 / 0.26668 | 103.93 / 45.629 / 0.43904 | 1.4554 / 0.20028 / 0.13762 |
+| 13:14 | 4.5485e-11 / 2.8527e-12 / 0.062717 | 3.8411e-11 / 2.3997e-12 / 0.062476 | 2.3875e-10 / 1.4966e-11 / 0.062684 | 8.5633e-11 / 5.346e-12 / 0.062429 |
+| 13:18 | 6.1262e-05 / 3.925e-06 / 0.064068 | 5.3262e-08 / 3.3388e-09 / 0.062685 | 9.2116e-07 / 5.9274e-08 / 0.064348 | 3.5769e-09 / 2.2324e-10 / 0.062412 |
+| 14:15 | 6.4852e-12 / 8.8306e-12 / 1.3617 | 9.927e-13 / 9.3471e-13 / 0.94158 | 1.3215e-11 / 8.3426e-13 / 0.063128 | 4.3065e-12 / 2.6889e-13 / 0.062437 |
+| 14:19 | 4.9797e-10 / 3.1574e-11 / 0.063406 | 4.6102e-11 / 2.8853e-12 / 0.062585 | 1.4264e-09 / 9.3011e-11 / 0.065205 | 1.187e-10 / 7.4165e-12 / 0.062483 |
+| 15:20 | 6.4852e-12 / 9.3076e-12 / 1.4352 | 5.2735e-13 / 3.4911e-13 / 0.66201 | 9.0181e-11 / 5.8322e-12 / 0.064672 | 2.8358e-12 / 1.7677e-13 / 0.062334 |
+| 16:17 | 58753 / 4.7798e+05 / 8.1355 | 10000 / 21990 / 2.199 | 193.16 / 193.48 / 1.0017 | 34.104 / 13.056 / 0.38283 |
+| 17:18 | 8.6072e-05 / 5.369e-06 / 0.062379 | 5.9584e-05 / 3.7263e-06 / 0.062539 | 1.1809e-06 / 7.5164e-08 / 0.06365 | 6.1318e-07 / 3.8357e-08 / 0.062555 |
+| 18:19 | 5.0132e-11 / 3.1397e-12 / 0.062629 | 4.0198e-11 / 2.5122e-12 / 0.062495 | 2.4366e-10 / 1.5333e-11 / 0.062928 | 1.0584e-10 / 6.6251e-12 / 0.062597 |
+| 19:20 | 5.0741e-12 / 9.3076e-12 / 1.8343 | 5.3632e-13 / 2.9978e-13 / 0.55896 | 1.3445e-11 / 8.4874e-13 / 0.063125 | 5.3699e-12 / 3.3629e-13 / 0.062626 |
+| 20:22 | 1.399e-13 / 4.6231e-14 / 0.33044 | 3.4179e-14 / 5.3065e-15 / 0.15526 | 3.8458e-13 / 2.4637e-14 / 0.064062 | 6.7762e-14 / 4.2327e-15 / 0.062464 |
+| 21:22 | 1.1678e-13 / 3.1523e-14 / 0.26994 | 9.8448e-15 / 1.4159e-15 / 0.14382 | 5.4561e-13 / 3.483e-14 / 0.063836 | 5.21e-14 / 3.2562e-15 / 0.062498 |
+
+The diagnostic resolves native exterior sheet noncontraction: after excluding AMR faces, Ham peak/RMS grows by 3.5675/2.7453 on the left bridge angular seam (5:10), 3.5667/2.7454 on its right counterpart (15:20), and 3.9795/2.6965 on the bridge-plane seam (10:15). The corresponding extrema are approximately 14–63 M_i from the nearer hole and far from the physical outer boundary. The outer sphere seams (5:21 and 20:22) grow by about 2.79/1.51. These are native t=0 values, so the lapse choice cannot remove them. GaussE on those sheets decreases by about 1/16; Ham does not follow fourth-order reduction. This is consistent with the documented interface regularity failure, while two grids do not establish its asymptotic rate or exclusive cause. The compact angular seam (21:22) grows by 2.0021/1.4163, but its peak lies in the last y cell at the physical boundary, y=335.5/335.75 M_i; it is not independent evidence for a companion-only defect. Near R=1e-4 the sheet Mom peak grows from 5.8753e4 to 4.7798e5 (8.1355x); its stencil includes the puncture, so this large inner value also cannot be attributed solely to a panel interface. [Hotspot locations](t16b-interface-hotspots.csv) retain both flags without changing any mask. The bridge-sheet growth persists away from both punctures, AMR faces and outer boundaries. Thirty of the 44 geometric interface pairs are observed; the 14 unobserved pairs are the unresolved end panels below the native puncture spacing. The known companion cannot enter a design-order convergence campaign on this evidence.
+
+**Low-resolution diagnostic merger choice: `ems_use_geometric_initial_lapse=true`.** This choice requires resolved evolved-Gamma endpoint reduction on both rays at both holes/rungs and a smaller native total puncture Gamma source at both holes/rungs; the data above determine it. It is a lapse recommendation for diagnostic evolution only. The known second-derivative interface mismatch remains a failure of convergence admission even if these coarse native norms decrease. Do not use this companion for a design-order merger convergence campaign until its interface regularity/constraint defect is repaired and certified. No merger run is launched here.

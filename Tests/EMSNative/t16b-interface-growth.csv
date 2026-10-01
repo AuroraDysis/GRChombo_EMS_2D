@@ -1,0 +1,1041 @@
+interface,kind,subset,field,norm,coarse,fine,fine_over_coarse,coarse_cells,fine_cells,coarse_native_crossings,fine_native_crossings,status
+5:21,outer-sphere,all,Ham,peak,4.594018373958679e-11,8.212975066040334e-10,17.877540744276974,1519,6074,1519,3068,measured
+5:21,outer-sphere,all,Ham,RMS,2.1550923122099443e-12,1.8918511071050802e-11,8.77851540923125,1519,6074,1519,3068,measured
+5:21,outer-sphere,all,Mom,peak,1.846929581354637e-12,5.066845816272489e-12,2.7433887395729473,1519,6074,1519,3068,measured
+5:21,outer-sphere,all,Mom,RMS,1.1360108076650211e-13,9.254186883084703e-14,0.8146213768956952,1519,6074,1519,3068,measured
+5:21,outer-sphere,all,GaussE,peak,7.089027689119243e-13,4.5296876324956515e-14,0.06389716377392836,1519,6074,1519,3068,measured
+5:21,outer-sphere,all,GaussE,RMS,2.807072309479968e-13,1.746512474463837e-14,0.062218293008183746,1519,6074,1519,3068,measured
+5:21,outer-sphere,all,GaussB,peak,0.0,0.0,,1519,6074,1519,3068,zero or absent; no order
+5:21,outer-sphere,all,GaussB,RMS,0.0,0.0,,1519,6074,1519,3068,zero or absent; no order
+5:21,outer-sphere,all,C_Gamma,peak,0.0,0.0,,1519,6074,1519,3068,zero or absent; no order
+5:21,outer-sphere,all,C_Gamma,RMS,0.0,0.0,,1519,6074,1519,3068,zero or absent; no order
+10:21,multiple-interface corner transition,all,Ham,peak,1.4149712863989074e-10,2.046973854722144e-09,14.466539882457115,5,20,5,18,measured
+10:21,multiple-interface corner transition,all,Ham,RMS,3.401737106281895e-11,2.50060096001936e-10,7.350953003986017,5,20,5,18,measured
+10:21,multiple-interface corner transition,all,Mom,peak,1.39555108443859e-12,3.892961008544776e-12,2.789551061193047,5,20,5,18,measured
+10:21,multiple-interface corner transition,all,Mom,RMS,4.4326938623403167e-13,5.103450121838596e-13,1.1513202310669255,5,20,5,18,measured
+10:21,multiple-interface corner transition,all,GaussE,peak,7.077421822345172e-13,4.5204882068125445e-14,0.06387196242196903,5,20,5,18,measured
+10:21,multiple-interface corner transition,all,GaussE,RMS,6.866779972146429e-13,4.1162754583469244e-14,0.0599447699655979,5,20,5,18,measured
+10:21,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,5,20,5,18,zero or absent; no order
+10:21,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,5,20,5,18,zero or absent; no order
+10:21,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,5,20,5,18,zero or absent; no order
+10:21,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,5,20,5,18,zero or absent; no order
+15:21,multiple-interface corner transition,all,Ham,peak,1.414964772781188e-10,2.0469787162253403e-09,14.466640835177087,4,16,4,14,measured
+15:21,multiple-interface corner transition,all,Ham,RMS,3.889559372969832e-11,2.8602886958448606e-10,7.353760211817817,4,16,4,14,measured
+15:21,multiple-interface corner transition,all,Mom,peak,1.395551070327194e-12,3.892960912592261e-12,2.7895510206441507,4,16,4,14,measured
+15:21,multiple-interface corner transition,all,Mom,RMS,4.929195135223536e-13,5.55814633439419e-13,1.1275971394754147,4,16,4,14,measured
+15:21,multiple-interface corner transition,all,GaussE,peak,7.072493491694144e-13,4.518823565069522e-14,0.06389293352304073,4,16,4,14,measured
+15:21,multiple-interface corner transition,all,GaussE,RMS,6.800515656629557e-13,4.077712173616421e-14,0.059961808479055835,4,16,4,14,measured
+15:21,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,4,16,4,14,zero or absent; no order
+15:21,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,4,16,4,14,zero or absent; no order
+15:21,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,4,16,4,14,zero or absent; no order
+15:21,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,4,16,4,14,zero or absent; no order
+20:21,multiple-interface corner transition,all,Ham,peak,4.593832992767241e-11,8.212999606742632e-10,17.87831560196809,17,68,17,56,measured
+20:21,multiple-interface corner transition,all,Ham,RMS,9.273126196039411e-12,9.446153119365212e-11,10.186589635111082,17,68,17,56,measured
+20:21,multiple-interface corner transition,all,Mom,peak,1.846929586508636e-12,5.06684585343845e-12,2.743388752040417,17,68,17,56,measured
+20:21,multiple-interface corner transition,all,Mom,RMS,3.70233846408162e-13,4.446692741653931e-13,1.201049764842867,17,68,17,56,measured
+20:21,multiple-interface corner transition,all,GaussE,peak,7.072493491694144e-13,4.518823565069522e-14,0.06389293352304073,17,68,17,56,measured
+20:21,multiple-interface corner transition,all,GaussE,RMS,5.908489750013614e-13,3.693908373168031e-14,0.06251865585718448,17,68,17,56,measured
+20:21,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,17,68,17,56,zero or absent; no order
+20:21,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,17,68,17,56,zero or absent; no order
+20:21,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,17,68,17,56,zero or absent; no order
+20:21,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,17,68,17,56,zero or absent; no order
+21:22,angular,all,Ham,peak,3.6199434472999395e-08,7.247551430325312e-08,2.002117308139482,1632,6528,1632,3282,measured
+21:22,angular,all,Ham,RMS,2.8714412471940985e-09,4.066727016666252e-09,1.4162668383482186,1632,6528,1632,3282,measured
+21:22,angular,all,Mom,peak,4.420026358051853e-13,6.325851680788391e-13,1.4311796284347362,1632,6528,1632,3282,measured
+21:22,angular,all,Mom,RMS,1.605185686181182e-14,7.067900432127465e-15,0.44031668690881226,1632,6528,1632,3282,measured
+21:22,angular,all,GaussE,peak,7.072493493811974e-13,4.518823565069522e-14,0.06389293350390826,1632,6528,1632,3282,measured
+21:22,angular,all,GaussE,RMS,6.507263394869389e-14,4.067415631099452e-15,0.06250577830161878,1632,6528,1632,3282,measured
+21:22,angular,all,GaussB,peak,0.0,0.0,,1632,6528,1632,3282,zero or absent; no order
+21:22,angular,all,GaussB,RMS,0.0,0.0,,1632,6528,1632,3282,zero or absent; no order
+21:22,angular,all,C_Gamma,peak,0.0,0.0,,1632,6528,1632,3282,zero or absent; no order
+21:22,angular,all,C_Gamma,RMS,0.0,0.0,,1632,6528,1632,3282,zero or absent; no order
+21:22,angular,AMR-face-excluded,Ham,peak,3.6199434472999395e-08,7.247551430325312e-08,2.002117308139482,1614,6456,1614,3228,measured
+21:22,angular,AMR-face-excluded,Ham,RMS,2.8766413488414878e-09,4.074091751955195e-09,1.4162668396586726,1614,6456,1614,3228,measured
+21:22,angular,AMR-face-excluded,Mom,peak,1.167770150699723e-13,3.152330289784998e-14,0.26994441396674973,1614,6456,1614,3228,measured
+21:22,angular,AMR-face-excluded,Mom,RMS,9.844774753426273e-15,1.4158596144015608e-15,0.14381838588118023,1614,6456,1614,3228,measured
+21:22,angular,AMR-face-excluded,GaussE,peak,5.456134304434379e-13,3.482958643402442e-14,0.06383564716454519,1614,6456,1614,3228,measured
+21:22,angular,AMR-face-excluded,GaussE,RMS,5.210048229671755e-14,3.25619205045031e-15,0.06249830916930797,1614,6456,1614,3228,measured
+21:22,angular,AMR-face-excluded,GaussB,peak,0.0,0.0,,1614,6456,1614,3228,zero or absent; no order
+21:22,angular,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1614,6456,1614,3228,zero or absent; no order
+21:22,angular,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1614,6456,1614,3228,zero or absent; no order
+21:22,angular,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1614,6456,1614,3228,zero or absent; no order
+5:22,multiple-interface corner transition,all,Ham,peak,4.594018373958679e-11,8.212975066040334e-10,17.877540744276974,17,68,17,56,measured
+5:22,multiple-interface corner transition,all,Ham,RMS,9.27316204369618e-12,9.44613506236405e-11,10.186530784054892,17,68,17,56,measured
+5:22,multiple-interface corner transition,all,Mom,peak,1.846929581354637e-12,5.066845816272489e-12,2.7433887395729473,17,68,17,56,measured
+5:22,multiple-interface corner transition,all,Mom,RMS,3.7023384555721624e-13,4.446692732037185e-13,1.2010497650058818,17,68,17,56,measured
+5:22,multiple-interface corner transition,all,GaussE,peak,7.072493493811974e-13,4.518823565060988e-14,0.0638929335037876,17,68,17,56,measured
+5:22,multiple-interface corner transition,all,GaussE,RMS,5.908489750607152e-13,3.6939083709112494e-14,0.06251865581270859,17,68,17,56,measured
+5:22,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,17,68,17,56,zero or absent; no order
+5:22,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,17,68,17,56,zero or absent; no order
+5:22,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,17,68,17,56,zero or absent; no order
+5:22,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,17,68,17,56,zero or absent; no order
+10:22,multiple-interface corner transition,all,Ham,peak,1.4149712863989074e-10,2.046973854722144e-09,14.466539882457115,4,16,4,14,measured
+10:22,multiple-interface corner transition,all,Ham,RMS,3.8895768260100645e-11,2.8602829537804915e-10,7.353712451836503,4,16,4,14,measured
+10:22,multiple-interface corner transition,all,Mom,peak,1.39555108443859e-12,3.892961008544776e-12,2.789551061193047,4,16,4,14,measured
+10:22,multiple-interface corner transition,all,Mom,RMS,4.92919518410024e-13,5.558146498218774e-13,1.1275971615299993,4,16,4,14,measured
+10:22,multiple-interface corner transition,all,GaussE,peak,7.072493493811974e-13,4.518823565060988e-14,0.0638929335037876,4,16,4,14,measured
+10:22,multiple-interface corner transition,all,GaussE,RMS,6.800515655939137e-13,4.0777121727676656e-14,0.059961808472662685,4,16,4,14,measured
+10:22,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,4,16,4,14,zero or absent; no order
+10:22,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,4,16,4,14,zero or absent; no order
+10:22,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,4,16,4,14,zero or absent; no order
+10:22,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,4,16,4,14,zero or absent; no order
+15:22,multiple-interface corner transition,all,Ham,peak,1.414964772781188e-10,2.0469787162253403e-09,14.466640835177087,5,20,5,18,measured
+15:22,multiple-interface corner transition,all,Ham,RMS,3.401720503058246e-11,2.500605981927271e-10,7.351003645593908,5,20,5,18,measured
+15:22,multiple-interface corner transition,all,Mom,peak,1.395551070327194e-12,3.892960912592261e-12,2.7895510206441507,5,20,5,18,measured
+15:22,multiple-interface corner transition,all,Mom,RMS,4.4326938565851646e-13,5.103449987828825e-13,1.151320202329604,5,20,5,18,measured
+15:22,multiple-interface corner transition,all,GaussE,peak,7.077421822345172e-13,4.5204881856470296e-14,0.06387196212291218,5,20,5,18,measured
+15:22,multiple-interface corner transition,all,GaussE,RMS,6.866779971642022e-13,4.116275445082146e-14,0.059944769776828014,5,20,5,18,measured
+15:22,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,5,20,5,18,zero or absent; no order
+15:22,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,5,20,5,18,zero or absent; no order
+15:22,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,5,20,5,18,zero or absent; no order
+15:22,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,5,20,5,18,zero or absent; no order
+20:22,outer-sphere,all,Ham,peak,4.593832992767241e-11,8.212999606742632e-10,17.87831560196809,1519,6074,1519,3068,measured
+20:22,outer-sphere,all,Ham,RMS,2.15504097065035e-12,1.8918554025504075e-11,8.778744480108337,1519,6074,1519,3068,measured
+20:22,outer-sphere,all,Mom,peak,1.846929586508636e-12,5.06684585343845e-12,2.743388752040417,1519,6074,1519,3068,measured
+20:22,outer-sphere,all,Mom,RMS,1.1360108120418957e-13,9.25418693569169e-14,0.8146213783879372,1519,6074,1519,3068,measured
+20:22,outer-sphere,all,GaussE,peak,7.089027680647507e-13,4.529687399534386e-14,0.0638971605640655,1519,6074,1519,3068,measured
+20:22,outer-sphere,all,GaussE,RMS,2.807072310974405e-13,1.7465124832017104e-14,0.062218293286340466,1519,6074,1519,3068,measured
+20:22,outer-sphere,all,GaussB,peak,0.0,0.0,,1519,6074,1519,3068,zero or absent; no order
+20:22,outer-sphere,all,GaussB,RMS,0.0,0.0,,1519,6074,1519,3068,zero or absent; no order
+20:22,outer-sphere,all,C_Gamma,peak,0.0,0.0,,1519,6074,1519,3068,zero or absent; no order
+20:22,outer-sphere,all,C_Gamma,RMS,0.0,0.0,,1519,6074,1519,3068,zero or absent; no order
+5:21,outer-sphere,AMR-face-excluded,Ham,peak,1.3443659877783018e-12,3.751822010133173e-12,2.790774271471589,1361,5447,1361,2709,measured
+5:21,outer-sphere,AMR-face-excluded,Ham,RMS,2.966004737102771e-13,4.4639851982904726e-13,1.5050499220210103,1361,5447,1361,2709,measured
+5:21,outer-sphere,AMR-face-excluded,Mom,peak,1.3990481105949474e-13,4.623061647564216e-14,0.3304433644957536,1361,5447,1361,2709,measured
+5:21,outer-sphere,AMR-face-excluded,Mom,RMS,3.4179079475840116e-14,5.306527157194938e-15,0.15525658498046793,1361,5447,1361,2709,measured
+5:21,outer-sphere,AMR-face-excluded,GaussE,peak,3.8457978737518034e-13,2.4636888153333474e-14,0.0640618383027466,1361,5447,1361,2709,measured
+5:21,outer-sphere,AMR-face-excluded,GaussE,RMS,6.776234833001656e-14,4.232685444694899e-15,0.06246367708629062,1361,5447,1361,2709,measured
+5:21,outer-sphere,AMR-face-excluded,GaussB,peak,0.0,0.0,,1361,5447,1361,2709,zero or absent; no order
+5:21,outer-sphere,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1361,5447,1361,2709,zero or absent; no order
+5:21,outer-sphere,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1361,5447,1361,2709,zero or absent; no order
+5:21,outer-sphere,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1361,5447,1361,2709,zero or absent; no order
+5:10,angular,all,Ham,peak,3.545880152502377e-10,2.046973854722144e-09,5.772823013427473,1439,5762,1439,2994,measured
+5:10,angular,all,Ham,RMS,3.500761414173581e-11,1.1145368944828989e-10,3.183698523328262,1439,5762,1439,2994,measured
+5:10,angular,all,Mom,peak,6.485195181126015e-12,9.307528210723915e-12,1.435196312643263,1439,5762,1439,2994,measured
+5:10,angular,all,Mom,RMS,6.015780207812702e-13,3.8937472096380516e-13,0.6472555637224306,1439,5762,1439,2994,measured
+5:10,angular,all,GaussE,peak,1.1596062813675112e-10,7.743531204107913e-12,0.06677724438484457,1439,5762,1439,2994,measured
+5:10,angular,all,GaussE,RMS,3.452693341313968e-12,2.1817145980766527e-13,0.06318877416568865,1439,5762,1439,2994,measured
+5:10,angular,all,GaussB,peak,0.0,0.0,,1439,5762,1439,2994,zero or absent; no order
+5:10,angular,all,GaussB,RMS,0.0,0.0,,1439,5762,1439,2994,zero or absent; no order
+5:10,angular,all,C_Gamma,peak,0.0,0.0,,1439,5762,1439,2994,zero or absent; no order
+5:10,angular,all,C_Gamma,RMS,0.0,0.0,,1439,5762,1439,2994,zero or absent; no order
+10:15,bridge-plane,all,Ham,peak,2.538750584680541e-10,2.0469787162253403e-09,8.062937448748706,1500,6000,1500,3126,measured
+10:15,bridge-plane,all,Ham,RMS,2.9869256942291725e-11,1.1321394876621732e-10,3.7903168794908413,1500,6000,1500,3126,measured
+10:15,bridge-plane,all,Mom,peak,1.39555108443859e-12,3.892961008544776e-12,2.789551061193047,1500,6000,1500,3126,measured
+10:15,bridge-plane,all,Mom,RMS,3.0500078621401164e-13,3.3616660170625426e-13,1.102182738212269,1500,6000,1500,3126,measured
+10:15,bridge-plane,all,GaussE,peak,3.9726463613678845e-12,2.4868846921062075e-13,0.06260020313637756,1500,6000,1500,3126,measured
+10:15,bridge-plane,all,GaussE,RMS,3.997989003537569e-13,2.5035064186563526e-14,0.06261914218476232,1500,6000,1500,3126,measured
+10:15,bridge-plane,all,GaussB,peak,0.0,0.0,,1500,6000,1500,3126,zero or absent; no order
+10:15,bridge-plane,all,GaussB,RMS,0.0,0.0,,1500,6000,1500,3126,zero or absent; no order
+10:15,bridge-plane,all,C_Gamma,peak,0.0,0.0,,1500,6000,1500,3126,zero or absent; no order
+10:15,bridge-plane,all,C_Gamma,RMS,0.0,0.0,,1500,6000,1500,3126,zero or absent; no order
+5:10,angular,AMR-face-excluded,Ham,peak,3.545880152502377e-10,1.2649960502626316e-09,3.5675093230940313,1296,5174,1296,2671,measured
+5:10,angular,AMR-face-excluded,Ham,RMS,3.4522916681180085e-11,9.477675812914639e-11,2.7453288204010073,1296,5174,1296,2671,measured
+5:10,angular,AMR-face-excluded,Mom,peak,6.485195181126015e-12,9.307528210723915e-12,1.435196312643263,1296,5174,1296,2671,measured
+5:10,angular,AMR-face-excluded,Mom,RMS,5.273517538921056e-13,3.4910967571445093e-13,0.6620053373063733,1296,5174,1296,2671,measured
+5:10,angular,AMR-face-excluded,GaussE,peak,9.018138638401475e-11,5.832183021448648e-12,0.06467169396369406,1296,5174,1296,2671,measured
+5:10,angular,AMR-face-excluded,GaussE,RMS,2.835810912897505e-12,1.7676782163867057e-13,0.06233413547945518,1296,5174,1296,2671,measured
+5:10,angular,AMR-face-excluded,GaussB,peak,0.0,0.0,,1296,5174,1296,2671,zero or absent; no order
+5:10,angular,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1296,5174,1296,2671,zero or absent; no order
+5:10,angular,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1296,5174,1296,2671,zero or absent; no order
+5:10,angular,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1296,5174,1296,2671,zero or absent; no order
+10:15,bridge-plane,AMR-face-excluded,Ham,peak,2.538750584680541e-10,1.0103054662978792e-09,3.979538094030648,1426,5704,1426,2974,measured
+10:15,bridge-plane,AMR-face-excluded,Ham,RMS,2.8258280630532268e-11,7.619812083208929e-11,2.6964882198019997,1426,5704,1426,2974,measured
+10:15,bridge-plane,AMR-face-excluded,Mom,peak,8.443705036052969e-13,1.7903070115436075e-12,2.120286063877583,1426,5704,1426,2974,measured
+10:15,bridge-plane,AMR-face-excluded,Mom,RMS,2.6911866202443906e-13,2.998810590011109e-13,1.1143079292430424,1426,5704,1426,2974,measured
+10:15,bridge-plane,AMR-face-excluded,GaussE,peak,3.9726463613678845e-12,2.4868846921062075e-13,0.06260020313637756,1426,5704,1426,2974,measured
+10:15,bridge-plane,AMR-face-excluded,GaussE,RMS,3.7005591573003993e-13,2.316796393399615e-14,0.06260665739741193,1426,5704,1426,2974,measured
+10:15,bridge-plane,AMR-face-excluded,GaussB,peak,0.0,0.0,,1426,5704,1426,2974,zero or absent; no order
+10:15,bridge-plane,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1426,5704,1426,2974,zero or absent; no order
+10:15,bridge-plane,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1426,5704,1426,2974,zero or absent; no order
+10:15,bridge-plane,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1426,5704,1426,2974,zero or absent; no order
+10:20,multiple-interface corner transition,all,Ham,peak,2.5387465498761543e-10,2.046973854722144e-09,8.062931113867984,32,128,32,124,measured
+10:20,multiple-interface corner transition,all,Ham,RMS,7.691423954272821e-11,3.018328620494143e-10,3.92427805103289,32,128,32,124,measured
+10:20,multiple-interface corner transition,all,Mom,peak,1.846929586508636e-12,5.06684585343845e-12,2.743388752040417,32,128,32,124,measured
+10:20,multiple-interface corner transition,all,Mom,RMS,6.164624997797177e-13,8.459886587016316e-13,1.3723278528765839,32,128,32,124,measured
+10:20,multiple-interface corner transition,all,GaussE,peak,8.080970412328154e-14,5.3490663463990604e-15,0.06619336630955411,32,128,32,124,measured
+10:20,multiple-interface corner transition,all,GaussE,RMS,6.050565462360648e-14,3.766397419493257e-15,0.062248684737373036,32,128,32,124,measured
+10:20,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,32,128,32,124,zero or absent; no order
+10:20,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,32,128,32,124,zero or absent; no order
+10:20,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,32,128,32,124,zero or absent; no order
+10:20,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,32,128,32,124,zero or absent; no order
+10:20,multiple-interface corner transition,AMR-face-excluded,Ham,peak,2.5387465498761543e-10,1.0103054662978792e-09,3.9795444186705606,23,92,23,91,measured
+10:20,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,8.523280251598335e-11,2.458099892613445e-10,2.8839834195907006,23,92,23,91,measured
+10:20,multiple-interface corner transition,AMR-face-excluded,Mom,peak,9.578457572205825e-13,1.8749277029062598e-12,1.9574421964835014,23,92,23,91,measured
+10:20,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,4.909581633774755e-13,6.619698859569254e-13,1.348322393507014,23,92,23,91,measured
+10:20,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,8.080970412328154e-14,5.3490663463990604e-15,0.06619336630955411,23,92,23,91,measured
+10:20,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,6.375578494050394e-14,4.000949876224331e-15,0.06275430347156677,23,92,23,91,measured
+10:20,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,23,92,23,91,zero or absent; no order
+10:20,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,23,92,23,91,zero or absent; no order
+10:20,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,23,92,23,91,zero or absent; no order
+10:20,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,23,92,23,91,zero or absent; no order
+5:15,multiple-interface corner transition,all,Ham,peak,2.538750584680541e-10,2.0469787162253403e-09,8.062937448748706,32,128,32,124,measured
+5:15,multiple-interface corner transition,all,Ham,RMS,7.69145255063502e-11,3.0183321668324584e-10,3.9242680715533496,32,128,32,124,measured
+5:15,multiple-interface corner transition,all,Mom,peak,1.846929581354637e-12,5.066845816272489e-12,2.7433887395729473,32,128,32,124,measured
+5:15,multiple-interface corner transition,all,Mom,RMS,6.164625047269125e-13,8.459886538923615e-13,1.3723278340620686,32,128,32,124,measured
+5:15,multiple-interface corner transition,all,GaussE,peak,8.080970412328154e-14,5.3490667699776805e-15,0.06619337155123424,32,128,32,124,measured
+5:15,multiple-interface corner transition,all,GaussE,RMS,6.050565462767519e-14,3.766397394413293e-15,0.062248684318681,32,128,32,124,measured
+5:15,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,32,128,32,124,zero or absent; no order
+5:15,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,32,128,32,124,zero or absent; no order
+5:15,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,32,128,32,124,zero or absent; no order
+5:15,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,32,128,32,124,zero or absent; no order
+5:15,multiple-interface corner transition,AMR-face-excluded,Ham,peak,2.538750584680541e-10,1.0103050107106206e-09,3.9795362994973,23,92,23,91,measured
+5:15,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,8.523320816589622e-11,2.4581034070730406e-10,2.883973817210584,23,92,23,91,measured
+5:15,multiple-interface corner transition,AMR-face-excluded,Mom,peak,9.57845751336783e-13,1.8749277325599347e-12,1.9574422394662807,23,92,23,91,measured
+5:15,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,4.909581763890294e-13,6.619698870955651e-13,1.348322360092498,23,92,23,91,measured
+5:15,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,8.080970412328154e-14,5.3490667699776805e-15,0.06619337155123424,23,92,23,91,measured
+5:15,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,6.375578490799959e-14,4.0009497974468214e-15,0.06275430226794702,23,92,23,91,measured
+5:15,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,23,92,23,91,zero or absent; no order
+5:15,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,23,92,23,91,zero or absent; no order
+5:15,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,23,92,23,91,zero or absent; no order
+5:15,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,23,92,23,91,zero or absent; no order
+5:20,multiple-interface corner transition,all,Ham,peak,1.9457712836783841e-10,8.958432480055419e-10,4.604052159265064,26,104,26,96,measured
+5:20,multiple-interface corner transition,all,Ham,RMS,6.312057582995231e-11,2.67609033876667e-10,4.239648171106825,26,104,26,96,measured
+5:20,multiple-interface corner transition,all,Mom,peak,1.846929586508636e-12,5.06684585343845e-12,2.743388752040417,26,104,26,96,measured
+5:20,multiple-interface corner transition,all,Mom,RMS,7.087980590160464e-13,9.746185602265255e-13,1.3750299508148924,26,104,26,96,measured
+5:20,multiple-interface corner transition,all,GaussE,peak,5.887376427760301e-14,3.8893594063009e-15,0.06606269284840863,26,104,26,96,measured
+5:20,multiple-interface corner transition,all,GaussE,RMS,5.33393426356449e-14,3.27794671885542e-15,0.06145457661986404,26,104,26,96,measured
+5:20,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,26,104,26,96,zero or absent; no order
+5:20,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,26,104,26,96,zero or absent; no order
+5:20,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,26,104,26,96,zero or absent; no order
+5:20,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,26,104,26,96,zero or absent; no order
+5:20,multiple-interface corner transition,AMR-face-excluded,Ham,peak,1.9457712836783841e-10,8.958432480055419e-10,4.604052159265064,10,40,10,38,measured
+5:20,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,9.874642421701103e-11,3.2599495171460996e-10,3.301334243741161,10,40,10,38,measured
+5:20,multiple-interface corner transition,AMR-face-excluded,Mom,peak,9.578457572205825e-13,1.8749277325599347e-12,1.9574422274422176,10,40,10,38,measured
+5:20,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,6.289790338080546e-13,8.800254024801868e-13,1.3991331271444956,10,40,10,38,measured
+5:20,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,5.887376427760301e-14,3.8893594063009e-15,0.06606269284840863,10,40,10,38,measured
+5:20,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,5.586763202121872e-14,3.526757008174744e-15,0.06312701792757691,10,40,10,38,measured
+5:20,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,10,40,10,38,zero or absent; no order
+5:20,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,10,40,10,38,zero or absent; no order
+5:20,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,10,40,10,38,zero or absent; no order
+5:20,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,10,40,10,38,zero or absent; no order
+15:20,angular,all,Ham,peak,3.549143362652606e-10,2.0469787162253403e-09,5.76752896985103,1439,5762,1439,2994,measured
+15:20,angular,all,Ham,RMS,3.500788034111885e-11,1.1145531577966188e-10,3.1837207706846207,1439,5762,1439,2994,measured
+15:20,angular,all,Mom,peak,6.485208319597638e-12,9.307637468672644e-12,1.435210252313085,1439,5762,1439,2994,measured
+15:20,angular,all,Mom,RMS,6.015780975783801e-13,3.893746962120889e-13,0.6472554399495186,1439,5762,1439,2994,measured
+15:20,angular,all,GaussE,peak,1.1596062759278773e-10,7.743529951686753e-12,0.06677723389769209,1439,5762,1439,2994,measured
+15:20,angular,all,GaussE,RMS,3.4526933414552928e-12,2.1817146021166654e-13,0.06318877428011269,1439,5762,1439,2994,measured
+15:20,angular,all,GaussB,peak,0.0,0.0,,1439,5762,1439,2994,zero or absent; no order
+15:20,angular,all,GaussB,RMS,0.0,0.0,,1439,5762,1439,2994,zero or absent; no order
+15:20,angular,all,C_Gamma,peak,0.0,0.0,,1439,5762,1439,2994,zero or absent; no order
+15:20,angular,all,C_Gamma,RMS,0.0,0.0,,1439,5762,1439,2994,zero or absent; no order
+15:20,angular,AMR-face-excluded,Ham,peak,3.549143362652606e-10,1.2658566036136847e-09,3.566653905655679,1296,5174,1296,2671,measured
+15:20,angular,AMR-face-excluded,Ham,RMS,3.45232439816222e-11,9.477883782966146e-11,2.7453630336742165,1296,5174,1296,2671,measured
+15:20,angular,AMR-face-excluded,Mom,peak,6.485208319597638e-12,9.307637468672644e-12,1.435210252313085,1296,5174,1296,2671,measured
+15:20,angular,AMR-face-excluded,Mom,RMS,5.273518333859549e-13,3.4910962646588976e-13,0.6620051441262091,1296,5174,1296,2671,measured
+15:20,angular,AMR-face-excluded,GaussE,peak,9.018138918456951e-11,5.8321848965775534e-12,0.06467171274819383,1296,5174,1296,2671,measured
+15:20,angular,AMR-face-excluded,GaussE,RMS,2.835810915085731e-12,1.767678225891955e-13,0.06233413576654195,1296,5174,1296,2671,measured
+15:20,angular,AMR-face-excluded,GaussB,peak,0.0,0.0,,1296,5174,1296,2671,zero or absent; no order
+15:20,angular,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1296,5174,1296,2671,zero or absent; no order
+15:20,angular,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1296,5174,1296,2671,zero or absent; no order
+15:20,angular,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1296,5174,1296,2671,zero or absent; no order
+20:22,outer-sphere,AMR-face-excluded,Ham,peak,1.3461639885320287e-12,3.74859781109656e-12,2.784651679164549,1361,5447,1361,2709,measured
+20:22,outer-sphere,AMR-face-excluded,Ham,RMS,2.966145685750693e-13,4.466559810140962e-13,1.5058464024873186,1361,5447,1361,2709,measured
+20:22,outer-sphere,AMR-face-excluded,Mom,peak,1.3990478260913895e-13,4.623064736449745e-14,0.33044365247795,1361,5447,1361,2709,measured
+20:22,outer-sphere,AMR-face-excluded,Mom,RMS,3.4179078901624275e-14,5.3065266582350204e-15,0.15525657299041026,1361,5447,1361,2709,measured
+20:22,outer-sphere,AMR-face-excluded,GaussE,peak,3.8457978059828784e-13,2.4636902558460805e-14,0.06406187688841405,1361,5447,1361,2709,measured
+20:22,outer-sphere,AMR-face-excluded,GaussE,RMS,6.776234835064388e-14,4.232686468701329e-15,0.06246369217900799,1361,5447,1361,2709,measured
+20:22,outer-sphere,AMR-face-excluded,GaussB,peak,0.0,0.0,,1361,5447,1361,2709,zero or absent; no order
+20:22,outer-sphere,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1361,5447,1361,2709,zero or absent; no order
+20:22,outer-sphere,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1361,5447,1361,2709,zero or absent; no order
+20:22,outer-sphere,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1361,5447,1361,2709,zero or absent; no order
+4:5,radial,all,Ham,peak,1.1755204617072924e-09,1.550610902048012e-09,1.3190845693965625,1693,6771,1693,3464,measured
+4:5,radial,all,Ham,RMS,1.673080059667414e-10,2.1000980355256084e-10,1.2552286565073758,1693,6771,1693,3464,measured
+4:5,radial,all,Mom,peak,7.849002155138228e-12,9.307528210723915e-12,1.1858231182457868,1693,6771,1693,3464,measured
+4:5,radial,all,Mom,RMS,2.2221548685680537e-12,6.626183314448753e-13,0.29818728695172514,1693,6771,1693,3464,measured
+4:5,radial,all,GaussE,peak,1.7667907646888773e-10,1.129444224727978e-11,0.06392631472277745,1693,6771,1693,3464,measured
+4:5,radial,all,GaussE,RMS,7.13166325734478e-11,4.440762027796106e-12,0.06226825170443429,1693,6771,1693,3464,measured
+4:5,radial,all,GaussB,peak,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+4:5,radial,all,GaussB,RMS,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+4:5,radial,all,C_Gamma,peak,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+4:5,radial,all,C_Gamma,RMS,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+9:10,radial,all,Ham,peak,1.0090560147898297e-09,2.6063298400059956e-09,2.58293870885736,1317,5269,1317,2670,measured
+9:10,radial,all,Ham,RMS,1.7788104784461086e-10,2.8576332922674345e-10,1.6064855288932964,1317,5269,1317,2670,measured
+9:10,radial,all,Mom,peak,8.920497436912283e-12,8.830665100146745e-12,0.9899296718147331,1317,5269,1317,2670,measured
+9:10,radial,all,Mom,RMS,1.5753726670416524e-12,9.830678108980051e-13,0.6240223862358106,1317,5269,1317,2670,measured
+9:10,radial,all,GaussE,peak,1.7353605459025188e-10,1.1094707055285452e-11,0.06393315257444306,1317,5269,1317,2670,measured
+9:10,radial,all,GaussE,RMS,2.4451505968417405e-11,1.5260690890908348e-12,0.06241206946770354,1317,5269,1317,2670,measured
+9:10,radial,all,GaussB,peak,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+9:10,radial,all,GaussB,RMS,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+9:10,radial,all,C_Gamma,peak,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+9:10,radial,all,C_Gamma,RMS,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+5:9,multiple-interface corner transition,all,Ham,peak,2.281400046997789e-10,4.0575313739862957e-10,1.778526909090674,22,87,22,76,measured
+5:9,multiple-interface corner transition,all,Ham,RMS,1.173370137582774e-10,1.1065021996285501e-10,0.9430120677078278,22,87,22,76,measured
+5:9,multiple-interface corner transition,all,Mom,peak,5.615931795347057e-12,9.307528210723915e-12,1.6573435272905983,22,87,22,76,measured
+5:9,multiple-interface corner transition,all,Mom,RMS,3.6740004669589096e-12,2.748826285198298e-12,0.7481834338125688,22,87,22,76,measured
+5:9,multiple-interface corner transition,all,GaussE,peak,1.2309120472036255e-10,7.743531204107913e-12,0.06290889118925755,22,87,22,76,measured
+5:9,multiple-interface corner transition,all,GaussE,RMS,7.821895198866731e-11,4.6226413024840465e-12,0.05909873738980541,22,87,22,76,measured
+5:9,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,22,87,22,76,zero or absent; no order
+5:9,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,22,87,22,76,zero or absent; no order
+5:9,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,22,87,22,76,zero or absent; no order
+5:9,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,22,87,22,76,zero or absent; no order
+4:10,multiple-interface corner transition,all,Ham,peak,3.380095086254809e-10,8.398089703257557e-10,2.4845720279907137,22,90,22,80,measured
+4:10,multiple-interface corner transition,all,Ham,RMS,1.713150087441509e-10,1.6848645908371032e-10,0.983489189410924,22,90,22,80,measured
+4:10,multiple-interface corner transition,all,Mom,peak,6.485195181126015e-12,8.830665100146745e-12,1.3616652781471859,22,90,22,80,measured
+4:10,multiple-interface corner transition,all,Mom,RMS,3.845620003408753e-12,3.071024528992408e-12,0.7985772193483119,22,90,22,80,measured
+4:10,multiple-interface corner transition,all,GaussE,peak,9.390221511353277e-11,6.10499062173502e-12,0.06501434086888964,22,90,22,80,measured
+4:10,multiple-interface corner transition,all,GaussE,RMS,5.653018069349546e-11,3.5337229520540895e-12,0.06251037779648723,22,90,22,80,measured
+4:10,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,22,90,22,80,zero or absent; no order
+4:10,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,22,90,22,80,zero or absent; no order
+4:10,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,22,90,22,80,zero or absent; no order
+4:10,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,22,90,22,80,zero or absent; no order
+14:15,radial,all,Ham,peak,1.0089602262095948e-09,2.599893666789826e-09,2.576804911881374,1317,5269,1317,2670,measured
+14:15,radial,all,Ham,RMS,1.7783431452995264e-10,2.856992590795317e-10,1.6065474193475262,1317,5269,1317,2670,measured
+14:15,radial,all,Mom,peak,8.92049272883789e-12,8.830646981728206e-12,0.9899281631810277,1317,5269,1317,2670,measured
+14:15,radial,all,Mom,RMS,1.5753735183142077e-12,9.830683138382769e-13,0.6240223682890449,1317,5269,1317,2670,measured
+14:15,radial,all,GaussE,peak,1.7353605279343635e-10,1.1094701874876382e-11,0.06393312338435311,1317,5269,1317,2670,measured
+14:15,radial,all,GaussE,RMS,2.445150587309694e-11,1.5260691977537354e-12,0.06241207415502418,1317,5269,1317,2670,measured
+14:15,radial,all,GaussB,peak,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+14:15,radial,all,GaussB,RMS,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+14:15,radial,all,C_Gamma,peak,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+14:15,radial,all,C_Gamma,RMS,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+15:19,multiple-interface corner transition,all,Ham,peak,3.3688639430929533e-10,8.362253242738212e-10,2.4822175617638123,22,90,22,80,measured
+15:19,multiple-interface corner transition,all,Ham,RMS,1.713427273907497e-10,1.6804352907609665e-10,0.980745034441239,22,90,22,80,measured
+15:19,multiple-interface corner transition,all,Mom,peak,6.485208319597638e-12,8.830646981728206e-12,1.3616597257242904,22,90,22,80,measured
+15:19,multiple-interface corner transition,all,Mom,RMS,3.845627384786339e-12,3.071030257426086e-12,0.798577176139157,22,90,22,80,measured
+15:19,multiple-interface corner transition,all,GaussE,peak,9.390221402542458e-11,6.104986270976058e-12,0.06501429528938579,22,90,22,80,measured
+15:19,multiple-interface corner transition,all,GaussE,RMS,5.653017998738806e-11,3.5337222240844347e-12,0.06251036569975209,22,90,22,80,measured
+15:19,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,22,90,22,80,zero or absent; no order
+15:19,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,22,90,22,80,zero or absent; no order
+15:19,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,22,90,22,80,zero or absent; no order
+15:19,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,22,90,22,80,zero or absent; no order
+14:20,multiple-interface corner transition,all,Ham,peak,2.2827742490895375e-10,4.099812624099552e-10,1.7959781286891259,22,87,22,76,measured
+14:20,multiple-interface corner transition,all,Ham,RMS,1.173275773760833e-10,1.1050759479152008e-10,0.9418722968880338,22,87,22,76,measured
+14:20,multiple-interface corner transition,all,Mom,peak,5.61590775435331e-12,9.307637468672644e-12,1.6573700772519988,22,87,22,76,measured
+14:20,multiple-interface corner transition,all,Mom,RMS,3.674000795962038e-12,2.7488285816642344e-12,0.7481839918721228,22,87,22,76,measured
+14:20,multiple-interface corner transition,all,GaussE,peak,1.2309120488148449e-10,7.743529951686753e-12,0.06290888093217084,22,87,22,76,measured
+14:20,multiple-interface corner transition,all,GaussE,RMS,7.821895205141538e-11,4.62264122867541e-12,0.05909873639878001,22,87,22,76,measured
+14:20,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,22,87,22,76,zero or absent; no order
+14:20,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,22,87,22,76,zero or absent; no order
+14:20,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,22,87,22,76,zero or absent; no order
+14:20,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,22,87,22,76,zero or absent; no order
+19:20,radial,all,Ham,peak,1.1756828864451662e-09,1.5454379469157727e-09,1.3145023753714833,1693,6771,1693,3464,measured
+19:20,radial,all,Ham,RMS,1.672923410308738e-10,2.1002319357784035e-10,1.2554262334046755,1693,6771,1693,3464,measured
+19:20,radial,all,Mom,peak,7.849030927418755e-12,9.307637468672644e-12,1.185832691289136,1693,6771,1693,3464,measured
+19:20,radial,all,Mom,RMS,2.222154512272309e-12,6.626180154756327e-13,0.29818719257197795,1693,6771,1693,3464,measured
+19:20,radial,all,GaussE,peak,1.7667907728759166e-10,1.1294447948110753e-11,0.06392634669314051,1693,6771,1693,3464,measured
+19:20,radial,all,GaussE,RMS,7.131663257569319e-11,4.4407620027870325e-12,0.06226825135179721,1693,6771,1693,3464,measured
+19:20,radial,all,GaussB,peak,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+19:20,radial,all,GaussB,RMS,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+19:20,radial,all,C_Gamma,peak,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+19:20,radial,all,C_Gamma,RMS,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+4:5,radial,AMR-face-excluded,Ham,peak,4.457566483020427e-10,1.550610902048012e-09,3.4786040947555876,1242,4976,1242,2430,measured
+4:5,radial,AMR-face-excluded,Ham,RMS,9.392405969918588e-11,2.581174647489294e-10,2.748150639736101,1242,4976,1242,2430,measured
+4:5,radial,AMR-face-excluded,Mom,peak,5.074122232113087e-12,9.307528210723915e-12,1.834312967830862,1242,4976,1242,2430,measured
+4:5,radial,AMR-face-excluded,Mom,RMS,5.36325637516516e-13,2.9978177416053196e-13,0.5589547714867541,1242,4976,1242,2430,measured
+4:5,radial,AMR-face-excluded,GaussE,peak,1.344547452269579e-11,8.487383786519402e-13,0.06312446445971695,1242,4976,1242,2430,measured
+4:5,radial,AMR-face-excluded,GaussE,RMS,5.369903944195041e-12,3.3629368058871023e-13,0.06262564174024927,1242,4976,1242,2430,measured
+4:5,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+4:5,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+4:5,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+4:5,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+9:10,radial,AMR-face-excluded,Ham,peak,6.506207873014343e-10,2.414759058162108e-09,3.711469269492221,1144,4580,1144,2307,measured
+9:10,radial,AMR-face-excluded,Ham,RMS,1.069158403058522e-10,2.8860177843300527e-10,2.6993360161357516,1144,4580,1144,2307,measured
+9:10,radial,AMR-face-excluded,Mom,peak,6.485195181126015e-12,8.830665100146745e-12,1.3616652781471859,1144,4580,1144,2307,measured
+9:10,radial,AMR-face-excluded,Mom,RMS,9.926997938676964e-13,9.34705333166827e-13,0.9415790543534668,1144,4580,1144,2307,measured
+9:10,radial,AMR-face-excluded,GaussE,peak,1.3215375335082035e-11,8.342679446169078e-13,0.06312858495984057,1144,4580,1144,2307,measured
+9:10,radial,AMR-face-excluded,GaussE,RMS,4.306545765340953e-12,2.6888763102613756e-13,0.062436961239363375,1144,4580,1144,2307,measured
+9:10,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+9:10,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+9:10,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+9:10,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+4:9,angular,all,Ham,peak,2.563546387606226e-08,1.6200724168211714e-09,0.0631965321420984,1439,5755,1439,2931,measured
+4:9,angular,all,Ham,RMS,5.551698857568262e-10,3.788846981154427e-11,0.0682466228511178,1439,5755,1439,2931,measured
+4:9,angular,all,Mom,peak,5.753716710777466e-10,3.6635201072561205e-11,0.06367223642404686,1439,5755,1439,2931,measured
+4:9,angular,all,Mom,RMS,5.532084475721338e-11,3.471711842739816e-12,0.06275594412876592,1439,5755,1439,2931,measured
+4:9,angular,all,GaussE,peak,2.1040241147108323e-09,1.4046670044016818e-10,0.06676097458107,1439,5755,1439,2931,measured
+4:9,angular,all,GaussE,RMS,1.4302396853743036e-10,8.968017409443097e-12,0.06270289868999199,1439,5755,1439,2931,measured
+4:9,angular,all,GaussB,peak,0.0,0.0,,1439,5755,1439,2931,zero or absent; no order
+4:9,angular,all,GaussB,RMS,0.0,0.0,,1439,5755,1439,2931,zero or absent; no order
+4:9,angular,all,C_Gamma,peak,0.0,0.0,,1439,5755,1439,2931,zero or absent; no order
+4:9,angular,all,C_Gamma,RMS,0.0,0.0,,1439,5755,1439,2931,zero or absent; no order
+4:9,angular,AMR-face-excluded,Ham,peak,1.0082055423760905e-08,6.66617831542928e-10,0.06611923893731778,1308,5217,1308,2647,measured
+4:9,angular,AMR-face-excluded,Ham,RMS,4.201603625797823e-10,3.185868385770822e-11,0.0758250579899924,1308,5217,1308,2647,measured
+4:9,angular,AMR-face-excluded,Mom,peak,4.979707729555454e-10,3.1574297584507334e-11,0.0634059252054257,1308,5217,1308,2647,measured
+4:9,angular,AMR-face-excluded,Mom,RMS,4.610241636928575e-11,2.885345322432291e-12,0.06258555515442699,1308,5217,1308,2647,measured
+4:9,angular,AMR-face-excluded,GaussE,peak,1.4264356659232375e-09,9.301037643918839e-11,0.06520474681133896,1308,5217,1308,2647,measured
+4:9,angular,AMR-face-excluded,GaussE,RMS,1.1869701831831927e-10,7.416524746890632e-12,0.06248282266873078,1308,5217,1308,2647,measured
+4:9,angular,AMR-face-excluded,GaussB,peak,0.0,0.0,,1308,5217,1308,2647,zero or absent; no order
+4:9,angular,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1308,5217,1308,2647,zero or absent; no order
+4:9,angular,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1308,5217,1308,2647,zero or absent; no order
+4:9,angular,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1308,5217,1308,2647,zero or absent; no order
+4:10,multiple-interface corner transition,AMR-face-excluded,Ham,peak,3.380095086254809e-10,8.398089703257557e-10,2.4845720279907137,13,54,13,49,measured
+4:10,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,1.3781244524049198e-10,1.8257030119675583e-10,1.324773687007428,13,54,13,49,measured
+4:10,multiple-interface corner transition,AMR-face-excluded,Mom,peak,6.485195181126015e-12,8.830665100146745e-12,1.3616652781471859,13,54,13,49,measured
+4:10,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,3.2041298641883188e-12,3.747281145752315e-12,1.1695160010942907,13,54,13,49,measured
+4:10,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,9.480442463558966e-12,6.045671829443935e-13,0.06376993323552521,13,54,13,49,measured
+4:10,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,8.324363798200435e-12,5.194683106304469e-13,0.06240336477638637,13,54,13,49,measured
+4:10,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,13,54,13,49,zero or absent; no order
+4:10,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,13,54,13,49,zero or absent; no order
+4:10,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,13,54,13,49,zero or absent; no order
+4:10,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,13,54,13,49,zero or absent; no order
+5:9,multiple-interface corner transition,AMR-face-excluded,Ham,peak,2.0815698042374387e-10,4.0575313739862957e-10,1.9492651006593218,11,43,11,40,measured
+5:9,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,7.989286960427187e-11,1.2275350999765428e-10,1.536476416552331,11,43,11,40,measured
+5:9,multiple-interface corner transition,AMR-face-excluded,Mom,peak,5.074122232113087e-12,9.307528210723915e-12,1.834312967830862,11,43,11,40,measured
+5:9,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,2.3056096849356473e-12,2.7103671205486518e-12,1.175553320346285,11,43,11,40,measured
+5:9,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,8.766832658175441e-12,5.480283648729001e-13,0.06251155762187847,11,43,11,40,measured
+5:9,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,7.848014106646268e-12,4.879036155148909e-13,0.06216905434735377,11,43,11,40,measured
+5:9,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,11,43,11,40,zero or absent; no order
+5:9,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,11,43,11,40,zero or absent; no order
+5:9,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,11,43,11,40,zero or absent; no order
+5:9,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,11,43,11,40,zero or absent; no order
+14:15,radial,AMR-face-excluded,Ham,peak,6.512132405213031e-10,2.415902528718652e-09,3.7098486001063127,1144,4580,1144,2307,measured
+14:15,radial,AMR-face-excluded,Ham,RMS,1.0683091695284723e-10,2.8855113118884173e-10,2.7010077177957923,1144,4580,1144,2307,measured
+14:15,radial,AMR-face-excluded,Mom,peak,6.485208319597638e-12,8.830646981728206e-12,1.3616597257242904,1144,4580,1144,2307,measured
+14:15,radial,AMR-face-excluded,Mom,RMS,9.92701165515394e-13,9.347053438084535e-13,0.9415777640627326,1144,4580,1144,2307,measured
+14:15,radial,AMR-face-excluded,GaussE,peak,1.3215375993658535e-11,8.342641341694723e-13,0.0631282934794892,1144,4580,1144,2307,measured
+14:15,radial,AMR-face-excluded,GaussE,RMS,4.306545975535507e-12,2.6888814713141586e-13,0.06243707803397602,1144,4580,1144,2307,measured
+14:15,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+14:15,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+14:15,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+14:15,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+14:19,angular,all,Ham,peak,2.560783914428291e-08,1.6936862479900678e-09,0.06613936609205047,1439,5755,1439,2931,measured
+14:19,angular,all,Ham,RMS,5.551568330757541e-10,3.7810005124130664e-11,0.0681068895696566,1439,5755,1439,2931,measured
+14:19,angular,all,Mom,peak,5.753712810949991e-10,3.663531419647277e-11,0.06367247619094138,1439,5755,1439,2931,measured
+14:19,angular,all,Mom,RMS,5.532084109479734e-11,3.471707784582202e-12,0.06275587492665037,1439,5755,1439,2931,measured
+14:19,angular,all,GaussE,peak,2.10402413095982e-09,1.40466976902314e-10,0.06676110546233865,1439,5755,1439,2931,measured
+14:19,angular,all,GaussE,RMS,1.430239686653244e-10,8.96801795517232e-12,0.0627029024495709,1439,5755,1439,2931,measured
+14:19,angular,all,GaussB,peak,0.0,0.0,,1439,5755,1439,2931,zero or absent; no order
+14:19,angular,all,GaussB,RMS,0.0,0.0,,1439,5755,1439,2931,zero or absent; no order
+14:19,angular,all,C_Gamma,peak,0.0,0.0,,1439,5755,1439,2931,zero or absent; no order
+14:19,angular,all,C_Gamma,RMS,0.0,0.0,,1439,5755,1439,2931,zero or absent; no order
+14:19,angular,AMR-face-excluded,Ham,peak,1.0073713051306802e-08,6.871886205310351e-10,0.06821602094789571,1308,5217,1308,2647,measured
+14:19,angular,AMR-face-excluded,Ham,RMS,4.2014760880687995e-10,3.1813089044969646e-11,0.07571883875600603,1308,5217,1308,2647,measured
+14:19,angular,AMR-face-excluded,Mom,peak,4.979707916660831e-10,3.157429426662252e-11,0.06340591616022899,1308,5217,1308,2647,measured
+14:19,angular,AMR-face-excluded,Mom,RMS,4.610241160386817e-11,2.8853401815764445e-12,0.06258545011416178,1308,5217,1308,2647,measured
+14:19,angular,AMR-face-excluded,GaussE,peak,1.426435641934511e-09,9.30110351954223e-11,0.06520520972771131,1308,5217,1308,2647,measured
+14:19,angular,AMR-face-excluded,GaussE,RMS,1.1869701840924343e-10,7.41652490567372e-12,0.062482823958585336,1308,5217,1308,2647,measured
+14:19,angular,AMR-face-excluded,GaussB,peak,0.0,0.0,,1308,5217,1308,2647,zero or absent; no order
+14:19,angular,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1308,5217,1308,2647,zero or absent; no order
+14:19,angular,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1308,5217,1308,2647,zero or absent; no order
+14:19,angular,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1308,5217,1308,2647,zero or absent; no order
+14:20,multiple-interface corner transition,AMR-face-excluded,Ham,peak,2.0843180777721742e-10,4.099812624099552e-10,1.9669803125642136,11,43,11,40,measured
+14:20,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,8.008377157651046e-11,1.2276506591164523e-10,1.532958094941344,11,43,11,40,measured
+14:20,multiple-interface corner transition,AMR-face-excluded,Mom,peak,5.074132826593281e-12,9.307637468672644e-12,1.8343306702362565,11,43,11,40,measured
+14:20,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,2.305614247877663e-12,2.710372577787157e-12,1.1755533607940172,11,43,11,40,measured
+14:20,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,8.76682809138305e-12,5.480262355758114e-13,0.0625113473041029,11,43,11,40,measured
+14:20,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,7.848013619024409e-12,4.879040396702807e-13,0.06216911225632306,11,43,11,40,measured
+14:20,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,11,43,11,40,zero or absent; no order
+14:20,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,11,43,11,40,zero or absent; no order
+14:20,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,11,43,11,40,zero or absent; no order
+14:20,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,11,43,11,40,zero or absent; no order
+15:19,multiple-interface corner transition,AMR-face-excluded,Ham,peak,3.3688639430929533e-10,8.362253242738212e-10,2.4822175617638123,13,54,13,49,measured
+15:19,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,1.376096261145477e-10,1.8214784685736316e-10,1.3236562877203182,13,54,13,49,measured
+15:19,multiple-interface corner transition,AMR-face-excluded,Mom,peak,6.485208319597638e-12,8.830646981728206e-12,1.3616597257242904,13,54,13,49,measured
+15:19,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,3.2041259325917086e-12,3.747281532838637e-12,1.1695175569480778,13,54,13,49,measured
+15:19,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,9.480440938796225e-12,6.045524873751328e-13,0.06376839339836608,13,54,13,49,measured
+15:19,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,8.324364499753892e-12,5.194685984831919e-13,0.06240339409675656,13,54,13,49,measured
+15:19,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,13,54,13,49,zero or absent; no order
+15:19,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,13,54,13,49,zero or absent; no order
+15:19,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,13,54,13,49,zero or absent; no order
+15:19,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,13,54,13,49,zero or absent; no order
+19:20,radial,AMR-face-excluded,Ham,peak,4.4608708851234717e-10,1.5454379469157727e-09,3.464431019668476,1242,4976,1242,2430,measured
+19:20,radial,AMR-face-excluded,Ham,RMS,9.388568131362135e-11,2.581538615273305e-10,2.749661694044461,1242,4976,1242,2430,measured
+19:20,radial,AMR-face-excluded,Mom,peak,5.074132826593281e-12,9.307637468672644e-12,1.8343306702362565,1242,4976,1242,2430,measured
+19:20,radial,AMR-face-excluded,Mom,RMS,5.363230862430754e-13,2.9978088696589696e-13,0.5589557762017139,1242,4976,1242,2430,measured
+19:20,radial,AMR-face-excluded,GaussE,peak,1.3445481312130426e-11,8.487446920143211e-13,0.06312490213709115,1242,4976,1242,2430,measured
+19:20,radial,AMR-face-excluded,GaussE,RMS,5.369904051441382e-12,3.362938643240855e-13,0.06262567470527113,1242,4976,1242,2430,measured
+19:20,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+19:20,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+19:20,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+19:20,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+3:4,radial,all,Ham,peak,8.254149702475539e-08,5.28423742507696e-09,0.0640191614587768,1693,6771,1693,3464,measured
+3:4,radial,all,Ham,RMS,1.3516846317471745e-08,7.920795269107402e-10,0.05859943276020723,1693,6771,1693,3464,measured
+3:4,radial,all,Mom,peak,6.481963398908528e-10,4.107546394690696e-11,0.06336886128333198,1693,6771,1693,3464,measured
+3:4,radial,all,Mom,RMS,3.1117949429687733e-10,1.9409862691123236e-11,0.06237513411666346,1693,6771,1693,3464,measured
+3:4,radial,all,GaussE,peak,2.9601409724647927e-09,1.9218517306526433e-10,0.06492433125752092,1693,6771,1693,3464,measured
+3:4,radial,all,GaussE,RMS,1.1995820284804645e-09,7.500927595809046e-11,0.06252950959352589,1693,6771,1693,3464,measured
+3:4,radial,all,GaussB,peak,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+3:4,radial,all,GaussB,RMS,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+3:4,radial,all,C_Gamma,peak,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+3:4,radial,all,C_Gamma,RMS,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+8:9,radial,all,Ham,peak,8.25204508375113e-08,5.281651275281467e-09,0.06400414953720282,1317,5269,1317,2670,measured
+8:9,radial,all,Ham,RMS,1.1342568295169415e-08,7.240028841492888e-10,0.06383059509173314,1317,5269,1317,2670,measured
+8:9,radial,all,Mom,peak,6.158641490878688e-10,3.897747521208989e-11,0.06328907969365945,1317,5269,1317,2670,measured
+8:9,radial,all,Mom,RMS,1.3279239084151946e-10,8.296378825863337e-12,0.06247631188269376,1317,5269,1317,2670,measured
+8:9,radial,all,GaussE,peak,2.839733741569637e-09,1.8449083638655545e-10,0.06496765301826495,1317,5269,1317,2670,measured
+8:9,radial,all,GaussE,RMS,4.391825851130263e-10,2.7438882118408632e-11,0.06247716336782131,1317,5269,1317,2670,measured
+8:9,radial,all,GaussB,peak,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+8:9,radial,all,GaussB,RMS,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+8:9,radial,all,C_Gamma,peak,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+8:9,radial,all,C_Gamma,RMS,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+4:8,multiple-interface corner transition,all,Ham,peak,1.253930333293002e-08,7.996499973673466e-10,0.06377148523613352,22,87,22,76,measured
+4:8,multiple-interface corner transition,all,Ham,RMS,7.79337787176114e-09,4.687107386384626e-10,0.06014218049618885,22,87,22,76,measured
+4:8,multiple-interface corner transition,all,Mom,peak,5.804640920660418e-10,3.6635201072561205e-11,0.06311363885088186,22,87,22,76,measured
+4:8,multiple-interface corner transition,all,Mom,RMS,3.9790422016814304e-10,2.3849874948887207e-11,0.0599387333434386,22,87,22,76,measured
+4:8,multiple-interface corner transition,all,GaussE,peak,2.2055837144418788e-09,1.4046670044016818e-10,0.06368685963738772,22,87,22,76,measured
+4:8,multiple-interface corner transition,all,GaussE,RMS,1.4293849909740693e-09,8.465089389735447e-11,0.059221899230709175,22,87,22,76,measured
+4:8,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,22,87,22,76,zero or absent; no order
+4:8,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,22,87,22,76,zero or absent; no order
+4:8,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,22,87,22,76,zero or absent; no order
+4:8,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,22,87,22,76,zero or absent; no order
+3:9,multiple-interface corner transition,all,Ham,peak,2.1949362113140877e-08,5.854254713028728e-10,0.026671639398230352,22,90,22,80,measured
+3:9,multiple-interface corner transition,all,Ham,RMS,6.597076922699733e-09,3.385045378131156e-10,0.05131129161892337,22,90,22,80,measured
+3:9,multiple-interface corner transition,all,Mom,peak,5.577974202736098e-10,3.5372797544001846e-11,0.06341513291088877,22,90,22,80,measured
+3:9,multiple-interface corner transition,all,Mom,RMS,3.459257675647679e-10,2.209437008293701e-11,0.06387026395424639,22,90,22,80,measured
+3:9,multiple-interface corner transition,all,GaussE,peak,1.7950621052988616e-09,1.1679082017485825e-10,0.06506227268131964,22,90,22,80,measured
+3:9,multiple-interface corner transition,all,GaussE,RMS,1.0754730523262506e-09,6.794322273752422e-11,0.06317519773327922,22,90,22,80,measured
+3:9,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,22,90,22,80,zero or absent; no order
+3:9,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,22,90,22,80,zero or absent; no order
+3:9,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,22,90,22,80,zero or absent; no order
+3:9,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,22,90,22,80,zero or absent; no order
+13:14,radial,all,Ham,peak,8.253215231290718e-08,5.259415877208536e-09,0.06372565999815828,1317,5269,1317,2670,measured
+13:14,radial,all,Ham,RMS,1.1342563003584237e-08,7.242175019212869e-10,0.06384954632321063,1317,5269,1317,2670,measured
+13:14,radial,all,Mom,peak,6.158620707109537e-10,3.89745524445443e-11,0.06328454746296021,1317,5269,1317,2670,measured
+13:14,radial,all,Mom,RMS,1.3279235861354462e-10,8.29635101915059e-12,0.06247611764540475,1317,5269,1317,2670,measured
+13:14,radial,all,GaussE,peak,2.8397336733070554e-09,1.844905704077679e-10,0.0649675609166956,1317,5269,1317,2670,measured
+13:14,radial,all,GaussE,RMS,4.3918258473676193e-10,2.7438882743286952e-11,0.062477164844169125,1317,5269,1317,2670,measured
+13:14,radial,all,GaussB,peak,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+13:14,radial,all,GaussB,RMS,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+13:14,radial,all,C_Gamma,peak,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+13:14,radial,all,C_Gamma,RMS,0.0,0.0,,1317,5269,1317,2670,zero or absent; no order
+14:18,multiple-interface corner transition,all,Ham,peak,2.1929839598636195e-08,6.076926806966843e-10,0.027710767238556384,22,90,22,80,measured
+14:18,multiple-interface corner transition,all,Ham,RMS,6.593958036358157e-09,3.387222686947121e-10,0.05136858118099102,22,90,22,80,measured
+14:18,multiple-interface corner transition,all,Mom,peak,5.577977100004561e-10,3.5373258740703006e-11,0.06341592678943427,22,90,22,80,measured
+14:18,multiple-interface corner transition,all,Mom,RMS,3.4592579584597384e-10,2.2094491143222636e-11,0.06387060869279716,22,90,22,80,measured
+14:18,multiple-interface corner transition,all,GaussE,peak,1.7950619465435785e-09,1.1679079438538192e-10,0.06506226406852673,22,90,22,80,measured
+14:18,multiple-interface corner transition,all,GaussE,RMS,1.0754729753480205e-09,6.79432561400051e-11,0.06317523331352778,22,90,22,80,measured
+14:18,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,22,90,22,80,zero or absent; no order
+14:18,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,22,90,22,80,zero or absent; no order
+14:18,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,22,90,22,80,zero or absent; no order
+14:18,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,22,90,22,80,zero or absent; no order
+13:19,multiple-interface corner transition,all,Ham,peak,1.2531546410858789e-08,8.105619750555479e-10,0.06468171991552318,22,87,22,76,measured
+13:19,multiple-interface corner transition,all,Ham,RMS,7.791974796193298e-09,4.69834538689363e-10,0.06029723542212901,22,87,22,76,measured
+13:19,multiple-interface corner transition,all,Mom,peak,5.804638213399672e-10,3.663531419647277e-11,0.06311386317221677,22,87,22,76,measured
+13:19,multiple-interface corner transition,all,Mom,RMS,3.979042721232033e-10,2.3849883255527543e-11,0.059938746393109574,22,87,22,76,measured
+13:19,multiple-interface corner transition,all,GaussE,peak,2.2055838789745893e-09,1.40466976902314e-10,0.06368698023292557,22,87,22,76,measured
+13:19,multiple-interface corner transition,all,GaussE,RMS,1.4293850352067175e-09,8.465094869202878e-11,0.059221935732513505,22,87,22,76,measured
+13:19,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,22,87,22,76,zero or absent; no order
+13:19,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,22,87,22,76,zero or absent; no order
+13:19,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,22,87,22,76,zero or absent; no order
+13:19,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,22,87,22,76,zero or absent; no order
+18:19,radial,all,Ham,peak,8.253170353302486e-08,5.297993833454107e-09,0.06419343848069399,1693,6771,1693,3464,measured
+18:19,radial,all,Ham,RMS,1.35169349385647e-08,7.926405413038491e-10,0.05864055312143242,1693,6771,1693,3464,measured
+18:19,radial,all,Mom,peak,6.481965732800058e-10,4.10751593969327e-11,0.06336836862478937,1693,6771,1693,3464,measured
+18:19,radial,all,Mom,RMS,3.111795562546131e-10,1.9409923177988192e-11,0.06237531607669824,1693,6771,1693,3464,measured
+18:19,radial,all,GaussE,peak,2.960141073782832e-09,1.921863843163344e-10,0.06492473822226826,1693,6771,1693,3464,measured
+18:19,radial,all,GaussE,RMS,1.1995820331600786e-09,7.500926693091649e-11,0.06252950182432988,1693,6771,1693,3464,measured
+18:19,radial,all,GaussB,peak,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+18:19,radial,all,GaussB,RMS,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+18:19,radial,all,C_Gamma,peak,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+18:19,radial,all,C_Gamma,RMS,0.0,0.0,,1693,6771,1693,3464,zero or absent; no order
+3:4,radial,AMR-face-excluded,Ham,peak,6.003302420095896e-09,6.231433210442395e-10,0.10380008825780353,1242,4976,1242,2430,measured
+3:4,radial,AMR-face-excluded,Ham,RMS,1.2833418870262766e-09,1.6014514637149926e-10,0.124787594007847,1242,4976,1242,2430,measured
+3:4,radial,AMR-face-excluded,Mom,peak,5.013175393835541e-11,3.1395700928551925e-12,0.06262637642233244,1242,4976,1242,2430,measured
+3:4,radial,AMR-face-excluded,Mom,RMS,4.0198091544471253e-11,2.5121438608943225e-12,0.0624941076646669,1242,4976,1242,2430,measured
+3:4,radial,AMR-face-excluded,GaussE,peak,2.436652566985343e-10,1.5333596836081084e-11,0.06292894212264329,1242,4976,1242,2430,measured
+3:4,radial,AMR-face-excluded,GaussE,RMS,1.058384451678916e-10,6.625125687832194e-12,0.06259658933313648,1242,4976,1242,2430,measured
+3:4,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+3:4,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+3:4,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+3:4,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+8:9,radial,AMR-face-excluded,Ham,peak,6.040031906654415e-09,7.099297592142854e-10,0.11753741870670296,1144,4580,1144,2307,measured
+8:9,radial,AMR-face-excluded,Ham,RMS,1.3170268412730476e-09,1.6230053982714758e-10,0.12323252248243226,1144,4580,1144,2307,measured
+8:9,radial,AMR-face-excluded,Mom,peak,4.548523427829117e-11,2.8531239913263e-12,0.06272637783659865,1144,4580,1144,2307,measured
+8:9,radial,AMR-face-excluded,Mom,RMS,3.841073531172354e-11,2.3998427041565013e-12,0.062478436944268356,1144,4580,1144,2307,measured
+8:9,radial,AMR-face-excluded,GaussE,peak,2.3875494292855413e-10,1.4966498249322414e-11,0.06268560585906295,1144,4580,1144,2307,measured
+8:9,radial,AMR-face-excluded,GaussE,RMS,8.563260283708178e-11,5.3459657816459185e-12,0.06242909364575494,1144,4580,1144,2307,measured
+8:9,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+8:9,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+8:9,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+8:9,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+3:8,angular,all,Ham,peak,3.4680505029519876e-06,2.0961809610465052e-07,0.06044263078816892,3215,12855,3215,6478,measured
+3:8,angular,all,Ham,RMS,4.820676875555892e-09,3.20542762735556e-10,0.06649331017412216,3215,12855,3215,6478,measured
+3:8,angular,all,Mom,peak,6.126222182245047e-05,3.92497752856138e-06,0.06406848155028899,3215,12855,3215,6478,measured
+3:8,angular,all,Mom,RMS,6.212992930275076e-08,3.897024753476428e-09,0.06272379185379003,3215,12855,3215,6478,measured
+3:8,angular,all,GaussE,peak,1.2053479801673186e-06,7.582671836692147e-08,0.06290857048301993,3215,12855,3215,6478,measured
+3:8,angular,all,GaussE,RMS,4.256295178350614e-09,2.659548780737546e-10,0.06248506434105367,3215,12855,3215,6478,measured
+3:8,angular,all,GaussB,peak,0.0,0.0,,3215,12855,3215,6478,zero or absent; no order
+3:8,angular,all,GaussB,RMS,0.0,0.0,,3215,12855,3215,6478,zero or absent; no order
+3:8,angular,all,C_Gamma,peak,0.0,0.0,,3215,12855,3215,6478,zero or absent; no order
+3:8,angular,all,C_Gamma,RMS,0.0,0.0,,3215,12855,3215,6478,zero or absent; no order
+3:8,angular,AMR-face-excluded,Ham,peak,2.3430699112590255e-06,1.5275736112034012e-07,0.06519539190286365,2951,11775,2951,5938,measured
+3:8,angular,AMR-face-excluded,Ham,RMS,3.762132908846326e-09,2.7315429509506e-10,0.07260623207988255,2951,11775,2951,5938,measured
+3:8,angular,AMR-face-excluded,Mom,peak,6.126222182245047e-05,3.92497752856138e-06,0.06406848155028899,2951,11775,2951,5938,measured
+3:8,angular,AMR-face-excluded,Mom,RMS,5.326243223480887e-08,3.338771844976397e-09,0.06268530566267291,2951,11775,2951,5938,measured
+3:8,angular,AMR-face-excluded,GaussE,peak,9.211551154703713e-07,5.927439206415662e-08,0.06434789436509748,2951,11775,2951,5938,measured
+3:8,angular,AMR-face-excluded,GaussE,RMS,3.5768725065255537e-09,2.2323877087630886e-10,0.062411721544180794,2951,11775,2951,5938,measured
+3:8,angular,AMR-face-excluded,GaussB,peak,0.0,0.0,,2951,11775,2951,5938,zero or absent; no order
+3:8,angular,AMR-face-excluded,GaussB,RMS,0.0,0.0,,2951,11775,2951,5938,zero or absent; no order
+3:8,angular,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,2951,11775,2951,5938,zero or absent; no order
+3:8,angular,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,2951,11775,2951,5938,zero or absent; no order
+3:9,multiple-interface corner transition,AMR-face-excluded,Ham,peak,8.416811474235225e-10,4.0399190826741034e-10,0.4799821280351514,13,54,13,49,measured
+3:9,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,7.166398295804127e-10,1.3641047404147639e-10,0.190347324291679,13,54,13,49,measured
+3:9,multiple-interface corner transition,AMR-face-excluded,Mom,peak,4.29521140913281e-11,2.724169679366424e-12,0.06342341318925733,13,54,13,49,measured
+3:9,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,4.0771305079515866e-11,2.553450066055099e-12,0.06262860757278019,13,54,13,49,measured
+3:9,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,1.9968480256013134e-10,1.275338266421478e-11,0.0638675677903647,13,54,13,49,measured
+3:9,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,1.7219567831230784e-10,1.0779511463592036e-11,0.06260036006270409,13,54,13,49,measured
+3:9,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,13,54,13,49,zero or absent; no order
+3:9,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,13,54,13,49,zero or absent; no order
+3:9,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,13,54,13,49,zero or absent; no order
+3:9,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,13,54,13,49,zero or absent; no order
+4:8,multiple-interface corner transition,AMR-face-excluded,Ham,peak,7.270719762505124e-10,3.086273474153156e-10,0.4244797729750186,11,43,11,40,measured
+4:8,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,6.295015074454666e-10,1.4362295838314955e-10,0.22815347808454858,11,43,11,40,measured
+4:8,multiple-interface corner transition,AMR-face-excluded,Mom,peak,4.260375379088484e-11,2.6816820976841406e-12,0.06294473747188661,11,43,11,40,measured
+4:8,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,4.1145414479757443e-11,2.565210464314546e-12,0.06234499024372613,11,43,11,40,measured
+4:8,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,1.8778736606101286e-10,1.1800715519042604e-11,0.06284083837252664,11,43,11,40,measured
+4:8,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,1.6775557229706623e-10,1.0372863888488006e-11,0.06183320021179058,11,43,11,40,measured
+4:8,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,11,43,11,40,zero or absent; no order
+4:8,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,11,43,11,40,zero or absent; no order
+4:8,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,11,43,11,40,zero or absent; no order
+4:8,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,11,43,11,40,zero or absent; no order
+13:14,radial,AMR-face-excluded,Ham,peak,6.022187720226044e-09,7.148449483234049e-10,0.11870187073752876,1144,4580,1144,2307,measured
+13:14,radial,AMR-face-excluded,Ham,RMS,1.3171287373963177e-09,1.639939675906694e-10,0.12450868539612192,1144,4580,1144,2307,measured
+13:14,radial,AMR-face-excluded,Mom,peak,4.548544095740158e-11,2.8526960383820317e-12,0.06271668424746422,1144,4580,1144,2307,measured
+13:14,radial,AMR-face-excluded,Mom,RMS,3.841062708113215e-11,2.3997268253038735e-12,0.06247559614778207,1144,4580,1144,2307,measured
+13:14,radial,AMR-face-excluded,GaussE,peak,2.3875466521474754e-10,1.4965986740897794e-11,0.06268353637168371,1144,4580,1144,2307,measured
+13:14,radial,AMR-face-excluded,GaussE,RMS,8.563260200165336e-11,5.3459607393463225e-12,0.06242903537186812,1144,4580,1144,2307,measured
+13:14,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+13:14,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+13:14,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+13:14,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1144,4580,1144,2307,zero or absent; no order
+13:18,angular,all,Ham,peak,3.46852438829987e-06,2.0660289518584118e-07,0.05956506919275535,3215,12855,3215,6478,measured
+13:18,angular,all,Ham,RMS,4.820673330207806e-09,3.2060771908777185e-10,0.06650683361569977,3215,12855,3215,6478,measured
+13:18,angular,all,Mom,peak,6.126221480581274e-05,3.924976731888304e-06,0.06406847588402714,3215,12855,3215,6478,measured
+13:18,angular,all,Mom,RMS,6.212992939917703e-08,3.8970242725129615e-09,0.06272378401518965,3215,12855,3215,6478,measured
+13:18,angular,all,GaussE,peak,1.2053483160174178e-06,7.582635503684657e-08,0.06290825152299864,3215,12855,3215,6478,measured
+13:18,angular,all,GaussE,RMS,4.2562952120322966e-09,2.659550281878257e-10,0.06248509911530254,3215,12855,3215,6478,measured
+13:18,angular,all,GaussB,peak,0.0,0.0,,3215,12855,3215,6478,zero or absent; no order
+13:18,angular,all,GaussB,RMS,0.0,0.0,,3215,12855,3215,6478,zero or absent; no order
+13:18,angular,all,C_Gamma,peak,0.0,0.0,,3215,12855,3215,6478,zero or absent; no order
+13:18,angular,all,C_Gamma,RMS,0.0,0.0,,3215,12855,3215,6478,zero or absent; no order
+13:18,angular,AMR-face-excluded,Ham,peak,2.3430350258665098e-06,1.5342425974318589e-07,0.06548099283596752,2951,11775,2951,5938,measured
+13:18,angular,AMR-face-excluded,Ham,RMS,3.762115558646707e-09,2.7319355082438625e-10,0.0726170014093502,2951,11775,2951,5938,measured
+13:18,angular,AMR-face-excluded,Mom,peak,6.126221480581274e-05,3.924976731888304e-06,0.06406847588402714,2951,11775,2951,5938,measured
+13:18,angular,AMR-face-excluded,Mom,RMS,5.326243236341115e-08,3.338771270335632e-09,0.0626852947224621,2951,11775,2951,5938,measured
+13:18,angular,AMR-face-excluded,GaussE,peak,9.211551800951663e-07,5.9274331825369664e-08,0.06434782445585978,2951,11775,2951,5938,measured
+13:18,angular,AMR-face-excluded,GaussE,RMS,3.5768724949277155e-09,2.232389061449257e-10,0.06241175956411527,2951,11775,2951,5938,measured
+13:18,angular,AMR-face-excluded,GaussB,peak,0.0,0.0,,2951,11775,2951,5938,zero or absent; no order
+13:18,angular,AMR-face-excluded,GaussB,RMS,0.0,0.0,,2951,11775,2951,5938,zero or absent; no order
+13:18,angular,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,2951,11775,2951,5938,zero or absent; no order
+13:18,angular,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,2951,11775,2951,5938,zero or absent; no order
+13:19,multiple-interface corner transition,AMR-face-excluded,Ham,peak,7.001823735784681e-10,3.776601227348359e-10,0.5393739359714291,11,43,11,40,measured
+13:19,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,6.276762864838494e-10,1.5538455621384245e-10,0.24755524393678147,11,43,11,40,measured
+13:19,multiple-interface corner transition,AMR-face-excluded,Mom,peak,4.260381563144683e-11,2.6803258303991167e-12,0.06291281169709852,11,43,11,40,measured
+13:19,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,4.114590379594555e-11,2.56554727487903e-12,0.062352434585039654,11,43,11,40,measured
+13:19,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,1.8778745668846463e-10,1.1801262659896267e-11,0.06284372166280684,11,43,11,40,measured
+13:19,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,1.6775572127146618e-10,1.037274572753657e-11,0.06183244093804201,11,43,11,40,measured
+13:19,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,11,43,11,40,zero or absent; no order
+13:19,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,11,43,11,40,zero or absent; no order
+13:19,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,11,43,11,40,zero or absent; no order
+13:19,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,11,43,11,40,zero or absent; no order
+14:18,multiple-interface corner transition,AMR-face-excluded,Ham,peak,8.376112720870854e-10,3.225862796705681e-10,0.3851264786191048,13,54,13,49,measured
+14:18,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,7.165233034387683e-10,1.5479347072001056e-10,0.21603410520930627,13,54,13,49,measured
+14:18,multiple-interface corner transition,AMR-face-excluded,Mom,peak,4.2951704792570205e-11,2.721845399277651e-12,0.06336990376569353,13,54,13,49,measured
+14:18,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,4.0772405133329576e-11,2.5544207741645088e-12,0.06265072579876792,13,54,13,49,measured
+14:18,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,1.9968500218630117e-10,1.275319767827985e-11,0.06386657755288719,13,54,13,49,measured
+14:18,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,1.7219566086841847e-10,1.077958622956287e-11,0.06260080059624719,13,54,13,49,measured
+14:18,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,13,54,13,49,zero or absent; no order
+14:18,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,13,54,13,49,zero or absent; no order
+14:18,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,13,54,13,49,zero or absent; no order
+14:18,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,13,54,13,49,zero or absent; no order
+18:19,radial,AMR-face-excluded,Ham,peak,6.007890246158882e-09,6.915560855929674e-10,0.11510797588805999,1242,4976,1242,2430,measured
+18:19,radial,AMR-face-excluded,Ham,RMS,1.2834660108145276e-09,1.6031384059211543e-10,0.12490696227348885,1242,4976,1242,2430,measured
+18:19,radial,AMR-face-excluded,Mom,peak,5.0131678547711444e-11,3.139718073167879e-12,0.06262942243555118,1242,4976,1242,2430,measured
+18:19,radial,AMR-face-excluded,Mom,RMS,4.019813155143472e-11,2.512198956838485e-12,0.06249541607733809,1242,4976,1242,2430,measured
+18:19,radial,AMR-face-excluded,GaussE,peak,2.4366493179005824e-10,1.533332520466184e-11,0.06292791125919192,1242,4976,1242,2430,measured
+18:19,radial,AMR-face-excluded,GaussE,RMS,1.0583846799722295e-10,6.625142042902306e-12,0.06259673035966602,1242,4976,1242,2430,measured
+18:19,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+18:19,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+18:19,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+18:19,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1242,4976,1242,2430,zero or absent; no order
+2:3,radial,all,Ham,peak,8.150264393466737e-06,5.196368460161245e-07,0.06375705387332786,1116,4471,1116,2260,measured
+2:3,radial,all,Ham,RMS,2.182798915141725e-06,1.3647615942718866e-07,0.06252346859826413,1116,4471,1116,2260,measured
+2:3,radial,all,Mom,peak,8.607155969250988e-05,5.3690192172652114e-06,0.06237855148025666,1116,4471,1116,2260,measured
+2:3,radial,all,Mom,RMS,5.9583517029403606e-05,3.7263058587355715e-06,0.06253920621867107,1116,4471,1116,2260,measured
+2:3,radial,all,GaussE,peak,1.1808826927298302e-06,7.516450423558358e-08,0.06365111852204967,1116,4471,1116,2260,measured
+2:3,radial,all,GaussE,RMS,6.131758825515586e-07,3.835722826807883e-08,0.06255501783349018,1116,4471,1116,2260,measured
+2:3,radial,all,GaussB,peak,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+2:3,radial,all,GaussB,RMS,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+2:3,radial,all,C_Gamma,peak,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+2:3,radial,all,C_Gamma,RMS,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+2:3,radial,AMR-face-excluded,Ham,peak,8.150264393466737e-06,5.196368460161245e-07,0.06375705387332786,1116,4471,1116,2260,measured
+2:3,radial,AMR-face-excluded,Ham,RMS,2.182798915141725e-06,1.3647615942718866e-07,0.06252346859826413,1116,4471,1116,2260,measured
+2:3,radial,AMR-face-excluded,Mom,peak,8.607155969250988e-05,5.3690192172652114e-06,0.06237855148025666,1116,4471,1116,2260,measured
+2:3,radial,AMR-face-excluded,Mom,RMS,5.9583517029403606e-05,3.7263058587355715e-06,0.06253920621867107,1116,4471,1116,2260,measured
+2:3,radial,AMR-face-excluded,GaussE,peak,1.1808826927298302e-06,7.516450423558358e-08,0.06365111852204967,1116,4471,1116,2260,measured
+2:3,radial,AMR-face-excluded,GaussE,RMS,6.131758825515586e-07,3.835722826807883e-08,0.06255501783349018,1116,4471,1116,2260,measured
+2:3,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+2:3,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+2:3,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+2:3,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+1:2,radial,all,Ham,peak,1.5396163040504456,0.5956329297729019,0.3868710198806689,18,67,18,36,measured
+1:2,radial,all,Ham,RMS,0.19027400949788498,0.02803168259359887,0.14732270932625963,18,67,18,36,measured
+1:2,radial,all,Mom,peak,58753.04661782277,477982.74878856936,8.135454692209493,18,67,18,36,measured
+1:2,radial,all,Mom,RMS,10000.054777967825,21990.269338392227,2.199014888082544,18,67,18,36,measured
+1:2,radial,all,GaussE,peak,193.15672254523,193.47992466485042,1.0016732636346362,18,67,18,36,measured
+1:2,radial,all,GaussE,RMS,34.104267679539916,13.056024908275683,0.3828267192527447,18,67,18,36,measured
+1:2,radial,all,GaussB,peak,0.0,0.0,,18,67,18,36,zero or absent; no order
+1:2,radial,all,GaussB,RMS,0.0,0.0,,18,67,18,36,zero or absent; no order
+1:2,radial,all,C_Gamma,peak,0.0,0.0,,18,67,18,36,zero or absent; no order
+1:2,radial,all,C_Gamma,RMS,0.0,0.0,,18,67,18,36,zero or absent; no order
+1:2,radial,AMR-face-excluded,Ham,peak,1.5396163040504456,0.5956329297729019,0.3868710198806689,18,67,18,36,measured
+1:2,radial,AMR-face-excluded,Ham,RMS,0.19027400949788498,0.02803168259359887,0.14732270932625963,18,67,18,36,measured
+1:2,radial,AMR-face-excluded,Mom,peak,58753.04661782277,477982.74878856936,8.135454692209493,18,67,18,36,measured
+1:2,radial,AMR-face-excluded,Mom,RMS,10000.054777967825,21990.269338392227,2.199014888082544,18,67,18,36,measured
+1:2,radial,AMR-face-excluded,GaussE,peak,193.15672254523,193.47992466485042,1.0016732636346362,18,67,18,36,measured
+1:2,radial,AMR-face-excluded,GaussE,RMS,34.104267679539916,13.056024908275683,0.3828267192527447,18,67,18,36,measured
+1:2,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,18,67,18,36,zero or absent; no order
+1:2,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,18,67,18,36,zero or absent; no order
+1:2,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,18,67,18,36,zero or absent; no order
+1:2,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,18,67,18,36,zero or absent; no order
+2:6,multiple-interface corner transition,all,Ham,peak,1.5392367473836184,0.5955339953679054,0.38690214249379706,14,52,14,36,measured
+2:6,multiple-interface corner transition,all,Ham,RMS,0.21374835162049508,0.03162872566900909,0.14797178752126758,14,52,14,36,measured
+2:6,multiple-interface corner transition,all,Mom,peak,58750.78167876121,477982.5144545752,8.135764338729965,14,52,14,36,measured
+2:6,multiple-interface corner transition,all,Mom,RMS,11252.541557137714,24823.384399425024,2.2060246810356414,14,52,14,36,measured
+2:6,multiple-interface corner transition,all,GaussE,peak,193.15976984149427,193.48146847822994,1.001665453613864,14,52,14,36,measured
+2:6,multiple-interface corner transition,all,GaussE,RMS,38.37852807152951,14.73826948423012,0.38402383376353266,14,52,14,36,measured
+2:6,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,14,52,14,36,zero or absent; no order
+2:6,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,14,52,14,36,zero or absent; no order
+2:6,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,14,52,14,36,zero or absent; no order
+2:6,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,14,52,14,36,zero or absent; no order
+2:6,multiple-interface corner transition,AMR-face-excluded,Ham,peak,1.5392367473836184,0.5955339953679054,0.38690214249379706,14,52,14,36,measured
+2:6,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,0.21374835162049508,0.03162872566900909,0.14797178752126758,14,52,14,36,measured
+2:6,multiple-interface corner transition,AMR-face-excluded,Mom,peak,58750.78167876121,477982.5144545752,8.135764338729965,14,52,14,36,measured
+2:6,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,11252.541557137714,24823.384399425024,2.2060246810356414,14,52,14,36,measured
+2:6,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,193.15976984149427,193.48146847822994,1.001665453613864,14,52,14,36,measured
+2:6,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,38.37852807152951,14.73826948423012,0.38402383376353266,14,52,14,36,measured
+2:6,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,14,52,14,36,zero or absent; no order
+2:6,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,14,52,14,36,zero or absent; no order
+2:6,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,14,52,14,36,zero or absent; no order
+2:6,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,14,52,14,36,zero or absent; no order
+2:7,angular,all,Ham,peak,0.2204632427229937,0.08428421234886684,0.38230505597147435,593,2361,593,1220,measured
+2:7,angular,all,Ham,RMS,0.004029986306525531,0.00043889007456438466,0.1089060957486914,593,2361,593,1220,measured
+2:7,angular,all,Mom,peak,29549.517145358077,22916.048424897144,0.775513464811286,593,2361,593,1220,measured
+2:7,angular,all,Mom,RMS,413.998138869606,110.40417306340638,0.26667794537641526,593,2361,593,1220,measured
+2:7,angular,all,GaussE,peak,103.92787513642048,45.628662691723775,0.43904162027588367,593,2361,593,1220,measured
+2:7,angular,all,GaussE,RMS,1.4553598784045638,0.20028468290837476,0.13761866455184718,593,2361,593,1220,measured
+2:7,angular,all,GaussB,peak,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+2:7,angular,all,GaussB,RMS,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+2:7,angular,all,C_Gamma,peak,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+2:7,angular,all,C_Gamma,RMS,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+2:7,angular,AMR-face-excluded,Ham,peak,0.2204632427229937,0.08428421234886684,0.38230505597147435,593,2361,593,1220,measured
+2:7,angular,AMR-face-excluded,Ham,RMS,0.004029986306525531,0.00043889007456438466,0.1089060957486914,593,2361,593,1220,measured
+2:7,angular,AMR-face-excluded,Mom,peak,29549.517145358077,22916.048424897144,0.775513464811286,593,2361,593,1220,measured
+2:7,angular,AMR-face-excluded,Mom,RMS,413.998138869606,110.40417306340638,0.26667794537641526,593,2361,593,1220,measured
+2:7,angular,AMR-face-excluded,GaussE,peak,103.92787513642048,45.628662691723775,0.43904162027588367,593,2361,593,1220,measured
+2:7,angular,AMR-face-excluded,GaussE,RMS,1.4553598784045638,0.20028468290837476,0.13761866455184718,593,2361,593,1220,measured
+2:7,angular,AMR-face-excluded,GaussB,peak,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+2:7,angular,AMR-face-excluded,GaussB,RMS,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+2:7,angular,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+2:7,angular,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+1:6,angular,all,Ham,peak,1.5396163040504456,0.5956329297729019,0.3868710198806689,2,6,2,6,measured
+1:6,angular,all,Ham,RMS,1.5394265374148346,0.2741809014861858,0.1781058691807528,2,6,2,6,measured
+1:6,angular,all,Mom,peak,58753.04661782277,477982.74878856936,8.135454692209493,2,6,2,6,measured
+1:6,angular,all,Mom,RMS,58751.91415920642,224149.29530968427,3.8151828500818317,2,6,2,6,measured
+1:6,angular,all,GaussE,peak,193.15976984149427,193.48146847822994,1.001665453613864,2,6,2,6,measured
+1:6,angular,all,GaussE,RMS,193.15824619937146,127.2540808658268,0.658807394298245,2,6,2,6,measured
+1:6,angular,all,GaussB,peak,0.0,0.0,,2,6,2,6,zero or absent; no order
+1:6,angular,all,GaussB,RMS,0.0,0.0,,2,6,2,6,zero or absent; no order
+1:6,angular,all,C_Gamma,peak,0.0,0.0,,2,6,2,6,zero or absent; no order
+1:6,angular,all,C_Gamma,RMS,0.0,0.0,,2,6,2,6,zero or absent; no order
+1:6,angular,AMR-face-excluded,Ham,peak,1.5396163040504456,0.5956329297729019,0.3868710198806689,2,6,2,6,measured
+1:6,angular,AMR-face-excluded,Ham,RMS,1.5394265374148346,0.2741809014861858,0.1781058691807528,2,6,2,6,measured
+1:6,angular,AMR-face-excluded,Mom,peak,58753.04661782277,477982.74878856936,8.135454692209493,2,6,2,6,measured
+1:6,angular,AMR-face-excluded,Mom,RMS,58751.91415920642,224149.29530968427,3.8151828500818317,2,6,2,6,measured
+1:6,angular,AMR-face-excluded,GaussE,peak,193.15976984149427,193.48146847822994,1.001665453613864,2,6,2,6,measured
+1:6,angular,AMR-face-excluded,GaussE,RMS,193.15824619937146,127.2540808658268,0.658807394298245,2,6,2,6,measured
+1:6,angular,AMR-face-excluded,GaussB,peak,0.0,0.0,,2,6,2,6,zero or absent; no order
+1:6,angular,AMR-face-excluded,GaussB,RMS,0.0,0.0,,2,6,2,6,zero or absent; no order
+1:6,angular,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,2,6,2,6,zero or absent; no order
+1:6,angular,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,2,6,2,6,zero or absent; no order
+1:7,multiple-interface corner transition,all,Ham,peak,1.5396163040504456,0.5956329297729019,0.3868710198806689,10,38,10,31,measured
+1:7,multiple-interface corner transition,all,Ham,RMS,0.27571731295285823,0.039334539483110685,0.142662566459278,10,38,10,31,measured
+1:7,multiple-interface corner transition,all,Mom,peak,58753.04661782277,477982.74878856936,8.135454692209493,10,38,10,31,measured
+1:7,multiple-interface corner transition,all,Mom,RMS,14355.331989627493,30849.67937492093,2.1490049409662904,10,38,10,31,measured
+1:7,multiple-interface corner transition,all,GaussE,peak,193.15672254523,193.47992466485042,1.0016732636346362,10,38,10,31,measured
+1:7,multiple-interface corner transition,all,GaussE,RMS,49.02482403310362,18.14479803776149,0.37011449598491897,10,38,10,31,measured
+1:7,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,10,38,10,31,zero or absent; no order
+1:7,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,10,38,10,31,zero or absent; no order
+1:7,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,10,38,10,31,zero or absent; no order
+1:7,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,10,38,10,31,zero or absent; no order
+1:7,multiple-interface corner transition,AMR-face-excluded,Ham,peak,1.5396163040504456,0.5956329297729019,0.3868710198806689,10,38,10,31,measured
+1:7,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,0.27571731295285823,0.039334539483110685,0.142662566459278,10,38,10,31,measured
+1:7,multiple-interface corner transition,AMR-face-excluded,Mom,peak,58753.04661782277,477982.74878856936,8.135454692209493,10,38,10,31,measured
+1:7,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,14355.331989627493,30849.67937492093,2.1490049409662904,10,38,10,31,measured
+1:7,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,193.15672254523,193.47992466485042,1.0016732636346362,10,38,10,31,measured
+1:7,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,49.02482403310362,18.14479803776149,0.37011449598491897,10,38,10,31,measured
+1:7,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,10,38,10,31,zero or absent; no order
+1:7,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,10,38,10,31,zero or absent; no order
+1:7,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,10,38,10,31,zero or absent; no order
+1:7,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,10,38,10,31,zero or absent; no order
+6:7,radial,all,Ham,peak,1.5392367473836184,0.5955339953679054,0.38690214249379706,14,53,14,31,measured
+6:7,radial,all,Ham,RMS,0.2297408922378042,0.03295791849907026,0.1434569099912592,14,53,14,31,measured
+6:7,radial,all,Mom,peak,58750.78167876121,477982.5144545752,8.135764338729965,14,53,14,31,measured
+6:7,radial,all,Mom,RMS,11946.26569212943,25844.696458423165,2.163412159454184,14,53,14,31,measured
+6:7,radial,all,GaussE,peak,193.15976984149427,193.48146847822994,1.001665453613864,14,53,14,31,measured
+6:7,radial,all,GaussE,RMS,40.796624294837024,15.201211729846833,0.3726095477897324,14,53,14,31,measured
+6:7,radial,all,GaussB,peak,0.0,0.0,,14,53,14,31,zero or absent; no order
+6:7,radial,all,GaussB,RMS,0.0,0.0,,14,53,14,31,zero or absent; no order
+6:7,radial,all,C_Gamma,peak,0.0,0.0,,14,53,14,31,zero or absent; no order
+6:7,radial,all,C_Gamma,RMS,0.0,0.0,,14,53,14,31,zero or absent; no order
+6:7,radial,AMR-face-excluded,Ham,peak,1.5392367473836184,0.5955339953679054,0.38690214249379706,14,53,14,31,measured
+6:7,radial,AMR-face-excluded,Ham,RMS,0.2297408922378042,0.03295791849907026,0.1434569099912592,14,53,14,31,measured
+6:7,radial,AMR-face-excluded,Mom,peak,58750.78167876121,477982.5144545752,8.135764338729965,14,53,14,31,measured
+6:7,radial,AMR-face-excluded,Mom,RMS,11946.26569212943,25844.696458423165,2.163412159454184,14,53,14,31,measured
+6:7,radial,AMR-face-excluded,GaussE,peak,193.15976984149427,193.48146847822994,1.001665453613864,14,53,14,31,measured
+6:7,radial,AMR-face-excluded,GaussE,RMS,40.796624294837024,15.201211729846833,0.3726095477897324,14,53,14,31,measured
+6:7,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,14,53,14,31,zero or absent; no order
+6:7,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,14,53,14,31,zero or absent; no order
+6:7,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,14,53,14,31,zero or absent; no order
+6:7,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,14,53,14,31,zero or absent; no order
+7:8,radial,all,Ham,peak,8.159176382586528e-06,5.204823948654406e-07,0.06379104586784816,848,3393,848,1722,measured
+7:8,radial,all,Ham,RMS,1.9484021831610293e-06,1.2163792234266927e-07,0.0624295760874829,848,3393,848,1722,measured
+7:8,radial,all,Mom,peak,8.561179128018132e-05,5.357669908045333e-06,0.06258098128692707,848,3393,848,1722,measured
+7:8,radial,all,Mom,RMS,5.542139449588949e-05,3.4594167026041065e-06,0.06242023922477601,848,3393,848,1722,measured
+7:8,radial,all,GaussE,peak,1.1562361308768066e-06,7.32466826291392e-08,0.06334924214277422,848,3393,848,1722,measured
+7:8,radial,all,GaussE,RMS,3.698922719951927e-07,2.2961534018201892e-08,0.06207627397660342,848,3393,848,1722,measured
+7:8,radial,all,GaussB,peak,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+7:8,radial,all,GaussB,RMS,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+7:8,radial,all,C_Gamma,peak,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+7:8,radial,all,C_Gamma,RMS,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+7:8,radial,AMR-face-excluded,Ham,peak,8.159176382586528e-06,5.204823948654406e-07,0.06379104586784816,848,3393,848,1722,measured
+7:8,radial,AMR-face-excluded,Ham,RMS,1.9484021831610293e-06,1.2163792234266927e-07,0.0624295760874829,848,3393,848,1722,measured
+7:8,radial,AMR-face-excluded,Mom,peak,8.561179128018132e-05,5.357669908045333e-06,0.06258098128692707,848,3393,848,1722,measured
+7:8,radial,AMR-face-excluded,Mom,RMS,5.542139449588949e-05,3.4594167026041065e-06,0.06242023922477601,848,3393,848,1722,measured
+7:8,radial,AMR-face-excluded,GaussE,peak,1.1562361308768066e-06,7.32466826291392e-08,0.06334924214277422,848,3393,848,1722,measured
+7:8,radial,AMR-face-excluded,GaussE,RMS,3.698922719951927e-07,2.2961534018201892e-08,0.06207627397660342,848,3393,848,1722,measured
+7:8,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+7:8,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+7:8,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+7:8,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+2:8,multiple-interface corner transition,all,Ham,peak,2.3159091939191624e-06,1.5551548336180078e-07,0.06715094174250646,21,73,21,66,measured
+2:8,multiple-interface corner transition,all,Ham,RMS,1.7711756136111972e-06,1.1218854010581878e-07,0.06334128543983332,21,73,21,66,measured
+2:8,multiple-interface corner transition,all,Mom,peak,8.214978284622678e-05,5.200074984764603e-06,0.06329992368328516,21,73,21,66,measured
+2:8,multiple-interface corner transition,all,Mom,RMS,6.291191940936617e-05,3.983144573877958e-06,0.06331303529240212,21,73,21,66,measured
+2:8,multiple-interface corner transition,all,GaussE,peak,8.96311926498757e-07,5.601015339595112e-08,0.06248957727779247,21,73,21,66,measured
+2:8,multiple-interface corner transition,all,GaussE,RMS,6.984424825481357e-07,4.41078856322588e-08,0.06315177947271979,21,73,21,66,measured
+2:8,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,21,73,21,66,zero or absent; no order
+2:8,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,21,73,21,66,zero or absent; no order
+2:8,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,21,73,21,66,zero or absent; no order
+2:8,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,21,73,21,66,zero or absent; no order
+2:8,multiple-interface corner transition,AMR-face-excluded,Ham,peak,2.3159091939191624e-06,1.5551548336180078e-07,0.06715094174250646,21,73,21,66,measured
+2:8,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,1.7711756136111972e-06,1.1218854010581878e-07,0.06334128543983332,21,73,21,66,measured
+2:8,multiple-interface corner transition,AMR-face-excluded,Mom,peak,8.214978284622678e-05,5.200074984764603e-06,0.06329992368328516,21,73,21,66,measured
+2:8,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,6.291191940936617e-05,3.983144573877958e-06,0.06331303529240212,21,73,21,66,measured
+2:8,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,8.96311926498757e-07,5.601015339595112e-08,0.06248957727779247,21,73,21,66,measured
+2:8,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,6.984424825481357e-07,4.41078856322588e-08,0.06315177947271979,21,73,21,66,measured
+2:8,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,21,73,21,66,zero or absent; no order
+2:8,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,21,73,21,66,zero or absent; no order
+2:8,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,21,73,21,66,zero or absent; no order
+2:8,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,21,73,21,66,zero or absent; no order
+3:7,multiple-interface corner transition,all,Ham,peak,2.0857833880130857e-06,1.366347490648845e-07,0.0655076408461775,14,74,14,68,measured
+3:7,multiple-interface corner transition,all,Ham,RMS,1.7668426455090202e-06,1.1001504692541553e-07,0.06226646566690756,14,74,14,68,measured
+3:7,multiple-interface corner transition,all,Mom,peak,7.252013814875027e-05,4.8212410804028764e-06,0.06648141059127258,14,74,14,68,measured
+3:7,multiple-interface corner transition,all,Mom,RMS,6.294808328106623e-05,3.941310340937761e-06,0.06261207864486708,14,74,14,68,measured
+3:7,multiple-interface corner transition,all,GaussE,peak,7.774701279306847e-07,5.032089337910732e-08,0.06472389301057967,14,74,14,68,measured
+3:7,multiple-interface corner transition,all,GaussE,RMS,6.971401298933362e-07,4.323601751445422e-08,0.06201912020337923,14,74,14,68,measured
+3:7,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,14,74,14,68,zero or absent; no order
+3:7,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,14,74,14,68,zero or absent; no order
+3:7,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,14,74,14,68,zero or absent; no order
+3:7,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,14,74,14,68,zero or absent; no order
+3:7,multiple-interface corner transition,AMR-face-excluded,Ham,peak,2.0857833880130857e-06,1.366347490648845e-07,0.0655076408461775,14,74,14,68,measured
+3:7,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,1.7668426455090202e-06,1.1001504692541553e-07,0.06226646566690756,14,74,14,68,measured
+3:7,multiple-interface corner transition,AMR-face-excluded,Mom,peak,7.252013814875027e-05,4.8212410804028764e-06,0.06648141059127258,14,74,14,68,measured
+3:7,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,6.294808328106623e-05,3.941310340937761e-06,0.06261207864486708,14,74,14,68,measured
+3:7,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,7.774701279306847e-07,5.032089337910732e-08,0.06472389301057967,14,74,14,68,measured
+3:7,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,6.971401298933362e-07,4.323601751445422e-08,0.06201912020337923,14,74,14,68,measured
+3:7,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,14,74,14,68,zero or absent; no order
+3:7,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,14,74,14,68,zero or absent; no order
+3:7,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,14,74,14,68,zero or absent; no order
+3:7,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,14,74,14,68,zero or absent; no order
+12:13,radial,all,Ham,peak,8.159230825667846e-06,5.211653813942183e-07,0.06387432743717728,848,3393,848,1722,measured
+12:13,radial,all,Ham,RMS,1.9484028621690147e-06,1.2164079987700863e-07,0.062431031199366445,848,3393,848,1722,measured
+12:13,radial,all,Mom,peak,8.561179553390007e-05,5.3576528237608135e-06,0.06258077862225563,848,3393,848,1722,measured
+12:13,radial,all,Mom,RMS,5.542139455360551e-05,3.4594161408916995e-06,0.062420229024472335,848,3393,848,1722,measured
+12:13,radial,all,GaussE,peak,1.1562359432459674e-06,7.324006589350568e-08,0.06334352977117685,848,3393,848,1722,measured
+12:13,radial,all,GaussE,RMS,3.69892122488941e-07,2.2961378372407522e-08,0.06207587828014375,848,3393,848,1722,measured
+12:13,radial,all,GaussB,peak,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+12:13,radial,all,GaussB,RMS,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+12:13,radial,all,C_Gamma,peak,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+12:13,radial,all,C_Gamma,RMS,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+12:13,radial,AMR-face-excluded,Ham,peak,8.159230825667846e-06,5.211653813942183e-07,0.06387432743717728,848,3393,848,1722,measured
+12:13,radial,AMR-face-excluded,Ham,RMS,1.9484028621690147e-06,1.2164079987700863e-07,0.062431031199366445,848,3393,848,1722,measured
+12:13,radial,AMR-face-excluded,Mom,peak,8.561179553390007e-05,5.3576528237608135e-06,0.06258077862225563,848,3393,848,1722,measured
+12:13,radial,AMR-face-excluded,Mom,RMS,5.542139455360551e-05,3.4594161408916995e-06,0.062420229024472335,848,3393,848,1722,measured
+12:13,radial,AMR-face-excluded,GaussE,peak,1.1562359432459674e-06,7.324006589350568e-08,0.06334352977117685,848,3393,848,1722,measured
+12:13,radial,AMR-face-excluded,GaussE,RMS,3.69892122488941e-07,2.2961378372407522e-08,0.06207587828014375,848,3393,848,1722,measured
+12:13,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+12:13,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+12:13,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+12:13,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,848,3393,848,1722,zero or absent; no order
+11:12,radial,all,Ham,peak,1.5392367473840163,0.5955339953680191,0.3869021424937709,14,53,14,31,measured
+11:12,radial,all,Ham,RMS,0.2297408922378845,0.032957918499049735,0.14345690999111974,14,53,14,31,measured
+11:12,radial,all,Mom,peak,58750.78167876125,477982.51445457514,8.135764338729958,14,53,14,31,measured
+11:12,radial,all,Mom,RMS,11946.265692129435,25844.69645842316,2.163412159454183,14,53,14,31,measured
+11:12,radial,all,GaussE,peak,193.15976984149432,193.48146847822994,1.0016654536138638,14,53,14,31,measured
+11:12,radial,all,GaussE,RMS,40.796624294837045,15.201211729846843,0.37260954778973243,14,53,14,31,measured
+11:12,radial,all,GaussB,peak,0.0,0.0,,14,53,14,31,zero or absent; no order
+11:12,radial,all,GaussB,RMS,0.0,0.0,,14,53,14,31,zero or absent; no order
+11:12,radial,all,C_Gamma,peak,0.0,0.0,,14,53,14,31,zero or absent; no order
+11:12,radial,all,C_Gamma,RMS,0.0,0.0,,14,53,14,31,zero or absent; no order
+11:12,radial,AMR-face-excluded,Ham,peak,1.5392367473840163,0.5955339953680191,0.3869021424937709,14,53,14,31,measured
+11:12,radial,AMR-face-excluded,Ham,RMS,0.2297408922378845,0.032957918499049735,0.14345690999111974,14,53,14,31,measured
+11:12,radial,AMR-face-excluded,Mom,peak,58750.78167876125,477982.51445457514,8.135764338729958,14,53,14,31,measured
+11:12,radial,AMR-face-excluded,Mom,RMS,11946.265692129435,25844.69645842316,2.163412159454183,14,53,14,31,measured
+11:12,radial,AMR-face-excluded,GaussE,peak,193.15976984149432,193.48146847822994,1.0016654536138638,14,53,14,31,measured
+11:12,radial,AMR-face-excluded,GaussE,RMS,40.796624294837045,15.201211729846843,0.37260954778973243,14,53,14,31,measured
+11:12,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,14,53,14,31,zero or absent; no order
+11:12,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,14,53,14,31,zero or absent; no order
+11:12,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,14,53,14,31,zero or absent; no order
+11:12,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,14,53,14,31,zero or absent; no order
+12:17,angular,all,Ham,peak,0.22046324272410214,0.08428421234762848,0.3823050559639351,593,2361,593,1220,measured
+12:17,angular,all,Ham,RMS,0.004029986306527338,0.00043889007453707497,0.10890609574186592,593,2361,593,1220,measured
+12:17,angular,all,Mom,peak,29549.517145358088,22916.048424897122,0.775513464811285,593,2361,593,1220,measured
+12:17,angular,all,Mom,RMS,413.9981388696059,110.40417306340679,0.2666779453764163,593,2361,593,1220,measured
+12:17,angular,all,GaussE,peak,103.92787513642055,45.6286626917239,0.4390416202758846,593,2361,593,1220,measured
+12:17,angular,all,GaussE,RMS,1.4553598784045634,0.20028468290837598,0.13761866455184804,593,2361,593,1220,measured
+12:17,angular,all,GaussB,peak,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+12:17,angular,all,GaussB,RMS,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+12:17,angular,all,C_Gamma,peak,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+12:17,angular,all,C_Gamma,RMS,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+12:17,angular,AMR-face-excluded,Ham,peak,0.22046324272410214,0.08428421234762848,0.3823050559639351,593,2361,593,1220,measured
+12:17,angular,AMR-face-excluded,Ham,RMS,0.004029986306527338,0.00043889007453707497,0.10890609574186592,593,2361,593,1220,measured
+12:17,angular,AMR-face-excluded,Mom,peak,29549.517145358088,22916.048424897122,0.775513464811285,593,2361,593,1220,measured
+12:17,angular,AMR-face-excluded,Mom,RMS,413.9981388696059,110.40417306340679,0.2666779453764163,593,2361,593,1220,measured
+12:17,angular,AMR-face-excluded,GaussE,peak,103.92787513642055,45.6286626917239,0.4390416202758846,593,2361,593,1220,measured
+12:17,angular,AMR-face-excluded,GaussE,RMS,1.4553598784045634,0.20028468290837598,0.13761866455184804,593,2361,593,1220,measured
+12:17,angular,AMR-face-excluded,GaussB,peak,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+12:17,angular,AMR-face-excluded,GaussB,RMS,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+12:17,angular,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+12:17,angular,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,593,2361,593,1220,zero or absent; no order
+12:16,multiple-interface corner transition,all,Ham,peak,1.5396163040499908,0.5956329297725893,0.38687101988058015,10,38,10,31,measured
+12:16,multiple-interface corner transition,all,Ham,RMS,0.27571731295270324,0.03933453948304262,0.14266256645911132,10,38,10,31,measured
+12:16,multiple-interface corner transition,all,Mom,peak,58753.04661782272,477982.74878856936,8.1354546922095,10,38,10,31,measured
+12:16,multiple-interface corner transition,all,Mom,RMS,14355.33198962749,30849.67937492092,2.1490049409662904,10,38,10,31,measured
+12:16,multiple-interface corner transition,all,GaussE,peak,193.1567225452299,193.4799246648503,1.001673263634636,10,38,10,31,measured
+12:16,multiple-interface corner transition,all,GaussE,RMS,49.024824033103634,18.144798037761497,0.370114495984919,10,38,10,31,measured
+12:16,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,10,38,10,31,zero or absent; no order
+12:16,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,10,38,10,31,zero or absent; no order
+12:16,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,10,38,10,31,zero or absent; no order
+12:16,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,10,38,10,31,zero or absent; no order
+12:16,multiple-interface corner transition,AMR-face-excluded,Ham,peak,1.5396163040499908,0.5956329297725893,0.38687101988058015,10,38,10,31,measured
+12:16,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,0.27571731295270324,0.03933453948304262,0.14266256645911132,10,38,10,31,measured
+12:16,multiple-interface corner transition,AMR-face-excluded,Mom,peak,58753.04661782272,477982.74878856936,8.1354546922095,10,38,10,31,measured
+12:16,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,14355.33198962749,30849.67937492092,2.1490049409662904,10,38,10,31,measured
+12:16,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,193.1567225452299,193.4799246648503,1.001673263634636,10,38,10,31,measured
+12:16,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,49.024824033103634,18.144798037761497,0.370114495984919,10,38,10,31,measured
+12:16,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,10,38,10,31,zero or absent; no order
+12:16,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,10,38,10,31,zero or absent; no order
+12:16,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,10,38,10,31,zero or absent; no order
+12:16,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,10,38,10,31,zero or absent; no order
+11:16,angular,all,Ham,peak,1.5396163040499908,0.5956329297725893,0.38687101988058015,2,6,2,6,measured
+11:16,angular,all,Ham,RMS,1.5394265374148062,0.2741809014862001,0.1781058691807654,2,6,2,6,measured
+11:16,angular,all,Mom,peak,58753.04661782272,477982.74878856936,8.1354546922095,2,6,2,6,measured
+11:16,angular,all,Mom,RMS,58751.91415920641,224149.29530968427,3.815182850081832,2,6,2,6,measured
+11:16,angular,all,GaussE,peak,193.15976984149432,193.48146847822994,1.0016654536138638,2,6,2,6,measured
+11:16,angular,all,GaussE,RMS,193.15824619937143,127.25408086582685,0.6588073942982454,2,6,2,6,measured
+11:16,angular,all,GaussB,peak,0.0,0.0,,2,6,2,6,zero or absent; no order
+11:16,angular,all,GaussB,RMS,0.0,0.0,,2,6,2,6,zero or absent; no order
+11:16,angular,all,C_Gamma,peak,0.0,0.0,,2,6,2,6,zero or absent; no order
+11:16,angular,all,C_Gamma,RMS,0.0,0.0,,2,6,2,6,zero or absent; no order
+11:16,angular,AMR-face-excluded,Ham,peak,1.5396163040499908,0.5956329297725893,0.38687101988058015,2,6,2,6,measured
+11:16,angular,AMR-face-excluded,Ham,RMS,1.5394265374148062,0.2741809014862001,0.1781058691807654,2,6,2,6,measured
+11:16,angular,AMR-face-excluded,Mom,peak,58753.04661782272,477982.74878856936,8.1354546922095,2,6,2,6,measured
+11:16,angular,AMR-face-excluded,Mom,RMS,58751.91415920641,224149.29530968427,3.815182850081832,2,6,2,6,measured
+11:16,angular,AMR-face-excluded,GaussE,peak,193.15976984149432,193.48146847822994,1.0016654536138638,2,6,2,6,measured
+11:16,angular,AMR-face-excluded,GaussE,RMS,193.15824619937143,127.25408086582685,0.6588073942982454,2,6,2,6,measured
+11:16,angular,AMR-face-excluded,GaussB,peak,0.0,0.0,,2,6,2,6,zero or absent; no order
+11:16,angular,AMR-face-excluded,GaussB,RMS,0.0,0.0,,2,6,2,6,zero or absent; no order
+11:16,angular,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,2,6,2,6,zero or absent; no order
+11:16,angular,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,2,6,2,6,zero or absent; no order
+11:17,multiple-interface corner transition,all,Ham,peak,1.5392367473840163,0.5955339953680191,0.3869021424937709,14,52,14,36,measured
+11:17,multiple-interface corner transition,all,Ham,RMS,0.21374835162056985,0.031628725668982595,0.14797178752109186,14,52,14,36,measured
+11:17,multiple-interface corner transition,all,Mom,peak,58750.78167876125,477982.51445457514,8.135764338729958,14,52,14,36,measured
+11:17,multiple-interface corner transition,all,Mom,RMS,11252.54155713772,24823.384399425024,2.20602468103564,14,52,14,36,measured
+11:17,multiple-interface corner transition,all,GaussE,peak,193.15976984149432,193.48146847822994,1.0016654536138638,14,52,14,36,measured
+11:17,multiple-interface corner transition,all,GaussE,RMS,38.3785280715295,14.738269484230136,0.38402383376353316,14,52,14,36,measured
+11:17,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,14,52,14,36,zero or absent; no order
+11:17,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,14,52,14,36,zero or absent; no order
+11:17,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,14,52,14,36,zero or absent; no order
+11:17,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,14,52,14,36,zero or absent; no order
+11:17,multiple-interface corner transition,AMR-face-excluded,Ham,peak,1.5392367473840163,0.5955339953680191,0.3869021424937709,14,52,14,36,measured
+11:17,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,0.21374835162056985,0.031628725668982595,0.14797178752109186,14,52,14,36,measured
+11:17,multiple-interface corner transition,AMR-face-excluded,Mom,peak,58750.78167876125,477982.51445457514,8.135764338729958,14,52,14,36,measured
+11:17,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,11252.54155713772,24823.384399425024,2.20602468103564,14,52,14,36,measured
+11:17,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,193.15976984149432,193.48146847822994,1.0016654536138638,14,52,14,36,measured
+11:17,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,38.3785280715295,14.738269484230136,0.38402383376353316,14,52,14,36,measured
+11:17,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,14,52,14,36,zero or absent; no order
+11:17,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,14,52,14,36,zero or absent; no order
+11:17,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,14,52,14,36,zero or absent; no order
+11:17,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,14,52,14,36,zero or absent; no order
+16:17,radial,all,Ham,peak,1.5396163040499908,0.5956329297725893,0.38687101988058015,18,67,18,36,measured
+16:17,radial,all,Ham,RMS,0.1902740094978647,0.028031682593640382,0.1473227093264935,18,67,18,36,measured
+16:17,radial,all,Mom,peak,58753.04661782272,477982.74878856936,8.1354546922095,18,67,18,36,measured
+16:17,radial,all,Mom,RMS,10000.054777967825,21990.269338392223,2.1990148880825435,18,67,18,36,measured
+16:17,radial,all,GaussE,peak,193.1567225452299,193.4799246648503,1.001673263634636,18,67,18,36,measured
+16:17,radial,all,GaussE,RMS,34.10426767953989,13.0560249082757,0.3828267192527456,18,67,18,36,measured
+16:17,radial,all,GaussB,peak,0.0,0.0,,18,67,18,36,zero or absent; no order
+16:17,radial,all,GaussB,RMS,0.0,0.0,,18,67,18,36,zero or absent; no order
+16:17,radial,all,C_Gamma,peak,0.0,0.0,,18,67,18,36,zero or absent; no order
+16:17,radial,all,C_Gamma,RMS,0.0,0.0,,18,67,18,36,zero or absent; no order
+16:17,radial,AMR-face-excluded,Ham,peak,1.5396163040499908,0.5956329297725893,0.38687101988058015,18,67,18,36,measured
+16:17,radial,AMR-face-excluded,Ham,RMS,0.1902740094978647,0.028031682593640382,0.1473227093264935,18,67,18,36,measured
+16:17,radial,AMR-face-excluded,Mom,peak,58753.04661782272,477982.74878856936,8.1354546922095,18,67,18,36,measured
+16:17,radial,AMR-face-excluded,Mom,RMS,10000.054777967825,21990.269338392223,2.1990148880825435,18,67,18,36,measured
+16:17,radial,AMR-face-excluded,GaussE,peak,193.1567225452299,193.4799246648503,1.001673263634636,18,67,18,36,measured
+16:17,radial,AMR-face-excluded,GaussE,RMS,34.10426767953989,13.0560249082757,0.3828267192527456,18,67,18,36,measured
+16:17,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,18,67,18,36,zero or absent; no order
+16:17,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,18,67,18,36,zero or absent; no order
+16:17,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,18,67,18,36,zero or absent; no order
+16:17,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,18,67,18,36,zero or absent; no order
+13:17,multiple-interface corner transition,all,Ham,peak,2.3158951247485724e-06,1.5565909702554216e-07,0.06721336184963965,21,73,21,66,measured
+13:17,multiple-interface corner transition,all,Ham,RMS,1.7711392468694102e-06,1.1209319376515489e-07,0.06328875268462715,21,73,21,66,measured
+13:17,multiple-interface corner transition,all,Mom,peak,8.214978712827965e-05,5.2000754924948765e-06,0.0632999265643231,21,73,21,66,measured
+13:17,multiple-interface corner transition,all,Mom,RMS,6.291191854355901e-05,3.983144144008586e-06,0.06331302933085299,21,73,21,66,measured
+13:17,multiple-interface corner transition,all,GaussE,peak,8.96309892000121e-07,5.601143756243505e-08,0.06249115184642801,21,73,21,66,measured
+13:17,multiple-interface corner transition,all,GaussE,RMS,6.984425555326071e-07,4.410793036995703e-08,0.06315183692712124,21,73,21,66,measured
+13:17,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,21,73,21,66,zero or absent; no order
+13:17,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,21,73,21,66,zero or absent; no order
+13:17,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,21,73,21,66,zero or absent; no order
+13:17,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,21,73,21,66,zero or absent; no order
+13:17,multiple-interface corner transition,AMR-face-excluded,Ham,peak,2.3158951247485724e-06,1.5565909702554216e-07,0.06721336184963965,21,73,21,66,measured
+13:17,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,1.7711392468694102e-06,1.1209319376515489e-07,0.06328875268462715,21,73,21,66,measured
+13:17,multiple-interface corner transition,AMR-face-excluded,Mom,peak,8.214978712827965e-05,5.2000754924948765e-06,0.0632999265643231,21,73,21,66,measured
+13:17,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,6.291191854355901e-05,3.983144144008586e-06,0.06331302933085299,21,73,21,66,measured
+13:17,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,8.96309892000121e-07,5.601143756243505e-08,0.06249115184642801,21,73,21,66,measured
+13:17,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,6.984425555326071e-07,4.410793036995703e-08,0.06315183692712124,21,73,21,66,measured
+13:17,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,21,73,21,66,zero or absent; no order
+13:17,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,21,73,21,66,zero or absent; no order
+13:17,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,21,73,21,66,zero or absent; no order
+13:17,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,21,73,21,66,zero or absent; no order
+12:18,multiple-interface corner transition,all,Ham,peak,2.0863621930759607e-06,1.355476654146574e-07,0.06496842488063738,14,74,14,68,measured
+12:18,multiple-interface corner transition,all,Ham,RMS,1.7669504147010859e-06,1.0999740565325508e-07,0.06225268391125921,14,74,14,68,measured
+12:18,multiple-interface corner transition,all,Mom,peak,7.252014505323727e-05,4.821253557193302e-06,0.06648157630757638,14,74,14,68,measured
+12:18,multiple-interface corner transition,all,Mom,RMS,6.294808309185719e-05,3.941310657899798e-06,0.06261208386835908,14,74,14,68,measured
+12:18,multiple-interface corner transition,all,GaussE,peak,7.774697031876122e-07,5.0320841624428186e-08,0.0647238618020916,14,74,14,68,measured
+12:18,multiple-interface corner transition,all,GaussE,RMS,6.971404832641094e-07,4.3236218329292893e-08,0.06201937682180622,14,74,14,68,measured
+12:18,multiple-interface corner transition,all,GaussB,peak,0.0,0.0,,14,74,14,68,zero or absent; no order
+12:18,multiple-interface corner transition,all,GaussB,RMS,0.0,0.0,,14,74,14,68,zero or absent; no order
+12:18,multiple-interface corner transition,all,C_Gamma,peak,0.0,0.0,,14,74,14,68,zero or absent; no order
+12:18,multiple-interface corner transition,all,C_Gamma,RMS,0.0,0.0,,14,74,14,68,zero or absent; no order
+12:18,multiple-interface corner transition,AMR-face-excluded,Ham,peak,2.0863621930759607e-06,1.355476654146574e-07,0.06496842488063738,14,74,14,68,measured
+12:18,multiple-interface corner transition,AMR-face-excluded,Ham,RMS,1.7669504147010859e-06,1.0999740565325508e-07,0.06225268391125921,14,74,14,68,measured
+12:18,multiple-interface corner transition,AMR-face-excluded,Mom,peak,7.252014505323727e-05,4.821253557193302e-06,0.06648157630757638,14,74,14,68,measured
+12:18,multiple-interface corner transition,AMR-face-excluded,Mom,RMS,6.294808309185719e-05,3.941310657899798e-06,0.06261208386835908,14,74,14,68,measured
+12:18,multiple-interface corner transition,AMR-face-excluded,GaussE,peak,7.774697031876122e-07,5.0320841624428186e-08,0.0647238618020916,14,74,14,68,measured
+12:18,multiple-interface corner transition,AMR-face-excluded,GaussE,RMS,6.971404832641094e-07,4.3236218329292893e-08,0.06201937682180622,14,74,14,68,measured
+12:18,multiple-interface corner transition,AMR-face-excluded,GaussB,peak,0.0,0.0,,14,74,14,68,zero or absent; no order
+12:18,multiple-interface corner transition,AMR-face-excluded,GaussB,RMS,0.0,0.0,,14,74,14,68,zero or absent; no order
+12:18,multiple-interface corner transition,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,14,74,14,68,zero or absent; no order
+12:18,multiple-interface corner transition,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,14,74,14,68,zero or absent; no order
+17:18,radial,all,Ham,peak,8.15154681769449e-06,5.169077591204906e-07,0.06341222968853513,1116,4471,1116,2260,measured
+17:18,radial,all,Ham,RMS,2.1827938205471034e-06,1.3646612592242007e-07,0.06251901789249875,1116,4471,1116,2260,measured
+17:18,radial,all,Mom,peak,8.607155787389337e-05,5.369022085244002e-06,0.062378586119126084,1116,4471,1116,2260,measured
+17:18,radial,all,Mom,RMS,5.9583517088841514e-05,3.7263060862791605e-06,0.0625392099751863,1116,4471,1116,2260,measured
+17:18,radial,all,GaussE,peak,1.1808836507035773e-06,7.516379339365893e-08,0.06365046492842534,1116,4471,1116,2260,measured
+17:18,radial,all,GaussE,RMS,6.131759408809643e-07,3.8357242436042676e-08,0.06255503498870801,1116,4471,1116,2260,measured
+17:18,radial,all,GaussB,peak,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+17:18,radial,all,GaussB,RMS,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+17:18,radial,all,C_Gamma,peak,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+17:18,radial,all,C_Gamma,RMS,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+17:18,radial,AMR-face-excluded,Ham,peak,8.15154681769449e-06,5.169077591204906e-07,0.06341222968853513,1116,4471,1116,2260,measured
+17:18,radial,AMR-face-excluded,Ham,RMS,2.1827938205471034e-06,1.3646612592242007e-07,0.06251901789249875,1116,4471,1116,2260,measured
+17:18,radial,AMR-face-excluded,Mom,peak,8.607155787389337e-05,5.369022085244002e-06,0.062378586119126084,1116,4471,1116,2260,measured
+17:18,radial,AMR-face-excluded,Mom,RMS,5.9583517088841514e-05,3.7263060862791605e-06,0.0625392099751863,1116,4471,1116,2260,measured
+17:18,radial,AMR-face-excluded,GaussE,peak,1.1808836507035773e-06,7.516379339365893e-08,0.06365046492842534,1116,4471,1116,2260,measured
+17:18,radial,AMR-face-excluded,GaussE,RMS,6.131759408809643e-07,3.8357242436042676e-08,0.06255503498870801,1116,4471,1116,2260,measured
+17:18,radial,AMR-face-excluded,GaussB,peak,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+17:18,radial,AMR-face-excluded,GaussB,RMS,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+17:18,radial,AMR-face-excluded,C_Gamma,peak,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order
+17:18,radial,AMR-face-excluded,C_Gamma,RMS,0.0,0.0,,1116,4471,1116,2260,zero or absent; no order

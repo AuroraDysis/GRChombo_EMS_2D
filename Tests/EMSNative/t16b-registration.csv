@@ -1,0 +1,5 @@
+run,base_N1,base_N2,h0_M,finest_level,h_M,Rh_over_h,face_each_hole_M,dt_M,native_steps,native_stop_M,common_clocks,common_stop_M,cap_RSS_bytes,parameters
+coarse-sqrt,672,336,1.0,13,0.0001220703125,49.48338281342773,0.015625,3.0517578125e-05,65,0.001983642578125,66,0.001983642578125,6000000000,/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t16b-coarse-sqrt.txt
+coarse-geometric,672,336,1.0,13,0.0001220703125,49.48338281342773,0.015625,3.0517578125e-05,65,0.001983642578125,66,0.001983642578125,6000000000,/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t16b-coarse-geometric.txt
+fine-sqrt,1344,672,0.5,13,6.103515625e-05,98.96676562685546,0.015625,1.52587890625e-05,131,0.0019989013671875,66,0.001983642578125,6000000000,/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t16b-fine-sqrt.txt
+fine-geometric,1344,672,0.5,13,6.103515625e-05,98.96676562685546,0.015625,1.52587890625e-05,131,0.0019989013671875,66,0.001983642578125,6000000000,/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t16b-fine-geometric.txt

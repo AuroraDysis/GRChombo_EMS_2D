@@ -34,3 +34,5 @@ cbffc6581e756a1e6f63e893205feb8a59d4bfc0756a46df93246a6460434cca  3558370  Tests
 d175fa0067f7887e3475ae0ac595e4b9676520f5a6664c718976f2e98fa82e86  1471756  Tests/EMSNative/t16-audit-geometric.csv
 b829997acd54d363c81ebff09b40f082ec365f17e975e2ba93b22a4b294a1583  1454451  Tests/EMSNative/t16-audit-sqrt.csv
 fd6e5043884bbb7efa29044ae972ce6121126ce8edbb466ffa25f35c270a1eb0  1193847  Tests/EMSNative/t16-launch-history.csv
+# T16b (regenerate with Tests/EMSNative/t16b-analyze.py, README § T16b)
+05f1073f72864fac51c45e06f3f7e0e5037a51abd53d6dcae4fc81ded3f7ef67  1130934  Tests/EMSNative/t16b-launch-history.csv

@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-echobin/.data/echo-binary/production-outer16-a20-r32-a10/n32-r6.ctt",
+    "sha256": "46253cb8d3bf6255b149b44bed7d4899cd97c697fe677a9846649bfbb2bdc4ee",
+    "bytes": 12217088
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-echobin/artifacts/echo-binary/a0.9-e8.trumpet",
+    "sha256": "4d7cc0b975d4dde0c4da8400ef0bbad8c3e57716c9708c160d19e56288a76f90",
+    "bytes": 8096
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-echobin/artifacts/echo-binary/production/outer16-a20/r32-a10/params-initial-data.txt",
+    "sha256": "4046b4680c0bd6249a0a62c7485d136946fdf9c717197b7c3bdd7c7637e0954b",
+    "bytes": 555
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-echobin/artifacts/echo-binary/production/outer16-a20/r32-a10/audit.md",
+    "sha256": "6dd9026ec217b4f2de9167b32f71bedda33f9cc2799552b4fd4ecfc6ca4770a4",
+    "bytes": 18793
+  }
+]

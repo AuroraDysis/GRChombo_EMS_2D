@@ -1,0 +1,5 @@
+run,native_stop_M,initial_nonlapse_values,nonlapse_bit_mismatches,chi_floors,lapse_floors,nonfinite,static_reader_after_advance,peak_RSS_bytes,wall_seconds,selector_checks
+coarse-sqrt,0.001983642578125,30819528,reference,0,0,0,0,952811520,261.3678084589774,158
+coarse-geometric,0.001983642578125,30819528,0,0,0,0,0,1109721088,252.6487325419439,158
+fine-sqrt,0.0019989013671875,123163416,reference,0,0,0,0,2317385728,1043.1879556659842,619
+fine-geometric,0.0019989013671875,123163416,0,0,0,0,0,2636562432,866.3085852919612,619

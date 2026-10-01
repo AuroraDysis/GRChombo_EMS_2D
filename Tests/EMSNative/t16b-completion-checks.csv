@@ -1,0 +1,5 @@
+run,result,common_clocks_each_hole,native_Base_bit_mismatches,native_Gamma_term_relative_residual,geometric_4x4_max_relative,constraints_between_options,floors
+coarse-sqrt,PASS,66,0,1.8400932731107482e-16,8.88178e-16,bit-identical,0
+coarse-geometric,PASS,66,0,1.1147309607563876e-16,8.88178e-16,bit-identical,0
+fine-sqrt,PASS,66,0,2.7829038143793044e-16,8.88178e-16,bit-identical,0
+fine-geometric,PASS,66,0,2.6666614682044653e-16,8.88178e-16,bit-identical,0
