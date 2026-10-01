@@ -1,0 +1,14 @@
+check,value,result
+screen summary rows,16,PASS
+common-time screen rows,912,PASS
+all endpoints contract,0.1664038230156314,PASS
+initial numerical-floor Gamma ratios remain undefined,0,PASS
+clock matching defect,4.336808689942018e-19,PASS
+sampling-unqualified rows retained,53,PASS
+zero floor/nonfinite/late reader counts,0,PASS
+four-rung stage replay identity,0,PASS
+stage raw budgets,0.00012932535276978781,PASS
+removed native closure output hashes,288,PASS
+protected projection updates,0.0,PASS
+four scientific figure pairs,4,PASS
+analysis memory / bytes,1198047232,PASS

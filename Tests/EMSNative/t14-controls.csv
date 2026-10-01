@@ -1,0 +1,17 @@
+member,mode,dense,file,Float64_values,bit_mismatches,condition
+E,legacy,False,plt/EMS_Plot_000000.2d.hdf5,89600,0,Tests factory against frozen T13 production; control finest level 1
+E,legacy,False,chk/EMS_000002.2d.hdf5,119840,0,Tests factory against frozen T13 production; control finest level 1
+E,legacy,True,plt/EMS_Plot_000000.2d.hdf5,89600,0,Tests factory against frozen T13 production; control finest level 1
+E,legacy,True,chk/EMS_000002.2d.hdf5,119840,0,Tests factory against frozen T13 production; control finest level 1
+E,point,False,plt/EMS_Plot_000000.2d.hdf5,89600,0,Tests factory against frozen T13 production; control finest level 1
+E,point,False,chk/EMS_000002.2d.hdf5,119840,0,Tests factory against frozen T13 production; control finest level 1
+E,point,True,plt/EMS_Plot_000000.2d.hdf5,89600,0,Tests factory against frozen T13 production; control finest level 1
+E,point,True,chk/EMS_000002.2d.hdf5,119840,0,Tests factory against frozen T13 production; control finest level 1
+ref,legacy,False,plt/EMS_Plot_000000.2d.hdf5,89600,0,Tests factory against frozen T13 production; control finest level 1
+ref,legacy,False,chk/EMS_000002.2d.hdf5,119840,0,Tests factory against frozen T13 production; control finest level 1
+ref,legacy,True,plt/EMS_Plot_000000.2d.hdf5,89600,0,Tests factory against frozen T13 production; control finest level 1
+ref,legacy,True,chk/EMS_000002.2d.hdf5,119840,0,Tests factory against frozen T13 production; control finest level 1
+ref,point,False,plt/EMS_Plot_000000.2d.hdf5,89600,0,Tests factory against frozen T13 production; control finest level 1
+ref,point,False,chk/EMS_000002.2d.hdf5,119840,0,Tests factory against frozen T13 production; control finest level 1
+ref,point,True,plt/EMS_Plot_000000.2d.hdf5,89600,0,Tests factory against frozen T13 production; control finest level 1
+ref,point,True,chk/EMS_000002.2d.hdf5,119840,0,Tests factory against frozen T13 production; control finest level 1

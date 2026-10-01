@@ -2925,3 +2925,220 @@ At the limiting new L14 face, the conservative 7h buffer is 0.0002492268880 M. W
 The serial queue's sampled process-tree maximum is **1.791410 GB**. No memory/disk gate fired. Analyses are bounded to ROI frames and small replay caches; per-process RSS, wall, actual exit status, timer status and live libproc RSS/footprint are in [resources](t13-resources.csv). Every evolution/analysis invokes `/usr/bin/time -l`; its sandbox clockrate denial and the explicit wait4/libproc fallback are recorded separately, not concealed as a successful time-l RSS reading. Repeated analysis measurements retain individual metadata; two earlier measure attempts' recorded peaks (0.265585/0.252658 GB) are retained in manifest provenance. All recorded processes remain below 6 GB per process and 8 GB total. Final xz frames, stop/floor CSVs, logs, markers, exact replay stage inputs/native outputs and numerical caches cited by the tables are retained under `/private/tmp/ems-t13` and pinned in [COMMIT-MANIFEST-T13.txt](COMMIT-MANIFEST-T13.txt). Regenerable snapshot/predictor payloads have retained SHA256 hashes and native outputs. The shared overwritten stage-replay binary payloads were removed by the streaming checker; their exact hashes were subsequently reconstructed from the retained lossless pre-stage frames, one frame at a time, without rerunning the RHS. No other tranche's files were removed.
 
 Reproduce with the bounded `t13-run.py --measure` wrapper (pass absolute command paths, since the command's cwd is its resource directory): `t13-analyze.py extract`, `measure`, `stages`, `qualify`, then `t13-report.py attribution`, `predictor`, `stage-c`, `figures`, and `t13-prepare.py manifest`. The analysis never opens E.trumpet; only the original four evolution initializations do. No commit was made. The 0.002 M window cannot exclude delayed emission, determine a settled trumpet, certify source contraction, or admit the 100 M chain.
+
+
+## T14 — alpha_K source contraction, consult 7 Stage C
+
+### Registration before evolution
+
+Baseline **949a744** carries T13. Read consult 7 Stage C in full; this is the source-refined **alpha_K** branch only. Sigma=1, point transfers, E coupling/cleaners, dt policy, all twelve inherited tags/faces, the initial-data guard and T13 recorder remain frozen. No production source or Chombo library was edited. The EMS repository and collected data remain read-only, and no commit is made. The static file initializes t=0; every positive-time snapshot and replay uses current evolved fields only.
+
+The completed max12 alpha_K branch is `/private/tmp/ems-t13/evolution/maximal`; retain it and its qualified P6/P8 caches unchanged. New registered legs: [max13](params/t14-E-mid-max13.txt), [max14](params/t14-E-mid-max14.txt), [max14 dt/2](params/t14-E-mid-max14-half.txt). [Registration](t14-registration.csv) records exact parameter differences and native ladders. [The reading](params/t14-reading.md) retains the prepared T13 convention, adds lapse and the measured finest-rung temporal control, and quantifies “subdominant” conservatively as temporal difference <=0.2 of **both** spatial differences. The primary norms are fixed-window peak and unweighted radial RMS, both endpoint and common-time history. Report all marginal/uncertainty-dominated entries; do not manufacture an order from zero initial Gamma differences.
+
+Nominal dt0=7/48 M; max13 dt13=0.00001780192057291667 M, 112 steps; max14 dt14=0.000008900960286458334 M, 224 steps. Both stop at the last native step inside 0.002 M, **0.001993815104166667 M**. The max14 dt/2 control has 449 steps and its last endpoint is **0.001998265584309896 M**; use its first **448** steps for the common endpoint. Compare the three source rungs on the original max12 timestamps (every 2/4/8 new-rung/control steps). Native ladders are nested, so no temporal interpolation is expected. Actual output timestamps must confirm this; report any interpolation/error if needed. No pulse alignment or fitted background.
+
+### Actual census, initialization failure and qualified workaround
+
+The initialization-only [Tests harness](T14Census.cpp) calls the production `setupAMRObject`, level factory, initializer and T13 initial recorder, without advancing. Its first max13 census succeeded. The original max14 initializer **segfaulted before creating level 14**, during `GRAMRLevel::tagCells` at level 13. The macOS crash trace identifies `TreeIntVectSet::grow` -> `clearTree`, accessing 0x100000000. Chombo's source has fixed `lindex[24]`, `p1[24]` and traversal arrays; the level-13 global center index **4718592** requires a traversal index beyond 23. The fixed-stack depth explanation is inferred from that source and the measured call trace. Peak RSS was **730300416 bytes (0.730300 GB)**, with no memory-gate activation; this was not an OOM. The failed log, timer, child metadata and crash report are retained under `/private/tmp/ems-t14/census/native-max14-failed/`. The successful original max13 census remains under `census/native-max13/`.
+
+**Amendment recorded before any evolution:** [T14DenseTags.hpp](T14DenseTags.hpp) and [T14Launch.cpp](T14Launch.cpp) provide a Tests-only initializer representation workaround. One selector `t14_dense_initial_tags`, default false, selects a Tests factory. Below level 13 it calls the original tagging function. At level 13 it evaluates the same native criterion, threshold, tag dilation and domain clipping using Chombo's existing **dense** set storage, whose index offsets do not require that deep tree. This changes initialization tag storage, not the numerical method. The Tests launcher includes the production main verbatim and links the existing production numerical objects; all evolution/recorder code is unchanged. `-fno-access-control` is confined to Tests compilation, permitting the private initializer access without editing production headers. Build commands are retained as JSON under `/private/tmp/ems-t14/`. No Chombo source or library was modified.
+
+The resulting **real** max13 and max14 censuses both passed. Every individual box on **levels 0–12**, its integer bounds and its Float64 spacing exactly matches exp-0020 E-mid's t=0 plot metadata. Max14 also matches max13's new level-13 boxes. All transport faces remain **R_l=112/2^l M** for l>=1. Each new level has **8 boxes, 73728 valid cells** and an exact rectangular union x=center±R, y in [0,R]. Every lower box bound and upper-plus-one is a multiple of **8**. New face distance is **192 fine cells** in both cases. [Every actual box](t14-boxes.csv), [level unions and field screens](t14-census.csv).
+
+| Finest level | h (M) | Actual new face (M) | min chi, valid+ghost | min alpha_K, valid+ghost | Initial maximum shift-family speed | Census peak RSS (GB) |
+|---|---:|---:|---:|---:|---:|---:|
+| 13 | 7.120768229e-5 | 0.013671875 | 1.375191804e-7 | 7.566743744e-5 | 1.001067045535 | 0.612975 |
+| 14 | 3.560384115e-5 | 0.0068359375 | 3.440273950e-8 | 2.996484201e-5 | 1.001067045535 | 0.657261 |
+
+Zero nonfinites and zero chi/lapse floor activations occur in every census box, including its ghosts, on every level. Both configured floors remain **1e-12**. These are initialization checks, not yet the evolved floor screen. The full initialized finest-level maximum light/lapse speeds are 0.005817859244/0.026087719479 at max13 and 0.003200523279/0.014677806955 at max14; the longitudinal shift family bounds the relevant arrival here.
+
+[Tests-factory identity controls](t14-controls.csv) against the frozen T13 executable give **0 bit mismatches in 16 files**, E/reference × legacy/point × option off/on × t=0/two-step. Each t=0 file contains **89600 Float64 values**; each checkpoint contains **119840**. These small controls have max_level=1, so they prove the default path and unchanged lower-level evolution; they do not exercise the new level-13 tag storage. The actual census separately verifies the new geometry. [Real max13 retained-state identity](t14-census-identity.csv) additionally gives **0 mismatches** over **134456 parent-level + 463736 finest-level Float64 values**, all 28 initialized components and their recorder ghost windows, comparing the original and Tests factories. These are the full retained windows, not an assertion that all whole-domain state arrays were written.
+
+### Incoming margins and ghost support
+
+Physical W is fixed at 0.00075<=R<=0.0025 M, axis and diagonal. The combined P8 plus native fourth-order/upwind/KO support buffer is conservatively **7h** per coordinate; the actual ghost collar is **3h**. W and its sampling/stencil support read no coarse–fine ghosts directly. Using a provisional **1.1** speed bound and the full initialized finest-level measured maximum **1.00106705**, the nearest face-normal arrival margins beyond requested t_stop=0.002 M are:
+
+| Finest level | Ray | 3h ghost collar (M) | 7h full support buffer (M) | Arrival bound (M) | Margin beyond 0.002 M |
+|---|---|---:|---:|---:|---:|
+| 13 | axis | 2.136230469e-4 | 4.984537760e-4 | 0.009703110204 | 0.007703110204 |
+| 13 | diagonal | 2.136230469e-4 | 4.984537760e-4 | 0.010368776610 | 0.008368776610 |
+| 14 | axis | 1.068115234e-4 | 2.492268880e-4 | 0.003715191465 | 0.001715191465 |
+| 14 | diagonal | 1.068115234e-4 | 2.492268880e-4 | 0.004380857872 | 0.002380857872 |
+
+These are characteristic separation estimates, conditional on verifying the speed bound on the evolved recorder states. Finite-difference/KO tails have no strictly compact numerical support. [Margin CSV](t14-characteristic-margins.csv) records the actual census coordinates and buffers. The max14 face sets the limiting margin; the earlier larger faces lie farther away.
+
+### Resource plan and detached queue
+
+[Bounded runner](t14-run.py) reuses T13's serial detached/atomic-marker machinery with **3,000,000,000 bytes per-process RSS/physical-footprint** and a conservative **3,000,000,000-byte sampled active-child-tree gate**, 2 OpenMP threads, BLAS=1 and two single-thread compression streams (<=4 compute threads). Runs are **serial**, with no analysis alongside them in this agent's tree. The inherited fresh-output ceiling is **5.7 GB** under `/private/tmp/ems-t14`; T13 outputs are untouched. Local free space before preparation was 52 GiB. Gate violations stop the queue and leave a nonzero atomic marker.
+
+`/usr/bin/time -l` is invoked for every numerical build/census/control/analysis/evolution process. This sandbox denies `kern.clockrate`, making the timer itself return 1; explicit child return codes and `wait4`/`RUSAGE_CHILDREN` peak RSS provide the measurement, as in T13. Live libproc RSS/physical-footprint and process-tree samples enforce the cap. Resource JSONs and [the resource table](t14-resources.csv) distinguish timer status from child success and retain the failed native census peak. Completed initialization peaks are 0.613/0.657 GB; the Tests launch build peaked at **0.348 GB**. Evolution estimates from T13 remain **2.15/2.33/2.33 GB** and are estimates until measured.
+
+| Leg | Estimated wall (s) | Upper estimate (s) | Run directory | stdout/stderr | Atomic marker |
+|---|---:|---:|---|---|---|
+| max13 | 80 | 120 | `/private/tmp/ems-t14/evolution/max13` | `run.log` | `done.exit` |
+| max14 | 156 | 233 | `/private/tmp/ems-t14/evolution/max14` | `run.log` | `done.exit` |
+| max14-half | 300 | 450 | `/private/tmp/ems-t14/evolution/max14-half` | `run.log` | `done.exit` |
+
+Total planned queue wall **536 s (8.9 min)**, upper **803 s (13.4 min)**. Queue directory `/private/tmp/ems-t14/evolution`, plan `plan.json`, launcher log `launcher.log`, PID `launcher.pid`, final queue marker `done.exit`. Command, launched only after the real census and 16-file identity controls pass:
+
+```sh
+/Users/auroradysis/miniconda3/bin/python Tests/EMSNative/t14-run.py --detach /private/tmp/ems-t14/evolution/plan.json
+```
+
+This queue exceeds the detached threshold in its upper estimate. After verifying the first level-13 steps are logged, end the turn; do not wait for its markers. No Stage D run is authorized or launched here.
+
+### Remaining analysis on controller resumption — in full
+
+1. Audit all three atomic markers, frozen flags, sigma, guard, post-initialization reader messages, floors/nonfinites and measured peak RSS. Verify actual 112/224/449-step endpoints. Check current characteristic-speed bounds throughout the captured states against 1.1 and retain the face/support conditions above.
+2. Stream the finest current-state recordings, native RHS replay and selected 7x7 stencils in bounded chunks. Reuse immutable T13 max12 P6/P8 profiles on the identical 258 physical points. Match exact nested native timestamps within Float64 tolerance, with no phase alignment; if time interpolation is unavoidable, quantify it independently. Keep every input/cache cited by the tables, hash any removed T14-owned regenerable intermediate, and never read a complete old HDF5 level into memory.
+3. For raw signed longitudinal Gamma, metric Gamma (native fourth-order cartoon derivatives including ww/hww), shift and lapse on both rays, report peak/RMS D12,13 and D13,14, rho_D, joint P6/P8 bounds and >5x qualification, plus finest dt/2 errors against **both** differences. Evaluate the endpoint, each common nonzero history time and the history supremum of each difference norm. Report initial/late roundoff-dominated entries plainly. Temporal error must be <=0.2 of both spatial norms for a qualified screen; carry the max12 T13 temporal error separately. Significant rho_D<=0.8 is a contraction screen, not a fourth-order claim.
+4. Separately report each rung's Gamma disturbance as the change from its own numerical t=0 field on the same native cells: peak/RMS, physical and native-cell half-height lobe widths (flag clipping), probe history at R=0.0015 M, metric Gamma, C_Gamma, Ham/Mom, floor activations and P6/P8 sensitivity. Give decrease-to-zero/stabilization/growth with the actual resolution dependence, without imposing amplitude stability.
+5. Replay every recorded first-four-step stage with the frozen T13Replay harness and prove actual RHS/projected-state bit identity plus RK and term-sum roundoff closure. Stream the frames. Report puncture-cell geometric/advection/direct KO budgets and each trace/floor projection update separately; use the existing offline first-predictor A-only/all-KO dependency test if needed to distinguish feedback regeneration from direct Gamma KO or gauge readjustment. A local KO magnitude is not an additive outgoing-amplitude share.
+6. Apply consult 7's registered decision across fields/rays/norms/history: significant qualified rho_D<=0.8 with a resolved stabilizing pulse or disturbance tending to zero -> draft Stage D; 0.8<rho_D<1, floors or obscured differences -> inconclusive; significant rho_D>=1 -> lapse-only remedy insufficient at these resolutions, with the stage attribution identifying KO/projection or gauge regeneration. Report mixed cases as mixed, not production admission. The 0.002 M window cannot exclude delayed emission.
+7. Only if the screen passes, draft (do not run) fresh alpha_K E three-grid Stage D chains through 2.625/4.375/10.5 M, exp-0020's common transport faces and the source levels justified here, a predeclared puncture-excluded smooth domain with design order four, the full constraint battery, numerical-t=0 horizon budgets A=1e-3/Q=2e-4, independent sphere charges and cluster costs from measured exp-0020 rates. Qualify the initializer workaround for that build if the same tree-depth limit applies. The separate outer-boundary issue remains part of exterior admission.
+8. Append results (retain this registration), small CSVs and requested Gamma/rho/temporal/attribution figures; refresh [COMMIT-MANIFEST-T14.txt](COMMIT-MANIFEST-T14.txt) with completed run hashes and every process peak. No commit.
+
+Status at registration: actual census and setup identity **PASS**; contraction, disturbance trend, evolved constraints/floors and stage attribution **PENDING**. Stage D remains conditional.
+
+Launch verified: detached queue PID **56307**. First logged finest advances: `GRAMRLevel::advance level 13 at time 0 (0 M/hr). Boxes on this rank: 8 / 8`; `GRAMRLevel::advance level 13 at time 0.000018 (0.002522 M/hr). Boxes on this rank: 8 / 8`; `GRAMRLevel::advance level 13 at time 0.000036 (0.003772 M/hr). Boxes on this rank: 8 / 8`. The initial finest RK RHS capture is active. Analysis remains for controller resumption; no marker was waited on.
+
+### Half-step output-gate recovery, 2026-10-01
+
+These notes retain the pre-restart registration and launch record; completed results follow below.
+
+The original queue has finished with `done.exit=125`. **max13 and max14 both succeeded** (`done.exit=0`), with 112/224 finest advances and endpoints 0.0019938151041666665 / 0.001993815104166667 M. Their measured peak RSS values are **1,673,756,672 / 1,625,456,640 bytes**; walls are 119.669 / 580.816 s. The all-level valid/ghost floor records have zero chi/lapse activations and zero nonfinites; the logs have zero `Read EMSTRUMPET` messages after the first advance. Evolved characteristic speeds still require current-state replay. [Run audit](t14-run-audit.csv).
+
+The original max14-half was terminated by the runner's **queue-wide output gate**, not by an evolution failure: child returncode **-15**, leg/queue marker **125**, `gate_reason="output ceiling 5700000000 bytes"`. It had started 254 finest advances, last logged at 0.001126 M, and has no successful stop CSV. Its entire **2,714,703,189-byte** directory is retained as `/private/tmp/ems-t14/evolution/max14-half.stopped-ceiling`; no partial data were deleted or reused as a completed temporal control. Its wrapper's wait4 peak of 1,261,568 bytes missed the terminated evolution; the retained live samples give **1,852,309,504 bytes RSS** and a 1.960149 GB active-tree peak. The resource CSV and manifest report the maximum of the recorded peak and sampled process RSS, retaining both measurements and the original JSON unchanged.
+
+The restart uses the **same executable and parameter SHA256**, fresh initialization at t=0, and a one-leg plan at `/private/tmp/ems-t14/evolution/restart-max14-half/plan.json`. Only the runner's disk scope and ceiling change. max14's actual output is **2,549,708,057 bytes**; doubling gives **5,099,416,114 bytes**. The restart ceiling is **6,000,000,000 bytes**, an 18% margin, scoped solely to the new `/private/tmp/ems-t14/evolution/max14-half` directory. Retained nominal and stopped outputs no longer consume that gate. The per-process RSS/footprint and sampled active-tree caps remain **3 GB**, OMP=2, BLAS=1, two single-thread compression streams, at most four compute threads. [Restart registration](t14-restart.csv); exact hashes and cost calculation are also retained in `restart-max14-half/restart.json`.
+
+The frozen recorder has no snapshot-stride option. All native-step snapshots and first-four-step RK capture are retained; halving output would require a recorder change. The comparison uses every eighth control snapshot at the max12 clocks, including control step **448** at the common endpoint; step **449** remains the separately reported actual final endpoint. Expected wall is approximately **1,091 s (18.2 min)** from the stopped control's observed rate, so this run must be detached and this turn ended after launch verification.
+
+The small runnable [runner check](t14-run-check.py) passes: it terminates an allocating child through an isolated disk gate, verifies the fixed 3 GB cap, and checks that sampled RSS survives the killed wait4 wrapper. This changes only runner accounting; no production C++, numerical objects, gauge, KO, transfers, equations, precision, finder or capture code was rebuilt or edited.
+
+```sh
+T14_OUTPUT_ROOT=/private/tmp/ems-t14/evolution/max14-half T14_DISK_CAP_BYTES=6000000000 /Users/auroradysis/miniconda3/bin/python Tests/EMSNative/t14-run.py --detach /private/tmp/ems-t14/evolution/restart-max14-half/plan.json
+```
+
+Pending atomic markers are `/private/tmp/ems-t14/evolution/max14-half/done.exit` and `/private/tmp/ems-t14/evolution/restart-max14-half/done.exit`. The original `/private/tmp/ems-t14/evolution/done.exit=125` records the stopped queue and is **not** the restart marker. Restart logs are `max14-half/run.log` and `restart-max14-half/launcher.log`.
+
+After both new markers succeed, perform the full eight-point analysis registered above. **rho_D (all four fields, both rays, peak/RMS, endpoint/history), interpolation margins, amplitude trend, native lobe widths, evolved speed bounds, temporal qualification and first-stage attribution remain pending.** No Stage C verdict or Stage D draft is justified yet. Use the preserved max12/max13/max14 ladder and complete restart; do not relaunch successful legs. No SSH or commit was performed.
+
+Recovery launch verified: detached PID **81434**; `GRAMRLevel::advance level 14 at time 0 (0 M/hr). Boxes on this rank: 8 / 8`. Both new done markers remain pending. Initial largest observed descendant RSS is 322404352 bytes; this is a launch snapshot, not the final peak. Live watchdog and final resources JSON retain the complete peak measurement. Per the >10 min rule, end this turn now and resume the registered analysis after both markers succeed.
+
+### Completed Stage C results
+
+**Endpoint contraction PASS; full registered history INCONCLUSIVE.** All 16 endpoint field/ray/norm entries have significant rho_D<=0.8, and every interpolation-qualified nonzero history entry contracts. However, 53 field/ray/norm/time entries fail the registered >5x sampling-spread requirement. These are retained as unresolved rather than reclassified by their small point ratios. There is no significant noncontraction, no 0.8–1 marginal ratio and no temporal failure. Under the registered unresolved-uncertainty decision, this mixed screen does not advance Stage D or admit production. No additional rung or changed KO/gauge method is automatically authorized.
+
+The restarted control completed with both new markers equal to zero in 1002.798 s, peak RSS **1,854,324,736 bytes**, and sampled RSS/footprint active-tree maximum **1.997461 GB**. All 449 control steps are retained; step 448 is compared to the 56/112/224-step source ladder at **0.001993815104166667 M**. Its actual final endpoint is 0.001998265584309896 M. The old gate-stopped output remains retained and is excluded from this completed control. The restart output is approximately 3.9 GiB, below its isolated 6 GB gate.
+
+All 57 common clocks, including t=0, match within **4.33681e-19 M**. No temporal interpolation, pulse alignment or fitted background was applied. Signed raw Gamma, native metric Gamma including ww/hww, beta_n and lapse use the unchanged anchor-subtracted tensor P6/P8 sampling at the same 258 physical points on W. Peak is the fixed-window maximum; RMS is the unweighted radial integral norm defined in T13. The Gamma disturbance is the change from each rung's captured numerical t=0 state, followed by fixed interpolation. Neither this numerical baseline nor any native replay opens the static solution.
+
+The following endpoint pairs are **peak / RMS**. A sampling margin is D/(5 times the sum of the two P6/P8 profile-difference norms), so >1 qualifies. The listed margin is the smaller of the two spatial-difference margins; temporal fraction is the larger of the dt/2 differences divided by either spatial norm. These are measured sensitivity spreads, not rigorous continuum-error intervals.
+
+| Ray | Field | Endpoint rho_D peak / RMS | Minimum endpoint sampling margin | Finest temporal fraction | Qualified history times |
+| --- | --- | --- | --- | --- | --- |
+| axis | Gamma | 0.166404 / 0.128970 | 34.18 / 53.21 | 0.000109 / 9.06e-05 | 53/56 / 56/56 |
+| axis | metric_Gamma | 0.120898 / 0.099292 | 14.80 / 11.46 | 4.02e-07 / 8.03e-07 | 54/56 / 56/56 |
+| axis | shift | 0.126144 / 0.116330 | 25.68 / 60.81 | 2.49e-06 / 1.98e-06 | 52/56 / 50/56 |
+| axis | lapse | 0.033093 / 0.029670 | 8.20 / 6.48 | 2.68e-10 / 7.1e-10 | 33/56 / 53/56 |
+| diagonal | Gamma | 0.072395 / 0.081545 | 64.74 / 67.82 | 0.000179 / 0.000123 | 56/56 / 56/56 |
+| diagonal | metric_Gamma | 0.100913 / 0.052117 | 5.30 / 5.93 | 6.58e-06 / 1.53e-05 | 56/56 / 56/56 |
+| diagonal | shift | 0.066531 / 0.064363 | 154.33 / 165.62 | 1.79e-06 / 1.66e-06 | 54/56 / 54/56 |
+| diagonal | lapse | 0.019653 / 0.017546 | 12.13 / 11.03 | 8.57e-10 / 1.27e-09 | 52/56 / 52/56 |
+
+Endpoint rho_D spans **0.017546–0.166404**. Every endpoint sampling margin is at least **5.297** times the already multiplied 5x threshold; every endpoint temporal fraction is <=**1.79176e-4**, far below 0.2. Across all common nonzero times, the largest finest temporal fraction is **0.00390641**. Across all qualified history entries, the largest point ratio is **0.343967**. History-supremum ratios are **0.017546–0.202392**. Thus there is substantial resolved contraction at the endpoint and over the qualified histories; this is neither a fourth-order claim nor qualification of the unresolved rows. The max12 dt/2 profile error is carried separately in [temporal CSV](t14-temporal.csv); its maximum fraction of D12,13 is **0.0265074**, also subdominant.
+
+| Ray | Field | Norm | Unresolved clocks | Range of unresolved times / M |
+| --- | --- | --- | --- | --- |
+| axis | Gamma | peak | 3 | 7.12076823e-05–0.000142415365 |
+| axis | metric_Gamma | peak | 2 | 0.00032043457–0.000356038411 |
+| axis | shift | peak | 4 | 3.56038411e-05–0.000142415365 |
+| axis | shift | RMS | 6 | 3.56038411e-05–0.000213623047 |
+| axis | lapse | peak | 23 | 3.56038411e-05–0.000818888346 |
+| axis | lapse | RMS | 3 | 3.56038411e-05–0.000106811523 |
+| diagonal | shift | peak | 2 | 3.56038411e-05–7.12076823e-05 |
+| diagonal | shift | RMS | 2 | 3.56038411e-05–7.12076823e-05 |
+| diagonal | lapse | peak | 4 | 3.56038411e-05–0.000142415365 |
+| diagonal | lapse | RMS | 4 | 3.56038411e-05–0.000142415365 |
+
+Initial Gamma/metric-Gamma contain small numerical derivative residuals, not bitwise zeros: measured axis Gamma profile peaks are approximately **0.91e-12 / 1.48e-12 / 3.14e-12** on the three rungs. Initial raw Gamma D12,13 / D13,14 peaks are **1.80e-12 / 3.68e-12 axis** and **1.42e-12 / 3.93e-12 diagonal**. The sum of each pair's numerical t=0 zero-field norms supplies a retained empirical floor; differences must also exceed five times that floor. Their initial ratios are explicitly undefined rather than interpreted as growth or an order. No nonzero common-time entry is dominated by this initialization floor. A first verification assumed exact-zero raw Gamma and failed; that assumption was corrected, with its resource metadata retained. Disturbances remain differences from the actual numerical initial state.
+
+Nonzero sampling-unresolved entries have interpolation margins below one, down to **0.033884** for the finer axis shift peak difference; temporal error is subdominant even there. They are spatial sampling limitations, not activated chi/lapse floors. Axis lapse peak differences remain unqualified at 23 clocks through 0.000818888 M; the two metric-Gamma peak exceptions occur at 0.000320435 and 0.000356038 M. There is no registered exception permitting these rows to be dropped from an unconditional history pass. [Endpoint/history summaries](t14-screen.csv), [every common-time screen](t14-screen-history.csv).
+
+![Signed Gamma disturbance by rung and RMS history](figures/t14-gamma-disturbance.png)
+
+![Contraction histories; hollow markers fail the sampling threshold](figures/t14-contraction.png)
+
+![Finest dt/2 error, both spatial differences and sampling spreads](figures/t14-temporal-control.png)
+
+| Ray | Rung | Endpoint Gamma disturbance peak / M^-1 | RMS / M^-1 |
+| --- | --- | --- | --- |
+| axis | max12 | 9.39476743e-05 | 7.362559e-05 |
+| axis | max13 | 9.85564793e-05 | 8.8169479e-05 |
+| axis | max14 | 9.81982138e-05 | 8.98255362e-05 |
+| diagonal | max12 | 9.16499104e-05 | 7.47609043e-05 |
+| diagonal | max13 | 9.85905833e-05 | 8.87793945e-05 |
+| diagonal | max14 | 9.81957006e-05 | 8.98852672e-05 |
+
+The residual disturbance **stabilizes on these three rungs**, consistently with a nonzero resolved profile rather than decrease toward zero. max13→max14 peak changes are -0.36% axis/-0.40% diagonal; RMS changes are +1.88%/+1.25%. Both rays approach peak about 9.82e-5 M^-1 and RMS about 8.99e-5 M^-1. Coarse→middle changes are larger; no amplitude-stability tolerance was imposed as an admission condition. The common-time signed profiles and probe history are retained in [profiles](t14-profiles.csv) and [amplitude history](t14-history.csv).
+
+| Ray | Rung | Half-height span / native cells | Span / M | Clipped by W |
+| --- | --- | --- | --- | --- |
+| axis | max12 | 10.684 | 0.00151940243 | True |
+| axis | max13 | 23.000 | 0.00163726105 | True |
+| axis | max14 | 48.000 | 0.00170884144 | True |
+| diagonal | max12 | 7.000 | 0.00140984018 | True |
+| diagonal | max13 | 17.000 | 0.00171194879 | True |
+| diagonal | max14 | 34.000 | 0.00171194879 | True |
+
+Every dominant half-height lobe is **clipped by W**. These spans are lower bounds on full lobe width, not complete FWHMs. The recorded span increases from roughly 11 to 48 axial cells and 7 to 34 diagonal cells while its physical span approaches the width of W. Axis native values use the first cartoon row y=h/2, explicitly a proxy; diagonal values use actual centres, with spacing sqrt(2)h. [Native amplitudes and lobe widths](t14-native-lobes.csv).
+
+| Run | Steps | Actual endpoint / M | Minimum chi | Minimum lapse | Peak RSS / GB |
+| --- | --- | --- | --- | --- | --- |
+| max12 | 56 | 0.00199381510416667 | 5.491514e-07 | 0.0001909119 | 1.624424 |
+| max13 | 112 | 0.00199381510416667 | 1.375192e-07 | 7.566744e-05 | 1.673757 |
+| max14 | 224 | 0.00199381510416667 | 3.440274e-08 | 2.996484e-05 | 1.625457 |
+| max14-half | 449 | 0.0019982655843099 | 3.440274e-08 | 2.996484e-05 | 1.854325 |
+
+Every all-level valid/ghost stage/full-step census has **zero chi activations, zero lapse activations and zero nonfinite values**. Configured floors stay 1e-12; the smallest fine chi/lapse remain 3.44027e-8 / 2.99648e-5. All completed logs have zero reader messages after the first advance. The evolved shift-speed proxy was checked on **every finest recorder cell at every native snapshot**, not only the common-time support subset: max13/max14/control maxima are 1.0010670495 / 1.0010670509 / 1.0010670509. This preserves the limiting axis/diagonal incoming margins **0.001715191465 / 0.002380857872 M** beyond 0.002 M, with the declared 7h support buffer and 3h ghosts. W reads no coarse–fine ghosts directly; characteristic separation does not imply compact FD/KO support. [Evolved audit](t14-evolved-audit.csv).
+
+| Ray | Constraint RMS | max12 | max13 | max14 |
+| --- | --- | --- | --- | --- |
+| axis | C_Gamma | 0.0028620371 | 0.0002652418 | 1.8432762e-06 |
+| axis | Ham | 1.3927168 | 0.11895541 | 0.00094289002 |
+| axis | Mom | 529.01263 | 52.174593 | 0.39075116 |
+| diagonal | C_Gamma | 0.00020851679 | 1.0857712e-05 | 2.0220223e-07 |
+| diagonal | Ham | 0.92698843 | 0.028039756 | 0.00030011656 |
+| diagonal | Mom | 70.113868 | 3.3857585 | 0.034983292 |
+
+C_Gamma is signed longitudinal evolved Gamma minus native metric Gamma; momentum is the Euclidean norm of its Cartesian components. The tables retain initial, common-endpoint and history-supremum peak/RMS values, P6/P8 spreads, and GaussE for both rays and the control. The [constraint history](t14-constraint-history.csv) retains every selected clock. GaussB is exactly zero at every replayed snapshot point. Refinement reduces the puncture-near residuals shown here, but these launch-window measurements do not replace the full exterior constraint battery. [Constraints](t14-constraints.csv).
+
+### First-stage attribution and closure
+
+The unchanged T13Replay executable checks every recorded finest ROI RHS/input for the first four native steps. The max12 results are reused from its pinned T13 run; all new rungs and the control were replayed. **Every actual total RHS and projected input is bit-identical**. The following split-term budgets use raw stencil magnitudes, rather than a cancelled final RHS.
+
+| Rung | Native stage points | RHS floats | RHS / projection bit mismatches | RK scaled eps | Gamma raw-budget fraction |
+| --- | --- | --- | --- | --- | --- |
+| max13 | 231200 | 6473600 | 0 / 0 | 0.455369 | 6.78165e-05 |
+| max14 | 913952 | 25590656 | 0 / 0 | 0.424264 | 2.50139e-05 |
+| max14-half | 913952 | 25590656 | 0 / 0 | 0.450444 | 2.49427e-05 |
+| max12 | 59168 | 1656704 | 0 / 0 | 0.471353 | 0.000129325 |
+
+| First predictor Gamma physical RHS | Recorded | Remove all KO increments | Remove A KO only | Remove EMS KO only |
+| --- | --- | --- | --- | --- |
+| max12 | -4.941202 | 0.30864777 | 3.0320594 | -4.9413367 |
+| max13 | -3.9049672 | 0.28098741 | 2.4372376 | -3.9050093 |
+| max14 | -3.0888025 | 0.23423268 | 1.9411375 | -3.0888157 |
+
+These offline dependency tests remove only indicated KO increments from the captured first half-step predictor, reapply native projections and evaluate the frozen physical RHS. They never evolve an altered state or call a static reader. The signed changes identify sensitivity of the renewed **local puncture-cell** geometric source to KO feedback, principally A; they do not assign an additive share of the later outgoing pulse to KO. The continuing fixed-window disturbance stabilizes under refinement, so local regeneration does not establish significant noncontraction or warrant changing the numerical method under this card. [Dependency tests](t14-predictor-feedback.csv).
+
+Fixed P6 weighted step-profile closure is within **7.6233e-20 M^-1**. Trace removal changes only A components; floors produce zero updates. Gamma, shift, driver, lapse, chi, Theta and EMS fields have exactly zero direct projection update. Every per-operation/component maximum is retained in [projection table](t14-projections.csv); every stage's geometric/advection/direct-KO contributions on W and at the first puncture cell are in [stage attribution](t14-stage-attribution.csv). The additional [puncture stage table](t14-puncture-stages.csv) records all 28 components plus longitudinal Gamma at four cells (0,0), (1,0), (0,1), (1,1); [weighted puncture budgets](t14-puncture-budgets.csv) retain signed increments. KO/total norm ratios can exceed one because signed contributions cancel; they are not energy fractions.
+
+![Signed puncture-cell totals/direct KO and W direct-KO norm ratios; each rung uses its own first four native steps](figures/t14-stage-attribution.png)
+
+**Verdict:** the strong endpoint and qualified-history contraction plus stabilizing resolved profile are promising, but the unconditional registered history screen remains **inconclusive** because sampling obscures 53 required entries. No Stage D draft is promoted under this result; no automatic ladder extension, production admission, gauge/KO/finder change or 100 M claim follows. The short window cannot exclude delayed emission. A future controller decision would need to qualify those sampling-limited differences or explicitly predeclare a narrower history claim before another qualifying screen.
+
+Final analysis peak RSS is **1.198047 GB**, sampled active-tree peak **1.312571 GB**; every recorded process stays below 3 GB. The stage-attribution helper now streams one ordered stage group instead of retaining all sixteen; numerical groups and accumulation order are unchanged, with sixteen-group and native/RK closure checks. The highest evolution peak is **1.854325 GB**. All six per-rung analysis job markers are zero and no job remains pending. Exact hashes of overwritten closure outputs were reconstructed from the retained lossless q arrays and retained per frame; no native RHS rerun was needed for those hashes. Original failed census, output-gated run and first verification failure remain recorded. [Completed resource table](t14-resources.csv), [restart completion](t14-restart-completion.csv), [verification](t14-verification.csv).
+
+Reproduce with the measured `t14-run.py` wrapper, `T14_OUTPUT_ROOT=/private/tmp/ems-t14/analysis T14_DISK_CAP_BYTES=8000000000`: `t14-analyze.py extract max13|max14|max14-half`, `screen`, and `stages max13|max14|max14-half`; then `t14-report.py baseline`, `figures`, `check`, `report`, and `t14-prepare.py manifest`. Per-rung jobs and their atomic markers are under `analysis/jobs`; all native caches and exact removed-payload hashes are retained under `analysis`. They run serially, <=4 threads, under measured 3 GB per-process and active-tree gates. Production sources, binaries, parameters, equations, gauge, KO, transfers, precision, puncture formulation and the author's finder remain unchanged. No SSH or commit.

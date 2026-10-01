@@ -23,13 +23,22 @@ def attribution():
     # Groups are summed as profiles before taking norms (norms are not additive).
     a.SELECT=list(range(a.COL));a.ODD_C=a.ODD
     for leg in a.LEGS:
-        dt=a.DT/(2 if leg.endswith('half') else 1);groups={};integrals={}
-        for f in sorted((OUT/(leg+'-stages')).glob('frame-*.npz')):
-            with np.load(f) as z:
-                key=(float(z['meta'][0]),int(z['stage']))
-                groups.setdefault(key,[]).append((z['cells'].copy(),z['q'].copy(),z['meta'].copy()))
-        assert len(groups)==16,(leg,len(groups))
-        for (start,stage),frames in sorted(groups.items()):
+        dt=a.DT/(2 if leg.endswith('half') else 1);integrals={}
+        # Hold one stage, rather than all sixteen at once on source-refined grids.
+        def groups():
+            key=None;frames=[]
+            for f in sorted((OUT/(leg+'-stages')).glob('frame-*.npz')):
+                with np.load(f) as z:
+                    next_key=(float(z['meta'][0]),int(z['stage']))
+                    if frames and next_key!=key:
+                        assert next_key>key, (leg,key,next_key)
+                        yield key,frames;frames=[]
+                    key=next_key
+                    frames.append((z['cells'].copy(),z['q'].copy(),z['meta'].copy()))
+            if frames:yield key,frames
+        stage_count=0
+        for (start,stage),frames in groups():
+            stage_count+=1
             cells=np.concatenate([z[0] for z in frames]);q=np.concatenate([z[1] for z in frames]);meta=frames[0][2]
             assert len(set(map(tuple,cells)))==len(cells)
             step=round(start/dt)+1
@@ -70,6 +79,7 @@ def attribution():
                     rows.append(dict(run=leg,step=step,stage=stage,stage_time_M=float(meta[3]),
                         ray='diagonal',region='first puncture cell '+var,group=group,peak_RHS=abs(value),
                         RMS_RHS=abs(value),probe_RHS=value,interpolation_peak=0.,interpolation_RMS=0.))
+        assert stage_count==16,(leg,stage_count)
         for ray in a.NV:
             z=np.load(OUT/(leg+'-'+ray+'-profiles.npz'));v=z['p6'][:,:,11:13]@a.NV[ray]
             for step in range(1,5):

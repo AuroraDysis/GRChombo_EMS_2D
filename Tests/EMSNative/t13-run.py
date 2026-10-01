@@ -5,7 +5,9 @@ from pathlib import Path
 
 HERE=Path(__file__).resolve().parent
 ROOT=Path(os.environ.get('T13_OUTPUT_ROOT','/private/tmp/ems-t13'))
-CAP=6_000_000_000
+CAP=int(os.environ.get('T13_PROCESS_CAP_BYTES','6000000000'))
+TREE_CAP=int(os.environ.get('T13_TREE_CAP_BYTES','7750000000'))
+DISK_CAP=int(os.environ.get('T13_DISK_CAP_BYTES','5700000000'))
 LIB=ctypes.CDLL('/usr/lib/libproc.dylib',use_errno=True)
 
 def tree_usage(root):
@@ -48,22 +50,24 @@ def measure(label,command,directory):
             old=peaks.get(pid,(0,0));peaks[pid]=tuple(max(a,b) for a,b in zip(old,v))
         # The serial queue's inner job watchdog owns termination/markers. Leave
         # 250 MB for its idle ancestors and avoid racing two disk-gate killers.
-        if label!='queue' and (any(max(v)>CAP for v in usage.values()) or total>7_750_000_000):
-            reason='memory gate: 6 GB per process / 8 GB tree'
+        if label!='queue' and (any(max(v)>CAP for v in usage.values()) or total>TREE_CAP):
+            reason=f'memory gate: {CAP} per process / {TREE_CAP} tree bytes'
         if label!='queue' and time.monotonic()-disk_check>10:
             disk_check=time.monotonic()
-            if sum(q.stat().st_size for q in ROOT.rglob('*') if q.is_file())>5_700_000_000:
-                reason='T13 output ceiling 5.7 GB'
+            if sum(q.stat().st_size for q in ROOT.rglob('*') if q.is_file())>DISK_CAP:
+                reason=f'output ceiling {DISK_CAP} bytes'
         if reason:
             os.killpg(p.pid,signal.SIGTERM);break
         time.sleep(.25)
     time_rc=p.wait()
     child=json.loads(child_meta.read_text()) if child_meta.exists() else {}
     rc=child.get('returncode',time_rc)
-    peak=resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss
+    # A gate kill can prevent the child wrapper from writing its wait4 result.
+    peak=max(resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss,
+             child.get('peak_rss_bytes',0),max((v[0] for v in peaks.values()),default=0))
     row=dict(process=label,command=json.dumps(command),directory=str(directory),
              wall_seconds=time.monotonic()-start,peak_rss_bytes=peak,
-             rss_GB=peak/1e9,cap_GB=6,returncode=rc,gate_reason=reason,
+             rss_GB=peak/1e9,cap_GB=CAP/1e9,returncode=rc,gate_reason=reason,
              tree_peak_bytes=tree_peak,per_pid_peaks=peaks,
              time_returncode=time_rc,child_measurement=child,
              measurement='time -l; wait4 RUSAGE_CHILDREN fallback if sandbox sysctl denied')
