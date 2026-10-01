@@ -1,0 +1,14 @@
+{
+  "status": "CORROBORATED",
+  "scope": "transfer layer \u2014 production physics not certified",
+  "points": 6,
+  "precision_digits": 60,
+  "profile_sha256": "2a8de074ae17c0b11d323d4b0933a6bdb7430a5305473c8cc7d4ce37f39fa793",
+  "worst_relative_error": 1.6261753023913785e-12,
+  "Y0": "0.13570329494190452491785263634048497107549788596700529629965",
+  "D0": "2.27780902270374761156489872565893793689499922130172651425183",
+  "k0": "-3.55942203301979576884590376625169637964646975192829987558985",
+  "Gamma_rhs_limit": "419.671110806098885528662242641688499315056178630718487124025",
+  "nu": "1.3372155112113841557430760076385922729969024658203125",
+  "definition": "Independent Chebyshev recurrence + mpmath differentiation, compared to C++ reader jets + unmodified CCZ4Cartoon RHS; real R>0"
+}

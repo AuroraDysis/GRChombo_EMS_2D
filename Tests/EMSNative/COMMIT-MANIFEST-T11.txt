@@ -1,0 +1,94 @@
+# T11 initialized RHS/source audit; HEAD bb2d9f3; no commit.
+# READY-EXCEPT: inner fine-step Taylor/causal split unresolved by coarse-step snapshots; no evolution launched.
+# Production C++, Chombo and all EMS inputs unchanged; Tests-only native RHS harness.
+# Float64, sigma=1, point; static Chebyshev operations restricted to t=0 diagnostics.
+# Native 82807 cells / 2318596 output components: 0 production-kernel bit mismatches; Gamma term split <=2.494 eps scale.
+# Driver cancellation exact; 108864 parity/seam ghost values: 0 bit/numeric differences; t=0 floor cells=0.
+# Selected input-box hashes are in t11-input-provenance.csv; full large plot files are not re-read or re-hashed.
+# Numerical source data: continuum Gamma limit 419.6711108060989; first-cell lapse-gradient error about -30.3; KO(A12) ~4.14/h.
+# CAS scope: algebraic identity / transfer layer — production physics not certified.
+# Public artifacts (manifest does not hash itself):
+# public
+b30e079639feb76ac79eedfda238b22b42269f2d91955fd5b88c275930838f66  Tests/EMSNative/README.md
+2e7a7eec88d8b2d7c1990dccad175f5e4bcc16b42dcf20e44b796214999def8e  Tests/EMSNative/T11RHS.cpp
+019f78764fc2343c2b48931d79d012a573b7d79314e813bb4d2f729adf1d23a2  Tests/EMSNative/t11-analyze.py
+f70c51f3ef7c2e190eb2e15d445e3d39ac11691683430e1c31f0caf52e72962e  Tests/EMSNative/t11-analysis-resources.csv
+b8cebacbbf3d63c90388c8a75f710e82026bc45e8e62061d2b8b2307309eb0cb  Tests/EMSNative/t11-continuum-crosscheck.csv
+1045ac801fabebbac2b740c6c584cf3a680439ec0d3b88603fb7e3272893e951  Tests/EMSNative/t11-continuum-errors.csv
+d6b425fc619fe346c61a3b10a96176c015ba499d8304401c391fb762df31e3fb  Tests/EMSNative/t11-ghost-controls.csv
+af7b221e351c8454053b395380f8b587c62d4c8e4b09da278db391520a889795  Tests/EMSNative/t11-harness-controls.csv
+bb9a33e4c8afe7fb70245c8a8e1e02e3cde291e11f0885783d4b09f360cf704a  Tests/EMSNative/t11-independent-launch.csv
+c28e0f8111a8ec8afb18ecd2d0e36d8a1d1169588a2d851a09b83eb9eb89d0e5  Tests/EMSNative/t11-inner-cell-terms.csv
+fd938e728bdb761aadd20e9b645b3ce0c5a865fe50905c2d87f1060bac2900dc  Tests/EMSNative/t11-input-provenance.csv
+c358658ab947cd1bae0f1c8caefddf7c104e932988e1daab0372f20323c7bc9b  Tests/EMSNative/t11-io-E-high.csv
+5a8bef3a3cb60511de9bffc7246b592687e88f70c7a425c25005c73d8ae98454  Tests/EMSNative/t11-io-E-low.csv
+f4065938392569c8e7d32e399bc68e3601c0e89af97f995705ba0e815f6ef6da  Tests/EMSNative/t11-io-E-mid.csv
+1f9ffe2fe97dedef8251ae98e69bfa0f5fd8a27b61561f5d6b6f7d07d9aca8af  Tests/EMSNative/t11-launch.csv
+cbffc6581e756a1e6f63e893205feb8a59d4bfc0756a46df93246a6460434cca  Tests/EMSNative/t11-native-profiles.csv
+fb75446eb742c1a75f93989465a9eeb3aa4585eb82b29ce1c5eaab3543664e4b  Tests/EMSNative/t11-rhs-orders.csv
+a3bba2939137b8ee50e2246abc9200c67ee1c28a4bc0d241811e3adf89c9e8e9  Tests/EMSNative/t11-source-widths.csv
+eeec7953af0ffe73c6f1ae2ba9db6457c793d3880b77c91c7b8f41114996cbe6  Tests/EMSNative/t11-step-profiles.csv
+7a472750d9be05cd407ed862ffced8234ec1c16275254dc40effe120a9ea4f98  Tests/EMSNative/t11-step-validation.csv
+51c804baeec33c1328234ad6cd4e61ddbddce34bf22ce38706d4fd6d575a3e60  Tests/EMSNative/t11-term-peaks.csv
+99f75baf7a6a31c988786b67439e4c48eced06ac1813fda1a194ff171f225e93  Tests/EMSNative/t11-uncovered-sources.csv
+6ffe83e7e405a889ec53ea70acb1c36082bf0c5b004870147a2bfa9b70c2c913  Tests/EMSNative/t11-variable-peaks.csv
+d89c9ddf1903d7d3615275f613ea201bc1391aae14ba3ef76c088c351b5f14c7  Tests/EMSNative/figures/t11-continuum-puncture.pdf
+74e1d27b39401c28a47c3fc1e48d9687d8843c041d58ef6b16e8721d04216d36  Tests/EMSNative/figures/t11-continuum-puncture.png
+5039ab1624b3abd20d8a36f23f4179b2edf009385c580f1c90ff4698d02fc10d  Tests/EMSNative/figures/t11-rhs-convergence.pdf
+0f8f79bf6b62592cbe34e84d51812701bf075769025a64fd50dfc6773841d2c2  Tests/EMSNative/figures/t11-rhs-convergence.png
+e6baaf5f9c07d23b81d02de8484bf86aae4fb542154ca98db37a63c9e5ce7f9e  Tests/EMSNative/figures/t11-step-validation.pdf
+9ee70705f52ab4d055ee64c726726368c198788b442f746a6e477e5724773d98  Tests/EMSNative/figures/t11-step-validation.png
+76cbd506272eea5035fa3c6568a096fbf79a703770771e38abcf871b324f4d9f  Tests/EMSNative/figures/t11-term-profiles.pdf
+770e9a493006eea3862c8d95f2a5e20254ac82dc0504a0489ba14815850c1db1  Tests/EMSNative/figures/t11-term-profiles.png
+a31e1c4d28c698161266785fcddd2afb151659e5a7831ab8a3d3344310145f77  scripts/cas/t11-continuum-crosscheck.json
+19f89b1e1436df6a4fe7ed31dac64bbe2f222c9c404b1850376fb6e90992d48d  scripts/cas/t11-continuum-crosscheck.py
+e5d15478f966c18987c2b4440fe5ed826aca12a4af9977e3dc930baa1d8539b6  scripts/cas/t11-evidence.md
+19568977357f730d710a247eac073ec22945398e33155f26150277e8ef0483b7  scripts/cas/t11-radial-verify.json
+ddfd1cdf2398287960dc409f05dca6b6c3e5aeeb02a796725dfd2b403d50fea4  scripts/cas/t11-radial-verify.py
+# frozen source
+d75e0771c6026844f3f847f83d6bb5d10cc6f1553350b5537e5171ba250e33f3  Examples/EMS/EMSBH2DLevel.cpp
+b9050d7471f301cb162acb0b51276628ef45e71fc58ed6bf3da7c646a6285ea2  Examples/EMS/EMSCouplingFunction.hpp
+8223cb716710f5eb7842d716bebde8b0b1cc053d002324a2eebcf56f161b4c5a  Source/CCZ4/ExperimentalGauge.hpp
+c3d11fd082bf2dddafbc3aa63a8f5f82198a535a52cd3e537c21401db782921e  Source/Cartoon/CCZ4Cartoon.hpp
+beb935bd2dc3123120a59b1f3af1d750c9e9119681c5455ce5dac85ad81cb42f  Source/Cartoon/CCZ4Cartoon.impl.hpp
+2aca1028a6b3004b755ef882aa40a8d7e5a1527b889e53b7cb8348767eb05e53  Source/Cartoon/CCZ4CartoonGeometry.hpp
+641fb1b62e405dd95896051a43393b3c5eb7e8e77e5d5246a4f402709bc86c10  Source/BoxUtils/FourthOrderDerivatives.hpp
+d85fbaa88799dce08ca77f13dba72102213423eb8a7cc52dd13c84ff60b3ba4c  Source/Cartoon/TraceARemovalCartoon.hpp
+5d27f77d10a5ba84a6b35d9f5df1e4d5b3cbe00cf77f8e99a47cb58ec9ee278a  Source/CCZ4/PositiveChiAndAlpha.hpp
+536627cbd340780004fa5079ef4284fa4cffd42ec94d8999e954cc8654211a9b  Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp
+d5ddb552b92c9bd421bd5956304e1d4c05a9d5ddf8b4130c2790666965b792fb  Source/InitialConditions/EMSBH/1D_SOL/EMSTrumpetSolution_read.impl.hpp
+3d4db189bb835aa293c8d251eb611c6368738a410b3241863a2e9da61b625898  Tests/EMSNative/t7e-localize.py
+# read-only inputs
+2a8de074ae17c0b11d323d4b0933a6bdb7430a5305473c8cc7d4ce37f39fa793  /Users/auroradysis/Workspace/EMS/artifacts/echo/E.trumpet
+53b3da0dc74796cb72d75158e260a31114a84ccdf6384067071f771bf4a78619  /Users/auroradysis/Workspace/EMS-deps/worktrees/consult-6b-reply.md
+64b3cf370aa10385e698307e0f88048603008d97c3956d59f8905b4ff67eefa4  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/params-E-low.txt
+29eaefb63242e2daa73e8a6b25f62b91a1dd5394c7bbb829d3ae2d7b90a4dcc8  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/params-E-mid.txt
+47720008a301ccfb03620ced4bd115bed4446dab2f116fec99344ea09fda9de8  /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0020/submissions/exp-0020/params-E-high.txt
+05f4509e986f8c0a04502bf5ddaca8ba549886a0ecd105e7bae14e50d5039acd  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/launch-native.csv
+43530cf6631bf5284a606564e79f7ba91b6c643dc5ec6ef495008477f6249dfe  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/launch-native-widths.csv
+128221f18ad8446246c76bf09261428031d5f60bc0adf7f6803dfc2b6a53bdde  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000000-axis.npz
+61dea5a078e711b47ded28d52fd883e8e420241e00a5bcb65bcaf6c31b62494e  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000000-diagonal.npz
+c6e5b2c4d8fe65123284107d340c2c8900938e8c02d9fd37a281cfb4eea76664  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000001-axis.npz
+1fbbaacdcc55af2cd5ec7f4387bca555b5720606f6fb3c4abc6403dabbeeaab8  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000001-diagonal.npz
+bc40fbb10a5505091a7d678d69bc48ec4a424aeb369b84dd6af4caa9e4ede813  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000002-axis.npz
+90c5cf3917015848524e7f02736af976934735d21ad1874909a59742a0fb4dd1  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000002-diagonal.npz
+196fc5492e35de8085c44c4716ea1acd6d896973ad3911de49cecb16bfe62b63  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000003-axis.npz
+4c701696d8c85a355998d964387f1b7367f9a3e674dd1bac2527f4e10c21baec  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000003-diagonal.npz
+87f81d9f3349ef07553e009efb14e186367287c97d8e422169223f4fe1222da5  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000004-axis.npz
+1835e76d32ddecccaa1005f47e77df23d7a70b61ea77c77d7f7063ff9988391a  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000004-diagonal.npz
+f9c641464ca62d0d9aab107e5672bf3e241853fc046f797e0c39a289849faab8  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000005-axis.npz
+d41b086e684962bce462bf35e0adfa78c1ab7f632af5bd03328d9e21121d2e57  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000005-diagonal.npz
+b8c5bfa3f657da8cbee19f0ae299a7e81e52addec9f3513f815e4a298c2a0a0b  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000006-axis.npz
+689143e4a7c476376963073db2d3f1b5c9776739b9d0d5d7afa6d068af2ca9ac  /Users/auroradysis/Workspace/EMS/.data/exp-0022/E-L/rays/E-L-step000006-diagonal.npz
+# retained diagnostic caches and build
+e2f6e668467ad96f6f457592fb5c067cec61db939494c2bcf19e41cd0f0ce492  /private/tmp/ems-t11/E-high-continuum.npz
+ef3f1d149afb9c397ba4b7d569d45a28d3b9e376500ef7b755b0e95c47a4a79d  /private/tmp/ems-t11/E-high-native.npz
+44d7a57a2f88d2c015930d2677a0400d6d857b0f9e37d0c533252d46ab34ba28  /private/tmp/ems-t11/E-low-continuum.npz
+8aacfa7db274fa6f6fef128c1e9a47632f66e0c95535c07881a2e5cf09396397  /private/tmp/ems-t11/E-low-native.npz
+b456955d9701d8930a7de96e6b05d79b4e6f2f8707e6c7baa88fdf6d2e1f1246  /private/tmp/ems-t11/E-mid-continuum.npz
+a7899679187066863c649b9c76f285282290bc2b3435d369518780d385ed6da0  /private/tmp/ems-t11/E-mid-native.npz
+385382ac63acdddbc494cffcfb2aa4ac5785526b35eef57696c81c5453c28b7b  /private/tmp/ems-t11/fixed-axis-continuum.npz
+3147aff9df02d2e86dcde009e4ddd4ee9d28ad48b92ec873be48a59e867c2201  /private/tmp/ems-t11/fixed-diagonal-continuum.npz
+a6ce5271a9de4a09cc37575f9b2b5e5d5fbbd9205ca736338bef8e1e1d100ef9  /private/tmp/ems-t11/radial-continuum.npz
+66054a5fe9b88a6360da507d64c2f5805b343eaa47c42cd131a6a9ca1d676d52  /private/tmp/ems-t11/rhs.ex
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /private/tmp/ems-t11/rhs.ex-build.log

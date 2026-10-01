@@ -1,0 +1,14 @@
+{
+  "status": "PROVED",
+  "scope": "algebraic identity \u2014 production physics not certified",
+  "claim": "Radial vector Laplacian/grad-div, radial A derivatives, inverse compactification second derivative, leading lapse/chi balance",
+  "domain": "r>0, nu>0, 0<s<1, Y0>0, n.n=1; real positive powers; excludes r=0 and s=0,1",
+  "witness": "Exact rational numerators reduced modulo n.n-1; coefficient cancellation for srr and leading balance",
+  "exact_components": 36,
+  "simplifier": "cancel/rem only, assertions consumed",
+  "numerical_points": 12,
+  "numerical_components": 36,
+  "precision_digits": 60,
+  "seed": 11011,
+  "worst_residual": "3.11150763893057085357203202689006212029512608436058356655056e-61"
+}

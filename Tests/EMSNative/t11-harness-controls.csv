@@ -1,0 +1,4 @@
+leg,cells,term_sum_defect_eps_max,Base_compute_bit_mismatches,driver_cancellation_max,lapse_sqrt_chi_max,Gamma_t0_max,floor_cells,finite
+E-low,17194,2.4938137089542742,0,0.0,0.0,5.846751654254536e-13,0,True
+E-mid,26119,2.3273647840943443,0,0.0,0.0,8.770127481381803e-13,0,True
+E-high,39494,2.478198993440671,0,0.0,0.0,1.3155191222072706e-12,0,True

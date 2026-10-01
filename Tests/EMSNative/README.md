@@ -2465,3 +2465,166 @@ There is no measured saturated w(r,t) from which to admit receiving-cell counts 
 ### Reproduction and retained artifacts
 
 Run `/Users/auroradysis/miniconda3/bin/python Tests/EMSNative/t10-analyze.py extract`, then `analyse`, `audit`, `figures`, with `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1` and `MPLCONFIGDIR=/private/tmp/ems-t10/mpl` for figures. Extract is the exact numerical/bit comparison check and reads only ray-support boxes. All commands completed well below ten minutes. Public CSVs total about 2 MB, figures are standalone PNG/PDF, and dense selected caches stay on disk with recorded hashes. [COMMIT-MANIFEST-T10.txt](COMMIT-MANIFEST-T10.txt) identifies public outputs, reused/ sealed scripts, controller-verified plot hashes and retained cache hashes. No commit was made.
+
+## T11 — initialized longitudinal RHS and puncture-end source
+
+**READY-EXCEPT:** the t=0 source is localized to the puncture-end cells, and its leading term is identified. It is a nonregular geometric source already present in the continuum RHS of the **actual initialized state**, with an additional O(1) lapse-gradient discretization error in the first cells and a 1/h KO source on the angular extrinsic-curvature components. The shift-driver combination cancels exactly. The native harness is bit-identical to a direct call of the unmodified production kernel. The supplied first coarse-step snapshots cannot certify the inner-cell Taylor expansion or determine how much of the emitted pulse is seeded by geometric Gamma versus KO on A: they skip 4096 finest-level steps before their first sample. This qualification is not deferred as an unreported validation pass.
+
+This is an offline, read-only diagnostic on HEAD bb2d9f3. No production C++, initialization, evolution, gauge, Chombo, finder, parameters or input file is changed, and no commit or evolution run is made. All static-file operations are explicitly t=0. Positive-time analysis reads only E-L's saved numerical fields. Four standalone scientific figures use the sciplot workflow; this report follows the sciwrite evidence/limitation convention.
+
+### Native kernel, saved ghosts and exact controls
+
+[T11RHS.cpp](T11RHS.cpp) is a Tests-only subclass of `CCZ4Cartoon<ExperimentalGauge,FourthOrderDerivatives,CouplingFunction>`. It calls the production protected RHS on native derivatives, separates KO using the production dissipation method, and independently groups the Gamma equation's contributions. It applies the same trace-A removal and 1e-12 chi/lapse floors to the entire input stencil, including ghosts, as `specificEvalRHS`. For a second control it calls the public production `compute` and compares all 28 outputs bit for bit with the native RHS plus sequential native dissipation additions. Arithmetic order matters when two KO directions cancel; the bit control uses the production addition order, whereas separately reported KO is the sum of the two directions.
+
+All three exp-0020 t=0 plots carry every one of the 28 evolved variables, including A and EMS fields, plus six constraints, and three saved ghost cells in both directions. The supplied exp-0019 E-high checkpoint also carries the 28 evolved variables and three ghosts, but has centre 224 and a different hierarchy; it is not substituted for the E-mid source state with centre 336. Plot time is checked to equal zero before any native or continuum preparation. Only selected ray-support boxes on levels 7–12 are read; no whole level is loaded. The streamed seven-by-seven stencils include current-field parity and coarse/fine ghosts exactly as stored. Float64, point transfers, sigma=1, G=1, eta=1, shift Gamma coefficient 0.75 and kappa=(0.1,0,1) match the supplied parameters. The native covariant damping actually uses 0.1*alpha/(0.005+alpha), as in the frozen source.
+| rung | native cells | production output bit mismatches | Gamma split defect / ε max(1,sum abs terms) | driver cancellation max | floor cells |
+| --- | --- | --- | --- | --- | --- |
+| E-low | 17194 | 0 | 2.493814 | 0.0 | 0 |
+| E-mid | 26119 | 0 | 2.327365 | 0.0 | 0 |
+| E-high | 39494 | 0 | 2.478199 | 0.0 | 0 |
+
+There are 82,807 sampled cells and 2,318,596 production-output components. All are finite. Alpha equals sqrt(chi) bit for bit in the stored numerical fields; the largest initial Gamma component is 1.315519e-12. The split error is at most 2.494 machine epsilons times the stated absolute-term scale. [t11-harness-controls.csv](t11-harness-controls.csv) retains the controls. A separate **108,864-value** comparison of the first three puncture-cell stencil halos with valid same-level owners and exact axis parity has **zero numeric and zero bit differences**, on every rung and level 7–12; see [t11-ghost-controls.csv](t11-ghost-controls.csv). Thus the first-cell source does not result from a wrong parity fill or a same-level seam copy. Its stencil is far from a coarse/fine face.
+
+### Actual initialization and term decomposition
+
+The stored trumpet Killing lapse is not the initialized lapse. `EMSBH_trumpet_read::conformal_decomposition` sets alpha(0)=sqrt(chi), even though the radial reader also reconstructs alpha_K. The geometric data have h_ij=delta_ij, chi=X², K=0 and A_ij=k(3n_i n_j−delta_ij) in the unboosted continuum reconstruction. Numerical metric/K deviations are at floating-point precision. This is a correction to the assumed stationary-lapse picture, not a proposed initialization or gauge change.
+
+`ExperimentalGauge::compute` sets B_driver=0.75*Gamma−eta*beta. Consequently 0.75*Gamma−eta*beta−B_driver is **exactly zero** on every native sampled cell at t=0. The actual gauge equations are alpha_t=advec(alpha)−1.8*alpha*(K−2Theta), beta_t=advec(beta)+0.75*Gamma−eta*beta−B_driver, and B_driver,t=−0.1*B_driver, with native KO added to each. There is no advection in the driver equation, although the generic derivative object computes an unused driver-advection value. The lapse coefficient in the parameter file does not replace the hard-coded 1.8 in ExperimentalGauge.
+
+The table gives signed extrema of Gamma-normal contributions over 0<r<=0.5 M on **E-mid L12**. Native axis profiles use the closest row y=h/2 and label its horizontal coordinate x−336 as r, matching E-L's native provenance; the same-cell continuum comparison uses the actual (x−336,y). Diagonal profiles use x−336=y and r=sqrt(2)*y. Fixed physical P6/P8 axis sampling later uses y=0. Cartesian 2D Laplacian and gradient/divergence terms plus cartoon terms together form the 3D shift-second-derivative block; the longitudinal coefficient is 4/3, not an extra 4/3 multiplying the full Laplacian. The reported curvature width counts connected native centres above half the absolute curvature maximum, using the native fourth-order radial difference of each RHS contribution. `E` denotes an endpoint lobe whose inner side is not bracketed; it is not a complete FWHM. Widths of pure roundoff/zero terms are not physical packets.
+| Gamma term | axis extremum | axis r/M | diagonal extremum | diagonal r/M | curvature centres axis / diagonal |
+| --- | --- | --- | --- | --- | --- |
+| advection | -1.570588e-11 | 6.195068e-03 | -2.013756e-11 | 1.419910e-02 | — / — |
+| shift_laplacian_2D | -1.199528e+02 | 1.210531e-03 | -1.200149e+02 | 1.107732e-03 | 3 E / 2 E |
+| shift_graddiv_2D | -3.998270e+01 | 1.210531e-03 | -4.000421e+01 | 1.107732e-03 | 3 E / 3 E |
+| lapse_A | 1.000623e+02 | 2.136230e-04 | 1.009098e+02 | 3.021086e-04 | 1 E / 1 E |
+| chi_A | 2.953581e+02 | 3.560384e-04 | 3.118206e+02 | 1.007029e-04 | 2 E / 2 E |
+| K_gradient | 3.595880e-13 | 6.337484e-03 | 4.811926e-13 | 8.156932e-03 | — / — |
+| Theta_gradient | 0.000000e+00 | 7.120768e-05 | 0.000000e+00 | 1.007029e-04 | — / — |
+| geometry_2D | -2.250816e-13 | 6.337484e-03 | -2.666522e-13 | 9.365367e-03 | — / — |
+| cartoon_geometry | -7.354352e-14 | 6.337484e-03 | -8.888406e-14 | 9.365367e-03 | — / — |
+| cartoon_shift | -5.240559e+01 | 1.637777e-03 | -5.244947e+01 | 1.510543e-03 | 2 E / 2 E |
+| reduction | -1.702767e-13 | 6.337484e-03 | 2.143728e-13 | 3.021086e-04 | — / — |
+| matter | -3.994606e+00 | 5.055745e-03 | -3.995132e+00 | 4.934441e-03 | 1 E / 17 |
+| KO | 3.987819e-09 | 6.764730e-03 | -5.435512e-09 | 3.796498e-02 | — / — |
+
+The dominant positive Gamma terms are −2*A^ij*partial_j alpha and −3*alpha*A^ij*partial_j chi/chi. The shift-second-derivative block contributes the opposing fractional-power correction. K/Theta gradients, Christoffels of h and hww, reduction damping and Gamma advection have no material initial narrow source. The scalar-momentum matter term is nonzero, but its peak is a broader feature near 0.005 M and is much smaller than the puncture source. All signed profiles, including beta advection/driver/KO, driver decay/KO and lapse advection/slicing/KO, are in [t11-native-profiles.csv](t11-native-profiles.csv); every term/level/ray extremum and width is in [t11-term-peaks.csv](t11-term-peaks.csv). The frozen kernel evaluates all 28 RHS variables; [t11-variable-peaks.csv](t11-variable-peaks.csv) retains physical/advection/KO extrema, including every h/A and EMS component.
+
+The following are **same-cell comparisons** at the closest positive diagonal cell. They use the continuum source at that cell's actual radius, not a fit or a target for evolution.
+| rung | h12/M | r/M | Gamma RHS | continuum Gamma RHS | native − continuum | lapse-gradient error | KO(A12) | h12*KO(A12) | KO(alpha) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| E-low | 2.136230e-04 | 1.510543e-04 | 259.237268 | 281.422704 | -22.185436 | -30.249721 | 1.931183e+04 | 4.125452 | 0.342630 |
+| E-mid | 1.424154e-04 | 1.007029e-04 | 276.898194 | 300.002273 | -23.104079 | -30.326939 | 2.901031e+04 | 4.131514 | 0.342139 |
+| E-high | 9.494358e-05 | 6.713525e-05 | 291.926523 | 315.887311 | -23.960788 | -30.371877 | 4.355244e+04 | 4.135024 | 0.341849 |
+
+The approximately −30.3 lapse-gradient error stays O(1) as the first cell moves inward with h. This is the fourth-order centred stencil differentiating the conical alpha~r/Y0, not an error at a fixed nonzero physical radius. It occupies the first few cells. Native Gamma KO is only about 1e-9–1e-8 and cannot explain a Gamma RHS of hundreds. **KO on A12 is different:** h*KO(A12) approaches approximately 4.14, and its peak grows as 1/h. A_ij has a bounded but direction-dependent puncture limit; applying Cartesian KO to those angular components creates a singular grid-scale RHS. The corresponding source on lapse is O(1), approximately 0.342. E-mid's diagonal L12 maxima of KO(phi), KO(Pi) and KO(Ex) are 0.0837899, 0.943445 and 119608.4 respectively; the covariant electric field also has a singular puncture representation. These are real current-field stencil effects, not new continuum damping or targets. They demonstrate that a Gamma-only KO audit would miss large coupled sources.
+
+### Where the source is, and how it scales
+
+The first Gamma RHS curvature lobe is at 2.5h on the axis and 3.5355h on the diagonal, with one/two counted native centres; both are endpoint lobes. The first two radial stencil points cannot supply a centred five-point second difference, so these are **first evaluable** curvature locations, not proven locations of the exact maximum. The source itself is present at the innermost cell before any update. Its extremum and its curvature are different measurements.
+| rung | axis max Gamma RHS | diagonal max Gamma RHS | axis curvature peak | diagonal curvature peak | axis / diagonal lobe centres |
+| --- | --- | --- | --- | --- | --- |
+| E-low | 2.254272e+02 | 2.592373e+02 | 2.039627e+08 | 1.227036e+08 | 1 / 2 E |
+| E-mid | 2.497049e+02 | 2.768982e+02 | 3.841087e+08 | 2.221857e+08 | 1 / 2 E |
+| E-high | 2.703411e+02 | 2.919265e+02 | 7.494345e+08 | 4.218065e+08 | 1 / 2 E |
+
+| level | positive axial face/M | E-mid uncovered axis Gamma extremum | E-mid uncovered diagonal Gamma extremum |
+| --- | --- | --- | --- |
+| 7 | 0.875000000 | -2.556267e-08 | no uncovered cells at r≤0.5 |
+| 8 | 0.437500000 | -1.131626e-06 | -1.740602e-07 |
+| 9 | 0.218750000 | -3.666605e-05 | -6.721603e-06 |
+| 10 | 0.109375000 | -8.146344e-04 | -1.835802e-04 |
+| 11 | 0.054687500 | -6.066621e-03 | -2.923129e-03 |
+| 12 | 0.027343750 | 2.497049e+02 | 2.768982e+02 |
+
+Actual inner faces are R12=0.02734375, R11=0.0546875, R10=0.109375, R9=0.21875 and R8=0.4375 M; R7=0.875 M is outside the requested interval. Their diagonal corners are sqrt(2) times these values. E-mid's largest Gamma RHS in the three-cell collar of R12 is only 0.00607142 on the axis and 0.00309711 at its diagonal corner, against inner maxima 249.705 and 276.898. Parent levels 7–11 can show a puncture-shaped lobe on **covered** diagnostic cells; those are not added to the source on the active AMR hierarchy. [t11-uncovered-sources.csv](t11-uncovered-sources.csv) distinguishes the active cells, and the profile CSV labels covered cells. A seam may geometrically pass through the puncture, but the ghost-copy control and analytic source show that this does not create the leading source.
+
+RHS self-convergence compares native low−mid and mid−high differences on the same physical P6 sample points, with p=log(D_low_mid/D_mid_high)/log(1.5). All supports within five low-grid cell spacings of a face are excluded; a P8 replay gives the interpolation spread. The first two windows are poorly qualified by interpolation and must not be used as asymptotic orders. Low/negative outer orders at tiny cancelling sources are retained.
+| ray | fixed r/M window | low−mid RHS RMS | mid−high RHS RMS | p | P6/P8 spread / mid−high |
+| --- | --- | --- | --- | --- | --- |
+| axis | 0.0002–0.001 | 2.251690e+00 | 9.462568e-01 | 2.138094 | 3.207111 |
+| axis | 0.001–0.005 | 2.390970e-02 | 5.593686e-03 | 3.582665 | 0.702037 |
+| axis | 0.005–0.02 | 1.041414e-04 | 2.063089e-05 | 3.992847 | 0.004788 |
+| axis | 0.02–0.05 | 3.765977e-07 | 1.040502e-07 | 3.172415 | 0.047451 |
+| axis | 0.05–0.1 | 6.260828e-08 | 1.223100e-08 | 4.027285 | 0.008957 |
+| axis | 0.1–0.49 | 5.396948e-09 | 1.068548e-09 | 3.994259 | 0.003705 |
+| diagonal | 0.0002–0.001 | 8.409528e+00 | 5.806023e+00 | 0.913691 | 0.334760 |
+| diagonal | 0.001–0.005 | 2.003954e-03 | 3.257018e-04 | 4.481015 | 15.749513 |
+| diagonal | 0.005–0.02 | 2.206474e-05 | 4.345094e-06 | 4.007578 | 0.007411 |
+| diagonal | 0.02–0.05 | 1.548503e-08 | 4.561447e-08 | -2.664474 | 0.046765 |
+| diagonal | 0.05–0.1 | 2.032933e-09 | 1.626267e-09 | 0.550459 | 0.045592 |
+| diagonal | 0.1–0.49 | 1.071889e-10 | 9.297241e-11 | 0.350930 | 0.035357 |
+
+On the resolved 0.005–0.02 M window the Gamma RHS orders are 3.99285/4.00758 on axis/diagonal, with interpolation spread below 0.008 of the finer difference. The spatial source is therefore not globally nonconvergent at fixed r. Its conical first-cell error and increasingly singular curvature track the grid **as r~h→0**. The diagonal outer source is very small: at 0.05–0.1 M its high RMS is 4.463516e-4 but the native/continuum discrepancy is 1.680124e-9. The nonconvergent few-e-9 differences in the cancelling Gamma/K/Theta sources there are consistent with initial field/absolute-coordinate and derivative roundoff, as in T7-E; their precise share is inferred, not established by a new fused-coordinate intervention. They are vastly smaller than the inner O(10–100) source/error. [t11-rhs-orders.csv](t11-rhs-orders.csv) carries all variables and negative orders, and [t11-continuum-errors.csv](t11-continuum-errors.csv) carries the continuum and interpolation comparison.
+
+![Native Gamma RHS and term profiles by level](figures/t11-term-profiles.png)
+
+![RHS fixed-window self-convergence, including small-source floors](figures/t11-rhs-convergence.png)
+
+### Continuum reconstruction and regularity
+
+The t=0 continuum diagnostic loads E.trumpet through the actual C++ reader, retaining its inverse compactification, Clenshaw arithmetic and derivative coefficients. Analytic radial jets, followed by analytic Cartesian scalar/vector/tensor derivatives and cartoon contractions, are passed into the **same unmodified CCZ4Cartoon RHS equation**. There is no finite differencing of a radial table and no use of the constraint ODE to force a residual/source to zero. The initialized lapse remains X=sqrt(chi), not alpha_K. Native setter values and analytic values agree to less than 1e-9 on all sampled r>0.001 cells, including A, scalar momentum and electric fields; the readable check asserts this. The profile hash is 2a8de074ae17c0b11d323d4b0933a6bdb7430a5305473c8cc7d4ce37f39fa793.
+
+For radial beta=b(r)n and the unboosted continuum state, the longitudinal Gamma RHS is
+
+`(4/3)*(b''+2*b'/r−2*b/r²) −4*k*alpha' −6*alpha*k*chi'/chi −32*pi*alpha*Pi*phi'`.
+
+Y0=0.13570329494190452, D0=2.2778090227037476 and k0=C*exp(D0)/Y0³=−3.559422033019796. Near the puncture alpha~r/Y0, chi~r²/Y0², beta is linear plus an r^(1+nu) correction, and A has an angular limit k0*(3n_i*n_j−delta_ij). Hence the Gamma-normal source tends to **−16*k0/Y0=419.6711108060989**, with its leading fractional correction scaling as r^(nu−1), nu=1.3372155112113842. The observed correction slope over 1e-8–1e-6 M is 0.337260, consistent with nu−1=0.337216. The source is bounded and locally volume-integrable, but its radial derivative diverges as r^(nu−2) and the vector source has no direction-independent puncture value. It is not a smooth compact continuum pulse.
+
+The radial identities and leading balance have exact CAS witnesses and a separate 60-digit Cartesian differentiation cross-check; [CAS evidence](../../scripts/cas/t11-evidence.md) gives domain, exclusions and status. An independently reconstructed, forward-recurrence 60-digit Chebyshev source agrees with the Float64 C++-reader/CCZ4 result at six radii, with maximum normalized discrepancy 1.626175e-12. That numeric transfer check is CORROBORATED, not a continuum-physics proof. CAS scope: algebraic identity / transfer layer — production physics not certified. [t11-continuum-crosscheck.csv](t11-continuum-crosscheck.csv) retains the samples.
+
+![Continuum source, native first-cell error and the scaled A12 KO source](figures/t11-continuum-puncture.png)
+
+The principal answer is therefore **both**: the continuum initialized RHS itself has a puncture-end nonregular source, and the native puncture-end stencils add a nonuniform first-cell error and singular KO contributions. This is more specific than attributing everything to a smooth fractional-power pulse that merely needs better transport resolution.
+
+### First-step validation and connection to launch
+
+E-L's t0 state is the E-mid source state. Its saved step interval is Δt0=7/384=0.0182291667 M, whereas the finest native step is Δt12=4.45048e-6 M. Its native ray caches carry shift/Gamma/driver, lapse, chi, K, Theta and h; they do **not** carry A or the EMS fields. Those inputs are complete in the t=0 plots, so all native RHS variables are kernel-controlled, but no nonexistent positive-time A/EMS validation is claimed. Current-ray values and first derivatives are remapped to common points by cubic Hermite interpolation, then compared with P6/P8 sampling of the native t=0 RHS. This avoids a linear-profile interpolation error larger than some first-step changes.
+
+For successive saved fields u0,u1,u2, the estimated quadratic term is 0.5*(u2−2*u1+u0). The table uses diagonal supports clean of faces on 0.1≤r≤0.49 M, with 95 common points. All norms are RMS in that fixed physical interval, without cylindrical/volume weighting. The final column subtracts the quadratic estimate and divides by the first change.
+| variable | Δt*RHS | first change | first minus Δt*RHS | quadratic estimate | remainder / quadratic | corrected / first |
+| --- | --- | --- | --- | --- | --- | --- |
+| B1 | 4.402988e-07 | 4.398977e-07 | 4.010686e-10 | 4.005825e-10 | 1.001213 | 0.000001 |
+| lapse | 2.700955e-06 | 2.707908e-06 | 7.430703e-09 | 7.394523e-09 | 1.004893 | 0.000022 |
+| K | 2.669056e-06 | 2.668597e-06 | 7.670718e-09 | 7.670178e-09 | 1.000070 | 0.000142 |
+| Gamma1 | 2.745288e-07 | 1.216246e-07 | 1.734741e-07 | 1.472049e-07 | 1.178453 | 0.271976 |
+| shift1 | 3.847176e-09 | 8.265503e-09 | 4.598857e-09 | 3.291458e-09 | 1.397210 | 0.179029 |
+| chi | 2.595523e-14 | 1.082832e-10 | 1.082728e-10 | 1.141967e-10 | 0.948125 | 0.090979 |
+| h11 | 1.226193e-08 | 1.903052e-08 | 6.910080e-09 | 7.272544e-09 | 0.950160 | 0.020027 |
+| Theta | 5.012507e-11 | 1.930882e-12 | 5.003291e-11 | 5.368397e-13 | 93.198984 | 25.877258 |
+
+For B/lapse/K the remainder matches the quadratic estimate to approximately 0.1–0.5%, and the corrected fraction is 1.2e-6, 2.2e-5 and 1.4e-4. Gamma, beta, chi and h have material temporal corrections; their remainder/quadratic ratios are 1.18, 1.40, 0.95 and 0.95. The inner time scale and coupling are not assumed small. Theta is at the finite-difference/initial-rounding source floor: a snapshot RHS does not predict the tiny floating-point step change, and its 93.2 ratio is explicitly a failed Taylor/floor comparison. On the inner 0.0002–0.005 M window, Gamma's Δt*RHS RMS is 2.99558 but the first saved change is only 1.28157e-4; the estimated quadratic term is 1.41728e-4. This **does not validate** the inner Taylor expansion. The source has evolved through thousands of native stages by that snapshot; steps 1–2 cannot reconstruct its initial fine-step second derivative. [t11-step-validation.csv](t11-step-validation.csv) retains both rays/all fields/windows and interpolation/state-replay errors.
+
+![Native-RHS versus saved-step remainder and quadratic estimate](figures/t11-step-validation.png)
+
+Launch locations are checked in two ways. [t11-launch.csv](t11-launch.csv) retains the given direct native-cell provenance at steps 1–6. Independently, [t11-independent-launch.csv](t11-independent-launch.csv) selects the largest absolute Gamma curvature on the **same fixed 0.003–0.16 M interval at every time**, without using r=t or a predicted face arrival. Its clean-axis fitted speed is 0.975714 with intercept 0.000521661 M (four samples, fit RMS 0.000241374 M); the six clean diagonal samples give 0.984244 with intercept 0.000352845 M and fit RMS 0.000140814 M. P6/P8 position spread is at most 7.12043e-6 M on the clean axis and zero on the diagonal. These fits are compatible with the initial longitudinal shift characteristic speed approximately 1−beta_n, and backtrack to the sub-0.001 M source region. They do not determine the precise emission time or a continuum signal speed: dominant lobe signs change and finite-resolution dispersion remains.
+| step | t/M | ray | source level | native curvature-lobe r/M | counted centres | Gamma at lobe | C_Gamma at lobe | clean |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 0.018229167 | axis | 12 | 0.018585205 | 6 | 5.721666e-03 | 2.671129e-06 | True |
+| 1 | 0.018229167 | diagonal | 12 | 0.018630031 | 3 | 6.049118e-03 | 5.203258e-07 | True |
+| 2 | 0.036458333 | axis | 11 | 0.035746257 | 3 | -2.122059e-03 | -8.402132e-06 | True |
+| 2 | 0.036458333 | diagonal | 12 | 0.035950925 | 3 | -1.556858e-03 | -3.540397e-07 | True |
+| 3 | 0.054687500 | axis | 11 | 0.053975423 | unbracketed | -1.434106e-03 | -3.177882e-06 | False |
+| 3 | 0.054687500 | diagonal | 11 | 0.054178144 | 2 | -1.064952e-03 | -1.830546e-06 | True |
+| 4 | 0.072916667 | axis | 10 | 0.071492513 | 3 | -1.650286e-03 | -1.144572e-05 | True |
+| 4 | 0.072916667 | diagonal | 11 | 0.072304661 | 2 | -9.726548e-04 | -1.036502e-06 | True |
+| 5 | 0.091145833 | axis | 10 | 0.089721680 | 3 | -1.276236e-03 | -7.349594e-06 | True |
+| 5 | 0.091145833 | diagonal | 10 | 0.089826960 | 4 | -1.310467e-03 | -2.884849e-06 | True |
+| 6 | 0.109375000 | axis | 10 | 0.107950846 | unbracketed | -1.021384e-03 | -4.764459e-06 | False |
+| 6 | 0.109375000 | diagonal | 10 | 0.108356288 | 2 | -8.951130e-04 | -2.667125e-06 | True |
+
+At the first sample the lobe is inside L12, before R12 or its corner, and is mostly metric-consistent Gamma. This supports a puncture launch rather than birth at an inner AMR face. The t=0 source audit establishes that the nonregular source is already present; the cadence cannot show which earliest projection/KO/geometric update supplies the outgoing packet or exclude nonlinear reorganization before 0.018229 M.
+
+### Branch decision and single next experiment
+
+**Branch (ii), puncture-end discretization/regularity first, is supported.** The actual alpha~r cusp and direction-dependent A limit are essential, alongside the fractional correction r^(nu−1); it is not solely the error of differentiating an otherwise smooth source. The geometric Gamma RHS is already hundreds at t=0, its first-cell lapse-gradient error stays O(1), and coupled A KO grows as 1/h. The source and first outgoing packet lie well inside the finest face. Against a claim of complete causal closure, the data do not determine the relative emitted amplitude from these coupled sources.
+
+Branch (i) is not implicated by a cancellation error: the native driver combination is exactly zero, and driver decay/advection/KO have their separately reported sizes. This does not prove that every possible B(0) intervention is ineffective, but the audit supplies no reason to prioritize B(0)=0. Branch (iii)'s **smooth initial RHS** premise is contradicted by the continuum and native puncture-end source, although early-stage instrumentation remains useful to measure its coupled evolution. A new transport enlargement or a 100 M receiving-resolution envelope is not justified by these results.
+
+The next experiment should be **one very short source-refinement ladder with first-stage capture**, preserving the frozen gauge/equations/initialization, point transfers and sigma=1. Keep the existing levels through L12 and their physical faces; compare the baseline with nested L13 and L14 (faces 0.013671875 and 0.0068359375 M), so the new source spacings are h12/2 and h12/4. Use one common Δt0=0.005 M and stop at 0.005 M; the outgoing feature should remain inside every finest face. Compare the emitted current-field profiles on the fixed 0.001–0.004 M interval and at r=0.002 M; retain the innermost cells separately for mechanism attribution. Record the first native RK stages' Gamma split, A/alpha/EMS KO and projections. No positive-time static target or replenished static ghost data is allowed. Diagnostics belong in a Tests-only harness, with no production change.
+
+**Pre-registered reading:** a Cauchy launch requires decreasing successive fixed-window Gamma/metric/shift profile differences (D_13_14/D_12_13≤0.8), differences exceeding five times P6/P8 interpolation spread, and packet amplitudes stabilizing (|A14/A13−1|≤0.1), while clean of all faces. A bounded continuum pulse need not decrease to zero. If the difference ratio is ≥1 while the feature remains ≤3 local centres or its amplitude grows, source refinement has not closed the mechanism; use the stage replay to decide whether the first material change comes from A/alpha KO/projection or the geometric Gamma source. Between 0.8 and 1, or with insufficient interpolation significance, the result is inconclusive. Track both bounded continuum source and h*KO(A): a pointwise 1/h KO peak alone is not a proof of nonconvergence in evolved observables. Do not change B(0), alpha(0), beta(0), gauge, equations or sigma in this test. No experiment was launched in T11.
+
+### Reproduction and provenance
+
+Run `t11-analyze.py build`, `native E-low`, `native E-mid`, `native E-high`, `continuum`, `measure`, `validate`, `ghost-check`, `check`, `figures`, `report` with `/Users/auroradysis/miniconda3/bin/python`, `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1`, and `MPLCONFIGDIR=/private/tmp/ems-t11/mpl` for figures. The build reuses T7-E's standalone serial Chombo compiler/link helper; its source is entirely in Tests. Run the two CAS scripts listed in the evidence card after preparing the continuum cache. The readable checks assert native output identity, term reconstruction, exact cancellation, finite/floor controls, saved ghost identity and analytic-setter agreement. Each command completed in seconds, below the detached threshold; no long simulation or analysis process was started. Native replay peak RSS was 0.336 GB, one thread, with selected native field reads of 48.3 / 69.9 / 100.8 MB on low/mid/high. Dense caches are retained under /private/tmp/ems-t11 with hashes; public CSVs total approximately 4 MB. No files from other tranches were removed. [COMMIT-MANIFEST-T11.txt](COMMIT-MANIFEST-T11.txt) records the artifacts and frozen source/input provenance.
