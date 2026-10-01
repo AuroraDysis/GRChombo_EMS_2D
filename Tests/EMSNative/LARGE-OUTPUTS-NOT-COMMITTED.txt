@@ -16,3 +16,5 @@ c93d9748c18487467044b37335d604ff36baeddbfccafe92740ff8474e6b2877  1309698  Tests
 18aa86db76a60f69e9b467608275255aceb286968f29141b561d2aa73a854a0b  1262952  Tests/EMSNative/figures/t9-signed-profiles-1p75.pdf
 51a5965c6a5e023b12d3497611773bf159d754f7a6a9a29670259b3f6097e70e  1229001  Tests/EMSNative/figures/t9-signed-profiles-2p625.pdf
 539144dcd5901909fac9f4ad2d5db977b7312d5192b959ad30d220b40f141f33  1268530  Tests/EMSNative/figures/t9-signed-profiles-4p375.pdf
+# T10 (regenerate with Tests/EMSNative/t10-analyze.py, README § T10)
+b693b44b2a721c217bb4519c3b64028b2653ce5c271ecd520b37d0f8c4a571ed  1381707  Tests/EMSNative/t10-signed-profiles.csv

@@ -1,0 +1,4 @@
+leg,sigma,transfer,guard_after_t0,endpoint_step,endpoint_time_M,run_chain_markers_equal,finite_norm_rows,nonfinite_tokens,missing_parameter_lines,initial_data_reads,post_advance_initial_reads,floor_log_lines,first_advance_line,qualifier_status,floor_condition
+E-T4,1,point,True,30,4.375000000000001,True,2880,0,0,0,0,0,2270,TIMED_OUT_AT_N96_T0P875,NO_ACTIVATION_COUNTER_IN_FROZEN_EXECUTABLE
+E-T8,1,point,True,30,4.375000000000001,True,1080,0,0,91,0,0,1307,TIMED_OUT_AT_N96_T0P875,NO_ACTIVATION_COUNTER_IN_FROZEN_EXECUTABLE
+E-L,1,point,True,48,0.8749999999999994,True,8820,0,0,91,0,0,1307,COMPLETE,NO_ACTIVATION_COUNTER_IN_FROZEN_EXECUTABLE

@@ -1,0 +1,6 @@
+leg,source,time_M,boxes_read,available_boxes,bytes_read,cached_bytes,wall_s,peak_rss_bytes
+E-mid,/Users/auroradysis/Workspace/EMS/.data/exp-0020/E-mid/plt/EMS_Plot_000018.2d.hdf5,2.6250000000000004,6,141,16979328,8847360,0.9070127500453964,137347072
+E-T4,/Users/auroradysis/Workspace/EMS/.data/exp-0022/E-T4/plt/EMS_Plot_000018.2d.hdf5,2.6250000000000004,19,981,53767872,28016640,1.0375960420351475,197836800
+E-T4,/Users/auroradysis/Workspace/EMS/.data/exp-0022/E-T4/plt/EMS_Plot_000030.2d.hdf5,4.375000000000001,20,981,56597760,29491200,1.0683134589344263,233635840
+E-T8,/Users/auroradysis/Workspace/EMS/.data/exp-0022/E-T8/plt/EMS_Plot_000018.2d.hdf5,2.6250000000000004,37,3949,104705856,54558720,1.122565041994676,248840192
+E-T8,/Users/auroradysis/Workspace/EMS/.data/exp-0022/E-T8/plt/EMS_Plot_000030.2d.hdf5,4.375000000000001,32,3949,90556416,47185920,1.0741183750797063,272220160

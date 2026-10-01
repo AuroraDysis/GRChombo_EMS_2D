@@ -2215,3 +2215,253 @@ Proceed with the expert's **rank 2 source-fixed transport-resolution contrast**,
 Support transport resolution as an interface-error lever if the inner incident source profile is unchanged within interpolation uncertainty and the emitted constraint packet decreases. That alone does not establish continuum regularity: record raw Gamma/W profile changes, and require a stable physical width or a delta-insensitive finite jump with bounded limiting field profiles before a regularity-based admission. If width continues to track receiving h while Gamma grows and the field differences remain negative, kill the claim that wider transport regions alone certify continuum regularity; do not keep enlarging them without a source-regularity diagnosis. A pair by itself is not a new three-grid admission. If the fixed-source transport control does not resolve the issue, rank 3 tests **B_drv(t=0)=0 alone**, with every other initial datum and evolution unchanged, on a separate chain. Retain that initialization only if it reduces the measured outgoing disturbance without worsening near-hole constraints/horizon retention. Neither experiment was launched in T9.
 
 [t9-analyze.py](t9-analyze.py) reuses the T8 sampler/audit imports and the sealed native derivative helper; the handwritten derivative weights have the exact/runtime checks above. Reproduce `profiles E-low`, `profiles E-mid`, `profiles E-high`, `measure`, `check`, `figures` with `/Users/auroradysis/miniconda3/bin/python`, `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1`, and `MPLCONFIGDIR=/private/tmp/ems-t9/mpl`. Every command took seconds (selected profiles approximately 3.4 / 4.7 / 7.3 s), peak process RSS <=0.78 GB; at most three one-thread profile processes overlapped. No detached analysis or simulation was needed. Public CSVs are small (largest signed-profile table approximately 8 MB); dense caches are approximately 135 MB and retained with hashes. No output from another tranche was deleted. [COMMIT-MANIFEST-T9.txt](COMMIT-MANIFEST-T9.txt) records public artifacts, the fixed input/source provenance and dense-cache hashes.
+
+
+## T10 — exp-0022 source-fixed transport and launch contrast
+
+**READY-EXCEPT: the requested read-only A1–A3/constraint analysis is complete. A2 passes on the clean diagonal. A3 is registered outcome (3) on all three rays at both times: width keeps decreasing with transport spacing, Gamma/characteristic amplitudes grow, and successive signed-profile differences increase. The registered receiving-shell errors increase. The earliest native launch has six axial and three diagonal centres, so a literal two-cell-from-birth claim is unsupported.** The separate T4/T8 horizon qualification remains incomplete after its N=96 timeout at 0.875 M; these results do not certify that qualification or complete collection of every planned plot's rays.
+
+The full [consult-6b ruling](../../../consult-6b-reply.md) and exp-0022 contract sections 1, 4 and 8 were read. Inputs are the controller's SHA-256-verified `/Users/auroradysis/Workspace/EMS/.data/exp-0022`, the exp-0020 E-mid reference plot, and the sealed submission scripts. EMS is read-only. Every positive-time diagnostic uses current saved fields or compares numerical resolutions. No static data file, static target or analytic profile is read; no C++, gauge, equation, Chombo or author-finder change, new evolution, transfer or commit was made. Worktree HEAD is 4f1b4d0; frozen evolution remains fork 03e31ef with the contract's unchanged executable.
+
+### Physical completion, resources and sealed sampling control
+
+E-T4 and E-T8 reached step 30, 4.375000000000001 M; E-L reached step 48, 0.8749999999999994 M. Each `run.done` equals its `chain.done`. Input parameters pin point transfer, sigma=1 and the post-t=0 initial-data guard. The [run audit](t10-run-audit.csv) finds zero missing-parameter lines, zero NaN/Inf tokens, zero logged floor messages and finite constraint tables (2880 / 1080 / 8820 rows). The executable has no floor-activation counter, so quiet logs cannot prove that no floor ever acted. E-T8 and E-L each logged 91 initialization reads, all before the first advance; T4's retained pout begins with its cadence restart and has zero initial-data reads. T4/T8 failed postprocessing after physical completion, during frozen N=96 qualification at 0.875 M, before extraction. This is not a physical abort. Their four requested transport ray sets are now recovered locally; other prospective ray times and the timed-out horizon results remain uncertified.
+
+[t10-analyze.py](t10-analyze.py) imports the unchanged sealed `extract-rays.py`, `t9-sampler.py`, `audit.py` and `time-control.py`. Its only extraction adaptation replaces the full-level allocation with lazy reads of boxes requested by the same sampler, including their saved ghosts. The per-box native fourth-order metric derivatives and ww/hww cartoon contractions keep the sealed expression and operation order. Headers describe each level, but no whole level of fields is loaded. Paths/output roots are local. For NumPy 2 compatibility only, the removed `trapz` name aliases `trapezoid` in the A2 calculation; extraction does not use this alias.
+
+Re-extracting exp-0020 E-mid step 18 locally gives **exactly zero numeric and bit differences, including NaN bits, in all 51 numeric payload arrays across axis/equator/diagonal (2,668,650 finite values)**. All other cache schema/field/coefficient entries also match; only the source path changes from the cluster path to the local path. The [control CSV](t10-local-sampler-control.csv) is the runnable check on this adaptation. Cache archive hashes differ because of the source path and ZIP timestamps, not numeric payloads. T9's previously verified conditional characteristic formula is reused without a new derivation: the longitudinal frozen shift/Gamma/B-driver block, with geometry/K/Theta terms as forcing, is a diagnostic projection rather than a full CCZ4 mode-purity certificate.
+
+
+| leg | t/M | boxes read / available | field bytes read | cached derived bytes | wall/s |
+| --- | --- | --- | --- | --- | --- |
+| E-mid | 2.625000 | 6 / 141 | 16979328 | 8847360 | 0.907013 |
+| E-T4 | 2.625000 | 19 / 981 | 53767872 | 28016640 | 1.037596 |
+| E-T4 | 4.375000 | 20 / 981 | 56597760 | 29491200 | 1.068313 |
+| E-T8 | 2.625000 | 37 / 3949 | 104705856 | 54558720 | 1.122565 |
+| E-T8 | 4.375000 | 32 / 3949 | 90556416 | 47185920 | 1.074118 |
+
+Maximum extraction process RSS was 272,220,160 bytes (0.272 GB); each plot took approximately one second. Analysis/figures used one thread each, with at most two such processes overlapping; limits stayed below four threads and 8 GB. Selected dense caches and their metadata are retained in `/private/tmp/ems-t10`; the manifest records their hashes. No bulky input, other tranche output or controller-owned file was deleted.
+
+### Geometry and fixed measurement convention
+
+The [registered front/face table](t10-registered-face-windows.csv), [source box-identity receipts](t10-source-box-identity.csv) and [locally read level unions](t10-ray-layout.csv) retain the actual census. T4 preserves boxes on levels 8–12, T8 on 9–12, and E-L on 0–12; the original inner composite spacing is preserved. This fixes the initial source hierarchy, not the subsequent source solution against feedback. Actual axis/equatorial transport faces at 3.5 / 7 M are levels 7 / 6 in T4 and 8 / 7 in T8, versus 5 / 4 in E-mid. The diagonal 3.5 M corner is at 4.949747 M: it has not been crossed by the sampled diagonal front at 4.375 M. Axis/equator have crossed the 3.5 M face by that time.
+
+All P6/P8 profiles use the sealed fixed interval [max(0.0001,t-0.65),t+0.65] M and 0.0005 M ladder, with the registered extra dense samples below 0.05 M. Front selection is the largest absolute Gamma curvature feature within |r-t|<=0.3 M after the same current-field cubic sideband fit (0.4<=|r-t|<=0.6 M). Width is its half-prominence lobe width; it is not the entire multilobed packet. Amplitudes use |r-r_f|<=0.1 M, independently selected in each run. **Profile differences use one identical physical interval [r_f(E-mid)-0.1,r_f(E-mid)+0.1]**, with no phase alignment. P6/P8 spread is retained, and raw signed profiles are never background-subtracted for the difference or J test. Dominant lobes can switch, so measured phase need not identify a unique crest.
+
+All two-time amplitude cores are single-level and do not cross a face. There is one qualification caveat: at 2.625 M E-mid's diagonal r_f=2.6025 M lies only 0.127626 M beyond the child corner sqrt(2)*1.75=2.474874 M. Its wider delta=0.2/0.4 J windows cross that corner; even its delta=0.1 core has sampling dependencies near covered parent cells. These are retained and labelled, not described as completely interface-free. The [window-support CSV](t10-window-support.csv) distinguishes single-level windows from a stricter six-native-spacing dependency margin. The independently decisive axial/equatorial tests at 2.625 M and all rays at 4.375 M have positive complete-dependency margins for the core. Every transport-run two-time core is well inside its level. All conclusions below survive omitting the near-child-face diagonal comparison at 2.625 M.
+
+### A2 — Launch time-step control, applied before A1 inference
+
+**PASS / ADMISSIBLE on the clean diagonal: every material registered metric has |E-L-E-mid|/|E-mid-E-high|<=0.2.** Its maximum is 0.134078 for the signed C_Gamma peak. The minimum front/face distance across the three diagonal trajectories is greater than 0.24 M. Axis/equator lie within 0.0095 M of the 0.875 M face; their fixed cores overlap it and are excluded from admissibility. Their measured failures are retained in [all-ray A2 results](t10-time-control.csv), not silently discarded. For example the equatorial beta signed peak ratio is 4.487923 and the axial C_Gamma signed integral ratio is 1.230294, under the face-contaminated condition.
+
+The diagonal front positions are 0.867000 / 0.867000 / 0.869000 M for E-L / E-mid / E-high; widths are 0.008775546 / 0.008780587 / 0.006487382 M. Signed Gamma feature peaks are 3.192175e-5 / 3.186627e-5 / 4.808387e-5. The [observable table](t10-control-observables.csv) keeps every raw per-run value. The clean comparison below uses the sealed control arithmetic and Float64 floor; no material spatial denominator is unresolved.
+
+
+| metric | absolute dt/8 difference | absolute source-rung difference | ratio | gate |
+| --- | --- | --- | --- | --- |
+| front_location_M | 0.000000e+00 | 2.000000e-03 | 0.000000 | SMALL |
+| Gamma_width_M | 5.041268e-06 | 2.293206e-03 | 0.002198 | SMALL |
+| beta_n_signed_profile_RMS | 6.453899e-11 | 1.389749e-08 | 0.004644 | SMALL |
+| beta_n_signed_peak | 4.018807e-14 | 3.359299e-12 | 0.011963 | SMALL |
+| beta_n_signed_integral | 1.240432e-14 | 7.916965e-13 | 0.015668 | SMALL |
+| beta_n_absolute_integral | 1.240432e-14 | 7.916965e-13 | 0.015668 | SMALL |
+| Gamma_n_signed_profile_RMS | 2.300691e-08 | 5.809490e-06 | 0.003960 | SMALL |
+| Gamma_n_signed_peak | 5.547386e-08 | 1.621760e-05 | 0.003421 | SMALL |
+| Gamma_n_signed_integral | 1.094908e-11 | 1.540219e-10 | 0.071088 | SMALL |
+| Gamma_n_absolute_integral | 1.739582e-10 | 1.296963e-07 | 0.001341 | SMALL |
+| C_Gamma_signed_profile_RMS | 7.920829e-10 | 9.990619e-08 | 0.007928 | SMALL |
+| C_Gamma_signed_peak | 1.032135e-09 | 7.698037e-09 | 0.134078 | SMALL |
+| C_Gamma_signed_integral | 6.587570e-13 | 9.722856e-12 | 0.067753 | SMALL |
+| C_Gamma_absolute_integral | 1.896831e-11 | 3.052551e-09 | 0.006214 | SMALL |
+
+The zero measured phase change is at the 0.0005 M peak-location ladder; it does not establish exact phase equality. E-L is therefore admissible evidence about the approximate spatial launch path of production, under this downstream clean-ray control. It does not establish identical first-stage trajectories or supply a temporal convergence order.
+
+### A1 — Native launch provenance at every coarse step
+
+The [192-row launch table](t10-launch-native.csv) retains all 48 positive times, both rays and front/parent levels, with h, actual native coordinates, first/second native radial differences, signed Gamma at the curvature peak, signed curvature amplitude, C_Gamma, face distances, status and P6/P8 ray sensitivity. No interpolated profile supplies a native width or native derivative. Axis values are on the closest row y=h/2; diagonal values are at x=y with radial spacing sqrt(2)h. Parent values may be covered/restricted and are provenance rather than independent continuum samples. The reported level follows the registered trajectory r=t; the separately saved measured curvature peak allows a lobe's phase to be checked against that level.
+
+Widths count native centres above half prominence and are quantized in one radial spacing. Missing/clipped/non-peak support is undefined, never zero or a two-cell result. Of 96 front rows, 42 axial and 45 diagonal are clean by the registered native rule. The C_Gamma shares below are **RMS of its native second radial difference divided by the Gamma second-difference RMS on the same eight-spacing half-window about the peak**. The separate current-field RMS share is also in the CSV. P6/P8 errors are measured on the physical ray; the axis ray y=0 is not the native y=h/2 row, so that sensitivity is not a replacement for the native count.
+
+First detectability is the first positive saved time, **0.018229167 M, level 12, h=1.424154e-4 M**, on both rays: axis six native centres, w=8.544922e-4 M, signed Gamma=5.721666e-3, signed Gamma curvature=-1.204642e4; diagonal three centres, w=6.042172e-4 M, signed Gamma=6.049118e-3, curvature=-1.233225e4. Native current C_Gamma RMS shares are 0.030592% / 0.008367%; curvature shares are 0.523924% / 0.264757%. Thus the early feature is primarily metric-consistent already, not chiefly a reduction-constraint lobe.
+
+The table below covers every step (1–48). `--` means excluded/undefined native width, with exact status in the CSV. Curvature amplitude is the signed native Gamma second difference, not the raw Gamma field value. Values on excluded rows are retained as provenance and are not qualified packet amplitudes. h depends on the active level: levels 12,11,10,9,8,7 have h=0.000142415365,0.000284830729,0.000569661458,0.001139322917,0.002278645833,0.004557291667 M respectively; diagonal radial spacing is sqrt(2) times these values.
+
+
+| step | t/M | axis level | axis N | axis w/M | axis Gamma curvature | axis C_Gamma share/% | diagonal level | diagonal N | diagonal w/M | diagonal Gamma curvature | diagonal C_Gamma share/% |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 0.018229 | 12 | 6 | 8.544922e-04 | -1.204642e+04 | 0.523924 | 12 | 3 | 6.042172e-04 | -1.233225e+04 | 0.264757 |
+| 2 | 0.036458 | 11 | 3 | 8.544922e-04 | 4.572369e+03 | 1.622902 | 12 | 3 | 6.042172e-04 | 5.998001e+03 | 0.175723 |
+| 3 | 0.054688 | 11 | -- | -- | 2.566659e+03 | 2.945893 | 11 | 2 | 8.056230e-04 | 2.969568e+03 | 0.525697 |
+| 4 | 0.072917 | 10 | 3 | 1.708984e-03 | 1.316023e+03 | 2.470859 | 11 | 2 | 8.056230e-04 | 2.171856e+03 | 0.355603 |
+| 5 | 0.091146 | 10 | 3 | 1.708984e-03 | 9.438577e+02 | 1.661325 | 10 | 4 | 3.222492e-03 | 1.200338e+03 | 1.200941 |
+| 6 | 0.109375 | 10 | -- | -- | 6.910317e+02 | 4.414753 | 10 | 2 | 1.611246e-03 | 9.335818e+02 | 0.795813 |
+| 7 | 0.127604 | 9 | 2 | 2.278646e-03 | 3.473507e+02 | 5.406939 | 10 | 2 | 1.611246e-03 | 7.428694e+02 | 0.631441 |
+| 8 | 0.145833 | 9 | 2 | 2.278646e-03 | 2.402356e+02 | 3.661322 | 10 | 2 | 1.611246e-03 | 6.330889e+02 | 0.535940 |
+| 9 | 0.164062 | 9 | 3 | 3.417969e-03 | 1.970521e+02 | 2.898505 | 9 | 1 | 1.611246e-03 | 3.441595e+02 | 3.028798 |
+| 10 | 0.182292 | 9 | 3 | 3.417969e-03 | 1.642548e+02 | 2.461929 | 9 | 4 | 6.444984e-03 | 2.331009e+02 | 1.816499 |
+| 11 | 0.200521 | 9 | 3 | 3.417969e-03 | 1.391470e+02 | 2.161074 | 9 | 1 | 1.611246e-03 | -2.068311e+02 | 1.414468 |
+| 12 | 0.218750 | 9 | -- | -- | 1.130825e+02 | 6.070454 | 9 | 1 | 1.611246e-03 | 1.940464e+02 | 1.191678 |
+| 13 | 0.236979 | 8 | 1 | 2.278646e-03 | 6.307378e+01 | 11.492935 | 9 | 1 | 1.611246e-03 | 1.661324e+02 | 1.045375 |
+| 14 | 0.255208 | 8 | 2 | 4.557292e-03 | 4.341844e+01 | 7.557268 | 9 | 2 | 3.222492e-03 | 1.301743e+02 | 0.939588 |
+| 15 | 0.273438 | 8 | 2 | 4.557292e-03 | 3.300849e+01 | 5.921979 | 9 | 2 | 3.222492e-03 | 1.218815e+02 | 0.858205 |
+| 16 | 0.291667 | 8 | 2 | 4.557292e-03 | 2.634557e+01 | 4.956343 | 9 | 1 | 1.611246e-03 | 1.174502e+02 | 0.794251 |
+| 17 | 0.309896 | 8 | 2 | 4.557292e-03 | 2.168297e+01 | 4.346608 | 8 | -- | -- | 8.232391e+01 | 12.109119 |
+| 18 | 0.328125 | 8 | 2 | 4.557292e-03 | 1.886596e+01 | 3.932287 | 8 | 1 | 3.222492e-03 | -4.946637e+01 | 4.449564 |
+| 19 | 0.346354 | 8 | 2 | 4.557292e-03 | 1.691421e+01 | 3.535646 | 8 | 1 | 3.222492e-03 | 4.310803e+01 | 3.173195 |
+| 20 | 0.364583 | 8 | 2 | 4.557292e-03 | 1.523194e+01 | 3.313503 | 8 | 5 | 1.611246e-02 | 2.609589e+01 | 2.592792 |
+| 21 | 0.382812 | 8 | 3 | 6.835938e-03 | 1.377796e+01 | 3.063548 | 8 | 1 | 3.222492e-03 | 3.066723e+01 | 2.237183 |
+| 22 | 0.401042 | 8 | 3 | 6.835938e-03 | 1.251536e+01 | 2.848151 | 8 | 2 | 6.444984e-03 | 2.546719e+01 | 1.989495 |
+| 23 | 0.419271 | 8 | 3 | 6.835938e-03 | 1.141645e+01 | 2.701273 | 8 | 4 | 1.288997e-02 | 2.124760e+01 | 1.805097 |
+| 24 | 0.437500 | 8 | -- | -- | 9.673658e+00 | 7.682175 | 8 | 1 | 3.222492e-03 | 2.204635e+01 | 1.659823 |
+| 25 | 0.455729 | 7 | 1 | 4.557292e-03 | 6.328312e+00 | 25.724645 | 8 | 2 | 6.444984e-03 | 1.696183e+01 | 1.543158 |
+| 26 | 0.473958 | 7 | 1 | 4.557292e-03 | 4.406419e+00 | 14.970395 | 8 | 4 | 1.288997e-02 | 1.728109e+01 | 1.445717 |
+| 27 | 0.492188 | 7 | 1 | 4.557292e-03 | 3.401054e+00 | 11.393693 | 8 | 1 | 3.222492e-03 | 1.644417e+01 | 1.363468 |
+| 28 | 0.510417 | 7 | 2 | 9.114583e-03 | 2.761427e+00 | 9.501171 | 8 | 1 | 3.222492e-03 | -1.294204e+01 | 1.276284 |
+| 29 | 0.528646 | 7 | 2 | 9.114583e-03 | 2.310354e+00 | 8.268087 | 8 | 1 | 3.222492e-03 | 1.403373e+01 | 1.230147 |
+| 30 | 0.546875 | 7 | 2 | 9.114583e-03 | 1.972620e+00 | 7.344342 | 8 | 2 | 6.444984e-03 | 1.261259e+01 | 1.175100 |
+| 31 | 0.565104 | 7 | 2 | 9.114583e-03 | 1.709678e+00 | 6.704036 | 8 | 4 | 1.288997e-02 | 1.068676e+01 | 1.127255 |
+| 32 | 0.583333 | 7 | 2 | 9.114583e-03 | 1.499192e+00 | 6.128597 | 8 | 1 | 3.222492e-03 | 1.148564e+01 | 1.083796 |
+| 33 | 0.601562 | 7 | 2 | 9.114583e-03 | 1.327108e+00 | 5.675427 | 8 | 2 | 6.444984e-03 | 9.873676e+00 | 1.039178 |
+| 34 | 0.619792 | 7 | 2 | 9.114583e-03 | 1.184049e+00 | 5.344636 | 7 | -- | -- | 7.581235e+00 | 15.536786 |
+| 35 | 0.638021 | 7 | 2 | 9.114583e-03 | 1.063478e+00 | 4.987680 | 7 | -- | -- | -4.447363e+00 | 7.779646 |
+| 36 | 0.656250 | 7 | 2 | 9.114583e-03 | 9.606784e-01 | 4.709656 | 7 | 1 | 6.444984e-03 | -3.669645e+00 | 5.791951 |
+| 37 | 0.674479 | 7 | 3 | 1.367188e-02 | -8.785424e-01 | 4.361462 | 7 | 1 | 6.444984e-03 | 3.140623e+00 | 4.868894 |
+| 38 | 0.692708 | 7 | 2 | 9.114583e-03 | 8.185093e-01 | 4.290784 | 7 | 1 | 6.444984e-03 | 2.953860e+00 | 4.135182 |
+| 39 | 0.710938 | 7 | 2 | 9.114583e-03 | 7.686916e-01 | 4.072742 | 7 | 3 | 1.933495e-02 | 2.424717e+00 | 3.673492 |
+| 40 | 0.729167 | 7 | 2 | 9.114583e-03 | 7.227437e-01 | 3.997478 | 7 | 5 | 3.222492e-02 | 1.744847e+00 | 3.333924 |
+| 41 | 0.747396 | 7 | 2 | 9.114583e-03 | 6.803429e-01 | 3.789085 | 7 | 4 | 2.577993e-02 | -1.794559e+00 | 3.067624 |
+| 42 | 0.765625 | 7 | 2 | 9.114583e-03 | 6.411808e-01 | 3.621911 | 7 | 1 | 6.444984e-03 | 1.838200e+00 | 2.852161 |
+| 43 | 0.783854 | 7 | 2 | 9.114583e-03 | 6.049705e-01 | 3.576776 | 7 | 1 | 6.444984e-03 | 1.769678e+00 | 2.673138 |
+| 44 | 0.802083 | 7 | 2 | 9.114583e-03 | 5.714493e-01 | 3.409514 | 7 | 1 | 6.444984e-03 | 1.542066e+00 | 2.520777 |
+| 45 | 0.820312 | 7 | 2 | 9.114583e-03 | 5.403754e-01 | 3.284738 | 7 | 5 | 3.222492e-02 | 1.213275e+00 | 2.389010 |
+| 46 | 0.838542 | 7 | 2 | 9.114583e-03 | 5.117645e-01 | 3.212614 | 7 | 4 | 2.577993e-02 | 1.133414e+00 | 2.276405 |
+| 47 | 0.856771 | 7 | -- | -- | 4.813636e-01 | 4.823168 | 7 | 1 | 6.444984e-03 | 1.240158e+00 | 2.175332 |
+| 48 | 0.875000 | 7 | -- | -- | 4.192582e-01 | 9.887462 | 7 | 1 | 6.444984e-03 | 1.229161e+00 | 2.084834 |
+
+Across levels, clean median native counts are axis 6 / 3 / 3 / 3 / 2 / 2 and diagonal 3 / 2 / 2 / 1 / 1.5 / 1 for levels 12→7. The [level summary](t10-launch-by-level.csv) retains ranges, including occasional diagonal counts 4–5 from lobe selection/merging; these are not removed. Axial width remains 8.544922e-4 M at the first two clean times, then changes with h (level-10 width 1.708984e-3, typical level-7 width 9.114583e-3 M). Diagonal width is 6.042172e-4 M at the first two times, then 8.056230e-4 on level 11, mostly 1–2 centres on coarser levels. A stable physical width over a well-resolved sequence of inner levels is not demonstrated.
+
+**A1 verdict: mixed native evidence, no literal two-centres-at-every-level-from-birth result.** Six axial/three diagonal centres at the first observable time are compatible with a very small pulse subsequently under-resolved, but the diagonal is never robustly resolved there and most later lobes are grid-scale. The interval 0<t<0.018229167 M is unsaved. At the finest level that first coarse interval contains 4096 substeps, so neither the instant of birth nor the operation producing it is determined by these plots. A1 does not prove a continuum kink or a source defect.
+
+![Native launch counts and widths](figures/t10-launch.png)
+
+The figure shows the initial 6/3-centre lobes, followed by mostly 1–3-centre transport, and increasing quantized physical widths as the front moves through coarser inner levels. It supports the qualification above rather than a universal two-cell claim.
+
+### A3 — Source-fixed transport ladder
+
+**Classification: outcome (3), on the tested ladder only.** In every ray/time comparison the width continues decreasing, Gamma peak amplitude increases and both Gamma and conditional W_out successive fixed-window RMS differences increase. Width ratios T8/T4 are 0.590–0.603, with no measured saturation; counts in the current/fine cells increase only moderately. This is not outcome (2): the decisive Gamma/W differences do not begin decreasing. It is not a proof that an arbitrarily finer transport sequence lacks a continuum limit.
+
+E-high is a separate source-refined reference, not another rung of the fixed-source transport hierarchy. No Richardson order is assigned to the irregular E-mid→T4→T8 hierarchy ladder. Cartesian receiving counts below mean w/h_recv at the **common 3.5 M square face**, h_recv=7/192,7/768,7/1536 M respectively (E-high 7/288). Along a diagonal native ray the actual centre-count equivalent is smaller by sqrt(2), and is explicitly saved in [front metrics](t10-fronts.csv). At 2.625 M these are prospective receiving counts; at 4.375 M axis/equator are on the receiving side, while the diagonal is still inside the square corner.
+
+
+| t/M | ray | leg | front/M | width/M | current fine/level cells | 3.5 M receiving cells | Gamma feature peak |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2.625000 | axis | E-mid | 2.642000 | 0.041472 | 2.275039 | 1.137519 | 3.727264e-07 |
+| 2.625000 | axis | E-T4 | 2.610000 | 0.015224 | 3.340530 | 1.670265 | 1.747738e-06 |
+| 2.625000 | axis | E-T8 | 2.616500 | 0.009070 | 3.980630 | 1.990315 | 4.112901e-06 |
+| 2.625000 | axis | E-high | 2.639500 | 0.029487 | 2.426333 | 1.213166 | 6.016942e-07 |
+| 2.625000 | equator | E-mid | 2.642000 | 0.041432 | 2.272857 | 1.136429 | 3.734413e-07 |
+| 2.625000 | equator | E-T4 | 2.610000 | 0.015222 | 3.340032 | 1.670016 | 1.751247e-06 |
+| 2.625000 | equator | E-T8 | 2.616500 | 0.009066 | 3.978774 | 1.989387 | 4.119192e-06 |
+| 2.625000 | equator | E-high | 2.639500 | 0.029468 | 2.424787 | 1.212394 | 6.025523e-07 |
+| 2.625000 | diagonal | E-mid | 2.602500 | 0.024079 | 1.320905 | 0.660452 | 6.831927e-07 |
+| 2.625000 | diagonal | E-T4 | 2.613000 | 0.012214 | 2.679996 | 1.339998 | 2.527060e-06 |
+| 2.625000 | diagonal | E-T8 | 2.617500 | 0.007360 | 3.230016 | 1.615008 | 5.695084e-06 |
+| 2.625000 | diagonal | E-high | 2.608500 | 0.017572 | 1.445890 | 0.722945 | 1.315923e-06 |
+| 4.375000 | axis | E-mid | 4.391000 | 0.080124 | 2.197678 | 2.197678 | 6.838696e-08 |
+| 4.375000 | axis | E-T4 | 4.352500 | 0.022575 | 2.476790 | 2.476790 | 2.284191e-07 |
+| 4.375000 | axis | E-T8 | 4.362500 | 0.013328 | 2.924513 | 2.924513 | 5.649176e-07 |
+| 4.375000 | axis | E-high | 4.390000 | 0.054133 | 2.227189 | 2.227189 | 8.474617e-08 |
+| 4.375000 | equator | E-mid | 4.391000 | 0.080004 | 2.194398 | 2.194398 | 6.839063e-08 |
+| 4.375000 | equator | E-T4 | 4.352500 | 0.022571 | 2.476318 | 2.476318 | 2.285907e-07 |
+| 4.375000 | equator | E-T8 | 4.362500 | 0.013325 | 2.923825 | 2.923825 | 5.653144e-07 |
+| 4.375000 | equator | E-high | 4.390000 | 0.054108 | 2.226144 | 2.226144 | 8.478728e-08 |
+| 4.375000 | diagonal | E-mid | 4.389500 | 0.038734 | 2.124834 | 1.062417 | 1.172048e-07 |
+| 4.375000 | diagonal | E-T4 | 4.361000 | 0.013528 | 2.968476 | 1.484238 | 5.436757e-07 |
+| 4.375000 | diagonal | E-T8 | 4.367000 | 0.008051 | 3.533117 | 1.766559 | 1.233161e-06 |
+| 4.375000 | diagonal | E-high | 4.348000 | 0.025932 | 2.133815 | 1.066908 | 1.834209e-07 |
+
+The widths are single curvature lobes, not the entire wave packet. Even T8 supplies only 1.990 axial / 1.615 Cartesian diagonal receiving cells at 2.625 M, and 2.925 / 1.767 at 4.375 M (diagonal radial counts 1.142 / 1.249). Those are below a four-cell receiving condition. Width dependence defeats use of these values as an admitted finite physical resolution envelope.
+
+
+| t/M | ray | Gamma mid–T4 RMS | Gamma T4–T8 RMS | difference ratio | W_out ratio | beta ratio |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2.625000 | axis | 5.810905e-07 | 9.398656e-07 | 1.617417 | 1.617269 | 0.841874 |
+| 2.625000 | equator | 5.814100e-07 | 9.391682e-07 | 1.615329 | 1.615180 | 0.840683 |
+| 2.625000 | diagonal | 7.475139e-07 | 1.122674e-06 | 1.501878 | 1.502795 | 0.847120 |
+| 4.375000 | axis | 7.579017e-08 | 1.512010e-07 | 1.994994 | 1.994459 | 0.990006 |
+| 4.375000 | equator | 7.582637e-08 | 1.512041e-07 | 1.994084 | 1.993489 | 0.988861 |
+| 4.375000 | diagonal | 1.762050e-07 | 2.688095e-07 | 1.525550 | 1.525554 | 0.783361 |
+
+Beta itself has decreasing or nearly unchanged successive differences (ratios 0.783–0.990), while its derivative-related Gamma and W_out do not. This distinction is measured and prevents describing every evolved field as divergent. P8 repeats the Gamma/W decision; the [difference table](t10-profile-differences.csv) retains both reconstructions. Maximum P6/P8 width disagreement is 1.2024% in the near-child-corner E-mid diagonal at 2.625 M; transport-only maxima are 0.1932%. P6/P8 Gamma peak spread is below 0.08% of the transport feature peak. Interpolation sensitivity is far smaller than the growth.
+
+C_Gamma feature RMS fractions at 2.625 M on the axis are 2.002% / 0.6411% / 0.3195% for E-mid/T4/T8; diagonal 5.152% / 0.3691% / 0.1691%. At 4.375 M they are axis 1.124% / 1.632% / 1.054%, diagonal 0.6426% / 0.2586% / 0.1278%. The growing narrow feature remains predominantly metric-consistent Gamma. It is not explained chiefly by the Gamma reduction constraint. This does not rule out a numerical metric/gauge source or AMR transport artifact.
+
+![Signed transport profiles at 2.625 M](figures/t10-profiles-2p625.png)
+
+![Signed transport profiles at 4.375 M](figures/t10-profiles-4p375.png)
+
+The raw signed Gamma and W_out oscillations grow with transport refinement, while the much smaller beta changes remain nearly invisible on the raw-field scale. The complete P6/P8 signed profiles are retained in the dense caches; [small profile CSV](t10-signed-profiles.csv) thins them without supplying the widths or derivative integrals.
+
+![Widths and amplitudes against receiving spacing](figures/t10-width-amplitude.png)
+
+The last transport doubling reduces width by about 0.6 while increasing Gamma amplitude by about 2.3–2.5. No plateau or Cauchy signed characteristic profile is demonstrated.
+
+### Fixed-delta derivative integrals
+
+J is evaluated from the raw signed field by the same T9 C2 reconstruction: endpoint first-derivative difference, with positive/negative integrals separately retained and checked, P8 and half-density reconstruction as sensitivities. [All beta/Gamma/W_out/C_Gamma integrals](t10-jump-integrals.csv) include delta=0.1,0.2,0.4 M, one-sided values and first derivatives. No fixed-delta integral is mistaken for a continuum discontinuity just because a large-window value stabilizes.
+
+
+| t/M | ray | delta/M | Gamma J mid | T4 | T8 | high source | condition |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2.625000 | axis | 0.100000 | 9.513846e-06 | 3.633972e-06 | 4.109796e-06 | -4.661527e-06 | single sampled level |
+| 2.625000 | axis | 0.200000 | 1.046361e-05 | 9.607159e-06 | 9.749144e-06 | 1.002609e-05 | single sampled level |
+| 2.625000 | axis | 0.400000 | 2.006875e-05 | 2.053392e-05 | 2.051803e-05 | 2.010743e-05 | single sampled level |
+| 2.625000 | diagonal | 0.100000 | 8.981320e-06 | 4.638762e-06 | 3.790227e-06 | 1.646187e-06 | single sampled level |
+| 2.625000 | diagonal | 0.200000 | 1.170971e-05 | 9.752492e-06 | 9.743907e-06 | 9.591209e-06 | child corner in mid/high |
+| 2.625000 | diagonal | 0.400000 | 2.156067e-05 | 2.049503e-05 | 2.044090e-05 | 2.041935e-05 | child corner in mid/high |
+| 4.375000 | axis | 0.100000 | 1.143139e-06 | 2.270352e-06 | 1.618158e-06 | 2.032360e-06 | single sampled level |
+| 4.375000 | axis | 0.200000 | 3.796578e-06 | 3.777431e-06 | 3.754897e-06 | 3.563717e-06 | single sampled level |
+| 4.375000 | axis | 0.400000 | 7.647353e-06 | 7.929989e-06 | 7.852974e-06 | 7.653998e-06 | single sampled level |
+| 4.375000 | diagonal | 0.100000 | 2.935312e-06 | 1.599640e-06 | 1.566053e-06 | 3.582735e-06 | single sampled level |
+| 4.375000 | diagonal | 0.200000 | 3.790459e-06 | 3.760145e-06 | 3.745872e-06 | 3.789534e-06 | single sampled level |
+| 4.375000 | diagonal | 0.400000 | 7.659141e-06 | 7.866364e-06 | 7.824246e-06 | 7.961213e-06 | single sampled level |
+
+Large-delta Gamma J at 2.625 M approximately doubles from delta=0.2 to 0.4 M (about 1e-5 to 2e-5), and at 4.375 M from about 3.8e-6 to 7.8e-6. That contains a smooth current-field background. The narrow signed peak growth does not supply a delta-insensitive limiting jump. Oscillatory signed cancellation can stabilize a broad integral while the field profile remains non-Cauchy on this ladder. The raw values and positive/negative parts are reported rather than used as proof of regularity.
+
+### Face error on identical physical masks
+
+The [full constraint comparison](t10-constraint-comparison.csv) covers the five registered times 0.875,1.75,2.625,3.5,4.375 M, all 12 masks and 15 constraints, retaining RMS, maximum, cell counts and coordinate volumes for each leg. These are unchanged uncovered-cell volume weights 2pi*y*h_l^2. The registered radial receiving mask [3.5,4.375] M mixes coarse-side cells near the axis/equator and fine-side cells toward the diagonal because the patches are square; it is not a pure coarse-side operation budget. The geometric mask is identical; finite centre selection gives different counts and quadrature weights. No global or face order is assigned to this nonuniform hierarchy ladder.
+
+
+| t/M | mask | constraint | E-mid RMS | T4 RMS | T8 RMS | T4 / mid | T8 / T4 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 3.500000 | far | CGamma | 6.674970e-11 | 5.098194e-12 | 2.023240e-11 | 0.076378 | 3.968543 |
+| 3.500000 | far | Ham | 4.203059e-11 | 2.012207e-11 | 8.947289e-11 | 0.478748 | 4.446505 |
+| 3.500000 | far | Mom | 3.382084e-11 | 9.195663e-12 | 4.159547e-11 | 0.271893 | 4.523379 |
+| 3.500000 | receiving_side_3p5 | CGamma | 1.046837e-09 | 1.165683e-09 | 1.075955e-09 | 1.113529 | 0.923025 |
+| 3.500000 | receiving_side_3p5 | Ham | 2.584811e-08 | 8.902193e-08 | 1.400033e-07 | 3.444040 | 1.572683 |
+| 3.500000 | receiving_side_3p5 | Mom | 3.813717e-09 | 7.164386e-09 | 8.293870e-09 | 1.878584 | 1.157653 |
+| 4.375000 | far | CGamma | 2.483083e-10 | 4.390398e-10 | 4.776377e-10 | 1.768124 | 1.087914 |
+| 4.375000 | far | Ham | 7.059968e-09 | 3.209786e-08 | 5.464139e-08 | 4.546460 | 1.702337 |
+| 4.375000 | far | Mom | 4.789676e-09 | 2.538443e-08 | 4.439605e-08 | 5.299823 | 1.748948 |
+| 4.375000 | receiving_side_3p5 | CGamma | 7.222548e-10 | 1.389501e-09 | 1.508784e-09 | 1.923837 | 1.085847 |
+| 4.375000 | receiving_side_3p5 | Ham | 2.547286e-08 | 1.257011e-07 | 2.209077e-07 | 4.934707 | 1.757405 |
+| 4.375000 | receiving_side_3p5 | Mom | 1.705341e-08 | 9.466085e-08 | 1.688442e-07 | 5.550845 | 1.783675 |
+
+**No receiving-error suppression is measured.** At 4.375 M receiving-shell Ham grows by 4.9347 then 1.7574, Mom by 5.5508 then 1.7837, C_Gamma by 1.9238 then 1.0858. Far Ham grows by 4.5465 then 1.7023, Mom by 5.2998 then 1.7489. Before the front reaches most of the far shell, its 3.5 M norm has different low floors and nonmonotone C_Gamma; it is not evidence of a resolved passing packet. The sharpened/growing incident profile changes simultaneously, so these norms do not isolate the error of a single interface operation at fixed incident waveform. They directly kill the claim that this transport enlargement alone suppresses the registered endpoint error.
+
+![Constraint norms on fixed masks](figures/t10-face-errors.png)
+
+The endpoint receiving and far Hamiltonian/momentum errors grow under the source-fixed transport ladder. Exact counts/weights and the exterior-wake/far-core comparisons remain in the CSVs.
+
+### Causal statement and next ranked step
+
+**Measured:** downstream Gamma/conditional shift-characteristic amplitudes increase, their widths remain transport dependent, their successive signed-profile differences increase, and receiving-shell/far constraint errors increase. The feature is mostly metric-consistent. The earliest saved native source contains a small 6/3-centre lobe; later native transport is mostly 1–3 centres. **Inferred:** transport refinement through T8 has exposed/amplified an unresolved source/transport feature rather than established an admissible continuum pulse. **Unresolved:** whether an initial discrete source, unresolved smooth throat pulse, nonlinear early formation or earlier inner-interface passage generated it. These data locate neither a first RHS operation nor an initial weak discontinuity.
+
+The revised expert ranking therefore favors the **read-only initialized t=0 longitudinal RHS/source audit on levels 12→7**, before another transport enlargement or a 100 M layout price. Decompose beta advection, 0.75*Gamma, -eta*beta, -B_driver, and the geometric/K/Theta/cartoon sources of Gamma, with the frozen native discretization and KO. Determine whether a narrow source is already present before the first update, and whether it lies at the puncture, an inner face or a driver cancellation. This is a source-localization test, not an assertion that A1 proved two-cell birth. If the initial sources are smooth, rank-5 per-stage early-step capture becomes the next test. Test B_driver(0)=0 only if the cheap audit implicates its initialization/cancellation or leaves that specific source ambiguous. A2 passes, so the intermediate launch dt ladder is not the first priority.
+
+There is no measured saturated w(r,t) from which to admit receiving-cell counts along a 100 M chain. Do not turn a single 3.5 M receiving refinement into a convergence certification, choose a universal reduced exterior order, or prescribe level 8 to 100 M from these results. No next experiment was launched.
+
+### Reproduction and retained artifacts
+
+Run `/Users/auroradysis/miniconda3/bin/python Tests/EMSNative/t10-analyze.py extract`, then `analyse`, `audit`, `figures`, with `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1` and `MPLCONFIGDIR=/private/tmp/ems-t10/mpl` for figures. Extract is the exact numerical/bit comparison check and reads only ray-support boxes. All commands completed well below ten minutes. Public CSVs total about 2 MB, figures are standalone PNG/PDF, and dense selected caches stay on disk with recorded hashes. [COMMIT-MANIFEST-T10.txt](COMMIT-MANIFEST-T10.txt) identifies public outputs, reused/ sealed scripts, controller-verified plot hashes and retained cache hashes. No commit was made.
