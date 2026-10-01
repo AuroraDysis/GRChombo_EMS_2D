@@ -1,0 +1,90 @@
+T15 exp-0021 four-rung read-only analysis
+STATUS READY-EXCEPT: all 14 budgets complete in staging; requested .data budget destination denied by sandbox.
+HEAD 949a744 (no commit; README.md unchanged)
+PEAK_RSS_BYTES 3617882112
+PEAK_RSS_DECIMAL_GB 3.617882112
+CAP_BYTES 4000000000; all measured processes below cap; max native OMP threads=4
+MEASUREMENT /usr/bin/time -l invoked for native reader and main Python commands; kern.clockrate denied; peak RSS measured with fresh-process getrusage and a 3.9 GB libproc watchdog.
+BUDGET_NATIVE_EXIT all 24 invocations=0; all ten off-ladder stage-2 surfaces FOUND; cap_stop=false
+BUDGET_COMPLETION /private/tmp/ems-t15/E-4th/charge-budget.done: checkpoints=14 rows=56
+INPUT_COLLECTION_SHA256 local shasum -a 256 -c collection.sha256: 237/237 entries OK
+CHECKPOINT_PROVENANCE operator-supplied SHA-256-verified inputs; local 14-file/13-level Float64 time census, 27260499168 bytes. No second remote check claimed.
+READER_SHA256 c46ab239edcfc3ccf8c1ac913995d5664964f484266bf542c723e597b39f307d: checked against pinned post-pull-reader.sha256 before running.
+COMMAND_ATTEMPT OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 /usr/bin/time -l /usr/bin/python3 state/threads/ems-spectral-solver/runs/exp-0021/submissions/exp-0021/budget.py .data/exp-0021/E-4th E-4th /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSRHFinder/EMSRHCheckpoint2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex; cwd=/Users/auroradysis/Workspace/EMS; PermissionError creating charge-budget.
+STAGING_COMMAND OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /usr/bin/python3 /private/tmp/ems-t15/run-budget.py
+ANALYSIS_COMMAND OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l /usr/bin/python3 Tests/EMSNative/t15-analyze.py {tables,orders,shell,check}
+FIGURE_COMMAND MPLCONFIGDIR=/private/tmp/ems-t15/mpl (serial env as above) /usr/bin/time -l /usr/bin/python3 /private/tmp/ems-t15/finish.py
+REPORT_COMMAND /usr/bin/time -l /usr/bin/python3 /private/tmp/ems-t15/report.py
+VALIDATION t15-analyze.py check PASS; 14 x 4 budget combinations; all constraint order arithmetic; 28 qualified baseline rows; 4 late samples/rung; budget kernel selfcheck. All four PNG figures visually inspected.
+LIMITS no .data/budget directory or contractual completion marker written; time -l detailed RSS unavailable; fourth-rung four-time late extraction spread unavailable (only 7 and 10.5 M checkpoint ladder samples). No long-time evolution/extension admission.
+FILES sha256 bytes path
+ARTIFACTS
+764643022afb9792033940503a353d226c61a892e26bc311912022ca016233fc 32797 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/T15-exp0021-four-rung.md
+7fb138363493faf2ed73aa740c5d340867c689a0317806fd6b46c6786f2560b8 10651 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-analyze.py
+9cd200b6fd5cff46799d6b2a96b1a0b7150431e64729392e1de902c62e4add0d 714 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-charge-projections.csv
+814fb74a5da8b8f354a5c124279701931ecffa1659b5fea4d1ca93cf065cb01b 12449 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-checkpoint-budget.csv
+a9cf78e7ff17ba76103207d3540f6760c8fd53b9b02541ebf60496b7c7905309 1896 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-checkpoint-census.csv
+29ad04a7c44729ad2f756591eddbd96b03d8665f6ee070042eddf97f01996f8d 13348 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-constraint-order-summary.csv
+a490cad6d2187693203f348756e602017d71f17df6e0aead87c3778cc9e80a70 129976 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-constraint-orders.csv
+4b0101247aac6c91d66d3c17fed8595069590edd0d07ccc2fd012b649ab0cb1d 991 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-extraction-rate-spreads.csv
+b79df2d2b7ce1453835dfa46d39a47b0eb126be8a8c6701e14137c3cf9c56285 25055 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-field-order-summary.csv
+cc1f13337f39bf122e70a0c690ff628395e11f7b4b2c8bcd27a7a21495511a71 533537 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-field-orders.csv
+57b66aac6a20409e99c1ce6236f8b13ed3b2a3080608ba4c3ae6ee19f3a29a7c 9570 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-horizon-history.csv
+d2540fa5380061148242c134545f31cfcf1a53959369610d5886408c952bd54b 3555 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-late-rates.csv
+d57eaf92e5bfb8ea33d979ece665e36727b5de04352dbc19bf4818e71154fa61 9574 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-off-ladder-surfaces.csv
+ae7b705f9b757db4960b379e279877fbb03b95bc721e2bd4b4518d2c9b9c8328 332 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-rate-ratios.csv
+f48bfd61f9aaade1cb293b01f80c0301c976eb87978dfdb7a31368e6039a9145 4093 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-resources.csv
+3d22eff8125ed0d14ba81cc926f883c1e23078b54df97ad1dc0d4d3cb26978db 18017 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-shell-history.csv
+6d7cc9f9765593d451f6208f42fbcff9239950468998c4125195caec09afa2da 30129 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-shell-raw.csv
+a598ad11d871ec0258cdb75209e37a6585a2c850d16bca82e6e6d15a7e11093e 17791 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/t15-shell-reference-raw.csv
+ace153b49392ac3851fcc146e60e052fa2ecd257b08206e5ede22b86cded0d53 32301 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/figures/t15-area-history.pdf
+6370cff9ae54d3028f73b167981d8033f3e01c626381c1da505e55b6ff92068d 125186 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/figures/t15-area-history.png
+1d307220ac5c7e2b56656b9cdfd22c62011377cbfdfdd2aa6e16a583830c7bdd 32443 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/figures/t15-charge-history.pdf
+05d551cdfacab698f381dab59bc23ffa4ba7efdc2778bf279548dcc00b36a46f 164381 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/figures/t15-charge-history.png
+04b875a360cffa08ae0c68a047881bfc4b6575272b6288334d6f3e3ebccc2f53 36040 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/figures/t15-constraint-orders.pdf
+09961a97c997046db2408173e11eca833b8574d8f717ebc6bf68a0b503d1104e 113180 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/figures/t15-constraint-orders.png
+bba4deb6e7d854cda3e288936edf1b3f92644fd510452396892109bfae60fc91 38028 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/figures/t15-shell-identity.pdf
+8883e2e68d95f98d80910b8df8958f3ad180f10cca643c64b5f2f22469e51220 211400 /Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t15/Tests/EMSNative/figures/t15-shell-identity.png
+INPUTS
+f7743bb638d96d4d56ac2067a3bebcfa47dbbe93a390e30485728d3ea6076ca9 39166 /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0021/submissions/exp-0021/submit-contract.md
+c40d0b2ed27b7a19e9ed109b754b3a6f9e9b087fdd1bad468124e3b8ef8e559a 9746 /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0021/submissions/exp-0021/budget.py
+9333cb2a4f95d7eb327f5813da1f69d88f6b015400218bb2ab3c215ff18416bf 14436 /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0021/submissions/exp-0021/audit.py
+82dffc3bbb76a4e95bad0466ff7ac69c152ebd279c222cc46357d5252d4d14a1 6068 /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0021/submissions/exp-0021/qualify.py
+960245cfc4e750b7949c5aa3b3587cba1582faeb3079116a6b0c831712080b37 12213 /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0021/submissions/exp-0021/reduce.py
+90cbbe1f285ed6f9e661f4d32a1c13b3cb0123a4c92a529bca00d0a16ed8e457 3305 /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0021/submissions/exp-0021/params-E-4th.txt
+0286498a385f5b5c864836e418f1191b85f86c91d1b45da1514f5dcc4db49ede 209 /Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0021/submissions/exp-0021/post-pull-reader.sha256
+278a076b2c00afc6f6aa16bbd103bd9d4fa9fc2fcdc4ec0fb31de2b602b7879d 1527 /Users/auroradysis/Workspace/EMS/.data/exp-0021/charge-rates-four-rung.csv
+918fa505edaad32ce95b12f28128f57b6ba958e1d4dfb4dc9137d3961f37ebc1 2751 /Users/auroradysis/Workspace/EMS/.data/exp-0021/horizon-orders-four-rung.csv
+e1ffab8f154389278caa973f08205f19406c10bd13ee4ce1ade84692e83b94c2 12041 /Users/auroradysis/Workspace/EMS/.data/exp-0021/qualified-horizons-four-rung.csv
+b765d40f65031c227191f9c9a81cd80e4e43388b4765b565d7b1047039d05965 48098 /Users/auroradysis/Workspace/EMS/.data/exp-0021/native-horizons-four-rung.csv
+cc1f13337f39bf122e70a0c690ff628395e11f7b4b2c8bcd27a7a21495511a71 533537 /Users/auroradysis/Workspace/EMS/.data/exp-0021/self-differences.csv
+a490cad6d2187693203f348756e602017d71f17df6e0aead87c3778cc9e80a70 129976 /Users/auroradysis/Workspace/EMS/.data/exp-0021/constraint-orders.csv
+7c4e7161db38f66513fb0a0f352fee4bd0a1cc2d3ebddc43e1b728abbb09d061 24198 /Users/auroradysis/Workspace/EMS/.data/exp-0021/collection.sha256
+aa534d393113a262b132673b712b5fe5b8a01e219cdef952e04f6685acb28548 5675 /Users/auroradysis/Workspace/EMS/.data/exp-0021/E-4th/qualified-horizons.csv
+c063ab17e6271cdb4f50c24359ff1110f4686adec3fd111d805e32e6b8b25ba6 253139 /Users/auroradysis/Workspace/EMS/.data/exp-0021/E-4th/rh_f0.dat
+18ef38c77674a8f18e64cb85294d17289147ced817c5a1b60133c9fe66942939 51019 /Users/auroradysis/Workspace/EMS/.data/exp-0021/E-4th/rh_surf_0.dat
+420a954838608d635b403c0c916d172c573faa3eb6388001279442aa325661fc 241 /Users/auroradysis/Workspace/EMS/.data/exp-0021/E-4th/run.done
+420a954838608d635b403c0c916d172c573faa3eb6388001279442aa325661fc 241 /Users/auroradysis/Workspace/EMS/.data/exp-0021/E-4th/chain.done
+10fc9c7391dae69794dfe0d8310ba2ad38b89dbdcb561383f05dbc2753b44242 84 /Users/auroradysis/Workspace/EMS/.data/exp-0021/E-4th/qualification.done
+65ffb2c6717ebffbdedc6b856263529a79ed1635d0fbae259201ad3560761d25 430192 /Users/auroradysis/Workspace/EMS-deps/GRChombo_EMS_2D/Tests/EMSNative/README.md
+879d9cf7c2d62765180074449829d9a22942c3594ca386e22b8cfc26817a5550 24039 /Users/auroradysis/Workspace/EMS-deps/worktrees/consult-6-reply.md
+RETAINED_STAGING_EVIDENCE
+07b1bb7ec7f66cfe39e6123b693064368ad91687465cf5a5e1f1b36b4b70fb91 2089 /private/tmp/ems-t15/run-budget.py
+1ac5796f64dd8773ad63c5d7137e99597de1feb5ef750a133d70f898bfd0dafd 761 /private/tmp/ems-t15/child-measure.py
+fdcd76837804d9781af498d0625366a756caab7e9c97734cb4c70e307af9d67d 8807 /private/tmp/ems-t15/finish.py
+3781a68e5b65a3fa00a9a57f20918dc5a80ec84135a988011de5d02539bb2167 27387 /private/tmp/ems-t15/report.py
+ae7f8d7deb73cbaee643744a2d28d9ef73616a0fe6e3d251793ae6878c13f94f 1443 /private/tmp/ems-t15/contract-attempt.log
+ecc2aaa610a84aa621ce83b1338608e0c8c3f2eb5c86d0b820276edded01e304 2420 /private/tmp/ems-t15/budget.log
+387072e8caa717172c54d5d028327d1439d364b02f1ca40b5cb4181331a27563 135 /private/tmp/ems-t15/tables.log
+538d7841e45255f9ef76ac26131f42163ae3b64abda71986675f01b166ab37f1 135 /private/tmp/ems-t15/orders.log
+ad312464f50a62593d03c7b55534da5e36c81d5f01213b4fc5c4634209b7f8cb 491 /private/tmp/ems-t15/shell.log
+6c5c43cee5a73daa36fee8863eabb23e14395d674a19b2064f5a6b5dec23d68b 275 /private/tmp/ems-t15/check.log
+5b16dca35b10da63d64e914ef726fdcbbad4776dabdad7e883fc825eca0a698e 201 /private/tmp/ems-t15/finish.log
+5da6531d95bb9b89178863312eb09cf404e2b43c7fd095796f23a19b9428c40f 137 /private/tmp/ems-t15/report.log
+264528e48f17bfc8175a93a5742d3eab822f67026202db091415dded6701fca7 9504 /private/tmp/ems-t15/collection-verify.log
+07f4c1af34828f9fce028faed46ea6a9c142dd6a21f15048401df252018983e5 14131 /private/tmp/ems-t15/E-4th/reader-resources.json
+90a2bd63ffbcce7a06d7926a03b80f9a51684af9b36bee2cd0a82a91f8155513 31 /private/tmp/ems-t15/E-4th/python-resources.json
+814fb74a5da8b8f354a5c124279701931ecffa1659b5fea4d1ca93cf065cb01b 12449 /private/tmp/ems-t15/E-4th/charge-budget.csv
+c3c76d7dc8c4d9334a2df32aa3a4be98dde772e9b19a125dc8d9b60ec716a63a 32 /private/tmp/ems-t15/E-4th/charge-budget.done
+POST_BUDGET_INPUTS_UNCHANGED 237/237 collection SHA-256 entries pass after budget completion
+264528e48f17bfc8175a93a5742d3eab822f67026202db091415dded6701fca7 9504 /private/tmp/ems-t15/collection-final-verify.log
