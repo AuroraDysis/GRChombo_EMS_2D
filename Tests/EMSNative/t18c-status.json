@@ -1,0 +1,17 @@
+{
+  "status": "READY-EXCEPT",
+  "diagnostic_lapse_rule_pass": true,
+  "geometric_endpoint_Gamma_rule": true,
+  "native_total_Gamma_source_rule": true,
+  "recommendation": "ems_use_geometric_initial_lapse=true",
+  "diagnostic_low_merger_admission": true,
+  "convergence_admission": false,
+  "limits": "Only LOW rung and nine positive native clocks; no T16b two-rung admission, long-time binary stability or companion certification.",
+  "companion": "documented diagnostic, D2(logpsi) 2.8922936531e-5 > 1e-9",
+  "peak_RSS_bytes": 2875801600,
+  "completion_verified": true,
+  "completion_marker": "/private/tmp/ems-t18c/completion-verified/done.exit",
+  "cached_norm_checks": 640,
+  "ratio_interval_checks": 288,
+  "observed_interfaces": 24
+}

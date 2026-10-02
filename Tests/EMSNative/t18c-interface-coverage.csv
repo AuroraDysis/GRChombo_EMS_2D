@@ -1,0 +1,45 @@
+interface,kind,observed,status
+1:2,radial,False,unobserved; no inferred pass/order
+1:6,angular,False,unobserved; no inferred pass/order
+1:28,radial,False,unobserved; no inferred pass/order
+2:3,radial,True,native stencil observed
+2:7,angular,True,native stencil observed
+3:4,radial,True,native stencil observed
+3:8,angular,True,native stencil observed
+4:5,radial,True,native stencil observed
+4:9,angular,True,native stencil observed
+5:10,angular,True,native stencil observed
+5:21,outer-sphere,True,native stencil observed
+6:7,radial,False,unobserved; no inferred pass/order
+6:28,radial,False,unobserved; no inferred pass/order
+7:8,radial,True,native stencil observed
+8:9,radial,True,native stencil observed
+9:10,radial,True,native stencil observed
+10:15,bridge-plane,True,native stencil observed
+11:12,radial,False,unobserved; no inferred pass/order
+11:16,angular,False,unobserved; no inferred pass/order
+11:34,radial,False,unobserved; no inferred pass/order
+12:13,radial,True,native stencil observed
+12:17,angular,True,native stencil observed
+13:14,radial,True,native stencil observed
+13:18,angular,True,native stencil observed
+14:15,radial,True,native stencil observed
+14:19,angular,True,native stencil observed
+15:20,angular,True,native stencil observed
+16:17,radial,False,unobserved; no inferred pass/order
+16:34,radial,False,unobserved; no inferred pass/order
+17:18,radial,True,native stencil observed
+18:19,radial,True,native stencil observed
+19:20,radial,True,native stencil observed
+20:22,outer-sphere,True,native stencil observed
+21:22,angular,True,native stencil observed
+23:24,radial,False,unobserved; no inferred pass/order
+24:25,radial,False,unobserved; no inferred pass/order
+25:26,radial,False,unobserved; no inferred pass/order
+26:27,radial,False,unobserved; no inferred pass/order
+27:28,radial,False,unobserved; no inferred pass/order
+29:30,radial,False,unobserved; no inferred pass/order
+30:31,radial,False,unobserved; no inferred pass/order
+31:32,radial,False,unobserved; no inferred pass/order
+32:33,radial,False,unobserved; no inferred pass/order
+33:34,radial,False,unobserved; no inferred pass/order

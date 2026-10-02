@@ -1,0 +1,32 @@
+[
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.data/echo-binary/tranche3/d16/r32-a10/n32-r6.ctt",
+    "sha256": "107370ae00d8b69dc3122dc023e34bbff23b90afc8401bb233743c1182e6083c",
+    "bytes": 12213391
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo-binary/a0.9-e8.trumpet",
+    "sha256": "4d7cc0b975d4dde0c4da8400ef0bbad8c3e57716c9708c160d19e56288a76f90",
+    "bytes": 8096
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-echobin/artifacts/echo-binary/tranche3/d16/r32-a10/params-initial-data.txt",
+    "sha256": "1cb614a1ade908942e8348fc450f94a3ee55325e03a594549d96150c09b01c8d",
+    "bytes": 519
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-echobin/artifacts/echo-binary/tranche3/d16/r32-a10/audit.md",
+    "sha256": "4b8edcde176009da364c7c4567a9ba7558d51e7844b04637cb8e31c254e24387",
+    "bytes": 22529
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t16b-native.hpp",
+    "sha256": "4a269cf0d6842932b7db5726ac7ff2829971bef676c8a0b173c6e2b7e064f1c9",
+    "bytes": 13551
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t16b-analyze.py",
+    "sha256": "04413e94ca21716239af5049fc9828d91ae365b8656c85a3c2856322a8a4abc6",
+    "bytes": 37262
+  }
+]

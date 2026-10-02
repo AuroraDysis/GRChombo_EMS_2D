@@ -1,0 +1,33 @@
+hole,ray,field,norm,qualified,uncertainty_dominated,resolved_reductions,enhanced_steps
+left,axis,Gamma,peak,9,0,9,
+left,axis,Gamma,RMS,9,0,9,
+left,axis,metric_Gamma,peak,9,0,9,
+left,axis,metric_Gamma,RMS,9,0,9,
+left,axis,shift,peak,9,0,7,1 2
+left,axis,shift,RMS,9,0,7,1 2
+left,axis,lapse,peak,9,0,9,
+left,axis,lapse,RMS,9,0,9,
+left,diagonal,Gamma,peak,9,0,9,
+left,diagonal,Gamma,RMS,9,0,9,
+left,diagonal,metric_Gamma,peak,9,0,9,
+left,diagonal,metric_Gamma,RMS,9,0,9,
+left,diagonal,shift,peak,9,0,8,1
+left,diagonal,shift,RMS,9,0,8,1
+left,diagonal,lapse,peak,9,0,9,
+left,diagonal,lapse,RMS,9,0,9,
+right,axis,Gamma,peak,9,0,9,
+right,axis,Gamma,RMS,9,0,9,
+right,axis,metric_Gamma,peak,9,0,9,
+right,axis,metric_Gamma,RMS,9,0,9,
+right,axis,shift,peak,9,0,7,1 2
+right,axis,shift,RMS,9,0,7,1 2
+right,axis,lapse,peak,9,0,9,
+right,axis,lapse,RMS,9,0,9,
+right,diagonal,Gamma,peak,9,0,9,
+right,diagonal,Gamma,RMS,9,0,9,
+right,diagonal,metric_Gamma,peak,9,0,9,
+right,diagonal,metric_Gamma,RMS,9,0,9,
+right,diagonal,shift,peak,9,0,8,1
+right,diagonal,shift,RMS,9,0,8,1
+right,diagonal,lapse,peak,9,0,9,
+right,diagonal,lapse,RMS,9,0,9,

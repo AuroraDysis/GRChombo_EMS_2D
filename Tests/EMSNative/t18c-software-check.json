@@ -1,0 +1,6 @@
+{
+  "compact_initialization": "BIT_IDENTICAL",
+  "nonlapse": "BIT_IDENTICAL",
+  "native_constraints": "BIT_IDENTICAL",
+  "scope": "L0-2 software fixture including point transfers; physical results remain pending"
+}

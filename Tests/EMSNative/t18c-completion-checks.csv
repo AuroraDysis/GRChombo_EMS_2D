@@ -1,0 +1,9 @@
+check,result
+"full-sqrt actual child, gates, clocks and floors",PASS
+"full-geometric actual child, gates, clocks and floors",PASS
+"launch-sqrt actual child, gates, clocks and floors",PASS
+"launch-geometric actual child, gates, clocks and floors",PASS
+analysis-final own completed receipt,PASS
+queue own completed receipt,PASS
+domain-check own completed receipt,PASS
+640 cached amplitudes/spreads and all 288 ratio intervals,BIT_IDENTICAL

@@ -1,0 +1,41 @@
+{
+  "full_vs_cropped_initial_nonlapse_values": 53342145,
+  "bit_mismatches": 0,
+  "compared_boxes": 3570,
+  "scope": "all ghosts/valid cells on every refined box; base cells in abs(x-midpoint)<=200, abs(y)<=200",
+  "native_advance_counts": {
+    "sqrt": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      3,
+      5,
+      9
+    ],
+    "geometric": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      3,
+      5,
+      9
+    ]
+  },
+  "conservative_coordinate_footprint_estimate_M": 168.4169921875,
+  "cropped_outer_boundary_distance_from_nearer_puncture_M": 440,
+  "limit": "No full-production evolved-state comparison; the captured finest t0 comparison separately checks all 28 fields, including lapse."
+}

@@ -1,0 +1,5 @@
+run,native_stop_M,nonlapse_values,nonlapse_bit_mismatches,native_RHS_bit_mismatches,driver_cancellation,selector_checks,geometric_native_max_error,peak_RSS_bytes,wall_seconds
+full-sqrt,0.0,190921752,reference,0,0,215,0.0,1453146112,126.86743420897983
+full-geometric,0.0,190921752,0,0,0,215,7.756573161543656e-13,2019639296,110.61059870896861
+launch-sqrt,0.001922607421875,57848472,reference,0,0,183,0.0,2875801600,50.48351300007198
+launch-geometric,0.001922607421875,57848472,0,0,0,183,7.756573161543656e-13,2606841856,51.994909666944295

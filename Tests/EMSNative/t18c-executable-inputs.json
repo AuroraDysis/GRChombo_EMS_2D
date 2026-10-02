@@ -1,0 +1,86 @@
+[
+  {
+    "path": "/private/tmp/ems-t18c/launch.ex",
+    "sha256": "07688fb9c0e403c8002e26a028e9a19fa109c63d2fced22c631bc739b765ac67",
+    "bytes": 2209688
+  },
+  {
+    "path": "/private/tmp/ems-t18c/replay.ex",
+    "sha256": "91168ad4b3c17fa00fe6df7896feb52659a0fca3251c8f5c0003c91cfb573e94",
+    "bytes": 438120
+  },
+  {
+    "path": "/private/tmp/ems-t18c/census.ex",
+    "sha256": "966901a126c67ec24e82cdfce850cd6e9f4c497c046c4121769b27bfe2b1682a",
+    "bytes": 478088
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18c-native.hpp",
+    "sha256": "f209a519a2987d3003ecf17ffc389a12cc89d729885391b0c8aa6e78cab89a5c",
+    "bytes": 14792
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18c-launch.cpp",
+    "sha256": "16cd2e8e9fb35754a1b2324e785e3eba7e3eeb894911f3c430cadfe49d7eafa9",
+    "bytes": 2029
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18c-analyze.py",
+    "sha256": "990a0e61856aa4de28f1bca9e4077d5138172a197543d47299c0994367df56c4",
+    "bytes": 21439
+  },
+  {
+    "path": "/private/tmp/ems-t18c/build-products/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/BoundaryConditions.o",
+    "sha256": "75f5a72e45df4409cbcb78bfb1e48bbd219b8cdc0a0600e7c96654e8e31dab86",
+    "bytes": 139496,
+    "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Examples/EMS/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/BoundaryConditions.o"
+  },
+  {
+    "path": "/private/tmp/ems-t18c/build-products/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/EMSBH2DLevel.o",
+    "sha256": "5244b8c2ddb65f85b1b36889bbc5931334b70a55366cff4657f908d024a6b362",
+    "bytes": 532192,
+    "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Examples/EMS/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/EMSBH2DLevel.o"
+  },
+  {
+    "path": "/private/tmp/ems-t18c/build-products/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRAMR.o",
+    "sha256": "46a565e4e29c783fe2098cb7242cc0ce824923eac68c351b49640c0b16e0e584",
+    "bytes": 16352,
+    "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Examples/EMS/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRAMR.o"
+  },
+  {
+    "path": "/private/tmp/ems-t18c/build-products/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRAMRLevel.o",
+    "sha256": "533079f6960a390245d0ee2e38e0ab3f27568507ae5c21480af9bfa35adb1025",
+    "bytes": 297288,
+    "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Examples/EMS/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRAMRLevel.o"
+  },
+  {
+    "path": "/private/tmp/ems-t18c/build-products/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRLevelData.o",
+    "sha256": "5652c33da7d8df65ffdf854e2abeb4bf2a78d2fac609381cc08dcd61d8981f21",
+    "bytes": 88632,
+    "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Examples/EMS/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/GRLevelData.o"
+  },
+  {
+    "path": "/private/tmp/ems-t18c/build-products/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/Main_EMSBH2DBH.o",
+    "sha256": "f22645b87330a9d521aad62a31510459791c4d27001ac8c288843443805f3533",
+    "bytes": 144800,
+    "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Examples/EMS/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/Main_EMSBH2DBH.o"
+  },
+  {
+    "path": "/private/tmp/ems-t18c/build-products/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/PETScCommunicator.o",
+    "sha256": "5726a487a355012f74d7fcc39445b12d359da27e7fa412beb9cae83294b2c010",
+    "bytes": 336,
+    "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Examples/EMS/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/PETScCommunicator.o"
+  },
+  {
+    "path": "/private/tmp/ems-t18c/build-products/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/PunctureTracker.o",
+    "sha256": "2047ebe69c94652308f723b979ab856dd8d00f8543047a323ba6d5f1c4694343",
+    "bytes": 83880,
+    "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Examples/EMS/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/PunctureTracker.o"
+  },
+  {
+    "path": "/private/tmp/ems-t18c/build-products/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/SmallDataIO.o",
+    "sha256": "36229dd46a799dd823b2a467fb5115cf205a4d31353d87400693a7e7fc68a9bb",
+    "bytes": 38920,
+    "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Examples/EMS/o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/SmallDataIO.o"
+  }
+]

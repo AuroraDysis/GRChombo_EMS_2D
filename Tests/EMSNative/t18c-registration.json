@@ -1,0 +1,82 @@
+{
+  "baseline": "dd84403",
+  "companion_sha256": "107370ae00d8b69dc3122dc023e34bbff23b90afc8401bb233743c1182e6083c",
+  "companion_status": "documented diagnostic only",
+  "separation_M": 16,
+  "rapidity": 0.05778205303580913,
+  "production_shape": [
+    2560,
+    1280
+  ],
+  "production_L_M": 4480,
+  "h0_M": 1.75,
+  "levels": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "max_box_size": 24,
+  "block_factor": 8,
+  "tag_buffer": 3,
+  "grid_buffer": 8,
+  "fill_ratio": 0.7,
+  "h_finest_M": 0.00042724609375,
+  "Rh_over_h": 14.138109375265065,
+  "dt_multiplier": 0.5,
+  "requested_window_M": 0.002,
+  "native_clocks_M": [
+    0.0,
+    0.000213623046875,
+    0.00042724609375,
+    0.000640869140625,
+    0.0008544921875,
+    0.001068115234375,
+    0.00128173828125,
+    0.001495361328125,
+    0.001708984375,
+    0.001922607421875
+  ],
+  "T16b_endpoint_M": 0.001983642578125,
+  "clock_caveat": "The requested low rung/dt has 9 positive native clocks ending .001922607421875, not the original T16b 65 clocks. No time interpolation or alignment.",
+  "masks": {
+    "collars_M": [
+      0.01,
+      0.02
+    ],
+    "interhole": "abs(x-midpoint)<=8, 0<=y<=8",
+    "far_M": [
+      80,
+      128
+    ],
+    "sheets": "native panel selectors on +/-3 h_c stencils; h_c from actual LOW Chombo box union; AMR-face-excluded subset retained"
+  },
+  "launch_W_M": [
+    0.00075,
+    0.0025
+  ],
+  "rays": [
+    "inward-axis",
+    "inward-diagonal"
+  ],
+  "holes": [
+    "left",
+    "right"
+  ],
+  "sampling": "I8 with |I8-I10|, five-spread margins; native t0 subtracted",
+  "recommendation_rule": "resolved endpoint evolved-Gamma reduction on both rays at both holes and smaller native total puncture Gamma source at both holes",
+  "convergence_admission": false,
+  "process_RSS_cap_bytes": 4000000000,
+  "threads": 2,
+  "launch_domain": "Integer coarse-cell translation by 1792 M to L896; exact full-production refined boxes and cropped production base boxes. All captured t0 fields must match full-production audit before launch results qualify.",
+  "unchanged": "equations, gauge, sigma=1, Float64, point transfers, puncture, RHFinder; static reader t0 only"
+}
