@@ -1,0 +1,5 @@
+case,peak_RSS_bytes,wall_seconds,result
+coarse-boosted-native,298139648,2.814153917017393,verified initialization
+coarse-unboosted-native,305299456,2.8476171660004184,verified initialization
+fine-boosted-native,335921152,3.35280941601377,verified initialization
+fine-unboosted-native,360906752,3.330533083062619,verified initialization

@@ -1,0 +1,146 @@
+diff --git a/Examples/EMS/EMSBH2DLevel.cpp b/Examples/EMS/EMSBH2DLevel.cpp
+index 38d1462..fbe232e 100644
+--- a/Examples/EMS/EMSBH2DLevel.cpp
++++ b/Examples/EMS/EMSBH2DLevel.cpp
+@@ -430,12 +430,42 @@ void EMSBH2DLevel::specificUpdateODE(GRLevelData &a_soln,
+ void EMSBH2DLevel::computeTaggingCriterion(FArrayBox &tagging_criterion,
+                                                  const FArrayBox &current_state)
+ {
++    auto midpoint_params = m_p.mass_extraction_params;
++    if (m_p.ems_binary_refinement)
++        midpoint_params.num_extraction_radii = 0;
+     BoxLoops::loop(EMSExtractionTaggingCriterion(
+-                     m_dx, m_level, m_p.mass_extraction_params,
++                     m_dx, m_level, midpoint_params,
+                      m_p.regrid_threshold_A, m_p.regrid_threshold_phi,
+                      m_p.regrid_threshold_chi), current_state,
+                                                 tagging_criterion);
+ 
++    // Opt-in: reuse the author's criterion at both punctures. The outer
++    // per-hole regions overlap to form the shared exterior hierarchy.
++    if (m_p.ems_binary_refinement)
++    {
++        auto centres = m_bh_amr.m_puncture_tracker.get_puncture_coords();
++        if (centres.empty())
++        {
++            auto left = m_p.emsbh_params.star_centre;
++            auto right = left;
++            left[0] -= .5 * m_p.emsbh_params.separation;
++            right[0] += .5 * m_p.emsbh_params.separation;
++            centres = {left, right};
++        }
++        for (const auto &centre : centres)
++        {
++            auto params = m_p.mass_extraction_params;
++            params.extraction_center = centre;
++            FArrayBox local(tagging_criterion.box(), 1);
++            BoxLoops::loop(EMSExtractionTaggingCriterion(m_dx, m_level, params,
++                m_p.regrid_threshold_A, m_p.regrid_threshold_phi,
++                m_p.regrid_threshold_chi), current_state, local);
++            for (BoxIterator bit(local.box()); bit.ok(); ++bit)
++                tagging_criterion(bit(), 0) = std::max(
++                    tagging_criterion(bit(), 0), local(bit(), 0));
++        }
++    }
++
+     if (m_radiation.active)
+         for (BoxIterator bit(tagging_criterion.box()); bit.ok(); ++bit)
+         {
+@@ -453,6 +483,9 @@ void EMSBH2DLevel::computeTaggingCriterion(FArrayBox &tagging_criterion,
+ 
+ void EMSBH2DLevel::specificPostTimeStep()
+ {
++    if (m_p.ems_track_punctures && m_level == m_p.ems_puncture_tracking_level)
++        m_bh_amr.m_puncture_tracker.execute_tracking(m_time, m_restart_time,
++            m_dt, at_level_timestep_multiple(0));
+     CH_TIME("EMSBH2DLevel::specificPostTimeStep");
+ 
+     bool first_step =
+diff --git a/Examples/EMS/Main_EMSBH2DBH.cpp b/Examples/EMS/Main_EMSBH2DBH.cpp
+index 4afde6e..30b6bee 100644
+--- a/Examples/EMS/Main_EMSBH2DBH.cpp
++++ b/Examples/EMS/Main_EMSBH2DBH.cpp
+@@ -35,6 +35,15 @@ int runGRChombo(int argc, char *argv[])
+     // and an associated LevelFactory)
+     BHAMR bh_amr;
+     bh_amr.m_rh_union.m_thresh_super_low = rh_threshold;
++    if (sim_params.ems_track_punctures)
++    {
++        auto left = sim_params.emsbh_params.star_centre;
++        auto right = left;
++        left[0] -= .5 * sim_params.emsbh_params.separation;
++        right[0] += .5 * sim_params.emsbh_params.separation;
++        bh_amr.m_puncture_tracker.initial_setup({left, right}, "punctures",
++            sim_params.data_path, std::max(0, sim_params.max_level - 1));
++    }
+     DefaultLevelFactory<EMSBH2DLevel> emdbh_level_fact(bh_amr, sim_params);
+     setupAMRObject(bh_amr, emdbh_level_fact);
+ 
+@@ -44,6 +53,8 @@ int runGRChombo(int argc, char *argv[])
+         bh_amr, sim_params.origin, sim_params.dx, sim_params.boundary_params,
+         sim_params.verbosity);
+     bh_amr.set_interpolator(&interpolator);
++    if (sim_params.ems_track_punctures)
++        bh_amr.m_puncture_tracker.restart_punctures();
+     for (int i=0;i<bh_amr.getAMRLevels().size();++i)
+         dynamic_cast<EMSBH2DLevel *>(bh_amr.getAMRLevels()[i])->ems_t7_initial();
+     for (int i=0;i<bh_amr.getAMRLevels().size();++i)
+diff --git a/Examples/EMS/SimulationParameters.hpp b/Examples/EMS/SimulationParameters.hpp
+index 1eacdef..4be793c 100644
+--- a/Examples/EMS/SimulationParameters.hpp
++++ b/Examples/EMS/SimulationParameters.hpp
+@@ -35,6 +35,9 @@ public:
+         pp.load("regrid_threshold_A", regrid_threshold_A);
+         pp.load("regrid_threshold_phi", regrid_threshold_phi);
+         pp.load("regrid_threshold_chi", regrid_threshold_chi);
++        pp.load("ems_binary_refinement", ems_binary_refinement, false);
++        pp.load("ems_track_punctures", ems_track_punctures, false);
++        pp.load("ems_puncture_tracking_level", ems_puncture_tracking_level, 0);
+ 
+         pp.load("G_Newton", m_G_Newton);
+ 
+@@ -57,6 +60,11 @@ public:
+         pp.load("separation", emsbh_params.separation, 0.0);
+         pp.load("bh_charge", emsbh_params.bh_charge, 0.0);
+         pp.load("bh_mass", emsbh_params.bh_mass, 1.0);
++        if ((ems_binary_refinement && !emsbh_params.binary) ||
++            (ems_track_punctures && !ems_binary_refinement) ||
++            ems_puncture_tracking_level < 0 ||
++            ems_puncture_tracking_level > max_level)
++            MayDay::Error("invalid opt-in EMS binary refinement/tracking controls");
+         pp.load("G_Newton", emsbh_params.Newtons_constant, 1.0);
+ 
+         // EMS vs RB
+@@ -212,6 +220,9 @@ public:
+ 
+     double m_G_Newton;
+     int activate_mass_extraction;
++    bool ems_binary_refinement = false;
++    bool ems_track_punctures = false;
++    int ems_puncture_tracking_level = 0;
+     extraction_params_t mass_extraction_params;
+ 
+     // Vars for outputting inf-norms
+diff --git a/Source/BlackHoles/PunctureTracker.cpp b/Source/BlackHoles/PunctureTracker.cpp
+index d074d1b..5feb452 100644
+--- a/Source/BlackHoles/PunctureTracker.cpp
++++ b/Source/BlackHoles/PunctureTracker.cpp
+@@ -132,13 +132,11 @@ void PunctureTracker::read_in_punctures(int a_int_step, double a_current_time)
+     // print out values into pout files
+     for (int ipuncture = 0; ipuncture < m_num_punctures; ipuncture++)
+     {
+-        pout() << "Puncture " << ipuncture
+-               << " restarted at : " << m_puncture_coords[ipuncture][0] << " "
+-               << m_puncture_coords[ipuncture][1] << " "
+-               << m_puncture_coords[ipuncture][2] << endl;
+-        pout() << " with shift vector : " << m_puncture_shift[ipuncture][0]
+-               << " " << m_puncture_shift[ipuncture][1] << " "
+-               << m_puncture_shift[ipuncture][2] << endl;
++        pout() << "Puncture " << ipuncture << " restarted at : ";
++        FOR(i) { pout() << m_puncture_coords[ipuncture][i] << " "; }
++        pout() << endl << " with shift vector : ";
++        FOR(i) { pout() << m_puncture_shift[ipuncture][i] << " "; }
++        pout() << endl;
+         pout() << "at time = " << a_current_time << endl;
+     }
+ }

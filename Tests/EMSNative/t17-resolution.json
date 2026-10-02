@@ -1,0 +1,19 @@
+{
+  "recommendation": null,
+  "verdicts": [
+    {
+      "rung": "coarse",
+      "launch_PASS": true,
+      "horizon_PASS": false,
+      "eligible": false,
+      "spatial_reference_PASS": "unavailable"
+    },
+    {
+      "rung": "fine",
+      "launch_PASS": true,
+      "horizon_PASS": false,
+      "eligible": false,
+      "spatial_reference_PASS": "fine rung is the spatial reference; no third rung/order claimed"
+    }
+  ]
+}

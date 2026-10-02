@@ -1,0 +1,24 @@
+category,case,status,actual_child_returncode,peak_RSS_bytes,wall_seconds,recovered_accounting,action,detail
+census,coarse-dense-control,COMPLETED,0,1275281408,491.05895316705573,False,KEEP; no repeat,
+census,coarse-native,COMPLETED,0,1284784128,474.4246402089484,False,KEEP; no repeat,
+census,coarse-sqrt,COMPLETED,0,1289830400,486.1163318330655,False,KEEP; no repeat,
+census,fine-dense,COMPLETED,0,1283883008,533.6925284590106,False,KEEP; no repeat,
+census,fine-native,NATIVE_SIGSEGV,-11,1276248064,470.6115370419575,False,KEEP; no repeat,fine native attempt failed; registered dense retry used
+census,fine-sqrt,COMPLETED,0,1313390592,507.3338822500082,False,KEEP; no repeat,
+census,production-original-L11,COMPLETED,0,332562432,85.08785445895046,False,KEEP; no repeat,
+census,production-original-L12,COMPLETED,0,389054464,94.46325254195835,False,KEEP; no repeat,
+evolution,coarse-geometric,COMPLETED,0,3285368832,15.936167708016,False,KEEP; no repeat,"native stop, static guard/restart and zero launch floors verified"
+evolution,coarse-sqrt,COMPLETED,0,3311435776,15.191903667058796,False,KEEP; no repeat,"native stop, static guard/restart and zero launch floors verified"
+evolution,fine-geometric,COMPLETED,0,3440197632,24.453107625013217,False,KEEP; no repeat,"native stop, static guard/restart and zero launch floors verified"
+evolution,fine-sqrt,COMPLETED,0,3769876480,22.886530250078067,False,KEEP; no repeat,"native stop, static guard/restart and zero launch floors verified"
+finder,coarse-step0-n48,FINDER_UPDATE_CAP,1,2020622336,89.06872679200023,False,KEEP; no repeat,0.0034840383524264813 0.0034840383481214237
+finder,coarse-step0-n96,FINDER_FLOOR,1,1939701760,16.19539991603233,False,KEEP; no repeat,0.0092784245392504849 0.0092784245342596907
+finder,coarse-step1-n48,FINDER_UPDATE_CAP,1,2027896832,95.15866754204035,False,KEEP; no repeat,0.0054720867099841645 0.0054720867157825957
+finder,coarse-step1-n96,FINDER_FLOOR,1,1937342464,32.35901983291842,False,KEEP; no repeat,0.013550498576864647 0.013550498589933718
+finder,fine-step0-n48,FINDER_UPDATE_CAP,1,2072936448,80.02,True,KEEP; no repeat,0.0034815550511303564 0.0034815550516031544
+timing,coarse-binary,COMPLETED,0,3622993920,3180.702149167075,False,KEEP; no repeat,1603.358223 1575.2045720000001 s; includes unintended capture overhead
+timing,fine-binary,COMPLETED,0,3867852800,6260.924014916993,False,KEEP; no repeat,3433.9065949999999 2824.9123829999999 s; includes unintended capture overhead
+finder,fine-step0-n96,UNSTARTED,,,,False,RUN,registered probe unchanged
+finder,fine-step1-n48,UNSTARTED,,,,False,RUN,registered probe unchanged
+finder,fine-step1-n96,UNSTARTED,,,,False,RUN,registered probe unchanged
+timing,fine-single,UNSTARTED,,,,False,RUN,fine reference if no rung qualifies; rates and box metadata only

@@ -1,0 +1,2 @@
+check,cases,result
+"I8/I10 off-grid quadratic and odd-y reflection, both actual puncture phases and spacings",16,PASS

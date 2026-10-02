@@ -1,0 +1,17 @@
+[
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo-binary/a0.9-e8.trumpet",
+    "sha256": "4d7cc0b975d4dde0c4da8400ef0bbad8c3e57716c9708c160d19e56288a76f90",
+    "bytes": 8096
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.data/echo-binary/production-outer16-a20-r32-a10/n32-r6.ctt",
+    "sha256": "46253cb8d3bf6255b149b44bed7d4899cd97c697fe677a9846649bfbb2bdc4ee",
+    "bytes": 12217088
+  },
+  {
+    "path": "/private/tmp/ems-t17/production-77c5b6f.ex",
+    "sha256": "c1e0505f6f5df3643fad742a47584566982ae7d4f1b4f00e540358d3f0ae1f98",
+    "bytes": 2118224
+  }
+]

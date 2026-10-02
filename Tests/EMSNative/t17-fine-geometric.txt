@@ -1,0 +1,149 @@
+# exp-0020: resolved common physical faces; endpoint 10.5 M.
+# Enlarged domain, frozen point transfers and unchanged native gauge.
+verbosity = 0
+print_progress_only_to_rank_0 = 1
+chk_prefix = chk/EMS_
+plot_prefix = plt/EMS_Plot_
+checkpoint_interval = 0
+plot_interval = -1
+num_plot_vars = 28
+plot_vars = chi h11 h12 h22 hww K A11 A12 A22 Aww Theta Gamma1 Gamma2 lapse shift1 shift2 B1 B2 phi Pi Lambda Bx By Bz Ex Ey Ez Xi
+N1 = 2560
+N2 = 1280
+L = 4480
+max_level = 13
+regrid_interval = 0 0 0 0 0 0 0 0 0 0 0 0 0
+regrid_threshold_A = 1e100
+regrid_threshold_phi = 1e100
+regrid_threshold_chi = 1e100
+max_box_size = 128
+min_box_size = 8
+grid_buffer_size = 8
+fill_ratio = 0.7
+center = 2240 0
+star_centre = 2240 0
+isPeriodic = 0 0
+hi_boundary = 1 1
+lo_boundary = 1 2
+vars_parity = 0 0 4 0 0 0 0 4 0 0 0 1 2 0 1 2 1 2 0 0 6 3 7 4 1 2 5 0
+vars_parity_diagnostic = 0 0 0 0 0 1 2 0 0 3 0 3 0 0 0 0 0 0
+num_nonzero_asymptotic_vars = 5
+nonzero_asymptotic_vars = chi h11 h22 hww lapse
+nonzero_asymptotic_values = 1 1 1 1 1
+
+G_Newton = 1
+ems_not_rn = true
+ems_data_format = emstrumpet1
+ems_data_path = /Users/auroradysis/Workspace/EMS/artifacts/echo-binary/a0.9-e8.trumpet
+binary = true
+boosted = true
+bh_charge = 1.0693100593480418
+bh_mass = 1
+ems_alpha = 12.566370614359172
+ems_f0 = 0
+ems_f1 = 0
+ems_f2 = -0.9
+Ylm_amplitude = 0
+Ylm_thickness = 5
+Ylm_r0 = 80
+dt_multiplier = 0.25
+stop_time = 0
+max_steps = 0
+max_spatial_derivative_order = 4
+nan_check = 1
+lapse_advec_coeff = 1
+lapse_coeff = 2
+lapse_power = 1
+shift_advec_coeff = 1
+shift_Gamma_coeff = 0.75
+eta = 1
+formulation = 0
+kappa1 = 0.1
+kappa2 = 0
+kappa3 = 1
+covariantZ4 = 1
+sigma = 1
+min_chi = 1e-12
+min_lapse = 1e-12
+calculate_constraint_violations = false
+
+# Charge extraction at 20, 50 and 100 M; radiative extractions off.
+activate_extraction = 0
+activate_rs_extraction = 0
+activate_em_extraction = 0
+activate_mq_extraction = 0
+mq_extraction_center = 336 0 0
+mq_num_extraction_radii = 3
+mq_extraction_radii = 20 50 100
+mq_extraction_levels = 0 0 0
+mq_num_points_phi = 64
+mq_num_points_theta = 97
+mq_num_modes = 1
+mq_modes = 0 0
+RH_activate = false
+RH_num_horizons = 0
+RH_initial_radii = 0.0060286129392158804
+RH_initial_centre = 336
+RH_num_points = 96
+RH_time_step_freq = 2000
+RH_chase_speeds = 1
+RH_level = 0
+RH_start_times = 0
+RH_newton_crit = 0
+AH_activate = 0
+mass_extraction_center = 2240 0
+num_mass_extraction_radii = 13
+mass_extraction_levels = 1 2 3 4 5 6 7 8 9 10 11 12 13
+mass_extraction_radii = 186.66666666666669 120 23.333333333333336 11.666666666666668 5.8333333333333339 2.916666666666667 1.4583333333333335 0.72916666666666674 0.36458333333333337 0.18229166666666669 0.091145833333333343 0.045572916666666671 0.022786458333333336
+
+amr_transfer = point
+
+t2_guard_initial_data_after_t0 = true
+
+num_ghosts = 3
+
+ignore_checkpoint_name_mismatch = 0
+
+regrid_threshold = 0.5
+data_subpath = .
+
+mq_write_extraction = 0
+
+mq_extraction_file_prefix = MQ_extraction_
+
+mq_integral_file_prefix = MQ_mode_
+ems_ctt_data_path = /Users/auroradysis/Workspace/EMS/.data/echo-binary/production-outer16-a20-r32-a10/n32-r6.ctt
+
+gridpoints = 40000
+boost_rapidity = 0.05238600881798246
+separation = 32
+
+activate_mass_extraction = 0
+
+num_points_phi_mass = 2
+
+num_points_theta_mass = 4
+
+activate_gw_extraction = 0
+
+num_vars_inf_norm = 0
+
+vars_inf_norm = 0
+
+extrapolation_order = 1
+
+num_extrapolating_vars = -1
+
+tag_buffer_size = 3
+
+write_plot_ghosts = true
+t13_launch_stop_time = 0
+ems_use_maximal_initial_lapse = false
+ems_use_geometric_initial_lapse = true
+t14_dense_initial_tags = false
+
+ems_binary_refinement = true
+
+ems_track_punctures = false
+
+ems_puncture_tracking_level = 6

@@ -1,0 +1,3 @@
+run,production_main,original_factory,initialized,maximum_level,requested_h_M,peak_RSS_bytes,wall_seconds,puncture_coverage
+production-original-L11,True,True,True,11,0.00042724609375,332562432,85.08785445895046,not measured by this first exit-only census; fixed midpoint tags do not ensure requested puncture resolution
+production-original-L12,True,True,True,12,0.000213623046875,389054464,94.46325254195835,not measured by this first exit-only census; fixed midpoint tags do not ensure requested puncture resolution

@@ -1,0 +1,17 @@
+rung,kind,N_theta,step,PASS,directory
+coarse,unboosted,48,0,False,/private/tmp/ems-t17/finder-diagnosis/probes/coarse-unboosted-t0-n48-s32-q1-c100000-f100001-r1-o0-wall1795
+coarse,unboosted,96,0,False,/private/tmp/ems-t17/finder-diagnosis/probes/coarse-unboosted-t0-n96-s32-q1-c100000-f100001-r1-o0-wall1795
+coarse,boosted,48,0,False,/private/tmp/ems-t17/finder-diagnosis/probes/coarse-boosted-t0-n48-s32-q1-c100000-f100001-r1-o0-wall1795
+coarse,boosted,96,0,False,/private/tmp/ems-t17/finder-diagnosis/probes/coarse-boosted-t0-n96-s32-q1-c100000-f100001-r1-o0-wall1795
+coarse,binary,48,0,False,/private/tmp/ems-t17/finder-diagnosis/probes/coarse-binary-t0-n48-s32-q1-c100000-f100001-r1-o0-wall1795
+coarse,binary,96,0,False,/private/tmp/ems-t17/finder-diagnosis/probes/coarse-binary-t0-n96-s32-q1-c100000-f100001-r1-o0-wall1795
+coarse,binary,48,1,False,/private/tmp/ems-t17/finder-diagnosis/probes/coarse-binary-t1-n48-s32-q1-c100000-f100001-r1-o0-wall1795
+coarse,binary,96,1,False,/private/tmp/ems-t17/finder-diagnosis/probes/coarse-binary-t1-n96-s32-q1-c100000-f100001-r1-o0-wall1795
+fine,unboosted,48,0,False,/private/tmp/ems-t17/finder-diagnosis/probes/fine-unboosted-t0-n48-s32-q1-c100000-f100001-r1-o0-wall1795
+fine,unboosted,96,0,False,/private/tmp/ems-t17/finder-diagnosis/probes/fine-unboosted-t0-n96-s32-q1-c100000-f100001-r1-o0-wall1795
+fine,boosted,48,0,False,/private/tmp/ems-t17/finder-diagnosis/probes/fine-boosted-t0-n48-s32-q1-c100000-f100001-r1-o0-wall1795
+fine,boosted,96,0,False,/private/tmp/ems-t17/finder-diagnosis/probes/fine-boosted-t0-n96-s32-q1-c100000-f100001-r1-o0-wall1795
+fine,binary,48,0,False,/private/tmp/ems-t17/finder-diagnosis/probes/fine-binary-t0-n48-s32-q1-c100000-f100001-r1-o0-wall1795
+fine,binary,96,0,False,/private/tmp/ems-t17/finder-diagnosis/probes/fine-binary-t0-n96-s32-q1-c100000-f100001-r1-o0-wall1795
+fine,binary,48,1,False,/private/tmp/ems-t17/finder-diagnosis/probes/fine-binary-t1-n48-s32-q1-c100000-f100001-r1-o0-wall1795
+fine,binary,96,1,False,/private/tmp/ems-t17/finder-diagnosis/probes/fine-binary-t1-n96-s32-q1-c100000-f100001-r1-o0-wall1795

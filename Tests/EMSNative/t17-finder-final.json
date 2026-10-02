@@ -1,0 +1,44 @@
+{
+  "verified_UTC": "2026-10-02T17:32:45.942143+00:00",
+  "diagnosis_probes": 58,
+  "original_probes": 8,
+  "initialization_controls": 4,
+  "all_receipts_verified": true,
+  "pipeline_receipts": [
+    {
+      "process": "queue",
+      "returncode": 0,
+      "peak_RSS_bytes": 2072018944,
+      "wall_seconds": 41712.81932654197
+    },
+    {
+      "process": "finder-diagnosis",
+      "returncode": 0,
+      "peak_RSS_bytes": 2072018944,
+      "wall_seconds": 41712.648255332955
+    }
+  ],
+  "max_probe_RSS_bytes": 2073673728,
+  "actual_probe_returncodes": {
+    "0": 1,
+    "1": 65,
+    "2": 0
+  },
+  "strict_probe_cases": [
+    "coarse-unboosted-t0-n48-s1-q1-c100000-f100001-r1-o0-wall235"
+  ],
+  "strict_boosted_pairs": 0,
+  "strict_binary_pairs": 0,
+  "no_grid_admitted": true,
+  "policy_unchanged": true,
+  "new_probes_started": false,
+  "measured_local_unboosted_N48_seconds": 201.542791,
+  "measured_strict_N48_N96_pair_available": false,
+  "local_pair_forecast_seconds": [
+    1457.8548600278843,
+    1482.2707822750601,
+    1480.6722148207164
+  ],
+  "model_warning": "late constant log-slope extrapolation only; no HPC scaling or rigorous bound",
+  "total_T17_output_bytes": 22724714916
+}

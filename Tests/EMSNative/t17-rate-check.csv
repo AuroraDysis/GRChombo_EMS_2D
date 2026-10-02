@@ -1,0 +1,2 @@
+check,Float64_values,bit_mismatches,output_free_steps,field_output_files,result
+disabled capture guard preserves native final fields,337120,0,2,0,PASS

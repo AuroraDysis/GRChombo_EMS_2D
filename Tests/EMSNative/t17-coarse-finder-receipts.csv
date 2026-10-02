@@ -1,0 +1,5 @@
+rung,step,time_M,N_theta,returncode,directory
+coarse,0,0.0,48,1,/private/tmp/ems-t17/finder/coarse-step0-n48
+coarse,0,0.0,96,1,/private/tmp/ems-t17/finder/coarse-step0-n96
+coarse,1,0.4375,48,1,/private/tmp/ems-t17/finder/coarse-step1-n48
+coarse,1,0.4375,96,1,/private/tmp/ems-t17/finder/coarse-step1-n96

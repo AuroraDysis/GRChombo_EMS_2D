@@ -1,0 +1,9 @@
+mode,variant,file,Float64_values,bit_mismatches
+sqrt,sqrt-default-off,plt/EMS_Plot_000000.2d.hdf5,337120,0
+sqrt,sqrt-default-off,chk/EMS_000002.2d.hdf5,337120,0
+sqrt,sqrt-capture,plt/EMS_Plot_000000.2d.hdf5,337120,0
+sqrt,sqrt-capture,chk/EMS_000002.2d.hdf5,337120,0
+geometric,geometric-default-off,plt/EMS_Plot_000000.2d.hdf5,337120,0
+geometric,geometric-default-off,chk/EMS_000002.2d.hdf5,337120,0
+geometric,geometric-capture,plt/EMS_Plot_000000.2d.hdf5,337120,0
+geometric,geometric-capture,chk/EMS_000002.2d.hdf5,337120,0

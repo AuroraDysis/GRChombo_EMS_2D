@@ -1,0 +1,5 @@
+run,native_stop_M,chi_floors,lapse_floors,nonfinite,static_reader_calls,peak_RSS_bytes
+coarse-sqrt,0.001922607421875,0,0,0,0,3311435776
+coarse-geometric,0.001922607421875,0,0,0,0,3285368832
+fine-sqrt,0.00197601318359375,0,0,0,0,3769876480
+fine-geometric,0.00197601318359375,0,0,0,0,3440197632

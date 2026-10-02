@@ -1,0 +1,3 @@
+check,Float64_values,bit_mismatches,result
+dual-centre tracking versus original uniform hierarchy,337120,0,PASS
+native checkpoint restart versus uninterrupted evolution,337120,0,PASS

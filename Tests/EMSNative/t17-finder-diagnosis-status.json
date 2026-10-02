@@ -1,0 +1,151 @@
+{
+  "complete": true,
+  "speed": 32,
+  "quota": 1,
+  "cap": 100000,
+  "floor_window": 100001,
+  "thresholds": [
+    1e-07,
+    1e-10,
+    1e-12
+  ],
+  "confirmation": [
+    {
+      "rung": "coarse",
+      "kind": "unboosted",
+      "N_theta": 48,
+      "step": 0,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/coarse-unboosted-t0-n48-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "coarse",
+      "kind": "unboosted",
+      "N_theta": 96,
+      "step": 0,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/coarse-unboosted-t0-n96-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "coarse",
+      "kind": "boosted",
+      "N_theta": 48,
+      "step": 0,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/coarse-boosted-t0-n48-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "coarse",
+      "kind": "boosted",
+      "N_theta": 96,
+      "step": 0,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/coarse-boosted-t0-n96-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "coarse",
+      "kind": "binary",
+      "N_theta": 48,
+      "step": 0,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/coarse-binary-t0-n48-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "coarse",
+      "kind": "binary",
+      "N_theta": 96,
+      "step": 0,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/coarse-binary-t0-n96-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "coarse",
+      "kind": "binary",
+      "N_theta": 48,
+      "step": 1,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/coarse-binary-t1-n48-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "coarse",
+      "kind": "binary",
+      "N_theta": 96,
+      "step": 1,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/coarse-binary-t1-n96-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "fine",
+      "kind": "unboosted",
+      "N_theta": 48,
+      "step": 0,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/fine-unboosted-t0-n48-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "fine",
+      "kind": "unboosted",
+      "N_theta": 96,
+      "step": 0,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/fine-unboosted-t0-n96-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "fine",
+      "kind": "boosted",
+      "N_theta": 48,
+      "step": 0,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/fine-boosted-t0-n48-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "fine",
+      "kind": "boosted",
+      "N_theta": 96,
+      "step": 0,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/fine-boosted-t0-n96-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "fine",
+      "kind": "binary",
+      "N_theta": 48,
+      "step": 0,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/fine-binary-t0-n48-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "fine",
+      "kind": "binary",
+      "N_theta": 96,
+      "step": 0,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/fine-binary-t0-n96-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "fine",
+      "kind": "binary",
+      "N_theta": 48,
+      "step": 1,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/fine-binary-t1-n48-s32-q1-c100000-f100001-r1-o0-wall1795"
+    },
+    {
+      "rung": "fine",
+      "kind": "binary",
+      "N_theta": 96,
+      "step": 1,
+      "PASS": false,
+      "directory": "/private/tmp/ems-t17/finder-diagnosis/probes/fine-binary-t1-n96-s32-q1-c100000-f100001-r1-o0-wall1795"
+    }
+  ],
+  "original_verdict_preserved": true,
+  "admission": {
+    "binary_horizon_and_launch": {
+      "coarse": false,
+      "fine": false
+    },
+    "coarse_spatial_PASS": false,
+    "recommendation": null
+  }
+}

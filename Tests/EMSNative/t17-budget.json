@@ -1,0 +1,60 @@
+{
+  "claim": "Eigenvalues of the declared scalar lapse and longitudinal shift principal blocks and exact travel-time budgets",
+  "algebra": "Q[alpha,chi,H,z], alpha>0 chi>0 H>0, positive square roots",
+  "equivalence": "For each real 2x2 block the determinant polynomial gives eigenvalues; z^2-speed_squared has positive roots under the printed assumptions.",
+  "witnesses": [
+    {
+      "matrix": "Matrix([[0, -9*alpha/5], [-H*chi, 0]])",
+      "speed_squared": "9*H*alpha*chi/5",
+      "residual": "0",
+      "status": "PROVED"
+    },
+    {
+      "matrix": "Matrix([[0, 3/4], [4*H/3, 0]])",
+      "speed_squared": "H",
+      "residual": "0",
+      "status": "PROVED"
+    }
+  ],
+  "numerical_samples": 4,
+  "numerical_precision": "Float64; independent numpy.linalg.eigvals",
+  "worst_relative_residual": 3.328219137813184e-16,
+  "independent_high_precision_check": "mpmath eig, 80 decimal digits, eight matrices",
+  "high_precision_relative_residual": "2.1868575534963481713723362349170683592232423828470941091399188758365522997266775e-81",
+  "limitation": "This proves the two declared blocks, not a full nonlinear CCZ4 characteristic theorem or a universal V<=2 bound. Actual native h/lapse/shift must be measured and the future run must monitor V.",
+  "domain_budgets": [
+    {
+      "post_common_Mf": 100,
+      "Mref_Mi": 2.002174604,
+      "estimated_end_Mi": 506.2174604,
+      "coarse_steps": 1158,
+      "rounded_end_Mi": 506.625,
+      "incoming_first_Mi": 1070.0,
+      "incoming_margin_Mi": 563.375,
+      "light_roundtrip_Mi": 4364.0,
+      "gauge_roundtrip_Mi": 2182.0
+    },
+    {
+      "post_common_Mf": 200,
+      "Mref_Mi": 2.002174604,
+      "estimated_end_Mi": 706.4349208,
+      "coarse_steps": 1615,
+      "rounded_end_Mi": 706.5625,
+      "incoming_first_Mi": 1070.0,
+      "incoming_margin_Mi": 363.4375,
+      "light_roundtrip_Mi": 4364.0,
+      "gauge_roundtrip_Mi": 2182.0
+    },
+    {
+      "post_common_Mf": 300,
+      "Mref_Mi": 2.002174604,
+      "estimated_end_Mi": 906.6523812,
+      "coarse_steps": 2073,
+      "rounded_end_Mi": 906.9375,
+      "incoming_first_Mi": 1070.0,
+      "incoming_margin_Mi": 163.0625,
+      "light_roundtrip_Mi": 4364.0,
+      "gauge_roundtrip_Mi": 2182.0
+    }
+  ]
+}

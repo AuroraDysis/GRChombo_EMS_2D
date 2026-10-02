@@ -1,0 +1,3 @@
+rung,launch_PASS,horizon_PASS,eligible,spatial_reference_PASS
+coarse,True,False,False,unavailable
+fine,True,False,False,fine rung is the spatial reference; no third rung/order claimed
