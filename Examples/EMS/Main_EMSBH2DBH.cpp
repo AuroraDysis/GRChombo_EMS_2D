@@ -35,6 +35,15 @@ int runGRChombo(int argc, char *argv[])
     // and an associated LevelFactory)
     BHAMR bh_amr;
     bh_amr.m_rh_union.m_thresh_super_low = rh_threshold;
+    if (sim_params.ems_track_punctures)
+    {
+        auto left = sim_params.emsbh_params.star_centre;
+        auto right = left;
+        left[0] -= .5 * sim_params.emsbh_params.separation;
+        right[0] += .5 * sim_params.emsbh_params.separation;
+        bh_amr.m_puncture_tracker.initial_setup({left, right}, "punctures",
+            sim_params.data_path, std::max(0, sim_params.max_level - 1));
+    }
     DefaultLevelFactory<EMSBH2DLevel> emdbh_level_fact(bh_amr, sim_params);
     setupAMRObject(bh_amr, emdbh_level_fact);
 
@@ -44,6 +53,8 @@ int runGRChombo(int argc, char *argv[])
         bh_amr, sim_params.origin, sim_params.dx, sim_params.boundary_params,
         sim_params.verbosity);
     bh_amr.set_interpolator(&interpolator);
+    if (sim_params.ems_track_punctures)
+        bh_amr.m_puncture_tracker.restart_punctures();
     for (int i=0;i<bh_amr.getAMRLevels().size();++i)
         dynamic_cast<EMSBH2DLevel *>(bh_amr.getAMRLevels()[i])->ems_t7_initial();
     for (int i=0;i<bh_amr.getAMRLevels().size();++i)

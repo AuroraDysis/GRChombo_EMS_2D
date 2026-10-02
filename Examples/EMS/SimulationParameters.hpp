@@ -35,6 +35,9 @@ public:
         pp.load("regrid_threshold_A", regrid_threshold_A);
         pp.load("regrid_threshold_phi", regrid_threshold_phi);
         pp.load("regrid_threshold_chi", regrid_threshold_chi);
+        pp.load("ems_binary_refinement", ems_binary_refinement, false);
+        pp.load("ems_track_punctures", ems_track_punctures, false);
+        pp.load("ems_puncture_tracking_level", ems_puncture_tracking_level, 0);
 
         pp.load("G_Newton", m_G_Newton);
 
@@ -57,6 +60,11 @@ public:
         pp.load("separation", emsbh_params.separation, 0.0);
         pp.load("bh_charge", emsbh_params.bh_charge, 0.0);
         pp.load("bh_mass", emsbh_params.bh_mass, 1.0);
+        if ((ems_binary_refinement && !emsbh_params.binary) ||
+            (ems_track_punctures && !ems_binary_refinement) ||
+            ems_puncture_tracking_level < 0 ||
+            ems_puncture_tracking_level > max_level)
+            MayDay::Error("invalid opt-in EMS binary refinement/tracking controls");
         pp.load("G_Newton", emsbh_params.Newtons_constant, 1.0);
 
         // EMS vs RB
@@ -212,6 +220,9 @@ public:
 
     double m_G_Newton;
     int activate_mass_extraction;
+    bool ems_binary_refinement = false;
+    bool ems_track_punctures = false;
+    int ems_puncture_tracking_level = 0;
     extraction_params_t mass_extraction_params;
 
     // Vars for outputting inf-norms

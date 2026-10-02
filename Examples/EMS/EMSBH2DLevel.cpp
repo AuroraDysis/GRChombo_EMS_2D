@@ -430,11 +430,41 @@ void EMSBH2DLevel::specificUpdateODE(GRLevelData &a_soln,
 void EMSBH2DLevel::computeTaggingCriterion(FArrayBox &tagging_criterion,
                                                  const FArrayBox &current_state)
 {
+    auto midpoint_params = m_p.mass_extraction_params;
+    if (m_p.ems_binary_refinement)
+        midpoint_params.num_extraction_radii = 0;
     BoxLoops::loop(EMSExtractionTaggingCriterion(
-                     m_dx, m_level, m_p.mass_extraction_params,
+                     m_dx, m_level, midpoint_params,
                      m_p.regrid_threshold_A, m_p.regrid_threshold_phi,
                      m_p.regrid_threshold_chi), current_state,
                                                 tagging_criterion);
+
+    // Opt-in: reuse the author's criterion at both punctures. The outer
+    // per-hole regions overlap to form the shared exterior hierarchy.
+    if (m_p.ems_binary_refinement)
+    {
+        auto centres = m_bh_amr.m_puncture_tracker.get_puncture_coords();
+        if (centres.empty())
+        {
+            auto left = m_p.emsbh_params.star_centre;
+            auto right = left;
+            left[0] -= .5 * m_p.emsbh_params.separation;
+            right[0] += .5 * m_p.emsbh_params.separation;
+            centres = {left, right};
+        }
+        for (const auto &centre : centres)
+        {
+            auto params = m_p.mass_extraction_params;
+            params.extraction_center = centre;
+            FArrayBox local(tagging_criterion.box(), 1);
+            BoxLoops::loop(EMSExtractionTaggingCriterion(m_dx, m_level, params,
+                m_p.regrid_threshold_A, m_p.regrid_threshold_phi,
+                m_p.regrid_threshold_chi), current_state, local);
+            for (BoxIterator bit(local.box()); bit.ok(); ++bit)
+                tagging_criterion(bit(), 0) = std::max(
+                    tagging_criterion(bit(), 0), local(bit(), 0));
+        }
+    }
 
     if (m_radiation.active)
         for (BoxIterator bit(tagging_criterion.box()); bit.ok(); ++bit)
@@ -453,6 +483,9 @@ void EMSBH2DLevel::computeTaggingCriterion(FArrayBox &tagging_criterion,
 
 void EMSBH2DLevel::specificPostTimeStep()
 {
+    if (m_p.ems_track_punctures && m_level == m_p.ems_puncture_tracking_level)
+        m_bh_amr.m_puncture_tracker.execute_tracking(m_time, m_restart_time,
+            m_dt, at_level_timestep_multiple(0));
     CH_TIME("EMSBH2DLevel::specificPostTimeStep");
 
     bool first_step =
