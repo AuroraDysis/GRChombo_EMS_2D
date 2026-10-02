@@ -1,0 +1,5 @@
+run,hole,matched_native_cells,values,differing_bits,max_absolute_difference,reference
+coarse-dt0.25,left,136,15232,0,0.0,full T17 production-grid geometric launch
+coarse-dt0.25,right,136,15232,0,0.0,full T17 production-grid geometric launch
+fine-dt0.25,left,226,25312,0,0.0,full T17 production-grid geometric launch
+fine-dt0.25,right,226,25312,0,0.0,full T17 production-grid geometric launch

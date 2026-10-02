@@ -1,0 +1,51 @@
+{
+  "window_M": 0.875,
+  "window_Rh": 144.856709312422,
+  "finest_native_steps": [
+    8192,
+    5461,
+    4096
+  ],
+  "threads": 2,
+  "process_RSS_cap_bytes": 4000000000,
+  "physical_boundary_nearest_M": 40,
+  "initial_data_after_t0": "forbidden by t2 guard",
+  "launch_observer": "pointwise native t0 subtraction on 0.00075<=r<=0.0025; every finest endpoint; Gamma Euclidean maximum, lapse absolute maximum, shift Euclidean maximum",
+  "launch_common_endpoint_M": 0.001922607421875,
+  "bounding_window": "all valid cells, metric positivity, chi/lapse floors, puncture field maximum on fixed r<0.08",
+  "threshold_source": "same predeclared 1e6 field, 2 shift/lapse, zero nonfinite and zero floor-crossing screen",
+  "prior_setup_failure": "dt-0.25 never evolved: empty ems_ctt_data_path aborted ParmParse; receipt preserved",
+  "short_registration": "superseded by this longer window before any dt evolution result",
+  "jobs": [
+    {
+      "name": "dt-0.25-window",
+      "directory": "/private/tmp/ems-t18/local/dt-0.25-window",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=2",
+        "/private/tmp/ems-t18/native-window.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-dt-0.25-window.txt"
+      ]
+    },
+    {
+      "name": "dt-0.375-window",
+      "directory": "/private/tmp/ems-t18/local/dt-0.375-window",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=2",
+        "/private/tmp/ems-t18/native-window.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-dt-0.375-window.txt"
+      ]
+    },
+    {
+      "name": "dt-0.5-window",
+      "directory": "/private/tmp/ems-t18/local/dt-0.5-window",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=2",
+        "/private/tmp/ems-t18/native-window.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-dt-0.5-window.txt"
+      ]
+    }
+  ]
+}

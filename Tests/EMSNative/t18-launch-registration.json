@@ -1,0 +1,83 @@
+{
+  "purpose": "Complete constraint and temporal-versus-spatial launch evidence omitted from the window histories",
+  "binary": true,
+  "h0_M": 1.75,
+  "centre_M": 448,
+  "translation_M": 1792,
+  "base_shape": [
+    512,
+    256
+  ],
+  "refined_boxes": "exact T17 census, integer translation on every refined level",
+  "unchanged": "native physics, Float64, KO=1, geometric lapse, point transfers, initial-data guard",
+  "endpoint_M": 0.001922607421875,
+  "common_positive_clocks_M": [
+    0.000640869140625,
+    0.00128173828125,
+    0.001922607421875
+  ],
+  "window_W_M": [
+    0.00075,
+    0.0025
+  ],
+  "rays": [
+    "axis",
+    "diagonal"
+  ],
+  "holes": [
+    "left",
+    "right"
+  ],
+  "norms": [
+    "peak",
+    "RMS"
+  ],
+  "temporal_measure": "norm of the difference between native t0-subtracted profiles at coarse dt and coarse dt0.25",
+  "spatial_measure": "norm of the difference between native t0-subtracted profiles at coarse and fine dt0.25",
+  "subdominant_rule": "temporal error plus 5x P8/P10 spread of the matched temporal difference < spatial difference minus 5x P8/P10 spread of the matched spatial difference; roundoff/unresolved cases labelled",
+  "production_control": "Compare saved profiles with full T17 geometric captures at exactly the same clocks",
+  "process_RSS_cap_bytes": 4000000000,
+  "threads": 2,
+  "jobs": [
+    {
+      "name": "coarse-dt0.25",
+      "directory": "/private/tmp/ems-t18/launch/coarse-dt0.25",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=2",
+        "/private/tmp/ems-t18/launch.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-launch-coarse-dt0.25.txt"
+      ]
+    },
+    {
+      "name": "coarse-dt0.375",
+      "directory": "/private/tmp/ems-t18/launch/coarse-dt0.375",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=2",
+        "/private/tmp/ems-t18/launch.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-launch-coarse-dt0.375.txt"
+      ]
+    },
+    {
+      "name": "coarse-dt0.5",
+      "directory": "/private/tmp/ems-t18/launch/coarse-dt0.5",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=2",
+        "/private/tmp/ems-t18/launch.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-launch-coarse-dt0.5.txt"
+      ]
+    },
+    {
+      "name": "fine-dt0.25",
+      "directory": "/private/tmp/ems-t18/launch/fine-dt0.25",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=2",
+        "/private/tmp/ems-t18/launch.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-launch-fine-dt0.25.txt"
+      ]
+    }
+  ]
+}

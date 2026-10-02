@@ -1,0 +1,30 @@
+{
+  "status": "READY-EXCEPT",
+  "dt_multiplier": 0.5,
+  "calibration_rung": "coarse",
+  "finest_level": 12,
+  "finest_spacing_M": 0.00042724609375,
+  "largest_tested": true,
+  "reason": "All 39 registered window screens pass; binary temporal errors are resolved below the T17 rung difference for every nonzero channel at all common launch clocks, rays, holes and norms.",
+  "full_grid_native_values": 81088,
+  "full_grid_differing_bits": 0,
+  "unresolved_zero_channels": [
+    "GaussB",
+    "Lambda"
+  ],
+  "limitations": [
+    "0.875 Mi isolated finite window and 0.001922607421875 Mi binary launch; no long-merger theorem",
+    "CFL margins are frozen scalar-wave proxies",
+    "Floor observations cover registered RK inputs/endpoints; final pre-clamp activation counts were not instrumented",
+    "Cluster matrix remains a prediction; T17 horizon/spatial admission remains unavailable"
+  ],
+  "unchanged": [
+    "gauge",
+    "KO",
+    "equations",
+    "point transfers",
+    "puncture",
+    "Float64",
+    "RHFinder"
+  ]
+}

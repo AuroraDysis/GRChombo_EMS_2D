@@ -1,0 +1,72 @@
+[
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo-binary/a0.9-e8.trumpet",
+    "bytes": 8096,
+    "sha256": "4d7cc0b975d4dde0c4da8400ef0bbad8c3e57716c9708c160d19e56288a76f90"
+  },
+  {
+    "path": "/Users/auroradysis/SciData/EMS/.data/echo-binary/production-outer16-a20-r32-a10/n32-r6.ctt",
+    "bytes": 12217088,
+    "sha256": "46253cb8d3bf6255b149b44bed7d4899cd97c697fe677a9846649bfbb2bdc4ee"
+  },
+  {
+    "path": "/private/tmp/ems-t18/native.ex",
+    "bytes": 2136200,
+    "sha256": "66c82edb950f23917d8e9825be5365c2aeedd807b374e017d7307bd13ceb43a4"
+  },
+  {
+    "path": "/private/tmp/ems-t18/native-window.ex",
+    "bytes": 2138528,
+    "sha256": "ed7feb495b709ac202b71de96bbe746487c6972a76d22746f88ad6d73f2346ec"
+  },
+  {
+    "path": "/private/tmp/ems-t18/census.ex",
+    "bytes": 478120,
+    "sha256": "dab17b22ed4fa2e48deed0e69467f9aa2ef58eb95fec14441c18c0bcf5911399"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Source/RHFinder/RHSurf.hpp",
+    "bytes": 34063,
+    "sha256": "3c9e3e946f95375a27477466f4e51b1cafbea2f14392acb2d19128582c98cfd6"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Source/RHFinder/RHUnion.hpp",
+    "bytes": 20724,
+    "sha256": "1174747f4ee8f2e18a61cd2fb0618d1a4f3c6974c9929bcae85fd8f64519f885"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-native.cpp",
+    "bytes": 8288,
+    "sha256": "932907fc5f56c18d2f56cd7be1221002ebd7c723240ed168ad3a943ffc047588"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-census.cpp",
+    "bytes": 3972,
+    "sha256": "43c6e7fa0ea628b10eb91843bebcef9d25991c54a4d843d18c5a0e14d78d8c4f"
+  },
+  {
+    "path": "/private/tmp/ems-t18/launch.ex",
+    "bytes": 2174728,
+    "sha256": "225eb212b171d08879b1fbabeaa6750e172e23947d01e018b7f51ab7f9496b06"
+  },
+  {
+    "path": "/private/tmp/ems-t18/launch-replay.ex",
+    "bytes": 438128,
+    "sha256": "450128f23a59089d58b76a3313ea46fcaf33f9b2e1aeea383aebb866290ac106"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-launch.cpp",
+    "bytes": 3016,
+    "sha256": "e96a70897ae8b10424cccff078e54efa7043855a32f623a0c91262434d21a715"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t16-replay.cpp",
+    "bytes": 2463,
+    "sha256": "fdcc736051a2e795e39d98ebc98337c4ec5b01ecea42901950cc67cc523c8688"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-launch-registration.json",
+    "bytes": 2698,
+    "sha256": "962552becd6b930db9c2ba562edb4771330b43d3ef8da2c21beacd370cc00f88"
+  }
+]

@@ -1,0 +1,126 @@
+{
+  "baseline": "77c5b6f",
+  "process_RSS_cap_bytes": 4000000000,
+  "maximum_threads": 4,
+  "neutrality_steps": 3,
+  "neutrality_levels": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "dt_window_M": 0.1025390625,
+  "dt_window_Rh": 16.975394601194598,
+  "bound_before_results": "All fields finite; no chi/lapse floor crossings; positive metric; puncture max |Gamma|, |K|, |Theta|, |Pi| < 1e6; max |shift| < 2, max lapse < 2. These are a blow-up screen, not a long-time or temporal-convergence proof.",
+  "jobs": [
+    {
+      "name": "neutral-b128-t1",
+      "directory": "/private/tmp/ems-t18/local/neutral-b128-t1",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "/private/tmp/ems-t18/native.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-neutral-b128-t1.txt"
+      ]
+    },
+    {
+      "name": "neutral-b16-t1",
+      "directory": "/private/tmp/ems-t18/local/neutral-b16-t1",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "/private/tmp/ems-t18/native.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-neutral-b16-t1.txt"
+      ]
+    },
+    {
+      "name": "neutral-b24-t1",
+      "directory": "/private/tmp/ems-t18/local/neutral-b24-t1",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "/private/tmp/ems-t18/native.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-neutral-b24-t1.txt"
+      ]
+    },
+    {
+      "name": "neutral-b32-t1",
+      "directory": "/private/tmp/ems-t18/local/neutral-b32-t1",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "/private/tmp/ems-t18/native.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-neutral-b32-t1.txt"
+      ]
+    },
+    {
+      "name": "neutral-b48-t1",
+      "directory": "/private/tmp/ems-t18/local/neutral-b48-t1",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "/private/tmp/ems-t18/native.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-neutral-b48-t1.txt"
+      ]
+    },
+    {
+      "name": "neutral-b16-t2",
+      "directory": "/private/tmp/ems-t18/local/neutral-b16-t2",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=2",
+        "/private/tmp/ems-t18/native.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-neutral-b16-t2.txt"
+      ]
+    },
+    {
+      "name": "neutral-b16-t4",
+      "directory": "/private/tmp/ems-t18/local/neutral-b16-t4",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=4",
+        "/private/tmp/ems-t18/native.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-neutral-b16-t4.txt"
+      ]
+    },
+    {
+      "name": "dt-0.25",
+      "directory": "/private/tmp/ems-t18/local/dt-0.25",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=2",
+        "/private/tmp/ems-t18/native.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-dt-0.25.txt"
+      ]
+    },
+    {
+      "name": "dt-0.375",
+      "directory": "/private/tmp/ems-t18/local/dt-0.375",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=2",
+        "/private/tmp/ems-t18/native.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-dt-0.375.txt"
+      ]
+    },
+    {
+      "name": "dt-0.5",
+      "directory": "/private/tmp/ems-t18/local/dt-0.5",
+      "command": [
+        "env",
+        "OMP_NUM_THREADS=2",
+        "/private/tmp/ems-t18/native.ex",
+        "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t18/Tests/EMSNative/t18-dt-0.5.txt"
+      ]
+    }
+  ]
+}

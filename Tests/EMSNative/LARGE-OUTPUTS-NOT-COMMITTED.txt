@@ -36,3 +36,5 @@ b829997acd54d363c81ebff09b40f082ec365f17e975e2ba93b22a4b294a1583  1454451  Tests
 fd6e5043884bbb7efa29044ae972ce6121126ce8edbb466ffa25f35c270a1eb0  1193847  Tests/EMSNative/t16-launch-history.csv
 # T16b (regenerate with Tests/EMSNative/t16b-analyze.py, README § T16b)
 05f1073f72864fac51c45e06f3f7e0e5037a51abd53d6dcae4fc81ded3f7ef67  1130934  Tests/EMSNative/t16b-launch-history.csv
+# T18 (regenerate with Tests/EMSNative/t18-analyze.py / t18-finalize.py, README § T18)
+ebffb76bfd9440c5e3ddf852cccf8d7a8ab9aa01e319151c4b65ea53e796d938  1298150  Tests/EMSNative/t18-census-boxes.csv

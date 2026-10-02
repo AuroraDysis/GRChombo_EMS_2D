@@ -1,0 +1,13 @@
+{
+  "claim": "The declared two-anchor affine model reproduces 1030 and 418 s/step",
+  "algebra": "Q(gamma), 0<=gamma<=1; effective halo weight, identical 15-level substep count",
+  "witness": "two cancelled rational residuals are zero; determinant is positive at both endpoints of its affine polynomial",
+  "determinant": "131068*(5503701*gamma + 91736608)",
+  "a_seconds_per_weighted_cell": "153/(5503701*gamma + 91736608)",
+  "tau_seconds_per_level_substep": "(12349963456 - 2212175742*gamma)/(180339770667*gamma + 3005933434336)",
+  "status": "PROVED (algebra only)",
+  "independent_check": "mpmath lu_solve, 80 digits, gamma=0,1/4,1",
+  "worst_absolute_residual": "2.7808875571227671850727229905903694701505425628310481914057819869469763859579425e-83",
+  "gamma_central": 0.25,
+  "caveat": "Two rates do not identify halo cost separately or isolate synchronization. tau is an effective non-cell remainder; optimistic ideal OpenMP 4/t scaling, zero unmeasured multi-node penalty. Calibration layouts use the saved actual rank census."
+}

@@ -1,0 +1,93 @@
+{
+  "claim": "RK4 imaginary-axis interval and the 2D fourth-order scalar-wave CFL proxy",
+  "algebra": "Q[y,q], real y and -1<=q=cos(theta)<=1",
+  "witness": "exact RK polynomial magnitude residual; monotone fourth-order Laplacian symbol; CFL squared=3/4",
+  "status": "PROVED for the frozen scalar wave only",
+  "cfl_proxy": 0.8660254037844386,
+  "numerical_check": "five fixed y samples; independent complex RK evaluation; mpmath 80 digits",
+  "worst_residual": "6.3253187659383139346091444307620114046259768294211045300466578150648865745818558e-81",
+  "exclusions": "Does not include native upwind advection, KO, Cartoon axis sources, CCZ4 full symbol, AMR transfer or nonlinear stability. Reported CFL margins are proxies, not a safe-dt certificate.",
+  "clocks": [
+    {
+      "separation_Mi": 12,
+      "assumed_infall_Mi": 70.26973699609242,
+      "post_common_clock_Mi": 200.2174604,
+      "planned_end_Mi": 270.4871973960924,
+      "dt_multiplier": 0.25,
+      "coarse_steps": 619,
+      "limitation": "306*(d/32)^(3/2) is an anchored planning assumption. A d32 CTT companion cannot initialize d12/d16; new initial data and qualification required. Stop remains actual first-qualified-common plus 100 initial M_ADM."
+    },
+    {
+      "separation_Mi": 12,
+      "assumed_infall_Mi": 70.26973699609242,
+      "post_common_clock_Mi": 200.2174604,
+      "planned_end_Mi": 270.4871973960924,
+      "dt_multiplier": 0.375,
+      "coarse_steps": 413,
+      "limitation": "306*(d/32)^(3/2) is an anchored planning assumption. A d32 CTT companion cannot initialize d12/d16; new initial data and qualification required. Stop remains actual first-qualified-common plus 100 initial M_ADM."
+    },
+    {
+      "separation_Mi": 12,
+      "assumed_infall_Mi": 70.26973699609242,
+      "post_common_clock_Mi": 200.2174604,
+      "planned_end_Mi": 270.4871973960924,
+      "dt_multiplier": 0.5,
+      "coarse_steps": 310,
+      "limitation": "306*(d/32)^(3/2) is an anchored planning assumption. A d32 CTT companion cannot initialize d12/d16; new initial data and qualification required. Stop remains actual first-qualified-common plus 100 initial M_ADM."
+    },
+    {
+      "separation_Mi": 16,
+      "assumed_infall_Mi": 108.18733752154178,
+      "post_common_clock_Mi": 200.2174604,
+      "planned_end_Mi": 308.4047979215418,
+      "dt_multiplier": 0.25,
+      "coarse_steps": 705,
+      "limitation": "306*(d/32)^(3/2) is an anchored planning assumption. A d32 CTT companion cannot initialize d12/d16; new initial data and qualification required. Stop remains actual first-qualified-common plus 100 initial M_ADM."
+    },
+    {
+      "separation_Mi": 16,
+      "assumed_infall_Mi": 108.18733752154178,
+      "post_common_clock_Mi": 200.2174604,
+      "planned_end_Mi": 308.4047979215418,
+      "dt_multiplier": 0.375,
+      "coarse_steps": 470,
+      "limitation": "306*(d/32)^(3/2) is an anchored planning assumption. A d32 CTT companion cannot initialize d12/d16; new initial data and qualification required. Stop remains actual first-qualified-common plus 100 initial M_ADM."
+    },
+    {
+      "separation_Mi": 16,
+      "assumed_infall_Mi": 108.18733752154178,
+      "post_common_clock_Mi": 200.2174604,
+      "planned_end_Mi": 308.4047979215418,
+      "dt_multiplier": 0.5,
+      "coarse_steps": 353,
+      "limitation": "306*(d/32)^(3/2) is an anchored planning assumption. A d32 CTT companion cannot initialize d12/d16; new initial data and qualification required. Stop remains actual first-qualified-common plus 100 initial M_ADM."
+    },
+    {
+      "separation_Mi": 32,
+      "assumed_infall_Mi": 306.0,
+      "post_common_clock_Mi": 200.2174604,
+      "planned_end_Mi": 506.2174604,
+      "dt_multiplier": 0.25,
+      "coarse_steps": 1158,
+      "limitation": "306*(d/32)^(3/2) is an anchored planning assumption. A d32 CTT companion cannot initialize d12/d16; new initial data and qualification required. Stop remains actual first-qualified-common plus 100 initial M_ADM."
+    },
+    {
+      "separation_Mi": 32,
+      "assumed_infall_Mi": 306.0,
+      "post_common_clock_Mi": 200.2174604,
+      "planned_end_Mi": 506.2174604,
+      "dt_multiplier": 0.375,
+      "coarse_steps": 772,
+      "limitation": "306*(d/32)^(3/2) is an anchored planning assumption. A d32 CTT companion cannot initialize d12/d16; new initial data and qualification required. Stop remains actual first-qualified-common plus 100 initial M_ADM."
+    },
+    {
+      "separation_Mi": 32,
+      "assumed_infall_Mi": 306.0,
+      "post_common_clock_Mi": 200.2174604,
+      "planned_end_Mi": 506.2174604,
+      "dt_multiplier": 0.5,
+      "coarse_steps": 579,
+      "limitation": "306*(d/32)^(3/2) is an anchored planning assumption. A d32 CTT companion cannot initialize d12/d16; new initial data and qualification required. Stop remains actual first-qualified-common plus 100 initial M_ADM."
+    }
+  ]
+}
