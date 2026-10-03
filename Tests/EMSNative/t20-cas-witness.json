@@ -1,0 +1,30 @@
+{
+  "status": "PROVED",
+  "claim": "2x2 characteristic polynomial only",
+  "ring": "Q[a,b,beta,lambda]",
+  "exact_witness": "det(M-lambda I)-(lambda+beta)^2+a*b = 0",
+  "assumptions": "real beta; positive a,b for the ordered real square-root eigenvalues",
+  "poles": "none; metric inverse requires positive definite conformal metric",
+  "exact_coefficients": [
+    0
+  ],
+  "backend": "SymPy 1.14.0",
+  "numeric_falsifier": "independent numpy.linalg.eigvals, Float64, no RNG",
+  "numerical_samples": 144,
+  "sample_clocks": [
+    0,
+    4,
+    11,
+    12
+  ],
+  "sample_radius_indices": [
+    0,
+    256,
+    1024,
+    2047
+  ],
+  "all_rays": true,
+  "worst_eigenvalue_absolute_residual": 4.440892098500626e-16,
+  "precision": "Float64 falsifier; exact symbolic polynomial closure supplies proof",
+  "scope": "frozen principal subblocks; full coupled gauge characteristic spectrum NOT-CLOSED"
+}

@@ -1,0 +1,74 @@
+{
+  "verdict": "FAIL",
+  "scientific_completion": "COMPLETED_TABLE_READING",
+  "volume_rows": 38766,
+  "ray_rows": 19656,
+  "volume_status_counts": {
+    "sampling_or_roundoff_limited": 9817,
+    "measured": 1774,
+    "consistent_with_4": 2101,
+    "measured_order_outside_4_interval": 24670,
+    "non_convergent": 404
+  },
+  "ray_status_counts": {
+    "sampling_or_roundoff_limited": 6619,
+    "consistent_with_4": 932,
+    "measured": 1160,
+    "measured_order_outside_4_interval": 10828,
+    "non_convergent": 117
+  },
+  "qualified_horizon_cases": 488,
+  "native_piece_cases": 13,
+  "required_magnitude_rows": 720,
+  "magnitude_gate": true,
+  "signed_shell_gate": true,
+  "field_order_gate": false,
+  "direct_constraint_order_gate": false,
+  "full_horizon_sensitivity_gate": false,
+  "exterior_negative_self_difference_rows": 344,
+  "exterior_negative_self_difference_counts": {
+    "volume": 239,
+    "ray": 105
+  },
+  "exterior_negative_constraint_pairs": 7,
+  "temporal_above_0p2_rows": 4610,
+  "temporal_spatial_significant_rows": 599,
+  "temporal_undefined_rows": 7383,
+  "stored_non_convergent_rows": 521,
+  "exceptions": 55389,
+  "timing": {
+    "elapsed_s": 220.53090766700916,
+    "peak_RSS_bytes": 458162176,
+    "measured_by": "getrusage(RUSAGE_SELF).ru_maxrss; macOS bytes / Linux KiB",
+    "process_cap_bytes": 6000000000,
+    "threads": 1
+  },
+  "unchanged_registration": {
+    "spatial_significance": ">5",
+    "temporal_fraction_limit": 0.2,
+    "design_order": 4,
+    "I8_central": true,
+    "I8_I10_uncertainty": true,
+    "history_clocks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "new_evolution": false
+  },
+  "read_only_roots": [
+    "/Users/auroradysis/SciData/EMS/.data/exp-0023/production",
+    "/Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0023/submissions/exp-0023"
+  ],
+  "output_directory": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative"
+}

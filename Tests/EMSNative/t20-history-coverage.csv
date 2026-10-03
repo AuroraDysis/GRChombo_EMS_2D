@@ -1,0 +1,7 @@
+leg,source,clocks,first_M,last_M,cadence_M,geometry
+E-low,qualified-horizons.csv N96,49,0.0,10.5,0.21875,"moving numerical horizon, NOT fixed-radius profiles"
+E-low,constraint_norms.dat,48,0.21875,10.5,0.21875,"native whole composite grid, NOT registered masks"
+E-mid,qualified-horizons.csv N96,73,0.0,10.500000000000004,0.14583333333333334,"moving numerical horizon, NOT fixed-radius profiles"
+E-mid,constraint_norms.dat,72,0.1458333333,10.5,0.14583333340000001,"native whole composite grid, NOT registered masks"
+E-high,qualified-horizons.csv N96,109,0.0,10.499999999999986,0.09722222222222222,"moving numerical horizon, NOT fixed-radius profiles"
+E-high,constraint_norms.dat,108,0.0972222222,10.5,0.0972222222,"native whole composite grid, NOT registered masks"

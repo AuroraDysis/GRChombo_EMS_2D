@@ -1,0 +1,21 @@
+{
+  "task": "T20 localization; registered T19 FAIL unchanged",
+  "root": "/Users/auroradysis/Workspace/EMS/.data/exp-0023/production",
+  "cache_count": 39,
+  "ray_clocks": 13,
+  "ray_radius_min_M": 0.005,
+  "ray_radius_max_M": 20.0,
+  "witnesses": 351,
+  "witnesses_at_k11": 163,
+  "restart_layouts_verified": 9,
+  "elapsed_seconds": 49.42185141600203,
+  "peak_RSS_bytes": 766492672,
+  "process_cap_bytes": 6000000000,
+  "threads": 1,
+  "missing": "profiles R<0.005 M; fixed-radius fields between the 13 ray clocks; checkpoint HDF5 bulk; E-low LB",
+  "no_static_data": true,
+  "no_evolution": true,
+  "no_SSH": true,
+  "no_commit": true,
+  "housekeeping_status": "BLOCKED_filesystem_sources_retained"
+}

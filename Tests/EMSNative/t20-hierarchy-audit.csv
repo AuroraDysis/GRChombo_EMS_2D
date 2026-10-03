@@ -1,0 +1,16 @@
+leg,source,time_M,printed_levels,exact_census_boxes_match,zero_regrid_intervals,interpretation,files
+E-low,/Users/auroradysis/Workspace/EMS/.data/exp-0023/production/E-low/pout.0.gz,7.875,15,True,15,restart_exact_layout,
+E-low,/Users/auroradysis/Workspace/EMS/.data/exp-0023/production/E-low/segments/attempt-1/pout.0.gz,,0,,0,initial_run_no_read_layout,
+E-low,/Users/auroradysis/Workspace/EMS/.data/exp-0023/production/E-low/segments/attempt-2/pout.0.gz,2.625,15,True,15,restart_exact_layout,
+E-low,/Users/auroradysis/Workspace/EMS/.data/exp-0023/production/E-low/segments/attempt-3/pout.0.gz,5.25,15,True,15,restart_exact_layout,
+E-mid,/Users/auroradysis/Workspace/EMS/.data/exp-0023/production/E-mid/pout.0.gz,7.875,15,True,15,restart_exact_layout,
+E-mid,/Users/auroradysis/Workspace/EMS/.data/exp-0023/production/E-mid/segments/attempt-1/pout.0.gz,,0,,0,initial_run_no_read_layout,
+E-mid,/Users/auroradysis/Workspace/EMS/.data/exp-0023/production/E-mid/segments/attempt-2/pout.0.gz,2.625,15,True,15,restart_exact_layout,
+E-mid,/Users/auroradysis/Workspace/EMS/.data/exp-0023/production/E-mid/segments/attempt-3/pout.0.gz,5.25,15,True,15,restart_exact_layout,
+E-high,/Users/auroradysis/Workspace/EMS/.data/exp-0023/production/E-high/pout.0.gz,7.875,15,True,15,restart_exact_layout,
+E-high,/Users/auroradysis/Workspace/EMS/.data/exp-0023/production/E-high/segments/attempt-1/pout.0.gz,,0,,0,initial_run_no_read_layout,
+E-high,/Users/auroradysis/Workspace/EMS/.data/exp-0023/production/E-high/segments/attempt-2/pout.0.gz,2.625,15,True,15,restart_exact_layout,
+E-high,/Users/auroradysis/Workspace/EMS/.data/exp-0023/production/E-high/segments/attempt-3/pout.0.gz,5.25,15,True,15,restart_exact_layout,
+E-low,qualified/*/n48/LB.txt,,,,,not_collected,0
+E-mid,qualified/*/n48/LB.txt,,,,,rank_loads_only_no_box_coordinates,73
+E-high,qualified/*/n48/LB.txt,,,,,rank_loads_only_no_box_coordinates,109

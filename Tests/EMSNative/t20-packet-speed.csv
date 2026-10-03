@@ -1,0 +1,5 @@
+ray,field,pair,start_M,end_M,crest_speed_M_per_M,intercept_radius_M,max_crest_line_residual_M,radii_M,note
+axis,Gamma1,mid_high,0.875,5.25,0.9962561126651002,-0.00904527850118624,0.03173482279784645,0.87611055;1.7235547;2.6162055;3.4461163;4.3590438;5.2309036,"crest/envelope tracking, not a phase-speed or causal-source certificate"
+equator,Gamma2,mid_high,0.875,5.25,0.9962561126651002,-0.00904527850118624,0.03173482279784645,0.87611055;1.7235547;2.6162055;3.4461163;4.3590438;5.2309036,"crest/envelope tracking, not a phase-speed or causal-source certificate"
+diagonal,Gamma1,mid_high,0.875,5.25,1.0008816793975834,-0.011453357574952685,0.031524902035958924,0.87611055;1.7305524;2.6268274;3.4601076;4.3767416;5.2521412,"crest/envelope tracking, not a phase-speed or causal-source certificate"
+diagonal,Gamma2,mid_high,0.875,5.25,1.0008816793975834,-0.011453357574952685,0.031524902035958924,0.87611055;1.7305524;2.6268274;3.4601076;4.3767416;5.2521412,"crest/envelope tracking, not a phase-speed or causal-source certificate"

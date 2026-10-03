@@ -1,0 +1,42 @@
+file,page,mask,category,quantities,norm
+t19-stageD-history.pdf,1,puncture_excluded,all,chi;Gamma1;shift1;lapse;phi,RMS
+t19-stageD-history.pdf,2,puncture_excluded,all,Ex;Ham;Mom;GaussE;CGamma,RMS
+t19-stageD-history.pdf,3,horizon,all,chi;Gamma1;shift1;lapse;phi,RMS
+t19-stageD-history.pdf,4,horizon,all,Ex;Ham;Mom;GaussE;CGamma,RMS
+t19-stageD-history.pdf,5,inside_inner_ring,all,chi;Gamma1;shift1;lapse;phi,RMS
+t19-stageD-history.pdf,6,inside_inner_ring,all,Ex;Ham;Mom;GaussE;CGamma,RMS
+t19-stageD-history.pdf,7,cavity,all,chi;Gamma1;shift1;lapse;phi,RMS
+t19-stageD-history.pdf,8,cavity,all,Ex;Ham;Mom;GaussE;CGamma,RMS
+t19-stageD-history.pdf,9,between_rings,all,chi;Gamma1;shift1;lapse;phi,RMS
+t19-stageD-history.pdf,10,between_rings,all,Ex;Ham;Mom;GaussE;CGamma,RMS
+t19-stageD-history.pdf,11,outer_ring,all,chi;Gamma1;shift1;lapse;phi,RMS
+t19-stageD-history.pdf,12,outer_ring,all,Ex;Ham;Mom;GaussE;CGamma,RMS
+t19-stageD-history.pdf,13,far,all,chi;Gamma1;shift1;lapse;phi,RMS
+t19-stageD-history.pdf,14,far,all,Ex;Ham;Mom;GaussE;CGamma,RMS
+t19-stageD-history.pdf,15,cavity_core,all,chi;Gamma1;shift1;lapse;phi,RMS
+t19-stageD-history.pdf,16,cavity_core,all,Ex;Ham;Mom;GaussE;CGamma,RMS
+t19-stageD-history.pdf,17,outer_ring_core,all,chi;Gamma1;shift1;lapse;phi,RMS
+t19-stageD-history.pdf,18,outer_ring_core,all,Ex;Ham;Mom;GaussE;CGamma,RMS
+t19-stageD-history.pdf,19,far_core,all,chi;Gamma1;shift1;lapse;phi,RMS
+t19-stageD-history.pdf,20,far_core,all,Ex;Ham;Mom;GaussE;CGamma,RMS
+t19-stageD-history.pdf,21,exterior_wake,all,chi;Gamma1;shift1;lapse;phi,RMS
+t19-stageD-history.pdf,22,exterior_wake,all,Ex;Ham;Mom;GaussE;CGamma,RMS
+t19-stageD-history.pdf,23,receiving_side_3p5,all,chi;Gamma1;shift1;lapse;phi,RMS
+t19-stageD-history.pdf,24,receiving_side_3p5,all,Ex;Ham;Mom;GaussE;CGamma,RMS
+t19-stageD-history.pdf,25,outer_boundary_shell,all,chi;Gamma1;shift1;lapse;phi,RMS
+t19-stageD-history.pdf,26,outer_boundary_shell,all,Ex;Ham;Mom;GaussE;CGamma,RMS
+t19-stageD-field-orders.pdf,1,puncture_excluded,all,all 28 evolved fields,RMS-derived order
+t19-stageD-field-orders.pdf,2,horizon,all,all 28 evolved fields,RMS-derived order
+t19-stageD-field-orders.pdf,3,inside_inner_ring,all,all 28 evolved fields,RMS-derived order
+t19-stageD-field-orders.pdf,4,cavity,all,all 28 evolved fields,RMS-derived order
+t19-stageD-field-orders.pdf,5,between_rings,all,all 28 evolved fields,RMS-derived order
+t19-stageD-field-orders.pdf,6,outer_ring,all,all 28 evolved fields,RMS-derived order
+t19-stageD-field-orders.pdf,7,far,all,all 28 evolved fields,RMS-derived order
+t19-stageD-field-orders.pdf,8,cavity_core,all,all 28 evolved fields,RMS-derived order
+t19-stageD-field-orders.pdf,9,outer_ring_core,all,all 28 evolved fields,RMS-derived order
+t19-stageD-field-orders.pdf,10,far_core,all,all 28 evolved fields,RMS-derived order
+t19-stageD-field-orders.pdf,11,exterior_wake,all,all 28 evolved fields,RMS-derived order
+t19-stageD-field-orders.pdf,12,receiving_side_3p5,all,all 28 evolved fields,RMS-derived order
+t19-stageD-field-orders.pdf,13,outer_boundary_shell,all,all 28 evolved fields,RMS-derived order
+t19-stageD-overview.pdf,1,horizon,smooth_interior,Gamma1,RMS
+t19-stageD-overview.png,1,horizon,smooth_interior,Gamma1,RMS

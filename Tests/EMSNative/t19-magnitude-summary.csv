@@ -1,0 +1,6 @@
+constraint,rows,largest_normalized_RMS,threshold,mask,time_M,denominator_term,largest_term_RMS,all_met
+Ham,144,4.239974e-07,0.001,receiving_side_3p5,4.375,Ricci,0.004321078,True
+Mom1,144,0.0001921884,0.001,receiving_side_3p5,4.375,cartoon_regularization,5.18708e-06,True
+Mom2,144,0.0001129059,0.001,far,4.375,cartoon_regularization,1.960283e-06,True
+Mom,144,0.0001434716,0.001,receiving_side_3p5,4.375,cartoon_regularization,8.98435e-06,True
+GaussE,144,5.20417e-09,0.001,far_core,0.875,F_Eup_y_over_y,0.0003771828,True

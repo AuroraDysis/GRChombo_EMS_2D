@@ -1,0 +1,62 @@
+# T20 — spatial and temporal localization of exp-0023 differences
+
+T19's registered **FAIL stands**. This analysis identifies an outward Γ̃-dominated transient and a later, broad near-horizon oscillatory spatial error. It establishes neither the puncture origin nor a unique phase-error or instability mechanism. The independently checked ledger has 351 failing witnesses, including 163 at k=11 (9.625 M). The full clocks/masks/classes remain in [t20-failing-witness-localization.csv](t20-failing-witness-localization.csv). No static solution is read, explained against, or subtracted; only numerical rungs are compared.
+
+## Spatial support
+
+The [26-page signed ray atlas](t20-signed-ray-atlas.pdf) contains low−mid and mid−high for all ten requested fields, three rays and thirteen clocks. Black lines are each leg's **numerical** N96 horizon radius and gray lines are their common refinement faces. The [ten-page space–time atlas](t20-space-time.pdf) and [time traces](t20-time-traces.pdf) expose signed lobes and moving packets. Tables `t20-localization-*.csv` give dr-weighted RMS, I8/I10 sensitivity, energy quantile radii, sign changes and distance to a face, including the unchanged registered radial masks. These ray norms use the reduction's radial dr weights; they are not volume RMS. The four extra descriptive partitions are explicitly named near, inner, exterior_near and outer_cache and carry no acceptance verdict.
+
+At 9.625 M, the A11 mid−high difference on the fixed horizon mask is broad:
+
+| Ray | Peak R/M | 10–90% radial error-energy radii | radial RMS |
+|---|---:|---:|---:|
+| axis | 0.0060488783 | 0.0062735296–0.010580601 | 5.925929e-05 |
+| equator | 0.0060488783 | 0.0062990003–0.010666691 | 2.793687e-05 |
+| diagonal | 0.0060488783 | 0.0062990003–0.010666691 | 1.366061e-05 |
+
+The peak is at the mask's first sample, R≈0.006049, while the numerical high horizon is R≈0.0060753538. It is a clipped peak, not a measured interior maximum. Its broad energy extends across the axis/equator finest face at 0.0068359375 M and the diagonal face at 0.0096674755 M. The common radial peak on all three rays is evidence against an error confined solely to a refinement face. A11, A22, Aww, K, lapse, χ, φ and Ex have broad inner lobes; Γ̃ has those lobes plus travelling exterior structure. Profiles outside the first few inner cells also have sign-reversing ripples. Small axis Γ̃2 features sit near successive faces and persist in time, distinct from the dominant broad A11 error. Components constrained by reflection parity and their I8/I10 spreads are retained rather than interpreted as a physical wave. There are 25 smooth-interior volume FAIL witnesses overall, 14 at k=11; face/corner/seam/axis effects alone are not established as the cause of every failure.
+
+All caches start at R=0.005 M and stop at 20 M. Many inner-region peaks are clipped at that first radius. The collected data cannot resolve the puncture itself or determine whether the visible inner lobe was generated there.
+
+## Hierarchy identity
+
+[Faces](t20-hierarchy-faces.csv), [internal seams](t20-hierarchy-seams.csv) and [own-record checks](t20-hierarchy-audit.csv) distinguish refinement geometry from box partition. Each rung has levels 0–14, h0=7/8, 7/12, 7/18 M. Their union faces are identical: level 0 ±336 M, then 56, 28, 14, 7, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375, 0.0546875, 0.02734375, 0.013671875 and 0.0068359375 M. The initial census and 9 production checkpoint-read layouts (each rung at 2.625, 5.25 and 7.875 M) have exactly identical integer box lists within each leg. Checkpoint headers print all fifteen regrid intervals zero. Every common-support cell count, weight and status is identical at all thirteen clocks. Together these establish fixed, common refinement footprints throughout the run, rather than comparisons across different evolving level regions.
+
+Internal partitions differ **from t=0**: refined-level boxes number 2/8/32. For example, the finest equatorial positive-x seams are absent on low, 0.00341796875 M on mid, and 0.001708984375/0.00341796875/0.005126953125 M on high. Thus the common-footprint h-refinement also changes same-level seams. E-low LB files were not collected; mid/high LB files contain rank loads, not coordinates. Qualified finder logs do not print checkpoint boxes, and bulk HDF5 layouts are absent locally. No unprinted per-clock layout is claimed as independently inspected; the all-clock statement follows from exact restart matches, disabled regridding and invariant common support.
+
+## Time behaviour and available sampling
+
+The controller's A11 horizon RMS history is reproduced in [mask histories](t20-mask-histories.csv): at 9.625 M D_low,mid=5.1131602e−6 and D_mid,high=2.3002972e−5, p=−3.7088414; at 10.5 M the differences are 3.0058147e−5 and 2.4772644e−5. Both pairs rose well above their early amplitudes, but repeatedly decreased too. The low−mid minimum and the mid−high peak are asynchronous. The temporal A11 difference remains ≤1.1891016e−10 in the table, so it cannot account for this reversal. All 344 failing self-difference witnesses retain their own passing temporal fractions; a blanket statement that every field/mask has clean temporal control would be false (T19 recorded 4,610 exceptions).
+
+At fixed axis R=0.0074978675 M, the high-rung A11 sampled minima at 2.625 and 7.875 M, K maxima at 1.75 and 7 M, and lapse maxima at 0.875 and 6.125 M each give a **5.25 M extremum spacing**. Each sampled extremum is bracketed by its two neighbours; the resulting spacing bracket is **3.5–7 M**, conditional on one corresponding extremum in each bracket. No nearest-sample half-cadence assumption is used. The oscillation damps in the native fields. This is a sampled underlying-field timescale, not a certified difference-mode frequency. Signed pair differences at that radius cross zero multiple times and are not a single sinusoid. [Sampled extrema](t20-sampled-extrema.csv), [fixed-radius values](t20-fixed-radius.csv), [descriptive period fits](t20-history-fits.csv) and [growth fits](t20-growth-fits.csv) preserve their ambiguities. Positive-time log-RMS slopes depend on pair and early/late window and include decreasing intervals; no common, resolution-scaled exponential growth rate is established. Numerical t=0 roundoff is excluded from these growth fits rather than used to inflate a rate.
+
+[Coverage](t20-history-coverage.csv) and [all collected finer histories](t20-finer-histories.csv) use the 49/73/109 numerical N96 horizon clocks (cadences 0.21875/0.14583333/0.09722222 M) and every native whole-grid constraint-norm clock. φ on the moving numerical horizon varies only by about 4.3e−8/2.0e−8/1.7e−8; small step-like changes prevent treating it as a clean fixed-radius phase trace. These records are not replaced by interpolated ray histories. No finer fixed-radius A, Γ̃, χ, K, lapse, φ or Ex profile series is present in the collected inputs, so finer phase/frequency and near-puncture causal estimates remain unavailable.
+
+The late inner Γ̃ lobe also shifts outward: the axis low−mid crest in 0.013671875<R<1 moves from 0.492816 to 0.798153 M between 9.625 and 10.5 M, an apparent crest shift of 0.34896 M/M. Only two such endpoints and changing multi-lobe shapes are available here; this is not a measured characteristic speed or a link to the earlier outward packet.
+
+## Exterior transient, 3.5–5.25 M
+
+The Γ̃ packet is already visible at 0.875 M near R=0.8761 M, progresses to 1.7236 and 2.6162 M, then 3.4461, 4.3590 and 5.2309 M on the axis. Equatorial Γ̃2 follows the same radii; diagonal Γ̃1 and Γ̃2 follow 0.8761, 1.7306, 2.6268, 3.4601, 4.3767 and 5.2521 M to the cache accuracy. It traverses the **fixed** receiving-side mask [3.5,4.375] and far mask [4,8]; it is not stationary at a level boundary. Earliest observed radius/time is not a measured source location: t=0 ray differences are tiny, and the interval before 0.875 M and R<0.005 is not sampled.
+
+| Tracked mid−high crest | Linear speed M/M, 0.875–5.25 M | max radius residual from fitted line M |
+|---|---:|---:|
+| axis Gamma1 | 0.99626 | 0.03173 |
+| equator Gamma2 | 0.99626 | 0.03173 |
+| diagonal Gamma1 | 1.0009 | 0.03152 |
+| diagonal Gamma2 | 1.0009 | 0.03152 |
+
+The observed outward crest speeds span 0.99626–1.0009. At the axis packet the **numerically evaluated** outward coordinate light speeds span 0.5306–0.7079, frozen lapse-subblock speeds 0.8341–1.035, and longitudinal Γ-driver estimates are approximately 1. The evidence supports a Γ-driver-dominated gauge transient rather than a light-speed matter packet. The radial Γ component carries the clearest coherent crest; A/K/lapse/χ carry weaker broad features and ripples, while φ/Ex do not identify an independent crest at this speed. Crest selection can switch lobes: [the packet ledger](t20-leading-packet.csv) marks corridor-edge maxima, and no speed is assigned to those field rows. The [exterior figure](t20-exterior-packet.png) shows the signed curves, not just their peak locations.
+
+Code basis: `Source/CCZ4/ExperimentalGauge.hpp:84–91` uses lapse coefficient 1.8 and shift Γ coefficient 0.75; `Source/Cartoon/CCZ4Cartoon.impl.hpp:400–405` supplies the shift Laplacian and longitudinal 1/3 term. The local ray-normal estimates are −β_n+α√(χ h^nn), −β_n+√(1.8 α χ h^nn), and −β_n+√((4/3)F h^nn), with F=0.75. [Characteristic estimates](t20-characteristic-estimates.csv) use the numerical high-rung state only. [The exact CAS witness](t20-cas-witness.json) proves the 2×2 characteristic polynomial and checks independent numerical eigenvalues; the **full coupled gauge spectrum is not proved**. These are frozen-principal-subblock comparisons, not a full-system characteristic certificate.
+
+Volume Γ̃1 on far has p=4.0291 at 3.5 M, 0.14150 at 4.375 M, 1.03850 at 5.25 M and 4.01891 at 9.625 M. The dip accompanies the packet entering that mask. At 4.375 M the axis low−mid crest is at 4.4663144 M (signed 1.4942707e−9), while mid−high is at 4.3590438 M (signed −1.4369343e−9), a 0.1072707 M separation. The latter lies inside receiving_side_3p5 and the former outside its upper face. These are directly observed differences of spatial lobe positions/signs; native rung frequency error is not thereby proved. Cancellation and which part of the packet lies on the fixed mask change the norm ratio. The seven direct-to-zero constraint FAIL witnesses at 5.25 M on far/receiving_side_3p5 remain separately recorded in T19. The profiles locate a spatial transient but do not prove that all seven constraint witnesses have the same causal origin.
+
+## Mechanism ranking and discriminating work
+
+[t20-mechanisms.csv](t20-mechanisms.csv) ranks the six candidates and gives a cheapest separate test for each still standing. Oscillatory launch response with resolution-dependent phase/amplitude is strongest; puncture/source sensitivity and face/seam sensitivity remain plausible; coarsest-only under-resolution and a slow instability have weaker support. Different moving refinement footprints are contradicted by the records. A new diagnostic pilot must preserve the code's gauge, KO, equations, transfers and initial-data-only static use, and must leave the original registered masks, clocks and thresholds unchanged. None was run, and none can revise T19's FAIL.
+
+## T19 bulk housekeeping and reproduction
+
+The updated [T19 generator](t19-stageD-verdict.py) accepts `--output-dir DIR` and defaults the five >1 MB ledgers to `/Users/auroradysis/Workspace/EMS/.data/exp-0023/t19`. [The housekeeping receipt](t20-housekeeping.csv) records every source/destination, byte size and SHA-256. Creation of that destination is denied by the session sandbox; the actual move is BLOCKED and all five original ledgers are retained with valid references. No protected-path alias or permission bypass was attempted. T19 report/README references and the manifest record this state; the numerical verdict and old numerical resource receipt are unchanged.
+
+Regenerate with `python Tests/EMSNative/t20-difference-localization.py COLLECTED_PRODUCTION_ROOT`. Missing required inputs or changed census boxes stop with a named error. The [resource receipt](t20-resources.json) and [manifest](t20-manifest.txt) record measured peak RSS, single-thread execution and every used input/output hash. No bulk is copied into the worktree, no new evolution or horizon solve is started, and no commit or remote operation is performed.

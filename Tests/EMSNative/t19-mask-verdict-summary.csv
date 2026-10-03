@@ -1,0 +1,14 @@
+mask,median_range,fail_rows,fail_clocks,fail_fields,fail_classes
+puncture_excluded,3.9885–4.7743,32,2;3;4;5;11;12,A11;A12;A22;Aww;Ex;Ey;Gamma1;Gamma2;Pi;hww;phi,all;axis_junction;patch_edge;ray_axis;ray_diagonal;ray_equator;same_level_seam;smooth_interior
+horizon,2.8476–6.933,134,1;2;5;6;7;8;9;10;11;12,A11;A12;A22;Aww;Bz;Ex;Ey;Gamma1;Gamma2;K;Pi;chi;h11;h12;h22;hww;phi,all;axis_junction;convex_corner;patch_edge;ray_axis;ray_diagonal;ray_equator;same_level_seam;smooth_interior
+inside_inner_ring,2.7033–6.6389,73,1;2;5;6;9;10;11;12,A11;A12;A22;Aww;Bz;Ex;Ey;Gamma1;Gamma2;h11;h12;h22;hww;lapse;shift1;shift2,all;axis_junction;convex_corner;patch_edge;ray_axis;ray_diagonal;ray_equator;same_level_seam;smooth_interior
+cavity,3.8181–5.2583,1,5,A12,convex_corner
+between_rings,3.9031–4.8867,9,4;5;10;11;12,A12;Gamma1;Gamma2;chi;phi;shift2,axis_junction;convex_corner;same_level_seam
+outer_ring,3.3575–5.863,22,4;5;6;7;8;10;11;12,A11;A22;Aww;Bz;Ex;Gamma1;Gamma2;chi;phi;shift2,axis_junction;convex_corner;ray_axis;ray_diagonal;same_level_seam
+far,3.9543–4.0225,9,5;6,Gamma1;Gamma2;Ham;Mom1;Mom2,patch_edge;ray_diagonal
+cavity_core,3.7974–5.7915,19,1;2;3;4;5;7;8;9;10;11;12,Aww;Bz;Ex;Ey;Gamma1;Mom2;Pi;h22;hww;lapse;phi;shift1;shift2,convex_corner;ray_axis;ray_diagonal;same_level_seam
+outer_ring_core,3.6471–5.0374,18,4;5;7;8;10;11;12,A11;A22;Aww;Ex;Gamma1;Gamma2;Theta;Xi;chi;h11;phi;shift2,axis_junction;ray_axis;ray_diagonal;same_level_seam
+far_core,3.9503–4.039,0,,,
+exterior_wake,3.96–5.1839,14,2;3;4,Gamma1;Gamma2;Ham,all;axis_junction;patch_edge;ray_axis;ray_equator;same_level_seam;smooth_interior
+receiving_side_3p5,3.9499–4.12,13,4;5;6,Gamma1;Gamma2;Ham;Mom1,all;patch_edge;ray_diagonal;same_level_seam;smooth_interior
+outer_boundary_shell,0.64566–2.1794,0,,,
