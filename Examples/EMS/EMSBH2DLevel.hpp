@@ -11,7 +11,9 @@
 #include "GRAMRLevel.hpp"
 // Problem specific includes
 #include "EMSCouplingFunction.hpp"
+#include "../../Tests/EMSNative/t21-recorder.hpp"
 #include "EMSRadiationParameters.hpp"
+#include "EMSGaugeSelection.hpp"
 // #include "EinsteinMaxwellDilatonField.hpp" //shouldnt need
 
 class EMSBH2DLevel : public GRAMRLevel
@@ -25,6 +27,15 @@ class EMSBH2DLevel : public GRAMRLevel
         GRParmParse pp;
         return EMSRadiationParameters(pp, m_p);
     }();
+    T21RHSRecorder m_t21;
+    EMSGaugeSelection m_ems_gauge = [] {
+        GRParmParse pp;
+        return EMSGaugeSelection(pp);
+    }();
+#ifdef CH_USE_HDF5
+    void writeCheckpointHeader(HDF5Handle &handle) const override;
+    void readCheckpointHeader(HDF5Handle &handle) override;
+#endif
     bool m_t6_interface_diagnostics = [] {
         GRParmParse pp;
         bool enabled;
@@ -34,6 +45,9 @@ class EMSBH2DLevel : public GRAMRLevel
     void t6_write_interface_strips() const;
     double m_t7_snapshot_time=-1.;
     void t7_snapshot();
+
+    void specificEvalRHSMoving(GRLevelData &a_soln, GRLevelData &a_rhs,
+                               double a_time);
 
     /// Things to do at every full timestep
     ///(might include several substeps, e.g. in RK4)

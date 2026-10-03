@@ -21,6 +21,7 @@
 #include "UserVariables.hpp" //This files needs NUM_VARS - total number of components
 
 #include <array>
+#include <type_traits>
 
 /// Compute class to calculate the CCZ4 right hand side with cartoon
 /**

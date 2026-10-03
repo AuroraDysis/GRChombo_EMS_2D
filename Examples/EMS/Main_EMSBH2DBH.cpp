@@ -30,6 +30,9 @@ int runGRChombo(int argc, char *argv[])
     if (sim_params.just_check_params)
         return 0;
 
+    const EMSGaugeSelection gauge_package(pp);
+    gauge_package.record(sim_params);
+
     // The line below selects the problem that is simulated
     // (To simulate a different problem, define a new child of AMRLevel
     // and an associated LevelFactory)

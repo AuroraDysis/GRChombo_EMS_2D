@@ -408,7 +408,10 @@ FOR(i)
         rhs.Gamma[i] = advec.Gamma[i] + Gammadot[i];
         }
 
-this->m_gauge.rhs_gauge(rhs, vars, d1, d2, advec);
+// Preserve the historical call position for every existing gauge package.
+// The differential driver consumes the complete pre-KO Gamma RHS below.
+if constexpr (!std::is_same<gauge_t, MovingPunctureGauge>::value)
+    this->m_gauge.rhs_gauge(rhs, vars, d1, d2, advec);
 
 ////////////////////////
 // Stress Tensor Calc
@@ -455,9 +458,10 @@ FOR(i)
 
     rhs.Gamma[i] += matter_term_Gamma;
 
-    // TERM needed for MPG, but not IMPG
-    // rhs.B[i] += matter_term_Gamma;
 }
+
+if constexpr (std::is_same<gauge_t, MovingPunctureGauge>::value)
+    this->m_gauge.rhs_gauge(rhs, vars, d1, d2, advec);
 
 ////////////////////////////////////////
 // Matter evolution  - Robin's code below (also stress tensor is mine)
