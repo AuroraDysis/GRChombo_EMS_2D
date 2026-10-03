@@ -1,0 +1,3 @@
+case,returncode,gate_reason,peak_RSS_bytes,wall_seconds
+equilibrium-experimental,0,,1642774528,45.70910862495657
+equilibrium-moving_puncture,0,,1369243648,43.15936287492514

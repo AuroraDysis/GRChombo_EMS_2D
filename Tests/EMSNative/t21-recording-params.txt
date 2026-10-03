@@ -1,0 +1,13 @@
+# Opt-in recording only. Merge with the selected run's frozen parameters.
+t21_rhs_capture = true
+t21_gauge_label = experimental
+t21_driver_semantics = integrated_offset_decaying_0p1
+t21_rhs_prefix = stage/native
+t21_initial_rk_steps = 4
+t21_puncture_cells = 4
+t21_puncture_radius = 0.0004
+t21_profile_radius = 0.02
+t21_strip_half_cells = 12
+t21_levels = 12 13 14
+t21_ray_directions = 1 0 0 1 0.7071067811865475244 0.7071067811865475244
+t21_fields = chi h11 h12 h22 hww K A11 A12 A22 Aww Theta Gamma1 Gamma2 lapse shift1 shift2 B1 B2 phi Pi Lambda Bx By Bz Ex Ey Ez Xi

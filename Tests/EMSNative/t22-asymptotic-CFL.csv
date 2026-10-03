@@ -1,0 +1,4 @@
+mode,speed,directional_Courant,frozen_2D_RK4_KO_max_amplification,finite_sample_count,status
+light,1.0,0.25,1.0,263169,CORROBORATED; scalar principal-wave proxy only
+lapse,1.4142135623730951,0.3535533905932738,1.0,263169,CORROBORATED; scalar principal-wave proxy only
+driver,1.1547005383792515,0.28867513459481287,1.0,263169,CORROBORATED; scalar principal-wave proxy only

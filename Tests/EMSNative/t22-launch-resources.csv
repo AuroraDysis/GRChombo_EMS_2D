@@ -1,0 +1,5 @@
+case,returncode,gate_reason,peak_RSS_bytes,wall_seconds
+experimental,0,,1590312960,50.8004308330128
+experimental-half,0,,1596751872,72.23359491699375
+moving_puncture,0,,1611841536,43.702898041927256
+moving_puncture-half,0,,1544093696,65.20812941691838

@@ -1,0 +1,16 @@
+{
+  "exact_status": "PROVED",
+  "witnesses": [
+    "ADM inverse: every rational numerator zero",
+    "4-metric contraction numerator zero",
+    "positive area-density-radius time derivative numerator zero"
+  ],
+  "excluded_locus": "alpha=0, chi=0, det(H)=0, r=0; positive SPD/area branch required",
+  "numerical_status": "CORROBORATED",
+  "samples": 40,
+  "seed": 21009,
+  "precision_digits": 50,
+  "worst_scaled_residual": "3.043205209848650847042268211687655264697522477976e-49",
+  "physical_scope": "R_area_density is a local angular area-density proxy; areal radius and Misner-Sharp mass require spherical symmetry",
+  "peak_RSS_bytes": 59719680
+}

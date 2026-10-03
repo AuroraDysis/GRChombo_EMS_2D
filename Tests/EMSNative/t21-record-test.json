@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "checks": [
+    "degree<n I8/I10 polynomials",
+    "axis parity on native-cell data",
+    "missing support rejected",
+    "truncated payload rejected",
+    "nonfinite native state/RHS rejected",
+    "mixed gauge metadata rejected",
+    "driver labels include gauge semantics"
+  ],
+  "peak_RSS_bytes": 42647552,
+  "scope": "codec/sampler synthetic fixture only; no EMS or evolution claim"
+}

@@ -1,0 +1,3 @@
+gauge,native_points,stored_Float64_components,stored_bit_mismatches,overwritten_tensor_alias_discrepancies,alias_field,comparison
+experimental,601,16828,0,92,A12,"native last-write storage against reconstructed last-write storage; bitwise, no tolerance"
+moving_puncture,601,16828,0,92,A12,"native last-write storage against reconstructed last-write storage; bitwise, no tolerance"

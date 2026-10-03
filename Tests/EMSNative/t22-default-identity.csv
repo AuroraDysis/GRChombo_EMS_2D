@@ -1,0 +1,18 @@
+case,file,Float64_values,bit_mismatches
+omitted,chk/EMS_000000.2d.hdf5,119840,0
+omitted,chk/EMS_000001.2d.hdf5,119840,0
+omitted,plt/EMS_Plot_000000.2d.hdf5,89600,0
+omitted,plt/EMS_Plot_000001.2d.hdf5,89600,0
+explicit,chk/EMS_000000.2d.hdf5,119840,0
+explicit,chk/EMS_000001.2d.hdf5,119840,0
+explicit,plt/EMS_Plot_000000.2d.hdf5,89600,0
+explicit,plt/EMS_Plot_000001.2d.hdf5,89600,0
+capture,chk/EMS_000000.2d.hdf5,119840,0
+capture,chk/EMS_000001.2d.hdf5,119840,0
+capture,plt/EMS_Plot_000000.2d.hdf5,89600,0
+capture,plt/EMS_Plot_000001.2d.hdf5,89600,0
+moving capture vs off,chk/EMS_000000.2d.hdf5,119840,0
+moving capture vs off,chk/EMS_000001.2d.hdf5,119840,0
+moving capture vs off,plt/EMS_Plot_000000.2d.hdf5,89600,0
+moving capture vs off,plt/EMS_Plot_000001.2d.hdf5,89600,0
+selected initialization; physical fields retained,chk/EMS_000000.2d.hdf5,111280,0

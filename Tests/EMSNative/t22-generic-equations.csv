@@ -1,0 +1,4 @@
+case,native_samples,nonzero_momentum_samples,matter_Gamma_peak,Gamma_sum_budget_fraction,production_total_bit_mismatches,gauge_formula_budget_fraction,B_equation_KO_convention
+src-experimental,64,64,0.5091798002976837,0.0,0,,legacy integrated offset; not an MPG driver
+src-moving_puncture,64,64,0.5091798002976837,0.0,0,0.0001220703125,"full Gamma before KO, ordinary KO(B) once"
+generic experimental pinned vs selected,64,64,,,0,,all native columns bit-identical

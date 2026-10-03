@@ -1,0 +1,79 @@
+{
+  "status": "SUPERSEDED_OLD_GAUGE_LEVEL15_NO_CENSUS_OR_P_PARAMS_COMPLETED",
+  "fork_HEAD": "77c5b6f245740411a5207a155952d93c494d90d3",
+  "overlay_targets_uncommitted_preexisting": true,
+  "inputs": [
+    {
+      "path": "/private/tmp/ems-t21/sealed-inputs/Examples/EMS/EMSBH2DLevel.hpp",
+      "bytes": 2394,
+      "sha256": "6f9ad977498d7b75de65d8b8a2553d690836107dd07b37093a93e8e1d3acf203",
+      "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Examples/EMS/EMSBH2DLevel.hpp"
+    },
+    {
+      "path": "/private/tmp/ems-t21/sealed-inputs/Examples/EMS/EMSBH2DLevel.cpp",
+      "bytes": 32563,
+      "sha256": "b460ac4e6afcb0628f7145251c9c735ff6ee2732bcccbcd340e45215c80e2ee9",
+      "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Examples/EMS/EMSBH2DLevel.cpp"
+    },
+    {
+      "path": "/private/tmp/ems-t21/sealed-inputs/Source/Cartoon/CCZ4Cartoon.impl.hpp",
+      "bytes": 25499,
+      "sha256": "beb935bd2dc3123120a59b1f3af1d750c9e9119681c5455ce5dac85ad81cb42f",
+      "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Source/Cartoon/CCZ4Cartoon.impl.hpp"
+    },
+    {
+      "path": "/private/tmp/ems-t21/sealed-inputs/Source/CCZ4/ExperimentalGauge.hpp",
+      "bytes": 3138,
+      "sha256": "8223cb716710f5eb7842d716bebde8b0b1cc053d002324a2eebcf56f161b4c5a",
+      "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Source/CCZ4/ExperimentalGauge.hpp"
+    },
+    {
+      "path": "/private/tmp/ems-t21/sealed-inputs/Source/CCZ4/MovingPunctureGauge.hpp",
+      "bytes": 2684,
+      "sha256": "193758ab3df67dafd9c219df792faea4256cba7ea7f528d68f7708b758deef44",
+      "original_path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Source/CCZ4/MovingPunctureGauge.hpp"
+    },
+    {
+      "path": "/Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0023/submissions/exp-0023/production/params-E-high.txt",
+      "bytes": 3628,
+      "sha256": "25c5c7447dedc1a7e5314a6eb62978b4c566acc7afa7cb61b2a5caf9b684c26d"
+    },
+    {
+      "path": "/Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0023/submissions/exp-0023/submit-contract.md",
+      "bytes": 40639,
+      "sha256": "690d85de5d8b3cad25d1b2b1509c989f6a9fea45e642cf44cea2acb97e964305"
+    },
+    {
+      "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t20-fixed-radius.csv",
+      "bytes": 515032,
+      "sha256": "0c4d227796bb585deb069fe1699a17bf0fb0272ba9c5a47c75ce74c390028423"
+    },
+    {
+      "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/consult-9-reply.md",
+      "bytes": 26017,
+      "sha256": "6be5bd582b8a43dcca193cc6d9515fc828b584a885e545b1218cfab1dfecc91c"
+    },
+    {
+      "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/consult-9b-reply.md",
+      "bytes": 20898,
+      "sha256": "ed2483bcac17b749444f74c00eb85208679a4fba8ee26e8d440bd89ee8939277"
+    },
+    {
+      "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/T14DenseTags.hpp",
+      "bytes": 2572,
+      "sha256": "65959bba20e4403a35709c51b7369a55027c84b48d93a5d982aaeb9e4203e889"
+    },
+    {
+      "path": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/T14Launch.cpp",
+      "bytes": 290,
+      "sha256": "63f2e53ea364220b4b08ceba8f22b92ad41531a57ed8043ba57468676185adab"
+    },
+    {
+      "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo/E.trumpet",
+      "bytes": 8078,
+      "sha256": "2a8de074ae17c0b11d323d4b0933a6bdb7430a5305473c8cc7d4ce37f39fa793"
+    }
+  ],
+  "peak_RSS_bytes": 42860544,
+  "threads": 1
+}

@@ -1,0 +1,13 @@
+case,file,Float64_values,bit_mismatches,scope
+omitted,chk/EMS_000000.2d.hdf5,119840,0,production RK4 two-level fixture; initial and one synchronized coarse step; no scientific launch claim
+omitted,chk/EMS_000001.2d.hdf5,119840,0,production RK4 two-level fixture; initial and one synchronized coarse step; no scientific launch claim
+omitted,plt/EMS_Plot_000000.2d.hdf5,89600,0,production RK4 two-level fixture; initial and one synchronized coarse step; no scientific launch claim
+omitted,plt/EMS_Plot_000001.2d.hdf5,89600,0,production RK4 two-level fixture; initial and one synchronized coarse step; no scientific launch claim
+off,chk/EMS_000000.2d.hdf5,119840,0,production RK4 two-level fixture; initial and one synchronized coarse step; no scientific launch claim
+off,chk/EMS_000001.2d.hdf5,119840,0,production RK4 two-level fixture; initial and one synchronized coarse step; no scientific launch claim
+off,plt/EMS_Plot_000000.2d.hdf5,89600,0,production RK4 two-level fixture; initial and one synchronized coarse step; no scientific launch claim
+off,plt/EMS_Plot_000001.2d.hdf5,89600,0,production RK4 two-level fixture; initial and one synchronized coarse step; no scientific launch claim
+on,chk/EMS_000000.2d.hdf5,119840,0,production RK4 two-level fixture; initial and one synchronized coarse step; no scientific launch claim
+on,chk/EMS_000001.2d.hdf5,119840,0,production RK4 two-level fixture; initial and one synchronized coarse step; no scientific launch claim
+on,plt/EMS_Plot_000000.2d.hdf5,89600,0,production RK4 two-level fixture; initial and one synchronized coarse step; no scientific launch claim
+on,plt/EMS_Plot_000001.2d.hdf5,89600,0,production RK4 two-level fixture; initial and one synchronized coarse step; no scientific launch claim

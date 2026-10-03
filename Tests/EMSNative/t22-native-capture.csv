@@ -1,0 +1,3 @@
+case,gauge,native_capture_cells,B_complete_Gamma_budget_fraction,driver_comparison
+capture,experimental,384,,within gauge only
+moving-capture,moving_puncture,384,0.0,within gauge only

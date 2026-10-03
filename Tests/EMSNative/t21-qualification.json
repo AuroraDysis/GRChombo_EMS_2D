@@ -1,0 +1,22 @@
+{
+  "status": "RECORDING_BIT_IDENTITY_PASS",
+  "files": 12,
+  "checked_values": 1256640,
+  "bit_mismatches": 0,
+  "native_RHS_KO_capture": {
+    "frames": 12,
+    "rows": 336,
+    "gauge_labels": [
+      "experimental"
+    ]
+  },
+  "checkpoint_replay_numerical_t0_and_positive_time": true,
+  "native_geometry_inversion_samples": 48,
+  "native_X_versus_50digit_inverse_scaled_max": "5.8518045320283561112795888340064582476583615633916e-17",
+  "static_path_absent_during_replay": true,
+  "peak_RSS_bytes": 613662720,
+  "qualifier_peak_RSS_bytes": 70516736,
+  "scope": "serial production-RK4 recording qualification only; MPI and target hierarchy preflight required on one exclusive node",
+  "level15_status": "SUPERSEDED; no initialization or evolution performed",
+  "qualifier_measured_peak_RSS_bytes": 70565888
+}

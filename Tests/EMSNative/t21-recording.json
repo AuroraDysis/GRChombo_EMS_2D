@@ -1,0 +1,103 @@
+{
+  "status": "recording_only; old-gauge level15 plan superseded by operator/consult9b",
+  "dt_multiplier": 0.25,
+  "ray_radius_min_M": 1e-05,
+  "ray_radius_max_M": 0.02,
+  "ray_points": 2048,
+  "rays": [
+    {
+      "name": "axis",
+      "direction": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "equator",
+      "direction": [
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "name": "diagonal",
+      "direction": [
+        0.7071067811865476,
+        0.7071067811865476
+      ]
+    }
+  ],
+  "fixed_radii_M": [
+    5e-05,
+    0.0001,
+    0.0002,
+    0.0005,
+    0.001,
+    0.002,
+    0.00341796875,
+    0.004833737762017416,
+    0.0055,
+    0.0060286129392158804,
+    0.0075,
+    0.01,
+    0.013671875,
+    0.02
+  ],
+  "fields": [
+    "chi",
+    "h11",
+    "h12",
+    "h22",
+    "hww",
+    "K",
+    "A11",
+    "A12",
+    "A22",
+    "Aww",
+    "Theta",
+    "Gamma1",
+    "Gamma2",
+    "lapse",
+    "shift1",
+    "shift2",
+    "B1",
+    "B2",
+    "phi",
+    "Pi",
+    "Lambda",
+    "Bx",
+    "By",
+    "Bz",
+    "Ex",
+    "Ey",
+    "Ez",
+    "Xi"
+  ],
+  "levels": [
+    12,
+    13,
+    14
+  ],
+  "stage_steps_per_level": 4,
+  "puncture_cells": 4,
+  "puncture_radius_M": 0.0004,
+  "strip_half_cells": 12,
+  "diagnostic_clocks_M": [
+    0.0,
+    0.875,
+    1.75,
+    2.625,
+    3.5,
+    4.375,
+    5.25,
+    6.125,
+    7.0,
+    7.875,
+    8.75,
+    9.625,
+    10.5
+  ],
+  "interpolation": "I8 central; abs(I8-I10) spread; 128*Float64 epsilon*max(1,abs(value)) floor; fivefold significance",
+  "B_comparison": "B1/B2 are gauge-labelled driver/offset variables and cannot be compared across gauge packages",
+  "future_gauge_control": "not implemented, run or admitted by T21"
+}

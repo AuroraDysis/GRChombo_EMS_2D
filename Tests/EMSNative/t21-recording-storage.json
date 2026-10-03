@@ -1,0 +1,33 @@
+{
+  "rows": [
+    {
+      "level": 12,
+      "cells_per_snapshot": 12539,
+      "cells_per_initial_stage": 32,
+      "bytes_per_cell": 992,
+      "snapshot_bytes": 12438688,
+      "first_4_RK_steps_bytes": 507904
+    },
+    {
+      "level": 13,
+      "cells_per_snapshot": 19070,
+      "cells_per_initial_stage": 108,
+      "bytes_per_cell": 992,
+      "snapshot_bytes": 18917440,
+      "first_4_RK_steps_bytes": 1714176
+    },
+    {
+      "level": 14,
+      "cells_per_snapshot": 19070,
+      "cells_per_initial_stage": 448,
+      "bytes_per_cell": 992,
+      "snapshot_bytes": 18917440,
+      "first_4_RK_steps_bytes": 7110656
+    }
+  ],
+  "high_109_snapshot_bytes": 5479818912,
+  "high_stage_bytes": 9332736,
+  "profiles_uncompressed_bytes": 1326971232,
+  "peak_RSS_bytes": 34455552,
+  "scope": "recording storage only; no evolution work or rate model"
+}

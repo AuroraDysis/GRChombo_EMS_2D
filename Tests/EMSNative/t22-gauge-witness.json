@@ -1,0 +1,20 @@
+{
+  "exact_status": "PROVED within declared reduced gauge/principal-wave algebra",
+  "claims_and_witnesses": {
+    "lapse_equilibrium": "0",
+    "shift_equilibrium": "0",
+    "driver_equilibrium": "0",
+    "driver_complete_Gamma": "0",
+    "lapse_characteristic": "0",
+    "driver_characteristic": "0"
+  },
+  "domain": "alpha>0, mu>0, eta>=0; equilibrium modulo K=Theta=B=Gamma_dot=0; positive speed branches",
+  "numerical_status": "CORROBORATED",
+  "numerical_definition": "independent numpy eigenvalues; native FD2 and KO Fourier symbols; RK4 finite-angle grid",
+  "full_CCZ4_hyperbolicity_and_curved_CFL": "NOT-CLOSED; native speed envelopes and local calibration required",
+  "per_level_dt_over_h": 0.25,
+  "levels": 15,
+  "boundary_speed": 1.0,
+  "boundary_return_to_R20_M": 446.891485709898,
+  "peak_RSS_bytes": 118652928
+}

@@ -1,0 +1,6 @@
+case,actual_child_returncode,expected,pass_control,static_path
+restart-same,0,same-gauge guarded restart succeeds,True,/T22_STATIC_FILE_MUST_NOT_BE_READ
+restart-legacy,0,same-gauge guarded restart succeeds,True,/T22_STATIC_FILE_MUST_NOT_BE_READ
+restart-cross,-6,gauge mismatch refusal,True,/T22_STATIC_FILE_MUST_NOT_BE_READ
+restart-cross-tagged,-6,gauge mismatch refusal,True,/T22_STATIC_FILE_MUST_NOT_BE_READ
+restart-same-experimental,0,same-gauge guarded restart succeeds,True,/T22_STATIC_FILE_MUST_NOT_BE_READ

@@ -1,0 +1,21 @@
+{
+  "status": "E_HIGH_NATIVE_EQUILIBRIUM_AUDIT_PASS_WITH_MEASURED_K_ROUNDOFF",
+  "levels": 15,
+  "boxes_equal_collected_E_high": true,
+  "physical_initial_identity": {
+    "Float64_values": 113549904,
+    "bit_mismatches": 0
+  },
+  "preKO_MPG_shift_exact_zero": true,
+  "preKO_MPG_lapse_exact_zero": false,
+  "preKO_MPG_lapse_measured_peak": 1.5023657770901385e-16,
+  "K_measured_peak": 4.742339166070306e-15,
+  "K_bound_eps": 64,
+  "K_scaled_eps_peak": 3.7203837653728025,
+  "Theta_exact_zero": true,
+  "preKO_MPG_B_equals_complete_Gamma": true,
+  "KO_B_initial_zero": true,
+  "peak_RSS_bytes": 1642774528,
+  "scope": "all valid cells K/Theta/B and native lapse rates; native sampled puncture/ray Gamma and geometric/matter/KO split on all levels 0-14; no advances or positive-time static reads",
+  "exact_zero_premise_correction": "consult premise that setter supplies exact K and Theta zeros was false for K: setter computes a Float64 trace; measured roundoff bound replaces former exact-zero assertion explicitly; scientific screen unchanged"
+}

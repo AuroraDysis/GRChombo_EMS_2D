@@ -1,0 +1,14 @@
+{
+  "frozen_UTC": "2026-10-03T13:56:34.650286+00:00",
+  "HEAD": "77c5b6f245740411a5207a155952d93c494d90d3",
+  "readout_files": {
+    "t22-gauge-control-design.md": "e6b7597fd927cab6338e09ceb69527b93a327297864ff22c6fa0a72df14e87d3",
+    "t22-params-E-high.txt": "eaa86a1fc05f7a8b856bb46476ce6904587dc75ae1d6968376b819738577366e",
+    "t22-params-E-high-dt2.txt": "0e6e575954d4ed4f48dca8159efc22189986a3af471f749bb26317acfae9095a",
+    "t22-masks.csv": "13eb09dbd79e3841457c94eb03577d3567952ee1fac6d6153cec6d42d4217a9a",
+    "t22-recording.json": "68aac62920decbb5d91b9968d896ede9ba5c58aed98c5b0fd8c13f13567dfd46",
+    "t22-recording-params.txt": "2281ef266ef1d4df82c142378d09caab589242b66d4126f6ba1f37ae3df1c620"
+  },
+  "outputs_seen_before_registration": false,
+  "consult_sha256": "ed2483bcac17b749444f74c00eb85208679a4fba8ee26e8d440bd89ee8939277"
+}

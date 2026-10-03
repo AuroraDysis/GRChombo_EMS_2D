@@ -1,0 +1,28 @@
+{
+  "status": "K_ROUNDOFF_THETA_EXACT_ZERO",
+  "K_valid_peak": 4.742339166070306e-15,
+  "K_valid_scaled_eps_peak": 3.7203837653728025,
+  "K_ghost_peak": 4.456454634554754e-15,
+  "K_ghost_scaled_eps_peak": 3.4926685466800276,
+  "declared_valid_bound_eps": 64,
+  "Theta_peak": 0.0,
+  "MPG_preKO_lapse_valid_peak": 1.5023657770901385e-16,
+  "setter_K_literal_zero": false,
+  "setter_K_source": "EMSBH_trumpet_read.impl.hpp:419-426; full metric trace",
+  "setter_Theta_source": "VarsTools::assign(vars,0) at line424; no overwrite",
+  "exact_zero_premise_false": true,
+  "scientific_screen_changed": false,
+  "witness": {
+    "exact_status": "PROVED",
+    "domain": "P != 0, real k and unit real direction n; zero rapidity; no companion",
+    "witness": "0",
+    "identity": "gamma^ij Kij = 3 k (n.n-1) = 0",
+    "numerical_status": "CORROBORATED",
+    "samples": 32,
+    "precision_digits": 50,
+    "worst_scaled_residual": "1.2048995749528527146714192622078051373045927870796e-50",
+    "static_reference_used": false
+  },
+  "process_peak_RSS_bytes": 546635776,
+  "completed_native_audit_peak_RSS_bytes": 1642774528
+}

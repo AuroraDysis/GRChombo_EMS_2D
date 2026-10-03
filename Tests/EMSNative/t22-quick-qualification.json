@@ -1,0 +1,12 @@
+{
+  "status": "QUICK_AUDITS_PASS",
+  "bit_comparisons": 1794736,
+  "bit_mismatches": 0,
+  "generic_states": 64,
+  "matter_source_present": true,
+  "all_six_coefficients_exercised": true,
+  "capture_labels_verified": true,
+  "restart_compatibility_verified": true,
+  "peak_RSS_bytes": 624164864,
+  "scope": "two-level production initialization and one coarse RK4 step; generic native equations; not full E-high equilibrium or launch admission"
+}

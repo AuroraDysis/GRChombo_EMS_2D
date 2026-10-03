@@ -1,0 +1,28 @@
+field,ray,target_radius_M,actual_radius_M,positive_clocks,signed_history_inner_product,descriptive_norm_ratio_order,interpretation
+A11,axis,0.0055,0.005510642864991614,12,0.0043012836921601195,3.3693690000996344,signed correlation reported; norm ratio alone does not establish a common leading error
+A11,axis,0.00608,0.006073436957096604,12,-0.03863389191797488,3.3693652623184174,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+A11,axis,0.0075,0.007497867502956381,12,-0.10580155472719167,3.3807699632064714,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+A11,equator,0.0055,0.005510642864991614,12,-0.23290951070817686,3.2720519691548096,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+A11,equator,0.00608,0.006073436957096604,12,-0.23944898205379295,3.2968522616286036,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+A11,equator,0.0075,0.007497867502956381,12,-0.2200999529374753,3.355749708029567,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+A11,diagonal,0.0055,0.005510642864991614,12,-0.33424435539160646,3.265880909531923,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+A11,diagonal,0.00608,0.006073436957096604,12,-0.3266493285321098,3.3294723633660084,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+A11,diagonal,0.0075,0.007497867502956381,12,-0.2932944458705665,3.441954113119905,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+K,axis,0.0055,0.005510642864991614,12,-0.7751707034203449,3.576703800253962,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+K,axis,0.00608,0.006073436957096604,12,-0.780818498315703,3.6565548581033336,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+K,axis,0.0075,0.007497867502956381,12,-0.7218468415116434,3.8353098179132163,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+K,equator,0.0055,0.005510642864991614,12,-0.7785273188825308,3.676006965224353,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+K,equator,0.00608,0.006073436957096604,12,-0.7770087554965004,3.6869485497065484,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+K,equator,0.0075,0.007497867502956381,12,-0.7458102081891659,3.7609125182479834,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+K,diagonal,0.0055,0.005510642864991614,12,-0.7801781315923368,3.799361433837264,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+K,diagonal,0.00608,0.006073436957096604,12,-0.7691852798529891,3.8431245281449704,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+K,diagonal,0.0075,0.007497867502956381,12,-0.7273908871022681,3.892796706766855,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+lapse,axis,0.0055,0.005510642864991614,12,-0.6995541629362297,3.865544092296481,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+lapse,axis,0.00608,0.006073436957096604,12,-0.7091990190461168,3.901113159965204,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+lapse,axis,0.0075,0.007497867502956381,12,-0.7280546241106054,3.972473061832455,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+lapse,equator,0.0055,0.005510642864991614,12,-0.6957258439765289,3.8969242191031723,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+lapse,equator,0.00608,0.006073436957096604,12,-0.7046880339159889,3.9304051078642672,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+lapse,equator,0.0075,0.007497867502956381,12,-0.7211263768087494,3.9973310572653173,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+lapse,diagonal,0.0055,0.005510642864991614,12,-0.701607538480849,3.8583750216722636,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+lapse,diagonal,0.00608,0.006073436957096604,12,-0.7115344962616447,3.8938089445734145,signed differences anti-correlate; norm ratio is not a common-leading-error witness
+lapse,diagonal,0.0075,0.007497867502956381,12,-0.7297063110492632,3.9657751725439736,signed differences anti-correlate; norm ratio is not a common-leading-error witness
