@@ -1,0 +1,8 @@
+{
+  "status": "PACKET_SEAL_COMPLETE",
+  "peak_RSS_bytes": 59031552,
+  "cap_bytes": 6000000000,
+  "measurement": "macOS getrusage(RUSAGE_SELF) ru_maxrss bytes; final seal and manifest verification only",
+  "all_native_jobs_have_own_verified_receipts": true,
+  "production_source_or_identity_check_edits": false
+}

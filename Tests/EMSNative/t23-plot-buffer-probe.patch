@@ -1,0 +1,22 @@
+--- a/Source/GRChomboCore/GRAMRLevel.cpp
++++ b/Source/GRChomboCore/GRAMRLevel.cpp
+@@ -1,3 +1,4 @@
++#include <cstdlib>
+ /* GRChombo
+  * Copyright 2012 The GRChombo collaboration.
+  * Please refer to LICENSE in GRChombo's root directory.
+@@ -905,6 +906,14 @@
+         const DisjointBoxLayout &levelGrids = m_state_new.getBoxes();
+         IntVect iv_ghosts = m_num_ghosts * IntVect::Unit;
+         LevelData<FArrayBox> plot_data(levelGrids, num_states, iv_ghosts);
++        // T23 Tests-only: witness which saved values are never written.
++        if (const char *seed = std::getenv("T23_PLOT_BUFFER_SEED"))
++        {
++            const double value = std::strtod(seed, nullptr);
++            for (DataIterator it=plot_data.dataIterator();it.ok();++it)
++                plot_data[it()].setVal(value);
++        }
++
+ 
+         // only need to write ghosts when non periodic BCs exist
+         IntVect ghost_vector = IntVect::Zero;

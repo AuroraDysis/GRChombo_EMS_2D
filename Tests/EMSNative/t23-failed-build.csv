@@ -1,0 +1,2 @@
+case,returncode,peak_RSS_bytes,wall_seconds,receipt,cause,repair
+build-candidate-native-flags-original,1,360349696,17.0667533329688,/private/tmp/ems-t23/builds/candidate-native-flags.failed-private-base/build-candidate-native-flags.resources.json,"EMSBH2DLevel.cpp:712,729 calls private GRAMRLevel header methods",access flag on EMSBH2DLevel and dense main only; Tests build only

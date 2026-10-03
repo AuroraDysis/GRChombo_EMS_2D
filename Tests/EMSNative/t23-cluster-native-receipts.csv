@@ -1,0 +1,5 @@
+case,native_rank_count,native_rank_exit_max,OpenMP_threads,scope,receipt_sha256
+baseline,32,0,4,completed cluster native cases; identity assertion failed before one-step comparison,3dd23eba7434d90ee26372968c8592880b2942de0da02897085378e964103925
+omitted,32,0,4,completed cluster native cases; identity assertion failed before one-step comparison,3dd23eba7434d90ee26372968c8592880b2942de0da02897085378e964103925
+explicit,32,0,4,completed cluster native cases; identity assertion failed before one-step comparison,3dd23eba7434d90ee26372968c8592880b2942de0da02897085378e964103925
+capture,32,0,4,completed cluster native cases; identity assertion failed before one-step comparison,3dd23eba7434d90ee26372968c8592880b2942de0da02897085378e964103925

@@ -1,0 +1,8 @@
+{
+  "status": "EXACT_POISON_ONLY_UNCOVERED_HALOS",
+  "poisoned_values": 13824,
+  "same_level_diagnostic_ghost_values": 4032,
+  "same_level_diagnostic_ghost_mismatches": 0,
+  "defined_value_comparisons": 567488,
+  "defined_value_mismatches": 0
+}
