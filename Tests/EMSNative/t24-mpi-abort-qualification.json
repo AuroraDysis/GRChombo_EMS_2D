@@ -1,0 +1,59 @@
+{
+  "status": "MPI_QUALIFICATION_BLOCKED",
+  "cases": [
+    {
+      "case": "one-finite",
+      "ranks": 1,
+      "native_returncode": 15,
+      "expected_returncode": 0,
+      "MPI_Init_failed": true,
+      "abort_record_closed": false,
+      "field_bits_identical": null,
+      "peak_RSS_bytes": 30146560,
+      "wall_s": 0.7700027499813586,
+      "receipt": "/private/tmp/ems-t24/mpi-abort/one-finite/one-finite.resources.json",
+      "passed": false
+    },
+    {
+      "case": "one-abort",
+      "ranks": 1,
+      "native_returncode": 15,
+      "expected_returncode": 86,
+      "MPI_Init_failed": true,
+      "abort_record_closed": false,
+      "field_bits_identical": null,
+      "peak_RSS_bytes": 30097408,
+      "wall_s": 0.2564662080258131,
+      "receipt": "/private/tmp/ems-t24/mpi-abort/one-abort/one-abort.resources.json",
+      "passed": false
+    },
+    {
+      "case": "two-finite",
+      "ranks": 2,
+      "native_returncode": 15,
+      "expected_returncode": 0,
+      "MPI_Init_failed": true,
+      "abort_record_closed": false,
+      "field_bits_identical": null,
+      "peak_RSS_bytes": 30179328,
+      "wall_s": 0.2581967089790851,
+      "receipt": "/private/tmp/ems-t24/mpi-abort/two-finite/two-finite.resources.json",
+      "passed": false
+    },
+    {
+      "case": "two-abort",
+      "ranks": 2,
+      "native_returncode": 15,
+      "expected_returncode": 86,
+      "MPI_Init_failed": true,
+      "abort_record_closed": false,
+      "field_bits_identical": null,
+      "peak_RSS_bytes": 30130176,
+      "wall_s": 0.26225504104513675,
+      "receipt": "/private/tmp/ems-t24/mpi-abort/two-abort/two-abort.resources.json",
+      "passed": false
+    }
+  ],
+  "limitation": "Tests-only serial-Chombo FAB adapter with actual MPI calls; no multi-rank AMR qualification",
+  "MPI": "/Users/auroradysis/.julia/artifacts/2e0bbdf5bae18755b0ebba03bc02d6fb568c05bc"
+}

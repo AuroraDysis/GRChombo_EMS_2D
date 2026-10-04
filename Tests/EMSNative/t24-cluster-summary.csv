@@ -1,0 +1,6 @@
+leg,step,time_M,max_S,max_level,cells_S_gt_4p9,nonfinite_valid,native_rank_exits,source
+exp-0024,152,133.0,4.67761995408594,11,0,not in this table,reduction only,d507438
+P,153,133.875,4.818769341840451,11,0,not in this table,reduction only,d507438
+P,154,134.75,4.96222918326128,11,1548,not in this table,reduction only,d507438
+G,158,138.25,2.658945805478154,11,0,0,224/224 zero,d507438
+D,158,136.5,5.244598436311588,11,5444,0,224/224 zero,d507438

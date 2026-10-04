@@ -1,0 +1,8 @@
+{
+  "returncode": 15,
+  "stdout": "",
+  "stderr": "Abort(742016015) on node 0: Fatal error in internal_Init: Other MPI error, error stack:\ninternal_Init(70).....................: MPI_Init(argc=0x16f9dd7fc, argv=0x16f9dd7f0) failed\nMPII_Init_thread(333).................: \nMPIR_init_comm_world(37)..............: \nMPIR_Comm_commit(821).................: \nMPID_Comm_commit_pre_hook(160)........: \nMPIDI_SHM_mpi_comm_commit_pre_hook(18): \nMPIDI_SHM_comm_bootstrap(45)..........: \nMPIDI_POSIX_comm_bootstrap(288).......: Out of memory\nAbort(70927375) on node 1: Fatal error in internal_Init: Other MPI error, error stack:\ninternal_Init(70).....................: MPI_Init(argc=0x16f1657fc, argv=0x16f1657f0) failed\nMPII_Init_thread(333).................: \nMPIR_init_comm_world(37)..............: \nMPIR_Comm_commit(821).................: \nMPID_Comm_commit_pre_hook(160)........: \nMPIDI_SHM_mpi_comm_commit_pre_hook(18): \nMPIDI_SHM_comm_bootstrap(45)..........: \nMPIDI_POSIX_comm_bootstrap(288).......: Out of memory\n",
+  "env_change": {
+    "MPIR_CVAR_CH4_SHM": "none"
+  }
+}

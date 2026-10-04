@@ -1,0 +1,95 @@
+{
+  "status": "NO_STRICT_INDIVIDUAL_OR_COMMON_SURFACE_IN_BOUNDED_PROBES",
+  "receipts": [
+    {
+      "probe": "individual",
+      "native_exit": 1,
+      "gate": "",
+      "seeds": 14,
+      "wall_s": 34.4177759999875,
+      "peak_RSS_bytes": 2914631680,
+      "best_final_squared_residual": 0.29201688773244916
+    },
+    {
+      "probe": "common N48 chase1",
+      "native_exit": 1,
+      "gate": "",
+      "seeds": 8,
+      "wall_s": 38.1046974590281,
+      "peak_RSS_bytes": 3099099136,
+      "best_final_squared_residual": 0.14830430072380218
+    },
+    {
+      "probe": "common N96 chase1",
+      "native_exit": 1,
+      "gate": "",
+      "seeds": 8,
+      "wall_s": 105.70714816707186,
+      "peak_RSS_bytes": 3038167040,
+      "best_final_squared_residual": 0.14441055907809217
+    },
+    {
+      "probe": "common N48 chase.125",
+      "native_exit": 1,
+      "gate": "",
+      "seeds": 2,
+      "wall_s": 104.54153208294883,
+      "peak_RSS_bytes": 2924986368,
+      "best_final_squared_residual": 0.05085864467730191
+    }
+  ],
+  "qualified_area": null,
+  "qualified_charge": null,
+  "horizon_membership": "UNDETERMINED at rho=.047-.08",
+  "missing_original_ev1_finder_directories": [
+    "diagnostics",
+    "shapes"
+  ],
+  "original_common_rows": 18,
+  "matched_chase_comparison": {
+    "seed_radius": 3,
+    "N": 48,
+    "fast_update": 72,
+    "fast_chase": 1,
+    "fast": {
+      "stage": "0",
+      "update": "72",
+      "search_index": "6",
+      "expansion_squared": "2.3762701855213444",
+      "A": "699.23001140079612",
+      "Q": "2.089897706802172",
+      "centre": "2239.9847837133698"
+    },
+    "slow_update": 574,
+    "slow_chase": 0.125,
+    "slow": {
+      "stage": "0",
+      "update": "574",
+      "search_index": "1",
+      "expansion_squared": "0.05085864467730191",
+      "A": "675.88150892331737",
+      "Q": "2.0910834197116195",
+      "centre": "2239.9999999999991"
+    },
+    "conclusion": "flow-step sensitivity measured; neither is a horizon; accumulated chase differs by 0.35%"
+  },
+  "own_receipts": [
+    "/private/tmp/ems-t24/horizon/horizon.resources.json",
+    "/private/tmp/ems-t24/horizon/params.txt",
+    "/private/tmp/ems-t24/horizon/run.log",
+    "/private/tmp/ems-t24/horizon-common-pilot/horizon.resources.json",
+    "/private/tmp/ems-t24/horizon-common-pilot/params.txt",
+    "/private/tmp/ems-t24/horizon-common-pilot/run.log",
+    "/private/tmp/ems-t24/horizon-common-N96/horizon.resources.json",
+    "/private/tmp/ems-t24/horizon-common-N96/params.txt",
+    "/private/tmp/ems-t24/horizon-common-N96/run.log",
+    "/private/tmp/ems-t24/horizon-common-slow/horizon.resources.json",
+    "/private/tmp/ems-t24/horizon-common-slow/params.txt",
+    "/private/tmp/ems-t24/horizon-common-slow/run.log"
+  ],
+  "author_finder_unchanged": true,
+  "checkpoint_time_M": 133,
+  "static_inputs_read": false,
+  "native_binary_sha256": "7c5f535d8d2930d0461cbe4db5b7936764d563cc4bbdf4d5c67f1fc8487eb7fd",
+  "limitation": "bounded failures do not prove absence; no qualified A/Q or inside/outside classification"
+}

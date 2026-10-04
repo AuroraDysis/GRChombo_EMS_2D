@@ -1,0 +1,147 @@
+{
+  "native": {
+    "returncode": 1,
+    "peak_rss_bytes": 2924986368,
+    "wrapper_peak_rss_bytes": 16039936
+  },
+  "resources": {
+    "process": "horizon",
+    "command": "[\"/private/tmp/ems-t17/rh.ex\", \"/private/tmp/ems-t24/horizon-common-slow/params.txt\"]",
+    "directory": "/private/tmp/ems-t24/horizon-common-slow",
+    "wall_seconds": 104.54153208294883,
+    "peak_rss_bytes": 2924986368,
+    "rss_GB": 2.924986368,
+    "cap_GB": 6.0,
+    "returncode": 1,
+    "gate_reason": "",
+    "tree_peak_bytes": 3132806592,
+    "per_pid_peaks": {
+      "3449": [
+        1261568,
+        966872
+      ],
+      "3450": [
+        15908864,
+        10273200
+      ],
+      "3453": [
+        2835316736,
+        3105379128
+      ]
+    },
+    "time_returncode": 1,
+    "child_measurement": {
+      "returncode": 1,
+      "peak_rss_bytes": 2924986368,
+      "wrapper_peak_rss_bytes": 16039936
+    },
+    "measurement": "time -l; wait4 RUSAGE_CHILDREN fallback if sandbox sysctl denied"
+  },
+  "rows": [
+    {
+      "time": "133",
+      "search_index": "0",
+      "N_theta": "48",
+      "stage": "-1",
+      "threshold": "0",
+      "status": "SEED_REPLAY",
+      "updates": "0",
+      "seconds": "0",
+      "centre": "2240",
+      "A": "748.40196022711052",
+      "Q": "2.057604190776031",
+      "phi_mean": "0.012225787305980673",
+      "phi_rms": "0.0035038727690376919",
+      "expansion_squared": "0.17865541549526848",
+      "theta_minus": "-0.46221654503113607",
+      "M_RN_legacy": "4.1329279896611499",
+      "hole": "common",
+      "seed_radius": 0.75,
+      "rho_max": 0.7495984406072742,
+      "axial_min": 2239.2504015593927,
+      "axial_max": 2240.7495984406073
+    },
+    {
+      "time": "133",
+      "search_index": "1",
+      "N_theta": "48",
+      "stage": "-1",
+      "threshold": "0",
+      "status": "SEED_REPLAY",
+      "updates": "0",
+      "seconds": "0",
+      "centre": "2240",
+      "A": "780.68451331928304",
+      "Q": "2.0868379395516308",
+      "phi_mean": "0.0015913138313834911",
+      "phi_rms": "0.00031107794146354996",
+      "expansion_squared": "0.24354348674831897",
+      "theta_minus": "-0.25421804211919202",
+      "M_RN_legacy": "4.2172253431444977",
+      "hole": "common",
+      "seed_radius": 3.0,
+      "rho_max": 2.998393762429097,
+      "axial_min": 2237.0016062375707,
+      "axial_max": 2242.9983937624293
+    },
+    {
+      "time": "133",
+      "search_index": "0",
+      "N_theta": "48",
+      "stage": "0",
+      "threshold": "9.9999999999999995e-08",
+      "status": "TIME_CAP",
+      "updates": "574",
+      "seconds": "90.141948999999997",
+      "centre": "2239.9999999999986",
+      "A": "748.44705612286248",
+      "Q": "2.0619649458411411",
+      "phi_mean": "0.011270541682060249",
+      "phi_rms": "0.0034429082330877494",
+      "expansion_squared": "0.16351805570823219",
+      "theta_minus": "-0.47496041195632344",
+      "M_RN_legacy": "4.1341998563003237",
+      "hole": "common",
+      "seed_radius": 0.75,
+      "rho_max": 0.9050107390795309,
+      "axial_min": 2239.342052081473,
+      "axial_max": 2240.6579479185248
+    },
+    {
+      "time": "133",
+      "search_index": "1",
+      "N_theta": "48",
+      "stage": "0",
+      "threshold": "9.9999999999999995e-08",
+      "status": "TIME_CAP",
+      "updates": "574",
+      "seconds": "90.142402000000004",
+      "centre": "2239.9999999999991",
+      "A": "675.88150892331737",
+      "Q": "2.0910834197116195",
+      "phi_mean": "-0.00075469859346172761",
+      "phi_rms": "0.00036411075111589247",
+      "expansion_squared": "0.05085864467730191",
+      "theta_minus": "-0.32523410691563176",
+      "M_RN_legacy": "3.9650248772103982",
+      "hole": "common",
+      "seed_radius": 3.0,
+      "rho_max": 7.21958280376651,
+      "axial_min": 2237.777144202464,
+      "axial_max": 2242.222855797534
+    }
+  ],
+  "radii": [
+    0.75,
+    3.0
+  ],
+  "centres": [
+    2240.0,
+    2240.0
+  ],
+  "advances": 0,
+  "static_data_reads": 0,
+  "scope": "fresh numerical-radius spheres, unchanged RHUnion/RHSurf, chase=0.125/quota=1/N48",
+  "status": "NO_GROUP_QUALIFICATION_IN_BOUNDED_SEARCH",
+  "limit": "N96 agreement not tested; failure to find does not prove absence of an apparent horizon"
+}

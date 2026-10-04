@@ -1,0 +1,11 @@
+case,native_returncode,peak_RSS_bytes,wall_s,receipt
+abort-omitted,0,20054016,0.5165890000062063,/private/tmp/ems-t24/controls/abort-omitted/abort-omitted.resources.json
+abort-off,0,20299776,0.26180862507317215,/private/tmp/ems-t24/controls/abort-off/abort-off.resources.json
+abort-on,0,20021248,0.25596337497700006,/private/tmp/ems-t24/controls/abort-on/abort-on.resources.json
+finite,0,18087936,0.5219796249875799,/private/tmp/ems-t24/controls/finite/finite.resources.json
+nan-worker,86,16990208,0.25780741695780307,/private/tmp/ems-t24/controls/nan-worker/nan-worker.resources.json
+restart-old-same,0,20414464,0.25410449993796647,/private/tmp/ems-t24/controls/restart-old-same/restart-old-same.resources.json
+restart-new-omitted,0,21561344,0.255717207910493,/private/tmp/ems-t24/controls/restart-new-omitted/restart-new-omitted.resources.json
+restart-new-off,0,21315584,0.2557416670024395,/private/tmp/ems-t24/controls/restart-new-off/restart-new-off.resources.json
+restart-new-on,0,21004288,0.26149195805191994,/private/tmp/ems-t24/controls/restart-new-on/restart-new-on.resources.json
+restart-half,0,21741568,0.2620323329465464,/private/tmp/ems-t24/controls/restart-half/restart-half.resources.json

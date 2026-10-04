@@ -19,6 +19,10 @@ def table(headers, data):
 
 
 def main():
+    if (HERE/'t24-controls-qualification.json').exists():
+        import runpy
+        runpy.run_path(str(HERE/'t24-control-report.py'), run_name='__main__')
+        return
     audit = json.loads((HERE/'t24-offline-receipt.json').read_text())
     native = json.loads((ROOT/'restart152-rss/native.receipt.json').read_text())
     probe = json.loads((HERE/'t24-nan-barrier-qualification.json').read_text())

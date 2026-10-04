@@ -1,0 +1,161 @@
+--- /dev/null
++++ b/Source/BoxUtils/SafeNanAbort.hpp
+@@ -0,0 +1,97 @@
++#ifndef EMS_SAFE_NAN_ABORT_HPP
++#define EMS_SAFE_NAN_ABORT_HPP
++
++#include "Cell.hpp"
++#include "SPMD.H"
++#include "UserVariables.hpp"
++#include <array>
++#include <atomic>
++#include <cmath>
++#include <cstdio>
++#include <cstdlib>
++#include <fstream>
++#include <iomanip>
++#include <mutex>
++#include <sstream>
++#include <unistd.h>
++#ifdef CH_MPI
++#include <mpi.h>
++#endif
++
++// Read-only collection inside BoxLoops. Termination is called by the level
++// only after all OpenMP workers have joined; no conditional workshare/barrier.
++class SafeNanAbort
++{
++    const double m_max_abs;
++    mutable std::atomic<bool> m_bad{false};
++    mutable std::mutex m_mutex;
++    mutable IntVect m_cell;
++    mutable int m_component = -1;
++    mutable std::array<double, NUM_VARS> m_values{};
++
++  public:
++    explicit SafeNanAbort(double max_abs) : m_max_abs(max_abs) {}
++    struct Collector
++    {
++        const SafeNanAbort *owner;
++        void compute(Cell<double> cell) const { owner->compute(cell); }
++    };
++    Collector collector() const { return {this}; }
++    void compute(Cell<double> cell) const
++    {
++        for (int n = 0; n < cell.get_num_in_vars(); ++n)
++        {
++            const double v = cell.load_vars(n);
++            if (std::isnan(v) || std::abs(v) > m_max_abs)
++            {
++                std::lock_guard<std::mutex> lock(m_mutex);
++                if (!m_bad.load(std::memory_order_relaxed))
++                {
++                    m_cell = cell.get_int_vect();
++                    m_component = n;
++                    for (int j = 0; j < NUM_VARS; ++j)
++                        m_values[j] = cell.load_vars(j);
++                    m_bad.store(true, std::memory_order_release);
++                }
++                return;
++            }
++        }
++    }
++    bool failed() const { return m_bad.load(std::memory_order_acquire); }
++    // No collective: a remote rank may be waiting in a fine-level exchange.
++    // The file is closed and atomically renamed before MPI_Abort is requested.
++    void terminate_if_failed(const std::string &prefix, int level, double time,
++                             double dx, double dt, int exit_code) const
++    {
++        if (!failed()) return;
++        const std::string path = prefix + ".rank" + std::to_string(procID()) + ".json";
++        const std::string temp = path + ".tmp." + std::to_string(getpid());
++        std::ofstream out(temp);
++        out << std::setprecision(17)
++            << "{\"schema\":\"ems-nan-abort-v1\",\"rank\":" << procID()
++            << ",\"level\":" << level << ",\"time\":" << time
++            << ",\"dx\":" << dx << ",\"dt\":" << dt
++            << ",\"phase\":\"specificAdvance_after_floors\",\"workers_joined\":true"
++            << ",\"exit_code\":" << exit_code << ",\"max_abs\":" << m_max_abs
++            << ",\"component\":\"" << UserVariables::variable_names[m_component]
++            << "\",\"cell\":[";
++        for (int d = 0; d < CH_SPACEDIM; ++d) out << (d ? "," : "") << m_cell[d];
++        out << "],\"values_hex\":{";
++        for (int n = 0; n < NUM_VARS; ++n)
++            out << (n ? "," : "") << "\"" << UserVariables::variable_names[n]
++                << "\":\"" << std::hexfloat << m_values[n] << "\"";
++        out << "}}\n";
++        out.flush();
++        bool written = bool(out);
++        out.close();
++        written = written && !out.fail() && std::rename(temp.c_str(), path.c_str()) == 0;
++        std::cerr << "EMS_SAFE_NAN_ABORT level=" << level << " rank=" << procID()
++                  << " record=" << path << " closed=" << written << std::endl;
++        if (!written) std::cerr << "EMS_SAFE_NAN_ABORT_RECORD_WRITE_FAILED" << std::endl;
++#ifdef CH_MPI
++        MPI_Abort(Chombo_MPI::comm, exit_code);
++#endif
++        std::_Exit(exit_code); // Also nonzero if an MPI implementation returns.
++    }
++};
++#endif
+--- a/Examples/EMS/SimulationParameters.hpp
++++ b/Examples/EMS/SimulationParameters.hpp
+@@ -38,6 +38,15 @@
+         pp.load("ems_binary_refinement", ems_binary_refinement, false);
+         pp.load("ems_track_punctures", ems_track_punctures, false);
+         pp.load("ems_puncture_tracking_level", ems_puncture_tracking_level, 0);
++        pp.load("ems_safe_nan_abort", ems_safe_nan_abort, false);
++        pp.load("ems_nan_abort_prefix", ems_nan_abort_prefix,
++                std::string("ems-nan-abort"));
++        pp.load("ems_nan_max_abs", ems_nan_max_abs, 1e20);
++        pp.load("ems_nan_abort_exit_code", ems_nan_abort_exit_code, 86);
++        if (ems_safe_nan_abort && (!nan_check || ems_nan_abort_prefix.empty() ||
++            !std::isfinite(ems_nan_max_abs) || ems_nan_max_abs <= 0. ||
++            ems_nan_abort_exit_code < 1 || ems_nan_abort_exit_code > 255))
++            MayDay::Error("invalid opt-in EMS safe NaN abort controls");
+ 
+         pp.load("G_Newton", m_G_Newton);
+ 
+@@ -193,6 +202,10 @@
+     }
+ 
+     // tagging
++    bool ems_safe_nan_abort;
++    std::string ems_nan_abort_prefix;
++    double ems_nan_max_abs;
++    int ems_nan_abort_exit_code;
+     bool activate_extraction;
+ 
+     // Tagging thresholds
+--- a/Examples/EMS/EMSBH2DLevel.cpp
++++ b/Examples/EMS/EMSBH2DLevel.cpp
+@@ -16,6 +16,7 @@
+ #include "BoxLoops.hpp"
+ #include "ComputePack.hpp"
+ #include "NanCheck.hpp"
++#include "SafeNanAbort.hpp"
+ #include "PositiveChiAndAlpha.hpp"
+ 
+ // For tagging cells
+@@ -149,9 +150,21 @@
+ 
+     // Check for nan's
+     if (m_p.nan_check)
++    {
++        if (m_p.ems_safe_nan_abort)
++        {
++            SafeNanAbort check(m_p.ems_nan_max_abs);
++            BoxLoops::loop(check.collector(), m_state_new, m_state_new,
++                           EXCLUDE_GHOST_CELLS, disable_simd());
++            check.terminate_if_failed(m_p.ems_nan_abort_prefix, m_level,
++                                      m_time+m_dt, m_dx, m_dt,
++                                      m_p.ems_nan_abort_exit_code);
++        }
++        else
+         BoxLoops::loop(
+             NanCheck(m_dx, m_p.center, "NaNCheck in specific Advance: "),
+             m_state_new, m_state_new, EXCLUDE_GHOST_CELLS, disable_simd());
++    }
+ }
+ 
+ void EMSBH2DLevel::ems_t13_initial()

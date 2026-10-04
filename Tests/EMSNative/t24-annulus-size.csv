@@ -1,0 +1,3 @@
+level,dx,valid_union_cells,cells_per_hole,payload_bytes_per_stage,RK_stages_per_coarse_step,payload_bytes_per_coarse_step,window_duration,window_fine_steps,payload_bytes_per_window,peak_RSS_bytes
+11,0.0008544921875,27972,13986;13986,3692304,8192,30247354368,0.041015625,96,1417844736,51101696
+12,0.00042724609375,46442,23221;23221,6130344,16384,100439556096,0.041015625,192,4708104192,51134464

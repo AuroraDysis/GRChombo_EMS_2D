@@ -1,9 +1,14 @@
 # T24: merger blow-up and missing termination — completed local evidence
 
-**READY-EXCEPT: a numerical blow-up is established, but its initiating operation
-and the exact cluster abort wait remain unestablished.** No evolution fix is
-applied. The full local replay is ended, not pending, and will not be retried.
-The submission-worker diagnostic design is [t24-diagnostic-restart-design.md](t24-diagnostic-restart-design.md).
+**READY-EXCEPT.** The shift/Gamma discrete-CFL candidate is supported by
+exp-0026's history and two interventions, with the numerical and code-level
+limits in [the current report](t24-gauge-control-followup.md). A unique initiating
+operation and the exact original abort wait are unproved; strict horizon
+membership and MPI safe-abort execution remain unqualified. The full local
+replay is ended, not pending, and will not be retried. The original
+[diagnostic restart design](t24-diagnostic-restart-design.md) below is retained
+as historical evidence; the intervention has superseded its recorder build.
+No evolution remedy is applied.
 
 All source line references below refer to fork
 `d50743867e48bcb466a60ca16869b07fe1546c27`, archived in
@@ -21,6 +26,30 @@ Both supplied manifests now verify: **1,855 ev1** and **692 ev2** files.
 tables directly from the collected root, using no static solution. Its own
 receipt is [t24-offline-receipt.json](t24-offline-receipt.json): return 0,
 239.94 s, **140,378,112 bytes peak RSS**.
+
+## Exp-0026 and frozen-gauge follow-up — current reading
+
+
+The current reading is [t24-gauge-control-followup.md](t24-gauge-control-followup.md).
+Both point/legacy restarts fail inside step 155; legacy's negative valid lapse
+is gone from step 153, so it is not the proximate mechanism. Descendant levels
+7–12 regrid every L6 step (0.013671875); the final 135.173828125 regrid changes
+no box count. At failure the printed cells lie directly above x_p≈±0.1826,
+not at the distance inferred using the t=133 positions. The active-S history
+crosses the scalar limit 4.90623877 near t=134.4085, and both targeted G/D
+interventions pass the original event. The shift/Gamma CFL candidate is
+**supported**, not uniquely proved; measured-shift discrete limits are lower
+than the reduced scalar rule. The expanded 48-row run-design table is in
+t24-stability-limits.csv. The unchanged finder finds no qualified individual
+or common surface in the numerical t=133 sweeps (N48/N96 midpoint radii .3–4);
+horizon membership and qualified A/Q remain undetermined. The original
+finder iteration logs were not included in ev1, limiting the historical
+area-1000 diagnosis; flow-step sensitivity is locally measured.
+The safe NaN abort is implemented/default off and serial-bit-qualified;
+MPI qualification is blocked at MPI_Init. Restart already honours changed
+dt_multiplier; no restart feature is added. The annular recorder build is
+**cancelled**, its design only retained. These statements supersede earlier
+design-only abort wording below.
 
 ## A1. The saved state and the actual nonfinite witness
 
@@ -319,22 +348,14 @@ and **15-minute** native phase cap. The controller's approximately
 two-minute reproduction is a baseline, not a measured observer cost.
 Save per-rank witnesses/completion receipts even after nonzero abort.
 
-## Candidate mechanisms, ranked without an evolution remedy
+## Candidate mechanisms — ranking updated after exp-0026
 
-| Rank | Mechanism | Evidence for | Evidence against / still missing |
-| --- | --- | --- | --- |
-| 1 | Point transfer and subsequent floor/RHS amplification of an inner state | Signed restriction demonstrably creates negative coarse lapse from positive fine lapse; negative fine ghosts and widespread lapse-floor activity exist; failed χ/lapse are floored and metric/shift have exploded | χ is positive at 152; the specific bad cell and requested fields are then regular and correctly restricted. No first failing operation/stage or donor at 135.174 is retained. Floor may be an effect. |
-| 2 | Inner gauge/dynamical instability or insufficient resolution near the moving holes, amplified in a covered coarse advance | Very small lapse, inner Θ magnitude≈0.69 and sizeable K are already present; L10 advances even its fine-covered cells and detects the failure there | No short-time spatial/RK growth history distinguishes gauge, truncation, KO or transfer effects. No local replay reaches the event. |
-| 3 | Regrid-created cell/support or overlap-copy/communication defect | The final dump follows a regrid; moving regions alter support/partition and new fine interpolation is not positivity preserving | Bad cell is already covered at 152 and predicted to remain forced; L10 count drops at 134.436, not 135.174; saved nesting passes. Actual later unions, donors and overlap identity missing. |
-| 4 | Tracker failure or a separation-dependent tagging nontermination | Moving centres determine all fine footprints; tracker has collective exchanges | Both centres are finite and distinct; two-centre max is finite even at coincidence. An explicit numerical NaN is recorded, so a pure no-progress tag loop does not explain the primary failure. |
-| 5 | Pure load imbalance / missing rank / disappearance of the finest level | Repartition and native collective waits could delay progress | Repeated same-cell NaN, all 224 ranks in complete 240-box LB records, and L11/L12 still 256 strongly weigh against a purely performance/layout-count explanation. |
-
-The **abort-control defect** is separate from these numerical mechanisms.
-No expensive global refinement, gauge or transfer change is admitted from
-this evidence. The proposed single diagnostic restart distinguishes whether
-the initiating event is restriction, regrid interpolation, a changed ghost,
-projection or an old valid-cell RHS/update. It also supplies a clean failure
-record instead of interpreting an external phase-cap stop as the physics.
+The current ranked evidence is in [t24-gauge-control-followup.md](t24-gauge-control-followup.md).
+Shift/Gamma discretization and the supported CFL crossing rank first; inherited
+transfer/resolution damage remains, while negative covered lapse as the
+proximate cause is excluded by the failed legacy control. Frequent regrid/
+interpolation effects remain open. A unique final regrid trigger and pure
+tagging nontermination are not supported. A unique cause is not claimed proved.
 
 ## Completed replay and resource receipts
 

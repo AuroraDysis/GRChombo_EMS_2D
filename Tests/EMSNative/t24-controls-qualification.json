@@ -1,0 +1,333 @@
+{
+  "status": "SERIAL_NATIVE_PASS_MPI_PENDING",
+  "resources": [
+    {
+      "case": "abort-omitted",
+      "native_returncode": 0,
+      "peak_RSS_bytes": 20054016,
+      "wall_s": 0.5165890000062063,
+      "receipt": "/private/tmp/ems-t24/controls/abort-omitted/abort-omitted.resources.json"
+    },
+    {
+      "case": "abort-off",
+      "native_returncode": 0,
+      "peak_RSS_bytes": 20299776,
+      "wall_s": 0.26180862507317215,
+      "receipt": "/private/tmp/ems-t24/controls/abort-off/abort-off.resources.json"
+    },
+    {
+      "case": "abort-on",
+      "native_returncode": 0,
+      "peak_RSS_bytes": 20021248,
+      "wall_s": 0.25596337497700006,
+      "receipt": "/private/tmp/ems-t24/controls/abort-on/abort-on.resources.json"
+    },
+    {
+      "case": "finite",
+      "native_returncode": 0,
+      "peak_RSS_bytes": 18087936,
+      "wall_s": 0.5219796249875799,
+      "receipt": "/private/tmp/ems-t24/controls/finite/finite.resources.json"
+    },
+    {
+      "case": "nan-worker",
+      "native_returncode": 86,
+      "peak_RSS_bytes": 16990208,
+      "wall_s": 0.25780741695780307,
+      "receipt": "/private/tmp/ems-t24/controls/nan-worker/nan-worker.resources.json"
+    },
+    {
+      "case": "restart-old-same",
+      "native_returncode": 0,
+      "peak_RSS_bytes": 20414464,
+      "wall_s": 0.25410449993796647,
+      "receipt": "/private/tmp/ems-t24/controls/restart-old-same/restart-old-same.resources.json"
+    },
+    {
+      "case": "restart-new-omitted",
+      "native_returncode": 0,
+      "peak_RSS_bytes": 21561344,
+      "wall_s": 0.255717207910493,
+      "receipt": "/private/tmp/ems-t24/controls/restart-new-omitted/restart-new-omitted.resources.json"
+    },
+    {
+      "case": "restart-new-off",
+      "native_returncode": 0,
+      "peak_RSS_bytes": 21315584,
+      "wall_s": 0.2557416670024395,
+      "receipt": "/private/tmp/ems-t24/controls/restart-new-off/restart-new-off.resources.json"
+    },
+    {
+      "case": "restart-new-on",
+      "native_returncode": 0,
+      "peak_RSS_bytes": 21004288,
+      "wall_s": 0.26149195805191994,
+      "receipt": "/private/tmp/ems-t24/controls/restart-new-on/restart-new-on.resources.json"
+    },
+    {
+      "case": "restart-half",
+      "native_returncode": 0,
+      "peak_RSS_bytes": 21741568,
+      "wall_s": 0.2620323329465464,
+      "receipt": "/private/tmp/ems-t24/controls/restart-half/restart-half.resources.json"
+    }
+  ],
+  "comparisons": [
+    {
+      "case": "abort-omitted",
+      "file": "chk/EMS_000000.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-omitted",
+      "file": "plt/EMS_Plot_000000.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-omitted",
+      "file": "chk/EMS_000001.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-omitted",
+      "file": "plt/EMS_Plot_000001.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-omitted",
+      "file": "chk/EMS_000002.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-omitted",
+      "file": "plt/EMS_Plot_000002.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-off",
+      "file": "chk/EMS_000000.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-off",
+      "file": "plt/EMS_Plot_000000.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-off",
+      "file": "chk/EMS_000001.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-off",
+      "file": "plt/EMS_Plot_000001.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-off",
+      "file": "chk/EMS_000002.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-off",
+      "file": "plt/EMS_Plot_000002.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-on",
+      "file": "chk/EMS_000000.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-on",
+      "file": "plt/EMS_Plot_000000.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-on",
+      "file": "chk/EMS_000001.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-on",
+      "file": "plt/EMS_Plot_000001.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-on",
+      "file": "chk/EMS_000002.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "abort-on",
+      "file": "plt/EMS_Plot_000002.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "restart-new-omitted",
+      "file": "chk/EMS_000002.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "restart-new-omitted",
+      "file": "plt/EMS_Plot_000002.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "restart-new-off",
+      "file": "chk/EMS_000002.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "restart-new-off",
+      "file": "plt/EMS_Plot_000002.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "restart-new-on",
+      "file": "chk/EMS_000002.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0
+    },
+    {
+      "case": "restart-new-on",
+      "file": "plt/EMS_Plot_000002.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0
+    }
+  ],
+  "restart_dt": [
+    {
+      "case": "old-same",
+      "step": 2,
+      "level": 0,
+      "multiplier": 0.25,
+      "dx": 0.125,
+      "dt": 0.03125,
+      "time": 0.0625
+    },
+    {
+      "case": "old-same",
+      "step": 2,
+      "level": 1,
+      "multiplier": 0.25,
+      "dx": 0.0625,
+      "dt": 0.015625,
+      "time": 0.0625
+    },
+    {
+      "case": "new-omitted",
+      "step": 2,
+      "level": 0,
+      "multiplier": 0.25,
+      "dx": 0.125,
+      "dt": 0.03125,
+      "time": 0.0625
+    },
+    {
+      "case": "new-omitted",
+      "step": 2,
+      "level": 1,
+      "multiplier": 0.25,
+      "dx": 0.0625,
+      "dt": 0.015625,
+      "time": 0.0625
+    },
+    {
+      "case": "new-off",
+      "step": 2,
+      "level": 0,
+      "multiplier": 0.25,
+      "dx": 0.125,
+      "dt": 0.03125,
+      "time": 0.0625
+    },
+    {
+      "case": "new-off",
+      "step": 2,
+      "level": 1,
+      "multiplier": 0.25,
+      "dx": 0.0625,
+      "dt": 0.015625,
+      "time": 0.0625
+    },
+    {
+      "case": "new-on",
+      "step": 2,
+      "level": 0,
+      "multiplier": 0.25,
+      "dx": 0.125,
+      "dt": 0.03125,
+      "time": 0.0625
+    },
+    {
+      "case": "new-on",
+      "step": 2,
+      "level": 1,
+      "multiplier": 0.25,
+      "dx": 0.0625,
+      "dt": 0.015625,
+      "time": 0.0625
+    },
+    {
+      "case": "half",
+      "step": 2,
+      "level": 0,
+      "multiplier": 0.125,
+      "dx": 0.125,
+      "dt": 0.015625,
+      "time": 0.046875
+    },
+    {
+      "case": "half",
+      "step": 2,
+      "level": 1,
+      "multiplier": 0.125,
+      "dx": 0.0625,
+      "dt": 0.0078125,
+      "time": 0.046875
+    },
+    {
+      "case": "half",
+      "step": 3,
+      "level": 0,
+      "multiplier": 0.125,
+      "dx": 0.125,
+      "dt": 0.015625,
+      "time": 0.0625
+    },
+    {
+      "case": "half",
+      "step": 3,
+      "level": 1,
+      "multiplier": 0.125,
+      "dx": 0.0625,
+      "dt": 0.0078125,
+      "time": 0.0625
+    }
+  ],
+  "note": "restart already recomputes dt: no new restart parameter or evolution change",
+  "probe": "2 OpenMP threads, 112 Float64 read-only values including a worker NaN; closed abort record before exit 86"
+}

@@ -4020,25 +4020,41 @@ Local source/build and valid/ghost diagnosis: **QUALIFIED_UNWRITTEN_PLOT_DIAGNOS
 
 ## T24 — binary merger stall, d507438
 
-**READY-EXCEPT: numerical blow-up established; first failing operation and cluster
-abort wait unestablished.** [Report](t24-merger-stall.md),
-[offline reader](t24-checkpoint-read.py), [native/region values](t24-checkpoint-extrema.csv),
-[coverage](t24-cell-coverage.csv), [point-restriction witnesses](t24-point-restriction.csv),
-[abort probe](t24-nan-barrier-qualification.json),
-[diagnostic restart design](t24-diagnostic-restart-design.md), [status](t24-status.json),
-[resources](t24-resources.csv), [manifest](t24-manifest.txt).
-Both manifests (1,855 + 692 files) and the 1.5 GB step-152 checkpoint verify.
-The negative `min_chi.dat` history is **min(mod_F)** due to a diagnostic/evolution
-component-index mix-up. Saved valid chi is positive everywhere (minimum
-3.97613e-6); 1,002 negative valid lapse cells are all covered coarse cells.
-Point restriction reproduces an L11 negative lapse from 36 positive L12 values
-bit for bit. The bad L10 cell is already covered by L11/L12 at step 152.
-L9 144→128 and L10 256→240 occur at logged times 134.176 and 134.436,
-before the final regrid. Both attempts dump the same nonfinite state on rank 96.
-The conditional OpenMP single/MayDay failure path is unsafe, but a local actual
-checker probe aborts; the exact cluster wait is not proved. The proposed joined
-witness/direct MPI abort and pre/post-regrid/stage hooks are **design only**.
-The full local replay ended at t=133.875 under the 7.5 GB footprint gate,
-native −15, peak wait4 RSS 5.119 GB; it is not retried. Offline analysis peak
-RSS 0.141 GB. No job remains running, no evolution fix is applied, and no
-commit, SSH or cluster operation is performed.
+**READY-EXCEPT.** [Current report](t24-gauge-control-followup.md),
+[saved-state report](t24-merger-stall.md), [frozen operator](t24-gauge-stability.py),
+[RK4 rule](t24-stability-rule.py), [48-row limits](t24-stability-limits.csv),
+[growth](t24-stability-growth.csv), [verified cluster evidence](t24-cluster-check.json),
+[all horizon probes](t24-horizon-all-probes.csv), [finder receipts](t24-horizon-summary.json),
+[native controls](t24-controls-qualification.json), [safe-abort patch](t24-safe-abort.patch),
+[MPI qualification](t24-mpi-abort-qualification.json), [status](t24-status.json),
+[manifest](t24-manifest.txt).
+
+The shift/Gamma CFL candidate is **supported** by active S=4.67762/4.81877/4.96223
+at steps 152–154 and successful one-parameter G/D interventions; it is not a
+unique-mechanism proof or production admission. The scalar Nyquist weighted-S
+limit is 4.90623877 at dt/dx=.5,sigma=1, and 25.44868192 at .25; measured shift
+and metric lower the local discrete limit. At S=4.96/5.03 scalar gains are
+1.015263/1.035815 per fine step, consistent with a delayed NaN. The complete
+table covers all requested dt/sigma/c_Gamma values and reports its frozen-model
+scope; no other decaying alpha-independent branch crosses first at .25 in
+the sampled scan. Homogeneous cartoon source growth is reported separately.
+
+No strict individual or common horizon is found on the numerical t=133 state:
+individual 14-seed N48, common eight-seed N48/N96 .3–4 M_i, plus a smaller-chase
+control. Best final squared common residual .0508586 remains above 1e-7;
+trial A/Q are not qualified horizon measurements. The collected ev1 packet
+lacks original common-finder iteration logs; its summary and warm-seed policy
+are available, and the local flow-step sensitivity is measured. Membership
+of rho=.047–.08 remains undetermined. Follow-up peak RSS 3.099 GB.
+
+The safe NaN abort is implemented, default off, with 3,106,560 defined Float64
+comparisons and zero mismatches, including regrid/restart. A worker NaN closes
+the record and exits 86. MPI execution is blocked during local MPI_Init and
+must be qualified separately before cluster use. The isolated d507438 patch
+contains no later gauge or recording changes. Restart already honours changed
+dt_multiplier: its proposed feature and the annular-recorder build are
+**cancelled**; the old recorder design is retained as design only. L7–12 regrid
+every L6 step; the named final regrid changes no count. Negative covered lapse
+is not the proximate requirement, since legacy removes it but still fails.
+No full replay is repeated, no job remains pending, no evolution remedy is
+applied, nothing is committed and no remote operation is performed.
