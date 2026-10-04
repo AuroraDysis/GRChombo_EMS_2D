@@ -1,0 +1,10 @@
+case,check,result,bytes,sha256
+final-single,map.csv,BIT_IDENTICAL,11392,5a66c10723d26af4123dfae17caed47bdfb80eb28a72ee245fcafcc14b9bebda
+final-single,angles.csv,BIT_IDENTICAL,982636,9387a7546d8e56da56fd5b2674d02c02db165fb64581eae56e29da7925776300
+final-late,map.csv,BIT_IDENTICAL,94740,7907020e2a47d5f372c0e1621d0a104c65cacf39aba86aefd2e40bb91753c81e
+final-late,angles.csv,BIT_IDENTICAL,7962945,80463b01c7f3e907b515efbcac59e392d0eca9f9e29686a112b75f3d2817c4ce
+portable-single,map.csv,BIT_IDENTICAL,11392,5a66c10723d26af4123dfae17caed47bdfb80eb28a72ee245fcafcc14b9bebda
+portable-single,angles.csv,BIT_IDENTICAL,982636,9387a7546d8e56da56fd5b2674d02c02db165fb64581eae56e29da7925776300
+valid-proof,bracket guard,PASS,0,
+mismatched-proof,bracket guard,PASS,0,
+unresolved,interpretation guard,PASS,0,

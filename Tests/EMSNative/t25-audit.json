@@ -1,0 +1,65 @@
+{
+  "status": "READY-EXCEPT",
+  "scope": "T25 completed; binary finder remains unqualified; no early positive-time checkpoints collected",
+  "all_probes_verified": true,
+  "author_finder": [
+    {
+      "file": "RHSurf.hpp",
+      "sha256": "3c9e3e946f95375a27477466f4e51b1cafbea2f14392acb2d19128582c98cfd6",
+      "unchanged_author": true
+    },
+    {
+      "file": "RHUnion.hpp",
+      "sha256": "1174747f4ee8f2e18a61cd2fb0618d1a4f3c6974c9929bcae85fd8f64519f885",
+      "unchanged_author": true
+    },
+    {
+      "file": "RHBandedMatrixInverter.hpp",
+      "sha256": "3741f33454dc236f21a828cdc3bcfff836195a0b980fd0d34e190894b2bd5319",
+      "unchanged_author": true
+    }
+  ],
+  "inputs": [
+    {
+      "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo-binary/a0.9-e8.trumpet",
+      "sha256": "4d7cc0b975d4dde0c4da8400ef0bbad8c3e57716c9708c160d19e56288a76f90",
+      "bytes": 8096,
+      "role": "initialization only"
+    },
+    {
+      "path": "/Users/auroradysis/Workspace/EMS/.data/echo-binary/production-outer16-a20-r32-a10/n32-r6.ctt",
+      "sha256": "46253cb8d3bf6255b149b44bed7d4899cd97c697fe677a9846649bfbb2bdc4ee",
+      "bytes": 12217088,
+      "role": "initialization only"
+    },
+    {
+      "path": "/private/tmp/ems-t25/initialization/single/chk/EMS_000000.2d.hdf5",
+      "sha256": "18fcb8fc7fb76e57ca0b2b420b61ce6ff0a19f9e0d2ec591124ed21b3949b550",
+      "bytes": 109732776,
+      "role": "offline map geometry"
+    },
+    {
+      "path": "/private/tmp/ems-t25/initialization/binary/chk/EMS_000000.2d.hdf5",
+      "sha256": "d71c43599f5c2c9916b498a1538ed0e3e57af93bcc4f6591242a9c546fbf5d76",
+      "bytes": 1100765160,
+      "role": "offline map geometry"
+    },
+    {
+      "path": "/Users/auroradysis/Workspace/EMS/.data/exp-0024/merger-stall/chk/EMS_000152.2d.hdf5",
+      "sha256": "f19f9e3a7ee6d0c9906d1aeb5042488ab0d3570e84aac150061f2186bb7bc6c7",
+      "bytes": 1500693480,
+      "role": "offline map geometry"
+    }
+  ],
+  "initial_profile_header_area": 0.2245107779896885,
+  "card_area_benchmark": 0.2218,
+  "benchmark_discrepancy": 0.012221722225827403,
+  "native_sign": "K_ij=-(partial_t gamma_ij-Lie_beta gamma_ij)/(2 alpha); theta_plus=Div s+Kss-K",
+  "interpolation": "unchanged native AMRInterpolator<Lagrange<4>>, including native derivative queries and production evolution ghost fill",
+  "source_archive": "d507438",
+  "no_dirty_source_compiled": true,
+  "static_inputs_only_in_initializers": true,
+  "peak_map_rss_bytes": 1999863808,
+  "raw_angles_directory": "/private/tmp/ems-t25/maps",
+  "hierarchy": "low rung L0-12; h0=1.75 M_i, h12=.00042724609375 M_i; initial radius about 14 cells"
+}

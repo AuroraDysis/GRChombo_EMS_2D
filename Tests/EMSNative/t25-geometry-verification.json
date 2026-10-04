@@ -1,0 +1,12 @@
+{
+  "exact_status": "PROVED",
+  "witness": "0",
+  "domain": "a,c>0; x,y,z real; grad F !=0; positive sqrt",
+  "curved_status": "CORROBORATED",
+  "count": 16,
+  "seed": 2501,
+  "dps": 50,
+  "region": "x,y,z in [-.8,.8], a,c in [.4,1.4]",
+  "worst_residual": "1.069105884036878258456214586860592751526078752042e-50",
+  "independent_definition": "coordinate divergence of sqrt(det gamma)*s vs Hessian/Christoffel projector"
+}

@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "case": "final-single",
+      "check": "map.csv",
+      "result": "BIT_IDENTICAL",
+      "bytes": 11392,
+      "sha256": "5a66c10723d26af4123dfae17caed47bdfb80eb28a72ee245fcafcc14b9bebda"
+    },
+    {
+      "case": "final-single",
+      "check": "angles.csv",
+      "result": "BIT_IDENTICAL",
+      "bytes": 982636,
+      "sha256": "9387a7546d8e56da56fd5b2674d02c02db165fb64581eae56e29da7925776300"
+    },
+    {
+      "case": "final-late",
+      "check": "map.csv",
+      "result": "BIT_IDENTICAL",
+      "bytes": 94740,
+      "sha256": "7907020e2a47d5f372c0e1621d0a104c65cacf39aba86aefd2e40bb91753c81e"
+    },
+    {
+      "case": "final-late",
+      "check": "angles.csv",
+      "result": "BIT_IDENTICAL",
+      "bytes": 7962945,
+      "sha256": "80463b01c7f3e907b515efbcac59e392d0eca9f9e29686a112b75f3d2817c4ce"
+    },
+    {
+      "case": "portable-single",
+      "check": "map.csv",
+      "result": "BIT_IDENTICAL",
+      "bytes": 11392,
+      "sha256": "5a66c10723d26af4123dfae17caed47bdfb80eb28a72ee245fcafcc14b9bebda"
+    },
+    {
+      "case": "portable-single",
+      "check": "angles.csv",
+      "result": "BIT_IDENTICAL",
+      "bytes": 982636,
+      "sha256": "9387a7546d8e56da56fd5b2674d02c02db165fb64581eae56e29da7925776300"
+    },
+    {
+      "case": "valid-proof",
+      "check": "bracket guard",
+      "result": "PASS",
+      "bytes": 0,
+      "sha256": ""
+    },
+    {
+      "case": "mismatched-proof",
+      "check": "bracket guard",
+      "result": "PASS",
+      "bytes": 0,
+      "sha256": ""
+    },
+    {
+      "case": "unresolved",
+      "check": "interpretation guard",
+      "result": "PASS",
+      "bytes": 0,
+      "sha256": ""
+    }
+  ],
+  "portable_executable": "/private/tmp/ems-t25/portable-build/t25-expansion-map2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+  "portable_sha256": "d418802ac58c93a8af9ead79964811f7dad3d483f394ef2c4568ec473c04e6ae"
+}

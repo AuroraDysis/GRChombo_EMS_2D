@@ -1,0 +1,15 @@
+{
+  "single": [
+    40.0
+  ],
+  "binary": [
+    2224.0,
+    2256.0
+  ],
+  "late": [
+    2239.7740195,
+    2240.2259805
+  ],
+  "late_time": 133.0,
+  "track": "/Users/auroradysis/Workspace/EMS/.data/exp-0024/merger-stall/ev1/runs/exp-0024/merger/punctures.dat"
+}

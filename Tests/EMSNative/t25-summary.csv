@@ -1,0 +1,7 @@
+kind,time,N,surfaces,resolved,unresolved,invalid,adjacent_pointwise,average_only,pointwise_barrier_families
+single,0,96,24,24,0,0,1,0,1
+single,0,192,24,24,0,0,1,0,1
+binary,0,96,1200,1180,20,0,0,50,22
+binary,0,192,1200,1180,20,0,0,50,22
+late,133,96,188,186,2,0,0,10,0
+late,133,192,188,186,2,0,0,10,0

@@ -4058,3 +4058,39 @@ every L6 step; the named final regrid changes no count. Negative covered lapse
 is not the proximate requirement, since legacy removes it but still fails.
 No full replay is repeated, no job remains pending, no evolution remedy is
 applied, nothing is committed and no remote operation is performed.
+
+## T25 — signed outgoing expansion on frozen checkpoints
+
+**READY-EXCEPT.** [t25-expansion-map.md](t25-expansion-map.md) records the
+serial Tests-only native AMR map, validation, initial binary barriers and the
+step-152 reading. The map uses the numerical metric, extrinsic curvature and
+native Lagrange/derivative queries; it reads no static or CTT data. All surface
+axes, centres, radii and angular N are inputs. Surfaces below three cells per
+smallest semiaxis are excluded. The portable build/run recipe is in
+[t25-expansion-map.cpp](t25-expansion-map.cpp) and
+[t25-build-node.sh](t25-build-node.sh); the author's finder is unchanged.
+
+The unboosted pointwise bracket is r=0.00604–0.00606 M_i; its linear mean root
+is 0.006040488470, with N192 A=0.2245141754 and Q=1.0693233457. The card's
+0.2218 area benchmark differs from the pinned progenitor header's
+0.224510778. A bracket-seeded N48 search passes all three stages, final squared
+expansion 9.9961e-13 in 61.2 s. This is an N48 pass, not a new N48/N96 pair.
+
+Both boosted binary holes have sampled pointwise spherical barriers at
+r=0.00608/0.00620, with a mixed-sign r=0.00610 between them. The enclosing
+barrier table keeps that intermediate surface explicitly. One 235 s N48
+search per hole ends at squared residual 2.2709e-5/2.2487e-5, below the
+historical 3.5e-3 but above the first 1e-7 stage. These are unqualified trial
+surfaces. At t=133 the 186 eligible individual/common surfaces show no
+pointwise pair, with ten mean-only crossings. No late finder search or
+coordinate horizon-shrinkage claim is made. Early positive-time checkpoints
+remain to be mapped on their clusters with this same tool.
+
+[t25-summary.csv](t25-summary.csv), [t25-finder-stages.csv](t25-finder-stages.csv)
+and [t25-signed-expansion.png](t25-signed-expansion.png) summarize the results.
+N96/N192 retain the same barrier counts. Peak map RSS is 2.000 GB; the final
+and isolated-build replays are bit-identical, with guard regressions in
+[t25-regression.csv](t25-regression.csv). Raw angles, receipts and checkpoints
+stay in `/private/tmp/ems-t25/`, indexed by `t25-manifest.txt`. No Source or
+Examples change, pending NaN-abort build, evolution, remote work or commit
+was made for T25, and no job is pending.
