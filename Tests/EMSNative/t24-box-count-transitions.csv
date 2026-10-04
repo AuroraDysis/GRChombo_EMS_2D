@@ -1,0 +1,15 @@
+attempt,level,printed_time,old_boxes,new_boxes,line
+ev1,8,133,,128,GRAMRLevel::advance level 8 at time 133 (0 M/hr). Boxes on this rank: 1 / 128
+ev1,9,133,,144,GRAMRLevel::advance level 9 at time 133 (0 M/hr). Boxes on this rank: 1 / 144
+ev1,10,133,,256,GRAMRLevel::advance level 10 at time 133 (0 M/hr). Boxes on this rank: 1 / 256
+ev1,11,133,,256,GRAMRLevel::advance level 11 at time 133 (0 M/hr). Boxes on this rank: 1 / 256
+ev1,12,133,,256,GRAMRLevel::advance level 12 at time 133 (0 M/hr). Boxes on this rank: 1 / 256
+ev1,9,134.176,144,128,GRAMRLevel::advance level 9 at time 134.176 (69.7795 M/hr). Boxes on this rank: 1 / 128
+ev1,10,134.436,256,240,GRAMRLevel::advance level 10 at time 134.436 (72.7014 M/hr). Boxes on this rank: 1 / 240
+ev2,8,133,,128,GRAMRLevel::advance level 8 at time 133 (0 M/hr). Boxes on this rank: 1 / 128
+ev2,9,133,,144,GRAMRLevel::advance level 9 at time 133 (0 M/hr). Boxes on this rank: 1 / 144
+ev2,10,133,,256,GRAMRLevel::advance level 10 at time 133 (0 M/hr). Boxes on this rank: 1 / 256
+ev2,11,133,,256,GRAMRLevel::advance level 11 at time 133 (0 M/hr). Boxes on this rank: 1 / 256
+ev2,12,133,,256,GRAMRLevel::advance level 12 at time 133 (0 M/hr). Boxes on this rank: 1 / 256
+ev2,9,134.176,144,128,GRAMRLevel::advance level 9 at time 134.176 (65.5983 M/hr). Boxes on this rank: 1 / 128
+ev2,10,134.436,256,240,GRAMRLevel::advance level 10 at time 134.436 (69.0336 M/hr). Boxes on this rank: 1 / 240

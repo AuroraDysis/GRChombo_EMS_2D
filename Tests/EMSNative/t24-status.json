@@ -1,0 +1,91 @@
+{
+  "status": "READY-EXCEPT",
+  "numerical_blowup": "ESTABLISHED_BY_TWO_PRINTED_WITNESSES",
+  "initiating_operation": "UNESTABLISHED",
+  "cluster_abort_wait": "UNESTABLISHED",
+  "mislabelled_min_chi": "DIAGNOSTIC_MOD_F",
+  "negative_valid_chi_at152": false,
+  "negative_valid_lapse": "1002, all covered",
+  "safe_abort_proposal": "NOT_APPLIED_TO_PRODUCTION",
+  "new_MPI_field_hooks": "DESIGN_ONLY_NOT_YET_IMPLEMENTED_OR_QUALIFIED",
+  "full_local_replay": "RESOURCE_STOP_NO_RETRY",
+  "native_receipt": {
+    "native_returncode": -15,
+    "gate_reason": "AGGREGATE_FOOTPRINT_GATE_7.5GB",
+    "elapsed_s": 2845.9065280000214,
+    "command": [
+      "/private/tmp/ems-t24/build/observer.ex",
+      "/private/tmp/ems-t24/restart152-rss/params.txt"
+    ],
+    "per_pid_peak_rss_and_footprint_bytes": {
+      "71036": [
+        5050679296,
+        7948230600
+      ]
+    },
+    "tree_peak_bytes": 7948230600,
+    "watchdog_requests": [],
+    "complete_to_step156": false,
+    "no_static_files_exist": true,
+    "rank_count": 1,
+    "OpenMP_threads": 2,
+    "per_process_cap_kind": "RSS",
+    "per_process_RSS_cap_bytes": 6000000000,
+    "preventive_RSS_gate_bytes": 5700000000,
+    "native_wait4_peak_RSS_bytes": 5119148032,
+    "watchdog_process_peak_RSS_bytes": 22577152
+  },
+  "peak_native_RSS_bytes": 5119148032,
+  "offline_peak_RSS_bytes": 140378112,
+  "input_manifests": {
+    "ev1": {
+      "files": 1855,
+      "manifest_sha256": "94c9cf8614e288ede0a23c17e291a309efb559fe0c04f49789bab58d3498703c"
+    },
+    "ev2": {
+      "files": 692,
+      "manifest_sha256": "d45af227f25ea22205abc9478b067388b4bd53a9556d79dfcf51789f13eb99b4"
+    }
+  },
+  "local_abort_probe": {
+    "cases": [
+      {
+        "case": "legacy-worker",
+        "expected_native": -6,
+        "native_returncode": -6,
+        "runner_returncode": 250,
+        "peak_RSS_bytes": 16859136,
+        "wall_s": 0.2581632500514388
+      },
+      {
+        "case": "legacy-master",
+        "expected_native": -6,
+        "native_returncode": -6,
+        "runner_returncode": 250,
+        "peak_RSS_bytes": 16957440,
+        "wall_s": 0.2616442079888657
+      },
+      {
+        "case": "safe",
+        "expected_native": 1,
+        "native_returncode": 1,
+        "runner_returncode": 1,
+        "peak_RSS_bytes": 17039360,
+        "wall_s": 0.26072874991223216
+      },
+      {
+        "case": "finite",
+        "expected_native": 0,
+        "native_returncode": 0,
+        "runner_returncode": 0,
+        "peak_RSS_bytes": 17432576,
+        "wall_s": 0.2612857089843601
+      }
+    ],
+    "status": "LIMITED_PROBE_COMPLETE",
+    "legacy_hang_reproduced": false,
+    "scope": "actual pinned NanCheck, 2 OMP threads; both master/worker isolated-NaN tests abort under local GCC16/libgomp. Safe collector is Tests-only; MPI abort not tested."
+  },
+  "running_jobs": [],
+  "evolution_fixes_applied": false
+}

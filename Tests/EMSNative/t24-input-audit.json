@@ -1,0 +1,487 @@
+{
+  "status": "INPUTS_VERIFIED",
+  "checkpoint": "/Users/auroradysis/Workspace/EMS/.data/exp-0024/merger-stall/chk/EMS_000152.2d.hdf5",
+  "checkpoint_bytes": 1500693480,
+  "checkpoint_whole_file_sha256": "f19f9e3a7ee6d0c9906d1aeb5042488ab0d3570e84aac150061f2186bb7bc6c7",
+  "seal_endpoint": {
+    "step": 152,
+    "time_M": 133.0,
+    "levels": [
+      {
+        "level": 0,
+        "h_M": 1.75,
+        "boxes": 5778,
+        "valid_cells": 3276800
+      },
+      {
+        "level": 1,
+        "h_M": 0.875,
+        "boxes": 512,
+        "valid_cells": 139392
+      },
+      {
+        "level": 2,
+        "h_M": 0.4375,
+        "boxes": 512,
+        "valid_cells": 225792
+      },
+      {
+        "level": 3,
+        "h_M": 0.21875,
+        "boxes": 128,
+        "valid_cells": 36992
+      },
+      {
+        "level": 4,
+        "h_M": 0.109375,
+        "boxes": 128,
+        "valid_cells": 36992
+      },
+      {
+        "level": 5,
+        "h_M": 0.0546875,
+        "boxes": 128,
+        "valid_cells": 39168
+      },
+      {
+        "level": 6,
+        "h_M": 0.02734375,
+        "boxes": 128,
+        "valid_cells": 39168
+      },
+      {
+        "level": 7,
+        "h_M": 0.013671875,
+        "boxes": 128,
+        "valid_cells": 41344
+      },
+      {
+        "level": 8,
+        "h_M": 0.0068359375,
+        "boxes": 128,
+        "valid_cells": 45696
+      },
+      {
+        "level": 9,
+        "h_M": 0.00341796875,
+        "boxes": 144,
+        "valid_cells": 54400
+      },
+      {
+        "level": 10,
+        "h_M": 0.001708984375,
+        "boxes": 256,
+        "valid_cells": 73984
+      },
+      {
+        "level": 11,
+        "h_M": 0.0008544921875,
+        "boxes": 256,
+        "valid_cells": 73984
+      },
+      {
+        "level": 12,
+        "h_M": 0.00042724609375,
+        "boxes": 256,
+        "valid_cells": 73984
+      }
+    ],
+    "valid_field_sha256": "7146c763475ad64b73a62f19ab2e17f5e091a3da6891698ccda8a18c03b389cc",
+    "evolved_fields": [
+      "chi",
+      "h11",
+      "h12",
+      "h22",
+      "hww",
+      "K",
+      "A11",
+      "A12",
+      "A22",
+      "Aww",
+      "Theta",
+      "Gamma1",
+      "Gamma2",
+      "lapse",
+      "shift1",
+      "shift2",
+      "B1",
+      "B2",
+      "phi",
+      "Pi",
+      "Lambda",
+      "Bx",
+      "By",
+      "Bz",
+      "Ex",
+      "Ey",
+      "Ez",
+      "Xi"
+    ],
+    "includes_covered_coarse": true
+  },
+  "verified_small_files": 1855,
+  "small_manifest_sha256": "94c9cf8614e288ede0a23c17e291a309efb559fe0c04f49789bab58d3498703c",
+  "published_audit_sha256": "bff46edc8ab380a802449010e1bafcef0f033011eed9562e405fc250e0d40cfa",
+  "nesting": [
+    {
+      "child_level": 1,
+      "parent_buffer_cells": 0,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 1,
+      "parent_buffer_cells": 4,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 1,
+      "parent_buffer_cells": 8,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 2,
+      "parent_buffer_cells": 0,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 2,
+      "parent_buffer_cells": 4,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 2,
+      "parent_buffer_cells": 8,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 3,
+      "parent_buffer_cells": 0,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 3,
+      "parent_buffer_cells": 4,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 3,
+      "parent_buffer_cells": 8,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 4,
+      "parent_buffer_cells": 0,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 4,
+      "parent_buffer_cells": 4,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 4,
+      "parent_buffer_cells": 8,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 5,
+      "parent_buffer_cells": 0,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 5,
+      "parent_buffer_cells": 4,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 5,
+      "parent_buffer_cells": 8,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 6,
+      "parent_buffer_cells": 0,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 6,
+      "parent_buffer_cells": 4,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 6,
+      "parent_buffer_cells": 8,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 7,
+      "parent_buffer_cells": 0,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 7,
+      "parent_buffer_cells": 4,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 7,
+      "parent_buffer_cells": 8,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 8,
+      "parent_buffer_cells": 0,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 8,
+      "parent_buffer_cells": 4,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 8,
+      "parent_buffer_cells": 8,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 9,
+      "parent_buffer_cells": 0,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 9,
+      "parent_buffer_cells": 4,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 9,
+      "parent_buffer_cells": 8,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 10,
+      "parent_buffer_cells": 0,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 10,
+      "parent_buffer_cells": 4,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 10,
+      "parent_buffer_cells": 8,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 11,
+      "parent_buffer_cells": 0,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 11,
+      "parent_buffer_cells": 4,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 11,
+      "parent_buffer_cells": 8,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 12,
+      "parent_buffer_cells": 0,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 12,
+      "parent_buffer_cells": 4,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    },
+    {
+      "child_level": 12,
+      "parent_buffer_cells": 8,
+      "missing_parent_cells_with_multiplicity": 0,
+      "first_missing": "None",
+      "scope": "saved step152; clipped physical boundaries"
+    }
+  ],
+  "load_balance_last_blocks": [
+    {
+      "block": 2378,
+      "boxes": 256,
+      "ranks_recorded": 224,
+      "min_boxes_per_recorded_rank": 1,
+      "max_boxes_per_recorded_rank": 2,
+      "complete_224_rank_counts": true
+    },
+    {
+      "block": 2383,
+      "boxes": 256,
+      "ranks_recorded": 224,
+      "min_boxes_per_recorded_rank": 1,
+      "max_boxes_per_recorded_rank": 2,
+      "complete_224_rank_counts": true
+    },
+    {
+      "block": 2388,
+      "boxes": 240,
+      "ranks_recorded": 224,
+      "min_boxes_per_recorded_rank": 1,
+      "max_boxes_per_recorded_rank": 2,
+      "complete_224_rank_counts": true
+    },
+    {
+      "block": 2393,
+      "boxes": 256,
+      "ranks_recorded": 224,
+      "min_boxes_per_recorded_rank": 1,
+      "max_boxes_per_recorded_rank": 2,
+      "complete_224_rank_counts": true
+    },
+    {
+      "block": 2398,
+      "boxes": 256,
+      "ranks_recorded": 224,
+      "min_boxes_per_recorded_rank": 1,
+      "max_boxes_per_recorded_rank": 2,
+      "complete_224_rank_counts": true
+    },
+    {
+      "block": 2403,
+      "boxes": 240,
+      "ranks_recorded": 224,
+      "min_boxes_per_recorded_rank": 1,
+      "max_boxes_per_recorded_rank": 2,
+      "complete_224_rank_counts": true
+    },
+    {
+      "block": 2408,
+      "boxes": 256,
+      "ranks_recorded": 224,
+      "min_boxes_per_recorded_rank": 1,
+      "max_boxes_per_recorded_rank": 2,
+      "complete_224_rank_counts": true
+    },
+    {
+      "block": 2413,
+      "boxes": 256,
+      "ranks_recorded": 224,
+      "min_boxes_per_recorded_rank": 1,
+      "max_boxes_per_recorded_rank": 2,
+      "complete_224_rank_counts": true
+    },
+    {
+      "block": 2418,
+      "boxes": 240,
+      "ranks_recorded": 224,
+      "min_boxes_per_recorded_rank": 1,
+      "max_boxes_per_recorded_rank": 2,
+      "complete_224_rank_counts": true
+    },
+    {
+      "block": 2423,
+      "boxes": 256,
+      "ranks_recorded": 224,
+      "min_boxes_per_recorded_rank": 1,
+      "max_boxes_per_recorded_rank": 2,
+      "complete_224_rank_counts": true
+    },
+    {
+      "block": 2428,
+      "boxes": 256,
+      "ranks_recorded": 224,
+      "min_boxes_per_recorded_rank": 1,
+      "max_boxes_per_recorded_rank": 2,
+      "complete_224_rank_counts": true
+    },
+    {
+      "block": 2433,
+      "boxes": 240,
+      "ranks_recorded": 224,
+      "min_boxes_per_recorded_rank": 1,
+      "max_boxes_per_recorded_rank": 2,
+      "complete_224_rank_counts": true
+    },
+    {
+      "block": 2438,
+      "boxes": 256,
+      "ranks_recorded": 203,
+      "min_boxes_per_recorded_rank": 1,
+      "max_boxes_per_recorded_rank": 2,
+      "complete_224_rank_counts": false
+    }
+  ],
+  "post_stall_box_coordinates_available": false,
+  "warning": "LB reports counts/loads, not coordinates; checkpoint-layout.txt is Lustre striping"
+}

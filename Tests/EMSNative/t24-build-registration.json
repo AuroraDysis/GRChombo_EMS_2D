@@ -1,0 +1,16 @@
+{
+  "static_read_policy": "t=0 only; restart paths deliberately absent",
+  "fork_commit": "d50743867e48bcb466a60ca16869b07fe1546c27",
+  "compiler": "/opt/homebrew/bin/g++-16",
+  "production_source_modified": false,
+  "instrumentation": "private observer build only",
+  "Float64": true,
+  "fast_math": false,
+  "FMA_contraction": "off",
+  "rank_count": 1,
+  "OpenMP_threads": 2,
+  "layout_scope": "original physical grid; local load balancing differs from 224 ranks",
+  "MPI_limit": "installed MPICH fails POSIX SHM bootstrap inside sandbox",
+  "cap_bytes": 6000000000,
+  "preventive_gate_bytes": 5700000000
+}

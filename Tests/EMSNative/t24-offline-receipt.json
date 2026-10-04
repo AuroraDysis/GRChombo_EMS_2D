@@ -1,0 +1,80 @@
+{
+  "returncode": 0,
+  "elapsed_s": 239.9443540419452,
+  "peak_RSS_bytes": 140378112,
+  "arguments": {
+    "evidence": "/Users/auroradysis/Workspace/EMS/.data/exp-0024/merger-stall",
+    "output": "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative",
+    "cell": [
+      1310826,
+      27
+    ],
+    "cell_level": 10,
+    "levels": [
+      8,
+      12
+    ],
+    "centre": [
+      2240.0,
+      0.0
+    ],
+    "hole_radius": 0.075,
+    "cell_radius": 6,
+    "snapshot_region": [
+      -0.4,
+      0.0,
+      0.4,
+      0.15
+    ]
+  },
+  "input_manifests": {
+    "ev1": {
+      "files": 1855,
+      "manifest_sha256": "94c9cf8614e288ede0a23c17e291a309efb559fe0c04f49789bab58d3498703c"
+    },
+    "ev2": {
+      "files": 692,
+      "manifest_sha256": "d45af227f25ea22205abc9478b067388b4bd53a9556d79dfcf51789f13eb99b4"
+    }
+  },
+  "checkpoint_sha256": "f19f9e3a7ee6d0c9906d1aeb5042488ab0d3570e84aac150061f2186bb7bc6c7",
+  "witness_count": 2,
+  "witnesses": [
+    {
+      "attempt": "ev1",
+      "path": "/Users/auroradysis/Workspace/EMS/.data/exp-0024/merger-stall/ev1/runs/exp-0024/merger/segments/engine-step000156/interrupted-1791066562058016119/pout.96",
+      "dump": "NaNCheck in specific Advance: ::Values have become nan. The current state is: \nchi: 1e-12\nh11: -1.26742e+12\nh12: -2.81078e+10\nh22: -3.53872e+11\nhww: -7.98873e+10\nK: -nan\nA11: -nan\nA12: -nan\nA22: -nan\nAww: -nan\nTheta: inf\nGamma1: inf\nGamma2: -nan\nlapse: 1e-12\nshift1: 3.6222e+08\nshift2: 1.85437e+11\nB1: -9.62844e-10\nB2: 1.8054e-13\nphi: -1.0221e+07\nPi: inf\nLambda: 0\nBx: 0\nBy: 0\nBz: 8.00832e+06\nEx: 5.18671e+09\nEy: -5.00258e+11\nEz: 0\nXi: 335530\nInteger coordinates: (1310826,27)\n(x,y,z) = (0.182007,0.0469971) r = 0.187977\n",
+      "dump_sha256": "179ef5e272d50b5e3bbf74b47406514aa9810dc33e40fe48e41efef523bb8a1a"
+    },
+    {
+      "attempt": "ev2",
+      "path": "/Users/auroradysis/Workspace/EMS/.data/exp-0024/merger-stall/ev2/runs/exp-0024/merger/segments/engine-step000156/pout.96",
+      "dump": "NaNCheck in specific Advance: ::Values have become nan. The current state is: \nchi: 1e-12\nh11: -1.26742e+12\nh12: -2.81078e+10\nh22: -3.53872e+11\nhww: -7.98873e+10\nK: -nan\nA11: -nan\nA12: -nan\nA22: -nan\nAww: -nan\nTheta: inf\nGamma1: inf\nGamma2: -nan\nlapse: 1e-12\nshift1: 3.6222e+08\nshift2: 1.85437e+11\nB1: -9.62844e-10\nB2: 1.8054e-13\nphi: -1.0221e+07\nPi: inf\nLambda: 0\nBx: 0\nBy: 0\nBz: 8.00832e+06\nEx: 5.18671e+09\nEy: -5.00258e+11\nEz: 0\nXi: 335530\nInteger coordinates: (1310826,27)\n(x,y,z) = (0.182007,0.0469971) r = 0.187977\n",
+      "dump_sha256": "179ef5e272d50b5e3bbf74b47406514aa9810dc33e40fe48e41efef523bb8a1a"
+    }
+  ],
+  "restriction_weights": [
+    0.01171875,
+    -0.09765625,
+    0.5859375,
+    0.5859375,
+    -0.09765625,
+    0.01171875
+  ],
+  "hole_coordinates_t133": [
+    [
+      2239.7740195,
+      1.926220837e-26
+    ],
+    [
+      2240.2259805,
+      4.9366915448e-26
+    ]
+  ],
+  "neighbourhood_rows": 366,
+  "negative_examples": 559,
+  "negative_examples_scope": "first eight per FAB and field; counts are in extrema CSV",
+  "snapshot_bytes_with_whole_intersecting_FABs": 86798208,
+  "static_reference_used": false,
+  "advances": 0
+}

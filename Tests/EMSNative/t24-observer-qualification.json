@@ -1,0 +1,148 @@
+{
+  "status": "PASS",
+  "comparisons": [
+    {
+      "candidate": "observer-off",
+      "file": "chk/EMS_000000.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-off",
+      "file": "plt/EMS_Plot_000000.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-off",
+      "file": "chk/EMS_000001.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-off",
+      "file": "plt/EMS_Plot_000001.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-on",
+      "file": "chk/EMS_000000.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-on",
+      "file": "plt/EMS_Plot_000000.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-on",
+      "file": "chk/EMS_000001.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-on",
+      "file": "plt/EMS_Plot_000001.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-off-regrid",
+      "file": "chk/EMS_000000.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-off-regrid",
+      "file": "plt/EMS_Plot_000000.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-off-regrid",
+      "file": "chk/EMS_000001.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-off-regrid",
+      "file": "plt/EMS_Plot_000001.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-off-regrid",
+      "file": "chk/EMS_000002.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-off-regrid",
+      "file": "plt/EMS_Plot_000002.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-on-regrid",
+      "file": "chk/EMS_000000.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-on-regrid",
+      "file": "plt/EMS_Plot_000000.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-on-regrid",
+      "file": "chk/EMS_000001.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-on-regrid",
+      "file": "plt/EMS_Plot_000001.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-on-regrid",
+      "file": "chk/EMS_000002.2d.hdf5",
+      "defined_values": 119840,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    },
+    {
+      "candidate": "observer-on-regrid",
+      "file": "plt/EMS_Plot_000002.2d.hdf5",
+      "defined_values": 139040,
+      "bit_mismatches": 0,
+      "undefined_plot_diagnostic_ghosts_excluded": true
+    }
+  ],
+  "thread_stack_selftest": "both two OpenMP threads dumped",
+  "production_source_changed": false,
+  "native_RHS_or_evolution_changed": false
+}

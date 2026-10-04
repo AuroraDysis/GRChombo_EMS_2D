@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "case": "legacy-worker",
+      "expected_native": -6,
+      "native_returncode": -6,
+      "runner_returncode": 250,
+      "peak_RSS_bytes": 16859136,
+      "wall_s": 0.2581632500514388
+    },
+    {
+      "case": "legacy-master",
+      "expected_native": -6,
+      "native_returncode": -6,
+      "runner_returncode": 250,
+      "peak_RSS_bytes": 16957440,
+      "wall_s": 0.2616442079888657
+    },
+    {
+      "case": "safe",
+      "expected_native": 1,
+      "native_returncode": 1,
+      "runner_returncode": 1,
+      "peak_RSS_bytes": 17039360,
+      "wall_s": 0.26072874991223216
+    },
+    {
+      "case": "finite",
+      "expected_native": 0,
+      "native_returncode": 0,
+      "runner_returncode": 0,
+      "peak_RSS_bytes": 17432576,
+      "wall_s": 0.2612857089843601
+    }
+  ],
+  "status": "LIMITED_PROBE_COMPLETE",
+  "legacy_hang_reproduced": false,
+  "scope": "actual pinned NanCheck, 2 OMP threads; both master/worker isolated-NaN tests abort under local GCC16/libgomp. Safe collector is Tests-only; MPI abort not tested."
+}

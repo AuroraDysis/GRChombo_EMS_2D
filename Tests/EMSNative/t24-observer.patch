@@ -1,0 +1,15 @@
+--- a/Source/GRChomboCore/GRAMRLevel.cpp
++++ b/Source/GRChomboCore/GRAMRLevel.cpp
+@@ -1,3 +1,4 @@
++#include "t24-observer.hpp"
+ /* GRChombo
+  * Copyright 2012 The GRChombo collaboration.
+  * Please refer to LICENSE in GRChombo's root directory.
+@@ -479,6 +480,7 @@
+         GRAMRLevel *coarser_gr_amr_level_ptr = gr_cast(m_coarser_level_ptr);
+         m_restart_time = coarser_gr_amr_level_ptr->m_restart_time;
+     }
++    t24_record_layout(m_grids, m_level, m_time, m_dx);
+ }
+ 
+ // initialize grid

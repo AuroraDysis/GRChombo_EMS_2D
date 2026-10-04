@@ -4016,3 +4016,29 @@ The predicted G evolution cost is 12.54 node-hours at H's measured 418 s/step ×
 ## T23 — default-path constraint diagnostic identity
 
 Local source/build and valid/ghost diagnosis: **QUALIFIED_UNWRITTEN_PLOT_DIAGNOSTIC_GHOSTS**. [Report](t23-default-path-diagnosis.md), [isolated preparer](t23-prepare.py), [receipt-first comparator](t23-compare.py), [source hashes](t23-source-inputs.json), [cluster receipts](t23-cluster-native-receipts.csv) and [manifest](t23-manifest.txt). The unchanged old plot writer leaves uncovered diagnostic ghosts unwritten. The same executable content gives differing ghost output, and two parametric poison values survive in exactly 6,480 diagnostic ghosts per plot; 9,587,200 evolved and 768,000 valid diagnostic comparisons have zero bit mismatches. This occurs at t=0 and one step. The failed narrow-access build was repaired in Tests compilation only; the completed five builds were reused. Every job is qualified from its own receipt, peak RSS 0.611 GB. The registered exp-0025 screen and its admission blocker are unchanged pending controller classification of the original cluster indices; the proposed check compares all defined evolved values and valid diagnostics strictly. No production source or check is modified; exp-0024 stays untouched. Successful marker: `/private/tmp/ems-t23/continuation/done.exit`.
+
+
+## T24 — binary merger stall, d507438
+
+**READY-EXCEPT: numerical blow-up established; first failing operation and cluster
+abort wait unestablished.** [Report](t24-merger-stall.md),
+[offline reader](t24-checkpoint-read.py), [native/region values](t24-checkpoint-extrema.csv),
+[coverage](t24-cell-coverage.csv), [point-restriction witnesses](t24-point-restriction.csv),
+[abort probe](t24-nan-barrier-qualification.json),
+[diagnostic restart design](t24-diagnostic-restart-design.md), [status](t24-status.json),
+[resources](t24-resources.csv), [manifest](t24-manifest.txt).
+Both manifests (1,855 + 692 files) and the 1.5 GB step-152 checkpoint verify.
+The negative `min_chi.dat` history is **min(mod_F)** due to a diagnostic/evolution
+component-index mix-up. Saved valid chi is positive everywhere (minimum
+3.97613e-6); 1,002 negative valid lapse cells are all covered coarse cells.
+Point restriction reproduces an L11 negative lapse from 36 positive L12 values
+bit for bit. The bad L10 cell is already covered by L11/L12 at step 152.
+L9 144→128 and L10 256→240 occur at logged times 134.176 and 134.436,
+before the final regrid. Both attempts dump the same nonfinite state on rank 96.
+The conditional OpenMP single/MayDay failure path is unsafe, but a local actual
+checker probe aborts; the exact cluster wait is not proved. The proposed joined
+witness/direct MPI abort and pre/post-regrid/stage hooks are **design only**.
+The full local replay ended at t=133.875 under the 7.5 GB footprint gate,
+native −15, peak wait4 RSS 5.119 GB; it is not retried. Offline analysis peak
+RSS 0.141 GB. No job remains running, no evolution fix is applied, and no
+commit, SSH or cluster operation is performed.
