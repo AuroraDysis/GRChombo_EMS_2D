@@ -1,0 +1,4 @@
+check,result,comparisons
+historical native map and angular values,BIT_IDENTICAL,55944
+weaker seed flag false,PASS,0
+weaker seed flag true,PASS,0

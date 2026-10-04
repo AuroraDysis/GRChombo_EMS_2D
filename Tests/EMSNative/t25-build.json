@@ -134,11 +134,11 @@
     ]
   ],
   "compiler": "g++-16 (Homebrew GCC 16.2.0) 16.2.0",
-  "peak_rss_bytes": 389890048,
+  "peak_rss_bytes": 505905152,
   "serial": true,
   "max_threads": 1,
   "files": {
-    "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t25-expansion-map.cpp": "2df8a749017d121f503b3667ccbaf22370278be12d8991150083ee88b4432839",
+    "/Users/auroradysis/Workspace/EMS-deps/worktrees/wt-native-t4/Tests/EMSNative/t25-expansion-map.cpp": "342f0e56a7a11ef1b71d878c76c28750d812844205288ff29c027f924f67732a",
     "/private/tmp/ems-t24/build/GRAMR.o": "53e686456d6fbd1014641fbd35537d4d702f581310cc2b1211ac65cb6f8fb43f",
     "/private/tmp/ems-t24/build/GRAMRLevel.o": "a4889d8053750c1470020c92bc90488bea213fa1c42c0ac9370b2ce764e2d811",
     "/private/tmp/ems-t24/build/GRLevelData.o": "50865a936f3ba570626fd95a4c12857a8cc1192bd66c7e5572da9221762dffef",
@@ -146,7 +146,7 @@
     "/private/tmp/ems-t24/build/SmallDataIO.o": "26ea94e00e34a938bc4ee235bf856cb3fef19373800a08c1d460d1bfbe8c9297",
     "/private/tmp/ems-t24/build/PETScCommunicator.o": "1f4e0c3c1118888c84c38cb25aceddc69c8c63d7619163b37542d4f2de058884",
     "/private/tmp/ems-t24/build/PunctureTracker.o": "a025d62c4ab1dcd089c78275c07251164f247f18fddbf5174f89b7f50b4cdf11",
-    "/private/tmp/ems-t25/build/t25-expansion-map.ex": "6fa1f2bef21845ad269005604ce9c5bd3d006e4f80922d49ce42daac543cda75",
+    "/private/tmp/ems-t25/build/t25-expansion-map.ex": "7d95fe059316b3c1a8b644dc02117074bbb3f62eab6d508127c701348e77c311",
     "/private/tmp/ems-t24/source/Source/RHFinder/RHSurf.hpp": "3c9e3e946f95375a27477466f4e51b1cafbea2f14392acb2d19128582c98cfd6",
     "/private/tmp/ems-t24/source/Source/RHFinder/RHUnion.hpp": "1174747f4ee8f2e18a61cd2fb0618d1a4f3c6974c9929bcae85fd8f64519f885",
     "/private/tmp/ems-t24/Chombo/lib/libamrtools2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.a": "b248a3e4b703b941cd386a5c1885201e38b33a829af7625886334755e8d857c5",

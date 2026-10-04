@@ -7,8 +7,9 @@ have sampled pointwise trapped/untrapped barriers at initialization, but their
 bounded N48 searches remain unqualified. At step 152 none of the sampled
 individual or common families has a pointwise barrier; there are ten weaker
 mean-only crossings. These observations neither locate a late horizon nor
-establish that a horizon shrank or disappeared. Early positive-time checkpoints
-are on the clusters and have not been inspected locally.
+establish that a horizon shrank or disappeared. That original audit ended
+before the early positive-time checkpoints were collected. The local
+time-resolved continuation below is a completed bounded analysis, with no qualified binary horizon.
 
 ## What is evaluated
 
@@ -317,6 +318,10 @@ finder update. Parameters control angular N, chase, update cap, wall cap,
 floor window and all three thresholds; the author algorithm is untouched.
 The recorded searches use chase=quota=1, cap=100000, floor_window=100001,
 235 s and thresholds 1e-7/1e-10/1e-12. A TIME_CAP or FLOOR is not a pass.
+The continuation also permits a recorded weaker mean bracket only under
+the explicit Tests-only `map_find_allow_average=true` switch (default false).
+That changes the seed admission label, not the author's finder or its
+acceptance thresholds; a mean root is never a pointwise horizon measurement.
 
 The measured peak RSS is **1.9999 GB for maps**, 1.932 GB for the binary
 bounded finder and 1.268 GB for t=0 initialization. All run caps are met;
@@ -334,3 +339,67 @@ receipts, regenerated checkpoints and stopped shapes remain under
 No bulk checkpoint is copied into the worktree. The required next
 time-history reading is precisely the signed map through the retained early
 checkpoints, not an extrapolation of a fixed-area radius.
+
+## Time-resolved exp-0024 map, t = 0 to 28 M_i
+
+**READY-EXCEPT: the bounded analysis is complete; no binary horizon search qualifies.**
+
+The matching time-zero state uses exp-0024's d=16, rapidity 0.05778205303580913, geometric initial lapse and compiled ExperimentalGauge. Its companion SHA-256 is `107370ae00d8b69dc3122dc023e34bbff23b90afc8401bb233743c1182e6083c`; both initial inputs match the sealed submission. The d=32 T17 control above is a different initialization and is not substituted into this history. All eight collected checkpoints match their cluster SHA-256. Each uses the contemporaneous centres from `punctures.dat`. Static and CTT paths are absent from every positive-time map and search.
+
+The native finest spacing is h=0.00042724609375 M_i. Spheres span 3h to 0.05 M_i with 4% initial radial spacing. Sign boundaries are bisected up to four times to at most 0.5% local spacing. If no spherical pointwise barrier exists, or it remains wider than 3%, the fixed fallback uses offsets −4, −2, 0, 2, 4 h and c/a=0.5, 0.75, 0.9, 1, 1.1, 1.25, 1.5, 2, with 8% initial radial spacing and the same refinement. Extents under three local cells are ineligible. N96/N192 and actual AMR ownership are retained. The selected endpoint signs agree at both angular resolutions. “Pointwise” here means every sampled angular point; it is not an interval proof between those points.
+
+Before each search, the narrowest available pointwise barrier was selected, with endpoint RMS as the tie-breaker; a negative-to-positive mean pair inside it supplies the linearly interpolated seed. If no pointwise pair exists, one weaker mean pair may seed through `map_find_allow_average=true` (Tests-only, default false). There are eight pointwise-seeded and two mean-seeded searches. No bracket at t≥17.5 means no search there. All ten use the unchanged author finder: N48, chase=quota=1, 235 s cap, update cap 100000, inert floor window 100001, stages 1e-7/1e-10/1e-12. Every search stops at TIME_CAP in stage 1. The native squared residual is area-weighted mean θ₊², not its square root.
+
+After those capped probes, additional maps use only their numerical final centres and a spheroid aspect ratio estimated from their numerical contours. These add no finder searches. They improve the t=0 pointwise width to 1.0025%, but cannot meet the requested few-percent pointwise width at positive time: best post-flow widths are about 38.1%, 30.5% and 22.1–22.7% at t=3.5, 7 and 10.5. The adjacent mean-root interval is narrower (about 0.5%), which does not make its angular expansion vanish. At t=14 only a weaker mean crossing exists. The original seed and receipts remain separate from these post-flow maps.
+
+The table below reports the refined **mean-root trial** semiaxes a/c and physical surface integrals. Even inside a pointwise barrier, a mean root is not a solved marginally outer trapped surface (MOTS). Its finder residual belongs to the single earlier bracket-seeded probe, not to a new search at the refined centre. Hole 0 is the lower-x hole; hole 1 the upper-x hole. All entries are numerical-rung/checkpoint quantities.
+
+| t / M_i | hole | bracket | a / c (M_i) | min extent / h | A trial | Q trial | mean lapse | finder θ² |
+|---:|---:|:---|:---|---:|---:|---:|---:|---:|
+| 0 | 0 | pointwise | 0.006237246 / 0.006230151 | 14.58211 | 0.2220885 | 1.069324 | 0.03988408 | 6.304415e-05 |
+| 0 | 1 | pointwise | 0.006237328 / 0.006229989 | 14.58173 | 0.2220885 | 1.069324 | 0.03988408 | 5.384299e-05 |
+| 3.5 | 0 | pointwise | 0.006019113 / 0.005964204 | 13.95964 | 0.2216211 | 1.055557 | 0.04098933 | 0.0002149621 |
+| 3.5 | 1 | pointwise | 0.006019152 / 0.005964128 | 13.95947 | 0.2216211 | 1.055558 | 0.04098933 | 0.0002068308 |
+| 7 | 0 | pointwise | 0.00579329 / 0.005730467 | 13.41257 | 0.2138431 | 0.9092232 | 0.03781584 | 0.0003733849 |
+| 7 | 1 | pointwise | 0.005793626 / 0.00572978 | 13.41096 | 0.213843 | 0.9092288 | 0.03781578 | 0.0002769497 |
+| 10.5 | 0 | pointwise | 0.005715181 / 0.005715181 | 13.37679 | 0.194103 | 0.7138401 | 0.03401404 | 0.004616604 |
+| 10.5 | 1 | pointwise | 0.005715083 / 0.005715083 | 13.37656 | 0.1941021 | 0.7138393 | 0.03401298 | 0.0105724 |
+| 14 | 0 | mean only | 0.004206291 / 0.00413894 | 9.687485 | 0.2317358 | 0.743461 | 0.007787269 | 0.106756 |
+| 14 | 1 | mean only | 0.004206066 / 0.004139475 | 9.688737 | 0.2317375 | 0.7434681 | 0.007787266 | 0.1102885 |
+| 17.5 | 0 | none sampled | — / — | — | — | — | — | — |
+| 17.5 | 1 | none sampled | — / — | — | — | — | — | — |
+| 21 | 0 | none sampled | — / — | — | — | — | — | — |
+| 21 | 1 | none sampled | — / — | — | — | — | — | — |
+| 24.5 | 0 | none sampled | — / — | — | — | — | — | — |
+| 24.5 | 1 | none sampled | — / — | — | — | — | — | — |
+| 28 | 0 | none sampled | — / — | — | — | — | — | — |
+| 28 | 1 | none sampled | — / — | — | — | — | — | — |
+
+The full 18-row table, including χ, K, K−2Θ, signed expansion range/RMS, local spacing and native finder A/Q, is [t25-early-refined-time-table.csv](t25-early-refined-time-table.csv). [t25-early-time-table.csv](t25-early-time-table.csv) retains the preliminary roots and actual finder seed centres. [t25-early-final-brackets.csv](t25-early-final-brackets.csv) gives both semiaxes of each refined barrier and the adjacent mean pair, signed endpoint bounds and the N96 confirmation. Per-checkpoint `t25-early-step*.csv` packets retain the spherical/selected-family map; `*-post-centres.csv`, `*-post-brackets.csv`, `*-post-barriers.csv` and `*-post-roots.csv` retain the additional numerical-centre maps. All remaining families and angular rows stay under `/private/tmp/ems-t25/early/step*/`, indexed by the manifest.
+
+| t / M_i | χ mean (hole 0) | K mean | K−2Θ mean | θ₊ RMS on trial |
+|---:|---:|---:|---:|---:|
+| 0 | 0.002199606 | 5.245812e-07 | 5.245812e-07 | 0.008108113 |
+| 3.5 | 0.002053002 | 0.4031784 | 0.1712479 | 0.137063 |
+| 7 | 0.002000595 | 0.5953006 | 0.1218111 | 0.2757969 |
+| 10.5 | 0.00233693 | -2.224749 | 0.3045615 | 0.4587069 |
+| 14 | 0.001149979 | -6.447753 | 0.5632302 | 0.5648549 |
+
+Angular N96/N192 spreads are reported as sampling differences, not full spatial error bounds ([t25-early-refined-angular-spreads.csv](t25-early-refined-angular-spreads.csv)). The largest A/Q spreads on these ten trials are 7.52e-06 / 3.56e-05. The signed θ₊ RMS grows from about 0.008 at t=0 to 0.137/0.276/0.46/0.57; its tiny mean is cancellation, not a small pointwise residual. The map uses the actual metric inverse, while the author finder uses unit-determinant conformal cofactors. Their maximum θ₊ discrepancy on the refined hole-0 trial grows from 8.7e-10 to 0.00449, 0.00671, 0.0604 and 0.204. This measured geometry-prescription difference is an additional limitation on late finder/map comparisons, not a silently corrected determinant.
+
+### What the time series establishes
+
+The initial narrow, grid-supported barrier and repeated capped flow support the **early finder/seeding/stopping part of case (i)**. Pointwise barriers remain sampled through t=10.5, but their angular zero bands are broad and no solved near-zero surface is obtained. At t=14 the evidence weakens to an average-only crossing; at t=17.5, 21, 24.5 and 28 none of the eligible sampled individual families has a negative-to-positive pointwise or mean pair. This is an absence within the tested families, not proof that no horizon exists. Thus a single one of the consult’s three cases cannot be asserted for the entire window: case (iii) “even early” is contradicted by the early barriers, and case (ii) is not established by qualified horizons.
+
+The mean-root trial first falls below ten cells at the sampled t=14 (9.687/9.689 cells). It never supplies a resolved below-three-cell root. **The times at which an actual horizon falls below ten or three cells are unknown.** There is no accepted horizon whose area stays about 0.2245 while its coordinate radius squeezes; absence of later brackets cannot supply that claim.
+
+The initial refined trial gives A=0.22208851 and Q=1.06932399. Its area is about 1.07% below the isolated progenitor value 0.2245, but agrees with the independent d=16 CTT initial reference A_i=0.2220848223, Q_i=1.06931005935 within 1.7e-5/1.3e-5 relative. Later trial A/Q do not remain at either initial pair: A is about 0.21384/0.19410 at t=7/10.5 and Q about 0.90922/0.71384. Those changes greatly exceed angular quadrature spreads, but the trial is not a MOTS and its pointwise residual increases. **Neither conservation nor a physical loss of horizon area/charge is certified by this series.** Nearest-cell coordinate-sphere areas and warm-tracking output are not substituted for these missing horizon measurements.
+
+### Midpoint at t=28 and receipts
+
+The 20 enclosing midpoint surfaces are spheres and prolates with c/a=1,2,4,8 and axial semiaxes 1.05,1.25,1.5,2,4 times the measured half separation (c=7.56963–28.83668 M_i). All enclose both punctures and exceed 16.47 cells per smallest extent. Every mean expansion is positive (minimum 0.06068095), but some angular sectors are negative (global minimum −0.06285768). No enclosing pointwise or mean barrier pair exists in this sampled set; no midpoint finder is run ([t25-early-midpoint-t28.csv](t25-early-midpoint-t28.csv)). This is the requested sanity test, not a global horizon-exclusion proof.
+
+Each native map/finder receipt was verified independently: its done marker, child return code, no gate, measured RSS and completion text. All ten finder return codes are 1 with finite TIME_CAP stage data; the workflow marker 0 only records completion. The continuation peak RSS is 3.322085 GB; initialization peaks at 2.867 GB. Maps have a 3 GB process cap, initializers/finders a 6 GB cap, with one process/thread and one checkpoint at a time. The regression preserves all 55,944 existing map/angle values bit for bit and verifies the weaker-seed gate off/on. See [t25-early-audit.json](t25-early-audit.json), [t25-early-final-audit.json](t25-early-final-audit.json), [t25-early-finder-stages.csv](t25-early-finder-stages.csv), [t25-early-receipts.csv](t25-early-receipts.csv) and [t25-early-regression.csv](t25-early-regression.csv).
+
+To regenerate the final ledgers/report from completed receipts without probes, run `python3 t25-early-audit.py` then `python3 t25-early-finalize.py` then `python3 t25-manifest.py`. The serial pipeline and post-flow map markers are both 0. No job remains pending. No positive-time static input, evolution, SSH, source change, NaN-abort build or commit is part of this continuation.
+

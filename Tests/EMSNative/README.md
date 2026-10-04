@@ -4083,8 +4083,8 @@ search per hole ends at squared residual 2.2709e-5/2.2487e-5, below the
 historical 3.5e-3 but above the first 1e-7 stage. These are unqualified trial
 surfaces. At t=133 the 186 eligible individual/common surfaces show no
 pointwise pair, with ten mean-only crossings. No late finder search or
-coordinate horizon-shrinkage claim is made. Early positive-time checkpoints
-remain to be mapped on their clusters with this same tool.
+coordinate horizon-shrinkage claim is made. This original audit preceded
+the early-checkpoint collection; the local continuation is described below.
 
 [t25-summary.csv](t25-summary.csv), [t25-finder-stages.csv](t25-finder-stages.csv)
 and [t25-signed-expansion.png](t25-signed-expansion.png) summarize the results.
@@ -4093,4 +4093,10 @@ and isolated-build replays are bit-identical, with guard regressions in
 [t25-regression.csv](t25-regression.csv). Raw angles, receipts and checkpoints
 stay in `/private/tmp/ems-t25/`, indexed by `t25-manifest.txt`. No Source or
 Examples change, pending NaN-abort build, evolution, remote work or commit
-was made for T25, and no job is pending.
+was made for the original T25 audit. The continuation's run status is below.
+
+### T25 early-checkpoint continuation
+
+**READY-EXCEPT; completed offline.** Eight SHA-256-verified early checkpoints and a matching d=16 t=0 regeneration are processed serially. The initial numerical-centre/spheroid pointwise bracket is 1.0025% wide; at t=3.5/7/10.5 the refined widths remain about 38/31/22%. Only a weaker mean crossing remains at t=14; no pair is found in eligible individual families at t=17.5–28. All ten unchanged N48, chase=quota=1, 235 s searches hit TIME_CAP in stage 1. The trial extent first falls below ten cells at t=14; an actual horizon’s support-loss times and A/Q preservation are unestablished. This supports an early finder problem, with later map ambiguity; it does not establish coordinate squeezing. The 20 enclosing midpoint t=28 surfaces give no barrier pair and have no finder.
+
+See [t25-early-refined-time-table.csv](t25-early-refined-time-table.csv), [t25-early-final-brackets.csv](t25-early-final-brackets.csv), per-checkpoint t25-early-step*.csv, [t25-early-finder-stages.csv](t25-early-finder-stages.csv), [t25-early-final-audit.json](t25-early-final-audit.json) and [t25-expansion-map.md](t25-expansion-map.md). The 55,944-value disabled/unchanged-output regression passes; peak RSS 3.322085 GB, within 6 GB (maps capped at 3 GB), one thread, one checkpoint at a time. Pipeline and postmap markers are 0, no job remains pending. No Source/Examples edit, NaN-abort build, evolution, SSH or commit was made.

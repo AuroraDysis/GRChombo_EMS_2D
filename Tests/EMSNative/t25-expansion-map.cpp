@@ -119,19 +119,26 @@ int find_from_seed(AMRInterpolator<Lagrange<4>> &interp, const SimulationParamet
     std::ifstream proof(bracket);
     if(!proof) throw std::runtime_error("finder requires recorded bracket CSV");
     std::string header,row;std::getline(proof,header);std::getline(proof,row);
-    if(header.find("status")==std::string::npos || row.find("POINTWISE")==std::string::npos)
-        throw std::runtime_error("finder requires sampled pointwise barrier (not an average root)");
+    bool allow_average; pp.load("map_find_allow_average",allow_average,false);
+    if(header.find("status")==std::string::npos ||
+       (row.find("POINTWISE")==std::string::npos &&
+        !(allow_average && row.find("AVERAGE_ONLY_WEAKER")!=std::string::npos)))
+        throw std::runtime_error("finder requires pointwise barrier, or explicitly permitted weaker mean bracket");
     std::map<std::string,std::string> values;std::istringstream hs(header),rs(row);std::string key,value;
     while(std::getline(hs,key,','))
     {
         if(!std::getline(rs,value,',')) throw std::runtime_error("malformed bracket proof");
         values[key]=value;
     }
+    const bool signs=values.at("status")=="POINTWISE_NEGATIVE_TO_POSITIVE" ?
+        (std::stod(values.at("theta_inner_max"))<0 && std::stod(values.at("theta_outer_min"))>0) :
+        (allow_average && values.at("status")=="AVERAGE_ONLY_WEAKER" &&
+         std::stod(values.at("theta_inner_mean"))<0 && std::stod(values.at("theta_outer_mean"))>0);
     if(values.at("checkpoint")!=p.restart_file || std::stod(values.at("time"))!=time ||
        std::stod(values.at("centre"))!=v.centre ||
        v.a<std::stod(values.at("a_inner")) || v.a>std::stod(values.at("a_outer")) ||
        v.c<std::stod(values.at("c_inner")) || v.c>std::stod(values.at("c_outer")) ||
-       !(std::stod(values.at("theta_inner_max"))<0 && std::stod(values.at("theta_outer_min"))>0))
+       !signs)
         throw std::runtime_error("bracket does not match checkpoint/time/centre/seed or signs");
     int max_updates,window; double seconds_cap,chase;std::vector<double> thresholds;
     pp.load("map_find_max_updates",max_updates,100000);
@@ -211,10 +218,10 @@ int run(int argc,char **argv)
     interp.fill_multilevel_ghosts(VariableType::evolution);
     std::ofstream out(output), detail(angles);
     if(!out || !detail) throw std::runtime_error("output open");
-    out<<"checkpoint,time,id,family,centre,a,c,N,status,A,Q,x_min,x_max,rho_max,dx_min,dx_max,min_extent_over_dx,theta_min,theta_max,theta_mean,theta_rms,negative_area_fraction,lapse_mean,chi_mean,det_h_max_error,finder_theta_max_difference";
+    out<<"checkpoint,time,id,family,centre,a,c,N,status,A,Q,x_min,x_max,rho_max,dx_min,dx_max,min_extent_over_dx,theta_min,theta_max,theta_mean,theta_rms,negative_area_fraction,lapse_mean,chi_mean,det_h_max_error,finder_theta_max_difference,K_mean,K_minus_2Theta_mean";
     for(size_t k=0;k<punctures.size();++k) out<<",encloses_"<<k;
     out<<'\n'<<std::setprecision(17);
-    detail<<"id,theta,x,rho,level,dx,expansion,dA,lapse,chi,det_h,finder_expansion\n"<<std::setprecision(17);
+    detail<<"id,theta,x,rho,level,dx,expansion,dA,lapse,chi,det_h,finder_expansion,K,Theta\n"<<std::setprecision(17);
     const auto cp=p.coupling_function_params;
     bool all_resolved=true;
     for(size_t k=0;k<specs.size();++k)
@@ -225,14 +232,14 @@ int run(int argc,char **argv)
         for(int i=0;i<n+2*s.m_NG;++i)
             s.m_f[i]=1/std::sqrt(std::pow(std::cos(s.m_theta[i])/v.c,2)+std::pow(std::sin(s.m_theta[i])/v.a,2));
         rh.set_coupling_params(cp.alpha,cp.f0,cp.f1,cp.f2); rh.interpolate_fields();
-        std::vector<double> x(n),y(n),lapse(n);
+        std::vector<double> x(n),y(n),lapse(n),Theta(n);
         for(int i=0;i<n;++i) {int ii=i+s.m_NG;x[i]=v.centre+s.m_f[ii]*std::cos(s.m_theta[ii]); y[i]=s.m_f[ii]*std::sin(s.m_theta[ii]);}
-        InterpolationQuery query(n); query.setCoords(0,x.data()).setCoords(1,y.data()).addComp(c_lapse,lapse.data());
+        InterpolationQuery query(n); query.setCoords(0,x.data()).setCoords(1,y.data()).addComp(c_lapse,lapse.data()).addComp(c_Theta,Theta.data());
         interp.interp(query);
         // Native valid-box ownership, solely to report actual AMR coverage.
         // -fno-access-control is Tests-only. Values/derivatives above are native polynomial interpolation.
         const auto layout=interp.findBoxes(query);
-        double A=0,Q=0,mean=0,sq=0,negative=0,ml=0,mc=0;
+        double A=0,Q=0,mean=0,sq=0,negative=0,ml=0,mc=0,mK=0,mKT=0;
         double low=INFINITY,high=-INFINITY,dmin=INFINITY,dmax=0,deterr=0,fdiff=0;
         bool valid=true;
         for(int i=0;i<n;++i)
@@ -240,13 +247,14 @@ int run(int argc,char **argv)
             const int ii=i+s.m_NG, lev=layout.level_idx[i];
             if(lev<0 || lev>=int(levels.size())) throw std::runtime_error("native coverage unavailable");
             const auto z=geometry(s,ii,v,lapse[i],levels[lev]->get_dx(),lev);
-            detail<<v.id<<','<<s.m_theta[ii]<<','<<x[i]<<','<<y[i]<<','<<lev<<','<<z.dx<<','<<z.theta<<','<<z.da<<','<<z.lapse<<','<<z.chi<<','<<z.det<<','<<z.finder<<'\n';
-            valid &= std::isfinite(z.theta+z.da+z.lapse+z.chi+z.det+z.finder);
+            detail<<v.id<<','<<s.m_theta[ii]<<','<<x[i]<<','<<y[i]<<','<<lev<<','<<z.dx<<','<<z.theta<<','<<z.da<<','<<z.lapse<<','<<z.chi<<','<<z.det<<','<<z.finder<<','<<s.m_K[ii]<<','<<Theta[i]<<'\n';
+            valid &= std::isfinite(z.theta+z.da+z.lapse+z.chi+z.det+z.finder+s.m_K[ii]+Theta[i]);
             low=std::min(low,z.theta);high=std::max(high,z.theta);dmin=std::min(dmin,z.dx);dmax=std::max(dmax,z.dx);
             deterr=std::max(deterr,std::abs(z.det-1));fdiff=std::max(fdiff,std::abs(z.theta-z.finder));
             A+=z.da; mean+=z.theta*z.da;sq+=z.theta*z.theta*z.da;
             if(z.theta<0) negative+=z.da;
             ml+=z.lapse*z.da;mc+=z.chi*z.da;
+            mK+=s.m_K[ii]*z.da;mKT+=(s.m_K[ii]-2*Theta[i])*z.da;
             // Stored E_i; contract with the physical contravariant unit normal.
             const double d=s.m_h11[ii]*s.m_h22[ii]-s.m_h12[ii]*s.m_h12[ii];
             const double nx=2*(x[i]-v.centre)/(v.c*v.c),ny=2*y[i]/(v.a*v.a);
@@ -259,7 +267,7 @@ int run(int argc,char **argv)
         const double cells=std::min(v.a,v.c)/dmax;
         const std::string status=!valid?"INVALID_GEOMETRY":(cells<3?"UNRESOLVED":"RESOLVED");
         all_resolved &= status=="RESOLVED";
-        out<<p.restart_file<<','<<time<<','<<v.id<<','<<v.family<<','<<v.centre<<','<<v.a<<','<<v.c<<','<<n<<','<<status<<','<<A<<','<<Q<<','<<v.centre-v.c<<','<<v.centre+v.c<<','<<v.a<<','<<dmin<<','<<dmax<<','<<cells<<','<<low<<','<<high<<','<<mean/A<<','<<std::sqrt(sq/A)<<','<<negative/A<<','<<ml/A<<','<<mc/A<<','<<deterr<<','<<fdiff;
+        out<<p.restart_file<<','<<time<<','<<v.id<<','<<v.family<<','<<v.centre<<','<<v.a<<','<<v.c<<','<<n<<','<<status<<','<<A<<','<<Q<<','<<v.centre-v.c<<','<<v.centre+v.c<<','<<v.a<<','<<dmin<<','<<dmax<<','<<cells<<','<<low<<','<<high<<','<<mean/A<<','<<std::sqrt(sq/A)<<','<<negative/A<<','<<ml/A<<','<<mc/A<<','<<deterr<<','<<fdiff<<','<<mK/A<<','<<mKT/A;
         for(double puncture:punctures) out<<','<<(std::abs(puncture-v.centre)<v.c?1:0);
         out<<std::endl;
         pout()<<"T25_SURFACE "<<v.id<<" "<<status<<" theta=["<<low<<","<<high<<"]\n";

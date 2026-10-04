@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "historical native map and angular values",
+      "result": "BIT_IDENTICAL",
+      "comparisons": 55944
+    },
+    {
+      "check": "weaker seed flag false",
+      "result": "PASS",
+      "comparisons": 0
+    },
+    {
+      "check": "weaker seed flag true",
+      "result": "PASS",
+      "comparisons": 0
+    }
+  ],
+  "executable_sha256": "7d95fe059316b3c1a8b644dc02117074bbb3f62eab6d508127c701348e77c311"
+}
