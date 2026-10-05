@@ -25,6 +25,8 @@ class RHUnion
     double m_thresh_close     = 0.0005;   // below: switch from fast chase to Newton
     double m_thresh_super_low  = 0.0000001; // below: surface converged, stop
     double m_newton_delta_f    = 1e-4;    // finite difference step for Jacobian assembly
+    // Frozen hierarchy only: caller must refresh once before opting in.
+    bool m_skip_interpolator_refresh = false;
     std::vector<RHSurf> m_surfaces;
     std::vector<std::ofstream> m_outfiles;
     std::vector<std::ofstream> m_ffiles;
@@ -242,7 +244,7 @@ class RHUnion
         }
 
         // pull fresh grid data for all surfaces in one MPI round-trip
-        m_interpolator->refresh();
+        if (!m_skip_interpolator_refresh) m_interpolator->refresh();
         interpolate_fields();
 
         // re-centre all surfaces using the fresh field data

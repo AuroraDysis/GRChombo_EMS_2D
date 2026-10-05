@@ -157,6 +157,7 @@ int run(int argc, char **argv)
     rh.set_coupling_params(c.alpha, c.f0, c.f1, c.f2);
     rh.set_interpolator(&interp);
     interp.refresh();
+    rh.m_skip_interpolator_refresh = true;
     rh.interpolate_fields();
     for (auto &s : rh.m_surfaces)
     {
@@ -216,8 +217,6 @@ int run(int argc, char **argv)
         {
             rh.update(time, 0);
             ++updates;
-            // update re-centres; acceptance always uses fields at the final points.
-            rh.interpolate_fields();
             double worst = 0.;
             for (const auto &s : rh.m_surfaces)
             {
