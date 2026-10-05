@@ -4,7 +4,7 @@ READY-EXCEPT: the implementation is opt-in, but the step-72 root-agreement gate 
 Steps 40/54 both hit TIME_CAP; the default-off mode is not accepted as a flow replacement.
 No evolution, cluster job, push, EMS edit, static-data read, or post-pipeline edit occurred.
 Pristine flow is built from `24eae0c`; portable implementation commit: `d9c4fd4`.
-Raw runs, binaries, checks and stdlib/h5py analysis: `/private/tmp/rh-newton-run/`.
+Raw runs, binaries, checks and stdlib/h5py analysis: run directory `/private/tmp/rh-newton-run/`, archived as `/Users/auroradysis/Workspace/EMS/.data/exp-0027/perf/rh-newton-run.tgz` (SHA-256 `28d02ca7f17d53b98944a079284e96f6988a2131c87df12fed990913a1c449e2`).
 `offline_solver = flow | newton` defaults to flow; both RHUnion/RHSurf flags default off.
 Newton solves the existing Theta_plus with the existing even/odd polar ghosts and expansion_error.
 df/d2f use -2..2; DivS/KSSmK and all interpolated values/Cartesian derivatives use fields at i only. Thus b=2.
