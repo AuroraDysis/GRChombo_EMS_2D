@@ -65,6 +65,11 @@ template <typename InterpAlgo> class AMRInterpolator
 
     void limit_num_levels(unsigned int num_levels);
     void interp(InterpolationQuery &query);
+    // Valid after interp(), for a point in this rank's original query order.
+    const std::array<double, CH_SPACEDIM> &get_query_dx(int point) const
+    {
+        return m_dx.at(m_query_level.at(m_mpi_mapping.at(point)));
+    }
     const AMR &getAMR() const;
     const std::array<double, CH_SPACEDIM> &get_coarsest_dx() const;
     const std::array<double, CH_SPACEDIM> &get_coarsest_origin() const;

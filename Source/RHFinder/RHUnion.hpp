@@ -10,6 +10,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iterator>
+#include <limits>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -24,9 +25,15 @@ class RHUnion
     double m_thresh_high       = 0.0001;    // above: slow chase + stale repeats
     double m_thresh_close     = 0.0005;   // below: switch from fast chase to Newton
     double m_thresh_super_low  = 0.0000001; // below: surface converged, stop
-    double m_newton_delta_f    = 1e-4;    // finite difference step for Jacobian assembly
     // Frozen hierarchy only: caller must refresh once before opting in.
     bool m_skip_interpolator_refresh = false;
+    bool m_use_newton = false;
+    bool m_measure_cell_sizes = false;
+    double m_newton_fd_relative = std::sqrt(std::numeric_limits<double>::epsilon());
+    double m_newton_max_step_cells = 1.;
+    int m_newton_backtracks = 20;
+    unsigned long long m_interpolation_calls = 0, m_newton_iterations = 0;
+    unsigned long long m_newton_failures = 0, m_flow_steps = 0;
     std::vector<RHSurf> m_surfaces;
     std::vector<std::ofstream> m_outfiles;
     std::vector<std::ofstream> m_ffiles;
@@ -192,6 +199,21 @@ class RHUnion
 
         // Every rank participates: non-root ranks answer queries for their boxes.
         m_interpolator->interp(query);
+        ++m_interpolation_calls;
+        std::vector<double> cell_dx;
+        if (m_use_newton || m_measure_cell_sizes)
+        {
+            cell_dx.resize(total_pts);
+            if (procID() == 0)
+                for (int i = 0; i < total_pts; ++i)
+                {
+                    const auto &dx = m_interpolator->get_query_dx(i);
+                    cell_dx[i] = *std::max_element(dx.begin(), dx.end());
+                }
+#ifdef CH_MPI
+            MPI_Bcast(cell_dx.data(), cell_dx.size(), MPI_DOUBLE, 0, Chombo_MPI::comm);
+#endif
+        }
 #ifdef CH_MPI
         MPI_Bcast(values.data(), values.size(), MPI_DOUBLE, 0, Chombo_MPI::comm);
 #endif
@@ -203,8 +225,119 @@ class RHUnion
                 std::copy_n(values.data() + c * total_pts + offset, surf.m_n,
                             (surf.*fields[c].destination).begin() + surf.m_NG);
             surf.fill_all_ghosts();
+            if (!cell_dx.empty())
+                surf.m_cell_dx.assign(cell_dx.begin() + offset,
+                                      cell_dx.begin() + offset + surf.m_n);
             offset += surf.m_n;
         }
+    }
+
+    // Forward differences: exactly one fresh field query per color (or column).
+    // Each reflected row stencil has at most one independent point of each color.
+    std::vector<std::vector<double>> newton_jacobian(RHSurf &surf, bool colored = true)
+    {
+        constexpr int b = RHSurf::expansion_half_width;
+        const RHSurf saved = surf;
+        std::vector<double> base(surf.m_n), h(surf.m_n);
+        for (int j = 0; j < surf.m_n; ++j)
+        {
+            const double radius = saved.m_f[j + saved.m_NG];
+            const double length = std::max(radius, saved.m_cell_dx.at(j));
+            // Account for rounding in centre + f*cos(theta), not just f itself.
+            const double coordinate = std::max(length, std::max(
+                std::abs(saved.m_centre[0]), std::abs(saved.m_centre[1])));
+            h[j] = m_newton_fd_relative * std::sqrt(length * coordinate);
+            base[j] = saved.Theta_plus(j + saved.m_NG);
+        }
+        std::vector<std::vector<double>> J(surf.m_n, std::vector<double>(surf.m_n));
+        const int stride = colored ? 2*b + 1 : surf.m_n;
+        try
+        {
+            for (int color = 0; color < stride; ++color)
+            {
+                surf = saved;
+                for (int j = color; j < surf.m_n; j += stride)
+                    surf.m_f[j + surf.m_NG] += h[j];
+                surf.fill_all_ghosts();
+                interpolate_fields();
+                for (int j = color; j < surf.m_n; j += stride)
+                    for (int i = colored ? std::max(0, j-b) : 0;
+                         i < (colored ? std::min(surf.m_n, j+b+1) : surf.m_n); ++i)
+                        J[i][j] = (surf.Theta_plus(i + surf.m_NG) - base[i]) / h[j];
+            }
+        }
+        catch (...)
+        {
+            surf = saved;
+            throw;
+        }
+        surf = saved; // restore geometry AND its fields, including mirrored ghosts
+        return J;
+    }
+
+    // Returns false with the complete pre-step state restored; caller uses flow.
+    bool newton_step(RHSurf &surf)
+    {
+        static_assert(RHSurf::expansion_half_width == 2,
+                      "Expansion stencil changed: replace invert_banded5 with banded LU");
+        const RHSurf saved = surf;
+        ++m_newton_iterations;
+        try
+        {
+            const double error = saved.expansion_error();
+            const auto J = newton_jacobian(surf);
+            const auto inverse = invert_banded5(J);
+            std::vector<double> step(surf.m_n), residual(surf.m_n);
+            double alpha = 1.;
+            for (int i = 0; i < surf.m_n; ++i)
+                residual[i] = saved.Theta_plus(i + saved.m_NG);
+            for (int i = 0; i < surf.m_n; ++i)
+            {
+                for (int j = 0; j < surf.m_n; ++j) step[i] -= inverse[i][j]*residual[j];
+                if (!std::isfinite(step[i])) throw std::runtime_error("invalid Newton step");
+                if (step[i] != 0.) alpha = std::min(alpha,
+                    m_newton_max_step_cells * saved.m_cell_dx[i] / std::abs(step[i]));
+            }
+            // Guard the unpivoted existing band inverse with its actual solve residual.
+            double defect = 0., scale = 0.;
+            for (int i = 0; i < surf.m_n; ++i)
+            {
+                double r = residual[i];
+                for (int j = 0; j < surf.m_n; ++j) r += J[i][j]*step[j];
+                defect = std::max(defect, std::abs(r));
+                scale = std::max(scale, std::abs(residual[i]));
+            }
+            if (!std::isfinite(defect) || defect > 1e-8*scale)
+                throw std::runtime_error("Newton band solve residual failed");
+            for (int trial = 0; trial < m_newton_backtracks; ++trial, alpha *= .5)
+            {
+                surf = saved;
+                bool valid = true;
+                for (int j = 0; j < surf.m_n; ++j)
+                {
+                    const int ii = j + surf.m_NG;
+                    surf.m_f[ii] += alpha*step[j];
+                    valid &= surf.m_f[ii] > surf.m_rmin && surf.m_f[ii] < surf.m_rmax;
+                }
+                if (!valid) continue;
+                surf.fill_all_ghosts();
+                interpolate_fields();
+                // Also bound against any finer cells entered by this trial.
+                for (int j = 0; j < surf.m_n; ++j)
+                    valid &= std::abs(alpha*step[j]) <= m_newton_max_step_cells *
+                        std::min(saved.m_cell_dx[j], surf.m_cell_dx[j]);
+                const double next = surf.expansion_error();
+                if (valid && std::isfinite(next) && next <= (1.-1e-4*alpha)*error)
+                    return true;
+            }
+        }
+        catch (const std::exception &e)
+        {
+            pout() << "RHFinder Newton fallback: " << e.what() << '\n';
+        }
+        surf = saved;
+        ++m_newton_failures;
+        return false;
     }
 
     // One finder step for all surfaces assigned to a_level.
@@ -250,6 +383,9 @@ class RHUnion
         // re-centre all surfaces using the fresh field data
         for (auto &surf : m_surfaces)
             surf.re_centre();
+        // Newton must differentiate data at the current centre, including its
+        // point-local position channel. Default flow retains its original path.
+        if (m_use_newton) interpolate_fields();
 
         const int n = (int)m_surfaces.size();
 
@@ -264,6 +400,12 @@ class RHUnion
             if      (errs[k] <= m_thresh_super_low) surf.m_state = RHSurf::SolverState::FOUND;
             else if (errs[k] <= m_thresh_high)      surf.m_state = RHSurf::SolverState::CLOSE;
             else                                    surf.m_state = RHSurf::SolverState::FAR;
+            if (m_use_newton && surf.m_use_newton && !surf.m_dead &&
+                surf.m_level == a_level && errs[k] > m_thresh_super_low)
+            {
+                if (newton_step(surf)) errs[k] = 0.; // one iteration per update
+                else surf.m_use_newton = false; // stop probing; resume the existing flow
+            }
         }
 
         // precompute per-surface courants; max_iters is the longest active surface's quota
@@ -295,9 +437,13 @@ class RHUnion
                 try
                 {
                     surf.chase_step(courants[k]);
+                    ++m_flow_steps;
                     if (errs[k] > m_thresh_high) // FAR: stale repeats to close gap faster
                         for (int j = 0; j < m_num_stale_repeats; ++j)
+                        {
                             surf.chase_step(courants[k]);
+                            ++m_flow_steps;
+                        }
                 }
                 catch (const std::exception &e)
                 {
@@ -319,49 +465,6 @@ class RHUnion
             }
             if (all_found) break;
         }
-
-        // Newton polish — activated per surface once err drops below m_newton_crit.
-        // Reverts if Newton diverges.
-        // for (int k = 0; k < n; ++k)
-        // {
-        //     auto &surf = m_surfaces[k];
-        //     if (surf.m_level != a_level || surf.m_dead) continue;
-        //     if (errs[k] <= m_thresh_super_low) continue;
-        //     if (surf.m_newton_crit <= 0.0) continue;
-
-        //     try
-        //     {
-        //         const double err_post = surf.expansion_error();
-        //         if (err_post < surf.m_newton_crit)
-        //         {
-        //             const std::vector<double> f_before_newton = surf.m_f;
-
-        //             for (int ns = 0; ns < 10; ++ns)
-        //             {
-        //                 interpolate_fields();
-        //                 surf.banded_newton_step(m_newton_delta_f, m_courant);
-        //             }
-        //             interpolate_fields();
-
-        //             const double err_after_newton = surf.expansion_error();
-        //             if (err_after_newton > err_post)
-        //             {
-        //                 surf.m_f = f_before_newton;
-        //                 surf.fill_all_ghosts();
-        //                 interpolate_fields();
-        //                 pout() << "RHFinder: Newton worsened surface " << k
-        //                        << " (" << err_post << " -> " << err_after_newton
-        //                        << "), reverting.\n";
-        //             }
-        //         }
-        //     }
-        //     catch (const std::exception &e)
-        //     {
-        //         surf.m_dead = true;
-        //         pout() << "\nRHFinder: surface " << k << " marked dead: "
-        //                << e.what() << "\n";
-        //     }
-        // }
 
         // re-evaluate states post-chase so output and display reflect the final error
         for (int k = 0; k < n; ++k)

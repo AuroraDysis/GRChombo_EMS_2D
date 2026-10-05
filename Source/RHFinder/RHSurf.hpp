@@ -35,6 +35,11 @@ class RHSurf
     int m_level          = 0;    // AMR level this surface is updated on
     int m_time_step_freq = 1;    // chase iterations per update call
     double m_newton_crit = 0.0;  // switch to Newton below this expansion_error (0 = disabled)
+    // Theta_plus uses df/d2f at +/-2; all field data/Cartesian derivatives
+    // in DivS and KSSmK are point-local. Even polar reflection preserves this band.
+    static constexpr int expansion_half_width = 2;
+    bool m_use_newton = false;
+    std::vector<double> m_cell_dx; // largest coordinate spacing at each interior point
     double m_rmin = 0.0001;
     double m_rmax = 10.0;
     double m_chase_speed = 1.0; // multiplier on the courant chase step
@@ -737,74 +742,6 @@ class RHSurf
                << "  |  Q       = " << std::setw(12) << Q_charge()
                << "     M_tot   = " << std::setw(12) << M_total()  << "  |\n"
                << "  +" << bar << "+\n";
-    }
-
-    // One Newton hop using the banded Jacobian J[i][j] = dQ_i/df_j.
-    // Builds J by perturbing each interior point by a_delta_f and measuring
-    // how Q changes in the ±2 stencil band.  Ghost cells are filled after
-    // each perturbation so symmetry BCs are respected automatically.
-    // J is 5-banded (kl=ku=2); it is inverted and used to update f in one call.
-    void banded_newton_step(double a_delta_f = 1e-4, double a_max_hop = 0.1)
-    {
-        // baseline expansion
-        std::vector<double> Q0(m_n);
-        for (int i = 0; i < m_n; ++i)
-        {
-            Q0[i] = Theta_plus(i + m_NG);
-            if (!std::isfinite(Q0[i]))
-                throw std::runtime_error("NaN/Inf in expansion at banded_newton_step");
-        }
-
-        // Jacobian: dense n×n, but only |i-j|<=2 entries are non-zero
-        std::vector<std::vector<double>> J(m_n, std::vector<double>(m_n, 0.0));
-
-        std::vector<double> f_save = m_f; // snapshot includes ghost cells
-
-        for (int j = 0; j < m_n; ++j)
-        {
-            m_f[j + m_NG] += a_delta_f;
-            fill_ghost_even(m_f); // enforce even BCs at both boundaries
-
-            const int i_lo = std::max(0, j - 2);
-            const int i_hi = std::min(m_n - 1, j + 2);
-            for (int i = i_lo; i <= i_hi; ++i)
-                J[i][j] = (Theta_plus(i + m_NG) - Q0[i]) / a_delta_f;
-
-            m_f = f_save; // restore all cells including ghosts
-        }
-
-        // Augment J diagonal with the position-channel estimate.
-        // df(ii) doesn't use the central point, so J_stencil[i][i] is near-zero
-        // for a smooth surface, making J singular along the uniform mode.
-        // The chase step gives the correct diagonal: dΘ_i/df_i ≈ 1/(courant*dθ²*f²).
-        // Adding this regularises J and blends Newton (shape modes) with chase (radial mode).
-        for (int i = 0; i < m_n; ++i)
-        {
-            const double fi = m_f[i + m_NG];
-            J[i][i] += 1.0 / (a_max_hop * m_d_theta * m_d_theta * fi * fi);
-        }
-
-        // Invert J and compute df = -J^{-1} · Q0.
-        // invert_banded5 throws std::runtime_error on a zero pivot;
-        // that propagates up to RHUnion::update() which marks this surface dead.
-        const auto J_inv = invert_banded5(J);
-
-        std::vector<double> df(m_n, 0.0);
-        for (int j = 0; j < m_n; ++j)
-        {
-            for (int i = 0; i < m_n; ++i)
-                df[j] -= J_inv[j][i] * Q0[i];
-            // limiting the change in df
-            // df[j] = std::max(-a_max_hop, std::min(a_max_hop, df[j]));
-        }
-
-        // Apply update.
-        for (int j = 0; j < m_n; ++j)
-        {
-            m_f[j + m_NG] += df[j];
-            m_f[j + m_NG] = std::max(m_rmin, std::min(m_rmax, m_f[j + m_NG]));
-        }
-        fill_ghost_even(m_f);
     }
 
     // Move the surface one step toward Theta = 0.

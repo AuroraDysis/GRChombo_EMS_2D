@@ -66,7 +66,8 @@ RHSurf resample(const RHSurf &old, int n)
 }
 
 void record(std::ofstream &out, const RHSurf &s, double time, int stage,
-            double threshold, const char *status, int updates, double seconds)
+            double threshold, const char *status, int updates, double seconds,
+            const RHUnion &rh)
 {
     if (procID() != 0) return;
     const double area = s.Area(), charge = s.Q_charge(), error = s.expansion_error();
@@ -81,7 +82,12 @@ void record(std::ofstream &out, const RHSurf &s, double time, int stage,
         << stage << ',' << threshold << ',' << status << ',' << updates << ',' << seconds
         << ',' << s.m_centre[0] << ',' << area << ',' << charge << ',' << mean << ','
         << std::sqrt(variance/area) << ',' << error << ',' << s.average_Theta_minus()
-        << ',' << s.M_total() << std::endl;
+        << ',' << s.M_total();
+    double cells = std::numeric_limits<double>::infinity();
+    for (int j = 0; j < s.m_n; ++j)
+        cells = std::min(cells, s.m_f[j+s.m_NG] / s.m_cell_dx.at(j));
+    out << ',' << rh.m_interpolation_calls << ',' << rh.m_newton_iterations
+        << ',' << rh.m_newton_failures << ',' << rh.m_flow_steps << ',' << cells << std::endl;
     std::ofstream shape("shape-"+std::to_string(s.m_index)+"-"+std::to_string(stage)+".dat");
     shape << std::setprecision(17) << time << ' ' << s.m_centre[0];
     for (int i=s.m_NG; i<s.m_NG+s.m_n; ++i) shape << ' ' << s.m_f[i];
@@ -96,6 +102,15 @@ int run(int argc, char **argv)
     double limit;
     bool t6_checkpoint_diagnostics;
     bool t7_diagnostics;
+    std::string solver;
+    bool check_jacobian;
+    double fd_relative, step_cells;
+    int backtracks;
+    pp.load("offline_solver", solver, std::string("flow"));
+    pp.load("offline_check_jacobian", check_jacobian, false);
+    pp.load("offline_newton_fd_relative", fd_relative, std::sqrt(std::numeric_limits<double>::epsilon()));
+    pp.load("offline_newton_max_step_cells", step_cells, 1.);
+    pp.load("offline_newton_backtracks", backtracks, 20);
     pp.load("t7_diagnostics",t7_diagnostics,false);
     pp.load("t6_checkpoint_diagnostics", t6_checkpoint_diagnostics, false);
     pp.load("offline_points", n, 96);
@@ -103,7 +118,9 @@ int run(int argc, char **argv)
     pp.load("offline_floor_window", floor_window, 64);
     pp.load("offline_seconds", limit, 235.);
     if (!p.restart_from_checkpoint || p.m_RH_num_horizons < 1 || n < 8 || n > 4096 ||
-        max_updates < 1 || floor_window < 4 || !std::isfinite(limit) || limit <= 0. || limit > 1795.)
+        max_updates < 1 || floor_window < 4 || !std::isfinite(limit) || limit <= 0. || limit > 1795. ||
+        (solver != "flow" && solver != "newton") || !std::isfinite(fd_relative) || fd_relative <= 0. ||
+        !std::isfinite(step_cells) || step_cells <= 0. || backtracks < 1 || backtracks > 100)
         throw std::runtime_error("invalid offline controls");
     GRAMR amr;
     DefaultLevelFactory<FrozenLevel> factory(amr, p);
@@ -127,6 +144,11 @@ int run(int argc, char **argv)
     AMRInterpolator<Lagrange<4>> interp(amr, p.origin, p.dx, p.boundary_params, 0);
     amr.set_interpolator(&interp);
     RHUnion rh;
+    rh.m_measure_cell_sizes = true;
+    rh.m_use_newton = solver == "newton";
+    rh.m_newton_fd_relative = fd_relative;
+    rh.m_newton_max_step_cells = step_cells;
+    rh.m_newton_backtracks = backtracks;
     // setup's existing reader is gated on t>0. nextafter also restores t=0 rows.
     rh.setup(p.m_RH_num_horizons, p.m_RH_initial_radii, p.m_RH_initial_centre,
              p.m_RH_num_points, p.m_RH_level, p.m_RH_time_step_freq,
@@ -138,7 +160,7 @@ int run(int argc, char **argv)
         out.open("surfaces.csv");
         trace.open("progress.csv");
         trace << "stage,update,search_index,expansion_squared,A,Q,centre\n";
-        out << "time,search_index,N_theta,stage,threshold,status,updates,seconds,centre,A,Q,phi_mean,phi_rms,expansion_squared,theta_minus,M_RN_legacy\n";
+        out << "time,search_index,N_theta,stage,threshold,status,updates,seconds,centre,A,Q,phi_mean,phi_rms,expansion_squared,theta_minus,M_RN_legacy,interpolation_calls,newton_iterations,newton_failures,flow_steps,minimum_local_cells\n";
         std::ofstream skipped("skipped.csv");
         skipped << "search_index,status\n";
         for (const auto &s : rh.m_surfaces)
@@ -161,8 +183,9 @@ int run(int argc, char **argv)
     rh.interpolate_fields();
     for (auto &s : rh.m_surfaces)
     {
-        record(out, s, time, -1, 0., "SEED_REPLAY", 0, 0.);
+        record(out, s, time, -1, 0., "SEED_REPLAY", 0, 0., rh);
         s = resample(s, n);
+        s.m_use_newton = rh.m_use_newton;
         // Frozen E snapshots have a strongly collapsed conformal factor.
         // Only this opt-in diagnostic changes the author's chase multiplier.
         if (t6_checkpoint_diagnostics) s.m_chase_speed = 2.;
@@ -203,6 +226,33 @@ int run(int argc, char **argv)
             rh.m_ffiles[k].open("offline_rh_f"+id+".dat");
         }
     rh.set_coupling_params(c.alpha, c.f0, c.f1, c.f2);
+    const auto flow_seed = rh.m_surfaces;
+    if (check_jacobian)
+    {
+        rh.interpolate_fields();
+        std::ofstream check("jacobian-check.csv");
+        check << "surface,half_width,colors,max_absolute,max_relative,outside_band\n";
+        for (auto &s : rh.m_surfaces)
+        {
+            const auto colored = rh.newton_jacobian(s);
+            const auto columns = rh.newton_jacobian(s, false);
+            double difference = 0., scale = 0., outside = 0.;
+            for (int i = 0; i < s.m_n; ++i)
+                for (int j = 0; j < s.m_n; ++j)
+                {
+                    difference = std::max(difference, std::abs(colored[i][j]-columns[i][j]));
+                    scale = std::max(scale, std::abs(columns[i][j]));
+                    if (std::abs(i-j) > RHSurf::expansion_half_width)
+                        outside = std::max(outside, std::abs(columns[i][j]));
+                }
+            check << std::setprecision(17) << s.m_index << ',' << RHSurf::expansion_half_width
+                  << ',' << 2*RHSurf::expansion_half_width+1 << ',' << difference
+                  << ',' << difference/scale << ',' << outside << '\n';
+            if (!std::isfinite(difference+scale+outside) || scale == 0. ||
+                difference > 1e-10*scale || outside > 1e-10*scale)
+                throw std::runtime_error("colored Newton Jacobian check failed");
+        }
+    }
     const auto start = std::chrono::steady_clock::now();
     auto seconds = [&]() { return std::chrono::duration<double>(std::chrono::steady_clock::now()-start).count(); };
     const double schedule[] = {1e-7, 1e-10, 1e-12};
@@ -213,10 +263,16 @@ int run(int argc, char **argv)
         double previous_min = 0., previous_max = 0.;
         int updates = 0;
         const char *stop = "UPDATE_CAP";
+        bool fallback = false;
         for (; updates<max_updates;)
         {
             rh.update(time, 0);
             ++updates;
+            if (rh.m_use_newton && rh.m_newton_failures)
+            {
+                fallback = true;
+                break;
+            }
             double worst = 0.;
             for (const auto &s : rh.m_surfaces)
             {
@@ -250,9 +306,22 @@ int run(int argc, char **argv)
                 errors.clear();
             }
         }
+        if (rh.m_use_newton && (fallback || std::string(stop) != "FOUND"))
+        {
+            // A failed Newton search is a transaction: replay the exact original
+            // resampled seed with the unchanged flow controls and row time cap.
+            // Probe time remains charged to that cap.
+            pout() << "OFFLINE_NEWTON_ROLLBACK seconds=" << std::setprecision(17)
+                   << seconds() << " reason=" << (fallback ? "STEP_FAILED" : stop) << '\n';
+            rh.m_surfaces = flow_seed;
+            rh.m_use_newton = false;
+            for (auto &s : rh.m_surfaces) s.m_use_newton = false;
+            stage = -1;
+            continue;
+        }
         for (const auto &s : rh.m_surfaces)
             record(out, s, time, stage, schedule[stage],
-                   s.expansion_error() <= schedule[stage] ? "FOUND" : stop, updates, seconds());
+                   s.expansion_error() <= schedule[stage] ? "FOUND" : stop, updates, seconds(), rh);
         if (std::string(stop) != "FOUND") return 1;
     }
     return 0;
