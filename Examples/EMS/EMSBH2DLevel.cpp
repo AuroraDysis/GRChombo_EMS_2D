@@ -46,6 +46,7 @@
 // For GW extraction
 #include "WeylExtraction.hpp"
 #include "WeylOmScalar.hpp"
+#include "EMSMatterWeylOmScalar.hpp"
 
 // For MQ extraction
 #include "CrudeMassChargeExtraction.hpp"
@@ -304,10 +305,9 @@ void EMSBH2DLevel::prePlotLevel()
     fillAllGhosts();
     // coupling not currently used in Constraint calcs
     CouplingFunction my_coupling(m_p.coupling_function_params);
+    ems_compute_weyl();
     BoxLoops::loop(
         make_compute_pack(
-
-            WeylOmScalar(m_p.extraction_params.center, m_dx),
 
             Constraints<CouplingFunction>(m_dx, my_coupling, m_p.m_G_Newton),
             EMSCartoonGaussConstraints(m_dx, m_p.coupling_function_params),
@@ -416,9 +416,7 @@ void EMSBH2DLevel::specificPostTimeStep()
     fillAllGhosts();
     CouplingFunction my_coupling(m_p.coupling_function_params);
 
-    BoxLoops::loop(WeylOmScalar(m_p.extraction_params.center, m_dx),
-                           m_state_new, m_state_diagnostics,
-                           EXCLUDE_GHOST_CELLS);
+    ems_compute_weyl();
     BoxLoops::loop(
             Constraints<CouplingFunction>(m_dx, my_coupling, m_p.m_G_Newton),
                        m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS);
@@ -694,8 +692,19 @@ void EMSBH2DLevel::specificPostTimeStep()
 void EMSBH2DLevel::ems_prepare_radiation()
 {
     fillAllGhosts();
-    BoxLoops::loop(WeylOmScalar(m_p.extraction_params.center, m_dx),
-                   m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS);
+    ems_compute_weyl();
+}
+
+// Weyl4 into the diagnostics from the current state; ghosts must be filled
+void EMSBH2DLevel::ems_compute_weyl()
+{
+    if (m_ems_weyl_matter)
+        BoxLoops::loop(EMSMatterWeylOmScalar(m_p.extraction_params.center, m_dx,
+                                             m_p.coupling_function_params, m_p.m_G_Newton),
+                       m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS);
+    else
+        BoxLoops::loop(WeylOmScalar(m_p.extraction_params.center, m_dx),
+                       m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS);
 }
 
 void EMSBH2DLevel::ems_extract_radiation()

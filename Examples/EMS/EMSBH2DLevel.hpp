@@ -32,6 +32,13 @@ class EMSBH2DLevel : public GRAMRLevel
         GRParmParse pp;
         return EMSGaugeSelection(pp);
     }();
+    // ems_weyl_matter = true keeps the matter term in Weyl4 (EMSMatterWeylOmScalar); default false, the vacuum form
+    bool m_ems_weyl_matter = [] {
+        GRParmParse pp;
+        bool v = false;
+        pp.query("ems_weyl_matter", v);
+        return v;
+    }();
 #ifdef CH_USE_HDF5
     void writeCheckpointHeader(HDF5Handle &handle) const override;
     void readCheckpointHeader(HDF5Handle &handle) override;
@@ -81,6 +88,7 @@ class EMSBH2DLevel : public GRAMRLevel
     void ems_t13_initial();
     // Prepare every level before the initial extraction after interpolator setup.
     void ems_prepare_radiation();
+    void ems_compute_weyl();
     void ems_extract_radiation();
 };
 
