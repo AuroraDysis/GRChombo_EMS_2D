@@ -1,0 +1,14 @@
+/Library/Developer/CommandLineTools/usr/bin/make --no-print-directory --directory=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BoxTools  lib
+/Library/Developer/CommandLineTools/usr/bin/make --no-print-directory --directory=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BaseTools  lib
+/Library/Developer/CommandLineTools/usr/bin/make --no-print-directory --directory=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/AMRTools  lib
+/Library/Developer/CommandLineTools/usr/bin/make --no-print-directory --directory=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/AMRTimeDependent  lib
+make[2]: Nothing to be done for `lib'.
+make[2]: Nothing to be done for `lib'.
+make[2]: Nothing to be done for `lib'.
+make[2]: Nothing to be done for `lib'.
+make[1]: `EMSWeylCheckpoint2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex' is up to date.
+make[1]: `EMSNPStatic2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex' is up to date.
+make[1]: `EMSNPTest2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex' is up to date.
+real 1.03
+user 0.31
+sys 0.77

@@ -1,0 +1,4 @@
+ number_procs = 1
+ threads = 1
+ simd width (doubles) = 1
+PASS NP flat, complex Maxwell signs/normalization, chi-floor rejection

@@ -14,6 +14,8 @@
 #include "SetupFunctions.hpp"
 #include "WeylOmScalar.hpp"
 #include "../../EMSNP/CheckpointJet.hpp"
+#include "../../EMSNP/ValidationExtraction.hpp"
+#include "../../EMSNP/SixthWeyl.hpp"
 
 class FrozenLevel : public GRAMRLevel
 {
@@ -43,6 +45,13 @@ class FrozenLevel : public GRAMRLevel
         BoxLoops::loop(EMSNPCheckpointJet(m_p.extraction_params.center, m_dx,
             m_p.coupling_function_params, m_p.m_G_Newton, x, y, matter, path),
             m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS, disable_simd());
+    }
+
+    void sixth_weyl(bool matter)
+    {
+        BoxLoops::loop(EMSNPSixthWeyl(m_p.extraction_params.center,m_dx,
+            m_p.coupling_function_params,m_p.m_G_Newton,matter),m_state_new,
+            m_state_diagnostics,EXCLUDE_GHOST_CELLS,disable_simd());
     }
 };
 
@@ -91,7 +100,27 @@ int run(int argc, char **argv)
         EMSRadiationExtraction extraction(params, p.dx[0] * p.dt_multiplier, time, true, 0.,
                                           p.coupling_function_params, radiation.phi_inf);
         extraction.execute_query(&interp);
+        if (radiation.np_active)
+        {
+            EMSNPValidationExtraction np(params,p.dx[0]*p.dt_multiplier,time,true,0.,
+                p.coupling_function_params,p.m_G_Newton,matter);
+            np.execute_query(&interp);
+        }
         pout() << "EMS_WEYL_OFFLINE t=" << time << " form=" << (matter ? "matter" : "vacuum") << std::endl;
+    }
+    if (radiation.np_active)
+    {
+        for (bool matter:{false,true})
+        {
+            for (auto *level:amr.get_gramrlevels())
+                dynamic_cast<FrozenLevel &>(*level).sixth_weyl(matter);
+            interp.refresh();
+            auto params=p.extraction_params;
+            params.data_path=matter ? "sixth-matter/" : "sixth-vacuum/";
+            EMSRadiationExtraction radiation6(params,p.dx[0]*p.dt_multiplier,time,true,0.,
+                p.coupling_function_params,radiation.phi_inf);
+            radiation6.execute_query(&interp);
+        }
     }
     return 0;
 }

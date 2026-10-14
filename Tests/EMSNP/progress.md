@@ -53,3 +53,95 @@ No subagents, remote compute, transfers, or evolution steps were used.
 Stop reason: (b) cannot be the stated fixed-field quadratic-order claim
 while retaining the exact defining products. No production NP integration
 or unperformed static/sphere validation is claimed.
+
+## NPTET T2 — 2026-10-15
+
+Starting revision ef0e2d5, branch np-scalars, initially clean. Re-read the
+T1 README, probe, Python contractions and CAS script, the production
+reconstruction/stress/extraction/level paths, the static harness and
+fixtures, BUILD notes and native Julia static/trumpet formulation and
+reader. SHA-256 reauthentication of the five supplied inputs matched T1;
+all five hashes were checked unchanged again after the controls.
+
+Implementation scope: new Source/Extraction/EMSNPScalar.hpp and
+EMSNPExtraction.hpp; default-false parser flag and production radiation
+scheduling hook; T1 probe reduced to a wrapper around the production
+geometry; existing frozen harness extended; new static/unit executables
+in the same GNUmakefile; test-only derivative/order controls and scripts.
+No diagnostic enum, plot/checkpoint schema, gauge, RH finder, archived
+extraction class, or evolution law was edited. No new dependency.
+
+The reproducible command is `zsh Tests/EMSNP/run_t2.sh`. It was run in
+the background with nohup and its parent waiting. Polling started after
+15 seconds; independent report work continued between observations.
+Every individual command measured below five minutes; the final full
+workflow measured 34.05 s. Final exit 1 is the reported physics-gate
+failure, not a hidden harness crash. Full output: results-t2/run-final.log.
+
+The script commands and final outputs are:
+
+- `CHOMBO_HOME=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib make -C
+  Tests/EMSWeylOffline all DIM=2 -j 8`: results-t2/build-release.log.
+  Three executable targets build normally. Initial builds measured
+  7.53–9.47 s; the final incremental rebuild was shorter.
+- `python3 Tests/EMSNP/syntax_check.py`: make dry-run plus the exact
+  prescribed throwaway-header -fsyntax-only invocation. Exit 0;
+  production-syntax.json and syntax-driver.log retain flags/timing/output.
+- `OMP_NUM_THREADS=1 EMSNPTest...ex <RN params>`: unit.log, PASS flat
+  spacetime, complex Maxwell normalization/signs, chi-floor rejection.
+- Fresh CLI `gtimeout -k 5s 60s /Applications/Wolfram.app/Contents/MacOS/wolfram
+  -script scripts/cas/np_static_metric.wls` and np_first_order.wls:
+  static-cas.log and first-order-cas.log, each under 1.1 s, all witnesses
+  PROVED. The runner also requires a PROVED marker and rejects parse or
+  NOT-CLOSED messages because a kernel syntax error can otherwise exit 0.
+- `julia --project=/Users/auroradysis/Workspace/EMS
+  Tests/EMSNP/static_oracle.jl <supplied trumpet> <oracle CSV> <radii>`:
+  rn-oracle.log and ems-oracle.log, exit 0, roughly 1.5–3 s each.
+  The Julia development skill was used for this test script. Context7
+  confirmed generic Real/nested Dual derivative support in ForwardDiff
+  v1.4.6. It also resolved the official Wolfram reference. The Wolfram
+  context tool returned an internal error; the evaluator and fresh CLI
+  worked. Evaluator results were written only by the sandboxed tool.
+- `OMP_NUM_THREADS=8 EMSNPStatic...ex params.txt`: rn-n256/n512 and
+  ems-n1024/n2048 folders, corresponding *-release.log files. t=0 only,
+  exit 0; approximately .1–1.6 s per hierarchy. No low-resolution echo
+  evolution or RHS step was launched.
+- `OMP_NUM_THREADS=8 EMSWeylCheckpoint...ex params.txt`: checkpoint,
+  cavity, default folders and *-release.log. Each loads the unchanged
+  16-level t=602 hierarchy; no advancement/regrid. Both Riemann forms
+  and requested radii are exercised. All three executables exit 0.
+  Observed cold/cached restart wall times were roughly 5–14 s.
+- Activation dependency: static executable with EMS radiation false,
+  NP true, expected exit 2 and the precise dependency error; PASS in
+  activation-dependency.json. No hierarchy is constructed on this path.
+- `python3 Tests/EMSNP/report_t2.py`: report.log, validation.json and
+  summary.md. 70 static checks PASS; 980 independent harmonic mode
+  components and pointwise X checks PASS; 42 unchanged legacy rows PASS.
+  28/30 Weyl4 comparisons PASS, with two l=3,r=100 failures retained.
+  All 28 matter rotation groups FAIL their roundoff-only transfer gate.
+  ready_for_simulation=false; report exit 1. No tolerance was widened to
+  accept the failed Weyl4 modes or rotation comparisons.
+
+Exploratory/failed attempts are retained: build-final.log had an auto
+declaration error in the refactored probe and an include-order exp
+declaration error in the standalone unit. Both were fixed and rebuilt.
+The first unit invocation printed usage without a parameter file; the
+actual unit result above is from the required parameter invocation.
+first-order-cas-syntax-failure.log and its MCP failure transcript record
+a missing closing bracket, corrected before the passing cold-kernel run.
+default-lock-failure.log records an attempted concurrent restart rejected
+by HDF5's exclusive lock; subsequent/final restart runs are sequential.
+
+An exploratory Lagrange<6> **jet** reconstruction disagreed strongly with
+the otherwise controlled curvature; its CSVs remain under
+exploratory-sixth-jets and are not used as accuracy references. It was
+not investigated or promoted. The final sixth-order cell-Weyl control
+uses the same existing Lagrange<4> interpolation as production, isolating
+the cell derivative order and avoiding that unvalidated route.
+
+Static outermost-EMS curvature lacks fourth-order decrease once errors
+reach the Float64 second-derivative floor; the report explicitly separates
+the arithmetic and Richardson allowances. Required method was preserved:
+no projection using reconstructed Ricci replaced field-equation Ricci.
+No full production link/evolution was attempted past the specified syntax
+workaround. No HPC, SSH, file transfer, push, rebase or branch deletion.

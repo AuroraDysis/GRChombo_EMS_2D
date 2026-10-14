@@ -1,0 +1,54 @@
+Depending harness/EMSWeylCheckpoint.cpp ...
+Depending harness/EMSNPTest.cpp ...
+Depending harness/EMSNPStatic.cpp ...
+/Library/Developer/CommandLineTools/usr/bin/make --no-print-directory --directory=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BoxTools  lib
+/Library/Developer/CommandLineTools/usr/bin/make --no-print-directory --directory=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/AMRTools  lib
+/Library/Developer/CommandLineTools/usr/bin/make --no-print-directory --directory=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/AMRTimeDependent  lib
+/Library/Developer/CommandLineTools/usr/bin/make --no-print-directory --directory=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BaseTools  lib
+make[2]: Nothing to be done for `lib'.
+make[2]: Nothing to be done for `lib'.
+make[2]: Nothing to be done for `lib'.
+make[2]: Nothing to be done for `lib'.
+/opt/homebrew/bin/g++-16  -O3 -std=c++17 -fopenmp    -DCH_SPACEDIM=2 -DCH_Darwin   -DNDEBUG       -DCH_USE_COMPLEX       -DCH_USE_64    -DCH_USE_DOUBLE -DCH_USE_HDF5 -I/Users/auroradysis/Workspace/EMS-deps/hdf5-1.14/include -DH5_USE_16_API  -Iharness -I../../Source/utils -I../../Source/simd -I../../Source/BoxUtils -I../../Source/CCZ4 -I../../Source/GRChomboCore -I../../Source/AMRInterpolator     -DCH_USE_LAPACK   -DCH_FORT_UNDERSCORE -I/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/AMRTimeDependent -I/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/AMRTools -I/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BoxTools -I/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BaseTools   -I../../Examples/EMS -I../../Source/Extraction -I../../Source/RHFinder -I../../Source/Matter -I../../Source/Cartoon -I../../Source/TaggingCriteria -I../../Source/InitialConditions/EMSBH -I../../Source/InitialConditions/EMSBH/1D_SOL  -DCH_LANG_CC -c harness/EMSWeylCheckpoint.cpp -o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/EMSWeylCheckpoint.o
+/opt/homebrew/bin/g++-16  -O3 -std=c++17 -fopenmp    -DCH_SPACEDIM=2 -DCH_Darwin   -DNDEBUG       -DCH_USE_COMPLEX       -DCH_USE_64    -DCH_USE_DOUBLE -DCH_USE_HDF5 -I/Users/auroradysis/Workspace/EMS-deps/hdf5-1.14/include -DH5_USE_16_API  -Iharness -I../../Source/utils -I../../Source/simd -I../../Source/BoxUtils -I../../Source/CCZ4 -I../../Source/GRChomboCore -I../../Source/AMRInterpolator     -DCH_USE_LAPACK   -DCH_FORT_UNDERSCORE -I/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/AMRTimeDependent -I/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/AMRTools -I/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BoxTools -I/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BaseTools   -I../../Examples/EMS -I../../Source/Extraction -I../../Source/RHFinder -I../../Source/Matter -I../../Source/Cartoon -I../../Source/TaggingCriteria -I../../Source/InitialConditions/EMSBH -I../../Source/InitialConditions/EMSBH/1D_SOL  -DCH_LANG_CC -c harness/EMSNPStatic.cpp -o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/EMSNPStatic.o
+/opt/homebrew/bin/g++-16  -O3 -std=c++17 -fopenmp    -DCH_SPACEDIM=2 -DCH_Darwin   -DNDEBUG       -DCH_USE_COMPLEX       -DCH_USE_64    -DCH_USE_DOUBLE -DCH_USE_HDF5 -I/Users/auroradysis/Workspace/EMS-deps/hdf5-1.14/include -DH5_USE_16_API  -Iharness -I../../Source/utils -I../../Source/simd -I../../Source/BoxUtils -I../../Source/CCZ4 -I../../Source/GRChomboCore -I../../Source/AMRInterpolator     -DCH_USE_LAPACK   -DCH_FORT_UNDERSCORE -I/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/AMRTimeDependent -I/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/AMRTools -I/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BoxTools -I/Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BaseTools   -I../../Examples/EMS -I../../Source/Extraction -I../../Source/RHFinder -I../../Source/Matter -I../../Source/Cartoon -I../../Source/TaggingCriteria -I../../Source/InitialConditions/EMSBH -I../../Source/InitialConditions/EMSBH/1D_SOL  -DCH_LANG_CC -c harness/EMSNPTest.cpp -o o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/EMSNPTest.o
+In file included from ../../Source/Cartoon/EMSMatterWeylOmScalar.hpp:9,
+                 from ../../Source/Extraction/EMSNPScalar.hpp:4,
+                 from harness/EMSNPTest.cpp:1:
+../../Examples/EMS/EMSCouplingFunction.hpp: In instantiation of 'void CouplingFunction::compute_coupling(data_t&, data_t&, data_t&, const vars_t<data_t>&) const [with data_t = double; vars_t = CCZ4CartoonVars::VarsWithGauge]':
+../../Source/Cartoon/CCZ4Cartoon.impl.hpp:42:28:   required from 'emtensorCartoon_t<data_t> compute_EMS_EM_tensor(const vars_t<data_t>&, const vars_t<Tensor<1, data_t> >&, const Tensor<2, data_t, 2>&, const data_t&, const chris_t<data_t>&, const int&, const CouplingFunction&) [with data_t = double; vars_t = CCZ4CartoonVars::VarsWithGauge]'
+   42 | a_coupling.compute_coupling(f_coupling, fprime, coupling, vars);
+      | ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../Source/Extraction/EMSNPScalar.hpp:47:44:   required from here
+   47 |         const auto em=compute_EMS_EM_tensor(vars,d1,hu,1./vars.hww,chris,
+      |                       ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   48 |             GR_SPACEDIM-CH_SPACEDIM,m_coupling);
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../Examples/EMS/EMSCouplingFunction.hpp:49:30: error: 'exp' was not declared in this scope, and no declarations were found by argument-dependent lookup at the point of instantiation [-fpermissive]
+   49 |         coupling_of_phi = exp(-2.*f_of_phi);
+      |                           ~~~^~~~~~~~~~~~~~
+In file included from /Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BaseTools/Misc.H:16,
+                 from /Users/auroradysis/Workspace/EMS-deps/Chombo/lib/src/BaseTools/ParmParse.H:37,
+                 from ../../Source/utils/GRParmParse.hpp:10,
+                 from ../../Source/GRChomboCore/UserVariables.inc.hpp:17,
+                 from ../../Examples/EMS/UserVariables.hpp:29,
+                 from ../../Source/CCZ4/ADMConformalVars.hpp:10,
+                 from ../../Source/Cartoon/CCZ4CartoonVars.hpp:9,
+                 from ../../Source/Cartoon/CCZ4Cartoon.hpp:10,
+                 from ../../Source/Cartoon/EMSMatterWeylOmScalar.hpp:10:
+/opt/homebrew/Cellar/gcc/16.2.0/include/c++/16/cmath:226:3: note: 'constexpr float std::exp(float)' declared here, later in the translation unit
+  226 |   exp(float __x)
+      |   ^~~
+In file included from harness/EMSWeylCheckpoint.cpp:16:
+harness/../../EMSNP/CheckpointJet.hpp: In member function 'void EMSNPCheckpointJet::compute(Cell<double>) const':
+harness/../../EMSNP/CheckpointJet.hpp:31:15: error: inconsistent deduction for 'auto': 'const double [4][4][4][4]' and then 'const double [4][4]'
+   31 |         const auto &R=out.R, &ric=out.ric, &g=out.g, &F=out.F;
+      |               ^~~~
+make[1]: *** [o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/EMSNPTest.o] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make[1]: *** [o/2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC/EMSWeylCheckpoint.o] Error 1
+make: *** [all-test] Error 2
+real 7.45
+user 7.44
+sys 1.05
+BUILD_EXIT=2

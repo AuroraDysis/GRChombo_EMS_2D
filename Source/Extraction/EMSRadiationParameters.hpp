@@ -17,12 +17,16 @@ inline double ems_rh_expansion_threshold(GRParmParse &pp)
 struct EMSRadiationParameters
 {
     bool active=false;
+    bool np_active=false;
     double phi_inf=0;
     int wave_level=0;
     double wave_radius=0;
     EMSRadiationParameters(GRParmParse &pp,const SimulationParameters &p)
     {
         pp.query("ems_radiation_activate",active);
+        pp.query("ems_np_activate",np_active);
+        if (np_active && !active)
+            throw std::runtime_error("ems_np_activate requires ems_radiation_activate (shared schedule)");
         if (!active) return;
         pp.query("ems_radiation_phi_inf",phi_inf);
         pp.query("ems_radiation_wave_level",wave_level);

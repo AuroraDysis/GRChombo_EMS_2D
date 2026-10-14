@@ -1,0 +1,42 @@
+(* Q[a,h,eps,P0..4,F0..2], h!=0. Exact polynomial witnesses for the
+   corrected T2 acceptance. a=eps b is a joint perturbative counting,
+   never a quadratic-in-a claim at fixed fields. *)
+ClearAll["Global`*"];
+Check[
+p={p0,p1,p2,p3,p4}; f={f0,f1,f2};
+xo[ps_,fs_]:=2 fs[[2]] ps[[4]]-3 ps[[3]] fs[[3]];
+xi[ps_,fs_]:=2 fs[[2]] ps[[2]]-3 ps[[3]] fs[[1]];
+rotL[v_]:=Table[Sum[Binomial[j,k] a^k v[[j-k+1]],{k,0,j}],{j,0,Length[v]-1}];
+rotK[v_]:=Reverse[rotL[Reverse[v]]];
+expressions={xo[rotL[p],rotL[f]],xi[rotL[p],rotL[f]],xo[rotK[p],rotK[f]],xi[rotK[p],rotK[f]]};
+linear=Coefficient[Expand[#],a,1]& /@ expressions;
+expected={2 f0 p3-6 f2 p1,2 f1 p0-4 f0 p1,2 f1 p4-4 f2 p3,2 f2 p1-6 f0 p3};
+assert[q_,label_]:=If[!TrueQ[q],Print["NOT-CLOSED ",label];Exit[1]];
+assert[And@@Thread[(Expand /@ (linear-expected))==0],"linear coefficients"];
+counting={p0->eps z0,p1->eps z1,p2->P2+eps z2,p3->eps z3,p4->eps z4,
+    f0->eps y0,f1->F1+eps y1,f2->eps y2};
+For[i=1,i<=4,i++,
+    change=Expand[(expressions[[i]]-(expressions[[i]]/.a->0))/.counting/.a->eps b];
+    assert[Coefficient[change,eps,0]===0 && Coefficient[change,eps,1]===0,"joint first order"];
+    fd=Cancel[Together[(8 ((expressions[[i]]/.a->h)-(expressions[[i]]/.a->-h))-
+        ((expressions[[i]]/.a->2h)-(expressions[[i]]/.a->-2h)))/(12h)-linear[[i]]]];
+    assert[fd===0,"four-point finite difference"];
+];
+assert[Coefficient[Expand[linear[[1]]/.counting],eps,1]===0 &&
+    Coefficient[Expand[linear[[4]]/.counting],eps,1]===0,"protected-class quadratic coefficients"];
+(* If Riemann and the supplied field-equation Ricci do not contract
+   consistently, the resulting C has trace Ric(Riemann)-Ric(field). *)
+eta=DiagonalMatrix[{-1,1,1,1}]; ric=Table[q[Min[i,j],Max[i,j]],{i,4},{j,4}];
+scalar=Sum[eta[[i,i]] ric[[i,i]],{i,4}];
+sub[a_,bb_,c_,d_]:=(eta[[a,c]] ric[[d,bb]]-eta[[a,d]] ric[[c,bb]]-
+    eta[[bb,c]] ric[[d,a]]+eta[[bb,d]] ric[[c,a]])/2-
+    scalar*(eta[[a,c]] eta[[d,bb]]-eta[[a,d]] eta[[c,bb]])/6;
+Do[assert[Expand[Sum[eta[[a,a]] sub[a,bb,a,d],{a,4}]-ric[[bb,d]]]===0,
+    "residual Weyl trace identity"],{bb,4},{d,4}];
+Print["PROVED: all four CAS derivatives; joint first-order invariance for both classes and both X"];
+Print["PROVED: l-fixed Xout and k-fixed Xin derivative coefficients start at eps^2"];
+Print["PROVED: four-point derivative is exact for these degree<=4 rotation polynomials, h!=0"];
+Print["PROVED: residual Weyl trace equals reconstructed Ricci minus field-equation Ricci"];
+Print["Linear coefficients: ",ToString[linear,InputForm]];
+Print["CAS scope: algebraic identity — production physics not certified"];
+Exit[0],Print["NOT-CLOSED Wolfram message"];Exit[1]];

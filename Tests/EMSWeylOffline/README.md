@@ -23,3 +23,11 @@ to export one valid cell's reconstructed tensors to each form's `np_jet.txt`.
 Absent `np_probe_level`, this probe is off. See [the failed acceptance
 control and convention note](../EMSNP/README.md); this is not a production
 NP extraction.
+
+With `ems_np_activate = true` (and EMS radiation active), the harness now
+runs the production NP extraction for both Riemann forms and writes
+`ems_np.csv` plus test-only `np_points.csv` in each form's directory.
+It also writes a sixth-order cell-Weyl spatial-error control, using the
+same fourth-order interpolator. `EMSNPStatic` builds t=0 trumpet controls;
+`EMSNPTest` checks flat space and complex Maxwell normalization. The T2
+readiness gates currently fail; see [the current report](../EMSNP/README.md).

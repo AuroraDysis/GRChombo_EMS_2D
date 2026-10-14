@@ -1,212 +1,223 @@
-# NP tetrad acceptance probe: stopped on control (b)
+# One-tetrad EMS Newman–Penrose extraction
 
-NPTET T1, run `ariadne-run:v1:51304_760a6373`, branch `np-scalars`,
-starting revision `d10d27e`. **The requested production diagnostic is not
-implemented and is not ready for a new simulation.** The fixed-field,
-second-order-in-null-rotation requirement in (b) is stronger than the
-first-order Coulomb cancellation of the defining expressions. Changing that
-requirement was explicitly a stop in the task; this packet preserves the
-failed control without changing the expressions, gauge, or production code.
+NPTET T2, `ariadne-run:v1:60855_1b655de3`, resumes ef0e2d5 on `np-scalars`.
+The controller corrected acceptance (b): the rotation is itself counted as
+first order. The superseded T1 claim and record are in [README-T1.md](README-T1.md).
 
-## Convention and normalization
+**The implementation is default-off. Required controls fail; this tranche
+does not certify a new simulation.** The field-equation Ricci subtraction
+leaves a residual Weyl trace on discretized data. Exact NP rotation laws
+therefore fail the requested roundoff-only comparison. Two weak Weyl4 modes
+also exceed the declared spatial error estimate. Neither method nor
+acceptance was changed to force a pass.
 
-Signature is `(-,+,+,+)`. Use `WeylOmScalar::compute_null_tetrad` unchanged:
-`u=m1` is the normalized coordinate radial direction; `v=m2` is the
-Gram–Schmidt orthogonalization of `(-y,x)` in the cartoon plane; the physical
-azimuthal unit vector is `w=mw ∂w`. The unused, degenerate `m3` is not used.
-Let `n` be the future Eulerian unit normal and set
+## Production interface
+
+Enable `ems_radiation_activate = true` and `ems_np_activate = true` to write
+`ems_np.csv` on the existing radii, center, Simpson quadrature and schedule,
+including the existing t=0 call. NP defaults false and requires EMS radiation.
+Physical/model parameters are live inputs. No gauge, evolution, KO, AMR
+transfer, or static target after t=0 is introduced.
+
+`EMSNPScalar` reuses the inherited Gauss, Codazzi, normal-normal Riemann,
+and `EMSMatterWeylOmScalar::add_matter`, including the evolution's own
+`compute_EMS_EM_tensor`. It subtracts `Ric_ab=8 pi G (T_ab-T g_ab/2)`.
+`EMSNPExtraction` evaluates it on interpolated fourth-order spatial jets:
+the existing Lagrange<4> first/second derivative stencils have five/six points.
+The legacy W is still computed on cells and then interpolated.
+**No new diagnostic variables or checkpoint/plot layout changes were needed.**
+
+The new production extraction is always matter-complete. Legacy W retains
+its independent `ems_weyl_matter` flag; enable that flag when comparing the
+same matter-complete form. The frozen harness runs both forms. Its vacuum
+control omits only the normal-normal matter correction; the Ricci
+subtraction still uses the same EMS stress tensor in both forms.
+
+CSV columns are `t,r,R,l,m`, then real/imaginary pairs for `Psi0`…`Psi4`,
+`Phi0`…`Phi2`, `X_out`, `X_in`. Each value is **R times its harmonic
+coefficient**, matching EMS radiation. Every allowed m=0 mode through l=6
+is recorded; l below the spin magnitude is zero and axisymmetry removes
+m!=0. Both X are formed pointwise before projection. R comes from the
+proper sphere area, r is coordinate radius. The two zero-measure polar
+endpoints are omitted from reconstruction and pointwise controls because
+the inherited formulas contain 1/y and 1/y². All 95 nonzero-weight nodes
+are tested; no offset, replacement pole value, or new frame is introduced.
+
+## Fixed convention and normalization
+
+Signature `(-+++)`; n is the future Eulerian normal. Use the inherited
+radial-first Gram–Schmidt vectors u=m1 and v=m2, and positive cartoon
+azimuthal w=mw∂w. The unused degenerate m3 is not consumed.
 
 ```
-l=(n+u)/sqrt(2), k=(n-u)/sqrt(2), m=(v+i w)/sqrt(2).
+l=(n+u)/sqrt(2), k=(n-u)/sqrt(2), m=(v+i w)/sqrt(2),
 l.k=-1, m.mbar=1.
-Psi0=C(l,m,l,m),        Psi1=C(l,k,l,m),
-Psi2=C(l,m,mbar,k),     Psi3=C(l,k,mbar,k),
+Psi0=C(l,m,l,m),       Psi1=C(l,k,l,m),
+Psi2=C(l,m,mbar,k),    Psi3=C(l,k,mbar,k),
 Psi4=C(k,mbar,k,mbar).
 Phi0=F(l,m), Phi1=[F(l,k)+F(mbar,m)]/2, Phi2=F(mbar,k).
-X_out=2 Phi1 Psi3-3 Psi2 Phi2; X_in=2 Phi1 Psi1-3 Psi2 Phi0.
+X_out=2 Phi1 Psi3-3 Psi2 Phi2,
+X_in =2 Phi1 Psi1-3 Psi2 Phi0.
 ```
 
-These positive Weyl contractions fix the signs of every Psi together. With
-the evolved covectors, `F(i,n)=E_i` and `F_ij=sqrt(det gamma)[ijk] B^k`.
-There is no coupling factor in any Phi. In an oriented orthonormal frame,
-`Phi1=(E_u+i B_u)/2` and
-`Phi2=[E_v+B_w+i(B_v-E_w)]/2`, agreeing with `EMSNativeRadiation` when its
-transverse frame agrees. Its surface-normal frame need not equal this
-radial-first Gram–Schmidt frame in a nonspherical metric.
+E,B are covectors: `F(i,n)=E_i`, `F_ij=sqrt(det gamma)[ijk] B^k`.
+There is no coupling multiplier in Phi. In an oriented orthonormal frame,
+`Phi1=(E_u+i B_u)/2`, `Phi2=[E_v+B_w+i(B_v-E_w)]/2`.
+All scalars are real in the supplied polar, nonrotating sector; their
+imaginary parts vanish. Generic poloidal magnetic fields can give imaginary
+Maxwell components, which the implementation retains. Only Psi2 and Phi1
+remain in an aligned spherical static background. Spin weights are
+`2,1,0,-1,-2`, `1,0,-1`, `-1,1`. The existing harmonic phase has
+`_1Y10=+sqrt(3/(8pi)) sin(theta)`, `_(-1)Y10=-_1Y10`.
 
-In the reflection-even polar sector of the supplied hierarchy (`E_w=0`,
-`B_u=B_v=0`, no metric component with one w index), all five Psi, all three
-Phi, and both X are real. Their imaginary parts vanish; their real parts
-are generally nonzero. Axisymmetry alone would not exclude an independent
-magnetic sector. On an aligned spherical Coulomb solution only Psi2 and
-Phi1 can remain. The requested spin weights are respectively `2,1,0,-1,-2`,
-`1,0,-1`, and `-1,1`; no new harmonic projections were implemented.
-
-The existing `c_Weyl4_Re` is **`+Re(Psi4)`**, factor **+1** in this convention.
-To see this, expand the contractions:
+**c_Weyl4_Re = +Re(Psi4)** (factor +1):
 
 ```
-Re Psi4 = [C(n,v,n,v)-2 C(n,v,u,v)+C(u,v,u,v)
-          -C(n,w,n,w)+2 C(n,w,u,w)-C(u,w,u,w)]/4.
+Re Psi4 = [C(n,v,n,v)-2C(n,v,u,v)+C(u,v,u,v)
+          -C(n,w,n,w)+2C(n,w,u,w)-C(u,w,u,w)]/4.
 ```
 
-Replacing C by R leaves the transverse difference unchanged: each Ricci
-subtraction in `C(k,e,k,e)` is `-Ric(k,k)/2`, the same for e=v,w.
-The expression is exactly the `omlocij[1][1]-Omww` in
-`compute_Weyl_Om`; its returned `out.Om22` already includes that subtraction.
-This identity assumes the same physical metric in the reconstruction and
-tetrad. The probe rejects chi at or below `1e-4`, so neither existing chi
-floor changes that metric.
+The Ricci subtraction in C(k,e,k,e) is -Ric(k,k)/2 for both e=v,w,
+so it cancels in the difference. Replacing C by R gives exactly the old
+omlocij[1][1]-Omww; returned out.Om22 already contains the subtraction.
+The identity is checked on the same jets at every node, maximum error
+below 3.4e-21. Comparing cell-then-interpolate W is a separate spatial test.
+At chi<1e-4 the inherited Riemann and tetrad floors use inconsistent metrics;
+NP rejects that case instead of redefining the normalization. No tested
+sphere node hits this rejection. In these geometric units G=c=1:
+[Psi]=L^-2, [Phi]=L^-1, [X]=L^-3; the rotation parameter is dimensionless.
 
-On the **same** t=602 hierarchy, at the valid level-2 cell
-`(x-center_x,y)=(35.21875,35.21875)`, dx=0.4375, the absolute normalization
-residual is `2.118e-22` for the vacuum form and `6.353e-22` for the
-matter-complete form. The magnitude-based Float64 tolerance is `1.677e-16`
-(`4096 epsilon` times the tensor norm and frame contraction scale).
-This is a pointwise normalization check, **not** the requested sphere-mode
-comparison at r=50,75,100.
+## Independent static oracle and control (a)
 
-Lengths are in the input's geometric units, G=c=1; `[Psi]=L^-2`,
-`[Phi]=L^-1`, `[X]=L^-3`, and the null-rotation parameter is dimensionless.
-No mass or field normalization is adjusted.
-
-## Exact obstruction
-
-For a real l-fixed null rotation of parameter a,
+For ds²=-A(r)dt²+dr²/N(r)+r²dΩ², A=N exp(-2δ), direct four-dimensional
+Christoffel/Riemann construction gives orthonormal projections
 
 ```
-l'=l, m'=m+a l, k'=k+a(m+mbar)+a^2 l,
-Phi0'=Phi0,
-Phi1'=Phi1+a Phi0,
-Phi2'=Phi2+2a Phi1+a^2 Phi0,
-Psi1'=Psi1+a Psi0,
-Psi2'=Psi2+2a Psi1+a^2 Psi0,
-Psi3'=Psi3+3a Psi2+3a^2 Psi1+a^3 Psi0.
+x=R0101=N[A''/(2A)-A'^2/(4A²)]+N'A'/(4A),
+y=R0202=N A'/(2Ar), z=R1212=-N'/(2r), w=R2323=(1-N)/r²,
+Psi2=(x-y+z-w)/6
+ =[N''/2-Nδ''-3N'δ'/2+Nδ'^2-N'/r+Nδ'/r-(1-N)/r²]/6,
+Phi1=exp(δ)V'/2=Q/[2 sqrt(8pi) F r²].
 ```
 
-The binomial laws follow by multilinearity of the symmetric rank-2 and
-rank-4 spinors. They also follow from direct tensor contraction; the
-independent electric/magnetic Weyl self-check in `check_rotation.py`
-agrees to `5.929e-17`. For a literature cross-check see Eq. (3) of
-[Mao and Zhao, arXiv:2312.17160v2](https://arxiv.org/html/2312.17160v2#S2).
-That paper uses the opposite metric signature; the binomial coefficients
-are unaffected by the common sign conversion of the scalar definitions.
+V'=Q exp(-δ)/(sqrt(8pi) F r²) is the native potential first integral.
+The exact executable `scripts/cas/np_static_metric.wls` proves all four
+projections, Ricci subtraction and the Schwarzschild/RN limits
+Psi2=-M/r³ and -M/r³+Q²/r⁴. A radial boost to the maximal trumpet normal
+leaves Psi2 and Phi1 invariant. All oracle points are outside the static
+horizon; poles r=0,A=0,N=0,F=0,sin(theta)=0 are excluded.
 
-Substituting the defining expressions gives the exact linear coefficients:
+`static_oracle.jl` uses the supplied Julia trumpet reader, Y,D,S coefficients
+and signed C, independently of Cartesian Gauss/Codazzi. It reconstructs
+r=Y/(1-s), δ=(1-s)²D, the maximal lapse, A=alpha_K²-C²/r⁴ and N=exp(2δ)A.
+Nested ForwardDiff and the s-to-r chain rule supply the derivatives. No
+unprovided serialized solution, root, field rescaling or gauge is selected.
+RN also passes a numerical closed-form check before the oracle is written.
 
-| Fixed null vector | dX_out/da at 0 | dX_in/da at 0 |
+The static harness builds genuine t=0 hierarchies with the production
+trumpet initial-data reader; its RHS throws and it calls no RH finder.
+RN uses dx=.0625,.03125 at r=1,2,4. EMS uses dx=.00390625,.001953125
+at the four specified cavity coordinate radii. These are t=0 diagnostics,
+not low-resolution echo evolution runs. Static data enter no evolution.
+
+All **70 scalar/sphere controls pass**. Tolerance is
+`8/15 max|f_h-f_(h/2)|` from fourth-order refinement, plus arithmetic:
+128ε/dx_fine² for Psi, 128ε|Phi1| for Phi, and the corresponding product
+bound for X. The 1/dx² term accounts for second-difference conditioning.
+The outermost EMS curvature is at its Float64 arithmetic floor and is
+not claimed to show converged fourth-order truncation there. Both budget
+parts, observed orders and every error are in validation.json; summary.md
+lists the independent Psi2/Phi1 comparisons and vanishing-field residuals.
+
+## Corrected rotation controls (b)
+
+The second null vector called n in T2 is k here; n denotes the Eulerian
+normal. For l fixed, m'=m+a l, k'=k+a(m+mbar)+a²l. Interchange l,k for
+the other class. The exact derivatives are:
+
+| Fixed vector | derivative X_out | derivative X_in |
 |---|---|---|
-| l | `2 Phi0 Psi3 - 6 Phi2 Psi1` | `2 Phi1 Psi0 - 4 Phi0 Psi1` |
-| k | `2 Phi1 Psi4 - 4 Phi2 Psi3` | `2 Phi2 Psi1 - 6 Phi0 Psi3` |
+| l | 2 Phi0 Psi3-6 Phi2 Psi1 | 2 Phi1 Psi0-4 Phi0 Psi1 |
+| k | 2 Phi1 Psi4-4 Phi2 Psi3 | 2 Phi2 Psi1-6 Phi0 Psi3 |
 
-These are not identically zero. For example, in mass-one units choose
-`Psi2=-1, Phi1=1, Psi3=epsilon, Phi0=epsilon`, with all other Psi and Phi
-zero. The l-fixed derivative of X_out is exactly `2 epsilon^2`, nonzero
-for every nonzero epsilon, however small. This is an algebraic
-counterexample, **not a replacement for the supplied checkpoint**.
+`np_first_order.wls` proves all four coefficients vanish on the aligned
+Coulomb background. With a counted as first order, both changes in both
+classes start at second joint order. The l-fixed X_out and k-fixed X_in
+coefficients themselves start at second order in non-Coulomb fields;
+the opposite-class coefficients generally start at first order.
 
-The protected coefficients (l-fixed X_out, k-fixed X_in) are quadratic in
-non-Coulomb perturbations. They cancel to first order about an aligned
-Coulomb background. They do **not** in general vanish to first order in a
-at fixed perturbed fields. A joint expansion in the data perturbation and
-tetrad rotation, or a bound allowing the linear remainder, is a different
-acceptance statement. Neither was substituted for the requested test.
+The test rotates the tetrad itself at ±h,±2h, h=1/32. Its derivative is
+[8(X(h)-X(-h))-(X(2h)-X(-2h))]/(12h). CAS proves this exact for the
+rotation polynomial of degree <=4. No finite-step allowance is required.
+The pointwise roundoff budget is
+4096ε Cmax Fmax [tmax(1+2h)²]^6/h, where tmax is the largest tetrad
+absolute component sum. **No spatial tolerance is added to (b)(i).**
 
-## Frozen-checkpoint control
+That gate fails in **all 28 matter sphere/class/combination groups**.
+Production-sphere error/budget reaches 2.0e4. The measured Weyl trace is
+3.25e-10,2.44e-10,8.46e-11 at r=50,75,100, and
+2.16e-4,2.50e-5,6.33e-6,2.18e-6 on the cavity spheres. CAS verifies
+`g^ac C_abcd = Ric(reconstructed Riemann)_bd - Ric(field equations)_bd`.
+Those Ricci tensors differ on constraint-violating discretized data;
+the resulting tensor is not exactly trace free, so its contractions need
+not obey exact NP binomial laws to roundoff. The continuum algebra is
+proved, but this runtime control fails. No trace projection, replacement
+Ricci or constraint solve was used. Such a repair would change the
+specified method and needs a further operator decision.
 
-`CheckpointJet.hpp` reuses the existing Gauss/Codazzi/normal-normal
-reconstruction and `add_matter`, exports its Riemann tensor, and obtains
-`Ric_ab=8 pi G (T_ab-T g_ab/2)` from `compute_EMS_EM_tensor`. The test
-reader subtracts that Ricci part and contracts the resulting tensor and
-the rebuilt F with one tetrad before and after the rotation. It does not
-apply NP transformation formulas to generate the checkpoint results.
-The hierarchy is never advanced, regridded, or initialized from a static
-solution. Only one selected valid cell is exported per form.
+For (b)(ii), summary.md reports sphere RMS of the pointwise suppression
+and perturbation ratios, including areal radii. validation.json also gives
+ratios of RMS values, CAS responses, incoming ratios, and undefined-ratio
+counts (none here). Protected responses are 4.2e-7–7.5e-6 against
+perturbation ratios .0014–.0095, consistent with product suppression,
+subject to the measured off-shell error. The l-fixed coefficient obeys
+`|dX|/(12|Phi1 Psi2|) <= |Phi0/Phi1||Psi3/Psi2|/6 +
+|Phi2/Phi1||Psi1/Psi2|/2`; k-fixed Xin reverses the coefficients.
+Opposite-class ratios are O(1), since their specified denominators have
+no Coulomb leading term. They are reported and are not called suppressed.
 
-The matter-complete result gives:
+## Weyl4, projection and default controls (c,d)
 
-| a (l fixed) | abs(delta X_in) | abs(delta Phi2) |
-|---|---:|---:|
-| 1e-3 | 3.391041889e-16 | 1.590913996e-7 |
-| 1e-4 | 3.391040768e-17 | 1.590914453e-8 |
-| 1e-5 | 3.391040826e-18 | 1.590914499e-9 |
+Same-jet normalization is +1 in both forms. The spatial comparison uses
+a test-only sixth-order cell derivative with the **same Lagrange<4>**
+interpolation and quadrature. Its declared tolerance is
+`8|W4-W6|+4096ε R RMS(Psi2)`, a discretization estimate, not a rigorous
+bound. All l=2 modes pass with matter-form relative differences
+1.42e-6,7.53e-7,6.83e-7. Overall **28/30 modes pass**. Both forms fail
+l=3 at r=100: error 3.343e-14, tolerance 7.39e-15, relative .00477 in
+that weak mode. The tolerance is not widened after the failures.
 
-The decade slopes for X_in are `1.000000144` and `0.999999993`; for
-Phi2 they are `0.999999875` and `0.999999988`. A second-order response
-would have slope 2. Over these steps, a slope tolerance of 0.003 follows
-conservatively from the `<=1.452e-20` paired-change roundoff budget for X:
-4096 Float64 eps times the absolute sums in the tensor contractions and
-products, including both evaluations. The measured changes exceed this
-budget by factors 234 to 23,400. This comparison diagnoses the rotation
-order **on the frozen discretized fields**, not continuum convergence.
-For a k-fixed rotation, abs(delta X_out) is `1.754826600e-13`,
-`1.754823291e-14`, `1.754822960e-15` over those same steps, also linear.
-Phi2 is invariant under the k-fixed rotation, as expected.
+An independent associated-Legendre factorial implementation rebuilds
+all **980 mode components**, including signs, spin weights and R factors;
+maximum residual is .00181 of its 2048ε absolute-sum budget. Both X
+expressions are independently checked at every point before projection.
 
-There is a further numerical qualification: using the field-equation
-Ricci with discretized Gauss/Codazzi data leaves a residual Weyl trace.
-Its orthonormal maximum is `3.036e-10` for the matter form (`8.059e-7`
-for the vacuum reconstruction with matter Ricci). This is reported in
-`rotation.json`; **no trace projection or change of reconstruction method
-was made**. Consequently the ideal trace-free binomial derivatives and
-the direct derivatives need not coincide exactly. In particular, the
-very small l-fixed X_out changes at a<=1e-5 are below the conservative
-roundoff budget and are not evidence of a resolved order. The exact
-algebraic obstruction above does not depend on this discretization issue.
+EMSBH2DLevel.cpp passes -fsyntax-only with the prescribed temporary header
+copy and line-51 private-to-protected workaround. Source headers are not
+patched. Default-off and NP-enabled runs reproduce the 42 old radiation
+rows to 1e-12 relative (+1e-100 at zeros), maximum difference zero. No new
+NP file appears with the flag off. Flat space, complex Maxwell signs and
+normalization, chi-floor rejection and activation-dependency controls pass.
+A full production executable link/evolution is not claimed: its known
+private-header build issue is outside this task.
 
-## Validation status and files
+## Evidence and reproduction
 
-| Requested control | Result |
-|---|---|
-| (a) RN and alpha=.9,e=7 EMS static profiles | Inputs fingerprinted and metadata inspected; hierarchies, static formulas, and truncation tolerances **not run/derived** after the stop. |
-| (b) Quadratic rotation response of both X on perturbed data | **Failed as written**; exact obstruction and direct checkpoint evidence above. Joint perturbative cancellation is a separate statement. |
-| (c) Psi4 versus production W on all three spheres | Factor +1 derived and checked at one cell for both forms; full NP sphere projections **not implemented/tested**. Existing radiation extraction ran on r=50,75,100. |
-| (d) Default production path | `EMSBH2DLevel.cpp` syntax check passed with the prescribed throwaway header. No Source/ or Examples/ source changes. Test probe disabled: 42 radiation CSV rows agree within 1e-12 relative, maximum difference 0; no jet files created. |
+All five inputs were rehashed against T1 identities; see results-t2/inputs.json.
+The t=602 checkpoint has 16 synchronized levels and 28 evolved fields.
+The full hierarchy is read without advancing, regridding or replacing data.
+Parameter copies state every restart/sphere/test selector.
 
-No production `ems_np_activate`, diagnostic variables, extraction class,
-or `ems_np.csv` has been added. The only harness change is an optional
-`np_probe_level` (absent means off) with required finite `np_probe_x,y`.
-Existing radiation columns and production defaults remain unchanged.
+Run `zsh Tests/EMSNP/run_t2.sh`. It builds with the local serial Chombo,
+runs syntax/unit/CAS/oracle controls, both static resolutions, both frozen
+Weyl forms on production and cavity spheres, and the default replay.
+HDF5 restart access is sequential because the reader takes an exclusive
+file lock. All reports are written; final exit is **1** when
+`ready_for_simulation=false`. This failure is intentional evidence, not
+silently accepted as a passing test suite.
 
-`results/inputs.json` records absolute names, sizes, and SHA-256 fingerprints
-of all five supplied inputs. The trumpet headers identify M=1,Q=.7 and
-M=1,Q=1.0681492364093355 respectively, native conventions and the requested
-couplings. The supplied TOML identifies e=7; the checkpoint header records
-t=602, 16 levels, 28 variables. The original parameter file has no
-`restart_file`; the saved test copy appends it and the three probe controls.
-These are fingerprints of the supplied objects, not comparison with an
-unprovided historical digest. The harness also verifies grid size, dx,
-and level synchronization against the checkpoint.
-
-Source changes: `CheckpointJet.hpp`, `check_rotation.py`, the optional
-hook in `../EMSWeylOffline/harness/EMSWeylCheckpoint.cpp`, and the executable
-exact witness `../../scripts/cas/np_null_rotation.wls`. This README,
-`findings.md`, `progress.md`, and `results/` retain conventions and evidence.
-
-## Reproduction and timings
-
-From the worktree root:
-
-```sh
-export CHOMBO_HOME=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib
-make -C Tests/EMSWeylOffline all DIM=2 -j 8
-cd Tests/EMSNP/results
-OMP_NUM_THREADS=8 ../../EMSWeylOffline/EMSWeylCheckpoint2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex params.txt
-cd ../../..
-python3 Tests/EMSNP/check_rotation.py Tests/EMSNP/results/vacuum/np_jet.txt Tests/EMSNP/results/matter/np_jet.txt
-/opt/homebrew/bin/gtimeout -k 5s 60s /Applications/Wolfram.app/Contents/MacOS/wolfram -script scripts/cas/np_null_rotation.wls
-```
-
-The output is append-only when reusing an existing radiation CSV; use an
-empty run directory for another run. Both `vacuum/` and `matter/` must exist.
-For a probe-off replay use `results/default/params.txt` in a fresh directory.
-
-Full logs: `results/build.log` (exit 0, 6.81 s), `checkpoint.log` (exit 0,
-7.65 s), `default.log` (exit 0, 5.25 s), `cas.log` (fresh Wolfram CLI kernel,
-exit 0, .75 s), `production-dry-build.log`, `production-syntax.json`
-(exit 0, 1.42 s, exact compiler command and temporary-header adjustment),
-`checkpoint-header.log`, `rotation.json`, and `default-comparison.json`.
-The two jets, both forms' existing radiation CSVs, and both parameter copies
-are retained. No run was expected to exceed five minutes; no program
-measuring over thirty minutes was launched. No evolution, HPC, SSH, file
-transfer, upstream PR, or push was performed.
+See results-t2/summary.md, validation.json and progress.md. Full logs,
+point files, NP/radiation CSVs, parameters, compiler commands, CAS scripts
+and transcripts are retained. No program was expected above five minutes;
+the complete workflow measured about one minute. No >30-minute program,
+evolution, HPC, SSH, file transfer or push was launched.

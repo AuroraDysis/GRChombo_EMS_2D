@@ -47,6 +47,7 @@
 #include "WeylExtraction.hpp"
 #include "WeylOmScalar.hpp"
 #include "EMSMatterWeylOmScalar.hpp"
+#include "EMSNPExtraction.hpp"
 
 // For MQ extraction
 #include "CrudeMassChargeExtraction.hpp"
@@ -713,6 +714,12 @@ void EMSBH2DLevel::ems_extract_radiation()
     EMSRadiationExtraction extraction(m_p.extraction_params, m_dt, m_time,
         m_time == 0., m_restart_time, m_p.coupling_function_params, m_radiation.phi_inf);
     extraction.execute_query(m_gr_amr.m_interpolator);
+    if (m_radiation.np_active)
+    {
+        EMSNPExtraction np(m_p.extraction_params,m_dt,m_time,m_time==0.,m_restart_time,
+            m_p.coupling_function_params,m_p.m_G_Newton);
+        np.execute_query(m_gr_amr.m_interpolator);
+    }
 }
 
 #ifdef CH_USE_HDF5

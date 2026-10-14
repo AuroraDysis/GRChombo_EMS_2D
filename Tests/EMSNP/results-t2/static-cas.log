@@ -1,0 +1,8 @@
+PROVED four static-metric Riemann projections, Ricci subtraction, Psi2(N,delta), Schwarzschild, RN and native Phi1
+Psi2 = (-((1 - NN[r])/r^2) + (NN[r]*Derivative[1][delta][r])/r + NN[r]*Derivative[1][delta][r]^2 - Derivative[1][NN][r]/r - (3*Derivative[1][delta][r]*Derivative[1][NN][r])/2 - NN[r]*Derivative[2][delta][r] + Derivative[2][NN][r]/2)/6
+Phi1 = charge/(4*coupling*Sqrt[2*Pi]*r^2)
+Domain r>0,A>0,N>0,0<theta<Pi,F>0; poles excluded r=0,A=0,N=0,sin(theta)=0,F=0
+CAS scope: algebraic identity — production physics not certified
+real 0.91
+user 0.71
+sys 0.10

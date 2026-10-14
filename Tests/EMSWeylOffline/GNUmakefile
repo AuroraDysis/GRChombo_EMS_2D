@@ -1,6 +1,6 @@
 # Weyl4 (vacuum and matter-complete) and the radiation extraction on frozen production checkpoints.
 GRCHOMBO_SOURCE = ../../Source
-ebase := EMSWeylCheckpoint
+ebase := EMSWeylCheckpoint EMSNPStatic EMSNPTest
 base_dir := harness
 LibNames := AMRTimeDependent AMRTools BoxTools
 src_dirs := $(GRCHOMBO_SOURCE)/utils $(GRCHOMBO_SOURCE)/simd \
