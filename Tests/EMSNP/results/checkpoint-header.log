@@ -1,0 +1,23 @@
+HDF5 "/Users/auroradysis/Workspace/EMS/.data/exp-0033/chk/EMS_001376.2d.hdf5" {
+ATTRIBUTE "time" {
+   DATATYPE  H5T_IEEE_F64LE
+   DATASPACE  SCALAR
+   DATA {
+   (0): 602
+   }
+}
+ATTRIBUTE "num_levels" {
+   DATATYPE  H5T_STD_I32LE
+   DATASPACE  SCALAR
+   DATA {
+   (0): 16
+   }
+}
+ATTRIBUTE "num_components" {
+   DATATYPE  H5T_STD_I32LE
+   DATASPACE  SCALAR
+   DATA {
+   (0): 28
+   }
+}
+}

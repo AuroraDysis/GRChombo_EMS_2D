@@ -1,0 +1,322 @@
+point 35.21875 35.21875 0.4375
+legacy -1.103957470106553e-06
+metric 0 0 -1
+ricci 0 0 6.3624838432596052e-07
+faraday 0 0 0
+frame 0 0 1
+riemann 0 0 0 0 0
+riemann 0 0 0 1 0
+riemann 0 0 0 2 0
+riemann 0 0 0 3 0
+riemann 0 0 1 0 0
+riemann 0 0 1 1 0
+riemann 0 0 1 2 0
+riemann 0 0 1 3 0
+riemann 0 0 2 0 0
+riemann 0 0 2 1 0
+riemann 0 0 2 2 0
+riemann 0 0 2 3 0
+riemann 0 0 3 0 0
+riemann 0 0 3 1 0
+riemann 0 0 3 2 0
+riemann 0 0 3 3 0
+metric 0 1 0
+ricci 0 1 2.3493762397533602e-09
+faraday 0 1 -0.00011720859034796971
+frame 0 1 0
+riemann 0 1 0 0 0
+riemann 0 1 0 1 -7.4614031972573073e-06
+riemann 0 1 0 2 -2.2322052548470902e-05
+riemann 0 1 0 3 0
+riemann 0 1 1 0 7.4614031972573073e-06
+riemann 0 1 1 1 -0
+riemann 0 1 1 2 -5.5585225563886874e-07
+riemann 0 1 1 3 0
+riemann 0 1 2 0 2.2322052548470902e-05
+riemann 0 1 2 1 5.5585225563886874e-07
+riemann 0 1 2 2 -0
+riemann 0 1 2 3 0
+riemann 0 1 3 0 0
+riemann 0 1 3 1 0
+riemann 0 1 3 2 0
+riemann 0 1 3 3 0
+metric 0 2 0
+ricci 0 2 -2.1641113107056013e-09
+faraday 0 2 -0.00011684324749074299
+frame 0 2 0
+riemann 0 2 0 0 0
+riemann 0 2 0 1 -2.2322052548470902e-05
+riemann 0 2 0 2 -7.2104556758082914e-06
+riemann 0 2 0 3 0
+riemann 0 2 1 0 2.2322052548470902e-05
+riemann 0 2 1 1 -0
+riemann 0 2 1 2 3.2000170059430916e-07
+riemann 0 2 1 3 0
+riemann 0 2 2 0 7.2104556758082914e-06
+riemann 0 2 2 1 -3.2000170059430916e-07
+riemann 0 2 2 2 -0
+riemann 0 2 2 3 0
+riemann 0 2 3 0 0
+riemann 0 2 3 1 0
+riemann 0 2 3 2 0
+riemann 0 2 3 3 0
+metric 0 3 0
+ricci 0 3 0
+faraday 0 3 -0
+frame 0 3 0
+riemann 0 3 0 0 0
+riemann 0 3 0 1 0
+riemann 0 3 0 2 0
+riemann 0 3 0 3 1.6192694039147839e-05
+riemann 0 3 1 0 0
+riemann 0 3 1 1 0
+riemann 0 3 1 2 0
+riemann 0 3 1 3 -3.1753964154401982e-07
+riemann 0 3 2 0 0
+riemann 0 3 2 1 0
+riemann 0 3 2 2 0
+riemann 0 3 2 3 -5.5830233507010078e-07
+riemann 0 3 3 0 -1.6192694039147839e-05
+riemann 0 3 3 1 3.1753964154401982e-07
+riemann 0 3 3 2 5.5830233507010078e-07
+riemann 0 3 3 3 0
+metric 1 0 0
+ricci 1 0 2.3493762397533602e-09
+faraday 1 0 0.00011720859034796971
+frame 1 0 0
+riemann 1 0 0 0 0
+riemann 1 0 0 1 7.4614031972573073e-06
+riemann 1 0 0 2 2.2322052548470902e-05
+riemann 1 0 0 3 0
+riemann 1 0 1 0 -7.4614031972573073e-06
+riemann 1 0 1 1 -0
+riemann 1 0 1 2 5.5585225563886874e-07
+riemann 1 0 1 3 0
+riemann 1 0 2 0 -2.2322052548470902e-05
+riemann 1 0 2 1 -5.5585225563886874e-07
+riemann 1 0 2 2 -0
+riemann 1 0 2 3 0
+riemann 1 0 3 0 0
+riemann 1 0 3 1 0
+riemann 1 0 3 2 0
+riemann 1 0 3 3 0
+metric 1 1 1.0810627471143575
+ricci 1 1 8.8973673152932955e-08
+faraday 1 1 0
+frame 1 1 0.67972741368494427
+riemann 1 1 0 0 0
+riemann 1 1 0 1 -0
+riemann 1 1 0 2 -0
+riemann 1 1 0 3 0
+riemann 1 1 1 0 -0
+riemann 1 1 1 1 6.4142763146124469e-31
+riemann 1 1 1 2 -6.3527469833876867e-22
+riemann 1 1 1 3 0
+riemann 1 1 2 0 -0
+riemann 1 1 2 1 -6.3527469833876867e-22
+riemann 1 1 2 2 3.2255149970685821e-29
+riemann 1 1 2 3 0
+riemann 1 1 3 0 0
+riemann 1 1 3 1 0
+riemann 1 1 3 2 0
+riemann 1 1 3 3 0
+metric 1 2 0.00088955341824425874
+ricci 1 2 -5.960746515253266e-07
+faraday 1 2 -4.1509471804631386e-07
+frame 1 2 0.67972741368494427
+riemann 1 2 0 0 0
+riemann 1 2 0 1 -5.5585225563886874e-07
+riemann 1 2 0 2 3.2000170059430916e-07
+riemann 1 2 0 3 0
+riemann 1 2 1 0 5.5585225563886874e-07
+riemann 1 2 1 1 -6.3527469833876867e-22
+riemann 1 2 1 2 -1.6667974037358743e-05
+riemann 1 2 1 3 0
+riemann 1 2 2 0 -3.2000170059430916e-07
+riemann 1 2 2 1 1.6667974037358743e-05
+riemann 1 2 2 2 1.8203276215960647e-23
+riemann 1 2 2 3 0
+riemann 1 2 3 0 0
+riemann 1 2 3 1 0
+riemann 1 2 3 2 0
+riemann 1 2 3 3 0
+metric 1 3 0
+ricci 1 3 0
+faraday 1 3 -0
+frame 1 3 0
+riemann 1 3 0 0 0
+riemann 1 3 0 1 0
+riemann 1 3 0 2 0
+riemann 1 3 0 3 -3.1753964154401982e-07
+riemann 1 3 1 0 0
+riemann 1 3 1 1 0
+riemann 1 3 1 2 0
+riemann 1 3 1 3 8.5954979684043824e-06
+riemann 1 3 2 0 0
+riemann 1 3 2 1 0
+riemann 1 3 2 2 0
+riemann 1 3 2 3 -2.4120208301828863e-05
+riemann 1 3 3 0 3.1753964154401982e-07
+riemann 1 3 3 1 -8.5954979684043824e-06
+riemann 1 3 3 2 2.4120208301828863e-05
+riemann 1 3 3 3 0
+metric 2 0 0
+ricci 2 0 -2.1641113107056013e-09
+faraday 2 0 0.00011684324749074299
+frame 2 0 0
+riemann 2 0 0 0 0
+riemann 2 0 0 1 2.2322052548470902e-05
+riemann 2 0 0 2 7.2104556758082914e-06
+riemann 2 0 0 3 0
+riemann 2 0 1 0 -2.2322052548470902e-05
+riemann 2 0 1 1 -0
+riemann 2 0 1 2 -3.2000170059430916e-07
+riemann 2 0 1 3 0
+riemann 2 0 2 0 -7.2104556758082914e-06
+riemann 2 0 2 1 3.2000170059430916e-07
+riemann 2 0 2 2 -0
+riemann 2 0 2 3 0
+riemann 2 0 3 0 0
+riemann 2 0 3 1 0
+riemann 2 0 3 2 0
+riemann 2 0 3 3 0
+metric 2 1 0.00088955341824425874
+ricci 2 1 -5.960746515253266e-07
+faraday 2 1 4.1509471804631386e-07
+frame 2 1 -0.68043144871354611
+riemann 2 1 0 0 0
+riemann 2 1 0 1 5.5585225563886874e-07
+riemann 2 1 0 2 -3.2000170059430916e-07
+riemann 2 1 0 3 0
+riemann 2 1 1 0 -5.5585225563886874e-07
+riemann 2 1 1 1 -6.3527469833876867e-22
+riemann 2 1 1 2 1.6667974037358743e-05
+riemann 2 1 1 3 0
+riemann 2 1 2 0 3.2000170059430916e-07
+riemann 2 1 2 1 -1.6667974037358743e-05
+riemann 2 1 2 2 1.8203276215960647e-23
+riemann 2 1 2 3 0
+riemann 2 1 3 0 0
+riemann 2 1 3 1 0
+riemann 2 1 3 2 0
+riemann 2 1 3 3 0
+metric 2 2 1.0815227801006508
+ricci 2 2 9.3679722946528309e-08
+faraday 2 2 0
+frame 2 2 0.68014226047942639
+riemann 2 2 0 0 0
+riemann 2 2 0 1 -0
+riemann 2 2 0 2 -0
+riemann 2 2 0 3 0
+riemann 2 2 1 0 -0
+riemann 2 2 1 1 3.2255149970685821e-29
+riemann 2 2 1 2 1.8203276215960647e-23
+riemann 2 2 1 3 0
+riemann 2 2 2 0 -0
+riemann 2 2 2 1 1.8203276215960647e-23
+riemann 2 2 2 2 1.0278326970824936e-28
+riemann 2 2 2 3 0
+riemann 2 2 3 0 0
+riemann 2 2 3 1 0
+riemann 2 2 3 2 0
+riemann 2 2 3 3 0
+metric 2 3 0
+ricci 2 3 0
+faraday 2 3 0
+frame 2 3 0
+riemann 2 3 0 0 0
+riemann 2 3 0 1 0
+riemann 2 3 0 2 0
+riemann 2 3 0 3 -5.5830233507010078e-07
+riemann 2 3 1 0 0
+riemann 2 3 1 1 0
+riemann 2 3 1 2 0
+riemann 2 3 1 3 -2.4120208301828863e-05
+riemann 2 3 2 0 0
+riemann 2 3 2 1 0
+riemann 2 3 2 2 0
+riemann 2 3 2 3 8.8739052762816087e-06
+riemann 2 3 3 0 5.5830233507010078e-07
+riemann 2 3 3 1 2.4120208301828863e-05
+riemann 2 3 3 2 -8.8739052762816087e-06
+riemann 2 3 3 3 0
+metric 3 0 0
+ricci 3 0 0
+faraday 3 0 0
+frame 3 0 0
+riemann 3 0 0 0 0
+riemann 3 0 0 1 0
+riemann 3 0 0 2 0
+riemann 3 0 0 3 -1.6192694039147839e-05
+riemann 3 0 1 0 0
+riemann 3 0 1 1 0
+riemann 3 0 1 2 0
+riemann 3 0 1 3 3.1753964154401982e-07
+riemann 3 0 2 0 0
+riemann 3 0 2 1 0
+riemann 3 0 2 2 0
+riemann 3 0 2 3 5.5830233507010078e-07
+riemann 3 0 3 0 1.6192694039147839e-05
+riemann 3 0 3 1 -3.1753964154401982e-07
+riemann 3 0 3 2 -5.5830233507010078e-07
+riemann 3 0 3 3 0
+metric 3 1 0
+ricci 3 1 0
+faraday 3 1 0
+frame 3 1 0
+riemann 3 1 0 0 0
+riemann 3 1 0 1 0
+riemann 3 1 0 2 0
+riemann 3 1 0 3 3.1753964154401982e-07
+riemann 3 1 1 0 0
+riemann 3 1 1 1 0
+riemann 3 1 1 2 0
+riemann 3 1 1 3 -8.5954979684043824e-06
+riemann 3 1 2 0 0
+riemann 3 1 2 1 0
+riemann 3 1 2 2 0
+riemann 3 1 2 3 2.4120208301828863e-05
+riemann 3 1 3 0 -3.1753964154401982e-07
+riemann 3 1 3 1 8.5954979684043824e-06
+riemann 3 1 3 2 -2.4120208301828863e-05
+riemann 3 1 3 3 0
+metric 3 2 0
+ricci 3 2 0
+faraday 3 2 -0
+frame 3 2 0
+riemann 3 2 0 0 0
+riemann 3 2 0 1 0
+riemann 3 2 0 2 0
+riemann 3 2 0 3 5.5830233507010078e-07
+riemann 3 2 1 0 0
+riemann 3 2 1 1 0
+riemann 3 2 1 2 0
+riemann 3 2 1 3 2.4120208301828863e-05
+riemann 3 2 2 0 0
+riemann 3 2 2 1 0
+riemann 3 2 2 2 0
+riemann 3 2 2 3 -8.8739052762816087e-06
+riemann 3 2 3 0 -5.5830233507010078e-07
+riemann 3 2 3 1 -2.4120208301828863e-05
+riemann 3 2 3 2 8.8739052762816087e-06
+riemann 3 2 3 3 0
+metric 3 3 1.0811693518598748
+ricci 3 3 6.8788413288937437e-07
+faraday 3 3 0
+frame 3 3 0.96172994103395804
+riemann 3 3 0 0 0
+riemann 3 3 0 1 0
+riemann 3 3 0 2 0
+riemann 3 3 0 3 0
+riemann 3 3 1 0 0
+riemann 3 3 1 1 0
+riemann 3 3 1 2 0
+riemann 3 3 1 3 0
+riemann 3 3 2 0 0
+riemann 3 3 2 1 0
+riemann 3 3 2 2 0
+riemann 3 3 2 3 0
+riemann 3 3 3 0 0
+riemann 3 3 3 1 0
+riemann 3 3 3 2 0
+riemann 3 3 3 3 0

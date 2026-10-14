@@ -13,6 +13,7 @@
 #include "Lagrange.hpp"
 #include "SetupFunctions.hpp"
 #include "WeylOmScalar.hpp"
+#include "../../EMSNP/CheckpointJet.hpp"
 
 class FrozenLevel : public GRAMRLevel
 {
@@ -36,6 +37,13 @@ class FrozenLevel : public GRAMRLevel
             BoxLoops::loop(WeylOmScalar(m_p.extraction_params.center, m_dx),
                            m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS);
     }
+
+    void np_probe(double x, double y, bool matter, const std::string &path)
+    {
+        BoxLoops::loop(EMSNPCheckpointJet(m_p.extraction_params.center, m_dx,
+            m_p.coupling_function_params, m_p.m_G_Newton, x, y, matter, path),
+            m_state_new, m_state_diagnostics, EXCLUDE_GHOST_CELLS, disable_simd());
+    }
 };
 
 int run(int argc, char **argv)
@@ -43,6 +51,16 @@ int run(int argc, char **argv)
     GRParmParse pp(argc - 2, argv + 2, nullptr, argv[1]);
     SimulationParameters p(pp);
     const EMSRadiationParameters radiation(pp, p);
+    int probe_level=-1;
+    pp.query("np_probe_level", probe_level);
+    double probe_x=0, probe_y=0;
+    if (probe_level>=0)
+    {
+        pp.load("np_probe_x", probe_x);
+        pp.load("np_probe_y", probe_y);
+        if (probe_level>p.max_level || !std::isfinite(probe_x) || !std::isfinite(probe_y) || probe_y<=0)
+            throw std::runtime_error("invalid NP probe point/level");
+    }
     if (!p.restart_from_checkpoint || !radiation.active)
         throw std::runtime_error("restart_file and ems_radiation_activate = true required");
     GRAMR amr;
@@ -60,6 +78,13 @@ int run(int argc, char **argv)
     {
         for (auto *level : amr.get_gramrlevels())
             dynamic_cast<FrozenLevel &>(*level).weyl(matter);
+        if (probe_level>=0)
+        {
+            if (probe_level>=int(amr.get_gramrlevels().size()))
+                throw std::runtime_error("NP probe level absent from checkpoint");
+            dynamic_cast<FrozenLevel &>(*amr.get_gramrlevels()[probe_level]).np_probe(
+                probe_x, probe_y, matter, matter ? "matter/np_jet.txt" : "vacuum/np_jet.txt");
+        }
         interp.refresh();
         auto params = p.extraction_params;
         params.data_path = matter ? "matter/" : "vacuum/";

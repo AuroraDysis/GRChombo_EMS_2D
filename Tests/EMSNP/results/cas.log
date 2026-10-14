@@ -1,0 +1,11 @@
+via: CLI-fallback; version: 15.0.1 for Mac OS X ARM (64-bit) (July 2, 2026)
+Domain: polynomial ring over Q; a real rotation suffices to refute; no excluded loci
+Linear coefficients (l-fixed out,in; k-fixed out,in): {-6*f2*p1 + 2*f0*p3, 2*f1*p0 - 4*f0*p1, -4*f2*p3 + 2*f1*p4, 2*f2*p1 - 6*f0*p3}
+PROVED: the four exact coefficient identities
+PROVED: all four coefficients vanish on the aligned Coulomb background
+Exact counterexample, X_out about l: coefficient = 2*eps^2 (eps != 0)
+REFUTED: universal O(a^2) response at fixed perturbed fields
+CAS scope: algebraic identity — production physics not certified
+real 0.75
+user 0.61
+sys 0.07

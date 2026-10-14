@@ -16,3 +16,10 @@ Check (2026-10-15, exp-0033 checkpoint at t = 602, r = 50 / 75 / 100): the vacuu
 `ems_radiation.csv` (Psi4 l = 2 to 2e-11 relative, Phi2 and phi to 1e-12 or better); matter - vacuum in Psi4 l = 2 at r = 50 is
 -6.9e-11 against -2.9e-4, second order as expected. One checkpoint: 13 s, 1.3 GB, serial with 8 OpenMP threads.
 Production switch: `ems_weyl_matter = true` (default false) selects the matter-complete form in `EMSBH2DLevel`.
+
+Test-only NP null-rotation acceptance probe: set `np_probe_level` plus
+`np_probe_x` and `np_probe_y` (coordinates relative to extraction center)
+to export one valid cell's reconstructed tensors to each form's `np_jet.txt`.
+Absent `np_probe_level`, this probe is off. See [the failed acceptance
+control and convention note](../EMSNP/README.md); this is not a production
+NP extraction.

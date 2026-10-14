@@ -1,0 +1,8 @@
+{
+  "compared_rows": 42,
+  "relative_tolerance": 1e-12,
+  "absolute_tolerance": 1e-100,
+  "worst_relative_difference": 0,
+  "new_probe_files_with_switch_off": false,
+  "production_sources_changed": false
+}
