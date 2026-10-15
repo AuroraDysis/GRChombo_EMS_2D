@@ -1,0 +1,209 @@
+[
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet",
+    "bytes": 8103,
+    "sha256": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa",
+    "manifest_sha256": null,
+    "local_snapshot": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/docs/binary-ctt-format.md",
+    "bytes": 46094,
+    "sha256": "fc6257f57644e13b41f13c5d8ebd6479f557212bf33084f699ba5786ea0b8f41",
+    "manifest_sha256": null
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/ctt_pulse_io.jl",
+    "bytes": 6401,
+    "sha256": "5de893a9ed9b444618ab9994830f86c641ed64698a6c41669c2d4c47d37bf246",
+    "manifest_sha256": null
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/ctt_pulse.jl",
+    "bytes": 3839,
+    "sha256": "c2593a8d5b562dea28aa18d62fa7236bf957ac86bcfb5e892f9f7061c62baaa2",
+    "manifest_sha256": null
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/binary_ctt.jl",
+    "bytes": 25482,
+    "sha256": "c02abef7fd0e3e077013db61d200d535b07a3f1165b2e2f2c1fecaa5bfe6f5d3",
+    "manifest_sha256": null
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/binary_ctt_end.jl",
+    "bytes": 18633,
+    "sha256": "7c349c30462052b2a911dfafab6769793713f25b88991d1afb616dee28737b8b",
+    "manifest_sha256": null
+  },
+  {
+    "path": "/Users/auroradysis/SciData/EMS/.data/echo-pulse/zero-final.ctt",
+    "bytes": 757503,
+    "sha256": "208ca76339644ddfc15264286adcdedde3cb67181c48c0fb97e699847ae5dae6",
+    "manifest_sha256": "208ca76339644ddfc15264286adcdedde3cb67181c48c0fb97e699847ae5dae6",
+    "provenance": {
+      "profile_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet",
+        "expected": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa",
+        "actual": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa"
+      },
+      "solver_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/binary_ctt.jl",
+        "expected": "c02abef7fd0e3e077013db61d200d535b07a3f1165b2e2f2c1fecaa5bfe6f5d3",
+        "actual": "c02abef7fd0e3e077013db61d200d535b07a3f1165b2e2f2c1fecaa5bfe6f5d3"
+      },
+      "end_solver_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/binary_ctt_end.jl",
+        "expected": "7c349c30462052b2a911dfafab6769793713f25b88991d1afb616dee28737b8b",
+        "actual": "7c349c30462052b2a911dfafab6769793713f25b88991d1afb616dee28737b8b"
+      },
+      "pulse_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/ctt_pulse.jl",
+        "expected": "c2593a8d5b562dea28aa18d62fa7236bf957ac86bcfb5e892f9f7061c62baaa2",
+        "actual": "c2593a8d5b562dea28aa18d62fa7236bf957ac86bcfb5e892f9f7061c62baaa2"
+      },
+      "checkpoint_sha256": {
+        "path": "/Users/auroradysis/SciData/EMS/.data/echo-pulse/zero.bin",
+        "expected": "a6d26cf5cad626753853dab5ddb8dcc223f18c1f20ac9262a2453d42b57e7634",
+        "actual": "a6d26cf5cad626753853dab5ddb8dcc223f18c1f20ac9262a2453d42b57e7634"
+      }
+    },
+    "local_snapshot": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/zero-final.ctt"
+  },
+  {
+    "path": "/Users/auroradysis/SciData/EMS/.data/echo-pulse/half-final.ctt",
+    "bytes": 726524,
+    "sha256": "9d66e2260f12e9c67e495e91375e057d7055a50602daa07ae69bf3c6dcbb01d6",
+    "manifest_sha256": "9d66e2260f12e9c67e495e91375e057d7055a50602daa07ae69bf3c6dcbb01d6",
+    "provenance": {
+      "profile_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet",
+        "expected": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa",
+        "actual": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa"
+      },
+      "solver_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/binary_ctt.jl",
+        "expected": "c02abef7fd0e3e077013db61d200d535b07a3f1165b2e2f2c1fecaa5bfe6f5d3",
+        "actual": "c02abef7fd0e3e077013db61d200d535b07a3f1165b2e2f2c1fecaa5bfe6f5d3"
+      },
+      "end_solver_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/binary_ctt_end.jl",
+        "expected": "7c349c30462052b2a911dfafab6769793713f25b88991d1afb616dee28737b8b",
+        "actual": "7c349c30462052b2a911dfafab6769793713f25b88991d1afb616dee28737b8b"
+      },
+      "pulse_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/ctt_pulse.jl",
+        "expected": "c2593a8d5b562dea28aa18d62fa7236bf957ac86bcfb5e892f9f7061c62baaa2",
+        "actual": "c2593a8d5b562dea28aa18d62fa7236bf957ac86bcfb5e892f9f7061c62baaa2"
+      },
+      "checkpoint_sha256": {
+        "path": "/Users/auroradysis/SciData/EMS/.data/echo-pulse/half.bin",
+        "expected": "7e15d3a09905a706dff1995dc7e8cc4bfb18f753853b7962e78b901220ac1821",
+        "actual": "7e15d3a09905a706dff1995dc7e8cc4bfb18f753853b7962e78b901220ac1821"
+      }
+    },
+    "local_snapshot": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/half-final.ctt"
+  },
+  {
+    "path": "/Users/auroradysis/SciData/EMS/.data/echo-pulse/n12-final.ctt",
+    "bytes": 400794,
+    "sha256": "0a69f5efcd13f5bdc59651ec1f1606f352552bd2b14970f8cf9fb490b1b97da4",
+    "manifest_sha256": "0a69f5efcd13f5bdc59651ec1f1606f352552bd2b14970f8cf9fb490b1b97da4",
+    "provenance": {
+      "profile_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet",
+        "expected": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa",
+        "actual": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa"
+      },
+      "solver_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/binary_ctt.jl",
+        "expected": "c02abef7fd0e3e077013db61d200d535b07a3f1165b2e2f2c1fecaa5bfe6f5d3",
+        "actual": "c02abef7fd0e3e077013db61d200d535b07a3f1165b2e2f2c1fecaa5bfe6f5d3"
+      },
+      "end_solver_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/binary_ctt_end.jl",
+        "expected": "7c349c30462052b2a911dfafab6769793713f25b88991d1afb616dee28737b8b",
+        "actual": "7c349c30462052b2a911dfafab6769793713f25b88991d1afb616dee28737b8b"
+      },
+      "pulse_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/ctt_pulse.jl",
+        "expected": "c2593a8d5b562dea28aa18d62fa7236bf957ac86bcfb5e892f9f7061c62baaa2",
+        "actual": "c2593a8d5b562dea28aa18d62fa7236bf957ac86bcfb5e892f9f7061c62baaa2"
+      },
+      "checkpoint_sha256": {
+        "path": "/Users/auroradysis/SciData/EMS/.data/echo-pulse/n12.bin",
+        "expected": "3ca61c2c46da30d2004e45cf73ee51f4321e95711005912e4fc4c4f3a523091b",
+        "actual": "3ca61c2c46da30d2004e45cf73ee51f4321e95711005912e4fc4c4f3a523091b"
+      }
+    },
+    "local_snapshot": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n12-final.ctt"
+  },
+  {
+    "path": "/Users/auroradysis/SciData/EMS/.data/echo-pulse/n18-final.ctt",
+    "bytes": 535733,
+    "sha256": "131da7e45b3f9cb99022731973f0fe1650b867ff65d890e2f1bcf9fd2f06f3e2",
+    "manifest_sha256": "131da7e45b3f9cb99022731973f0fe1650b867ff65d890e2f1bcf9fd2f06f3e2",
+    "provenance": {
+      "profile_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet",
+        "expected": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa",
+        "actual": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa"
+      },
+      "solver_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/binary_ctt.jl",
+        "expected": "c02abef7fd0e3e077013db61d200d535b07a3f1165b2e2f2c1fecaa5bfe6f5d3",
+        "actual": "c02abef7fd0e3e077013db61d200d535b07a3f1165b2e2f2c1fecaa5bfe6f5d3"
+      },
+      "end_solver_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/binary_ctt_end.jl",
+        "expected": "7c349c30462052b2a911dfafab6769793713f25b88991d1afb616dee28737b8b",
+        "actual": "7c349c30462052b2a911dfafab6769793713f25b88991d1afb616dee28737b8b"
+      },
+      "pulse_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/ctt_pulse.jl",
+        "expected": "c2593a8d5b562dea28aa18d62fa7236bf957ac86bcfb5e892f9f7061c62baaa2",
+        "actual": "c2593a8d5b562dea28aa18d62fa7236bf957ac86bcfb5e892f9f7061c62baaa2"
+      },
+      "checkpoint_sha256": {
+        "path": "/Users/auroradysis/SciData/EMS/.data/echo-pulse/n18.bin",
+        "expected": "ce09644b5255592e50babfee36edf6052f9506eba4f2c7a0fab2a204da37fb18",
+        "actual": "ce09644b5255592e50babfee36edf6052f9506eba4f2c7a0fab2a204da37fb18"
+      }
+    },
+    "local_snapshot": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n18-final.ctt"
+  },
+  {
+    "path": "/Users/auroradysis/SciData/EMS/.data/echo-pulse/n24-final.ctt",
+    "bytes": 720728,
+    "sha256": "1b77e57d870145aafc34b80e5d8035d63d0134c3f3856105e50075df34fdba7e",
+    "manifest_sha256": "1b77e57d870145aafc34b80e5d8035d63d0134c3f3856105e50075df34fdba7e",
+    "provenance": {
+      "profile_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet",
+        "expected": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa",
+        "actual": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa"
+      },
+      "solver_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/binary_ctt.jl",
+        "expected": "c02abef7fd0e3e077013db61d200d535b07a3f1165b2e2f2c1fecaa5bfe6f5d3",
+        "actual": "c02abef7fd0e3e077013db61d200d535b07a3f1165b2e2f2c1fecaa5bfe6f5d3"
+      },
+      "end_solver_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/binary_ctt_end.jl",
+        "expected": "7c349c30462052b2a911dfafab6769793713f25b88991d1afb616dee28737b8b",
+        "actual": "7c349c30462052b2a911dfafab6769793713f25b88991d1afb616dee28737b8b"
+      },
+      "pulse_sha256": {
+        "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse/src/ctt_pulse.jl",
+        "expected": "c2593a8d5b562dea28aa18d62fa7236bf957ac86bcfb5e892f9f7061c62baaa2",
+        "actual": "c2593a8d5b562dea28aa18d62fa7236bf957ac86bcfb5e892f9f7061c62baaa2"
+      },
+      "checkpoint_sha256": {
+        "path": "/Users/auroradysis/SciData/EMS/.data/echo-pulse/n24.bin",
+        "expected": "3ca147057bfc769e790ee90921d10f7877f6ae925fb5b2295257b51589c5a32d",
+        "actual": "3ca147057bfc769e790ee90921d10f7877f6ae925fb5b2295257b51589c5a32d"
+      }
+    },
+    "local_snapshot": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+  }
+]

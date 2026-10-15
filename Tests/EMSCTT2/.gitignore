@@ -1,0 +1,7 @@
+/o/
+/d/
+/*.ex
+/__pycache__/
+/results/input-snapshots/
+/results/jets-replay.txt
+/results/synthetic.ctt

@@ -1,0 +1,18 @@
+{
+  "jets": 540,
+  "stencil_values": 5400,
+  "max_value_error": 1.216944066989108e-14,
+  "directions": "x,y,z,(x+y)/sqrt(2),(x+z)/sqrt(2),(y+z)/sqrt(2)",
+  "selection": "automatic crossing plus both explicit panel sides",
+  "D1": {
+    "max_error": 4.0410408289152385e-11,
+    "max_allowance": 7.096641969821023e-09,
+    "max_fraction_of_allowance": 0.010432776589023513
+  },
+  "D2": {
+    "max_error": 3.122342379028936e-08,
+    "max_allowance": 5.3299673320195625e-06,
+    "max_fraction_of_allowance": 0.0070221576782718165
+  },
+  "seconds": 0.5903471660003561
+}

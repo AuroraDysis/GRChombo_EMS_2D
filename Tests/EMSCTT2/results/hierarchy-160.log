@@ -1,0 +1,144 @@
+ number_procs = 1
+ threads = 1
+ simd width (doubles) = 1
+Parameter: max_spatial_derivative_order not found in parameter file. It has been set to its default value = 4.
+Parameter: tag_buffer_size not found in parameter file. It has been set to its default value = 3.
+Parameter: grid_buffer_size not found in parameter file. It has been set to its default value = 8.
+Parameter: dt_multiplier not found in parameter file. It has been set to its default value = 0.25.
+Parameter: fill_ratio not found in parameter file. It has been set to its default value = 0.69999999999999996.
+You are using non periodic boundary conditions.
+The boundary params chosen are:
+---------------------------------
+- Sommerfeld boundaries in direction high 0
+The non zero asymptotic values of the variables in this direction are :
+chi = 1    h11 = 1    h22 = 1    hww = 1    lapse = 1
+
+- Sommerfeld boundaries in direction low 0
+The non zero asymptotic values of the variables in this direction are :
+chi = 1    h11 = 1    h22 = 1    hww = 1    lapse = 1
+
+- Sommerfeld boundaries in direction high 1
+The non zero asymptotic values of the variables in this direction are :
+chi = 1    h11 = 1    h22 = 1    hww = 1    lapse = 1
+
+- Reflective boundaries in direction low 1
+The variables that are parity odd in this direction are :
+h12    A12    Gamma2    shift2    B2    By    Bz    Ey    Ez    Mom2
+
+---------------------------------
+Parameter: ignore_checkpoint_name_mismatch not found in parameter file. It has been set to its default value = 0.
+Using single regrid threshold.
+Parameter: regrid_threshold not found in parameter file. It has been set to its default value = 0.5.
+Parameter: write_plot_ghosts not found in parameter file. It has been set to its default value = 0.
+Parameter: num_plot_vars not found in parameter file. It has been set to its default value = -1.
+Parameter: print_progress_only_to_rank_0 not found in parameter file. It has been set to its default value = 0.
+Parameter: lapse_advec_coeff not found in parameter file. It has been set to its default value = 1.
+Parameter: lapse_coeff not found in parameter file. It has been set to its default value = 2.
+Parameter: lapse_power not found in parameter file. It has been set to its default value = 1.
+Parameter: shift_advec_coeff not found in parameter file. It has been set to its default value = 0.
+Parameter: shift_Gamma_coeff not found in parameter file. It has been set to its default value = 0.75.
+Parameter: eta not found in parameter file. It has been set to its default value = 1.
+Parameter: formulation not found in parameter file. It has been set to its default value = 0.
+Parameter: kappa1 not found in parameter file. It has been set to its default value = 0.10000000000000001.
+Parameter: kappa2 not found in parameter file. It has been set to its default value = 0.
+Parameter: kappa3 not found in parameter file. It has been set to its default value = 1.
+Parameter: covariantZ4 not found in parameter file. It has been set to its default value = 1.
+Parameter: amr_transfer not found in parameter file. It has been set to its default value = legacy.
+Parameter: nan_check not found in parameter file. It has been set to its default value = 1.
+Parameter: data_subpath not found in parameter file. It has been set to its default value = .
+Parameter: activate_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: activate_em_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: activate_rs_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: activate_mq_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: ems_binary_refinement not found in parameter file. It has been set to its default value = 0.
+Parameter: ems_track_punctures not found in parameter file. It has been set to its default value = 0.
+Parameter: ems_puncture_tracking_level not found in parameter file. It has been set to its default value = 0.
+Parameter: t2_guard_initial_data_after_t0 not found in parameter file. It has been set to its default value = 0.
+Parameter: ems_use_maximal_initial_lapse not found in parameter file. It has been set to its default value = 0.
+Parameter: ems_use_geometric_initial_lapse not found in parameter file. It has been set to its default value = 0.
+Parameter: gridpoints not found in parameter file. It has been set to its default value = 40000.
+Parameter: bh_charge not found in parameter file. It has been set to its default value = 0.
+Parameter: Ylm_amplitude not found in parameter file. It has been set to its default value = 0.
+Parameter: Ylm_thickness not found in parameter file. It has been set to its default value = 3.
+Parameter: Ylm_r0 not found in parameter file. It has been set to its default value = 80.
+Parameter: activate_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: activate_mass_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: num_mass_extraction_radii not found in parameter file. It has been set to its default value = 1.
+Parameter: mass_extraction_levels not found in parameter file. It has been set to its default value = 0.
+Parameter: mass_extraction_radii not found in parameter file. It has been set to its default value = 0.10000000000000001.
+Parameter: num_points_phi_mass not found in parameter file. It has been set to its default value = 2.
+Parameter: num_points_theta_mass not found in parameter file. It has been set to its default value = 4.
+Parameter: mass_extraction_center not found in parameter file. It has been set to its default value = 80 0.
+Parameter: activate_mass_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: num_mass_extraction_radii not found in parameter file. It has been set to its default value = 1.
+Parameter: mass_extraction_levels not found in parameter file. It has been set to its default value = 0.
+Parameter: mass_extraction_radii not found in parameter file. It has been set to its default value = 0.10000000000000001.
+Parameter: num_points_phi_mass not found in parameter file. It has been set to its default value = 2.
+Parameter: num_points_theta_mass not found in parameter file. It has been set to its default value = 4.
+Parameter: mass_extraction_center not found in parameter file. It has been set to its default value = 80 0.
+Parameter: activate_gw_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: activate_em_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: activate_rs_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: activate_mq_extraction not found in parameter file. It has been set to its default value = 0.
+Parameter: RH_num_horizons not found in parameter file. It has been set to its default value = 0.
+Parameter: RH_initial_radii not found in parameter file. It has been set to its default value =.
+Parameter: RH_initial_centre not found in parameter file. It has been set to its default value =.
+Parameter: RH_num_points not found in parameter file. It has been set to its default value =.
+Parameter: RH_level not found in parameter file. It has been set to its default value =.
+Parameter: RH_time_step_freq not found in parameter file. It has been set to its default value =.
+Parameter: RH_newton_crit not found in parameter file. It has been set to its default value =.
+Parameter: RH_chase_speeds not found in parameter file. It has been set to its default value =.
+Parameter: RH_start_times not found in parameter file. It has been set to its default value =.
+Parameter: num_vars_inf_norm not found in parameter file. It has been set to its default value = 0.
+Parameter: vars_inf_norm not found in parameter file. It has been set to its default value =.
+Parameter: max_spatial_derivative_order not found in parameter file. It has been set to its default value = 4.
+Parameter: tag_buffer_size not found in parameter file. It has been set to its default value = 3.
+Parameter: grid_buffer_size not found in parameter file. It has been set to its default value = 8.
+Parameter: dt_multiplier not found in parameter file. It has been set to its default value = 0.25.
+Parameter: fill_ratio not found in parameter file. It has been set to its default value = 0.69999999999999996.
+You are using non periodic boundary conditions.
+The boundary params chosen are:
+---------------------------------
+- Sommerfeld boundaries in direction high 0
+The non zero asymptotic values of the variables in this direction are :
+chi = 1    h11 = 1    h22 = 1    hww = 1    lapse = 1
+
+- Sommerfeld boundaries in direction low 0
+The non zero asymptotic values of the variables in this direction are :
+chi = 1    h11 = 1    h22 = 1    hww = 1    lapse = 1
+
+- Sommerfeld boundaries in direction high 1
+The non zero asymptotic values of the variables in this direction are :
+chi = 1    h11 = 1    h22 = 1    hww = 1    lapse = 1
+
+- Reflective boundaries in direction low 1
+The variables that are parity odd in this direction are :
+h12    A12    Gamma2    shift2    B2    By    Bz    Ey    Ez    Mom2
+
+---------------------------------
+Parameter: ignore_checkpoint_name_mismatch not found in parameter file. It has been set to its default value = 0.
+Using single regrid threshold.
+Parameter: regrid_threshold not found in parameter file. It has been set to its default value = 0.5.
+Parameter: write_plot_ghosts not found in parameter file. It has been set to its default value = 0.
+Parameter: num_plot_vars not found in parameter file. It has been set to its default value = -1.
+Parameter: print_progress_only_to_rank_0 not found in parameter file. It has been set to its default value = 0.
+Parameter: t7_diagnostics not found in parameter file. It has been set to its default value = 0.
+Parameter: t7_diagnostics not found in parameter file. It has been set to its default value = 0.
+Parameter: t13_launch_stop_time not found in parameter file. It has been set to its default value = 0.
+Parameter: t7_diagnostics not found in parameter file. It has been set to its default value = 0.
+Parameter: t7_diagnostics not found in parameter file. It has been set to its default value = 0.
+Parameter: t13_launch_stop_time not found in parameter file. It has been set to its default value = 0.
+Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet
+Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet
+Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet
+Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet
+Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet
+LEVEL,0,1,3552,9248
+Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet
+Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet
+LEVEL,1,0.5,36992,0
+NORM,inner,302,0,1.6940497271856902e-21,3.6139330322330537e-06,2.1982880644693122e-05,1.701744605873045e-09,9.2903541518558678e-09,4.9051231473919051e-07,2.6436444978647647e-06,0,0
+NORM,pulse,15082,0,2.6469778102164025e-23,1.1465568672281313e-11,9.5931891419656511e-11,2.40175180408922e-12,1.7440985949739815e-11,3.4814132531983343e-12,2.6556803965570727e-11,0,0
+NORM,outer,5030,0,1.6543612166931506e-24,2.8067891894362699e-07,1.7793845856682689e-06,6.8600180299206054e-14,6.3326350338131176e-13,1.4659064355037602e-10,9.9140600105989853e-10,0,0
+NORM,pulse_axis,480,0,1.6543612136468978e-24,2.5850949143843708e-11,9.4731585479576581e-11,5.2666001146014191e-12,1.7440985949739815e-11,7.1883067123148047e-12,2.6556541386379858e-11,0,0
+seconds=1.2323900000000001

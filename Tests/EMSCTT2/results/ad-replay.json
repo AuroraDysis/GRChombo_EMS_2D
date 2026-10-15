@@ -1,0 +1,5 @@
+{
+  "max_normalized_replay_difference": 0.0,
+  "tolerance": 1e-12,
+  "basis": "reference arithmetic and polynomial differentiation conditioning; independent 512-bit replay"
+}

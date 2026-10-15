@@ -47,22 +47,45 @@ inline void EMSBH_trumpet_read::compute_1d_solution()
     if (m_params_EMSBH.use_geometric_initial_lapse)
         check_geometric_lapse();
     m_ctt_sol.reset();
+    m_pulse_sol.reset();
     if (!m_params_EMSBH.ctt_data_path.empty())
     {
-        if (!m_params_EMSBH.binary)
-            MayDay::Error("EMSCTT requires a binary");
-        const double mass = m_params_EMSBH.bh_mass;
-        const double center = m_params_EMSBH.separation / 2;
-        const double eta = m_params_EMSBH.boosted ? m_params_EMSBH.rapidity : 0;
-        const EMSCTTSolution_read::binding_t binding{
-            {mass, mass}, {-center, center}, {eta, -eta},
-            m_1d_sol.get_coupling_parameters()};
-        auto companion = std::make_shared<EMSCTTSolution_read>();
-        std::string reason;
-        if (!companion->check_file(m_params_EMSBH.ctt_data_path, m_1d_sol,
-                                   binding, reason))
-            MayDay::Error(("EMSCTT 1: " + reason).c_str());
-        m_ctt_sol = companion;
+        std::ifstream input(m_params_EMSBH.ctt_data_path);
+        std::string version;
+        if (!std::getline(input, version))
+            MayDay::Error("cannot read EMSCTT version line");
+        input.close();
+        if (version == "EMSCTT 2")
+        {
+            if (m_params_EMSBH.binary || m_params_EMSBH.boosted ||
+                m_params_EMSBH.rapidity != 0. || m_params_EMSBH.bh_mass != 1. ||
+                m_params_EMSBH.separation != 0. ||
+                m_params_EMSBH.use_geometric_initial_lapse)
+                MayDay::Error("EMSCTT 2 requires an unboosted mass-one single "
+                              "hole, zero separation and default initial lapse");
+            auto companion = std::make_shared<EMSCTTPulse_read>();
+            std::string reason;
+            if (!companion->check_file(m_params_EMSBH.ctt_data_path, m_1d_sol, reason))
+                MayDay::Error(("EMSCTT 2: " + reason).c_str());
+            m_pulse_sol = companion;
+        }
+        else
+        {
+            if (!m_params_EMSBH.binary)
+                MayDay::Error("EMSCTT 1 requires a binary");
+            const double mass = m_params_EMSBH.bh_mass;
+            const double center = m_params_EMSBH.separation / 2;
+            const double eta = m_params_EMSBH.boosted ? m_params_EMSBH.rapidity : 0;
+            const EMSCTTSolution_read::binding_t binding{
+                {mass, mass}, {-center, center}, {eta, -eta},
+                m_1d_sol.get_coupling_parameters()};
+            auto companion = std::make_shared<EMSCTTSolution_read>();
+            std::string reason;
+            if (!companion->check_file(m_params_EMSBH.ctt_data_path, m_1d_sol,
+                                       binding, reason))
+                MayDay::Error(("EMSCTT 1: " + reason).c_str());
+            m_ctt_sol = companion;
+        }
     }
     if (m_verbosity)
         pout() << "EMSTRUMPET radial solution ready" << std::endl;
@@ -290,6 +313,51 @@ EMSBH_trumpet_read::compute_ems_adm_vars(data_t a_x, data_t a_y, data_t a_z,
 
 template <class data_t>
 inline typename EMSBH_trumpet_read::template ems_adm_vars_t<data_t>
+EMSBH_trumpet_read::compute_single_ems_adm_vars(
+    data_t x, data_t y, data_t z, double mass, double center,
+    double rapidity, int panel) const
+{
+    auto a = compute_ems_adm_vars(x, y, z, mass, center, rapidity);
+    if (!m_pulse_sol) return a;
+    if (mass != 1. || rapidity != 0.)
+        MayDay::Error("EMSCTT 2 single-object binding mismatch");
+    x -= center;
+    const double r = std::sqrt(x*x+y*y+z*z);
+    const auto q = m_pulse_sol->evaluate(x, y, z, panel);
+    const auto radial = m_1d_sol.compute_radial_vars(r);
+    const auto pulse = m_pulse_sol->perturbation(r, x/r, radial);
+    const double phi0 = a.phi;
+    a.phi += pulse[0];
+    const auto &c = m_params_coupling_function;
+    const auto F = [&](double phi) {
+        return std::exp(-2*c.alpha*(c.f0+c.f1*phi+c.f2*phi*phi)); };
+    const double F0 = F(phi0), Fs = F(a.phi), psi = std::exp(q.logpsi);
+    if (!(psi>0) || !std::isfinite(psi) || !(F0>0) || !std::isfinite(F0) ||
+        !(Fs>0) || !std::isfinite(Fs))
+        MayDay::Error("EMSCTT 2 nonpositive/nonfinite reconstruction");
+    const auto g = a.gamma;
+    const auto gi = TensorAlgebra::compute_inverse_sym(g);
+    double tau=0.;
+    for (int i=0;i<3;++i) for (int j=0;j<3;++j) tau += gi[i][j]*a.K[i][j];
+    const double p4=std::pow(psi,4), pm2=std::pow(psi,-2);
+    // For g=P^2 delta, lowering L_g W gives P^2 times the flat strain.
+    for (int i=0;i<3;++i)
+    {
+        for (int j=0;j<3;++j)
+        {
+            a.gamma[i][j]=p4*g[i][j];
+            a.K[i][j]=pm2*(a.K[i][j]-g[i][j]*tau/3+g[0][0]*q.strain[i][j])+
+                a.gamma[i][j]*tau/3;
+        }
+        a.E[i] *= pm2*F0/Fs;
+        a.B[i] *= pm2;
+    }
+    a.Pi = std::pow(psi,-6)*(a.Pi+pulse[1]);
+    return a;
+}
+
+template <class data_t>
+inline typename EMSBH_trumpet_read::template ems_adm_vars_t<data_t>
 EMSBH_trumpet_read::compute_binary_ems_adm_vars(data_t a_x, data_t a_y,
                                                 double a_mass,
                                                 double a_separation,
@@ -454,7 +522,7 @@ EMSBH_trumpet_read::compute_single_bh_vars(data_t a_x, data_t a_y,
                                            double a_rapidity) const
 {
     return conformal_decomposition(
-        compute_ems_adm_vars(a_x, a_y, data_t(0), a_mass, a_center, a_rapidity));
+        compute_single_ems_adm_vars(a_x, a_y, data_t(0), a_mass, a_center, a_rapidity));
 }
 
 template <class data_t>
@@ -481,7 +549,7 @@ inline void EMSBH_trumpet_read::compute(Cell<data_t> a_current_cell) const
             ? compute_binary_ems_adm_vars(coords.x, coords.y,
                                           m_params_EMSBH.bh_mass,
                                           m_params_EMSBH.separation, eta)
-            : compute_ems_adm_vars(coords.x, coords.y, data_t(0),
+            : compute_single_ems_adm_vars(coords.x, coords.y, data_t(0),
                                    m_params_EMSBH.bh_mass, 0.0, eta);
     auto vars = conformal_decomposition(adm_vars);
     a_current_cell.store_vars(vars);

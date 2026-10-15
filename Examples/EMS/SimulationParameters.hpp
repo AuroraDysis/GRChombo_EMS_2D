@@ -188,8 +188,8 @@ public:
         if (ems_data_format == "emstrumpet1" && !EMS_not_RN)
             MayDay::Error("emstrumpet1 requires ems_not_rn = true");
         if (!emsbh_params.ctt_data_path.empty() &&
-            (ems_data_format != "emstrumpet1" || !emsbh_params.binary))
-            MayDay::Error("ems_ctt_data_path requires an emstrumpet1 binary");
+            ems_data_format != "emstrumpet1")
+            MayDay::Error("ems_ctt_data_path requires emstrumpet1");
     }
 
     // tagging

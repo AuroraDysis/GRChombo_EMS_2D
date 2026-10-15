@@ -1,0 +1,17 @@
+[
+  {
+    "name": "reference-ccz4",
+    "command": [
+      "julia",
+      "--heap-size-hint=2G",
+      "--project=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/reference_ccz4.jl",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results"
+    ],
+    "seconds": 9.66211391699926,
+    "exit": 0,
+    "child_peak_rss_upper_bound_bytes": 542507008
+  }
+]

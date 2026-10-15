@@ -1,0 +1,18 @@
+[
+  {
+    "name": "reference-ad",
+    "command": [
+      "julia",
+      "--heap-size-hint=2G",
+      "--project=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/reference_ad.jl",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/jet-points.txt",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/jets-replay.txt"
+    ],
+    "seconds": 142.58384370800013,
+    "exit": 0,
+    "child_peak_rss_upper_bound_bytes": 882999296
+  }
+]

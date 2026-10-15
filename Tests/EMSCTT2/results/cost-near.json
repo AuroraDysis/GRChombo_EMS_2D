@@ -1,0 +1,32 @@
+[
+  {
+    "name": "hierarchy-near-80",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-80.txt"
+    ],
+    "seconds": 1.6214765840004475,
+    "exit": 0,
+    "child_peak_rss_upper_bound_bytes": 24150016
+  },
+  {
+    "name": "hierarchy-near-160",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-160.txt"
+    ],
+    "seconds": 1.723023500000636,
+    "exit": 0,
+    "child_peak_rss_upper_bound_bytes": 44318720
+  },
+  {
+    "name": "hierarchy-near-320",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-320.txt"
+    ],
+    "seconds": 4.137661957999626,
+    "exit": 0,
+    "child_peak_rss_upper_bound_bytes": 116228096
+  }
+]

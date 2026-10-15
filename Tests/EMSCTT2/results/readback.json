@@ -1,0 +1,45 @@
+{
+  "zero": {
+    "points": 146,
+    "max_scaled_value_error": 1.2907120980616488e-14,
+    "seconds": 0.05503083300027356,
+    "plain_identity": 1.9281426781525873e-15
+  },
+  "half": {
+    "points": 146,
+    "max_scaled_value_error": 1.2907120980616488e-14,
+    "seconds": 0.07302641599926574
+  },
+  "n12": {
+    "points": 146,
+    "max_scaled_value_error": 1.2907120980616488e-14,
+    "seconds": 0.046031957999730366
+  },
+  "n18": {
+    "points": 146,
+    "max_scaled_value_error": 1.2907120980616488e-14,
+    "seconds": 0.04196904199943674
+  },
+  "n24": {
+    "points": 146,
+    "max_scaled_value_error": 1.2907120980616488e-14,
+    "seconds": 0.046915083000385494
+  },
+  "jets": {
+    "D1": {
+      "samples": 207,
+      "max_error": 9.169155689848601e-11,
+      "roundoff_allowance": 2.8421709430404007e-11,
+      "max_error_over_allowance": 0.40552920142819915,
+      "max_allowance": 2.8877518861318413e-10
+    },
+    "D2": {
+      "samples": 207,
+      "max_error": 1.560053309938938e-08,
+      "roundoff_allowance": 2.8421709430404007e-08,
+      "max_error_over_allowance": 0.4852023019387917,
+      "max_allowance": 3.215263620360438e-08
+    },
+    "seconds": 0.0987353329992402
+  }
+}

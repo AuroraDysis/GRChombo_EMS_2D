@@ -8,6 +8,7 @@
 
 #include "1D_SOL/EMSTrumpetSolution_read.hpp"
 #include "1D_SOL/EMSCTTSolution_read.hpp"
+#include "1D_SOL/EMSCTTPulse_read.hpp"
 #include <memory>
 #include "CCZ4CartoonVars.hpp"
 #include "Cell.hpp"
@@ -46,6 +47,11 @@ class EMSBH_trumpet_read
     compute_binary_ems_adm_vars(data_t a_x, data_t a_y, double a_mass,
                                 double a_separation, double a_rapidity,
                                 data_t a_z = data_t(0), int a_panel = 0) const;
+    //! Versioned single-object reconstruction; compute_ems_adm_vars is the seed.
+    template <class data_t>
+    ems_adm_vars_t<data_t>
+    compute_single_ems_adm_vars(data_t x, data_t y, data_t z, double mass,
+                                double center, double rapidity, int panel=0) const;
     //! CCZ4 fields using the same ADM conversion as the grid setter.
     template <class data_t>
     CCZ4CartoonVars::VarsWithGauge<data_t>
@@ -67,6 +73,7 @@ class EMSBH_trumpet_read
     double m_G_Newton, m_dx;
     int m_verbosity;
     std::shared_ptr<const EMSCTTSolution_read> m_ctt_sol;
+    std::shared_ptr<const EMSCTTPulse_read> m_pulse_sol;
 
     static Tensor<2, double, 4>
     lorentz_transform(const Tensor<2, double, 4> &a_tensor,

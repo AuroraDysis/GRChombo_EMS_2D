@@ -1,0 +1,778 @@
+[
+  {
+    "path": "Examples/EMS/SimulationParameters.hpp",
+    "bytes": 10422,
+    "sha256": "e7979b3c380eb3e45b71d60eb6cbfba8741d3262bd625fd004734545f725cd68",
+    "diff_lines": 15
+  },
+  {
+    "path": "Source/InitialConditions/EMSBH/1D_SOL/EMSCTTPulse_read.hpp",
+    "bytes": 16520,
+    "sha256": "6f8035b6c96eae54d7473e44cabd63f30ebf9222b7b807e081bb6d7a680ddbcc",
+    "diff_lines": 396
+  },
+  {
+    "path": "Source/InitialConditions/EMSBH/EMSBHParams.hpp",
+    "bytes": 882,
+    "sha256": "c780ab0719c4078a3be68c703ad2af78f0c46f5dfb29e11cd9d032a7865cfd49",
+    "diff_lines": 13
+  },
+  {
+    "path": "Source/InitialConditions/EMSBH/EMSBH_trumpet_read.hpp",
+    "bytes": 3636,
+    "sha256": "b7b6d1af3627cf3287015b9eca4c76838c3d599c3fe837a2149f11a79528b6e6",
+    "diff_lines": 32
+  },
+  {
+    "path": "Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp",
+    "bytes": 25165,
+    "sha256": "b280d1d98394192d7928d089577fc867a332c454f4896bba18ec894b15a5b0d8",
+    "diff_lines": 134
+  },
+  {
+    "path": "Tests/EMSCTT2/.gitignore",
+    "bytes": 102,
+    "sha256": "4904780fc756810f515a502a398172b78947d91d5e8459dc12c77173ebac1349",
+    "diff_lines": 13
+  },
+  {
+    "path": "Tests/EMSCTT2/EMSCTT2Hierarchy.cpp",
+    "bytes": 9147,
+    "sha256": "881622339f06f4d598cb27a94d79721624a168e3fb74dabc0108cc6d71e60938",
+    "diff_lines": 233
+  },
+  {
+    "path": "Tests/EMSCTT2/EMSCTT2Readback.cpp",
+    "bytes": 4758,
+    "sha256": "b2a78fc175bcc0508e6f4f191b67d3a524c2506997b4c0cccdcc5af4bba40baa",
+    "diff_lines": 135
+  },
+  {
+    "path": "Tests/EMSCTT2/GNUmakefile",
+    "bytes": 721,
+    "sha256": "2bcf80b9ecf714c67a51ae982d8aa4f2f39b1bfcca954fd49bc6d1b08e3b6072",
+    "diff_lines": 23
+  },
+  {
+    "path": "Tests/EMSCTT2/README.md",
+    "bytes": 13673,
+    "sha256": "63b6555ab459a6e26e6310635978f5356a0dfd491a0e004f5678895d99246681",
+    "diff_lines": 256
+  },
+  {
+    "path": "Tests/EMSCTT2/ad_diagnostic.jl",
+    "bytes": 433,
+    "sha256": "fb15574d1015b66cfd6633f2f0b457ffc99f41879e3432ea125447330d13c829",
+    "diff_lines": 19
+  },
+  {
+    "path": "Tests/EMSCTT2/authenticate.py",
+    "bytes": 2804,
+    "sha256": "f7f9c52c3e06ecd157bddfda23170a0020ef692531cbbd93fdd88771b409dd17",
+    "diff_lines": 49
+  },
+  {
+    "path": "Tests/EMSCTT2/compare.py",
+    "bytes": 3886,
+    "sha256": "ff6269e634e4fbd90284cf767efd0559a18e4d78b8849a49a55557b4402dc126",
+    "diff_lines": 73
+  },
+  {
+    "path": "Tests/EMSCTT2/compare_ccz4.py",
+    "bytes": 1685,
+    "sha256": "089855e55ab31cbb69acbb8aaf8ecb9e98f8ffb5887ccb12330442d0455b2a83",
+    "diff_lines": 29
+  },
+  {
+    "path": "Tests/EMSCTT2/compare_stencils.py",
+    "bytes": 2342,
+    "sha256": "3b1b81a333a0bd89cf6385b04464a8187a06c64e4d76039b7f05b62c4b394a73",
+    "diff_lines": 42
+  },
+  {
+    "path": "Tests/EMSCTT2/constraints_report.py",
+    "bytes": 1931,
+    "sha256": "1de6bc11119c8c6796753694d68fae1c45d2722401d2804a45baa36980415c61",
+    "diff_lines": 36
+  },
+  {
+    "path": "Tests/EMSCTT2/findings.md",
+    "bytes": 2255,
+    "sha256": "54a05b5575f45ece68156eb4afa1ebc7dfce846f7c1a74ae548175e3c37a5216",
+    "diff_lines": 41
+  },
+  {
+    "path": "Tests/EMSCTT2/params-160.txt",
+    "bytes": 1143,
+    "sha256": "02ef0225d6487defca20440ed4f842f69a59467e1b0ae3bb071aa1dc1e1c0706",
+    "diff_lines": 54
+  },
+  {
+    "path": "Tests/EMSCTT2/params-320.txt",
+    "bytes": 1144,
+    "sha256": "5aa97880bf1628f5870c11ed552bed8be216a1f335c6c8d09f3a4b12569dccf4",
+    "diff_lines": 54
+  },
+  {
+    "path": "Tests/EMSCTT2/params-80.txt",
+    "bytes": 1142,
+    "sha256": "07862e9b5a6fb7f6805169eba0cbe8c08df93bfb7b8dd51b33f2fec053e57cef",
+    "diff_lines": 54
+  },
+  {
+    "path": "Tests/EMSCTT2/params-near-160.txt",
+    "bytes": 1179,
+    "sha256": "2f3b322f3db70512e0fb07f2a2f1cae02655e79e96630f86429e34d5d197d3bb",
+    "diff_lines": 55
+  },
+  {
+    "path": "Tests/EMSCTT2/params-near-320.txt",
+    "bytes": 1180,
+    "sha256": "fc5b1af430abae978bce9e04d7719d7343faae799bc24cc53fd0d0227dac830c",
+    "diff_lines": 55
+  },
+  {
+    "path": "Tests/EMSCTT2/params-near-80.txt",
+    "bytes": 1178,
+    "sha256": "5a583b682ae1e20c1483ed8705f715c3a6adfac7b28932bbac9c77efd9730c44",
+    "diff_lines": 55
+  },
+  {
+    "path": "Tests/EMSCTT2/parser.py",
+    "bytes": 4049,
+    "sha256": "dac8644a61dbdc9660988df136a6e5aee1422304694c53d1056bc46781e592b5",
+    "diff_lines": 71
+  },
+  {
+    "path": "Tests/EMSCTT2/progress.md",
+    "bytes": 1225,
+    "sha256": "91eccb83b7503028fb14ba88343daf75280ef0c7f0eb6d3cf8515e044e64ec33",
+    "diff_lines": 25
+  },
+  {
+    "path": "Tests/EMSCTT2/reference.jl",
+    "bytes": 3070,
+    "sha256": "0ac931dbe65703ba9ad70ff8892b51fc2989c35e8f9a56eaffcda22eb550c531",
+    "diff_lines": 83
+  },
+  {
+    "path": "Tests/EMSCTT2/reference_ad.jl",
+    "bytes": 1387,
+    "sha256": "a4fc1d37dde62cd8ce7911448a1677a319d7fd62cbd4175c61f521c1c3baa610",
+    "diff_lines": 38
+  },
+  {
+    "path": "Tests/EMSCTT2/reference_ccz4.jl",
+    "bytes": 1441,
+    "sha256": "5f10acf84797218977d41482690c89a0b9edaecb5a2c4b222ca818483138deff",
+    "diff_lines": 39
+  },
+  {
+    "path": "Tests/EMSCTT2/results/ad-replay.json",
+    "bytes": 175,
+    "sha256": "273e86bfa05909b6257a692d5b028a54e53fe2d05d23d82f1d3104ce762f690a",
+    "diff_lines": 11
+  },
+  {
+    "path": "Tests/EMSCTT2/results/analytic-ghosts.log",
+    "bytes": 11970,
+    "sha256": "312077404f5caed3fea6d0c2d2db164934c914ec840896ca575db143f1f04d40",
+    "diff_lines": 151
+  },
+  {
+    "path": "Tests/EMSCTT2/results/authentication.json",
+    "bytes": 11253,
+    "sha256": "85a1d373999deb1222d6c86680c437e640bc4fd3792714dff3e2412148ca4ea0",
+    "diff_lines": 215
+  },
+  {
+    "path": "Tests/EMSCTT2/results/authentication.log",
+    "bytes": 116,
+    "sha256": "a8da535e5a29203c649312c2b034263397a337e32eb7c937667e28dfa6ab2b31",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/bindings.json",
+    "bytes": 3777,
+    "sha256": "701d6a78b1a96ee2881cdd7d2bf0ed2dfa7430e65c2027ec401622e8a0d135c9",
+    "diff_lines": 44
+  },
+  {
+    "path": "Tests/EMSCTT2/results/build-EMS.log",
+    "bytes": 3691,
+    "sha256": "3988ea53822e24a3bd99768c96c7b8b087655472debd19df60b14fe2200130d7",
+    "diff_lines": 23
+  },
+  {
+    "path": "Tests/EMSCTT2/results/build-EMSCTT.log",
+    "bytes": 3419,
+    "sha256": "327bf7ed7bf7ace82802e6886dbc393d50a5539b1ee050432c85c95631243398",
+    "diff_lines": 18
+  },
+  {
+    "path": "Tests/EMSCTT2/results/build-EMSTrumpet.log",
+    "bytes": 5040,
+    "sha256": "132246f248de264a8181c09ea1e1d77c13e1004c2a5ffc491a9cee1514312151",
+    "diff_lines": 22
+  },
+  {
+    "path": "Tests/EMSCTT2/results/build.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/build.log",
+    "bytes": 1879,
+    "sha256": "291efdbf5aef6692039bb5625236b2c6674f3c12573607f26bf5167d3742cbe1",
+    "diff_lines": 14
+  },
+  {
+    "path": "Tests/EMSCTT2/results/cas.log",
+    "bytes": 189,
+    "sha256": "2709a2856dfa84a52b8b7a795e1edb5b69ee7b73bf6e088e47050baa4e6327e2",
+    "diff_lines": 8
+  },
+  {
+    "path": "Tests/EMSCTT2/results/ccz4-n24-julia.txt",
+    "bytes": 151797,
+    "sha256": "0cba8ed7d171128dd75b13b1310939f23d30a23b9a2d61f575da789f29f500d9",
+    "diff_lines": 471,
+    "shape": [
+      465,
+      21
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/ccz4-n24-points.txt",
+    "bytes": 19656,
+    "sha256": "7b9194e70c677f66787331efe72eb380f83b94ad38fe94cccf2784d545d2c7b8",
+    "diff_lines": 471,
+    "shape": [
+      465,
+      4
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/ccz4-n24-scales.txt",
+    "bytes": 19581,
+    "sha256": "381953f1958e289de148f8a022c5684c6ff3cd773e74c141d9ef8aba872b8987",
+    "diff_lines": 99,
+    "shape": [
+      93,
+      21
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/ccz4-readback.json",
+    "bytes": 817,
+    "sha256": "f35880c23ea657de29c38c41b77c3b6937aa741a9a4c512c7d8d07d4834a31e7",
+    "diff_lines": 36
+  },
+  {
+    "path": "Tests/EMSCTT2/results/ccz4-zero-julia.txt",
+    "bytes": 153191,
+    "sha256": "bdd1a4551e792ad48155b54000d0c8d533fec4caa5afe7580eb06625bf81a373",
+    "diff_lines": 471,
+    "shape": [
+      465,
+      21
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/ccz4-zero-points.txt",
+    "bytes": 19656,
+    "sha256": "7b9194e70c677f66787331efe72eb380f83b94ad38fe94cccf2784d545d2c7b8",
+    "diff_lines": 471,
+    "shape": [
+      465,
+      4
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/ccz4-zero-scales.txt",
+    "bytes": 19581,
+    "sha256": "381953f1958e289de148f8a022c5684c6ff3cd773e74c141d9ef8aba872b8987",
+    "diff_lines": 99,
+    "shape": [
+      93,
+      21
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/ccz4.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/ccz4.log",
+    "bytes": 1456,
+    "sha256": "4de4b8e88c65e474d4d57fa2ca8bfdc4cedc65df9c7b1cb376dec0e0c62f0562",
+    "diff_lines": 37
+  },
+  {
+    "path": "Tests/EMSCTT2/results/compare.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/compare.log",
+    "bytes": 1188,
+    "sha256": "f566e42eec171bbda341bde911a3586cdf6a36f245965d453c4e41446d84927f",
+    "diff_lines": 51
+  },
+  {
+    "path": "Tests/EMSCTT2/results/constraint-tables.md",
+    "bytes": 2520,
+    "sha256": "77437bf8845b688eac2ec7a7b8b6f62db5fbdd3cab2f1ec2688f7af785910ca3",
+    "diff_lines": 39
+  },
+  {
+    "path": "Tests/EMSCTT2/results/constraints-report.log",
+    "bytes": 2520,
+    "sha256": "77437bf8845b688eac2ec7a7b8b6f62db5fbdd3cab2f1ec2688f7af785910ca3",
+    "diff_lines": 39
+  },
+  {
+    "path": "Tests/EMSCTT2/results/constraints.csv",
+    "bytes": 5672,
+    "sha256": "345d4613615ac663eacd2b9b1cb7435917b3c4d9e8a79940b794289e0b978467",
+    "diff_lines": 31
+  },
+  {
+    "path": "Tests/EMSCTT2/results/cost-ghost-control.json",
+    "bytes": 453,
+    "sha256": "d1750e0f9cb00fcc336eab1218a3b831a01bab7589ca1c9ca50edbfe1427822c",
+    "diff_lines": 19
+  },
+  {
+    "path": "Tests/EMSCTT2/results/cost-hierarchy.json",
+    "bytes": 1231,
+    "sha256": "3dc98fc46d9bfcc21ee30b4abfb9cbd07e0f14bd642607577b07e39485ab97ef",
+    "diff_lines": 38
+  },
+  {
+    "path": "Tests/EMSCTT2/results/cost-near.json",
+    "bytes": 1260,
+    "sha256": "0842d1e1d5cb1c96e7743dc03bf7fda83cd651ee6bcc46c846d690d767106f6e",
+    "diff_lines": 38
+  },
+  {
+    "path": "Tests/EMSCTT2/results/cost-reference-ad.json",
+    "bytes": 853,
+    "sha256": "3a8c1b73d059fc4e124f57dbb40d8858d1bd03538fc0edb364ae4e3bd9b3b6e2",
+    "diff_lines": 24
+  },
+  {
+    "path": "Tests/EMSCTT2/results/cost-reference-ccz4.json",
+    "bytes": 717,
+    "sha256": "99e34b15f5d35e185f650c58ef23d9d5d2fbfff422831c2d3d1fc6f1fd8cd0b7",
+    "diff_lines": 23
+  },
+  {
+    "path": "Tests/EMSCTT2/results/cost-regression.json",
+    "bytes": 1680,
+    "sha256": "b30807e20f45c7f1dd9ab3d8ef88b1adc71bc647a27eba88a4b2358790fe9cba",
+    "diff_lines": 75
+  },
+  {
+    "path": "Tests/EMSCTT2/results/cost.json",
+    "bytes": 717,
+    "sha256": "99e34b15f5d35e185f650c58ef23d9d5d2fbfff422831c2d3d1fc6f1fd8cd0b7",
+    "diff_lines": 23
+  },
+  {
+    "path": "Tests/EMSCTT2/results/emsctt1.log",
+    "bytes": 2027,
+    "sha256": "e9f4bb6b2aa2283401d92a06cfdd787f624ff52d441bdf0feff2c8730de7d255",
+    "diff_lines": 46
+  },
+  {
+    "path": "Tests/EMSCTT2/results/extra-hierarchy.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/extra-hierarchy.log",
+    "bytes": 1521,
+    "sha256": "531b95967a53c1336684ea676d6c4efe3866f1126e83c16bb785e8bf26c14961",
+    "diff_lines": 10
+  },
+  {
+    "path": "Tests/EMSCTT2/results/failure-diagnostic.log",
+    "bytes": 211,
+    "sha256": "c5383e687f9fbf42303f6305961f0e7a74635ede00902f2d14cfd7456b4b0f5f",
+    "diff_lines": 9
+  },
+  {
+    "path": "Tests/EMSCTT2/results/final-build.log",
+    "bytes": 3085,
+    "sha256": "eba672579cade6135f21cb2c7615523bce107caf5789790cc6b230c0ed1c7430",
+    "diff_lines": 19
+  },
+  {
+    "path": "Tests/EMSCTT2/results/final-compare.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/final-compare.log",
+    "bytes": 1759,
+    "sha256": "76d3d9403a276dd0f2e3cfcab234683a0b8037b29f525a1a79af70652a856bc9",
+    "diff_lines": 69
+  },
+  {
+    "path": "Tests/EMSCTT2/results/half-cpp.txt",
+    "bytes": 106824,
+    "sha256": "a0784634ebf94d4fee4c4c65db4df489bd63606ac9a4ec8ed5a17942d45dac13",
+    "diff_lines": 152,
+    "shape": [
+      146,
+      29
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/half-julia.txt",
+    "bytes": 59107,
+    "sha256": "936de537017fa8f9ee63a4c7b1d2a4de38146d4ea7dc5d84a8769e089f6e4ead",
+    "diff_lines": 152,
+    "shape": [
+      146,
+      29
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/hierarchy-160.log",
+    "bytes": 11856,
+    "sha256": "a522d967199085b54f15ba1f5d2e4622e394aa6bdf9d31f437d8a30af9f64d2f",
+    "diff_lines": 150
+  },
+  {
+    "path": "Tests/EMSCTT2/results/hierarchy-320.log",
+    "bytes": 11864,
+    "sha256": "fab9ef45cce30ddb10d9e5172175a932acbc352d709fa35d456e2af8d8413eb5",
+    "diff_lines": 150
+  },
+  {
+    "path": "Tests/EMSCTT2/results/hierarchy-80.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/hierarchy-80.log",
+    "bytes": 11842,
+    "sha256": "b7b3262c19be585a59231b842d2cee51bf3d84d08f28d4091c9f511e12d2c15f",
+    "diff_lines": 150
+  },
+  {
+    "path": "Tests/EMSCTT2/results/hierarchy-build.log",
+    "bytes": 3089,
+    "sha256": "9cad966fab2d6194fe32f47f061b957861a3743277f0703678b56de94cae0a48",
+    "diff_lines": 19
+  },
+  {
+    "path": "Tests/EMSCTT2/results/hierarchy-near-160.log",
+    "bytes": 11960,
+    "sha256": "f487f6211d43f7a673edbe389e695886fc157ec31b4b263a1ce0e25744be02ca",
+    "diff_lines": 151
+  },
+  {
+    "path": "Tests/EMSCTT2/results/hierarchy-near-320.log",
+    "bytes": 11990,
+    "sha256": "fd9ea7e78c2fde0d7acd6cca20e9c1fe261b9e00e8ee3dd28eb3488d859258c5",
+    "diff_lines": 151
+  },
+  {
+    "path": "Tests/EMSCTT2/results/hierarchy-near-80.log",
+    "bytes": 11952,
+    "sha256": "2dfd59cdeb8e2ed2f2ed3e36a0cba8f613a27a3140f7f465900bfa5ab61408b7",
+    "diff_lines": 151
+  },
+  {
+    "path": "Tests/EMSCTT2/results/hierarchy.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/hierarchy.log",
+    "bytes": 1093,
+    "sha256": "dcfdee23b3698243489318a5cb2b532e25a3d2bd6389cee735f435f08297c464",
+    "diff_lines": 9
+  },
+  {
+    "path": "Tests/EMSCTT2/results/jet-points.txt",
+    "bytes": 11664,
+    "sha256": "ba738b40f4be9731e1ab0e3fd22b31c09d3b22a85e1a7cbab704d5a6cea7ff5b",
+    "diff_lines": 213,
+    "shape": [
+      207,
+      5
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/jet-scales.txt",
+    "bytes": 272196,
+    "sha256": "a3f2335f20f22f479f46bcd597d1a33a66aef14c4dede2e00275ba327593c11c",
+    "diff_lines": 546,
+    "shape": [
+      540,
+      29
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/jets-julia-float64.txt",
+    "bytes": 382806,
+    "sha256": "88c45850a6ab801820378bebe1650854f3d18358ab982e80cb4fa4cebc9f5fde",
+    "diff_lines": 213,
+    "shape": [
+      207,
+      116
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/jets-julia.txt",
+    "bytes": 382971,
+    "sha256": "adeeef3dfd78058e5d1441880022629cf5972f1e8d9d385cc47a384abd994b01",
+    "diff_lines": 213,
+    "shape": [
+      207,
+      116
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/n12-cpp.txt",
+    "bytes": 106817,
+    "sha256": "183bbfcd3d5f6f62466a86789349be9215da8a213c2b2096cb91320f0fdbb89f",
+    "diff_lines": 152,
+    "shape": [
+      146,
+      29
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/n12-julia.txt",
+    "bytes": 59069,
+    "sha256": "218f0b9418bcac8e383490e9dd67016a378d9b93f3a590112e0bb614501702d8",
+    "diff_lines": 152,
+    "shape": [
+      146,
+      29
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/n18-cpp.txt",
+    "bytes": 106817,
+    "sha256": "7fcecd66947d1b8fbd02e218f69efe3c3bab37301103396a1f4b95199678c9df",
+    "diff_lines": 152,
+    "shape": [
+      146,
+      29
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/n18-julia.txt",
+    "bytes": 59105,
+    "sha256": "6566d561f2ef39e0d85ed50b9240cd0debd3666d5975d0f4c4ce7b52fb8cdb64",
+    "diff_lines": 152,
+    "shape": [
+      146,
+      29
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/n24-cpp.txt",
+    "bytes": 106817,
+    "sha256": "fdf965aab48c8e78d265c8d16faf45831eb718c67b7d61056c2722f20538bd66",
+    "diff_lines": 152,
+    "shape": [
+      146,
+      29
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/n24-julia.txt",
+    "bytes": 59155,
+    "sha256": "f69c32105371689769795016a14d1cccd277d3dc8009fba7655396b1bbddb358",
+    "diff_lines": 152,
+    "shape": [
+      146,
+      29
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/parser.json",
+    "bytes": 1277,
+    "sha256": "09065c0736e13a206ec516e5b612b9bf92c1b242dad80e32f8d8428ece453c0b",
+    "diff_lines": 38
+  },
+  {
+    "path": "Tests/EMSCTT2/results/parser.log",
+    "bytes": 127,
+    "sha256": "0dbe64e1eb4c0c37edeebfea55e5e1c091c4cc55a8bedbe672f59cface46f155",
+    "diff_lines": 8
+  },
+  {
+    "path": "Tests/EMSCTT2/results/points.txt",
+    "bytes": 6386,
+    "sha256": "f71f29627efb522bcea0da0ff842f6e7fb765ada9c38db9109382ea1bf17c239",
+    "diff_lines": 152,
+    "shape": [
+      146,
+      4
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/readback.json",
+    "bytes": 1194,
+    "sha256": "fb1586a53dbb29acc4bfae2d9fdf8b5947798b234068aba354f33cb68630051b",
+    "diff_lines": 51
+  },
+  {
+    "path": "Tests/EMSCTT2/results/reference-ad-run.log",
+    "bytes": 769,
+    "sha256": "ed154d9b293ce94bfc497f68b1f0cc1fc9486ccce4fd24ea7edb950166944695",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/reference-ad.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/reference-ad.log",
+    "bytes": 58,
+    "sha256": "4ac64ffb4bf724ad14df3b13bee14f653ac0af031241142aa94762bc034d895f",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/reference-ccz4.log",
+    "bytes": 54,
+    "sha256": "b39b46debc3e5223f7352a42f61d42854077f92e4fd225bcaa7df9b49d719a11",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/reference-highprecision.log",
+    "bytes": 40,
+    "sha256": "56bf950fef17d6c9f8606b009f5fd14f9dfa813888e410c4ab298e615a855b30",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/reference.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/reference.log",
+    "bytes": 146,
+    "sha256": "12efb4246973a4c8c7edb67d58b3a9dab02e69c33979c07bbf46f5906b48b1dc",
+    "diff_lines": 9
+  },
+  {
+    "path": "Tests/EMSCTT2/results/regression.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/regression.log",
+    "bytes": 1350,
+    "sha256": "0bc85cf546d9695b2256f0fc6f02e74af25f31198fcc9b31b75eea767231868c",
+    "diff_lines": 11
+  },
+  {
+    "path": "Tests/EMSCTT2/results/stencil-compare.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/stencil-compare.log",
+    "bytes": 565,
+    "sha256": "509c6ede3f80fc2532b76ab1e82fbc2cdae87d6f63d28d874b9ce889e9c2e04e",
+    "diff_lines": 24
+  },
+  {
+    "path": "Tests/EMSCTT2/results/stencil-julia.txt",
+    "bytes": 2462720,
+    "sha256": "403a059b88b7937f31b086e874e464ef781d25217c1f660b50df8752ea75ae33",
+    "diff_lines": 5406,
+    "shape": [
+      5400,
+      29
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/stencil-points.txt",
+    "bytes": 288009,
+    "sha256": "a68171181d882545981a45b6a59a35600913d3d581526d0825108877c9ab1405",
+    "diff_lines": 5406,
+    "shape": [
+      5400,
+      4
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/stencil-readback.json",
+    "bytes": 565,
+    "sha256": "00cf855dcbf244fac826096f5180bf4afee48c5f503312db08ff186df5303126",
+    "diff_lines": 24
+  },
+  {
+    "path": "Tests/EMSCTT2/results/stencil-reference.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/stencil-reference.log",
+    "bytes": 93,
+    "sha256": "75554d9fddb42e7f5c60fb2fccdd5b147dd958fc7a0d54e66a8e64676e5faaa3",
+    "diff_lines": 7
+  },
+  {
+    "path": "Tests/EMSCTT2/results/trumpet.log",
+    "bytes": 3070,
+    "sha256": "e36f07f5ae5e676a09feca5e7cdaa30132c0e352db037eb58699af4bb0d12d29",
+    "diff_lines": 50
+  },
+  {
+    "path": "Tests/EMSCTT2/results/zero-cpp.txt",
+    "bytes": 106854,
+    "sha256": "d66ea161ae8b4a3bc8be3b5fe16c8526117ae5587cf4ce52c177202e5ad84b59",
+    "diff_lines": 152,
+    "shape": [
+      146,
+      29
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/results/zero-julia.txt",
+    "bytes": 59234,
+    "sha256": "6ba61b9fea0b2a08f5be4316130ec1801bb9eeafe6ef9b982bb64b85eac29ee0",
+    "diff_lines": 152,
+    "shape": [
+      146,
+      29
+    ]
+  },
+  {
+    "path": "Tests/EMSCTT2/run_controls.py",
+    "bytes": 2875,
+    "sha256": "d65a088bcebe02ddf2094ba9354455f38389fb1e9117330766c960aa92a6ca1c",
+    "diff_lines": 46
+  },
+  {
+    "path": "scripts/cas/ctt2_longitudinal.py",
+    "bytes": 1383,
+    "sha256": "c3233a8f54da940d21223b6d690838765b1ef1a5ec61f11aac59eaf76a7d1047",
+    "diff_lines": 29
+  }
+]

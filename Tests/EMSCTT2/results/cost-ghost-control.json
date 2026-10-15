@@ -1,0 +1,13 @@
+[
+  {
+    "name": "analytic-ghosts",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-320.txt",
+      "ctt2_test_analytic_ghosts=1"
+    ],
+    "seconds": 3.8146033749999333,
+    "exit": 0,
+    "child_peak_rss_upper_bound_bytes": 102825984
+  }
+]
