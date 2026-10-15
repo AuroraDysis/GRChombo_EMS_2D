@@ -353,8 +353,9 @@ difference observed zero). This covers Float64 conditioning at this dx
 over three RK4 steps; byte identity is not required. NP is absent off;
 on produces 56 finite rows at four times. Evidence is in
 results-t5/production-verification.json and the three run directories.
-The final current build took 22.375 s (peak RSS .572 GB), with smoke runs
+The initial current build took 22.375 s (peak RSS .572 GB), with smoke runs
 below .3 s and .019 GB. No run approached the five-minute dry-run limit.
+The final script replay also passes (current rebuild 29.219 s, .738 GB).
 
 Reproduce with `python3 Tests/EMSNP/production_smoke.py --prepare`, then
 `python3 Tests/EMSNP/production_smoke.py`, then its `--verify` mode.
@@ -363,18 +364,41 @@ under EMS_NP_LOG_ROOT/t5/smoke-checkpoints with SHA-256 receipts.
 
 ## Evidence and reproduction
 
-All five inputs were rehashed against T1 identities before and after T4;
-see results-t4/inputs.json and inputs-final.json.
+All five inputs were rehashed against T1 identities before and after T4,
+and again in T5b; see results-t5/inputs-final.json. The non-echo smoke
+profile has its separate SHA-256 and native header in reference-input.json.
 The t=602 checkpoint has 16 synchronized levels and 28 evolved fields.
 The full hierarchy is read without advancing, regridding or replacing data.
 Parameter copies state every restart/sphere/test selector.
 
 Run `zsh Tests/EMSNP/run_t4.sh` from the worktree. It builds with the local
-serial Chombo, syntax-checks the production level with the prescribed
-temporary header workaround, checks the negative stencil control, then
+serial Chombo, syntax-checks the actual production headers, checks the negative stencil control, then
 runs the three orders and the uninstrumented L4 cost measurement on one
 unchanged hierarchy. It authenticates the inputs again and reports every
-comparison. Exit 1 records the failed readiness gate. See progress.md and
-results-t4/summary.md, validation.json and full logs. Accepted T3 controls
+comparison. Exit 1 records the historical T4 gate, whose estimate omits
+cell-derivative error. Then run `python3 Tests/EMSNP/report_cell_error.py`
+for the complete T5 estimate and current acceptance. See progress.md,
+results-t5/cell-error.md and production-verification.json. Accepted T3 controls
 and their executable derivations remain in results-t3 and run_t3.sh.
 No Julia process, evolution, HPC, SSH, transfer or push was launched in T4.
+
+Raw logs are archived outside the tree at
+`/Users/auroradysis/Workspace/EMS/.data/fork-np-logs/`. For old logs, append
+the manifest's `archive` path to that directory; log-archive.json records
+each original path, size, line count and SHA-256. Small summaries, evidence
+tables and executable controls stay tracked. New runner logs go directly
+to `EMS_NP_LOG_ROOT/t2`, `t3`, `t4` or `t5`; checkpoints and a copy of the
+linked production executable are also archived under t5 with receipts.
+
+Scripts accept `EMS_ROOT`, `EMS_NP_LOG_ROOT`, `CHOMBO_HOME`, `CXX`, and
+the shell runners also accept `EMS_EXE_SUFFIX`, `GTIMEOUT`, `WOLFRAM`,
+`JULIA`, `OMP_NUM_THREADS`. config.py/config.sh retain this machine's
+current values as defaults. Smoke-only overrides are `EMS_NP_BASE_ROOT`,
+`EMS_NP_SMOKE_TRUMPET` and `H5DIFF`. Relocated inputs still have to match
+their authenticated sizes and hashes; no physical values are inferred.
+
+**T5b verdict: merge-ready for the documented l<=6 extraction scope.**
+The non-fatal crossing control, complete discretization budget, linked
+non-echo production smoke and test hygiene controls pass. MPI execution
+and long-time stability were not tested locally. The smoke's coarse
+negative raw minimum chi is shared by the baseline and current executable.

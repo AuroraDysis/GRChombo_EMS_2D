@@ -1,4 +1,0 @@
-Comparison: Counter({'PASS': 16, 'FAIL': 2})
-Baseline: Counter({'PASS': 8})
-Ready: False
-REPORT_EXIT=1

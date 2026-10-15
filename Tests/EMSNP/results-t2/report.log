@@ -1,6 +1,0 @@
-Static controls: Counter({'PASS': 70})
-Weyl4 modes: Counter({'PASS': 28, 'FAIL': 2})
-Matter rotation sphere/classes: Counter({'FAIL': 28})
-Default: {'status': 'PASS', 'rows': 42, 'relative_tolerance': 1e-12, 'absolute_tolerance': 1e-100, 'max_relative_difference': 0, 'new_files_with_switch_off': False}
-Projections: {'status': 'PASS', 'mode_components': 980, 'max_error_over_roundoff_budget': 0.0018045267922320635, 'pointwise_X_definitions': 'PASS', 'independent_harmonics': 'associated Legendre factorial polynomial'}
-Ready for simulation: False

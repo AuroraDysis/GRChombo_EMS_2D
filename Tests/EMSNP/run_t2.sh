@@ -2,39 +2,40 @@
 # All runs are frozen or t=0; deliberately sequential HDF5 restart access.
 set -eu
 cd "${0:A:h}/../.."
-export CHOMBO_HOME=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib
-export OMP_NUM_THREADS=8
+source Tests/EMSNP/config.sh
 out=Tests/EMSNP/results-t2
+logs=$EMS_NP_LOG_ROOT/t2
+mkdir -p "$logs"
 python3 Tests/EMSNP/prepare_t2.py
-/usr/bin/time -p make -C Tests/EMSWeylOffline all DIM=2 -j 8 > "$out/build-release.log" 2>&1
-python3 Tests/EMSNP/syntax_check.py > "$out/syntax-driver.log" 2>&1
-env OMP_NUM_THREADS=1 Tests/EMSWeylOffline/EMSNPTest2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex \
-    "$out/rn-n256/params.txt" > "$out/unit.log" 2>&1
+/usr/bin/time -p make -C Tests/EMSWeylOffline all DIM=2 CXX="$CXX" -j 2 > "$logs/build-release.log" 2>&1
+python3 Tests/EMSNP/syntax_check.py > "$logs/syntax-driver.log" 2>&1
+env OMP_NUM_THREADS=1 "Tests/EMSWeylOffline/EMSNPTest${EMS_EXE_SUFFIX}" \
+    "$out/rn-n256/params.txt" > "$logs/unit.log" 2>&1
 for pair in 'np_static_metric static-cas' 'np_first_order first-order-cas'; do
     parts=(${=pair})
-    /usr/bin/time -p /opt/homebrew/bin/gtimeout -k 5s 60s \
-        /Applications/Wolfram.app/Contents/MacOS/wolfram -script "scripts/cas/$parts[1].wls" \
-        > "$out/$parts[2].log" 2>&1
+    /usr/bin/time -p "$GTIMEOUT" -k 5s 60s \
+        "$WOLFRAM" -script "scripts/cas/$parts[1].wls" \
+        > "$logs/$parts[2].log" 2>&1
     # Kernel parse errors can exit zero: require the actual closed witness.
-    rg -q '^PROVED' "$out/$parts[2].log"
-    if rg -q 'NOT-CLOSED|Syntax::|Check::' "$out/$parts[2].log"; then exit 1; fi
+    rg -q '^PROVED' "$logs/$parts[2].log"
+    if rg -q 'NOT-CLOSED|Syntax::|Check::' "$logs/$parts[2].log"; then exit 1; fi
 done
 for spec in 'rn RN-identity 1 2 4' 'ems a0.9-e7 0.0512 0.2622 0.6069 1.0429'; do
     parts=(${=spec})
-    /usr/bin/time -p julia --project=/Users/auroradysis/Workspace/EMS \
-        Tests/EMSNP/static_oracle.jl "/Users/auroradysis/Workspace/EMS/artifacts/echo/$parts[2].trumpet" \
-        "$out/$parts[1]-oracle.csv" $parts[3,-1] > "$out/$parts[1]-oracle.log" 2>&1
+    /usr/bin/time -p "$JULIA" --project="$EMS_ROOT" \
+        Tests/EMSNP/static_oracle.jl "$EMS_ROOT/artifacts/echo/$parts[2].trumpet" \
+        "$out/$parts[1]-oracle.csv" $parts[3,-1] > "$logs/$parts[1]-oracle.log" 2>&1
 done
 for case in rn-n256 rn-n512 ems-n1024 ems-n2048 checkpoint cavity default; do
     exe=EMSNPStatic
     if [[ "$case" == checkpoint || "$case" == cavity || "$case" == default ]]; then exe=EMSWeylCheckpoint; fi
     (
         cd "$out/$case"
-        /usr/bin/time -p "../../../EMSWeylOffline/${exe}2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex" params.txt
-    ) > "$out/$case-release.log" 2>&1
+        /usr/bin/time -p "../../../EMSWeylOffline/${exe}${EMS_EXE_SUFFIX}" params.txt
+    ) > "$logs/$case-release.log" 2>&1
 done
 report_status=0
-python3 Tests/EMSNP/report_t2.py > "$out/report.log" 2>&1 || report_status=$?
-cat "$out/report.log"
+python3 Tests/EMSNP/report_t2.py > "$logs/report.log" 2>&1 || report_status=$?
+cat "$logs/report.log"
 print "RUN_COMPLETED validation_exit=$report_status"
 exit $report_status

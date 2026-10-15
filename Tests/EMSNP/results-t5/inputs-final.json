@@ -1,0 +1,67 @@
+[
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo/RN-identity.trumpet",
+    "bytes": 2706,
+    "sha256": "56f2e42e60723b5a482aa5ac60e2938c6fe05b4f7ecfd876b44b779bbf3e28b0"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet",
+    "bytes": 8103,
+    "sha256": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.toml",
+    "bytes": 1594,
+    "sha256": "2a47569055d5413c45e37cbbcb28522def27fe7efecbb99110ba77e6b6208737"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.data/exp-0033/chk/EMS_001376.2d.hdf5",
+    "bytes": 500319232,
+    "sha256": "6c44135d2c6a27921761ae59d38b9ea5f879d25dc2b585bf88d690170e9124ae"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0031/submissions/exp-0031/production/params-H15-L1680.txt",
+    "bytes": 4312,
+    "sha256": "5ff227f384f432f04262f5aa324badc9a816689441ecd5b898096a047362805c"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/artifacts/reference-alpha20-q0p7.trumpet",
+    "bytes": 5515,
+    "sha256": "45126de17d5648b4efa8e59d727ae572a63b7c4eacee79eecbb83262df987d69",
+    "header": {
+      "A_H": "38.530469490246766",
+      "C": "-0.9340508781805944",
+      "M": "1",
+      "Phi_e": "0.26865162606335313",
+      "Q": "0.69999999999999996",
+      "Q_s": "0.077062193071343724",
+      "R_h": "0.63611642452210804",
+      "T_H": "0.042145547277132475",
+      "coefficients": "Chebyshev-Tk(2s-1)-full-a0",
+      "convention": "ems-native-draft-v1",
+      "coordinate": "R=ell*s^(1/nu)/(1-s)",
+      "degree": "64",
+      "ell": "1",
+      "ems_alpha": "12.566370614359172",
+      "ems_f0": "0",
+      "ems_f1": "0",
+      "ems_f2": "-20",
+      "nu": "1.4022835560031328",
+      "phi_h": "0.052274528945421062",
+      "phi_inf": "-1.0351873451081393e-33",
+      "q_native": "0.13962979814050144",
+      "r_C": "1.3200138563283237",
+      "r_h": "1.7510446423527062",
+      "schema": "EMSTRUMPET/1",
+      "slice": "stationary-maximal-critical-trumpet-v1",
+      "x.B_exc": "-0.18515487632680275",
+      "x.B_h": "0.95953600920006099",
+      "x.B_root": "8.0118685686509011e-32",
+      "x.Udd": "-6.2189397574318894",
+      "x.degree_checks": "64:3.5861236861665666e-29:2.2976282606781503e-26:6.7171529190728488e-25",
+      "x.excision_margin_rh": "0.033843633909156706",
+      "x.nu_identity": "1.4022835560031328",
+      "x.r_exc_over_rh": "0.71999999999999997"
+    }
+  }
+]

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import sys
 import prepare_t2 as base
+from config import input_path
 base.OUT=base.HERE/'results-t3'
 
 
@@ -11,7 +12,7 @@ def main():
     if '--verify-only' in sys.argv:
         expected=json.loads((base.OUT/'inputs.json').read_text())
         for item in expected:
-            path=Path(item['path']);digest=hashlib.sha256()
+            path=input_path(item['path']);item['path']=str(path);digest=hashlib.sha256()
             with path.open('rb') as stream:
                 for block in iter(lambda:stream.read(1048576),b''):digest.update(block)
             assert path.stat().st_size==item['bytes'] and digest.hexdigest()==item['sha256'],path

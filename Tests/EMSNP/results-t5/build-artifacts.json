@@ -1,0 +1,50 @@
+[
+  {
+    "original": "Examples/EMS/Main_EMSBH2DBH2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+    "archive": "/Users/auroradysis/Workspace/EMS/.data/fork-np-logs/t5/build-artifacts/Examples/EMS/Main_EMSBH2DBH2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+    "bytes": 2300320,
+    "sha256": "2e86d28e7a8631691e100fefeb149920f547c89faecd06dfdd430256a5f30e96"
+  },
+  {
+    "original": "Tests/EMSWeylOffline/EMSNPStatic2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+    "archive": "/Users/auroradysis/Workspace/EMS/.data/fork-np-logs/t5/build-artifacts/Tests/EMSWeylOffline/EMSNPStatic2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+    "bytes": 1855784,
+    "sha256": "9e8e68f23db92efcf879e128254101f2bd813f1c6415b271954a1a80460d0cdb"
+  },
+  {
+    "original": "Tests/EMSWeylOffline/EMSNPTest2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+    "archive": "/Users/auroradysis/Workspace/EMS/.data/fork-np-logs/t5/build-artifacts/Tests/EMSWeylOffline/EMSNPTest2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+    "bytes": 1596840,
+    "sha256": "19041db667a02f249055db01c5cb82b72b9995ef09a95c461dbabb86a28bd9f2"
+  },
+  {
+    "original": "Tests/EMSWeylOffline/EMSWeylCheckpoint2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+    "archive": "/Users/auroradysis/Workspace/EMS/.data/fork-np-logs/t5/build-artifacts/Tests/EMSWeylOffline/EMSWeylCheckpoint2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+    "bytes": 1895008,
+    "sha256": "17d2ca9566c7e9417111c9ba9e08d5cccfcd7a245708327961cfb7af27e5ec26"
+  },
+  {
+    "original": "Tests/EMSNP/results-t5/puncture-test/matter/ems_radiation.csv",
+    "archive": "/Users/auroradysis/Workspace/EMS/.data/fork-np-logs/t5/build-artifacts/Tests/EMSNP/results-t5/puncture-test/matter/ems_radiation.csv",
+    "bytes": 3192,
+    "sha256": "8fbe05297a404b048bfe61883b2ad6ac3fcd214e673edd71eccfe9b6e5ab1945"
+  },
+  {
+    "original": "Tests/EMSNP/results-t5/puncture-test/sixth-matter/ems_radiation.csv",
+    "archive": "/Users/auroradysis/Workspace/EMS/.data/fork-np-logs/t5/build-artifacts/Tests/EMSNP/results-t5/puncture-test/sixth-matter/ems_radiation.csv",
+    "bytes": 3188,
+    "sha256": "7c272e3aea9bee821101e4d1583a478077c7bbe8b736e01adac325626f0d1d86"
+  },
+  {
+    "original": "Tests/EMSNP/results-t5/puncture-test/sixth-vacuum/ems_radiation.csv",
+    "archive": "/Users/auroradysis/Workspace/EMS/.data/fork-np-logs/t5/build-artifacts/Tests/EMSNP/results-t5/puncture-test/sixth-vacuum/ems_radiation.csv",
+    "bytes": 3192,
+    "sha256": "297cf24635be3fb9374799f937fd4353f3e4e7c0a9fc17d5465b90edc79ae3ab"
+  },
+  {
+    "original": "Tests/EMSNP/results-t5/puncture-test/vacuum/ems_radiation.csv",
+    "archive": "/Users/auroradysis/Workspace/EMS/.data/fork-np-logs/t5/build-artifacts/Tests/EMSNP/results-t5/puncture-test/vacuum/ems_radiation.csv",
+    "bytes": 3191,
+    "sha256": "a9a9fa3b9559782f95c7e02f4c2c8aeaae6e08827ddbdad419c3073f72065734"
+  }
+]

@@ -1,9 +1,0 @@
-PROVED: all four CAS derivatives; joint first-order invariance for both classes and both X
-PROVED: l-fixed Xout and k-fixed Xin derivative coefficients start at eps^2
-PROVED: four-point derivative is exact for these degree<=4 rotation polynomials, h!=0
-PROVED: residual Weyl trace equals reconstructed Ricci minus field-equation Ricci
-Linear coefficients: {-6*f2*p1 + 2*f0*p3, 2*f1*p0 - 4*f0*p1, -4*f2*p3 + 2*f1*p4, 2*f2*p1 - 6*f0*p3}
-CAS scope: algebraic identity — production physics not certified
-real 0.76
-user 0.67
-sys 0.07

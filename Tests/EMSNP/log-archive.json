@@ -1,0 +1,520 @@
+[
+  {
+    "original": "Tests/EMSNP/results-t2/build-complete.log",
+    "archive": "Tests/EMSNP/results-t2/build-complete.log",
+    "bytes": 5276,
+    "lines": 21,
+    "sha256": "836d14dfdffd1c7146b6d94c011eec2a9395c5dedc5660e5a6e56dda4864b95d"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/build-final.log",
+    "archive": "Tests/EMSNP/results-t2/build-final.log",
+    "bytes": 7114,
+    "lines": 54,
+    "sha256": "57957cb607bb1d8dcf2ea2e4b46f0562d71b0a29752432e450031822819f4d6e"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/build-fixed.log",
+    "archive": "Tests/EMSNP/results-t2/build-fixed.log",
+    "bytes": 7361,
+    "lines": 24,
+    "sha256": "100971df572eaabe1b191460756c1bc275f2b36fbe320bb701f61a2488e8c18a"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/build-release.log",
+    "archive": "Tests/EMSNP/results-t2/build-release.log",
+    "bytes": 1052,
+    "lines": 14,
+    "sha256": "95197fedd419c6e873b3a66522fd616bf26281c75fe923353dee80e111bf1459"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/build.log",
+    "archive": "Tests/EMSNP/results-t2/build.log",
+    "bytes": 11184,
+    "lines": 34,
+    "sha256": "0921302e31cd4e6c51464a9680e61dd5bae01ca745d3fd7e900fe95bd377366a"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/cavity-release.log",
+    "archive": "Tests/EMSNP/results-t2/cavity-release.log",
+    "bytes": 156523,
+    "lines": 5138,
+    "sha256": "8abdaf45e2f5c58bcca71be4cdf1e57647f584e81a01018ac6a8fc4a2725267e"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/cavity.log",
+    "archive": "Tests/EMSNP/results-t2/cavity.log",
+    "bytes": 154233,
+    "lines": 5075,
+    "sha256": "92ac9f2ec230e3cc8c94998b5a6967c3c231bcfb4bc2bbf4e22134d037930c97"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/checkpoint-final.log",
+    "archive": "Tests/EMSNP/results-t2/checkpoint-final.log",
+    "bytes": 156541,
+    "lines": 5139,
+    "sha256": "088324f6b1c6b21c9ceb8925f42cbf568c84f2547a0216c491121452b032fb45"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/checkpoint-release.log",
+    "archive": "Tests/EMSNP/results-t2/checkpoint-release.log",
+    "bytes": 156524,
+    "lines": 5138,
+    "sha256": "4282f1159fab9eba7437252c4c1779ac89cc13ad38ae9c55225d6381d66c0f90"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/checkpoint.log",
+    "archive": "Tests/EMSNP/results-t2/checkpoint.log",
+    "bytes": 154237,
+    "lines": 5075,
+    "sha256": "3ef81e398b4f03d43be51183a526de4f858539b315c09e757d671388147b2296"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/default-lock-failure.log",
+    "archive": "Tests/EMSNP/results-t2/default-lock-failure.log",
+    "bytes": 3951,
+    "lines": 107,
+    "sha256": "646fbb659292983cd0fafc33db1e487a4f9f40e301f9f30fa4c46cbf48262145"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/default-release.log",
+    "archive": "Tests/EMSNP/results-t2/default-release.log",
+    "bytes": 154219,
+    "lines": 5074,
+    "sha256": "083e26b5b3d3d3eeea43c3f81b11a5035e90f0ab94742ff52864a333c99bbba0"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/default.log",
+    "archive": "Tests/EMSNP/results-t2/default.log",
+    "bytes": 154235,
+    "lines": 5075,
+    "sha256": "3ea8408f938d36849b04f90beeeff5e00b03b69f19bf591c18929adc8900b9e3"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/ems-n1024-release.log",
+    "archive": "Tests/EMSNP/results-t2/ems-n1024-release.log",
+    "bytes": 8741,
+    "lines": 116,
+    "sha256": "55280be3678cc363e1ecddf5e0a1dcd1f70e93d4a75099b03ea2e3fc38143d5e"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/ems-n1024.log",
+    "archive": "Tests/EMSNP/results-t2/ems-n1024.log",
+    "bytes": 8755,
+    "lines": 117,
+    "sha256": "675f5ca7b871d981f514d1dbc8026f116c015ad7a4ed082ab2c33826e00fa741"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/ems-n2048-release.log",
+    "archive": "Tests/EMSNP/results-t2/ems-n2048-release.log",
+    "bytes": 8741,
+    "lines": 116,
+    "sha256": "dc5d4299885d9a89e2502d0bd84248ac2de1bb5f27519e1f581ab74a9420ce8a"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/ems-n2048.log",
+    "archive": "Tests/EMSNP/results-t2/ems-n2048.log",
+    "bytes": 8755,
+    "lines": 117,
+    "sha256": "05d80aa2fa5dce6418e3eed0b8572e1c1a08569ef4c102eb6a569a6cb9796dcc"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/ems-oracle.log",
+    "archive": "Tests/EMSNP/results-t2/ems-oracle.log",
+    "bytes": 155,
+    "lines": 4,
+    "sha256": "dab4c20a965cd824054d50d2ea76480f9d9f30da96a577c541b200cf5bb1c002"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/first-order-cas-syntax-failure.log",
+    "archive": "Tests/EMSNP/results-t2/first-order-cas-syntax-failure.log",
+    "bytes": 148,
+    "lines": 5,
+    "sha256": "c3fb2ad7dad565e94fd8b15b987ce2fe6561ac0eede9ef7b759f1355389c50e9"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/first-order-cas.log",
+    "archive": "Tests/EMSNP/results-t2/first-order-cas.log",
+    "bytes": 531,
+    "lines": 9,
+    "sha256": "a346d3fc96927f72b05755b29af007b8385de67a37370c55301ab8872d774332"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/production-dry-build.log",
+    "archive": "Tests/EMSNP/results-t2/production-dry-build.log",
+    "bytes": 14155,
+    "lines": 24,
+    "sha256": "493a04c2c38630cc78e65d6c3ec94f720cf0e68dfaac48b8cc8f537fd87dadd8"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/report.log",
+    "archive": "Tests/EMSNP/results-t2/report.log",
+    "bytes": 549,
+    "lines": 6,
+    "sha256": "fecd1ca811e017ba26dce7947fef51a4a4f0e261178cf73eb41985cdc722758b"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/rn-n256-release.log",
+    "archive": "Tests/EMSNP/results-t2/rn-n256-release.log",
+    "bytes": 8745,
+    "lines": 116,
+    "sha256": "809a4109a0c70312ba1b5cc87fca759f9f65506ab6445717450b760e791eb415"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/rn-n256.log",
+    "archive": "Tests/EMSNP/results-t2/rn-n256.log",
+    "bytes": 8759,
+    "lines": 117,
+    "sha256": "855344a1e358d80bb4dfec02fb0e58978c9f539f12c57516dc2cbeafa79fd8d1"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/rn-n512-release.log",
+    "archive": "Tests/EMSNP/results-t2/rn-n512-release.log",
+    "bytes": 8745,
+    "lines": 116,
+    "sha256": "7afb4e2ffa8cd4c891baa9e57fbbcf949edaa33c2fc11556e22161768179240d"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/rn-n512.log",
+    "archive": "Tests/EMSNP/results-t2/rn-n512.log",
+    "bytes": 8759,
+    "lines": 117,
+    "sha256": "4d33ef3eb8ba9c7a7ed06825a28aaba4dc369a0da7705626f75c4d9215762fe4"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/rn-oracle.log",
+    "archive": "Tests/EMSNP/results-t2/rn-oracle.log",
+    "bytes": 159,
+    "lines": 4,
+    "sha256": "78f5b64eb82e1c2e905a74cdf7722a473c0445e4d7e3842693e1463486d8acc2"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/run-final.log",
+    "archive": "Tests/EMSNP/results-t2/run-final.log",
+    "bytes": 624,
+    "lines": 11,
+    "sha256": "707246437dbd2cfa7c95c40db4cbdc4a52075e11ff366311a1c8e115e76da376"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/run.log",
+    "archive": "Tests/EMSNP/results-t2/run.log",
+    "bytes": 457,
+    "lines": 10,
+    "sha256": "2f6b5b19f185a344669f3f2e44a78aa6e0f6f5f868fa65e3d8222b13bc6e77db"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/static-cas.log",
+    "archive": "Tests/EMSNP/results-t2/static-cas.log",
+    "bytes": 567,
+    "lines": 8,
+    "sha256": "8a2299a47464b1fafde414c901c5edb6ce1634eaeec30c04a5fe483eda785138"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/syntax-driver.log",
+    "archive": "Tests/EMSNP/results-t2/syntax-driver.log",
+    "bytes": 1641,
+    "lines": 7,
+    "sha256": "8aae53e8c0bd7d5d57fa66098b856eb441c0a8a8fc7e68116050680037a88366"
+  },
+  {
+    "original": "Tests/EMSNP/results-t2/unit.log",
+    "archive": "Tests/EMSNP/results-t2/unit.log",
+    "bytes": 128,
+    "lines": 4,
+    "sha256": "470d6a3a199fc36a30a5995b6c127812c8c97a48f4d886e95e10a8153b83d8ce"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/activation-dependency.log",
+    "archive": "Tests/EMSNP/results-t3/activation-dependency.log",
+    "bytes": 6803,
+    "lines": 82,
+    "sha256": "7742be6e6c6f669900e19e8e42280d7763ca801d58c80574babb16fd83bbf87b"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/build-release.log",
+    "archive": "Tests/EMSNP/results-t3/build-release.log",
+    "bytes": 7369,
+    "lines": 21,
+    "sha256": "778da586d88ad48e5cf55b9278e442aa3754adc777fcbdbf401a49836bb1afd4"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/build.log",
+    "archive": "Tests/EMSNP/results-t3/build.log",
+    "bytes": 13310,
+    "lines": 34,
+    "sha256": "e7e0de80cff4d8ca0c1c09ffb24c84415b02418272ce555bb853a258bf7624e1"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/cavity-release.log",
+    "archive": "Tests/EMSNP/results-t3/cavity-release.log",
+    "bytes": 156545,
+    "lines": 5136,
+    "sha256": "e4202f7cafd2c20ed595c9177362b0aa510aa945a4929836ca9b6aeba192d7e5"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/checkpoint-release.log",
+    "archive": "Tests/EMSNP/results-t3/checkpoint-release.log",
+    "bytes": 156545,
+    "lines": 5136,
+    "sha256": "0287e00090ebfc88104c52ef021365be6633cc1cea16140896210330cd5c4d0b"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/default-release.log",
+    "archive": "Tests/EMSNP/results-t3/default-release.log",
+    "bytes": 154241,
+    "lines": 5072,
+    "sha256": "3bd09446af521232b1e838f8a24ee6c508efa20d26e2d8bd9b6aaf295bd0b5c9"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/ems-n1024-release.log",
+    "archive": "Tests/EMSNP/results-t3/ems-n1024-release.log",
+    "bytes": 8762,
+    "lines": 114,
+    "sha256": "c21171e02ce48c9988177acbf3bc933e5afb56fd1b324fdc0892e9956aa90e00"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/ems-n2048-release.log",
+    "archive": "Tests/EMSNP/results-t3/ems-n2048-release.log",
+    "bytes": 8763,
+    "lines": 114,
+    "sha256": "5bd3a5313a590ee2d519134985a5edc60e5c686dbc4d15d70c80676c87e28d92"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/ems-oracle.log",
+    "archive": "Tests/EMSNP/results-t3/ems-oracle.log",
+    "bytes": 176,
+    "lines": 2,
+    "sha256": "98a9ac40902049280f5f873cba1a90c774e2494fca9670dbba25db3253ac8a81"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/first-order-cas.log",
+    "archive": "Tests/EMSNP/results-t3/first-order-cas.log",
+    "bytes": 552,
+    "lines": 7,
+    "sha256": "30eaa17d9ca55dca7caa1b7552a25f6b1dfc48558628dd94be38813ee4945565"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/input-final.log",
+    "archive": "Tests/EMSNP/results-t3/input-final.log",
+    "bytes": 53,
+    "lines": 1,
+    "sha256": "274b45c618e5de20bcda027543cec36c75aad21dae8481aecc38ef3bb3ad4e74"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/production-dry-build.log",
+    "archive": "Tests/EMSNP/results-t3/production-dry-build.log",
+    "bytes": 14186,
+    "lines": 25,
+    "sha256": "205351576480f303bd5eb5f68683f3d566f1eafb7bc8e50dd4d4ab743cf43620"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/report.log",
+    "archive": "Tests/EMSNP/results-t3/report.log",
+    "bytes": 535,
+    "lines": 7,
+    "sha256": "bb8b2efc7a5e4c59c7a2f4b3353e7948887512befcee29096bcf07592aed0846"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/resume-monitor-denied.log",
+    "archive": "Tests/EMSNP/results-t3/resume-monitor-denied.log",
+    "bytes": 1683,
+    "lines": 24,
+    "sha256": "4fc603b5f740f6453d4b10e6c261345c575be31a234f445736812d47ad28d234"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/rn-n256-release.log",
+    "archive": "Tests/EMSNP/results-t3/rn-n256-release.log",
+    "bytes": 8765,
+    "lines": 114,
+    "sha256": "7da17f3c0860c1a76fc0a938e9c909018f3a7fd6c8393885a1a212e1215d55d4"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/rn-n512-release.log",
+    "archive": "Tests/EMSNP/results-t3/rn-n512-release.log",
+    "bytes": 8765,
+    "lines": 114,
+    "sha256": "dcfe45240533e3a621f15f6d42edb425bbe46a37a9c9ded2285ee1e3f35bc563"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/rn-oracle.log",
+    "archive": "Tests/EMSNP/results-t3/rn-oracle.log",
+    "bytes": 180,
+    "lines": 2,
+    "sha256": "9fbae6be49b34be0f609d27043ca31711c898e4df1f55a3ac17a986a7c788ea2"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/run-before-vacuum-control-fix.log",
+    "archive": "Tests/EMSNP/results-t3/run-before-vacuum-control-fix.log",
+    "bytes": 579,
+    "lines": 10,
+    "sha256": "096d08c780713cccaa89e45537d1c549601680c025c249b882ad18a6ea993b5b"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/run-final.log",
+    "archive": "Tests/EMSNP/results-t3/run-final.log",
+    "bytes": 579,
+    "lines": 10,
+    "sha256": "096d08c780713cccaa89e45537d1c549601680c025c249b882ad18a6ea993b5b"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/run.log",
+    "archive": "Tests/EMSNP/results-t3/run.log",
+    "bytes": 610,
+    "lines": 12,
+    "sha256": "7414850ab780f6676ab5e1e9b99cc769764aa4b700bb385c3be906313ed96f3a"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/static-cas.log",
+    "archive": "Tests/EMSNP/results-t3/static-cas.log",
+    "bytes": 588,
+    "lines": 6,
+    "sha256": "61363fcc3ce63426b7460e93e7be7a4759b088dd83df4e25cbbefe383553e26e"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/syntax-driver.log",
+    "archive": "Tests/EMSNP/results-t3/syntax-driver.log",
+    "bytes": 1640,
+    "lines": 7,
+    "sha256": "b24785ee23c504dcc6d6104b41ae4e159813b106f394a417bf9a72c9a3bc8ba5"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/tracefree-cas-syntax-failure.log",
+    "archive": "Tests/EMSNP/results-t3/tracefree-cas-syntax-failure.log",
+    "bytes": 559,
+    "lines": 7,
+    "sha256": "c367cbe400eee01a86e80a5a4d1516ca9362171bd3b954cf19f6d3793f795dde"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/tracefree-cas.log",
+    "archive": "Tests/EMSNP/results-t3/tracefree-cas.log",
+    "bytes": 412,
+    "lines": 5,
+    "sha256": "bdc29e07ec3f932cf7f81abee49e5461ec1c34737691631d0edc9b0de37f0e4e"
+  },
+  {
+    "original": "Tests/EMSNP/results-t3/unit.log",
+    "archive": "Tests/EMSNP/results-t3/unit.log",
+    "bytes": 149,
+    "lines": 4,
+    "sha256": "3e23d40176687187fa68ded01536af18bf65b4eb6da7fd4b61eca8038b49fe2f"
+  },
+  {
+    "original": "Tests/EMSNP/results-t4/build.log",
+    "archive": "Tests/EMSNP/results-t4/build.log",
+    "bytes": 3191,
+    "lines": 15,
+    "sha256": "7b4f3da99772a8453aceccb78f88866384949e0d19ac876bbd9060245b81589a"
+  },
+  {
+    "original": "Tests/EMSNP/results-t4/four-ghost-point-transfer-rejection.log",
+    "archive": "Tests/EMSNP/results-t4/four-ghost-point-transfer-rejection.log",
+    "bytes": 48595,
+    "lines": 1567,
+    "sha256": "01421f3fc8408dab7bb41fb6c878b740a62e970a35a674110ae1f911951e24de"
+  },
+  {
+    "original": "Tests/EMSNP/results-t4/input-final.log",
+    "archive": "Tests/EMSNP/results-t4/input-final.log",
+    "bytes": 33,
+    "lines": 1,
+    "sha256": "ead346b02ca36efe616175a1997ab0b2d596caa7d0fbecf04a3957e833e3597e"
+  },
+  {
+    "original": "Tests/EMSNP/results-t4/insufficient-ghosts.log",
+    "archive": "Tests/EMSNP/results-t4/insufficient-ghosts.log",
+    "bytes": 152509,
+    "lines": 5023,
+    "sha256": "f6efd81b1241db656be448337de95c8e4ad32487bbd7f951dee7fe29f5bd3b88"
+  },
+  {
+    "original": "Tests/EMSNP/results-t4/negative-openmp-exception.log",
+    "archive": "Tests/EMSNP/results-t4/negative-openmp-exception.log",
+    "bytes": 154928,
+    "lines": 5090,
+    "sha256": "5718f0b36135c0af9f3ae9cb2bf7a2463151dadd0cc389e0e48c47baa6e01363"
+  },
+  {
+    "original": "Tests/EMSNP/results-t4/prepare.log",
+    "archive": "Tests/EMSNP/results-t4/prepare.log",
+    "bytes": 75,
+    "lines": 1,
+    "sha256": "500860872b7e5592e86829f62b66d81b9dfae757de8152927d05de860eb7c836"
+  },
+  {
+    "original": "Tests/EMSNP/results-t4/production-dry-build.log",
+    "archive": "Tests/EMSNP/results-t4/production-dry-build.log",
+    "bytes": 14155,
+    "lines": 24,
+    "sha256": "493a04c2c38630cc78e65d6c3ec94f720cf0e68dfaac48b8cc8f537fd87dadd8"
+  },
+  {
+    "original": "Tests/EMSNP/results-t4/report.log",
+    "archive": "Tests/EMSNP/results-t4/report.log",
+    "bytes": 103,
+    "lines": 4,
+    "sha256": "a59c52bb86ba85402ba3272422d7af07e9b7c4dad1249ba0a288b5e3654904e5"
+  },
+  {
+    "original": "Tests/EMSNP/results-t4/run.log",
+    "archive": "Tests/EMSNP/results-t4/run.log",
+    "bytes": 11,
+    "lines": 1,
+    "sha256": "a4822452252f2d29a069783f7035fb5489b2456f48ba6ed5d7016261e9903eca"
+  },
+  {
+    "original": "Tests/EMSNP/results-t4/study.log",
+    "archive": "Tests/EMSNP/results-t4/study.log",
+    "bytes": 161475,
+    "lines": 5270,
+    "sha256": "1a49c525fe8e1c9537d80f1d40e384b9d2ea13a0ddee8b94d6049f36b537e1b4"
+  },
+  {
+    "original": "Tests/EMSNP/results-t4/syntax.log",
+    "archive": "Tests/EMSNP/results-t4/syntax.log",
+    "bytes": 1641,
+    "lines": 7,
+    "sha256": "c22eb38a84094dc571e12acbc6a474d8debd6bb370e450e8f52110f32f95781d"
+  },
+  {
+    "original": "Tests/EMSNP/results/build.log",
+    "archive": "Tests/EMSNP/results/build.log",
+    "bytes": 9006,
+    "lines": 30,
+    "sha256": "2c6a6f9f813b6ce3cb671aeca4bf03d7f3a4efbe4913f4ac7400b69a3a5de2f6"
+  },
+  {
+    "original": "Tests/EMSNP/results/cas.log",
+    "archive": "Tests/EMSNP/results/cas.log",
+    "bytes": 638,
+    "lines": 11,
+    "sha256": "4275e0646597b4cf45e9a7974317644b0d4560b07e7ef8aff97beff7a58c6812"
+  },
+  {
+    "original": "Tests/EMSNP/results/checkpoint-header.log",
+    "archive": "Tests/EMSNP/results/checkpoint-header.log",
+    "bytes": 385,
+    "lines": 23,
+    "sha256": "b3f3047f904064d2570243cee9ac47c315ecdb75a971a320aa844334407cd7e5"
+  },
+  {
+    "original": "Tests/EMSNP/results/checkpoint.log",
+    "archive": "Tests/EMSNP/results/checkpoint.log",
+    "bytes": 154237,
+    "lines": 5075,
+    "sha256": "5edee1385b6fe6854b36b1bb4cb4d096a0ae3cc77db3a3341ab34e19c6234d27"
+  },
+  {
+    "original": "Tests/EMSNP/results/default.log",
+    "archive": "Tests/EMSNP/results/default.log",
+    "bytes": 154234,
+    "lines": 5075,
+    "sha256": "302dd982fe93ce536aa86928d8bfa381b456b3073b6cda6d13fa5e27897bef30"
+  },
+  {
+    "original": "Tests/EMSNP/results/production-dry-build.log",
+    "archive": "Tests/EMSNP/results/production-dry-build.log",
+    "bytes": 14658,
+    "lines": 34,
+    "sha256": "268e1da859a8aada2eed3dbb7ea052d2585a5fbd6641a14553327c15f0548b13"
+  }
+]

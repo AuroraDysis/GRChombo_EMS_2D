@@ -388,3 +388,34 @@ tables, params, input/source identities and verification remain tracked.
 otool -L confirms the real HDF5, gfortran, OpenMP and system linkage.
 Full logs: EMS/.data/fork-np-logs/t5. No program exceeded five minutes,
 no Julia process ran, and no HPC, SSH, transfer or push was used.
+
+## NPTET T5b — MINOR 4: test hygiene and final scope
+
+Archived all 74 historical raw logs, including 16 with >=1000 lines,
+2633787 bytes in total, under EMS/.data/fork-np-logs with their original
+relative paths. log-archive.json retains bytes, line counts and SHA-256;
+all copies are checked before removing originals. Reverification passes.
+Summaries, evidence tables and derivation controls remain tracked.
+Runners now write new logs externally. config.py/config.sh expose EMS_ROOT,
+CHOMBO_HOME, CXX and EMS_NP_LOG_ROOT with current machine defaults;
+shell tool/executable paths also have environment overrides. Relocated
+authenticated inputs are remapped without weakening hash checks.
+
+Python compilation, each shell syntax check and an environment-relocation
+self-check pass. The actual production header syntax check passes in
+1.292 s without a temporary include directory. Forcing every make target
+with -B initially retriggered Chombo's configuration-template rule and
+failed; -W EMSBH2DLevel.cpp now obtains just the needed compiler command.
+The production helper is replayed after its path changes: current rebuild
+29.219 s, .738 GB peak, all three real runs exit 0, off outputs still pass
+1e-12 and all 56 enabled NP rows remain finite. Checkpoint archive receipts
+are refreshed for this replay (container metadata need not be identical).
+The original full build log is preserved as current-production-full-build.log.
+
+Re-run the NP unit test, nonfatal verifier, complete 18-mode estimator,
+production verifier and archive verifier: all PASS. Rehash the original
+five inputs plus the non-echo smoke profile, and all 2516 baseline blobs:
+all unchanged. Final memory_pressure -Q reports 57% free. No Julia solve
+was needed. README states l<=6 scope, NaN policy, both default-off switches,
+columns and cost. Merge-ready for this scope; MPI runtime and long-time
+stability remain outside this serial build smoke. No merge or push.

@@ -2,10 +2,10 @@
 from pathlib import Path
 import hashlib
 import json
+from config import EMS, input_path
 
 HERE=Path(__file__).resolve().parent
 OUT=HERE/'results-t2'
-EMS=Path('/Users/auroradysis/Workspace/EMS')
 SOURCE=EMS/'state/threads/ems-spectral-solver/runs/exp-0031/submissions/exp-0031/production/params-H15-L1680.txt'
 CHECKPOINT=EMS/'.data/exp-0033/chk/EMS_001376.2d.hdf5'
 
@@ -25,7 +25,7 @@ def replace(text,values):
 def main():
     authenticated=json.loads((HERE/'results/inputs.json').read_text())
     for item in authenticated:
-        path=Path(item['path']);digest=hashlib.sha256()
+        path=input_path(item['path']);item['path']=str(path);digest=hashlib.sha256()
         with path.open('rb') as stream:
             for block in iter(lambda:stream.read(1048576),b''):digest.update(block)
         assert path.stat().st_size==item['bytes'] and digest.hexdigest()==item['sha256'],path

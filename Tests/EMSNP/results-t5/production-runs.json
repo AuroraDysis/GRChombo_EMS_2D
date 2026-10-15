@@ -2,15 +2,15 @@
   "baseline_commit": "00d7171",
   "baseline_root": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-np-base",
   "baseline_portability_change": "only the two checkpoint headers protected",
+  "baseline_checkout": {
+    "commit": "00d7171a93e20dbc8cbfce38148a5515f229a7ca",
+    "verified_blobs": 2516,
+    "exception": "two checkpoint header access declarations only"
+  },
   "valid_smoke_profile": "/Users/auroradysis/Workspace/EMS/artifacts/reference-alpha20-q0p7.trumpet",
   "runs": {
     "baseline-off": 0,
     "current-off": 0,
     "current-on": 0
-  },
-  "baseline_checkout": {
-    "commit": "00d7171a93e20dbc8cbfce38148a5515f229a7ca",
-    "verified_blobs": 2516,
-    "exception": "two checkpoint header access declarations only"
   }
 }

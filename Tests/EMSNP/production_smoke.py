@@ -9,12 +9,12 @@ import subprocess
 import shutil
 import sys
 from prepare_t2 import replace
+from config import EMS, LOG_ROOT, CHOMBO_HOME, CXX
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parents[1]
-EMS=Path(os.environ.get('EMS_ROOT','/Users/auroradysis/Workspace/EMS'))
 BASE=Path(os.environ.get('EMS_NP_BASE_ROOT',str(EMS/'.ariadne/worktrees/fork-np-base')))
-LOG=Path(os.environ.get('EMS_NP_LOG_ROOT',str(EMS/'.data/fork-np-logs')))/'t5'
+LOG=LOG_ROOT/'t5'
 OUT=HERE/'results-t5'
 
 
@@ -34,6 +34,8 @@ def prepare():
     assert float(metadata['ems_f2'])==-20 and abs(float(metadata['ems_alpha'])-4*__import__('math').pi)<1e-14
     record={'path':str(profile),'bytes':profile.stat().st_size,
         'sha256':hashlib.sha256(profile.read_bytes()).hexdigest(),'header':metadata}
+    expected=json.loads((OUT/'reference-input.json').read_text())
+    assert record['sha256']==expected['sha256'] and record['bytes']==expected['bytes'],profile
     (OUT/'reference-input.json').write_text(json.dumps(record,indent=2)+'\n')
     source=(HERE/'results-t3/rn-n256/params.txt').read_text()
     # Three short coarse steps of the non-echo reference; KO stays enabled.
@@ -93,18 +95,18 @@ def main():
     if header.read_text()!=before:header.write_text(before)
     source_record=authenticate_baseline()
     env=os.environ
-    env.setdefault('CHOMBO_HOME',str(EMS.parent/'EMS-deps/Chombo/lib'))
+    env.setdefault('CHOMBO_HOME',CHOMBO_HOME)
     env['OMP_NUM_THREADS']='1'
     for name,tree in [('baseline',BASE),('current',ROOT)]:
-        call(['make','-C',tree/'Examples/EMS','all','DIM=2','-j','2'],ROOT,name+'-production-build.log')
-        exes=list((tree/'Examples/EMS').glob('Main_EMSBH2DBH*Darwin*.ex'))
+        call(['make','-C',tree/'Examples/EMS','all','DIM=2','CXX='+CXX,'-j','2'],ROOT,name+'-production-build.log')
+        exes=list((tree/'Examples/EMS').glob('Main_EMSBH2DBH*.ex'))
         assert len(exes)==1,exes
         for case in (['baseline-off'] if name=='baseline' else ['current-off','current-on']):
             call([exes[0],'params.txt'],OUT/case,case+'.log')
     (OUT/'production-runs.json').write_text(json.dumps({'baseline_commit':'00d7171',
         'baseline_root':str(BASE),'baseline_portability_change':'only the two checkpoint headers protected',
         'baseline_checkout':source_record,
-        'valid_smoke_profile':str(EMS/'artifacts/reference-alpha20-q0p7.trumpet'),
+        'valid_smoke_profile':json.loads((OUT/'reference-input.json').read_text())['path'],
         'runs':{'baseline-off':0,'current-off':0,'current-on':0}},indent=2)+'\n')
 
 

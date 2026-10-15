@@ -8,10 +8,14 @@ from pathlib import Path
 import resource
 import subprocess
 import time
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from config import LOG_ROOT
 
 out=Path(__file__).resolve().parent
 start=time.monotonic()
-with (out/'run-final.log').open('w') as log:
+logs=LOG_ROOT/'t3';logs.mkdir(parents=True,exist_ok=True)
+with (logs/'run-final.log').open('w') as log:
     process=subprocess.Popen(['zsh','Tests/EMSNP/run_t3.sh'],
         stdout=log,stderr=subprocess.STDOUT)
     status=process.wait()
