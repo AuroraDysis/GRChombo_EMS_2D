@@ -61,6 +61,8 @@ int run(int argc, char **argv)
     GRParmParse pp(argc - 2, argv + 2, nullptr, argv[1]);
     SimulationParameters p(pp);
     const EMSRadiationParameters radiation(pp, p);
+    bool validation_points=true;
+    pp.query("np_validation_points",validation_points);
     int probe_level=-1;
     pp.query("np_probe_level", probe_level);
     double probe_x=0, probe_y=0;
@@ -135,9 +137,18 @@ int run(int argc, char **argv)
         extraction.execute_query(&interp);
         if (radiation.np_active)
         {
-            EMSNPValidationExtraction np(params,p.dx[0]*p.dt_multiplier,time,true,0.,
-                p.coupling_function_params,p.m_G_Newton,matter);
-            np.execute_query(&interp);
+            if (validation_points)
+            {
+                EMSNPValidationExtraction np(params,p.dx[0]*p.dt_multiplier,time,true,0.,
+                    p.coupling_function_params,p.m_G_Newton,matter);
+                np.execute_query(&interp);
+            }
+            else
+            {
+                EMSNPExtraction np(params,p.dx[0]*p.dt_multiplier,time,true,0.,
+                    p.coupling_function_params,p.m_G_Newton,matter);
+                np.execute_query(&interp);
+            }
         }
         pout() << "EMS_WEYL_OFFLINE t=" << time << " form=" << (matter ? "matter" : "vacuum") << std::endl;
     }

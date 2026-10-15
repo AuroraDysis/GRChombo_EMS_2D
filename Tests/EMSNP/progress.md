@@ -320,3 +320,29 @@ independently recomputed all 18 decisions directly from raw CSV columns
 with Decimal precision 50. The independent result is also 16 PASS / 2
 FAIL. The archived T3 README matches b5d24e7. Source/docs/structured
 results pass diff --check; raw program logs retain their original spaces.
+
+## NPTET T5b — MINOR 1: non-fatal NP extraction
+
+T5's prohibited echo smoke was stopped before any work. T5b authorizes
+the supplied non-echo alpha20,Q/M=.7 reference for the later build smoke.
+Started clean at 56f9ff6; re-read tranche-5.prompt.md and touched sources.
+The five frozen-input hashes matched T4. Full new logs go directly to
+EMS/.data/fork-np-logs/t5 (the .data symlink resolves inside SciData).
+
+Invalid geometry returns a marked Geometry, non-finite contractions return
+NaN samples, and extraction marks all seven mode rows of an invalid sphere
+NaN. A per-file/sphere last-warning time prevents duplicate warnings at
+the same time. Invalid area or overflow in integrated modes follows the
+same policy. NP IO failures report warnings instead of rank-zero throws.
+Startup validation is unchanged. The frozen harness has a test-only
+selector to omit the algebraic point dump for deliberately invalid data.
+
+`test_nonfatal.py --prepare` authenticates/prepares the t=602 checkpoint
+with a sphere centered at (840.0512,0), radius .0512, passing through the
+remnant puncture, and a valid radius-50 sphere. Ordinary frozen harness
+exits 0: 14 NaN NP rows and 14 finite NP rows across both forms, precisely
+two warnings (one per sphere/form/time). test_nonfatal.py verifies these
+counts. The unit checks floor, axis, metric and non-finite rejection plus
+the existing valid flat/Maxwell/Weyl algebra. Both pass. Test build/rebuild
+25.11/16.53 s; frozen run 14.23 s, peak RSS 1.265 GB. No evolution ran.
+Source/structured evidence diff reviewed before the item commit.

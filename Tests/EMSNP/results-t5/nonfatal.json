@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "invalid_sphere": 0.0512,
+  "finite_sphere": 50,
+  "forms": 2,
+  "nan_rows": 14,
+  "finite_rows": 14,
+  "warnings": 2,
+  "exit": 0
+}

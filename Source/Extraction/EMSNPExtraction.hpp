@@ -78,7 +78,7 @@ class EMSNPExtraction : public SphericalExtraction
         if (procID()!=0) return;
         const std::string path=m_params.data_path+"ems_np.csv";
         std::ofstream file(path,m_first_step && m_restart_time==0 ? std::ios::trunc : std::ios::app);
-        if (!file) throw std::runtime_error("cannot write "+path);
+        if (!file) { pout()<<"EMS NP warning: cannot write "<<path<<" at t="<<m_time<<'\n'; return; }
         if (file.tellp()==0)
         {
             file << "t,r,R,l,m";
@@ -89,6 +89,7 @@ class EMSNPExtraction : public SphericalExtraction
         for (int ir=0;ir<m_params.num_surfaces;++ir)
         {
             double area=0;
+            bool valid=true;
             std::array<std::array<EMSNPScalar::Complex,10>,7> modes{};
             const double r=m_params.surface_param_values[ir];
             // Poles have zero quadrature measure and the polar frame is singular.
@@ -98,15 +99,34 @@ class EMSNPExtraction : public SphericalExtraction
                 const double weight=2*M_PI*m_du*std::sin(theta)*
                     IntegrationMethod::simpson.weight(j,m_params.num_points_u,false);
                 const auto g=point(ir,j);
+                if (!g.valid || !std::isfinite(g.area_factor)) { valid=false; break; }
                 const auto value=EMSNPScalar::evaluate(g,g.tetrad);
+                for (auto z:value.values)
+                    valid=valid && std::isfinite(z.real()) && std::isfinite(z.imag());
+                if (!valid) break;
                 area+=weight*r*r*g.area_factor;
                 for (int l=0;l<=6;++l) for (int n=0;n<10;++n)
                     if (l>=std::abs(EMSNPScalar::spins[n]))
                         modes[l][n]+=weight*SphericalHarmonics::spin_Y_lm(std::sin(theta),0.,
                             std::cos(theta),EMSNPScalar::spins[n],l,0).Real*value.values[n];
             }
-            const double R=std::sqrt(area/(4*M_PI));
-            if (!(R>0 && std::isfinite(R))) throw std::runtime_error("EMS NP: invalid sphere area");
+            double R=std::sqrt(area/(4*M_PI));
+            valid=valid && R>0 && std::isfinite(R);
+            for (const auto &mode:modes) for (auto z:mode)
+                valid=valid && std::isfinite(R*z.real()) && std::isfinite(R*z.imag());
+            if (!valid)
+            {
+                R=NAN;
+                for (auto &mode:modes) mode.fill(EMSNPScalar::Complex(NAN,NAN));
+                static std::map<std::pair<std::string,double>,double> warned;
+                const auto key=std::make_pair(path,r);
+                if (!warned.count(key) || warned[key]!=m_time)
+                {
+                    pout()<<"EMS NP warning: invalid sphere r="<<r<<" at t="<<m_time
+                          <<"; writing NaN modes\n";
+                    warned[key]=m_time;
+                }
+            }
             for (int l=0;l<=6;++l)
             {
                 file << m_time << ',' << r << ',' << R << ',' << l << ",0";
@@ -115,7 +135,7 @@ class EMSNPExtraction : public SphericalExtraction
             }
         }
         file.close();
-        if (!file) throw std::runtime_error("failed writing "+path);
+        if (!file) pout()<<"EMS NP warning: failed writing "<<path<<" at t="<<m_time<<'\n';
     }
 };
 #endif

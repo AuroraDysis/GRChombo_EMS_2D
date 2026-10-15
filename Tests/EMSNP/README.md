@@ -17,6 +17,12 @@ controls remain valid; L4 output reproduction is checked again in T4.
 Enable `ems_radiation_activate = true` and `ems_np_activate = true` to write
 `ems_np.csv` on the existing radii, center, Simpson quadrature and schedule,
 including the existing t=0 call. NP defaults false and requires EMS radiation.
+If any angular node has invalid geometry, an active tetrad chi floor,
+or a non-finite NP value, every mode of that sphere is NaN for that time.
+One warning per sphere and time is printed, and other spheres and the
+evolution continue. Consumers must treat these rows as unavailable data.
+Startup parameter validation remains fatal on all ranks. NP output IO
+errors are reported without throwing from rank zero.
 Physical/model parameters are live inputs. No gauge, evolution, KO, AMR
 transfer, or static target after t=0 is introduced.
 

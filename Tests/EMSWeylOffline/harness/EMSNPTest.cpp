@@ -48,10 +48,18 @@ int main(int argc,char **argv)
                          algebraic.C[i][l][j][k])>1e-14)
                 throw std::runtime_error("NP algebraic Bianchi control failed");
     }
-    bool rejected=false;
     v.chi=1e-5;
-    try { compute.geometry(v,d1,d2,coords); } catch (const std::runtime_error &) { rejected=true; }
-    if (!rejected) throw std::runtime_error("NP inconsistent metric floor was not rejected");
+    auto invalid=compute.geometry(v,d1,d2,coords);
+    if (invalid.valid || !std::isnan(EMSNPScalar::evaluate(invalid,invalid.tetrad).values[0].real()))
+        throw std::runtime_error("NP inconsistent metric floor was not marked invalid");
+    v.chi=1; coords.y=0;
+    if (compute.geometry(v,d1,d2,coords).valid) throw std::runtime_error("NP axis guard failed");
+    coords.y=4; v.h[0][0]=-1;
+    if (compute.geometry(v,d1,d2,coords).valid) throw std::runtime_error("NP metric guard failed");
+    v.h[0][0]=1; v.Ex=NAN;
+    invalid=compute.geometry(v,d1,d2,coords);
+    if (!std::isnan(EMSNPScalar::evaluate(invalid,invalid.tetrad).values[4].real()))
+        throw std::runtime_error("NP nonfinite guard failed");
     pout() << "PASS NP flat, complex Maxwell signs/normalization, general E/B algebra, chi-floor rejection\n";
     mainFinalize(); return 0;
 }

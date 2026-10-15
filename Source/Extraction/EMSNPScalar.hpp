@@ -19,7 +19,8 @@ class EMSNPScalar : public EMSMatterWeylOmScalar
         double R[4][4][4][4]{}, C[4][4][4][4]{};
         double g[4][4]{}, ric[4][4]{}, F[4][4]{};
         Tetrad tetrad;
-        double area_factor, legacy;
+        double area_factor=NAN, legacy=NAN;
+        bool valid=true;
         double electric_trace{}, magnetic_trace{}, magnetic_axial[3]{};
     };
     struct Sample
@@ -40,7 +41,10 @@ class EMSNPScalar : public EMSMatterWeylOmScalar
         // floors, so they cannot define the requested normalized common frame.
         const double det2=vars.h[0][0]*vars.h[1][1]-vars.h[0][1]*vars.h[0][1];
         if (!(vars.chi>=1e-4 && vars.h[0][0]>0 && det2>0 && vars.hww>0 && coords.y>0))
-            throw std::runtime_error("EMS NP: invalid metric, axis point, or active tetrad chi floor");
+        {
+            Geometry invalid; invalid.valid=false;
+            return invalid;
+        }
         auto r=compute_riemann_tensor(vars,d1,d2,coords);
         if (matter) add_matter(r,vars,d1);
         const auto t=compute_null_tetrad(vars,coords);
@@ -185,6 +189,7 @@ class EMSNPScalar : public EMSMatterWeylOmScalar
     }
     static Sample evaluate(const Geometry &g,const Tetrad &t)
     {
+        if (!g.valid) return invalid_sample();
         const auto &l=t[0], &k=t[1], &m=t[2], &mb=t[3];
         Sample out;
         auto &v=out.values;
@@ -196,7 +201,13 @@ class EMSNPScalar : public EMSMatterWeylOmScalar
         v[8]=2.*v[6]*v[3]-3.*v[2]*v[7]; v[9]=2.*v[6]*v[1]-3.*v[2]*v[5];
         for (const auto z:v)
             if (!std::isfinite(z.real()) || !std::isfinite(z.imag()))
-                throw std::runtime_error("EMS NP: nonfinite scalar");
+                return invalid_sample();
+        return out;
+    }
+    static Sample invalid_sample()
+    {
+        Sample out;
+        out.values.fill(Complex(NAN,NAN));
         return out;
     }
 };
