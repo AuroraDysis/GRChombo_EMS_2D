@@ -7,8 +7,8 @@ README-T2.md and [README-T3.md](README-T3.md).
 
 **Radiation validation passes through l=6, with switches default off.**
 All 18 sphere/mode/form comparisons pass the corrected budget, even
-without its permitted safety factor 2. The production build smoke is
-recorded separately below before the final merge-readiness decision.
+without its permitted safety factor 2. Linked production executables
+also pass the non-echo, three-step smoke described below.
 The accepted T3 static, rotation, algebraic, normalization and default
 controls remain valid; L4 output reproduction is checked again in T4.
 
@@ -308,14 +308,58 @@ all **980 mode components**, including signs, spin weights and R factors;
 maximum residual is .00181 of its 2048ε absolute-sum budget. Both X
 expressions are independently checked at every point before projection.
 
-EMSBH2DLevel.cpp passes -fsyntax-only with the prescribed temporary header
-copy and line-51 private-to-protected workaround. Source headers are not
-patched. Default-off and NP-enabled runs reproduce the 42 old radiation
+T3's EMSBH2DLevel.cpp syntax check used the prescribed temporary header
+workaround. Default-off and NP-enabled frozen runs reproduce the 42 old radiation
 rows to 1e-12 relative (+1e-100 at zeros), maximum difference zero. No new
 NP file appears with the flag off. Flat space, complex Maxwell signs and
 normalization, chi-floor rejection and activation-dependency controls pass.
-A full production executable link/evolution is not claimed: its known
-private-header build issue is outside this task.
+T5b additionally builds, links and runs the real production executable.
+Only the two checkpoint-header methods in GRAMRLevel are now protected,
+allowing the EMS overrides to call their base methods on local g++-16.
+Other private methods keep their original access.
+
+## Use in a production run
+
+The validated scope is the existing axisymmetric extraction, m=0 and
+l<=6. Keep the existing sphere, center, angular quadrature and extraction
+schedule parameters, and enable:
+
+```
+activate_extraction = 1
+ems_radiation_activate = true
+ems_np_activate = true
+ems_weyl_matter = true
+```
+
+The two new/related switches default false. NP itself is always
+matter-complete; ems_weyl_matter enables the matching legacy W control.
+The columns and R normalization are specified above. A puncture crossing
+produces unavailable NaN rows for that sphere/time and one warning;
+consumers must skip these rows. On the supplied t=602 checkpoint, the
+incremental NP extraction costs median 6.323 ms for three spheres and
+97 theta points, including CSV IO (measurement boundaries given above).
+
+The linked smoke uses the authenticated **non-echo** reference
+alpha=20, Q/M=.7 trumpet, at dx=.25 with KO sigma=1, three RK4 steps to
+t=.075, spheres r=2,4 and 33 theta points. This is a build control, not
+an evolution-accuracy or stability result. Raw minimum chi is negative
+on this coarse grid in both baseline and current builds; no new branch
+or output difference is observed. The baseline is an authenticated
+2516-blob checkout of 00d7171, with only the same two access fixes needed
+to compile on this machine. Both builds link the real local Chombo/HDF5.
+All three runs exit 0. Off/off comparisons pass at absolute tolerance
+1e-12 for both checkpoints and nine legacy text outputs (maximum text
+difference observed zero). This covers Float64 conditioning at this dx
+over three RK4 steps; byte identity is not required. NP is absent off;
+on produces 56 finite rows at four times. Evidence is in
+results-t5/production-verification.json and the three run directories.
+The final current build took 22.375 s (peak RSS .572 GB), with smoke runs
+below .3 s and .019 GB. No run approached the five-minute dry-run limit.
+
+Reproduce with `python3 Tests/EMSNP/production_smoke.py --prepare`, then
+`python3 Tests/EMSNP/production_smoke.py`, then its `--verify` mode.
+The script uses an external baseline checkout and archives checkpoints
+under EMS_NP_LOG_ROOT/t5/smoke-checkpoints with SHA-256 receipts.
 
 ## Evidence and reproduction
 

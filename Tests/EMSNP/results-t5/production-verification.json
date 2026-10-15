@@ -1,0 +1,67 @@
+{
+  "absolute_tolerance": 1e-12,
+  "basis": "Float64 conditioning at dx=.25, three RK4 steps",
+  "checkpoints": [
+    {
+      "step": 0,
+      "exit": 0
+    },
+    {
+      "step": 3,
+      "exit": 0
+    }
+  ],
+  "text_outputs": [
+    {
+      "file": "M_ADM.dat",
+      "rows": 3,
+      "max_absolute_difference": 0
+    },
+    {
+      "file": "Weyl4_mode_20.dat",
+      "rows": 3,
+      "max_absolute_difference": 0
+    },
+    {
+      "file": "Weyl4_mode_30.dat",
+      "rows": 3,
+      "max_absolute_difference": 0
+    },
+    {
+      "file": "Weyl4_mode_40.dat",
+      "rows": 3,
+      "max_absolute_difference": 0
+    },
+    {
+      "file": "Weyl4_mode_50.dat",
+      "rows": 3,
+      "max_absolute_difference": 0
+    },
+    {
+      "file": "Weyl4_mode_60.dat",
+      "rows": 3,
+      "max_absolute_difference": 0
+    },
+    {
+      "file": "constraint_norms.dat",
+      "rows": 3,
+      "max_absolute_difference": 0
+    },
+    {
+      "file": "ems_radiation.csv",
+      "rows": 56,
+      "max_absolute_difference": 0
+    },
+    {
+      "file": "min_chi.dat",
+      "rows": 3,
+      "max_absolute_difference": 0
+    }
+  ],
+  "status": "PASS",
+  "finite_NP_rows": 56,
+  "times": 4,
+  "coarse_steps": 3,
+  "max_time": 0.07500000000000001,
+  "default_off_new_files": false
+}

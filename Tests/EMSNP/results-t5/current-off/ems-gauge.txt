@@ -1,0 +1,9 @@
+ems_gauge = experimental
+B_semantics = integrated_offset_decaying_0p1
+lapse_advec_coeff = 1
+lapse_coeff = 2
+lapse_power = 1
+shift_advec_coeff = 0
+shift_Gamma_coeff = 0.75
+eta = 1
+coefficient_semantics = declared parameters; legacy ExperimentalGauge retains its own fixed lapse/advection/decay coefficients

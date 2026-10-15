@@ -361,3 +361,30 @@ confirmed: only 4/18 improve; ratios span .260585–5.86966. This does not
 alter the stated acceptance. README radiation readiness now states l<=6
 with the corrected budget; linked-production smoke remains a separate
 pending control. No checkpoint was advanced for this item.
+
+## NPTET T5b — MINOR 3: linked production build and smoke
+
+Changed only writeCheckpointHeader/readCheckpointHeader access to
+protected. A git-archive checkout outside the tracked tree authenticates
+all 2516 blobs at 00d7171, allowing exactly those same access declarations
+for the local compiler. The native alpha20,Q/M=.7 non-echo trumpet header
+and SHA-256 are recorded; ems_alpha=4pi, f2=-20, KO sigma=1. No echo
+member evolved. The real baseline and current executables build/link;
+current full build 22.375 s, .572 GB peak. Three coarse steps at dx=.25
+to t=.075 finish for baseline/off, current/off and current/on, all exit 0
+(.1530/.2975/.1135 s, peak <=.019 GB). An initial baseline attempt found
+the missing checkpoint output directory; prepare now creates it and the
+successful run replaced it. The failed attempt log remains archived.
+
+production_smoke.py --verify uses h5diff -d 1e-12 on initial/final
+checkpoints and compares nine legacy text outputs at that absolute
+tolerance (Float64 conditioning over three steps). All pass; maximum text
+difference is zero observed. Gauge text agrees; no new default-off file.
+Enabled NP gives 56 entirely finite rows, two spheres, seven modes, four
+times. Coarse negative raw minimum chi is shared with the baseline: this
+smoke claims execution and default preservation, not physical accuracy.
+Checkpoint binaries are SHA-verified in the external log archive; small
+tables, params, input/source identities and verification remain tracked.
+otool -L confirms the real HDF5, gfortran, OpenMP and system linkage.
+Full logs: EMS/.data/fork-np-logs/t5. No program exceeded five minutes,
+no Julia process ran, and no HPC, SSH, transfer or push was used.

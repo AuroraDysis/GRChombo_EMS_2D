@@ -95,12 +95,16 @@ class GRAMRLevel : public AMRLevel, public InterpSource<>
     DisjointBoxLayout loadBalance(const Vector<Box> &a_grids);
 
 #ifdef CH_USE_HDF5
+  protected:
     virtual void writeCheckpointHeader(HDF5Handle &a_handle) const;
 
+  private:
     virtual void writeCheckpointLevel(HDF5Handle &a_handle) const;
 
+  protected:
     virtual void readCheckpointHeader(HDF5Handle &a_handle);
 
+  private:
     virtual void readCheckpointLevel(HDF5Handle &a_handle);
 
     virtual void writePlotHeader(HDF5Handle &a_handle) const;
