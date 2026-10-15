@@ -7,9 +7,10 @@ import shutil
 import subprocess
 import tempfile
 import time
+import sys
 
 ROOT=Path(__file__).resolve().parents[2]
-OUT=ROOT/'Tests/EMSNP/results-t2'
+OUT=Path(sys.argv[1]).resolve() if len(sys.argv)>1 else ROOT/'Tests/EMSNP/results-t2'
 env=dict(os.environ,CHOMBO_HOME='/Users/auroradysis/Workspace/EMS-deps/Chombo/lib')
 dry=subprocess.run(['make','-n','-C','Examples/EMS','all','DIM=2'],cwd=ROOT,
                    env=env,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,check=True)

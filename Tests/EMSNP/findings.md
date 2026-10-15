@@ -103,3 +103,44 @@ this is not a parametric continuum certificate. The outermost EMS
 curvature has reached the Float64 derivative arithmetic floor.
 
 CAS scope: algebraic identity — production physics not certified
+
+## NPTET T3: authorized trace-free electric/magnetic construction
+
+Artifact: `scripts/cas/np_tracefree.wls`, clean-kernel output in
+results-t3/tracefree-cas.log. The contract is a real oriented orthonormal
+frame of signature (-+++), arbitrary symmetric trace-free E and B, an
+arbitrary real null-rotation parameter, and a general antisymmetric F.
+Exact arithmetic is polynomial over Q extended by I and positive sqrt(2).
+All denominators are nonzero constants; there are no parameter poles.
+
+The witnesses are all 256 Riemann symmetry/Bianchi component residuals,
+all 16 metric traces, and every coefficient of both NP rotation laws
+computed from the rebuilt tensor and the rotated tetrad. A second generic
+Gauss/Codazzi tensor retains independent Hamiltonian and momentum
+residuals and field Ricci entries; direct contraction proves preservation
+of Psi0 and Psi4 after the electric/magnetic STF construction. Setting
+its Ricci entries to zero includes the consistent vacuum control.
+Expand followed by literal zero assertions is the deterministic CLOSE;
+failed assertions or Wolfram messages exit nonzero. No simplifier or
+numerical rationalization is used.
+
+Independent Float64 transfer consists of the C++ generic E/B symmetry
+and Bianchi test (one general ten-component sample, tolerance 1e-14),
+the vacuum/matter same-jet Weyl4 unit check (1e-13 absolute), and the
+frozen checkpoint on 665 interior angular nodes per form. Four-point
+finite differences rotate the actual tetrad and agree with the separate
+CAS coefficients within the contraction roundoff budget. All point data,
+budgets and both forms are retained. No random sampling is involved.
+Psi0/Psi4 preservation is checked for both forms on every requested
+sphere; the production-path comparison remains a separate failed gate.
+
+Status: **PROVED** for the algebraic Weyl identities, both rotation laws
+and radiative preservation under the stated Gauss/Codazzi construction.
+Static and frozen results corroborate the finite-resolution transfer.
+They do not close the requested pure-arithmetic comparison of distinct
+spatial evaluation orders: the even production W modes fail that gate.
+Dimensions remain [E_Weyl]=[B_Weyl]=[H]=[M]=L^-2,
+[Phi]=L^-1, [X]=L^-3. STF and the reconstruction are linear in curvature
+with dimensionless metric/frame factors; no new physical scale enters.
+
+CAS scope: algebraic identity — production physics not certified

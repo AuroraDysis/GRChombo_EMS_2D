@@ -1,0 +1,13 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "During evaluation of In[2]:= PROVED: STF E/B reconstruction has all algebraic Weyl symmetries and zero trace\nDuring evaluation of In[2]:= PROVED: both null-rotation binomial laws from actual tensor and Faraday contractions\nDuring evaluation of In[2]:= PROVED: Psi0 and Psi4 preserved; removed electric trace=H, magnetic axial=-M (geometric constraints)\nDuring evaluation of In[2]:= Domain: oriented orthonormal (-+++), real arbitrary tensor components and a; no parameter poles\n\nOut[2]= Null"
+    },
+    {
+      "type": "text",
+      "text": "\n\n<system-reminder>Pass session=\"FugrCF5A\" in future calls to this tool to continue this session.</system-reminder>"
+    }
+  ],
+  "isError": false
+}

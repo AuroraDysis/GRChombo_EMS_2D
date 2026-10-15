@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo/RN-identity.trumpet",
+    "bytes": 2706,
+    "sha256": "56f2e42e60723b5a482aa5ac60e2938c6fe05b4f7ecfd876b44b779bbf3e28b0"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet",
+    "bytes": 8103,
+    "sha256": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.toml",
+    "bytes": 1594,
+    "sha256": "2a47569055d5413c45e37cbbcb28522def27fe7efecbb99110ba77e6b6208737"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.data/exp-0033/chk/EMS_001376.2d.hdf5",
+    "bytes": 500319232,
+    "sha256": "6c44135d2c6a27921761ae59d38b9ea5f879d25dc2b585bf88d690170e9124ae"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/state/threads/ems-spectral-solver/runs/exp-0031/submissions/exp-0031/production/params-H15-L1680.txt",
+    "bytes": 4312,
+    "sha256": "5ff227f384f432f04262f5aa324badc9a816689441ecd5b898096a047362805c"
+  }
+]

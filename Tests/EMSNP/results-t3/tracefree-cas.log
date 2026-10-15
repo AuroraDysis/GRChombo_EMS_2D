@@ -1,0 +1,5 @@
+PROVED: STF E/B reconstruction has all algebraic Weyl symmetries and zero trace
+PROVED: both null-rotation binomial laws from actual tensor and Faraday contractions
+PROVED: Psi0 and Psi4 preserved; removed electric trace=H, magnetic axial=-M (geometric constraints)
+Domain: oriented orthonormal (-+++), real arbitrary tensor components and a; no parameter poles
+MEASURE seconds=2.164577 peak_rss_bytes=160251904

@@ -1,0 +1,6 @@
+{
+  "elapsed_seconds": 66.66484370799992,
+  "exit": 1,
+  "usage": 1264041984,
+  "live_rss_monitor": "unavailable: sandbox denies ps/sysctl; inspect MEASURE logs"
+}

@@ -14,6 +14,7 @@ class EMSNPExtraction : public SphericalExtraction
     EMSNPScalar m_compute;
     bool m_matter;
     std::map<std::pair<int,Derivative>,int> m_indices;
+  protected:
     void request(int var,const Derivative &deriv=Derivative::LOCAL)
     {
         const auto key=std::make_pair(var,deriv);
@@ -35,26 +36,37 @@ class EMSNPExtraction : public SphericalExtraction
             for (const auto &deriv:{Derivative::dxdx,Derivative::dxdy,Derivative::dydy}) request(var,deriv);
     }
 
-    EMSNPScalar::Geometry point(int ir,int j) const
+    struct Jets
+    {
+        EMSNPScalar::Vars<double> v{};
+        EMSNPScalar::Vars<Tensor<1,double>> d1{};
+        EMSNPScalar::Diff2Vars<Tensor<2,double>> d2{};
+        Coordinates<double> coords{IntVect::Zero,1.};
+    };
+    Jets point_jets(int ir,int j) const
     {
         const int q=index(ir,j);
         auto at=[&](int var,const Derivative &deriv=Derivative::LOCAL) {
             const auto it=m_indices.find(std::make_pair(var,deriv));
             return it==m_indices.end() ? 0. : m_interp_data[it->second][q];
         };
-        EMSNPScalar::Vars<double> v{};
-        EMSNPScalar::Vars<Tensor<1,double>> d1{};
-        EMSNPScalar::Diff2Vars<Tensor<2,double>> d2{};
+        Jets jets;
+        auto &v=jets.v; auto &d1=jets.d1; auto &d2=jets.d2;
         v.enum_mapping([&](int var,double &value) { value=at(var); });
         d1.enum_mapping([&](int var,Tensor<1,double> &value) {
             value[0]=at(var,Derivative::dx); value[1]=at(var,Derivative::dy); });
         d2.enum_mapping([&](int var,Tensor<2,double> &value) {
             value[0][0]=at(var,Derivative::dxdx); value[1][1]=at(var,Derivative::dydy);
             value[0][1]=value[1][0]=at(var,Derivative::dxdy); });
-        Coordinates<double> coords(IntVect::Zero,1.);
+        auto &coords=jets.coords;
         coords.x=m_interp_coords[0][q]-m_center[0];
         coords.y=m_interp_coords[1][q]-m_center[1];
-        return m_compute.geometry(v,d1,d2,coords,m_matter);
+        return jets;
+    }
+    EMSNPScalar::Geometry point(int ir,int j) const
+    {
+        const auto jets=point_jets(ir,j);
+        return m_compute.geometry(jets.v,jets.d1,jets.d2,jets.coords,m_matter);
     }
 
     void execute_query(AMRInterpolator<Lagrange<4>> *interp)

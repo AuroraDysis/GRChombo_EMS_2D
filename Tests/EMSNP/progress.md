@@ -145,3 +145,85 @@ the arithmetic and Richardson allowances. Required method was preserved:
 no projection using reconstructed Ricci replaced field-equation Ricci.
 No full production link/evolution was attempted past the specified syntax
 workaround. No HPC, SSH, file transfer, push, rebase or branch deletion.
+
+## NPTET T3 — restart continuation, 2026-10-15
+
+Original task is copied into results-t3/original-prompt.md. On resumption
+the worktree was at bd8e890 with six modified files and untracked T3
+scripts/results; no T3 commit existed. Saved run.log had RUN_COMPLETED
+and RUN_EXIT=1, but run-final.log was empty. Re-read the original prompt,
+sources, scripts, README and saved results. Committed T1/T2 work was not
+repeated except for the controls explicitly requested again.
+
+T3 implements the authorized electric/magnetic STF construction in
+EMSNPScalar, exposes the same sphere jets for test-only constraint
+evaluation, and adds algebraic C++/CAS controls. Removed electric trace
+and magnetic axial components are compared with both production and
+metric-reconstructed constraints at identical points. The scientific
+writing skill was used for the convention note's derivation and limits.
+No tetrad, scalar definition, Maxwell convention, spin weight, pointwise
+X product, default flag or legacy output was changed.
+
+The first restart replay completed in 45.26 s. Review found that the
+test-only vacuum form omitted the normal-normal matter correction but
+retained the electric Ricci term; its identical-jet Psi4 change reached
+9.02e-13. It now consistently omits both, giving STF(Q). The production
+matter-complete path is unaffected. Added a vacuum/matter same-jet unit
+regression and expanded preservation checking to all 14 sphere/form
+groups: all pass, maximum error/budget 1.55e-4. Identical-jet legacy W
+error is below 3.4e-20 on production spheres in both forms.
+
+Final command: `python3 Tests/EMSNP/results-t3/resume_run.py`, invoking
+`zsh Tests/EMSNP/run_t3.sh` under nohup with the parent waiting. Progress
+polls used 15 s then 30 s delays. It completed in 66.66 s, with
+RUN_COMPLETED validation_exit=1 and RUN_EXIT=1; this is the failed physics
+gate, not a crash. No child is left running. All five supplied inputs
+were reauthenticated before and after the controls, unchanged against T1.
+
+The runner records these commands and outputs in results-t3:
+
+- Local serial Chombo `make -C Tests/EMSWeylOffline all DIM=2 -j 2`:
+  three targets build, 18.48 s, peak RSS 524 MB; build-release.log.
+- `python3 Tests/EMSNP/syntax_check.py Tests/EMSNP/results-t3`: prescribed
+  make dry-run and throwaway-header syntax check, exit 0. Exact command
+  and timing are in production-syntax.json and syntax-driver.log.
+- `EMSNPTest...ex <RN params>`: flat, complex Maxwell normalization,
+  generic E/B trace/Bianchi, vacuum/matter same-jet and floor checks pass.
+- Three cold CLI kernels under `gtimeout -k 5s 60s wolfram -script`:
+  np_static_metric.wls, np_first_order.wls and np_tracefree.wls PROVED;
+  1.28–2.16 s, below 174 MB. Runner requires PROVED and rejects error
+  markers. Logs are *-cas.log. No resident kernel is used.
+  A pre-restart unmatched Check closer is retained in
+  tracefree-cas-syntax-failure.log; the current cold script has no messages.
+- Two sequential `julia --project=/Users/auroradysis/Workspace/EMS
+  Tests/EMSNP/static_oracle.jl ...` invocations: native RN/EMS oracles
+  pass, 3.35/2.37 s, each below 383 MB; *-oracle.log. No Julia edit.
+- Four `EMSNPStatic...ex params.txt` t=0 hierarchies: exit 0, .12–2.84 s,
+  largest peak 1.142 GB; corresponding *-release.log. No RHS step.
+- Three sequential `EMSWeylCheckpoint...ex params.txt` runs: production,
+  cavity, default, exit 0, 6.76–7.52 s, peak 1.264 GB; corresponding
+  *-release.log. Entire synchronized 16-level t=602 checkpoint retained.
+- Activation dependency exits 2 as expected; default params omit the NP
+  flag. Final authentication: input-final.log and inputs-final.json.
+- `python3 Tests/EMSNP/report_t3.py`: static 70/70, both forms' rotation
+  groups 56/56, preservation 14/14, projection 980/980 and 42 legacy rows
+  pass. W comparison: 12/30 pass, including all six l=3; 18 even modes
+  fail. Exit 1, ready_for_simulation=false. Full numbers and tolerances
+  are in report.log, summary.md and validation.json.
+
+Memory pressure was checked before replay (65% free, later 40%). At most
+one Julia ran. Sandbox restrictions reject ps and time -l's sysctl;
+the failed monitor traceback is in resume-monitor-denied.log. An
+attempted inherited 5 GiB data limit was also rejected by the runtime.
+Final measure_t3.py uses getrusage; every measured process is below 6 GB,
+maximum 1.264 GB (resume-memory.json). Live RSS enforcement is unavailable
+in this sandbox. No large solve or program expected beyond five minutes
+was run; every actual command is below that threshold.
+
+The strict W gate remains failed: matter l=2 errors at r=50,75,100 are
+4.094e-10,2.804e-10,2.943e-10 versus 2.515e-14,3.256e-14,3.765e-14.
+C=4096, epsilon=2.2e-16, Ntheta=97 are retained with no spatial allowance.
+Cell-then-interpolate W and interpolate-then-reconstruct NP differ at
+truncation level; STF preserves Psi4 on identical jets and does not
+remove that difference. No full production link/evolution, HPC, SSH,
+transfer, push, rebase or branch deletion was performed.

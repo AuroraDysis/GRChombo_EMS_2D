@@ -1,0 +1,2 @@
+route=np-static-chart-oracle profile=/Users/auroradysis/Workspace/EMS/artifacts/echo/a0.9-e7.trumpet coefficient_type=Float64
+MEASURE seconds=2.370524 peak_rss_bytes=382664704

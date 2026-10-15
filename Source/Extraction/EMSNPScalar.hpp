@@ -20,6 +20,7 @@ class EMSNPScalar : public EMSMatterWeylOmScalar
         double g[4][4]{}, ric[4][4]{}, F[4][4]{};
         Tetrad tetrad;
         double area_factor, legacy;
+        double electric_trace{}, magnetic_trace{}, magnetic_axial[3]{};
     };
     struct Sample
     {
@@ -79,11 +80,24 @@ class EMSNPScalar : public EMSMatterWeylOmScalar
         }
         ric[3][3]=eightpiG*(em.Sww-trace*g[3][3]/2);
         const double scalar=-eightpiG*trace;
-        for (int a=0;a<4;++a) for (int b=0;b<4;++b)
-        for (int c=0;c<4;++c) for (int d=0;d<4;++d)
-            out.C[a][b][c][d]=out.R[a][b][c][d]
-                -(g[a][c]*ric[d][b]-g[a][d]*ric[c][b]-g[b][c]*ric[d][a]+g[b][d]*ric[c][a])/2
-                +scalar*(g[a][c]*g[d][b]-g[a][d]*g[c][b])/6;
+        // The vacuum control also omits Ricci here, matching its normal block Q.
+        const double ricci_weight=matter ? 1. : 0.;
+        // Electric Weyl before TF: its anisotropic part is Q_ij-4piG S_ij,
+        // Q=3Ric+K K_ij-K_ik K^k_j. Raw R_injn alone would give -8piG S_ij.
+        const double frame[3][3]{{t.m1[0],t.m1[1],0},
+                                 {t.m2[0],t.m2[1],0},{0,0,t.mw}};
+        double electric[3][3]{}, magnetic[3][3]{};
+        for (int i=0;i<3;++i) for (int j=0;j<3;++j)
+        for (int a=0;a<3;++a) for (int b=0;b<3;++b)
+        {
+            electric[i][j]+=frame[i][a]*frame[j][b]*(out.R[0][a+1][0][b+1]
+                +ricci_weight*(ric[a+1][b+1]/2-g[a+1][b+1]*(ric[0][0]/2+scalar/6)));
+            for (int k=0;k<3;++k) for (int l=0;l<3;++l) for (int c=0;c<3;++c)
+                magnetic[i][j]+=.5*epsilon(j,k,l)*frame[i][a]*frame[k][b]*frame[l][c]*
+                    (out.R[0][a+1][b+1][c+1]+ricci_weight*(g[a+1][b+1]*ric[0][c+1]/2
+                     -g[a+1][c+1]*ric[0][b+1]/2));
+        }
+        rebuild_weyl(out,electric,magnetic,frame);
         const double E[3]{vars.Ex,vars.Ey,vars.Ez}, B[3]{vars.Bx,vars.By,vars.Bz};
         double bu[3]{};
         FOR(i,j) { bu[i]+=vars.chi*hu[i][j]*B[j]; }
@@ -101,6 +115,57 @@ class EMSNPScalar : public EMSMatterWeylOmScalar
         out.area_factor=std::sqrt((g[1][1]*vx*vx+2*g[1][2]*vx*vy+g[2][2]*vy*vy)*g[3][3]);
         out.legacy=compute_Weyl_Om(r,vars,d1,d2,coords).Om22;
         return out;
+    }
+
+    static int epsilon(int i,int j,int k)
+    { return (i-j)*(j-k)*(k-i)/2; }
+
+    // Oriented orthonormal components; the STF operation uses the full x,y,w
+    // spatial metric through the frame, never the reduced 2x2 trace.
+    static void rebuild_weyl(Geometry &out,const double (&e)[3][3],
+        const double (&b)[3][3],const double (&frame)[3][3])
+    {
+        out.electric_trace=out.magnetic_trace=0;
+        for (double &x:out.magnetic_axial) x=0;
+        for (int i=0;i<3;++i)
+        {
+            out.electric_trace+=e[i][i]; out.magnetic_trace+=b[i][i];
+            for (int j=0;j<3;++j) for (int k=0;k<3;++k)
+                out.magnetic_axial[i]+=epsilon(i,j,k)*b[j][k];
+        }
+        double coframe[3][3]{}, ec[3][3]{}, bc[3][3]{}, gu[3][3]{};
+        for (int i=0;i<3;++i) for (int a=0;a<3;++a) for (int c=0;c<3;++c)
+        {
+            coframe[i][a]+=out.g[a+1][c+1]*frame[i][c];
+            gu[a][c]+=frame[i][a]*frame[i][c];
+        }
+        for (int a=0;a<3;++a) for (int c=0;c<3;++c)
+        for (int i=0;i<3;++i) for (int j=0;j<3;++j)
+        {
+            ec[a][c]+=coframe[i][a]*coframe[j][c]*
+                ((e[i][j]+e[j][i])/2-(i==j ? out.electric_trace/3 : 0));
+            bc[a][c]+=coframe[i][a]*coframe[j][c]*
+                ((b[i][j]+b[j][i])/2-(i==j ? out.magnetic_trace/3 : 0));
+        }
+        const double rootdet=1/(frame[0][0]*frame[1][1]*frame[2][2]
+                              -frame[0][1]*frame[1][0]*frame[2][2]);
+        for (int i=0;i<3;++i) for (int j=0;j<3;++j)
+        {
+            out.C[0][i+1][0][j+1]=out.C[i+1][0][j+1][0]=ec[i][j];
+            out.C[i+1][0][0][j+1]=out.C[0][i+1][j+1][0]=-ec[i][j];
+            for (int k=0;k<3;++k)
+            {
+                double mixed=0;
+                for (int l=0;l<3;++l) for (int m=0;m<3;++m)
+                    mixed+=rootdet*epsilon(j,k,l)*gu[l][m]*bc[i][m];
+                out.C[0][i+1][j+1][k+1]=out.C[j+1][k+1][0][i+1]=mixed;
+                out.C[i+1][0][j+1][k+1]=out.C[j+1][k+1][i+1][0]=-mixed;
+                for (int l=0;l<3;++l)
+                    out.C[i+1][j+1][k+1][l+1]=out.g[i+1][k+1]*ec[j][l]
+                        -out.g[i+1][l+1]*ec[j][k]-out.g[j+1][k+1]*ec[i][l]
+                        +out.g[j+1][l+1]*ec[i][k];
+            }
+        }
     }
 
     static Complex contract(const double (&C)[4][4][4][4],
