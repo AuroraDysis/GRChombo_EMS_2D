@@ -74,10 +74,12 @@ class CTT2Level : public GRAMRLevel
         for (auto dit = m_state_new.dataIterator(); dit.ok(); ++dit)
         {
             Box region = m_grids[dit];
-            region.grow(2);
+            region.grow(m_num_ghosts >= 4 ? 2 : 0);
             BoxLoops::loop(GammaCartoonCalculator(m_dx), m_state_new[dit],
                            m_state_new[dit], region, disable_simd());
         }
+        if (m_num_ghosts < 4)
+            fillAllGhosts(VariableType::evolution, Interval(c_Gamma1, c_Gamma2));
         BoxLoops::loop(Constraints<CouplingFunction>(
                            m_dx, CouplingFunction(m_p.coupling_function_params),
                            m_p.m_G_Newton),
@@ -156,6 +158,12 @@ class CTT2Level : public GRAMRLevel
                     }
             }
         }
+        for (LayoutIterator it=m_grids.layoutIterator(); it.ok(); ++it)
+        {
+            const Box &b=m_grids[it];
+            std::cout<<"BOX,"<<m_level<<','<<b.smallEnd(0)<<','<<b.smallEnd(1)
+                     <<','<<b.bigEnd(0)<<','<<b.bigEnd(1)<<'\n';
+        }
         std::cout << "LEVEL," << m_level << ',' << m_dx << ',' << valid << ','
                   << skipped << '\n';
     }
@@ -173,6 +181,7 @@ int run(int argc, char **argv)
         throw std::runtime_error("positive finite test radius scale required");
     bool analytic_ghosts;
     pp.load("ctt2_test_analytic_ghosts", analytic_ghosts, false);
+    std::cout<<"CONFIG,"<<p.amr_transfer<<','<<p.num_ghosts<<','<<analytic_ghosts<<'\n';
     GRAMR amr;
     DefaultLevelFactory<CTT2Level> factory(amr, p);
     setupAMRObject(amr, factory);

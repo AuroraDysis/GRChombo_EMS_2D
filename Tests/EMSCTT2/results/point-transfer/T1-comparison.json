@@ -1,0 +1,146 @@
+[
+  {
+    "domain": "global",
+    "N1": 80,
+    "region": "inner",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "global",
+    "N1": 80,
+    "region": "pulse",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "global",
+    "N1": 80,
+    "region": "outer",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "global",
+    "N1": 80,
+    "region": "pulse_axis",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "global",
+    "N1": 160,
+    "region": "inner",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "global",
+    "N1": 160,
+    "region": "pulse",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "global",
+    "N1": 160,
+    "region": "outer",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "global",
+    "N1": 160,
+    "region": "pulse_axis",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "global",
+    "N1": 320,
+    "region": "inner",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "global",
+    "N1": 320,
+    "region": "pulse",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "global",
+    "N1": 320,
+    "region": "outer",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "global",
+    "N1": 320,
+    "region": "pulse_axis",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "near",
+    "N1": 80,
+    "region": "inner",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "near",
+    "N1": 80,
+    "region": "pulse",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "near",
+    "N1": 80,
+    "region": "outer",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "near",
+    "N1": 80,
+    "region": "pulse_axis",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "near",
+    "N1": 160,
+    "region": "inner",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "near",
+    "N1": 160,
+    "region": "pulse",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "near",
+    "N1": 160,
+    "region": "outer",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "near",
+    "N1": 160,
+    "region": "pulse_axis",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "near",
+    "N1": 320,
+    "region": "inner",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "near",
+    "N1": 320,
+    "region": "pulse",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "near",
+    "N1": 320,
+    "region": "outer",
+    "max_abs_difference": 0.0
+  },
+  {
+    "domain": "near",
+    "N1": 320,
+    "region": "pulse_axis",
+    "max_abs_difference": 0.0
+  }
+]

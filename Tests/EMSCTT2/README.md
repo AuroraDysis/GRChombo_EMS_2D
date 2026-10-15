@@ -2,9 +2,10 @@
 
 **The opt-in reader/setter reproduces the Julia reconstruction.** Zero-pulse,
 field, consumed-derivative and old-reader controls pass. Two-level t=0 AMR
-hierarchies initialize successfully and expose a significant existing outer
-AMR ghost-fill error. This is an initialization/readback result, not an echo
-evolution or a production-resolution certificate.
+hierarchies initialize successfully. T2's production point transfer removes
+the large outer error seen with T1's default legacy transfer. This is an
+initialization/readback result, not an echo evolution or a production-resolution
+certificate.
 
 ## Selection and defining construction
 
@@ -26,6 +27,8 @@ ems_f1 = 0
 ems_f2 = -0.9
 ems_use_maximal_initial_lapse = false
 ems_use_geometric_initial_lapse = false
+amr_transfer = point
+num_ghosts = 3
 max_steps = 0
 stop_time = 0
 ```
@@ -148,7 +151,11 @@ D1 covers all 21 returned fields. Maximum value / D1 / D2 errors are
 **7.439e-15 / 1.163e-11 / 9.178e-9**, within the same propagated transfer
 allowance. See [ccz4-readback.json](results/ccz4-readback.json).
 
-## Initialized AMR constraints
+## T1 initialized AMR constraints (legacy transfer)
+
+T1 omitted `amr_transfer`; its parameter log explicitly records the default
+`legacy`. Its parameter files allocated five ghosts. The following measurements
+are retained as the T1 baseline; T2 below supplies the production setting.
 
 `EMSCTT2Hierarchy` builds a fresh real GRAMR hierarchy with two levels, ratio 2,
 cell-centred cartoon parity, production ghost filling, Gamma initialization,
@@ -179,8 +186,8 @@ At finest global resolution, pulse RMS H/M/GE are
 Outer H RMS is **1.701e-7** and does not show fourth-order convergence.
 The paired analytic-ghost t=0 control reduces outer H/M/GE to
 **1.384e-13 / 1.369e-17 / 1.127e-14**, identifying ghost transfer as the
-source of that discrepancy. The production-ghost result remains the main
-measurement; the control does not replace it or certify that transfer.
+source of that discrepancy. These are the legacy-transfer measurements;
+the analytic control does not replace them. T2 below measures point transfer.
 
 A separate small domain [-.16,.16] x [0,.16] M measures the horizon collar
 r=.008...016 M, outside R_h=.007036891 M. Fine dx=.002/.001/.0005 M gives
@@ -199,7 +206,99 @@ pass gate. [constraints.csv](results/constraints.csv) and
 [constraint-tables.md](results/constraint-tables.md) preserve every RMS,
 maximum, cell count and both adjacent-pair orders.
 
-## Reproduction and cost
+## T2: production point transfer at t = 0
+
+**Yes on the measured three-resolution trend in every mask.** Use
+`amr_transfer = point` and `num_ghosts = 3` for this EMSCTT/2 initialization.
+No default or transfer implementation has been changed. All nonzero point-mode
+RMS and maxima decrease on both pairs: 96 positive pair orders across the
+global/near domains, four masks and H/momentum/electric Gauss. Magnetic Gauss
+is zero everywhere, so its order is undefined. The smallest pair order is
+2.055, the global outer H RMS fine pair, already near the analytic reference
+residual. Uniform fourth order at that floor is not claimed.
+
+The original domains, parameter files, two levels, refinement ratio, tagging,
+box sizes, boundary conditions and masks are unchanged. The point operator
+requires exactly three ghosts (`PointAMRTransfer::define`); it cannot accept
+T1's five-ghost allocation. The harness therefore computes Gamma on valid
+cells and fills Gamma ghosts from current arrays in the three-ghost cases,
+without reading metric stencils outside the allocation. The five-ghost path
+is retained. A matched `legacy3` control separates this harness adjustment
+from the transfer setting: its finest global outer H RMS is 1.701e-7, the same
+legacy defect as five ghosts. The legacy replay reproduces all archived T1
+norms with measured zero difference, without making byte identity an
+acceptance criterion. [layout-check.json](results/point-transfer/layout-check.json)
+verifies identical actual boxes, uncovered valid-cell totals and mask counts
+for every transfer/ghost case at all six domain/resolution combinations.
+
+The new results keep five controls beside one another: `legacy` (five ghosts,
+T1 prescription), `legacy3` (three ghosts, matched Gamma handling), `point`
+(production point transfer, three ghosts), `analytic` (analytic metric/matter
+ghosts, three ghosts with Gamma ghosts filled through the point operator), and
+`analytic5` (the original fully analytic five-ghost reference, rerun). Every
+case is a fresh hierarchy at t=0; no evolution or restriction-after-stepping
+is invoked. Norm definitions and the 5e-13 staging allowance are unchanged.
+
+Global outer RMS values and adjacent-pair orders:
+
+| Mode | N1 | H | order | Momentum | order | Electric Gauss | order |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| legacy | 80 | 3.41805e-7 | — | 1.55550e-13 | — | 3.51737e-10 | — |
+| legacy | 160 | 2.80679e-7 | 0.284 | 6.86002e-14 | 1.181 | 1.46591e-10 | 1.263 |
+| legacy | 320 | 1.70085e-7 | 0.723 | 1.98241e-14 | 1.791 | 4.28686e-11 | 1.774 |
+| point | 80 | 9.05084e-12 | — | 1.60377e-15 | — | 1.44569e-12 | — |
+| point | 160 | 5.76596e-13 | 3.972 | 1.98956e-16 | 3.011 | 1.65850e-13 | 3.124 |
+| point | 320 | 1.38781e-13 | 2.055 | 1.36879e-17 | 3.861 | 1.12731e-14 | 3.879 |
+
+Fine-pair point-mode RMS orders in all masks:
+
+| Domain | Mask | H | Momentum | Electric Gauss |
+|---|---|---:|---:|---:|
+| global | inner | 3.860 | 4.105 | 3.981 |
+| global | pulse | 3.943 | 3.960 | 3.997 |
+| global | pulse axis | 3.976 | 3.955 | 4.003 |
+| global | outer | 2.055 | 3.861 | 3.879 |
+| near | inner | 3.935 | 3.917 | 4.112 |
+| near | pulse | 3.995 | 3.999 | 3.997 |
+| near | pulse axis | 3.997 | 4.022 | 3.994 |
+| near | outer | 3.818 | 3.872 | 3.899 |
+
+The finest global outer analytic reference is H=1.38374e-13,
+M=1.36878e-17, GE=1.12731e-14 (three ghosts); the independently rerun original
+five-ghost reference gives H=1.38373e-13 with the same displayed M/GE.
+Point H is within 0.30% of these reference residuals. This is compatible
+with reaching the analytic initialization/FD arithmetic residual and explains
+why a fourth-order claim on the finest global H pair would overstate the data;
+it does not isolate a unique source of the remaining arithmetic error.
+The near-domain outer point H RMS sequence is
+5.96537e-7, 6.69029e-8, 4.74331e-9, with orders 3.156/3.818;
+its analytic reference is 5.75839e-7, 6.65427e-8, 4.74115e-9
+(see the full-precision tables for the controls). No nonconverging outer
+residual remains on these ladders, so the conditional field/boundary
+localization is not required. The transfer code is untouched.
+
+[All RMS, maxima and both pair orders](results/point-transfer/tables.md) are
+reported per mask and diagnostic, including both analytic controls and the
+matched legacy control. [norms.csv](results/point-transfer/norms.csv) preserves
+960 full-precision rows. [authentication.json](results/point-transfer/authentication.json)
+binds the consumed profile/companion snapshots to T1's supplied hashes and
+records the executable, source and parameter hashes. Runtime profile/payload
+checks remain active. [cost.json](results/point-transfer/cost.json) records each
+command, exit, wall time and peak child RSS. The 30 hierarchies took
+54.70 s total; individual costs are 0.34–5.45 s, with a conservative child
+RSS peak of 122.4 MB.
+All runs are serial and below five minutes individually, within the
+two-process/6 GB-per-process budget.
+
+Reproduce after the existing test build and input authentication:
+
+```sh
+python3 Tests/EMSCTT2/transfer_controls.py
+# Regenerate tables from existing logs without running a hierarchy:
+python3 Tests/EMSCTT2/transfer_controls.py report
+```
+
+## T1 reproduction and cost
 
 Run from the fork root with serial Chombo and one Julia/BLAS/OpenMP thread:
 

@@ -1,0 +1,452 @@
+[
+  {
+    "name": "global-legacy-80",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-80.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=5",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 0.8250130830001581,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 27885568
+  },
+  {
+    "name": "global-legacy-160",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-160.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=5",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 1.537562832999356,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 50757632
+  },
+  {
+    "name": "global-legacy-320",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-320.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=5",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 5.446717291999448,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "global-legacy3-80",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-80.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 0.5401967090001563,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "global-legacy3-160",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-160.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 1.3725448750001306,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "global-legacy3-320",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-320.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 4.576248416000453,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "global-point-80",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-80.txt",
+      "amr_transfer=point",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 0.5822322499998336,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "global-point-160",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-160.txt",
+      "amr_transfer=point",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 1.4686563749992274,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "global-point-320",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-320.txt",
+      "amr_transfer=point",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 4.6159675830003835,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "global-analytic-80",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-80.txt",
+      "amr_transfer=point",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=1",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 0.551544916000239,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "global-analytic-160",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-160.txt",
+      "amr_transfer=point",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=1",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 1.3996475000003556,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "global-analytic-320",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-320.txt",
+      "amr_transfer=point",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=1",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 4.088837125000282,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "near-legacy-80",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-80.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=5",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 0.4660440830002699,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "near-legacy-160",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-160.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=5",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 1.0626519170000392,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "near-legacy-320",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-320.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=5",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 3.2357393749998664,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "near-legacy3-80",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-80.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 0.337200541999664,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "near-legacy3-160",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-160.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 0.8577861659996415,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "near-legacy3-320",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-320.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 2.82674599999973,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "near-point-80",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-80.txt",
+      "amr_transfer=point",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 0.3469817499999408,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "near-point-160",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-160.txt",
+      "amr_transfer=point",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 0.8542829590005567,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "near-point-320",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-320.txt",
+      "amr_transfer=point",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=0",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 2.804296790999615,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "near-analytic-80",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-80.txt",
+      "amr_transfer=point",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=1",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 0.34407720800027164,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "near-analytic-160",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-160.txt",
+      "amr_transfer=point",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=1",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 0.818192791999536,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "near-analytic-320",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-320.txt",
+      "amr_transfer=point",
+      "num_ghosts=3",
+      "ctt2_test_analytic_ghosts=1",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 3.159925832999761,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 122355712
+  },
+  {
+    "name": "global-analytic5-80",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-80.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=5",
+      "ctt2_test_analytic_ghosts=1",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 0.5376012910001009,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 24018944
+  },
+  {
+    "name": "global-analytic5-160",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-160.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=5",
+      "ctt2_test_analytic_ghosts=1",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 1.0833914579998236,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 43728896
+  },
+  {
+    "name": "global-analytic5-320",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-320.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=5",
+      "ctt2_test_analytic_ghosts=1",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 3.4563012500002515,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 104267776
+  },
+  {
+    "name": "near-analytic5-80",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-80.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=5",
+      "ctt2_test_analytic_ghosts=1",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 0.4641323330006344,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 104267776
+  },
+  {
+    "name": "near-analytic5-160",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-160.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=5",
+      "ctt2_test_analytic_ghosts=1",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 1.436944625000251,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 104267776
+  },
+  {
+    "name": "near-analytic5-320",
+    "command": [
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+      "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-320.txt",
+      "amr_transfer=legacy",
+      "num_ghosts=5",
+      "ctt2_test_analytic_ghosts=1",
+      "ems_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+      "ems_ctt_data_path=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+    ],
+    "seconds": 3.602613250000104,
+    "exit": 0,
+    "peak_child_rss_upper_bound": 111755264
+  }
+]

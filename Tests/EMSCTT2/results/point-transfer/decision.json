@@ -1,0 +1,8 @@
+{
+  "production_source_unchanged_from_T1": true,
+  "all_point_RMS_and_maxima_decrease": true,
+  "positive_pair_orders": 96,
+  "magnetic_Gauss_exactly_zero": true,
+  "minimum_point_pair_order": 2.054752781954489,
+  "max_abs_T1_legacy_replay_difference": 0.0
+}

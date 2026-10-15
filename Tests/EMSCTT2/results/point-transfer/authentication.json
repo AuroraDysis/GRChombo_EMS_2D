@@ -1,0 +1,74 @@
+[
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+    "sha256": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa",
+    "bytes": 8103,
+    "T1_sha256": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt",
+    "sha256": "1b77e57d870145aafc34b80e5d8035d63d0134c3f3856105e50075df34fdba7e",
+    "bytes": 720728,
+    "T1_sha256": "1b77e57d870145aafc34b80e5d8035d63d0134c3f3856105e50075df34fdba7e"
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy.cpp",
+    "sha256": "19d63a670fa42d6372de16836ac0cf8d0dc3d98a350ab629e8381b1e5a8bf7c1",
+    "bytes": 9646
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/transfer_controls.py",
+    "sha256": "55fea22780d8a16f29ce5497c8923119cf3f444c42abab2fa3da0f846d955009",
+    "bytes": 7950
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+    "sha256": "897c1c585b57cbadf18e87e8013c3fe1ab0145baff4a27dcdd81ef381ce8d4d0",
+    "bytes": 1748080
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Source/GRChomboCore/PointAMRTransfer.hpp",
+    "sha256": "36acaf89f5a8f937d92df7cc19782dc04594891645a119f8eba384dd0dfe73f1",
+    "bytes": 9825
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Source/GRChomboCore/SimulationParametersBase.hpp",
+    "sha256": "e955f6df0301792b953636ac339aa92ffdd47313eb24de21d3075f76ffa3d6a5",
+    "bytes": 27783
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Source/GRChomboCore/GRAMRLevel.cpp",
+    "sha256": "0cec751684a1fe0418d2386fbb1adcdd70a69dc173d6d4f9126adf943266fda7",
+    "bytes": 45820
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-160.txt",
+    "sha256": "2f3b322f3db70512e0fb07f2a2f1cae02655e79e96630f86429e34d5d197d3bb",
+    "bytes": 1179
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-320.txt",
+    "sha256": "5aa97880bf1628f5870c11ed552bed8be216a1f335c6c8d09f3a4b12569dccf4",
+    "bytes": 1144
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-80.txt",
+    "sha256": "5a583b682ae1e20c1483ed8705f715c3a6adfac7b28932bbac9c77efd9730c44",
+    "bytes": 1178
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-320.txt",
+    "sha256": "fc5b1af430abae978bce9e04d7719d7343faae799bc24cc53fd0d0227dac830c",
+    "bytes": 1180
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-160.txt",
+    "sha256": "02ef0225d6487defca20440ed4f842f69a59467e1b0ae3bb071aa1dc1e1c0706",
+    "bytes": 1143
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-80.txt",
+    "sha256": "07862e9b5a6fb7f6805169eba0cbe8c08df93bfb7b8dd51b33f2fec053e57cef",
+    "bytes": 1142
+  }
+]
