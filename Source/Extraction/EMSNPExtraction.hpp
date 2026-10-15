@@ -69,7 +69,8 @@ class EMSNPExtraction : public SphericalExtraction
         return m_compute.geometry(jets.v,jets.d1,jets.d2,jets.coords,m_matter);
     }
 
-    void execute_query(AMRInterpolator<Lagrange<4>> *interp)
+    template <class InterpAlgo>
+    void execute_query(AMRInterpolator<InterpAlgo> *interp)
     { extract(interp); write_modes(); }
 
     void write_modes()

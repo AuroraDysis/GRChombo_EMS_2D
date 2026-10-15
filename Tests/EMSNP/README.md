@@ -1,17 +1,16 @@
 # One-tetrad EMS Newman–Penrose extraction
 
-NPTET T3, `ariadne-run:v1:88362_7ba22e11`, resumes bd8e890 on `np-scalars`.
-Restart continuation: `ariadne-run:v1:11338_1612a245`.
-T3 authorizes the consult's symmetric, trace-free electric/magnetic Weyl
-construction. Historical records remain in [README-T1.md](README-T1.md)
-and [README-T2.md](README-T2.md).
+NPTET T4, `ariadne-run:v1:38232_393aa9e6`, resumes b5d24e7 on `np-scalars`.
+The controller accepts T3 except its pure-roundoff comparison of two
+spatial discretizations. The current comparison uses measured changes
+with interpolation order. Historical records remain in README-T1.md,
+README-T2.md and [README-T3.md](README-T3.md).
 
-**Default-off implementation; not ready under all requested gates.**
-The authorized trace-free construction fixes the rotation-law failure:
-28/28 matter rotation groups pass, as do the 70 static checks and default
-output checks. The requested pure roundoff comparison with legacy
-production W passes all odd modes, but fails 18 even modes because of
-the distinct evaluation orders described below.
+**Default-off implementation; readiness remains false.** The measured
+discretization budget passes 16/18 requested sphere/mode/form comparisons.
+Both l=6,r=75 comparisons exceed the budget at the allowed safety factor 2.
+The accepted T3 static, rotation, algebraic, normalization and default
+controls remain valid; L4 output reproduction is checked again in T4.
 
 ## Production interface
 
@@ -234,29 +233,52 @@ no Coulomb leading term. They are reported and are not called suppressed.
 
 ## Weyl4, projection and default controls (c,d)
 
-Same-jet normalization remains +1 in both forms. T3's production CSV
-comparison uses exactly `C epsilon Ntheta max_l|mode|`, epsilon=2.2e-16,
-Ntheta=97 and C=4096. C is a conservative 16 times the 256-term tensor
-contraction count, followed by the angular sum. It is an arithmetic
-allowance, with **no spatial error term**. All modes, including the
-symmetry-suppressed l=3 values, are reported against the sphere scale.
-No relative error with respect to that tiny l=3 mode is used as a gate.
-All six l=3 comparisons pass: at r=100 the matter NP and W values are
-7.0429552e-12 and 7.0095248e-12, error 3.343e-14 against the sphere-scale
-tolerance 3.765e-14. These odd modes are small but not zero to machine
-roundoff in the checkpoint; no value was replaced by its symmetry limit.
+Same-jet normalization remains +1. T4 replaces T3's inappropriate
+pure-roundoff W comparison with interpolation orders 2,4,6 in both
+routes, on both Weyl forms and r=50,75,100, l=2,4,6. Production W cell
+derivatives remain fourth order throughout. Before the numerical study,
+the error contract was fixed to
 
-The legacy W first reconstructs curvature on cells then interpolates it;
-NP interpolates metric jets then reconstructs curvature. Those operations
-do not commute at finite resolution. Projection preserves Psi4 on identical
-jets, and cannot remove that pre-existing spatial difference. The strict
-T3 gate is retained even where it consequently fails. The old sixth-order
-cell control remains available as historical discretization evidence; it
-is not an allowance in this tranche's acceptance.
-The 18 l=2,4,6 comparisons fail the strict arithmetic gate. For the matter
-l=2 mode, errors at r=50,75,100 are 4.094e-10,2.804e-10,2.943e-10,
-against tolerances 2.515e-14,3.256e-14,3.765e-14. No C was enlarged or
-spatial allowance added to turn those failures into passes.
+```
+E_NP=abs(NP4-NP6), E_W=abs(W4-W6),
+E=E_NP+E_W, tolerance=2 E,
+accept iff abs(NP4-W4)<=tolerance.
+```
+
+Each estimate term compares two orders of the same route; their sum
+accounts for both discretizations. Factor 2 is the permitted maximum.
+This is an empirical order-variation estimate at this checkpoint, not a
+rigorous bound on continuum error. No L2-based larger allowance replaces
+it after seeing failures. Relative differences use abs(NP4), with the
+areal R factor included in every mode exactly as written by each route.
+
+All L2-to-L4 cross-route differences decrease; all L6 cross-route
+differences exceed L4. Interpolation-order variation leaves the fixed
+fourth-order cell-Weyl derivative error in place. The two l=6,r=75
+comparisons fail: abs(NP4-W4)=2.02193e-10, E_NP=6.3051e-11,
+E_W=5.478e-12, tolerance=1.37060e-10. The relative difference is
+3.92304e-4, against a relative budget 2.65928e-4. A factor about 2.95
+on E would be required, above the allowed 2. All 18 comparisons and
+their raw modes are in results-t4/summary.md and validation.json.
+
+The checkpoint's point-transfer implementation requires three ghosts.
+An attempted four-ghost restart was rejected before extraction. L6's
+eight-point second-derivative stencils therefore use the existing
+Lagrange search with its source bounded to the sampled FArrayBox. This
+shifts a full-width stencil near box edges, retaining the original three
+ghosts, transfer law and valid-cell hierarchy. Every read is bounds
+checked. The unbounded L6 negative control rejects an out-of-array
+stencil; it is not used as numerical evidence. L4 agrees with the
+ordinary uninstrumented interpolator and the accepted T3 CSVs within
+4096 epsilon times each column's scale.
+
+The uninstrumented production L4 matter NP call costs a median 6.323 ms
+(6.258–6.412 ms over three calls after one warm-up) on this checkpoint,
+for the three spheres and 97 theta points. This includes construction,
+interpolation, reconstruction, projection and CSV IO; it excludes restart
+loading and shared ghost/cell-Weyl preparation. The existing radiation
+call is 3.290 ms. These are local measurements, not an HPC wall-time
+prediction. Readiness is not certified while the two comparisons fail.
 
 An independent associated-Legendre factorial implementation rebuilds
 all **980 mode components**, including signs, spin weights and R factors;
@@ -274,21 +296,18 @@ private-header build issue is outside this task.
 
 ## Evidence and reproduction
 
-All five inputs were rehashed against T1 identities; see results-t3/inputs.json.
+All five inputs were rehashed against T1 identities before and after T4;
+see results-t4/inputs.json and inputs-final.json.
 The t=602 checkpoint has 16 synchronized levels and 28 evolved fields.
 The full hierarchy is read without advancing, regridding or replacing data.
 Parameter copies state every restart/sphere/test selector.
 
-Run `zsh Tests/EMSNP/run_t3.sh`. It builds with the local serial Chombo,
-runs syntax/unit/CAS/oracle controls, both static resolutions, both frozen
-Weyl forms on production and cavity spheres, and the default replay.
-HDF5 restart access is sequential because the reader takes an exclusive
-file lock. All reports are written; final exit is **1** when
-`ready_for_simulation=false`. This failure is intentional evidence, not
-silently accepted as a passing test suite.
-
-See results-t3/summary.md, validation.json and progress.md. Full logs,
-point files, NP/radiation CSVs, parameters, compiler commands, CAS scripts
-and transcripts are retained. No program was expected above five minutes;
-the complete workflow measured about one minute. No >30-minute program,
-evolution, HPC, SSH, file transfer or push was launched.
+Run `zsh Tests/EMSNP/run_t4.sh` from the worktree. It builds with the local
+serial Chombo, syntax-checks the production level with the prescribed
+temporary header workaround, checks the negative stencil control, then
+runs the three orders and the uninstrumented L4 cost measurement on one
+unchanged hierarchy. It authenticates the inputs again and reports every
+comparison. Exit 1 records the failed readiness gate. See progress.md and
+results-t4/summary.md, validation.json and full logs. Accepted T3 controls
+and their executable derivations remain in results-t3 and run_t3.sh.
+No Julia process, evolution, HPC, SSH, transfer or push was launched in T4.

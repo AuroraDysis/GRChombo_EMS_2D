@@ -144,3 +144,42 @@ Dimensions remain [E_Weyl]=[B_Weyl]=[H]=[M]=L^-2,
 with dimensionless metric/frame factors; no new physical scale enters.
 
 CAS scope: algebraic identity — production physics not certified
+
+## NPTET T4: measured interpolation-order comparison
+
+The T3 algebraic construction and its accepted static, rotation and default
+controls are unchanged. T4 varies only the interpolation order of the two
+extraction routes on the same authenticated t=602 hierarchy. Both forms,
+all three requested radii and l=2,4,6 are measured at orders 2,4,6 in
+Float64. Raw NP/radiation modes and the complete order changes are in
+results-t4/study. No independent continuum solution is inferred from them.
+
+Before the valid numerical study, contract.json fixed
+E=abs(NP4-NP6)+abs(W4-W6), tolerance=2E. Each summand is a within-route
+change; factor 2 was fixed as the safety margin for interpreting those
+changes as errors of two approximations. It is an empirical estimate,
+not a universal bound. All production W cell derivatives remain fourth
+order. The two L4 routes match T3 and the ordinary uninstrumented L4
+implementation within 4096 eps times each output column's scale.
+
+The existing point-transfer law requires three ghosts. L6 second
+derivatives can reach outside an owning FAB with that allocation. The
+offline source therefore bounds the existing Lagrange stencil search to
+the sampled FAB and checks every read; the unbounded negative control
+exits before an invalid read. This shifts full-width stencils at box
+edges without changing the hierarchy, transfer law, normalization or
+production L4 interpolation. This verifies valid reads for the present
+production-sphere study; earlier unbounded L6 artifacts remain unvalidated
+and unused. It is not a continuum convergence certificate.
+
+Measured gate: **16/18 PASS, 2/18 FAIL**. Both failures are l=6,r=75:
+difference about 2.02193e-10 versus 1.37060e-10 allowed, relative to the
+mode 3.92304e-4 versus 2.65928e-4. The needed multiplier of E is about
+2.95, above the allowed 2. L2-to-L4 discrepancies decrease in all cases;
+L6 discrepancies exceed L4 in all cases; cell-derivative order remains
+fixed during interpolation variation. No larger L2 allowance
+was substituted after seeing the failure. Readiness remains false.
+
+Status: **CORROBORATED** for this finite checkpoint/order measurement;
+no CAS proof or continuum error-bound claim is made. All sampled values,
+controls and budgets are preserved; no RNG or Julia process was used.

@@ -227,3 +227,96 @@ Cell-then-interpolate W and interpolate-then-reconstruct NP differ at
 truncation level; STF preserves Psi4 on identical jets and does not
 remove that difference. No full production link/evolution, HPC, SSH,
 transfer, push, rebase or branch deletion was performed.
+
+## NPTET T4 — 2026-10-15
+
+Started clean at b5d24e7 on np-scalars. Re-read the production NP and
+radiation classes, frozen harness, Lagrange/AMR interpolation code,
+production scheduling and parameter paths, T3 README and accepted results.
+T4 accepts the T3 controls except the inappropriate pure-roundoff W
+comparison. No T3 scientific computation or CAS derivation was changed.
+The T3 README is archived verbatim (with a historical banner).
+
+Scope: template the two extraction execute_query methods so the same
+production projection bodies can accept orders 2,4,6. Add an opt-in
+order-study branch to the existing frozen harness and a test-only source
+that bounds the Lagrange stencil search to the sampled FAB. Production
+still uses ordinary Lagrange<4>; no compute definition, tetrad, diagnostic
+variable, gauge, evolution or production parameter default changed.
+
+Prepared/authenticated inputs with `python3 Tests/EMSNP/prepare_t4.py`.
+The estimator was fixed before the valid numerical study in contract.json:
+E=abs(NP4-NP6)+abs(W4-W6), tolerance=2E. Both terms compare orders in
+one route; the sum accounts for both approximations. Safety 2 is fixed
+and within the operator's maximum, not fitted to the results. W cell
+derivatives remain fourth order, with only the interpolator varied.
+
+The checkpoint has three ghosts and amr_transfer=point. L6 second
+derivatives can require four cells on one side of the selected cell,
+outside an owning FAB with three ghosts. A four-ghost restart was tried
+but rejected by the existing point-transfer guard before extraction:
+four-ghost-point-transfer-rejection.log. No transfer setting was changed.
+Instead the test-only wrapper supplies the existing Lagrange algorithm a
+source restricted to its FAB, shifting a full-width stencil at box
+edges. Every read is checked. The unbounded L6 negative control exits 2
+with the precise outside-FAB diagnostic, before reading invalid memory.
+An initial negative check threw from an OpenMP worker and terminated;
+negative-openmp-exception.log retains it. The final check uses a direct
+exit because exceptions cannot cross the OpenMP worker boundary. Negative
+outputs are discarded; only its parameters and diagnostic log are retained.
+
+Final command: `zsh Tests/EMSNP/run_t4.sh`, backgrounded under nohup with
+the parent waiting. Polls used 15 s then 30 s delays; all processes have
+finished. It runs these steps, with full logs in results-t4:
+
+- `make -C Tests/EMSWeylOffline all DIM=2 -j 2`, local serial CHOMBO_HOME:
+  builds all three harness executables, 20.67 s, peak RSS 493 MB; build.log.
+- `python3 Tests/EMSNP/syntax_check.py Tests/EMSNP/results-t4`: production
+  make dry-run and syntax check with the prescribed throwaway-header
+  workaround, exit 0, 1.85 s; production-syntax.json and syntax.log.
+- `EMSWeylCheckpoint...ex insufficient-ghosts/params.txt`: expected exit
+  2, 5.52 s, peak RSS 1.268 GB; insufficient-ghosts.log. Original three
+  ghosts retained; only the test bounds-mask selector is disabled.
+- `EMSWeylCheckpoint...ex study/params.txt`: exit 0, 2.06 s cached restart,
+  peak RSS 1.269 GB; study.log. One unchanged synchronized 16-level t=602
+  hierarchy, both Weyl forms, all three interpolation orders. No advancement
+  or regrid. Instrumented L4 and ordinary L4 are both extracted.
+- `python3 Tests/EMSNP/report_t4.py`: 16/18 comparisons PASS, two FAIL;
+  8/8 full-column L4 replay checks PASS (T3 and ordinary L4 references),
+  maximum replay difference zero observed under a 4096 eps column-scale
+  budget. Readiness false, report/runner exit 1. Every difference, within-
+  route order estimate and relative size is in summary.md and validation.json.
+- Final SHA-256 authentication confirms all five inputs unchanged:
+  inputs.json, inputs-final.json and input-final.log. No external data or
+  missing input value was supplied.
+
+Production L4 timing uses the ordinary uninstrumented interpolator on the
+same three-ghost allocation, three spheres and 97 theta points. Three
+samples after one warm-up include construction, query, reconstruction,
+projection and CSV IO. For matter, NP median 6.323 ms (6.258–6.412), old
+radiation 3.290 ms (3.256–3.298). Shared refresh, cell-Weyl preparation and
+restart loading are excluded from that incremental NP cost. Per-call
+values and refresh times are in study/cost.csv. No HPC timing is inferred.
+
+All L2-to-L4 cross-route discrepancies shrink. All L6 discrepancies
+exceed L4; fixed fourth-order cell-derivative error is not varied by an
+interpolation-order test. Both l=6,r=75 comparisons fail: error about
+2.02193e-10 versus 1.37060e-10 budget, relative 3.92304e-4 versus
+2.65928e-4. The measured estimate would require factor 2.95045, above
+the allowed 2. No larger L2-based allowance is substituted after seeing
+the failures. No production-use certification section is added because
+the required readiness gate remains failed.
+
+Memory pressure before work was 55% free. No Julia or large solve ran;
+largest measured child RSS was 1.269 GB, below 6 GB. Timings/peaks use
+the existing getrusage wrapper; no program was expected past five minutes
+or measured past 30 minutes. No full production link/evolution, HPC,
+SSH, file transfer or push. Static, algebraic, rotation and default-off
+controls from T3 are retained as accepted rather than rerun unnecessarily.
+
+Before committing, read the staged source/doc diff and every staged
+artifact, checked staged/worktree equality and finite CSV cells, and
+independently recomputed all 18 decisions directly from raw CSV columns
+with Decimal precision 50. The independent result is also 16 PASS / 2
+FAIL. The archived T3 README matches b5d24e7. Source/docs/structured
+results pass diff --check; raw program logs retain their original spaces.

@@ -26,7 +26,8 @@ class EMSRadiationExtraction : public SphericalExtraction
         add_diagnostic_vars({c_Weyl4_Re,c_Weyl4_Im});
     }
 
-    void execute_query(AMRInterpolator<Lagrange<4>> *interp)
+    template <class InterpAlgo>
+    void execute_query(AMRInterpolator<InterpAlgo> *interp)
     { extract(interp); write_modes(); }
 
     void write_modes()
