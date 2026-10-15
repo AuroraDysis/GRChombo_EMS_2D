@@ -346,3 +346,18 @@ counts. The unit checks floor, axis, metric and non-finite rejection plus
 the existing valid flat/Maxwell/Weyl algebra. Both pass. Test build/rebuild
 25.11/16.53 s; frozen run 14.23 s, peak RSS 1.265 GB. No evolution ran.
 Source/structured evidence diff reviewed before the item commit.
+
+## NPTET T5b — MINOR 2: complete discretization estimate
+
+`python3 Tests/EMSNP/report_cell_error.py` re-reads the T4 raw-comparison
+record and the four authenticated tracked T3 cell-control CSVs. It checks
+the fourth-order cell reference against T4, adds abs(W4cell-W6cell) to
+the two interpolation-order changes, and tests the authorized 2Eprime
+budget. 18/18 pass even within Eprime alone. The former r=75,l=6 failure
+has Eprime=3.23412e-10 for discrepancy 2.02193e-10. Full 18-row evidence,
+relative sizes, individual error terms and source hashes are committed.
+The suggested claim that NP is much closer to sixth-order cell W is not
+confirmed: only 4/18 improve; ratios span .260585–5.86966. This does not
+alter the stated acceptance. README radiation readiness now states l<=6
+with the corrected budget; linked-production smoke remains a separate
+pending control. No checkpoint was advanced for this item.

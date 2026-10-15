@@ -1,14 +1,14 @@
 # One-tetrad EMS Newman–Penrose extraction
 
-NPTET T4, `ariadne-run:v1:38232_393aa9e6`, resumes b5d24e7 on `np-scalars`.
-The controller accepts T3 except its pure-roundoff comparison of two
-spatial discretizations. The current comparison uses measured changes
-with interpolation order. Historical records remain in README-T1.md,
+NPTET T5b, `ariadne-run:v1:83992_07d05728`, resumes 56f9ff6 on `np-scalars`.
+The review adds the fixed fourth-order cell-derivative error omitted by
+T4. Historical records remain in README-T1.md,
 README-T2.md and [README-T3.md](README-T3.md).
 
-**Default-off implementation; readiness remains false.** The measured
-discretization budget passes 16/18 requested sphere/mode/form comparisons.
-Both l=6,r=75 comparisons exceed the budget at the allowed safety factor 2.
+**Radiation validation passes through l=6, with switches default off.**
+All 18 sphere/mode/form comparisons pass the corrected budget, even
+without its permitted safety factor 2. The production build smoke is
+recorded separately below before the final merge-readiness decision.
 The accepted T3 static, rotation, algebraic, normalization and default
 controls remain valid; L4 output reproduction is checked again in T4.
 
@@ -251,6 +251,22 @@ E=E_NP+E_W, tolerance=2 E,
 accept iff abs(NP4-W4)<=tolerance.
 ```
 
+T5 corrects that incomplete estimate using the already measured
+fourth-versus-sixth cell-derivative control at fixed L4 interpolation:
+
+```
+Eprime=E+abs(W4cell-W6cell),
+accept iff abs(NP4-W4cell)<=2 Eprime.
+```
+
+All 18 comparisons pass within Eprime itself. The earlier r=75,l=6
+failure now has discrepancy 2.02193e-10 against Eprime=3.23412e-10
+(2Eprime=6.46824e-10). The complete table, including abs(NP-W6cell),
+is in results-t5/cell-error.md and cell-error.json. NP is closer to the
+sixth-order cell result in only 4/18 modes; discrepancy ratios range
+from .260585 to 5.86966. The reviewer's claimed general strong improvement
+is not observed and is not used as an acceptance condition.
+
 Each estimate term compares two orders of the same route; their sum
 accounts for both discretizations. Factor 2 is the permitted maximum.
 This is an empirical order-variation estimate at this checkpoint, not a
@@ -261,11 +277,12 @@ areal R factor included in every mode exactly as written by each route.
 All L2-to-L4 cross-route differences decrease; all L6 cross-route
 differences exceed L4. Interpolation-order variation leaves the fixed
 fourth-order cell-Weyl derivative error in place. The two l=6,r=75
-comparisons fail: abs(NP4-W4)=2.02193e-10, E_NP=6.3051e-11,
+comparisons failed under T4's incomplete budget: abs(NP4-W4)=2.02193e-10, E_NP=6.3051e-11,
 E_W=5.478e-12, tolerance=1.37060e-10. The relative difference is
 3.92304e-4, against a relative budget 2.65928e-4. A factor about 2.95
 on E would be required, above the allowed 2. All 18 comparisons and
-their raw modes are in results-t4/summary.md and validation.json.
+their raw modes are in results-t4/summary.md and validation.json. T5's
+corrected budget above supersedes that readiness failure.
 
 The checkpoint's point-transfer implementation requires three ghosts.
 An attempted four-ghost restart was rejected before extraction. L6's
@@ -284,7 +301,7 @@ for the three spheres and 97 theta points. This includes construction,
 interpolation, reconstruction, projection and CSV IO; it excludes restart
 loading and shared ghost/cell-Weyl preparation. The existing radiation
 call is 3.290 ms. These are local measurements, not an HPC wall-time
-prediction. Readiness is not certified while the two comparisons fail.
+prediction. T5's corrected budget passes the two earlier failed modes.
 
 An independent associated-Legendre factorial implementation rebuilds
 all **980 mode components**, including signs, spin weights and R factors;
