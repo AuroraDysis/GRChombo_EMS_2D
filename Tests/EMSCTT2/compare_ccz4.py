@@ -1,12 +1,13 @@
 from pathlib import Path
+from evidence import RAW, OUT, reference
 import subprocess,os,json
 import numpy as np
 R=Path(__file__).resolve().parent;out=R/'results';data=out/'input-snapshots';exe=str(next(R.glob('EMSCTT2Readback*.ex')))
 summary={}
 for name in ('zero','n24'):
-    p=subprocess.run([exe,str(data/'a0.9-e7.trumpet'),str(data/(name+'-final.ctt')),'--ccz4'],input=(out/f'ccz4-{name}-points.txt').read_text(),capture_output=True,text=True,check=True,timeout=240,env={**os.environ,'OMP_NUM_THREADS':'1'})
+    p=subprocess.run([exe,str(data/'a0.9-e7.trumpet'),str(data/(name+'-final.ctt')),'--ccz4'],input=(reference(f'ccz4-{name}-points.txt')).read_text(),capture_output=True,text=True,check=True,timeout=240,env={**os.environ,'OMP_NUM_THREADS':'1'})
     a=np.array([[float(v) for v in line.split()] for line in p.stdout.splitlines() if len(line.split())==21])
-    b=np.loadtxt(out/f'ccz4-{name}-julia.txt');sc=np.loadtxt(out/f'ccz4-{name}-scales.txt')
+    b=np.loadtxt(reference(f'ccz4-{name}-julia.txt'));sc=np.loadtxt(reference(f'ccz4-{name}-scales.txt'))
     assert a.shape==b.shape==(5*len(sc),21)
     a=a.reshape(-1,5,21)*sc[:,None,:];b=b.reshape(-1,5,21)*sc[:,None,:]
     err=abs(a-b)/(1+abs(b));assert err.max()<5e-13,(name,err.max())
@@ -20,4 +21,4 @@ for name in ('zero','n24'):
         assert np.all(np.isfinite(err)) and np.all(err<=budget)
         result['D'+str(order)]={'max_error':float(err.max()),'max_allowance':float(budget.max()),'max_fraction_of_allowance':float((err/budget).max())}
     summary[name]=result
-(out/'ccz4-readback.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))
+(OUT/'ccz4-readback.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))

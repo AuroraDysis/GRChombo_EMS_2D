@@ -3,19 +3,20 @@ Pre-data allowance: 5e-13 value-transfer scale, amplified by each stencil's
 absolute coefficient sum / h^order. This tests transfer, not FD truncation.
 """
 from pathlib import Path
+from evidence import RAW, OUT, reference
 import json,os,subprocess,time
 import numpy as np
 R=Path(__file__).resolve().parent;out=R/'results'
 exe=str(next(R.glob('EMSCTT2Readback*.ex')))
 args=[exe,str(out/'input-snapshots/a0.9-e7.trumpet'),str(out/'input-snapshots/n24-final.ctt')]
 start=time.monotonic()
-p=subprocess.run(args,input=(out/'stencil-points.txt').read_text(),text=True,capture_output=True,check=True,timeout=240,env={**os.environ,'OMP_NUM_THREADS':'1'})
+p=subprocess.run(args,input=(reference('stencil-points.txt')).read_text(),text=True,capture_output=True,check=True,timeout=240,env={**os.environ,'OMP_NUM_THREADS':'1'})
 rows=[]
 for line in p.stdout.splitlines():
     try:r=[float(x) for x in line.split()]
     except ValueError:continue
     if len(r)==29:rows.append(r)
-cpp=np.array(rows);ref=np.loadtxt(out/'stencil-julia.txt');sc=np.loadtxt(out/'jet-scales.txt')
+cpp=np.array(rows);ref=np.loadtxt(reference('stencil-julia.txt'));sc=np.loadtxt(reference('jet-scales.txt'))
 assert cpp.shape==ref.shape and cpp.shape==(len(sc)*10,29)
 cpp=cpp.reshape(len(sc),2,5,29)*sc[:,None,None,:]
 ref=ref.reshape(len(sc),2,5,29)*sc[:,None,None,:]
@@ -33,4 +34,4 @@ for order,weights,divisor,ids in [(1,[1,-8,0,8,-1],12,range(29)),(2,[-1,16,-30,1
     assert np.all(np.isfinite(error)) and np.all(error<=budget),(order,error.max(),(error/budget).max())
     summary['D'+str(order)]={'max_error':float(error.max()),'max_allowance':float(budget.max()),'max_fraction_of_allowance':float((error/budget).max())}
 summary['seconds']=time.monotonic()-start
-(out/'stencil-readback.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))
+(OUT/'stencil-readback.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))

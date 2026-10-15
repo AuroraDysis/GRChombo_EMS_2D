@@ -25,10 +25,13 @@ it is not a proof over all points or of the production physics.
 
 The Float64 nested-AD taper-face discrepancy was resolved by evaluating the
 same supplied formulas at 512 bits, preserving the failing Float64 receipt.
-The outer composite AMR norm has slow convergence with production ghost fill;
-the analytic-ghost control is recorded separately. Neither finding is hidden
+The T1 outer composite AMR norm has slow convergence with legacy ghost fill;
+T2 point transfer removes that defect. T3 adds panel-face shells: some fine H
+orders flatten or become negative around 2e-13, equally with analytic ghosts.
+These controls and their qualifications are recorded in README. Neither
+finding is hidden
 by the exact symbolic result. Source and input digests are in authentication.json.
-The only mass represented by EMSCTT/2 is M=1. Coordinates, phase and W map
+EMSCTT/2 uses code units M=1 for the hole's mass. Coordinates, phase and W map
 arguments are dimensionless in those units; restoring units gives K, Pi and
 covariant Cartesian E/B weight L^-1, metric/scalar/lapse/shift weight 1,
 H/M/Gauss weight L^-2. The RMS measure is dx dy, normalized by the same mask

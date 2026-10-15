@@ -1,5 +1,6 @@
 """Independent readback, zero identity, and consumed-order transfer controls."""
 from pathlib import Path
+from evidence import RAW, OUT, reference
 import subprocess,json,math,time
 import numpy as np
 R=Path(__file__).resolve().parent
@@ -16,12 +17,12 @@ def run(name,points):
         except ValueError: continue
         if len(row)==29: rows.append(row)
     return np.array(rows),time.monotonic()-t
-points=(out/'points.txt').read_text();summary={}
+points=(reference('points.txt')).read_text();summary={}
 # P^2 and P are fixed at the sample, obtained from the uncorrected setter.
 plain,_=run('plain',points)
 X=1/np.sqrt(plain[:,0]);scale=np.ones_like(plain);scale[:,:18]=X[:,None]**2;scale[:,20:26]=X[:,None]
 for name in ['zero','half','n12','n18','n24']:
-    cpp,seconds=run(name,points);ref=np.loadtxt(out/(name+'-julia.txt'))
+    cpp,seconds=run(name,points);ref=np.loadtxt(reference(name+'-julia.txt'))
     err=np.abs((cpp-ref)*scale)/(1+np.abs(ref*scale))
     assert cpp.shape==ref.shape and np.all(np.isfinite(err))
     # 5e-13: retained trumpet/CTT Float64 transfer allowance.
@@ -31,10 +32,10 @@ for name in ['zero','half','n12','n18','n24']:
         identity=np.abs((cpp-plain)*scale)/(1+np.abs(plain*scale))
         assert identity.max()<=5e-13
         summary[name]['plain_identity']=float(identity.max())
-    np.savetxt(out/(name+'-cpp.txt'),cpp)
+    np.savetxt(RAW/(name+'-cpp.txt'),cpp)
 # 5-point Cartesian differences of independently executed C++ values, compared
 # with Julia AD jets, and h/2 differences for an independent truncation estimate.
-jets=np.loadtxt(out/'jet-points.txt');jref=np.loadtxt(out/'jets-julia.txt')
+jets=np.loadtxt(reference('jet-points.txt'));jref=np.loadtxt(reference('jets-julia.txt'))
 queries=[]
 for row in jets:
     x=row[:3];r=np.linalg.norm(x);panel=int(row[3]);axis=int(row[4])-1
@@ -64,4 +65,4 @@ for order,fd,ref,ids in [(1,d1,d,range(29)),(2,d2,dd,[*range(9),18,19,26,27,28])
     assert np.all(np.isfinite(err)) and np.all(err<=tolerance),(order,err.max(),(err/tolerance).max(),np.unravel_index((err/tolerance).argmax(),err.shape))
     report['D'+str(order)]={'samples':len(jets),'max_error':float(err.max()),'roundoff_allowance':float(floor),'max_error_over_allowance':float((err/tolerance).max()),'max_allowance':float(tolerance.max())}
 summary['jets']=dict(report,seconds=seconds)
-(out/'readback.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))
+(OUT/'readback.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))

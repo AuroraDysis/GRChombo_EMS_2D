@@ -9,6 +9,7 @@
 // General includes
 #include "GRParmParse.hpp"
 #include "SimulationParametersBase.hpp"
+#include <fstream>
 
 // Problem specific includes:
 #include "ArrayTools.hpp"
@@ -190,6 +191,19 @@ public:
         if (!emsbh_params.ctt_data_path.empty() &&
             ems_data_format != "emstrumpet1")
             MayDay::Error("ems_ctt_data_path requires emstrumpet1");
+        if (!emsbh_params.ctt_data_path.empty())
+        {
+            // Every rank checks before setupAMRObject can initialize a level.
+            std::ifstream input(emsbh_params.ctt_data_path);
+            std::string version;
+            if (!std::getline(input, version))
+                MayDay::Error("cannot read EMSCTT version line");
+            if (version == "EMSCTT 2\r")
+                MayDay::Error("EMSCTT 2 version line contains CR; use LF line endings");
+            if (version == "EMSCTT 2" &&
+                (amr_transfer != "point" || num_ghosts != 3))
+                MayDay::Error("EMSCTT 2 requires amr_transfer = point and num_ghosts = 3");
+        }
     }
 
     // tagging

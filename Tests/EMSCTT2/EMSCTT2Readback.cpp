@@ -46,47 +46,33 @@ int main(int argc, char **argv)
                 p.use_maximal_initial_lapse = true;
             else if (mode == "--coupling")
                 coupling.f2 += .1;
-            else if (mode != "--domain" && mode != "--ccz4")
+            else if (mode != "--puncture" && mode != "--below-min" &&
+                     mode != "--bad-panel" && mode != "--negative-panel" &&
+                     mode != "--ccz4" && mode != "--adm-consistency")
                 throw std::runtime_error("unknown test mode");
         }
         EMSBH_trumpet_read reader(p, coupling, 1., 1., 0);
         reader.compute_1d_solution();
-        if (argc == 4 && std::string(argv[3]) == "--domain")
+        if (argc == 4)
         {
-            EMSCTTPulse_read parser;
-            std::string reason;
-            if (!parser.check_file(argv[2], profile, reason))
-                throw std::runtime_error(reason);
-            for (double r : {0., 1e-22})
+            const std::string mode = argv[3];
+            if (mode == "--puncture" || mode == "--below-min" ||
+                mode == "--bad-panel" || mode == "--negative-panel")
             {
-                bool rejected = false;
-                try
+                EMSCTTPulse_read parser;
+                std::string reason;
+                if (!parser.check_file(argv[2], profile, reason))
+                    throw std::runtime_error(reason);
+                // Exercise the same fatal paths from inside an OpenMP region.
+#pragma omp parallel
                 {
-                    parser.evaluate(r, 0., 0.);
+                    parser.evaluate(mode == "--puncture" ? 0. :
+                                    mode == "--below-min" ? 1e-22 : 1., 0., 0.,
+                                    mode == "--bad-panel" ? 23 :
+                                    mode == "--negative-panel" ? -1 : 0);
                 }
-                catch (const std::runtime_error &)
-                {
-                    rejected = true;
-                }
-                if (!rejected)
-                    throw std::runtime_error("unrepresented radius accepted");
+                throw std::runtime_error("invalid domain accepted");
             }
-            for (int panel : {-1, 23})
-            {
-                bool rejected = false;
-                try
-                {
-                    parser.evaluate(1., 0., 0., panel);
-                }
-                catch (const std::runtime_error &)
-                {
-                    rejected = true;
-                }
-                if (!rejected)
-                    throw std::runtime_error("invalid panel accepted");
-            }
-            std::cout << "domain controls passed\n";
-            return 0;
         }
         double x, y, z;
         int panel;
@@ -105,6 +91,14 @@ int main(int argc, char **argv)
             }
             const auto a =
                 reader.compute_single_ems_adm_vars(x, y, z, 1., 0., 0., panel);
+            if (argc == 4 && std::string(argv[3]) == "--adm-consistency")
+            {
+                const double chi = std::pow(TensorAlgebra::compute_determinant_sym(a.gamma), -1./3.);
+                if (std::abs(a.chi-chi) > 5e-13*(1+std::abs(chi)) ||
+                    std::abs(a.lapse-std::sqrt(chi)) > 5e-13*(1+std::sqrt(chi)) ||
+                    a.boost_metric_det != 1. || a.boost_normal_factor != 1.)
+                    throw std::runtime_error("inconsistent pulsed ADM fields");
+            }
             for (int i = 0; i < 3; ++i)
                 for (int j = 0; j < 3; ++j)
                     std::cout << a.gamma[i][j] << ' ';

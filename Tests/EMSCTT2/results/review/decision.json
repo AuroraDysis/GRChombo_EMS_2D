@@ -1,0 +1,46 @@
+{
+  "identical_layouts_to_T2": true,
+  "interface_point_vs_analytic_max_scaled_difference": 0.0,
+  "original_mask_replay_max_scaled_difference": 0.0,
+  "replay_allowance": 5e-13,
+  "nonpositive_point_orders": [
+    {
+      "domain": "global",
+      "mode": "point",
+      "N1": 320,
+      "region": "interface_3",
+      "diagnostic": "H",
+      "statistic": "max",
+      "cells": 11328,
+      "staging": 3.3087224151378135e-24,
+      "value": 6.171416617230642e-13,
+      "order": -0.4933273349312801
+    },
+    {
+      "domain": "global",
+      "mode": "point",
+      "N1": 320,
+      "region": "interface_4",
+      "diagnostic": "H",
+      "statistic": "RMS",
+      "cells": 12502,
+      "staging": 1.654361217441405e-24,
+      "value": 1.9028104817949414e-13,
+      "order": -0.8816007399180245
+    },
+    {
+      "domain": "global",
+      "mode": "point",
+      "N1": 320,
+      "region": "interface_4",
+      "diagnostic": "H",
+      "statistic": "max",
+      "cells": 12502,
+      "staging": 1.654361217441405e-24,
+      "value": 6.476467683198446e-13,
+      "order": -0.9956386153876051
+    }
+  ],
+  "minimum_point_pair_order": -0.9956386153876051,
+  "magnetic_Gauss_zero": true
+}

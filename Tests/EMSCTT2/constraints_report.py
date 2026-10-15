@@ -1,5 +1,6 @@
 """Summarize valid-cell composite norms, retaining all measured trends."""
 from pathlib import Path
+from evidence import ARCHIVE
 import math,csv,json
 R=Path(__file__).resolve().parent;out=R/'results'
 rows=[];tables=[]
@@ -8,7 +9,7 @@ for stem in ('','near-'):
     lines=['| Region | N1 | fine dx/M | H RMS | order | M RMS | order | GE RMS | order | GB RMS |',
            '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
     for n in (80,160,320):
-        text=(out/f'hierarchy-{stem}{n}.log').read_text()
+        text=(ARCHIVE/f'hierarchy-{stem}{n}.log').read_text()
         assert 'seconds=' in text
         for line in text.splitlines():
             if not line.startswith('NORM,'):continue

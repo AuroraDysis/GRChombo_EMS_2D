@@ -1,0 +1,10 @@
+{
+  "radii_M": [
+    16.72433994232569,
+    22.149975026273744,
+    56.262273380783796,
+    62.06455126251464
+  ],
+  "half_width_M": 2.0,
+  "source": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt"
+}

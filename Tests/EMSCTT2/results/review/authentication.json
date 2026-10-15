@@ -1,0 +1,97 @@
+[
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet",
+    "sha256": "74f85f39aa652b48d179a96b8dbe57cd4468d7905e39732aaf8bd1b75931b8fa",
+    "bytes": 8103
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/n24-final.ctt",
+    "sha256": "1b77e57d870145aafc34b80e5d8035d63d0134c3f3856105e50075df34fdba7e",
+    "bytes": 720728
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy.cpp",
+    "sha256": "bfb205ce3d7d39206a2a08b7ad8224059b3b3a576ada87bd5f0ed97260167b7f",
+    "bytes": 10963
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/transfer_controls.py",
+    "sha256": "cf715d3ab24904142cc4e3ec1389f2c257caf1f9d85a52adbb948701ea5dc54f",
+    "bytes": 11475
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Hierarchy2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+    "sha256": "f84893762577bd8841cb55bc1ef4c2f2b910afb43855093cd189550e239d82d7",
+    "bytes": 1748112
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Examples/EMS/SimulationParameters.hpp",
+    "sha256": "6da1522e17b30669d1d3a09d5f6934794ea47ba497b861aa5416fb624b6dba3f",
+    "bytes": 11121
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Source/GRChomboCore/PointAMRTransfer.hpp",
+    "sha256": "36acaf89f5a8f937d92df7cc19782dc04594891645a119f8eba384dd0dfe73f1",
+    "bytes": 9825
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Source/InitialConditions/EMSBH/1D_SOL/EMSCTTPulse_read.hpp",
+    "sha256": "94ae5597eddf33888880f330e644f4f396266d66fe8ad6c8fbad513b7016b03a",
+    "bytes": 16657
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Source/InitialConditions/EMSBH/EMSBH_trumpet_read.impl.hpp",
+    "sha256": "f054d271238e4c4d0a22847ef306d841fd7ad803baec8784d102b3f3839e7be5",
+    "bytes": 25513
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Readback.cpp",
+    "sha256": "5c5988ca50d8d27d7472b5e842cee3a366641fb23db535d412d2ac23993f2441",
+    "bytes": 5134
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/EMSCTT2Readback2d.Darwin.64.g++-16.gfortran.OPTHIGH.OPENMPCC.ex",
+    "sha256": "3ca9ca93a8765c6d272c30b9a98aecd93a66ca194d6b790dee66bf5c36a616bd",
+    "bytes": 1634736
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/parser.py",
+    "sha256": "4f4ab2f494712303e28b68e828d219c5b5d115e24300b72864e2db9305be934b",
+    "bytes": 4404
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/evidence.py",
+    "sha256": "86418ecffc547bf6045cd2924248cfb836300f852b74982b1e963bb9d8e285a3",
+    "bytes": 434
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-160.txt",
+    "sha256": "cac8818eb3bc0ab8ab456572d69ef67d0836ae8d83fa179ec85aedb239e88b82",
+    "bytes": 1200
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-320.txt",
+    "sha256": "8d359cef5a0e8d546de28f2df1151a4cfe745e71a6d2aa2c130630c0c52c8507",
+    "bytes": 1165
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-80.txt",
+    "sha256": "5bebbdb52d5f86b1158710d58b3cf0d7de0a598f8a0dd2c36e783ad1dd9b2538",
+    "bytes": 1199
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-near-320.txt",
+    "sha256": "fed3cfc352ce5ee30a36144768ea7d1049038706b3417732d519188ee326e351",
+    "bytes": 1201
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-160.txt",
+    "sha256": "884ab60843f773921b83d41e1585195ce2891c4e3ecd9e4945461d157de323ec",
+    "bytes": 1164
+  },
+  {
+    "path": "/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/params-80.txt",
+    "sha256": "ac8c396c955c441c51a0eecd01e86aebe39a3b38d85f2ecc241da7604d544ac8",
+    "bytes": 1163
+  }
+]

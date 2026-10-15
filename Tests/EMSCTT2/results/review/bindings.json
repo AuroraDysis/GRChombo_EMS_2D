@@ -1,0 +1,50 @@
+{
+  "binary": {
+    "exit": -6,
+    "output": "Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nRead EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nEMSCTT 2 requires an unboosted mass-one single hole, zero separation and default initial lapse !!!"
+  },
+  "boosted": {
+    "exit": -6,
+    "output": "Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nRead EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nEMSCTT 2 requires an unboosted mass-one single hole, zero separation and default initial lapse !!!"
+  },
+  "rapidity": {
+    "exit": -6,
+    "output": "Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nRead EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nEMSCTT 2 requires an unboosted mass-one single hole, zero separation and default initial lapse !!!"
+  },
+  "mass": {
+    "exit": -6,
+    "output": "Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nRead EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nEMSCTT 2 requires an unboosted mass-one single hole, zero separation and default initial lapse !!!"
+  },
+  "separation": {
+    "exit": -6,
+    "output": "Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nRead EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nEMSCTT 2 requires an unboosted mass-one single hole, zero separation and default initial lapse !!!"
+  },
+  "geometric-lapse": {
+    "exit": -6,
+    "output": "Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nRead EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nGeometric lapse 4x4 audit: samples=24 max_relative=2.22045e-16 max_condition_scaled_eps=0.78549\nEMSCTT 2 requires an unboosted mass-one single hole, zero separation and default initial lapse !!!"
+  },
+  "maximal-lapse": {
+    "exit": -6,
+    "output": "Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nems_use_maximal_initial_lapse requires an unboosted single hole without an EMSCTT companion !!!"
+  },
+  "coupling": {
+    "exit": -6,
+    "output": "Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nRead EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nEMSTRUMPET coupling differs from run parameters !!!"
+  },
+  "puncture": {
+    "exit": -6,
+    "output": "Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nRead EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nEMSCTT 2: outside represented end !!!\nEMSCTT 2: outside represented end !!!"
+  },
+  "below-min": {
+    "exit": -6,
+    "output": "Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nRead EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nEMSCTT 2: outside represented end !!!\nEMSCTT 2: outside represented end !!!"
+  },
+  "bad-panel": {
+    "exit": -6,
+    "output": "Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nRead EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nEMSCTT 2: invalid panel/domain !!!\nEMSCTT 2: invalid panel/domain !!!"
+  },
+  "negative-panel": {
+    "exit": -6,
+    "output": "Read EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nRead EMSTRUMPET 1 profile /Users/auroradysis/Workspace/EMS/.ariadne/worktrees/fork-ctt2/Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet\nEMSCTT 2: invalid panel/domain !!!\nEMSCTT 2: invalid panel/domain !!!"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "cases": [
+    {
+      "name": "legacy3",
+      "exit": -6,
+      "expected": "EMSCTT 2 requires amr_transfer = point and num_ghosts = 3",
+      "initialization_reached": false
+    },
+    {
+      "name": "legacy5",
+      "exit": -6,
+      "expected": "EMSCTT 2 requires amr_transfer = point and num_ghosts = 3",
+      "initialization_reached": false
+    },
+    {
+      "name": "point5",
+      "exit": -6,
+      "expected": "EMSCTT 2 requires amr_transfer = point and num_ghosts = 3",
+      "initialization_reached": false
+    },
+    {
+      "name": "point2",
+      "exit": -6,
+      "expected": "num_ghosts = 2 is invalid",
+      "initialization_reached": false
+    },
+    {
+      "name": "point3",
+      "exit": 0,
+      "expected": "startup parameters accepted",
+      "initialization_reached": false
+    },
+    {
+      "name": "no-companion-legacy",
+      "exit": 0,
+      "expected": "startup parameters accepted",
+      "initialization_reached": false
+    },
+    {
+      "name": "default-legacy",
+      "exit": -6,
+      "expected": "EMSCTT 2 requires amr_transfer = point and num_ghosts = 3",
+      "initialization_reached": false
+    },
+    {
+      "name": "CRLF",
+      "exit": -6,
+      "expected": "version line contains CR; use LF line endings",
+      "initialization_reached": false
+    }
+  ],
+  "CRLF_dispatch_refused": true,
+  "ADM_cache_consistent_points_per_companion": 146,
+  "ADM_cache_tolerance": 5e-13
+}

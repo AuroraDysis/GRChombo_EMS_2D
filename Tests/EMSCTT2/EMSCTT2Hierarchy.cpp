@@ -63,8 +63,9 @@ class CTT2Level : public GRAMRLevel
             tags(iv, 0) = std::hypot(x, y) < .4 * m_p.L ? 100. : 0.;
         }
     }
-    void measure(const std::vector<Box> &covered, std::array<Norms, 4> &norms,
-                 double radius_scale, bool analytic_ghosts)
+    void measure(const std::vector<Box> &covered, std::array<Norms, 8> &norms,
+                 double radius_scale, bool analytic_ghosts,
+                 const std::array<double, 4> &interfaces, double half_width)
     {
         // Restore analytic t=0 values, then exercise the production AMR ghost
         // fill.
@@ -116,7 +117,11 @@ class CTT2Level : public GRAMRLevel
                 const double R = r / radius_scale, Y = y / radius_scale;
                 const bool masks[] = {R >= 4 && R <= 8, R >= 25 && R <= 55,
                                       R >= 68 && R <= 76,
-                                      R >= 25 && R <= 55 && Y <= 2};
+                                      R >= 25 && R <= 55 && Y <= 2,
+                                      std::abs(R-interfaces[0]) <= half_width,
+                                      std::abs(R-interfaces[1]) <= half_width,
+                                      std::abs(R-interfaces[2]) <= half_width,
+                                      std::abs(R-interfaces[3]) <= half_width};
                 if (!std::any_of(std::begin(masks), std::end(masks),
                                  [](bool v) { return v; }))
                     continue;
@@ -138,7 +143,7 @@ class CTT2Level : public GRAMRLevel
                 const double values[] = {
                     d(iv, c_Ham), std::hypot(d(iv, c_Mom1), d(iv, c_Mom2)),
                     d(iv, c_GaussE), d(iv, c_GaussB)};
-                for (int j = 0; j < 4; ++j)
+                for (int j = 0; j < 8; ++j)
                     if (masks[j])
                     {
                         auto &n = norms[j];
@@ -172,6 +177,13 @@ int run(int argc, char **argv)
 {
     GRParmParse pp(argc - 2, argv + 2, nullptr, argv[1]);
     SimulationParameters p(pp);
+    bool check_params_only;
+    pp.load("ctt2_test_check_params_only", check_params_only, false);
+    if (check_params_only)
+    {
+        std::cout << "startup parameters accepted\n";
+        return 0;
+    }
     if (p.restart_from_checkpoint || p.max_steps != 0 || p.stop_time != 0 ||
         p.max_level != 1)
         throw std::runtime_error("requires a fresh two-level t=0 hierarchy");
@@ -185,7 +197,19 @@ int run(int argc, char **argv)
     GRAMR amr;
     DefaultLevelFactory<CTT2Level> factory(amr, p);
     setupAMRObject(amr, factory);
-    std::array<Norms, 4> norms;
+    std::array<Norms, 8> norms;
+    std::array<double, 4> interfaces{-1., -1., -1., -1.};
+    const bool interface_masks = pp.contains("ctt2_test_interfaces");
+    double half_width = 0.;
+    if (interface_masks)
+    {
+        pp.load("ctt2_test_interfaces", interfaces);
+        pp.load("ctt2_test_interface_half_width", half_width);
+        if (!(half_width > 0.) || !std::isfinite(half_width) ||
+            !std::all_of(interfaces.begin(), interfaces.end(),
+                         [](double r) { return r > 0. && std::isfinite(r); }))
+            throw std::runtime_error("invalid interface masks");
+    }
     const auto levels = amr.get_gramrlevels();
     if (levels.size() != 2)
         throw std::runtime_error("two initialized AMR levels required");
@@ -204,10 +228,11 @@ int run(int argc, char **argv)
             }
         }
         dynamic_cast<CTT2Level &>(*levels[l])
-            .measure(covered, norms, radius_scale, analytic_ghosts);
+            .measure(covered, norms, radius_scale, analytic_ghosts, interfaces, half_width);
     }
-    const char *names[] = {"inner", "pulse", "outer", "pulse_axis"};
-    for (int j = 0; j < 4; ++j)
+    const char *names[] = {"inner", "pulse", "outer", "pulse_axis",
+                           "interface_1", "interface_2", "interface_3", "interface_4"};
+    for (int j = 0; j < (interface_masks ? 8 : 4); ++j)
         norms[j].print(names[j]);
     return 0;
 }

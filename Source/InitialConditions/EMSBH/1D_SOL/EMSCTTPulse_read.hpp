@@ -3,6 +3,7 @@
 #define EMSCTTPULSE_READ_HPP_
 #include "EMSTrumpetSolution_read.hpp"
 #include "SHA256.hpp"
+#include "MayDay.H"
 #include <algorithm>
 #include <cmath>
 #include <fstream>
@@ -155,7 +156,10 @@ class EMSCTTPulse_read
                 require(bool(std::getline(in, line)), "truncated companion");
                 return line;
             };
-            require(next() == "EMSCTT 2", "unknown magic");
+            next();
+            require(line != "EMSCTT 2\r",
+                    "EMSCTT 2 version line contains CR; use LF line endings");
+            require(line == "EMSCTT 2", "unknown magic");
             const std::map<std::string, std::string> text = {
                 {"schema", "EMSCTT/2-single-pulse"},
                 {"geometry", "one-unboosted-trumpet"},
@@ -293,7 +297,7 @@ class EMSCTTPulse_read
     {
         const double r = std::sqrt(x * x + y * y + z * z), mu = x / r;
         if (!std::isfinite(r) || !(r >= m_values.at("end_min_radius_M")))
-            throw std::runtime_error("EMSCTT 2: outside represented end");
+            MayDay::Error("EMSCTT 2: outside represented end");
         int selected = panel - 1;
         if (!panel)
             for (size_t k = 0; k < m_panels.size(); ++k)
@@ -312,7 +316,7 @@ class EMSCTTPulse_read
                 }
             }
         if (selected < 0 || selected >= int(m_panels.size()))
-            throw std::runtime_error("EMSCTT 2: invalid panel/domain");
+            MayDay::Error("EMSCTT 2: invalid panel/domain");
         const auto &p = m_panels[selected];
         const double t =
             p.kind == "log"

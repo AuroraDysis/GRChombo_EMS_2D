@@ -29,7 +29,9 @@ Reader design (eight lines):
 ## Inputs and activation
 
 The single new parameter is `ems_ctt_data_path`, default empty. It requires
-`ems_data_format = emstrumpet1` and `binary = true`. The existing setter places
+`ems_data_format = emstrumpet1`; EMSCTT 1 requires `binary = true`.
+EMSCTT 2 is the single-object format and requires `amr_transfer = point`
+and `num_ghosts = 3`; see [its controls](../EMSCTT2/README.md). The existing setter places
 holes at `±separation/2` relative to `star_centre`; the companion records those
 relative centres. Its effective rapidity is zero if `boosted = false`, so that
 setting is rejected for the supplied boosted companion. Explicit binary helper

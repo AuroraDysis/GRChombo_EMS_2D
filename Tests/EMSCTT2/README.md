@@ -35,9 +35,19 @@ stop_time = 0
 
 The version line selects the separate `EMSCTTPulse_read` parser. EMSCTT/1
 still selects its original binary reader. No-companion and legacy defaults
-are unchanged. The single object is positioned at `star_centre`, on the cartoon
-axis. Mass one, zero boost/separation and the default initial lapse are checked;
-this format does not authorize a rescaled/boosted reconstruction. Physical
+are unchanged. On every rank, `SimulationParameters::check_params` reads the
+version before hierarchy setup and refuses EMSCTT/2 unless `amr_transfer = point`
+and `num_ghosts = 3`. This is a mandatory startup guard.
+
+The single object is positioned at `star_centre`, on the cartoon axis. The reader requires `bh_mass = 1` because the companion's coordinates,
+panels and pulse parameters are already expressed in units of the hole's mass M.
+In geometric units G=c=1, this massless EMS theory with dimensionless couplings
+has no independent dimensional scale besides M: code coordinates are x/M and
+t/M, while code K, Pi and Cartesian Maxwell fields represent M times their
+physical values. Mass one selects those units; it is not a hard-coded physical
+mass or a restriction to a particular mass in external units. The reader does
+not perform a second runtime rescaling of the supplied representation.
+Zero boost/separation and the default initial lapse are also checked. Physical
 pulse amplitude, width, launch radius, panels and phase come from the file.
 
 The format's defining expressions are retained:
@@ -89,9 +99,14 @@ The parser rejects unknown/missing/duplicate keys, unsupported reconstruction,
 nonfinite data, invalid integers/dimensions/maps/topology, gaps/overlaps,
 nonconverged solve metadata, incorrect phase/launch normalization, wrong profile
 bytes, checksum damage, truncation, trailing data and a missing final newline.
-[parser.json](results/parser.json) records 29 rejection controls, including
-checksum-valid semantic mutants. [bindings.json](results/bindings.json) records
-eight constructor rejections and puncture/minimum-radius/panel controls.
+[T3 parser controls](results/review/parser.json) record 31 rejection controls,
+including checksum-valid CRLF and line-boundary truncation mutants.
+[T3 binding controls](results/review/bindings.json) record eight constructor
+rejections and four fatal domain controls executed inside a two-thread OpenMP
+region. Evaluation failures use `MayDay::Error`; parser validation still returns
+its structured failure outside BoxLoops. A CR in the version line is refused
+with `EMSCTT 2 version line contains CR; use LF line endings`, in the parser,
+dispatcher and startup check; checksum bytes are never silently normalized.
 Below `1.2664165549094182e-20 M`, evaluation fails; there is no padding or
 constant continuation. A positive explicit panel index is a fixture extension,
 while production uses the first containing panel, including the inner shared face.
@@ -154,7 +169,7 @@ allowance. See [ccz4-readback.json](results/ccz4-readback.json).
 ## T1 initialized AMR constraints (legacy transfer)
 
 T1 omitted `amr_transfer`; its parameter log explicitly records the default
-`legacy`. Its parameter files allocated five ghosts. The following measurements
+`legacy`. Its historical parameter files allocated five ghosts. These measurements
 are retained as the T1 baseline; T2 below supplies the production setting.
 
 `EMSCTT2Hierarchy` builds a fresh real GRAMR hierarchy with two levels, ratio 2,
@@ -217,13 +232,14 @@ is zero everywhere, so its order is undefined. The smallest pair order is
 2.055, the global outer H RMS fine pair, already near the analytic reference
 residual. Uniform fourth order at that floor is not claimed.
 
-The original domains, parameter files, two levels, refinement ratio, tagging,
+The original domains, two levels, refinement ratio, tagging,
 box sizes, boundary conditions and masks are unchanged. The point operator
 requires exactly three ghosts (`PointAMRTransfer::define`); it cannot accept
 T1's five-ghost allocation. The harness therefore computes Gamma on valid
 cells and fills Gamma ghosts from current arrays in the three-ghost cases,
-without reading metric stencils outside the allocation. The five-ghost path
-is retained. A matched `legacy3` control separates this harness adjustment
+without reading metric stencils outside the allocation. The harness retains
+its five-ghost calculation for the historical reference; EMSCTT/2 startup now
+refuses five ghosts. A matched `legacy3` control separates this harness adjustment
 from the transfer setting: its finest global outer H RMS is 1.701e-7, the same
 legacy defect as five ghosts. The legacy replay reproduces all archived T1
 norms with measured zero difference, without making byte identity an
@@ -290,17 +306,97 @@ RSS peak of 122.4 MB.
 All runs are serial and below five minutes individually, within the
 two-process/6 GB-per-process budget.
 
-Reproduce after the existing test build and input authentication:
+T2 is frozen historical evidence. Its legacy runs are deliberately refused by
+the T3 startup guard. The original T2 driver is archived as
+`T1-T2/source-transfer_controls.py` with its hash; the current driver below
+runs only supported point-transfer configurations.
 
-```sh
-python3 Tests/EMSCTT2/transfer_controls.py
-# Regenerate tables from existing logs without running a hierarchy:
-python3 Tests/EMSCTT2/transfer_controls.py report
-```
+## T3: review fixes and panel-interface controls
 
-## T1 reproduction and cost
+[Startup controls](results/review/startup.json) verify rejection of explicit
+legacy transfer (three and five ghosts), omitted transfer (the unchanged legacy
+default), point with five ghosts, and the CRLF version line. Two ghosts are
+rejected earlier by the existing base derivative-stencil validation. Point with
+three ghosts and no-companion legacy startup are accepted. All these checks end
+before initialization; the twelve hierarchy controls below also verify actual
+initialization of the accepted EMSCTT/2 configuration. The guard has no rank-zero
+condition and uses the code's fatal error path on every rank. Local builds use
+serial Chombo; multi-rank execution was not tested.
 
-Run from the fork root with serial Chombo and one Julia/BLAS/OpenMP thread:
+The physical ADM return type is retained for existing callers. In the pulse
+branch, `chi` is recomputed from the final metric determinant and `lapse` is
+sqrt(chi), matching shared CCZ4 packing. Boost factors J and w are explicitly
+one because this branch admits only an unboosted object. The plain/binary paths
+are unchanged. Consistency checks cover all 146 sample points for both zero and
+n24 companions, with the retained 5e-13 normalized allowance for chi/lapse.
+The field, AD-derivative, stencil and CCZ4 comparisons against the authenticated
+archived Julia references pass again; [readback](results/review/readback.json),
+[stencils](results/review/stencil-readback.json), and
+[CCZ4](results/review/ccz4-readback.json) retain the numbers.
+
+The global hierarchy adds four shells of half-width 2 M, centred on radii
+read from the supplied n24 panel rows, rather than changing the representation:
+16.72433994232569, 22.149975026273744, 56.262273380783796 and
+62.06455126251464 M. They cover the omitted faces in the 8–25 M and 55–68 M
+gaps. The original four masks, domains, tagging, levels and layouts are retained.
+Point and analytic-ghost controls run at N1=80/160/320; the near-domain ladder
+also repeats its original four masks. Valid cells only, norm definitions and
+5e-13 staging allowance remain as above. Layouts match T2; original-mask norms
+reproduce within 5e-13 (measured normalized difference zero).
+
+New-shell point-transfer RMS values and pair orders (GB is zero throughout):
+
+| Face / M | Diagnostic | N1=80 | N1=160 | N1=320 | order 80→160 | order 160→320 |
+|---:|---|---:|---:|---:|---:|---:|
+| 16.72434 | H | 1.62855e-08 | 1.14967e-09 | 7.00461e-11 | 3.824 | 4.037 |
+| 16.72434 | M | 7.56803e-12 | 5.25861e-13 | 3.14756e-14 | 3.847 | 4.062 |
+| 16.72434 | GE | 4.39380e-09 | 3.07430e-10 | 1.83412e-11 | 3.837 | 4.067 |
+| 22.14998 | H | 2.23367e-09 | 1.42997e-10 | 8.95358e-12 | 3.965 | 3.997 |
+| 22.14998 | M | 9.00346e-13 | 5.67821e-14 | 3.51708e-15 | 3.987 | 4.013 |
+| 22.14998 | GE | 6.67083e-10 | 4.21284e-11 | 2.60501e-12 | 3.985 | 4.015 |
+| 56.26227 | H | 2.93896e-12 | 1.90239e-13 | 1.84791e-13 | 3.949 | 0.042 |
+| 56.26227 | M | 3.57761e-15 | 1.99754e-16 | 1.16671e-17 | 4.163 | 4.098 |
+| 56.26227 | GE | 1.04988e-12 | 6.56904e-14 | 4.08736e-15 | 3.998 | 4.006 |
+| 62.06455 | H | 1.46753e-12 | 1.03278e-13 | 1.90281e-13 | 3.829 | -0.882 |
+| 62.06455 | M | 9.18204e-16 | 5.75537e-17 | 3.59953e-18 | 3.996 | 3.999 |
+| 62.06455 | GE | 5.28466e-13 | 3.31319e-14 | 2.07044e-15 | 3.996 | 4.000 |
+
+**The expanded mask set does not establish decreasing H in every mask.**
+At 56.26 M the finest H RMS is 1.848e-13 (order .042); its maximum rises to
+6.171e-13 (order −.493). At 62.06 M H RMS rises from 1.033e-13 to 1.903e-13
+(order −.882), and its maximum rises to 6.476e-13 (order −.996).
+The analytic-ghost control gives the same measured values and orders in all
+four new shells, within the 5e-13 replay allowance (measured difference zero).
+Thus these new H limitations survive replacement of transferred metric/matter
+ghosts by analytic ones; they do not reproduce the legacy coarse-fine defect.
+They are compatible with the analytic initialization/FD arithmetic residual,
+without isolating a unique source or asserting asymptotic convergence there.
+Momentum and electric Gauss decrease at both pairs in every new shell; the
+first two shells show approximately fourth-order H/M/GE convergence as well.
+The original outer-mask point-transfer H trend remains 3.972/2.055.
+
+[Every RMS, maximum, cell count and pair order](results/review/tables.md),
+including analytic ghosts, is preserved with a
+[full-precision CSV](results/review/norms.csv) and
+[decision receipt](results/review/decision.json). No transfer code changed.
+Twelve fresh t=0 hierarchies cost 18.20 s total, at most 3.76 s each and
+112.5 MB child RSS. [Cost receipts](results/review/cost-transfer.json) and
+[authentication](results/review/authentication.json) bind inputs and executables.
+The EMS production build and both old fixture suites pass again; the build
+costs 10.82/13.78/29.38 s for EMSCTT/trumpet/EMS, and fixture runs .97/.20 s.
+[Regression receipts](results/review/cost-regression.json) give exact costs and
+child RSS (conservative maximum 751.5 MB). No job needed the over-five-minute tier.
+
+Raw evidence, including numeric reference/sample tables, now lives under
+`/Users/auroradysis/Workspace/EMS/.data/fork-ctt2-logs/`, in `T1-T2/` and `T3/`.
+Only evidence tables and integrity/cost/decision receipts remain in git.
+[The archive receipt](results/raw-archive.json) records every archived T1/T2
+file hash and the manifest hash; [T3 raw hashes](results/review/raw-manifest.json)
+cover the new logs. `evidence.py` resolves reference files from this authenticated
+archive, preferring newly regenerated references in T3. Archived T1/T2 receipts
+keep their original command paths as provenance; raw files moved, inputs did not.
+
+Reproduce current supported controls:
 
 ```sh
 export CHOMBO_HOME=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib
@@ -308,20 +404,23 @@ export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 JULIA_NUM_THREADS=1
 make -C Tests/EMSCTT2 all DIM=2 -j2
 python3 Tests/EMSCTT2/authenticate.py
 python3 Tests/EMSCTT2/parser.py
-julia --heap-size-hint=2G --project=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-pulse \
-  Tests/EMSCTT2/reference.jl Tests/EMSCTT2/results/input-snapshots/a0.9-e7.trumpet \
-  Tests/EMSCTT2/results Tests/EMSCTT2/results/input-snapshots
+python3 Tests/EMSCTT2/transfer_controls.py
 uv run --no-project --with numpy python Tests/EMSCTT2/compare.py
 uv run --no-project --with numpy python Tests/EMSCTT2/compare_stencils.py
-python3 Tests/EMSCTT2/run_controls.py reference-ccz4
 uv run --no-project --with numpy python Tests/EMSCTT2/compare_ccz4.py
-python3 Tests/EMSCTT2/run_controls.py hierarchy
-python3 Tests/EMSCTT2/run_controls.py near
-python3 Tests/EMSCTT2/run_controls.py ghost-control
-python3 Tests/EMSCTT2/constraints_report.py
 python3 Tests/EMSCTT2/run_controls.py regression
-uv run --no-project --with sympy python scripts/cas/ctt2_longitudinal.py
+# Regenerate the current norm tables from completed logs:
+python3 Tests/EMSCTT2/transfer_controls.py report
 ```
+
+## T1 reproduction and cost
+
+The current supported commands are above. To regenerate Julia reference values,
+pass `/Users/auroradysis/Workspace/EMS/.data/fork-ctt2-logs/T3` as the output
+directory to `reference.jl`; its profile/data arguments remain the authenticated
+input snapshots. `run_controls.py reference-ccz4` and `reference-ad` also write
+raw outputs there. Historical `constraints_report.py` reads archived T1 logs;
+its legacy tables are not regenerated from the now-production parameter files.
 
 `compare.py` consumes the archived AD reference. Regenerate it with
 `python3 Tests/EMSCTT2/run_controls.py reference-ad`; the replay output is
@@ -336,7 +435,7 @@ The production EMS build and both unchanged fixture suites pass. EMSCTT/1
 retains 42 physical + 42 CCZ4 points, SHA controls and parser tests; the trumpet
 suite retains single/binary/radial/echo controls. Their numeric tolerances are
 unchanged. No new bit-identity acceptance requirement was introduced.
-[regression.log](results/regression.log) and `cost-*.json` record commands,
+[T1 regression log](/Users/auroradysis/Workspace/EMS/.data/fork-ctt2-logs/T1-T2/regression.log) and `cost-*.json` record commands,
 wall times, exit status and child peak RSS. Final production build: 21.23 s;
 old CTT/trumpet readbacks: .80/.18 s. Global and small-domain AMR ladders cost
 about 1–4.2 s per hierarchy, with peak RSS <=118 MB. The field readback costs

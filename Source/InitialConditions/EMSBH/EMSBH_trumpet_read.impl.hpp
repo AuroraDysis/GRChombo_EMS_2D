@@ -55,6 +55,8 @@ inline void EMSBH_trumpet_read::compute_1d_solution()
         if (!std::getline(input, version))
             MayDay::Error("cannot read EMSCTT version line");
         input.close();
+        if (version == "EMSCTT 2\r")
+            MayDay::Error("EMSCTT 2 version line contains CR; use LF line endings");
         if (version == "EMSCTT 2")
         {
             if (m_params_EMSBH.binary || m_params_EMSBH.boosted ||
@@ -353,6 +355,10 @@ EMSBH_trumpet_read::compute_single_ems_adm_vars(
         a.B[i] *= pm2;
     }
     a.Pi = std::pow(psi,-6)*(a.Pi+pulse[1]);
+    a.chi = std::pow(TensorAlgebra::compute_determinant_sym(a.gamma), -1. / 3.);
+    a.lapse = std::sqrt(a.chi);
+    // The accepted single object has no boost (J = w = 1).
+    a.boost_metric_det = a.boost_normal_factor = 1.;
     return a;
 }
 
