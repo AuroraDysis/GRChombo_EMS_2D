@@ -103,7 +103,7 @@ to a separate directory when rerunning them.
 From this fork worktree root, using the serial toolchain in `EMS-deps/BUILD.md`:
 
 ```sh
-export CHOMBO_HOME=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib
+export CHOMBO_HOME=/Users/auroradysis/Workspace/external/EMS-deps/Chombo/lib
 export OMP_NUM_THREADS=1
 ems_fixture_root=/Users/auroradysis/Workspace/EMS/.ariadne/worktrees/wt-binsup-t6
 make -C Tests/EMSCTT all DIM=2 -j 2

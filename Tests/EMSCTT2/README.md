@@ -399,7 +399,7 @@ keep their original command paths as provenance; raw files moved, inputs did not
 Reproduce current supported controls:
 
 ```sh
-export CHOMBO_HOME=/Users/auroradysis/Workspace/EMS-deps/Chombo/lib
+export CHOMBO_HOME=/Users/auroradysis/Workspace/external/EMS-deps/Chombo/lib
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 JULIA_NUM_THREADS=1
 make -C Tests/EMSCTT2 all DIM=2 -j2
 python3 Tests/EMSCTT2/authenticate.py

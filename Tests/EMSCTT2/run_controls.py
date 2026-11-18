@@ -3,7 +3,7 @@ from pathlib import Path
 from evidence import RAW, OUT, reference
 import os,subprocess,time,json,resource
 R=Path(__file__).resolve().parent
-os.environ.update(OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',JULIA_NUM_THREADS='1',CHOMBO_HOME='/Users/auroradysis/Workspace/EMS-deps/Chombo/lib')
+os.environ.update(OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',JULIA_NUM_THREADS='1',CHOMBO_HOME='/Users/auroradysis/Workspace/external/EMS-deps/Chombo/lib')
 records=[]
 def run(name,args,cap=240):
     start=time.monotonic()
